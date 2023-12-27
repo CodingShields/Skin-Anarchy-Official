@@ -153,7 +153,6 @@ export default {
 			"2xl": "1536px",
 			// => @media (min-width: 1536px) { ... }
 		},
-
 		aspectRatio: {
 			auto: "auto",
 			square: "1 / 1",
@@ -176,15 +175,7 @@ export default {
 			16: "16",
 		},
 	},
-	// variants: {
-	// 	translate: [
-	// 		// "responsive",
-	// 		"hover",
-	// 		"focus",
-	// 		"active",
-	// 		"group-hover",
-	// 	],
-	// },
+
 	plugins: [
 		require("@tailwindcss/typography"),
 		require("@tailwindcss/aspect-ratio"),
