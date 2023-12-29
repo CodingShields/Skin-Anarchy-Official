@@ -7,7 +7,6 @@ import play from "../../../assets/icons/player-icons/play.svg";
 import pause from "../../../assets/icons/player-icons/pause.svg";
 import volume from "../../../assets/icons/player-icons/volume.svg";
 import mute from "../../../assets/icons/player-icons/mute.svg";
-import sound from "../../../assets/sound.mp3";
 
 const PodcastPlayer = () => {
 	const [episodeData, setEpisodeData] = useState({});

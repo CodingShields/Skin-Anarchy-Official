@@ -43,7 +43,7 @@ const AccountPage = () => {
   }, [userId]);
 
   return (
-    <div className="flex flex-col h-screen w-full bg-white">
+    <div className="flex flex-col  h-full w-full bg-zinc-200">
       {!adminAccess ? <div>
         <h1 className="text-4xl font-bold text-center text-gray-800">
           Account Page

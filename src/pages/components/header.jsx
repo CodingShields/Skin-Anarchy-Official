@@ -102,7 +102,7 @@ const Header = () => {
     >
       <div className="flex flex-row h-f p-0 m-auto w-max ">
         <NavLink to="/">
-          <div className="flex flex-row w-full mr-4 overflow-hidden place-items-center">
+          <div className="flex flex-col w-full mr-4 overflow-hidden place-items-center">
             <img
               src={whiteLogo}
               alt="logo"
