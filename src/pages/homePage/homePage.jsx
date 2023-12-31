@@ -16,24 +16,28 @@ import BecomeSponsorContainer from "./comps/becomeSponsorContainer";
 
 const HomePage = () => {
 	return (
-		<div className='flex flex-col w-full  bg-black bg-opacity-80'>
-			<div className='static  w-full overflow-hidden h-112 '>
-				<video className='w-full h-lg md:object-center' autoPlay muted loop id='video'>
-					<source src={BG} type='video/mp4' />
-				</video>
-			</div>
-			<div className='flex flex-row w-full h-fit'>
-				<FactsBar />
-			</div>
-			<PodCastContainer />
-			<StatsContainer />
-			<NewsLetterContainer />
-			<InterviewCategoryContainer />
-			<SponsorBarContainer />
-			<BecomeSponsorContainer />
-			<TestimonialsContainer />
-		</div>
-	);
+    <div className="flex flex-col w-full h-full bg-black bg-opacity-80">
+      <div className="w-full h-full ">
+        <video
+          className="w-full h-lg md:object-center"
+          autoPlay
+          muted
+          loop
+          id="video"
+        >
+          <source src={BG} type="video/mp4" />
+        </video>
+        <FactsBar />
+        <PodCastContainer />
+        <StatsContainer />
+        <NewsLetterContainer />
+        <InterviewCategoryContainer />
+        <SponsorBarContainer />
+        <BecomeSponsorContainer />
+        <TestimonialsContainer />
+      </div>
+    </div>
+  );
 };
 
 export default HomePage;

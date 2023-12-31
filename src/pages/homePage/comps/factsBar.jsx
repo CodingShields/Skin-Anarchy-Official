@@ -27,7 +27,7 @@ const FactsBar = () => {
 	];
 
 	return (
-		<div className='flex items-center content-center justify-center grid-cols-3 pt-20 pb-20 '>
+		<div className='flex h-fit w-full items-center content-center justify-center grid-cols-3 py-10 bg-black '>
 			{barData.map((item) => (
 				<div key={item.id} className='flex flex-row content-start justify-center w-full h-full py-12'>
 					<div className='flex flex-col items-center w-2/3 h-2/3'>

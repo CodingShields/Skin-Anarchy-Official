@@ -16,7 +16,7 @@ const HomeLayout = () => {
         </div>
       )}
       <main>
-        <div className="w-full h-fit">
+        <div className="w-full h-full">
           <Outlet />
         </div>
       </main>
