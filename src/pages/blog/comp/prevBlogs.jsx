@@ -42,7 +42,7 @@ const PrevBlogs = () => {
   }, [sort]);
 
   return (
-    <div className="flex flex-col w-full h-screen bg-white">
+    <div className="flex flex-col w-full h-screen justify-center items-center bg-white">
       <div className="flex flex-row w-full h-16 mt-40 justify-center items-center space-x-4">
         <h1>Previous Blogs</h1>
         <select
@@ -61,10 +61,14 @@ const PrevBlogs = () => {
           <h2>{blog.date}</h2>
           <h3>{blog.guestBio}</h3>
           <p>{blog.description}</p>
-          <img
-            className="w-48 h-48"
-            src={blog.productPic} // Set the image source here
-          />
+          {blog.images.map((imageUrl, imageIndex) => (
+            <img
+              key={imageIndex}
+              className="w-fit h-32"
+              src={imageUrl}
+              alt={`Image ${imageIndex + 1}`} // Add alt text for accessibility
+            />
+          ))}
         </div>
       ))}
     </div>

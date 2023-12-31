@@ -1,6 +1,7 @@
 import React from "react";
 import { useButtonStateActions } from "../../../stateStore/saveBtnStateStore.jsx";
 import { useButtonState } from "../../../stateStore/saveBtnStateStore.jsx";
+import CheckCircleGreen from "../../../assets/icons/checkCircleGreen.svg";
 
 const SaveBtn = ({ onClick }) => {
   const { setButtonState } = useButtonStateActions();
@@ -13,11 +14,12 @@ const SaveBtn = ({ onClick }) => {
   };
 
   return (
-    <div className="flex flex-row justify-center items-center gap-x-2 w-full h-full group">
+    <div className="flex flex-row justify-center items-center gap-x-2 w-full h-24  ">
       <button
+        disabled={buttonState ? true : false}
         onClick={handleOnClick}
         type="button"
-        className="inline-flex w-1/4 items-center gap-x-1.5 rounded-md bg-indigo-500 px-4 py-2 text-lg font-semibold text-white shadow-sm active:translate-y-2 group-hover:text-green-500 duration-400 bg-gradient-to-t transition-all ease-in-out"
+        className="inline-flex w-44 h-fit items-center justify-center gap-x-1.5 rounded-md shadow-lg shadow-black bg-indigo-500 px-4 py-2 text-lg font-semibold hover:border-4 text-black  active:translate-y-2  transition-all hover:text-white hover:border-white ease-in-out duration-400"
       >
         Save
         <svg
@@ -26,9 +28,7 @@ const SaveBtn = ({ onClick }) => {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className={
-            "w-12 h-12  group-hover:stroke-green-500 group-hover:text-green-500 transition-all ease-in-out group-hover:duration-400 "
-          }
+          className={!buttonState ? "w-12 h-12 " : " w-12 h-12 stroke-green-500"}
         >
           <path
             strokeLinecap="round"

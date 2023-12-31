@@ -56,9 +56,7 @@ const AdminPage = () => {
           <DoubleChevLeftBtn onClick={handleNavRender} />
         </div>
       )}
-      <div className="flex flex-col  w-full h-full  bg-gray-200 ">
-        {renderStep}
-      </div>
+      <div className="flex flex-col  w-full h-full ">{renderStep}</div>
     </div>
   );
 };
