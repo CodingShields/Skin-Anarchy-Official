@@ -5,17 +5,18 @@ import {
   getDocs,
   getDoc,
   setDoc,
-  updateDoc,
   doc,
 } from "firebase/firestore";
 import { UserAuth } from "../../../context/AuthContext";
+import HamburgerUpBtn from "../../components/buttons/hamburgerUpBtn";
+import HamburgerDownBtn from "../../components/buttons/hamburgerDownBtn";
 const AdminUserManagement = () => {
   const [users, setUsers] = useState([]);
   const [state, setState] = useState({
     error: false,
     errorMessage: "",
     loading: false,
-    statsBar: false,
+    statBar: false,
   });
   const user = UserAuth();
 
@@ -99,12 +100,36 @@ const AdminUserManagement = () => {
     }
   };
 
+  const handleStatsBar = () => {
+    setState((prevState) => ({
+      ...prevState,
+      statBar: !prevState.statBar,
+    }));
+  };
+
+  const divClass = state.statBar
+    ? "flex flex-row justify-evenly items-start w-fit h-fit mt-8 space-x-10 border-2 border-black px-8 py-4 bg-white shadow-lg shadow-black transition-all duration-500 ease-in"
+    : "flex flex-row h-14 w-fit  mt-4  transition-bg-opacity bg-opacity-0 duration-500 ease-out";
+
   return (
-    <div className="block items-center justify-center w-full h-full ">
-      <div className="flex flex-col items-center justify-center w-fit h-full mt-8">
-        <h1 className="text-4xl font-bold">Admin User Management</h1>
-        <div className="flex flex-row justify-evenly items-start w-fit h-fit mt-8 space-x-10 border-2 border-black px-8 py-4 bg-white shadow-lg shadow-black">
-          <div className="flex flex-col justify-center items-center w-fit h-fit text-lg border-2 border-black py-4 px-4 text-lg bg-gray-200">
+    <div className="flex items-center justify-center w-full h-full ">
+      <div className="flex flex-col items-center justify-center w-full h-full mt-12">
+        <h1 className="text-4xl font-bold z-20">Admin User Management</h1>
+        <div className={divClass}>
+          <div className="flex flex-col justify-start items-center w-full h-full ml-4 mt-4 ">
+            {!state.statBar ? (
+              <HamburgerDownBtn onClick={handleStatsBar} />
+            ) : (
+              <HamburgerUpBtn onClick={handleStatsBar} />
+            )}
+          </div>
+          <div
+            className={
+              state.statBar
+                ? "flex flex-col justify-center items-center w-fit h-fit text-lg border-2 border-black py-4 px-4 text-lg bg-gray-200 delay-700 ease-out transition-all duration-500 shadow-black shadow-md "
+                : "transition-opacity-0 hidden"
+            }
+          >
             <h1 className="font-bold text-xl text-center mb-2">User Stats</h1>
             <div className="w-72 h-fit border-b-2 border-black text-lg">
               <h1 className="font-bold">Active Subs:</h1>
@@ -116,7 +141,14 @@ const AdminUserManagement = () => {
               <h1 className="font-bold">Total Users: </h1>
             </div>
           </div>
-          <div className="flex flex-col justify-center items-center w-fit h-fit  border-2 border-black py-4 px-4 text-lg bg-gray-200">
+          <div
+            className={
+              state.statBar
+                ? "flex flex-col justify-center items-center w-fit h-fit border-2 border-black py-4 px-4 text-lg bg-gray-200 delay-700 ease-out transition-all duration-500 shadow-black shadow-md"
+                : "hidden transition-all duration-300"
+            }
+          >
+            {" "}
             <div>
               <h1 className="font-bold text-xl text-center mb-2">
                 Notification Stats
@@ -140,7 +172,7 @@ const AdminUserManagement = () => {
           <div></div>
         </div>
 
-        <div className="w-11/12 h-fit flex flex-row justify-center items-end text-center text-lg mb-4 ">
+        <div className="w-11/12 h-11/12 flex flex-row justify-center items-end text-center text-lg mb-4 ">
           <div className="flex flex-row justify-evenly items-center text-center text-lg space-x-4">
             <h1 className="font-bold">View By:</h1>
             <select className="w-48">
@@ -171,7 +203,7 @@ const AdminUserManagement = () => {
           </div>
         </div>
         <div className="flex w-11/12 h-full justify-center items-start ">
-          <div className=" w-fit h-3/4 border-2 border-black">
+          <div className=" w-fit h-fit border-2 border-black">
             <div className="grid grid-cols-11 py-1 border-b-2 border-black font-bold text-center  text-sm bg-white">
               <h1 className="cursor-pointer hover:text-blue-500 ">Name</h1>
               <h1 className="cursor-pointer hover:text-blue-500 ">Email</h1>
@@ -195,9 +227,7 @@ const AdminUserManagement = () => {
                 Delete User
               </h1>
             </div>
-            <div
-            className="w-fit h-fit overflow-y-scroll"
-            >
+            <div className="w-fit h-full overflow-y-scroll">
               {users.map((user, id) => (
                 <div
                   key={id}
