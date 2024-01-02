@@ -61,6 +61,7 @@ export const AuthContextProvider = ({ children }) => {
           blogNotification: blogNotification,
           weeklyNewsletterNotification: weeklyNewsletterNotification,
           adminAccess: false,
+          lastLogin:null
         },
       });
       resetForm();
