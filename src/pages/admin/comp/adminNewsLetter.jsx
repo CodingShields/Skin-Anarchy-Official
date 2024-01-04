@@ -1,17 +1,42 @@
-const AdminNewsLetter = () => {
-	return (
-		<div className='flex flex-row items-start justify-center w-full h-full bg-gray-200'>
-			{/* <a
-				href='https://podcasts.apple.com/us/podcast/skincare-anarchy/id1522162686?itsct=podcast_box_badge&amp;itscg=30200&amp;ls=1'
-				style='display: inline-block; overflow: hidden; border-radius: 13px; width: 250px; height: 83px;'
-			/> */}
+import { useState } from "react";
+import axios from "axios";
 
-			<div className='flex flex-col items-center justify-center w-10/12 h-10/12 bg-gray-400 border-4'>
-				<p className='text-4xl font-bold text-gray-700'>Admin NewsLetter</p>
-			</div>
-			
-		</div>
-	);
+const AdminNewsLetter = () => {
+  const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+	const apiKey = import.meta.env.VITE_MAILGUN_API_KEY;
+  const domain = import.meta.env.VITE_MAILGUN_DOMAIN;
+  
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    if (!email || !subject || !message) {
+      return toast.error("Please fill email, subject and message");
+    }
+    try {
+      setLoading(true);
+      const { data } = await axios.post(`/api/email`, {
+        email,
+        subject,
+        message,
+      });
+      setLoading(false);
+      toast.success(data.message);
+    } catch (err) {
+      setLoading(false);
+      toast.error(
+        err.response && err.response.data.message
+          ? err.response.data.message
+          : err.message,
+      );
+    }
+  };
+  return (
+    <div className="App">
+    
+    </div>
+  );
 };
 
 export default AdminNewsLetter;

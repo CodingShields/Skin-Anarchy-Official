@@ -7,6 +7,7 @@ import {
   HomeIcon,
   UsersIcon,
   NewspaperIcon,
+  MusicalNoteIcon
 } from "@heroicons/react/24/outline";
 
 const AdminNavBar = ({ onItemClicked }) => {
@@ -26,6 +27,11 @@ const AdminNavBar = ({ onItemClicked }) => {
       name: "News Letter",
       icon: NewspaperIcon,
       helperMessage: "Send Weekly NewsLetter",
+    },
+    {
+      name: "Podcast",
+      icon: MusicalNoteIcon,
+      helperMessage: "Update Music",
     },
     {
       name: "Members",

@@ -15,7 +15,7 @@ import playerFMIcon from "../../../assets/icons/playerFMIcon.svg";
 import listenNotesIcon from "../../../assets/icons/listenNotesIcon.png";
 const PodCastContainer = () => {
 	return (
-		<div className=' flex max-h-3xl  '>
+		<div className=' flex max-h-3xl '>
 			<div className='grid grid-cols-1 w-full h-full pt-12 pl-48 pr-48 pb-12 m-8 ml-0 mb-10 rounded-br-xl rounded-tr-xl text-2xl  bg-white shadow-black shadow-2xl'>
 				<h1 className='mb-6 text-4xl font-bold text-center'>Where TO FIND US</h1>
 				<p className='mb-6 text-center'>

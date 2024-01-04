@@ -4,14 +4,14 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
-
+const apiKey = import.meta.env.VITE_FIREBASE_API_KEY;
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyD5xWZaWjdheAiIPG3vKPajkLMMmbwTuNQ",
+  apiKey: apiKey,
   authDomain: "skinanarchy.firebaseapp.com",
   projectId: "skinanarchy",
   storageBucket: "skinanarchy.appspot.com",
@@ -26,3 +26,5 @@ export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const storage = getStorage(app);
 export default app;
+
+console.log(apiKey);
