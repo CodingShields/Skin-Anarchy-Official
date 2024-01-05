@@ -1,31 +1,37 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+//Nav Pages
 import AdminDashboard from "../admin/comp/adminDashboard";
 import AdminNewsLetter from "../admin/comp/adminNewsLetter";
-import AdminStats from "../admin/comp/adminStats";
 import AdminUserManagement from "../admin/comp/adminUserManagement";
-import AdminBlog from "./comp/adminBlog";
 import AdminNavBar from "./comp/adminNavBar";
+import TechSupport from "./comp/techSupport";
+import UpdateTools from "./comp/updateTools.jsx";
+//Nav Icons
 import DoubleChevRightBtn from "../components/buttons/doubleChevRightBtn";
 import DoubleChevLeftBtn from "../components/buttons/doubleChevLeftBtn";
+
 const AdminPage = () => {
   const [renderStep, setRenderStep] = useState("");
+
   const [navBarRender, setNavBarRender] = useState(true);
+
   const navigate = useNavigate();
+
   const handleNavigation = (name) => {
     const navTarget = name;
     if (navTarget === "Website") {
       navigate("/MembersArea/Home");
     } else if (navTarget === "Dashboard") {
       setRenderStep(<AdminDashboard />);
-    } else if (navTarget === "Stats") {
-      setRenderStep(<AdminStats />);
-    } else if (navTarget === "Blog") {
-      setRenderStep(<AdminBlog />);
     } else if (navTarget === "News Letter") {
       setRenderStep(<AdminNewsLetter />);
     } else if (navTarget === "Members") {
       setRenderStep(<AdminUserManagement />);
+    } else if (navTarget === "Tech Support") {
+      setRenderStep(<TechSupport />);
+    } else if (navTarget === "Update Tools") {
+      setRenderStep(<UpdateTools />);
     } else {
       return;
     }
@@ -48,11 +54,11 @@ const AdminPage = () => {
       </div>
 
       {!navBarRender ? (
-        <div className="focus:-translate-x-1 animate-pulse ease-in-out duration-700 -translate-x-42 absolute bottom-20 left-48 w-22 h-20 ">
+        <div className="animate-pulse ease-in-out duration-700 -translate-x-96  absolute bottom-0 left-1/4 w-12 h-20  ">
           <DoubleChevRightBtn onClick={handleNavRender} />
         </div>
       ) : (
-        <div className="focus:translate-x-1  animate-pulse ease-in-out duration-700 translate-x-40  absolute bottom-20 -left-20  w-22 h-20 ">
+        <div className="focus:translate-x-1  animate-pulse ease-in-out duration-700 translate-x-40  absolute bottom-0 left-5  w-12 h-20 ">
           <DoubleChevLeftBtn onClick={handleNavRender} />
         </div>
       )}

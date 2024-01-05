@@ -1,26 +1,33 @@
 import { nanoid } from "nanoid";
+import mic from "../../../icons/homepage/statsContainer/mic.svg";
+import headset from "../../../icons/homepage/statsContainer/headset.svg";
+import people from "../../../icons/homepage/statsContainer/people.svg";
+import link from "../../../icons/homepage/statsContainer/link.svg";
 
 const podcastStats = [
   {
     id: nanoid(),
     name: "Downloads Per Week",
     value: "downloadsPerWeek",
+    icon: headset,
   },
   {
     id: nanoid(),
     name: "EPISODES RECORDED",
     value: "episodesRecorded",
+    icon: mic,
   },
   {
     id: nanoid(),
-
-    name: "SUBSCRIBERS",
+    name: "SUBSCRIBERS ACROSS PLATFORMS",
     value: "subscribers",
+    icon: people,
   },
   {
     id: nanoid(),
     name: "SOCIAL FOLLOWERS",
     value: "socialFollowers",
+    icon: link,
   },
 ];
 

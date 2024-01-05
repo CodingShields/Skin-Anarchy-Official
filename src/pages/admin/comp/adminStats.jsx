@@ -80,7 +80,7 @@ const AdminStats = () => {
   }, []);
 
   return (
-    <div className="flex w-full h-full bg-gray-200 border-2">
+    <div className="flex flex-col w-full h-full justify-start items-center bg-gray-200 border-2">
       <div className="flex flex-col justify-start items-center w-11/12 h-fit bg-gray-200 ">
         <div>
           <h1 className="text-4xl font-bold text-center text-gray-800 mt-20 mb-6">
