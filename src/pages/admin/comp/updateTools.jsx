@@ -84,7 +84,7 @@ const UpdateTools = () => {
   }
   console.log(compState);
   return (
-    <div className="flex flex-col items-center justify-start w-full h-full space-y-6 py-6 ">
+    <div className="flex flex-col items-center justify-start w-full h-full space-y-6 py-6 bg-white">
       <h1 className="text-5xl font-bold text-black w-fit h-fit text-center mt-4">
         UpdateTools
       </h1>
@@ -104,9 +104,9 @@ const UpdateTools = () => {
           );
         })}
       </div>
-      <div
-      className="flex flex-col items-center justify-center w-full h-full overflow-y-auto pb-4"
-      >{compState}</div>
+      <div className="flex flex-col items-center justify-center w-full h-full overflow-y-auto pb-4 bg-gray-200 ">
+        {compState}
+      </div>
     </div>
   );
 };
