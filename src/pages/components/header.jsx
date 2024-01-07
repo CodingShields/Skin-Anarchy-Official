@@ -19,43 +19,47 @@ const Header = () => {
   });
 
   const cards = [
-    {
-      name: "Home",
-      link: "/MembersArea/Home",
-    },
-    {
-      name: "About",
-      link: "/MembersArea/About",
-    },
-    {
-      name: "Connect",
-      link: "/MembersArea/Connect",
-    },
-    {
-      name: "Podcast",
-      link: "/MembersArea/PodCast",
-    },
-    {
-      name: "Top Picks",
-      link: "/MembersArea/TopPicks",
-    },
-    {
-      name: "Blog",
-      link: "/MembersArea/Blog",
-    },
-    {
-      name: "Science of Skin Awards",
-      link: "/MembersArea/ScienceOfSkinAwards",
-    },
-    {
-      name: "Account",
-      link: "/MembersArea/Account",
-    },
-    {
-      name: "Logout",
-      link: "/MembersArea/Logout",
-    },
-  ];
+		{
+			name: "Home",
+			link: "/MembersArea/Home",
+		},
+		{
+			name: "About",
+			link: "/MembersArea/About",
+		},
+		{
+			name: "Connect",
+			link: "/MembersArea/Connect",
+		},
+		{
+			name: "Podcast",
+			link: "/MembersArea/PodCast",
+		},
+		{
+			name: "Top Picks",
+			link: "/MembersArea/TopPicks",
+		},
+		{
+			name: "Blog",
+			link: "/MembersArea/Blog",
+		},
+		{
+			name: "Master Class",
+			link: "/MembersArea/MasterClass",
+		},
+		{
+			name: "Science of Skin Awards",
+			link: "/MembersArea/ScienceOfSkinAwards",
+		},
+		{
+			name: "Account",
+			link: "/MembersArea/Account",
+		},
+		{
+			name: "Logout",
+			link: "/MembersArea/Logout",
+		},
+	];
 
   useEffect(() => {
     if (cards.name === "Logout") {
