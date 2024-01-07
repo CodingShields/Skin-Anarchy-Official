@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AuthContextProvider } from "./context/AuthContext";
+
 import LoginPage from "./pages/components/loginPage.jsx";
 import SignUpPage from "./pages/components/signUpPage.jsx";
-import { AuthContextProvider } from "./context/AuthContext";
 import AboutPage from "./pages/about/aboutPage.jsx";
 import ConnectPage from "./pages/connect/connectPage.jsx";
 import PodCastPage from "./pages/podcast/podcastPage.jsx";
