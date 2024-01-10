@@ -50,7 +50,7 @@ const AdminNavBar = ({ onItemClicked }) => {
     }
   };
   return (
-    <div className="flex flex-col bg-gray-700 items-start justify-center w-min h-full drop-shadow-2xl	shadow-2xl shadow-black">
+    <div className="flex flex-col bg-blue-500 items-start justify-center w-min h-full ">
       <div className="flex flex-col items-start justify-start  h-full w-full  px-4 ">
         {navigation.map((item, index) => {
           return (
@@ -60,8 +60,8 @@ const AdminNavBar = ({ onItemClicked }) => {
               key={index}
               value={item.name}
             >
-              <item.icon className="w-8 h-8 text-gray-200 group-hover:text-blue-500 group-hover:underline" />
-              <p className="text-white text-xl truncate w-32 group-hover:font-bold group-hover:text-blue-500 ">
+              <item.icon className="w-8 h-8 text-gray-200 group-hover:text-blue-800 group-hover:underline" />
+              <p className="text-white text-xl truncate w-32 group-hover:font-bold group-hover:text-blue-800 ">
                 {item.name}
               </p>
             </div>

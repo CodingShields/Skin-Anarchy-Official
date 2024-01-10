@@ -1,38 +1,21 @@
 import { useState } from "react";
-import axios from "axios";
+import emailjs from "emailjs-com";
 
 const AdminNewsLetter = () => {
-	// const [email, setEmail] = useState("");
-	// const [subject, setSubject] = useState("");
-	// const [message, setMessage] = useState("");
-	// const [loading, setLoading] = useState(false);
-	// const apiKey = import.meta.env.VITE_MAILGUN_API_KEY;
-	// const domain = import.meta.env.VITE_MAILGUN_DOMAIN;
-
-	// const submitHandler = async (e) => {
-	//   e.preventDefault();
-	//   if (!email || !subject || !message) {
-	//     return toast.error("Please fill email, subject and message");
-	//   }
-	//   try {
-	//     setLoading(true);
-	//     const { data } = await axios.post(`/api/email`, {
-	//       email,
-	//       subject,
-	//       message,
-	//     });
-	//     setLoading(false);
-	//     toast.success(data.message);
-	//   } catch (err) {
-	//     setLoading(false);
-	//     toast.error(
-	//       err.response && err.response.data.message
-	//         ? err.response.data.message
-	//         : err.message,
-	//     );
-	//   }
-	// };
-	return <div className='App'></div>;
+	return (
+		<div className='flex flex-col items-center justify-center w-full h-full '>
+			<div className='flex flex-col items-center justify-center w-11/12 h-11/12 p-4 bg-white rounded-lg shadow-lg '>
+				<h1>Email</h1>
+				<h1>To:</h1>
+				{/* <input type='text' value={email} onChange={(e) => setEmail(e.target.value)} /> */}
+				<h1>Subject:</h1>
+				{/* <input type='text' value={subject} onChange={(e) => setSubject(e.target.value)} /> */}
+				<h1>Message:</h1>
+				{/* <textarea value={message} onChange={(e) => setMessage(e.target.value)} /> */}
+				<button className='w-1/2 p-2 my-4 text-white bg-blue-500 rounded-lg'>test</button>
+			</div>
+		</div>
+	);
 };
 
 export default AdminNewsLetter;
