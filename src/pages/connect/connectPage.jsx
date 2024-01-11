@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 
-import facebookIcon from "../../assets/icons/facebookIcon.svg";
-import instagramIcon from "../../assets/icons/instagramIcon.svg";
-import tiktokIcon from "../../assets/icons/tiktokIcon.svg";
 import ContactForm from "../components/contact";
 const ConnectPage = () => {
 	const [state, setState] = useState({
@@ -27,15 +24,13 @@ const ConnectPage = () => {
 			}
 		>
 			<div className='absolute -top-52 left-1/2 -z-10 -translate-x-1/2 transform-gpu blur-3xl sm:top-[-28rem] sm:ml-16 sm:translate-x-0 sm:transform-gpu'>
-				
 				<div className='aspect-[1097/845] w-[68.5625rem] bg-gradient-to-tr from-[#ff4694] to-[#776fff] opacity-40' />
 			</div>
 			<div className='mx-auto max-w-7xl px-6 lg:px-8'>
 				<div className='mx-auto max-w-2xl lg:mx-0'>
 					<h2 className='text-4xl font-bold text-white tracking-tight sm:text-6xl'>CONNECT WITH US</h2>
 					<p className='mt-6 text-lg leading-8 text-gray-300'>
-						Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet
-						fugiat veniam occaecat fugiat aliqua.
+						Need Data
 					</p>
 				</div>
 				<div className='mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-8 '>
@@ -57,21 +52,13 @@ const ConnectPage = () => {
 							<h3 className='font-semibold text-white'>Join & Follow Us</h3>
 							<p className='mt-2 text-white'> Some text</p>
 							<div className='flex gap-x-14 p-6 '>
-								<img
-									className='w-12 h-12 hover:animate-pulse hover:-translate-y-1.5 hover:cursor-pointer '
-									src={facebookIcon}
-									alt='facebook icon'
-								/>
+								<img className='w-12 h-12 hover:animate-pulse hover:-translate-y-1.5 hover:cursor-pointer ' src={facebookIcon} alt='facebook icon' />
 								<img
 									className='w-12 h-12 hover:animate-pulse hover:-translate-y-1.5 hover:cursor-pointer '
 									src={instagramIcon}
 									alt='instagram icon'
 								/>
-								<img
-									className='w-12 h-12 hover:animate-pulse hover:-translate-y-1.5 hover:cursor-pointer '
-									src={tiktokIcon}
-									alt='tiktok icon'
-								/>
+								<img className='w-12 h-12 hover:animate-pulse hover:-translate-y-1.5 hover:cursor-pointer ' src={tiktokIcon} alt='tiktok icon' />
 							</div>
 						</div>
 					</div>
@@ -82,8 +69,12 @@ const ConnectPage = () => {
 							<button
 								onClick={() => setIsModalOpen(true)}
 								type='button'
-								className='rounded-md bg-indigo-500 px-2.5 py-1.5 text-sm font-semibold bg-white text-black shadow-sm transform-translate hover:ease-in-out hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500'
+								className='rounded-md 
+								
+								px-2.5 py-1.5 text-sm font-semibold bg-white text-black shadow-sm transform-translate hover:ease-in-out hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500'
 							>
+								{/* bg-indigo-500 */}
+								
 								Apply Here
 							</button>
 						</div>

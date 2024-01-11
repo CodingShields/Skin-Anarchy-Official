@@ -1,70 +1,50 @@
 import { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
-import facebookIcon from "../../assets/icons/facebookIcon.svg";
-import instagramIcon from "../../assets/icons/instagramIcon.svg";
-import twitterIcon from "../../assets/icons/twitterIcon.png";
-import youtubeIcon from "../../assets/icons/youtubeIcon.svg";
+import footerDataArray from "../../assets/data/footer/footerDataArray";
+import socialNavBar from "../../assets/data/socialMediaLinkArray";
+import codingShieldsLogo from "../../assets/images/codingShieldsLogo.png";
 
 const Footer = () => {
-	const navigation = {
-		main: [
-			{ name: "Home", href: "#" },
-			{ name: "About", href: "#" },
-			{ name: "Connect", href: "#" },
-			{ name: "Podcast", href: "#" },
-			{ name: "Top Picks", href: "#" },
-			{ name: "Blog", href: "#" },
-			{ name: "Science of Skin Awards", href: "#" },
-			{name: "Privacy Policy", href: "#"},
-		],
-		social: [
-			{
-				name: "Facebook",
-				href: "#",
-				icon: facebookIcon,
-			},
-			{
-				name: "Instagram",
-				href: "#",
-				icon: instagramIcon,
-			},
-			{
-				name: "Twitter",
-				href: "#",
-				icon: twitterIcon,
-			},
-			{
-				name: "YouTube",
-				href: "#",
-				icon:youtubeIcon,
-			},
-		],
-	};
-
 	return (
-		<div className=' flex h-fit bottom-0 bg-black bg-opacity-95 content-center justify-center w-full pt-4 '>
-			<div className='max-w-full px-0 py-0  h-fit'>
-				<nav className='-mb-6 columns-2 sm:flex sm:justify-center sm:space-x-12' aria-label='Footer'>
-					{navigation.main.map((item) => (
-						<div key={item.name} className='pt-4 pb-6'>
-							<a href={item.href} className='text-sm leading-6 text-gray-400 hover:text-white'>
+		<div className=' flex flex-row h-fit w-full bottom-0 bg-black bg-opacity-95 justify-center pt-4 group'>
+			<div className='flex   w-full justify-end items-end space-y-2 hover:scale-150 hover:-translate-y-50 transition-all duration-700 hover:animate-pulse hover:translate-x-50 group'>
+				<div className='flex flex-col items-start justify-center w-fit h-full '>
+					<a href='https://www.codingshields.dev/' target='_blank'>
+						<img className='h-fit w-28 ' src={codingShieldsLogo} />
+					</a>
+				</div>
+				<div className='flex flex-col items-start justify-center w-full h-full'>
+					<h1 className=' transition-all duration-500 ml-4 group-hover:scale-105 group-hover:text-white text-start text-gray-600 text-sm font-bold '>
+						This Website was designed and powered by: CodingShields
+					</h1>
+				</div>
+			</div>
+			<div className='w-full px-0 py-2 h-fit'>
+				<nav className='-mb-6 columns-2 flex space-x-12' aria-label='Footer'>
+					{footerDataArray.navBar.map((item, id) => (
+						<div key={id} className='w-fit '>
+							<a href={item.href} className='text-sm  h-fit text-gray-400 whitespace-nowrap hover:cursor-pointer'>
 								{item.name}
 							</a>
 						</div>
 					))}
 				</nav>
-				<div className='flex justify-center mt-8 space-x-14'>
-					{navigation.social.map((item) => (
-						<a key={item.name} href={item.href} className='grayscale ease-in-out hover:grayscale-0 hover:-translate-y-1 hover:duration-300'>
-							{/* <span className='sr-only'>{item.name}</span> */}
-							<img className="h-8 " src={item.icon} />
-						</a>
+				<div className='w-full flex justify-center mt-8 space-x-14 py-4'>
+					{socialNavBar.map((item, id) => (
+						<div key={id} className='group'>
+							<a key={item.name} href={item.href} className=''>
+								{/* <span className='sr-only'>{item.name}</span> */}
+								<img
+									className='h-8 hover:scale-150 grayscale ease-in-out transition-all hover:grayscale-0 hover:-translate-y-1 hover:duration-300 '
+									src={item.icon}
+								/>
+							</a>
+						</div>
 					))}
 				</div>
-				<p className='mt-8 pb-4 text-sm leading-5 text-center text-white'>
-					&copy; 2020 SkinAnarchy, Inc. All rights reserved.
-				</p>
+				<p className='mt-8 pb-4 text-sm leading-5 text-center text-gray-500'>&copy; 2020 SkinAnarchy, Inc. All rights reserved.</p>
 			</div>
+			<div className='flex flex-row items-center justify-center w-full '></div>
 		</div>
 	);
 };

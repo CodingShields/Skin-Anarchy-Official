@@ -1,8 +1,8 @@
 const NewsLetterContainer = () => {
   return (
-    <div className="w-full h-full bg-gradient-to-b from-black via-black to-white py-64 border-t-4 border-violet-800  ">
+    <div className="w-full h-full bg-gradient-to-b from-black via-black to-white py-64   ">
 
-      <div className="grid grid-cols-1 gap-10 px-6 mx-auto max-w-7xl lg:grid-cols-12 lg:gap-8 lg:px-">
+      <div className="grid grid-cols-1 gap-10 px-6 mx-auto max-w-7xl lg:grid-cols-12 ">
         <div className="max-w-xl text-3xl font-bold tracking-tight text-white sm:text-4xl lg:col-span-7">
           <h2 className="inline sm:block lg:inline xl:block">
             Want product news and updates?

@@ -260,7 +260,7 @@ const AdminBlog = () => {
               />
             </div>
             <div>
-              <p className="text-2xl text-black font-bold w-11/12 border-t-2 border-black text-center w-full mt-4 pt-4">
+              <p className="text-2xl text-black font-bold w-11/12 border-t-2 border-black text-center  mt-4 pt-4">
                 Podcast URL
               </p>
               <input

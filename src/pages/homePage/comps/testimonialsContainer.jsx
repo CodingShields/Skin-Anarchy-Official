@@ -6,9 +6,8 @@ const TestimonialsContainer = () => {
 
 
     return (
-			<div className='bg-white '>
 				<div className='p-20 bg-gray-900 '>
-					<h1 className='text-4xl font-extrabold tracking-tight text-center text-white sm:text-5xl xl:text-6xl'>
+					<h1 className='text-6xl font-extrabold tracking-tight text-center text-white mt-10'>
 						{" "}
 						Our Clients Love Us
 					</h1>
@@ -45,7 +44,6 @@ const TestimonialsContainer = () => {
 						</div>
 					</div>
 				</div>
-			</div>
 		);
 }
 

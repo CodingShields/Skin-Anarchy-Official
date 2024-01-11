@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { TopPicksCategoriesArray } from "../../../assets/data/topPicks/topPicksCategoriesArray";
-
+import topPicksCategoryListArray from "../../../assets/data/admin/updateTools/topPicks/topPicksCategoryListArray";
 const TopPicksAdmin = () => {
 	const [state, setState] = useState({
 		error: false,
@@ -91,7 +90,7 @@ const TopPicksAdmin = () => {
 							name='category'
 							className='w-48 hover:font-bold hover:ring-4 hover:ring-blue-500 text-center'
 						>
-							{TopPicksCategoriesArray.map((category, index) => {
+							{topPicksCategoryListArray.map((category, index) => {
 								return <option key={index}>{category}</option>;
 							})}
 						</select>
@@ -112,7 +111,7 @@ const TopPicksAdmin = () => {
 					<div className='flex flex-row items-center justify-between w-96 h-full'>
 						<h1 className='text-2xl font-bold text-black w-fit text-center mr-2 truncate group-hover:text-white'>Category:</h1>
 						<select className='w-48 hover:font-bold hover:ring-4 hover:ring-blue-500 text-center'>
-							{TopPicksCategoriesArray.map((category, index) => {
+							{topPicksCategoryListArray.map((category, index) => {
 								return <option key={index}>{category}</option>;
 							})}
 						</select>

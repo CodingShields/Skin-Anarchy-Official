@@ -15,6 +15,9 @@ import TestimonialsContainer from "./comps/testimonialsContainer";
 import BecomeSponsorContainer from "./comps/becomeSponsorContainer";
 
 const HomePage = () => {
+    const currentComponent = window.location.pathname;
+
+		console.log(currentComponent);
 	return (
     <div className="flex flex-col w-full h-full bg-black bg-opacity-80">
       <div className="w-full h-full ">

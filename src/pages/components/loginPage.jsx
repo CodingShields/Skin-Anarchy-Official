@@ -26,8 +26,8 @@ const LoginPage = () => {
 		initializeState();
 	}, []);
 
-  const user = UserAuth();
-  
+	const user = UserAuth();
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setState({ error: false, errorMessage: "" });
@@ -79,14 +79,14 @@ const LoginPage = () => {
 	}, [state.error]);
 
 	return (
-		<div className='flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8'>
-			<div className='sm:mx-auto sm:w-full sm:max-w-md'>
-				<img className='mx-auto h-18 w-auto' src={logo} alt='skinanarchy' />
+		<div className='flex w-full h-screen  flex-col justify-center  items-center space-y-8'>
+			<div className='h-fit w-full'>
+				<img className='mx-auto h-48 w-auto' src={logo} alt='skinanarchy' />
 			</div>
 
-			<div className='mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]'>
-				<h2 className='mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900'>Sign in to your account</h2>
-				<div className='bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12'>
+			<div className='w-112 flex flex-col justify-center items-center space-y-8'>
+				<h2 className='text-center text-2xl font-bold tracking-tight text-gray-900'>Sign in to your account</h2>
+				<div className='bg-white px-10 py-24 rounded-2xl shadow-gray-600 shadow-2xl border-2 border-gray-300'>
 					<form onSubmit={handleSubmit} className='space-y-6'>
 						<div>
 							<label htmlFor='email' className='block text-sm font-medium leading-6 text-gray-900'>
@@ -122,10 +122,10 @@ const LoginPage = () => {
 							</div>
 						</div>
 
-						<div className='flex items-center justify-between'>
-							<div className='flex items-center'>
+						<div className='flex flex-row w-full h-fit space-x-4'>
+							<div className='flex items-center justify-start '>
 								<input name='remember-me' type='checkbox' className='h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600' />
-								<label htmlFor='remember-me' className='ml-3 block text-sm leading-6 text-gray-900'>
+								<label htmlFor='remember-me' className='ml-2 text-sm leading-6 text-gray-900'>
 									Remember me
 								</label>
 							</div>
