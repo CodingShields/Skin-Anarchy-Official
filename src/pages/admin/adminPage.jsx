@@ -47,18 +47,18 @@ const AdminPage = () => {
 				className={
 					navBarRender
 						? "top-44 left-0 w-54 h-full transform-gpu transform-translate translate-x-0 duration-700 ease-in-out "
-						: "transform-gpu  w-0 transform-translate -translate-x-54 duration-1000 ease-in-out"
+						: "transform-gpu  w-0 transform-translate -translate-x-50 duration-1000 ease-in-out"
 				}
 			>
 				<AdminNavBar onItemClicked={handleNavigation} />
 			</div>
 
 			{!navBarRender ? (
-				<div className='animate-pulse ease-in-out duration-700 -translate-x-96  absolute bottom-0 left-1/4 w-12 h-20  '>
+				<div className='animate-pulse ease-in-out duration-700 -translate-x-96  absolute bottom-0 right-3/4 w-16 h-20  '>
 					<DoubleChevRightBtn onClick={handleNavRender} />
 				</div>
 			) : (
-				<div className='focus:translate-x-1  animate-pulse ease-in-out duration-700 translate-x-40  absolute bottom-0 left-5  w-12 h-20 '>
+				<div className='focus:translate-x-1  animate-pulse ease-in-out duration-700 translate-x-40  absolute bottom-0 left-25  w-16 h-20 '>
 					<DoubleChevLeftBtn onClick={handleNavRender} />
 				</div>
 			)}

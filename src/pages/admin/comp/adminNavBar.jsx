@@ -50,26 +50,24 @@ const AdminNavBar = ({ onItemClicked }) => {
     }
   };
   return (
-    <div className="flex flex-col bg-blue-500 items-start justify-center w-min h-full ">
-      <div className="flex flex-col items-start justify-start  h-full w-full  px-4 ">
-        {navigation.map((item, index) => {
-          return (
-            <div
-              onClick={() => handleItemClick(item.name)}
-              className="flex flex-row items-center justify-start w-full h-16 my-8 space-x-4 px-4 rounded-lg group hover:cursor-pointer "
-              key={index}
-              value={item.name}
-            >
-              <item.icon className="w-8 h-8 text-gray-200 group-hover:text-blue-800 group-hover:underline" />
-              <p className="text-white text-xl truncate w-32 group-hover:font-bold group-hover:text-blue-800 ">
-                {item.name}
-              </p>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
+		<div className='flex flex-col bg-blue-500 items-start justify-center w-min h-full '>
+			<div className='flex flex-col items-start justify-center  h-full w-full  px-4 shadow-2xl shadow-black'>
+				{navigation.map((item, index) => {
+					return (
+						<div
+							onClick={() => handleItemClick(item.name)}
+							className='flex flex-row items-center justify-start w-full h-16 my-8 space-x-4 px-4 rounded-lg group hover:cursor-pointer  '
+							key={index}
+							value={item.name}
+						>
+							<item.icon className='w-8 h-8 text-gray-200 group-hover:text-blue-800 group-hover:underline' />
+							<p className='text-white text-xl truncate w-32 group-hover:font-bold group-hover:text-blue-800 '>{item.name}</p>
+						</div>
+					);
+				})}
+			</div>
+		</div>
+	);
 };
 
 export default AdminNavBar;

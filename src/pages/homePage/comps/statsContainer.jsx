@@ -38,27 +38,8 @@ const StatsContainer = () => {
 		};
 		getStats();
 	}, []);
-	
- function counter(id, start, end, duration) {
-  let obj = document.getElementById(id),
-   current = start,
-   range = end - start,
-   increment = end > start ? 1 : -1,
-   step = Math.abs(Math.floor(duration / range)),
-   timer = setInterval(() => {
-    current += increment;
-    obj.textContent = current;
-    if (current == end) {
-     clearInterval(timer);
-    }
-   }, step);
- }
- counter("count1", 0, 400, 3000);
- counter("count2", 100, 50, 2500);
- counter("count3", 0, 40, 3000);
-});
 
-
+	//  
 	return (
 		<div className='flex flex-col justify-center items-center text-center h-full w-full relative pt-10 transform-gpu'>
 			<div className='flex w-full h-72 bg-gradient-to-t from-black to-transparent '></div>
@@ -69,10 +50,8 @@ const StatsContainer = () => {
 				<h3 className='text-128 font-semibold text-white truncate uppercase'>PODCAST ANALYTICS</h3>
 
 				<div className='flex flex-row h-fit justify-evenly mt-32'>
-          <div
-            className='flex flex-col w-96 h-72  px-2 py-2 bg-black rounded-lg shadow-2xl justify-center items-center bg-opacity-80 shadow-violet-700 ring-4 ring-violet-700 '>
-					
-            <h3 className='mt-1 text-4xl font-semibold text-violet-500 mb-4'>
+					<div className='flex flex-col w-96 h-72  px-2 py-2 bg-black rounded-lg shadow-2xl justify-center items-center bg-opacity-80 shadow-violet-700 ring-4 ring-violet-700 '>
+						<h3 className='mt-1 text-4xl font-semibold text-violet-500 mb-4'>
 							<img src={headset} alt='headSetBounceIn' id='icon' />
 							{prevStatsData.downloadsPerWeek}
 						</h3>
