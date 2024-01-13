@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { UserAuth } from "../../context/AuthContext";
 import { db } from "../../fireBase/firebaseConfig";
 import AdminPage from "../admin/adminPage";
+import UserAccountPage from "./userAccountPage";
 import { doc, query, collection, getDoc, getDocs, onSnapshot, where, updateDoc, setDoc, deleteField } from "firebase/firestore";
 
 const AccountPage = () => {
@@ -31,19 +32,7 @@ const AccountPage = () => {
 		checkAdminAccess();
 	}, [userId]);
 
-	return (
-		<div className='flex flex-col  h-full w-full bg-zinc-200'>
-			{!adminAccess ? (
-				<div>
-					<h1 className='text-4xl font-bold text-center text-gray-800'>Account Page</h1>
-				</div>
-			) : (
-				""
-			)}
-
-			{adminAccess ? <AdminPage /> : ""}
-		</div>
-	);
+	return <div className='flex flex-col  h-full w-full bg-zinc-200'>\{adminAccess ? <AdminPage /> : <UserAccountPage />}</div>;
 };
 
 export default AccountPage;

@@ -64,6 +64,7 @@ const UpdateTool = () => {
 			setState({ ...state, uploading: true });
 			const colRef = collection(getFirestore(), "scienceOfSkinAwards");
 			await addDoc(colRef, {
+				uploadDate: new Date(),
 				year: formState.year,
 				category: formState.category,
 				brandName: formState.brandName,
@@ -139,7 +140,7 @@ const UpdateTool = () => {
 	};
 
 	return (
-		<div className='flex flex-row items-center justify-evenly w-full h-fit bg-white py-6 px-12 rounded-l-lg'>
+		<div className='flex flex-row items-center justify-center w-full h-full bg-white py-6 px-12 rounded-l-lg  space-x-12'>
 			<div className='flex flex-col items-center justify-center w-fit h-96  bg-gray-500 py-6 px-8  shadow-black shadow-md rounded-lg hover:bg-gray-400 space-y-8'>
 				{state.uploading ? (
 					<div className='absolute bg-opacity-50 bg-black w-full h-full z-10 top-0 left-0'>

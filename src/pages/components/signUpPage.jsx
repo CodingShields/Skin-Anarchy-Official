@@ -74,10 +74,18 @@ const SignUp = () => {
     }
   }, [state.error]);
 
+  const formatBirthdayToString = (birthday) => {
+    const date = birthday;
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    return `${month}/${day}/${year}`;
+  };
+
   const stateStoreUser = () => {
     setFirstName(form.firstName);
     setLastName(form.lastName);
-    setBirthday(form.birthday);
+    setBirthday(formatBirthdayToString(form.birthday));
     setEmail(form.email);
     setPhone(form.phone);
     setPodcastNotification(form.newPodCastNotification);
