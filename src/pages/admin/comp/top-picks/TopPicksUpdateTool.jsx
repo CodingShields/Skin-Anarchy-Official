@@ -4,19 +4,35 @@ import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { storage } from "../../../../fireBase/firebaseConfig";
 import { v4 } from "uuid";
 import hourGlass from "../../../../assets/iconsAnimated/hourGlass.svg";
-import ScienceOfSkinAwardsCategoriesArray from "../../../../assets/data/admin/updateTools/scienceOfSkinAwards/scienceOfSkinAwardsCategoriesArray";
+import topPicksCategoryListArray from "../../../../assets/data/admin/updateTools/topPicks/topPicksCategoryListArray";
 
-const UpdateTool = () => {
-	const [state, setState] = useState({
-		loading: false,
-		uploading: false,
-		error: null,
-		errorMessage: "",
-		success: false,
-		successMessage: "",
-	});
+const TopPicksUpdateTool = () => {
+const [state, setState] = useState({
+	loading: false,
+	uploading: false,
+	error: null,
+	errorMessage: "",
+	success: false,
+	successMessage: "",
+});
 
-	const [formState, setFormState] = useState({
+const [formState, setFormState] = useState({
+	year: "",
+	category: "",
+	brandName: "",
+	brandDescription: "",
+	productName: "",
+	productDescription: "",
+	productLink: "",
+	podcastLink: "",
+	brandLogo: null,
+	productImage: null,
+	images: [],
+	imageUrls: [],
+});
+
+const resetForm = () => {
+	setFormState({
 		year: "",
 		category: "",
 		brandName: "",
@@ -30,87 +46,93 @@ const UpdateTool = () => {
 		images: [],
 		imageUrls: [],
 	});
+};
 
-	const resetForm = () => {
-		setFormState({
-			year: "",
-			category: "",
-			brandName: "",
-			brandDescription: "",
-			productName: "",
-			productDescription: "",
-			productLink: "",
-			podcastLink: "",
-			brandLogo: null,
-			productImage: null,
-			images: [],
-			imageUrls: [],
+useEffect(() => {
+	resetForm();
+}, []);
+
+const handleFormSubmit = async () => {
+	try {
+		setState({ ...state, uploading: true });
+		const colRef = collection(getFirestore(), "topPicks");
+		await addDoc(colRef, {
+			uploadDate: new Date(),
+			year: formState.year,
+			category: formState.category,
+			brandName: formState.brandName,
+			brandDescription: formState.brandDescription,
+			productName: formState.productName,
+			productDescription: formState.productDescription,
+			productLink: formState.productLink,
+			podcastLink: formState.podcastLink,
+			images: formState.imageUrls,
+			id: v4(),
 		});
-	};
+		setTimeout(() => {
+			setState({ ...state, uploading: false });
+		}, 3000);
+	} catch (error) {
+		console.error(error);
+	}
+};
 
-	useEffect(() => {
-		resetForm();
-	}, []);
-
-	const handleFormSubmit = async () => {
+useEffect(() => {
+	const imageDownloadUrl = async () => {
 		try {
-			setState({ ...state, uploading: true });
-			const colRef = collection(getFirestore(), "scienceOfSkinAwards");
-			await addDoc(colRef, {
-				uploadDate: new Date(),
-				year: formState.year,
-				category: formState.category,
-				brandName: formState.brandName,
-				brandDescription: formState.brandDescription,
-				productName: formState.productName,
-				productDescription: formState.productDescription,
-				productLink: formState.productLink,
-				podcastLink: formState.podcastLink,
-				images: formState.imageUrls,
-				id: v4(),
-			});
-			setTimeout(() => {
-				setState({ ...state, uploading: false });
-			}, 3000);
+			const urls = [];
+			const images = formState.images;
+
+			for (let i = 0; i < images.length; i++) {
+				// Fixed the loop condition
+				const image = images[i];
+				const storageRef = ref(storage, `scienceOfSkinAwards/${image.name}`);
+				await uploadBytes(storageRef, image.image);
+				const url = await getDownloadURL(storageRef);
+				urls.push(url);
+			}
+			setFormState({ ...formState, imageUrls: urls });
+			// Do something with the URLs, e.g., set them in the state or call another function
 		} catch (error) {
 			console.error(error);
 		}
 	};
 
-	useEffect(() => {
-		const imageDownloadUrl = async () => {
-			try {
-				const urls = [];
-				const images = formState.images;
+	imageDownloadUrl();
+}, [formState.images]);
 
-				for (let i = 0; i < images.length; i++) {
-					// Fixed the loop condition
-					const image = images[i];
-					const storageRef = ref(storage, `scienceOfSkinAwards/${image.name}`);
-					await uploadBytes(storageRef, image.image);
-					const url = await getDownloadURL(storageRef);
-					urls.push(url);
-				}
-				setFormState({ ...formState, imageUrls: urls });
-				// Do something with the URLs, e.g., set them in the state or call another function
-			} catch (error) {
-				console.error(error);
-			}
-		};
+const yearList = () => {
+	let years = [];
+	const currentYear = new Date().getFullYear();
+	for (let i = 2018; i < currentYear; i++) {
+		years.push(i);
+	}
+	return years;
+};
 
-		imageDownloadUrl();
-	}, [formState.images]);
-
-	const yearList = () => {
-		let years = [];
-		const currentYear = new Date().getFullYear();
-		for (let i = 2018; i < currentYear; i++) {
-			years.push(i);
-		}
-		return years;
+const handleImageOnChange = async (e) => {
+	e.preventDefault();
+	const newImage = e.target.files[0]; // Access the first file in the FileList
+	const name = e.target.name;
+	if (newImage) {
+		const imageUrl = URL.createObjectURL(newImage);
+		setFormState({
+			...formState,
+			images: [
+				...formState.images,
+				{
+					name: name,
+					image: newImage,
+					imageUrl: imageUrl,
+				},
+			],
+		});
+	} else {
+		console.error("No file selected");
+	}
 	};
-
-	const handleImageOnChange = async (e) => {
+	
+	const changeImageToSvgFromPng = async (e) => {
 		e.preventDefault();
 		const newImage = e.target.files[0]; // Access the first file in the FileList
 		const name = e.target.name;
@@ -130,7 +152,7 @@ const UpdateTool = () => {
 		} else {
 			console.error("No file selected");
 		}
-	};
+	}
 
 	return (
 		<div className='flex w-fit h-fit justify-center bg-zinc-700 py-6 px-12 rounded-lg  space-x-12 mx-auto my-8 shadow-xl shadow-gray-500'>
@@ -169,7 +191,7 @@ const UpdateTool = () => {
 						onChange={(e) => setFormState({ ...formState, category: e.target.value })}
 						className='w-48 h-12 border-2 border-black rounded-md group-hover:text-black group-hover:font-bold shadow-lg hover:shadow-white focus:shadow-blue-400'
 					>
-						{ScienceOfSkinAwardsCategoriesArray.map((year, index) => {
+						{topPicksCategoryListArray.map((year, index) => {
 							return (
 								<option key={index} value={year}>
 									{year}
@@ -235,6 +257,7 @@ const UpdateTool = () => {
 			<div className='flex flex-col items-center justify-evenly w-fit h-full  py-6 px-8 space-y-8'>
 				<div className='flex flex-col items-center justify-center text-white hover:text-blue-400 hover:font-semi-bold'>
 					<h1 className='text-2xl text-center h-fit w-full'>Brand Logo</h1>
+					<h1>IMAGES NEED TO BE A SVG FORMAT</h1>
 					<input className='w-fit h-64 py-4 px-2 text-white' onChange={handleImageOnChange} type='file' />
 					{formState.images.length > 0 && <img className='w-fit h-64 py-4 px-2 ' src={formState.images[0].imageUrl} />}
 				</div>
@@ -259,4 +282,4 @@ const UpdateTool = () => {
 	);
 };
 
-export default UpdateTool;
+export default TopPicksUpdateTool;

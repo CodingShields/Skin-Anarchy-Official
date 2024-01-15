@@ -1,6 +1,6 @@
 import React from "react";
 
-const FilledBar = ({ value }) => {
+const StatsFilledBar = ({ value }) => {
 	// Calculate the width of the filled bar based on the value
 	const filledWidth = `${value}%`;
 
@@ -19,4 +19,4 @@ const FilledBar = ({ value }) => {
 	);
 };
 
-export default FilledBar;
+export default StatsFilledBar;

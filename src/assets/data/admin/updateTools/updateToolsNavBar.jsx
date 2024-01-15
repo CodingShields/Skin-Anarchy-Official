@@ -10,7 +10,7 @@ import {
 
 import AdminBlog from "../../../../pages/admin/comp/adminBlog";
 import ScienceOfSkinAwards from "../../../../pages/admin/comp/scienceOfSkinAwards";
-import TopPicksAdmin from "../../../../pages/admin/comp/topPicksAdmin";
+import AdminTopPicks from "../../../../pages/admin/comp/AdminTopPicks";
 import AdminPodcast from "../../../../pages/admin/comp/adminPodcast";
 import AdminSponsor from "../../../../pages/admin/comp/adminSponsor";
 import AdminStats from "../../../../pages/admin/comp/adminStats";
@@ -36,7 +36,7 @@ const adminNavBar = [
 		name: "Top Picks Admin",
 		icon: BriefcaseIcon,
 		helperMessage: "Top Picks Admin",
-		value: <TopPicksAdmin />,
+		value: <AdminTopPicks />,
 		active: false,
 	},
 	{

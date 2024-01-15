@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { collection, getDocs, query } from "firebase/firestore";
 import { db } from "../../../fireBase/firebaseConfig";
-import FilledBar from "../../../assets/data/admin/statsPage/demographicBar.jsx";
+import StatsFilledBar from "../../../assets/data/homepage/StatsFilledBar";
 import rotatingMicrophone from "../../../assets/video/rotatingMicrophone.mp4";
 import headset from "../../../assets/icons/homepage/statsContainer/headset.svg";
 import mic from "../../../assets/icons/homepage/statsContainer/mic.svg";
@@ -88,13 +88,13 @@ const StatsContainer = () => {
 					<h3 className='text-2xl font-semibold text-gray-300 truncate uppercase'>Listener Demographics</h3>
 					<div className='flex flex-col w-auto h-fit justify-start items-start space-y-4'>
 						<h2 className='text-sm font-medium text-gray-400 truncate uppercase'>Women</h2>
-						<FilledBar value={prevStatsData.women} />
+						<StatsFilledBar value={prevStatsData.women} />
 						<h2 className='text-sm font-medium text-gray-400 truncate uppercase'>Men</h2>
-						<FilledBar value={prevStatsData.men} />
+						<StatsFilledBar value={prevStatsData.men} />
 						<h2 className='text-sm font-medium text-gray-400 truncate uppercase'>Age 18 - 34</h2>
-						<FilledBar value={prevStatsData.age1834} />
+						<StatsFilledBar value={prevStatsData.age1834} />
 						<h2 className='text-sm font-medium text-gray-400 truncate uppercase'>AGE 35-59</h2>
-						<FilledBar value={prevStatsData.age3559} />
+						<StatsFilledBar value={prevStatsData.age3559} />
 					</div>
 				</div>
 				<div className=' flex flex-col bg-gradient-to-b from-black via-gray-500 to-white'></div>

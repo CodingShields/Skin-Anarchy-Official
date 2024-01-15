@@ -3,7 +3,7 @@ import podcastIcons from "../../../assets/data/podcastIconLinks";
 import {
   podcastStats,
   podcastDemographics,
-} from "../../../assets/data/admin/statsPage/statsArray";
+} from "../../../assets/data/admin/updateTools/stats/statsArray"
 import {
   collection,
   setDoc,

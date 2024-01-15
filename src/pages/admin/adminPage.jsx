@@ -42,7 +42,7 @@ const AdminPage = () => {
 	};
 
 	return (
-		<div className='flex flex-row h-screen w-full '>
+		<div className='flex flex-row h-full w-full '>
 			<div
 				className={
 					navBarRender

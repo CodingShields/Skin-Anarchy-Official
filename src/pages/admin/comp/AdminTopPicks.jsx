@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
-import PreviousYears from "./science-of-skin/previousYears";
-import UpdateTool from "./science-of-skin/updateTool";
-import Contact from "./science-of-skin/contact";
-const ScienceOfSkinAwards = () => {
+import { useEffect, useState } from "react";
+import TopPicksCurrentYear from "./top-picks/TopPicksCurrentYear";
+import TopPicksUpdateTool from "./top-picks/TopPicksUpdateTool";
+import TopPicksPreviousYears from "./top-picks/TopPicksPreviousYears";
+const AdminTopPicks = () => {
 	const [state, setState] = useState({
 		error: false,
 		errorMessage: "",
@@ -11,50 +11,48 @@ const ScienceOfSkinAwards = () => {
 		successMessage: "",
 		renderPreviousYears: false,
 		renderUpdateTool: false,
-		renderContactForm: false,
+		renderCurrentYear: false,
 	});
-
 	const handleOnClick = (e) => {
 		const name = e.target.value;
 		if (name === "prev") {
-			setState({ ...state, renderPreviousYears: true, renderUpdateTool: false, renderContactForm: false });
+			setState({ ...state, renderPreviousYears: true, renderUpdateTool: false, renderCurrentYear: false });
 		} else if (name === "update") {
-			setState({ ...state, renderPreviousYears: false, renderUpdateTool: true, renderContactForm: false });
-		} else if (name === "contact") {
-			setState({ ...state, renderContactForm: true, renderPreviousYears: false, renderUpdateTool: false });
+			setState({ ...state, renderPreviousYears: false, renderUpdateTool: true, renderCurrentYear: false });
+		} else if (name === "current") {
+			setState({ ...state, renderPreviousYears: false, renderUpdateTool: false, renderCurrentYear: true });
 		} else {
 			return;
 		}
 	};
-
 	function classNames(...classes) {
 		return classes.filter(Boolean).join(" ");
 	}
 
 	return (
 		<div className='flex flex-col items-center justify-start w-full h-full '>
-			<h1 className='text-4xl font-bold text-center h-fit w-full my-4'>Science Of Skin Awards </h1>
-			<div className='flex flex-row items-center justify-center w-fit h-fit rounded-md shadow-lg shadow-black mb-2'>
-				<button
-					value={"contact"}
-					onClick={(e) => handleOnClick(e)}
-					className={classNames(
-						`bg-blue-600 text-white text-lg px-4 py-2 w-64 rounded-l-md  hover:bg-blue-400 hover:font-bold active:translate-y-2`,
-						state.renderContactForm ? "font-bold bg-blue-400" : ""
-					)}
-				>
-					Contact New Winner
-				</button>
-
+			<h1 className='text-4xl font-bold text-center h-fit w-full my-4'>Top Picks</h1>
+			<div className='flex flex-row items-center justify-start w-fit h-fit '>
 				<button
 					value={"prev"}
 					onClick={(e) => handleOnClick(e)}
 					className={classNames(
-						`bg-blue-600 text-white text-lg px-4 py-2 w-64  hover:bg-blue-400 hover:font-bold active:translate-y-2`,
+						`bg-blue-600 text-white text-lg px-4 py-2 w-64 rounded-l-md  hover:bg-blue-400 hover:font-bold active:translate-y-2`,
 						state.renderPreviousYears ? "font-bold bg-blue-400" : ""
 					)}
 				>
 					Previous Years
+				</button>
+
+				<button
+					value={"current"}
+					onClick={(e) => handleOnClick(e)}
+					className={classNames(
+						`bg-blue-600 text-white text-lg px-4 py-2 w-64  hover:bg-blue-400 hover:font-bold active:translate-y-2`,
+						state.renderCurrentYear ? "font-bold bg-blue-400" : ""
+					)}
+				>
+					Current Year
 				</button>
 				<button
 					value={"update"}
@@ -67,13 +65,14 @@ const ScienceOfSkinAwards = () => {
 					Update Tool
 				</button>
 			</div>
+
 			<div className='w-full h-11/12'>
-				{state.renderContactForm ? <Contact /> : ""}
-				{state.renderPreviousYears ? <PreviousYears /> : ""}
-				{state.renderUpdateTool ? <UpdateTool /> : ""}
+				{state.renderCurrentYear ? <TopPicksCurrentYear /> : ""}
+				{state.renderUpdateTool ? <TopPicksUpdateTool /> : ""}
+				{state.renderPreviousYears ? <TopPicksPreviousYears /> : ""}
 			</div>
 		</div>
 	);
 };
 
-export default ScienceOfSkinAwards;
+export default AdminTopPicks;

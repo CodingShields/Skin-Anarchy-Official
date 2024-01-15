@@ -1,8 +1,8 @@
 import { nanoid } from "nanoid";
-import mic from "../../../icons/homepage/statsContainer/mic.svg";
-import headset from "../../../icons/homepage/statsContainer/headset.svg";
-import people from "../../../icons/homepage/statsContainer/people.svg";
-import link from "../../../icons/homepage/statsContainer/link.svg";
+import mic from "../../../../icons/homepage/statsContainer/mic.svg";
+import headset from "../../../../icons/homepage/statsContainer/headset.svg";
+import people from "../../../../icons/homepage/statsContainer/people.svg";
+import link from "../../../../icons/homepage/statsContainer/link.svg";
 
 const podcastStats = [
   {

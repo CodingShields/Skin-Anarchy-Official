@@ -16,7 +16,7 @@ const AccountPage = () => {
 	const [adminAccess, setAdminAccess] = useState(false);
 
 	useEffect(() => {
-		// setState({ ...state, loading: true });
+		setState({ ...state, loading: true });
 		const checkAdminAccess = async () => {
 			const userRef = doc(db, "users", userId);
 			const userSnap = await getDoc(userRef);
@@ -32,7 +32,7 @@ const AccountPage = () => {
 		checkAdminAccess();
 	}, [userId]);
 
-	return <div className='flex flex-col  h-full w-full bg-zinc-200'>\{adminAccess ? <AdminPage /> : <UserAccountPage />}</div>;
+	return <div className='flex flex-col  h-full w-full bg-zinc-200'>{adminAccess ? <AdminPage /> : <UserAccountPage />}</div>;
 };
 
 export default AccountPage;

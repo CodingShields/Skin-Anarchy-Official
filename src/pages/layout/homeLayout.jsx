@@ -15,10 +15,10 @@ const HomeLayout = () => {
           <Header />
         </div>
       )}
-      <main>
-        <div className="w-full h-full">
+      <main
+      className="flex flex-col items-center justify-center w-full h-screen text-center"
+      >
           <Outlet />
-        </div>
       </main>
       {!isAdminPage && (
         <div className="bottom-0 w-full">
