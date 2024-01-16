@@ -42,11 +42,11 @@ const AdminPage = () => {
 	};
 
 	return (
-		<div className='flex flex-row h-full w-full '>
+		<div className='flex flex-row h-fit w-full '>
 			<div
 				className={
 					navBarRender
-						? "top-44 left-0 w-54 h-full transform-gpu transform-translate translate-x-0 duration-700 ease-in-out "
+						? "top-44 left-0 w-54 h-screen transform-gpu transform-translate translate-x-0 duration-700 ease-in-out "
 						: "transform-gpu  w-0 transform-translate -translate-x-50 duration-1000 ease-in-out"
 				}
 			>
@@ -62,7 +62,7 @@ const AdminPage = () => {
 					<DoubleChevLeftBtn onClick={handleNavRender} />
 				</div>
 			)}
-			<div className='block w-full overscroll-y-none'>{renderStep}</div>
+			<div className='flex h-fit w-full justify-center flex-col items-center overscroll-y-none'>{renderStep}</div>
 		</div>
 	);
 };

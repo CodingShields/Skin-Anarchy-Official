@@ -16,7 +16,7 @@ const HomeLayout = () => {
         </div>
       )}
       <main
-      className="flex flex-col items-center justify-center w-full h-screen text-center"
+      className="flex flex-col items-center justify-center w-full h-fit text-center"
       >
           <Outlet />
       </main>
