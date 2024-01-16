@@ -2,7 +2,6 @@ import { useState } from "react";
 import updateToolsNavBar from "../../../assets/data/admin/updateTools/updateToolsNavBar";
 
 const UpdateTools = () => {
-
 	const [state, setState] = useState({
 		error: "",
 		errorMessage: "",
@@ -10,13 +9,20 @@ const UpdateTools = () => {
 		success: "",
 		successMessage: "",
 		adminNavBar: updateToolsNavBar,
-  });
+	});
 
 	const [compState, setCompState] = useState([]);
+	const [activeItem, setActiveItem] = useState();
 
 	const handleNavBarClick = (item) => {
 		setCompState(item.value);
+		const itemName = item.name;
+		setActiveItem(itemName);
 	};
+
+	function classNames(...classes) {
+		return classes.filter(Boolean).join(" ");
+	}
 
 	return (
 		<div className='flex flex-col items-center justify-start w-full h-full  bg-white'>
@@ -29,8 +35,22 @@ const UpdateTools = () => {
 							key={id}
 							onClick={() => handleNavBarClick(item)}
 						>
-							<item.icon className='w-8 h-8 text-black group-hover:text-blue-600 group-hover:underline group-hover:cursor-pointer ' />
-							<p className='text-black text-xl truncate w-fit text-pretty group-hover:font-bold group-hover:text-blue-600 group-hover:cursor-pointer'>
+							<item.icon
+								className={classNames(
+									"w-8 h-8 text-black group-hover:text-blue-600  group-hover:cursor-pointer group-hover:scale-125  ",
+									activeItem === item.name
+										? "stroke-green-500 scale-125 group-hover:text-green-500  group-hover:scale-125 transition-all duration-200 ease-in-out"
+										: ""
+								)}
+							/>
+							<p
+								className={classNames(
+									"text-black text-xl truncate w-fit text-pretty group-hover:scale-125  group-hover:text-blue-600 group-hover:cursor-pointer",
+									activeItem === item.name
+										? "text-green-500 scale-125 font-bold group-hover:text-green-500 underline  transition-all duration-200 ease-in-out"
+										: ""
+								)}
+							>
 								{item.name}
 							</p>
 						</div>

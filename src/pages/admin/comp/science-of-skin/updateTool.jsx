@@ -6,7 +6,10 @@ import { v4 } from "uuid";
 import hourGlass from "../../../../assets/iconsAnimated/hourGlass.svg";
 import ScienceOfSkinAwardsCategoriesArray from "../../../../assets/data/admin/updateTools/scienceOfSkinAwards/scienceOfSkinAwardsCategoriesArray";
 import scienceOfSkinAwardTemplate from "../../../../assets/images/logos/scienceOfSkinAwardTemplate.svg";
-import productOne from "../../../../assets/images/logos/productOne.jpg";
+import productOne from "../../../../assets/images/logos/productOne.png";
+import html2canvas from "html2canvas";
+import water from "../../../../assets/images/logos/water.jpg";
+
 const UpdateTool = () => {
 	const [state, setState] = useState({
 		loading: false,
@@ -131,6 +134,24 @@ const UpdateTool = () => {
 		} else {
 			console.error("No file selected");
 		}
+	};
+	const [test, setTest] = useState([]);
+	const handleImageConvert = async () => {
+		const elementToCapture = document.getElementById("html2Image");
+
+		// Use html2canvas to capture the element as an image
+		html2canvas(elementToCapture).then((canvas) => {
+			// Convert the canvas to a data URL
+			const imageDataURL = canvas.toDataURL("image/png");
+
+			// Create an <a> element to download the image
+			const downloadLink = document.createElement("a");
+			downloadLink.href = imageDataURL;
+			downloadLink.download = "captured-image.png";
+			console.log(imageDataURL);
+			// Trigger a click event to download the image
+			downloadLink.click();
+		});
 	};
 
 	return (
@@ -259,18 +280,19 @@ const UpdateTool = () => {
 			<div className='flex flex-col items-center justify-evenly w-fit h-full  py-6 px-8 space-y-8'>
 				<div className='flex flex-col items-center justify-center text-white hover:text-blue-400 hover:font-semi-bold'>
 					<h1 className='text-2xl text-center h-fit w-full'>Image To Save</h1>
-					<div className='w-112 h-112 bg-white relative object-center'>
-						<img className='object-center ' src={productOne} alt='productOne' />
+					<div id='html2Image' className='w-112 h-112 bg-white relative object-center'>
+						<img src={water} alt='water' />
+						<img className='absolute bottom-0 right-0' src={productOne} alt='productOne' />
 
-						<div className=' w-36 h-36 absolute bottom-0 ml-4 mb-4'>
-							<img className='w-36 hover:scale-150' src={scienceOfSkinAwardTemplate} alt='scienceOfSkinAwardTemplate' />
+						<div className=' w-36 h-36 absolute bottom-0 ml-4 mb-4 bg-gold-100 rounded-full'>
+							<img className='w-36 ' src={scienceOfSkinAwardTemplate} alt='scienceOfSkinAwardTemplate' />
 						</div>
 					</div>
 				</div>
 
 				<div>
 					<button
-						onClick={handleFormSubmit}
+						onClick={handleImageConvert}
 						type='submit'
 						className='bg-blue-600 text-white font-semibold text-lg  px-4 py-2 w-48  hover:text-white hover:bg-blue-400 hover:font-bold active:translate-y-2 rounded-lg shadow-lg hover:shadow-md shadow-gray-600 hover:shadow-white'
 					>
