@@ -5,7 +5,8 @@ import { storage } from "../../../../fireBase/firebaseConfig";
 import { v4 } from "uuid";
 import hourGlass from "../../../../assets/iconsAnimated/hourGlass.svg";
 import ScienceOfSkinAwardsCategoriesArray from "../../../../assets/data/admin/updateTools/scienceOfSkinAwards/scienceOfSkinAwardsCategoriesArray";
-
+import scienceOfSkinAwardTemplate from "../../../../assets/images/logos/scienceOfSkinAwardTemplate.svg";
+import productOne from "../../../../assets/images/logos/productOne.jpg";
 const UpdateTool = () => {
 	const [state, setState] = useState({
 		loading: false,
@@ -243,6 +244,28 @@ const UpdateTool = () => {
 					<h1 className='text-2xl text-center h-fit w-full text-white'>Product Image</h1>
 					<input className='w-fit h-64 py-4 px-2 text-white' onChange={handleImageOnChange} type='file' />
 					{formState.images.length > 1 && <img className='w-fit h-64 py-4 px-2' src={formState.images[1].imageUrl} />}
+				</div>
+
+				{/* <div>
+					<button
+						onClick={handleFormSubmit}
+						type='submit'
+						className='bg-blue-600 text-white font-semibold text-lg  px-4 py-2 w-48  hover:text-white hover:bg-blue-400 hover:font-bold active:translate-y-2 rounded-lg shadow-lg hover:shadow-md shadow-gray-600 hover:shadow-white'
+					>
+						Submit
+					</button>
+				</div> */}
+			</div>
+			<div className='flex flex-col items-center justify-evenly w-fit h-full  py-6 px-8 space-y-8'>
+				<div className='flex flex-col items-center justify-center text-white hover:text-blue-400 hover:font-semi-bold'>
+					<h1 className='text-2xl text-center h-fit w-full'>Image To Save</h1>
+					<div className='w-112 h-112 bg-white relative object-center'>
+						<img className='object-center ' src={productOne} alt='productOne' />
+
+						<div className=' w-36 h-36 absolute bottom-0 ml-4 mb-4'>
+							<img className='w-36 hover:scale-150' src={scienceOfSkinAwardTemplate} alt='scienceOfSkinAwardTemplate' />
+						</div>
+					</div>
 				</div>
 
 				<div>

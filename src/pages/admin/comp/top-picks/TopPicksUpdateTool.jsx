@@ -5,34 +5,18 @@ import { storage } from "../../../../fireBase/firebaseConfig";
 import { v4 } from "uuid";
 import hourGlass from "../../../../assets/iconsAnimated/hourGlass.svg";
 import topPicksCategoryListArray from "../../../../assets/data/admin/updateTools/topPicks/topPicksCategoryListArray";
-
+import scienceOfSkinAwardTemplate from "../../../../assets/images/logos/scienceOfSkinAwardTemplate.svg";
 const TopPicksUpdateTool = () => {
-const [state, setState] = useState({
-	loading: false,
-	uploading: false,
-	error: null,
-	errorMessage: "",
-	success: false,
-	successMessage: "",
-});
+	const [state, setState] = useState({
+		loading: false,
+		uploading: false,
+		error: null,
+		errorMessage: "",
+		success: false,
+		successMessage: "",
+	});
 
-const [formState, setFormState] = useState({
-	year: "",
-	category: "",
-	brandName: "",
-	brandDescription: "",
-	productName: "",
-	productDescription: "",
-	productLink: "",
-	podcastLink: "",
-	brandLogo: null,
-	productImage: null,
-	images: [],
-	imageUrls: [],
-});
-
-const resetForm = () => {
-	setFormState({
+	const [formState, setFormState] = useState({
 		year: "",
 		category: "",
 		brandName: "",
@@ -46,93 +30,87 @@ const resetForm = () => {
 		images: [],
 		imageUrls: [],
 	});
-};
 
-useEffect(() => {
-	resetForm();
-}, []);
-
-const handleFormSubmit = async () => {
-	try {
-		setState({ ...state, uploading: true });
-		const colRef = collection(getFirestore(), "topPicks");
-		await addDoc(colRef, {
-			uploadDate: new Date(),
-			year: formState.year,
-			category: formState.category,
-			brandName: formState.brandName,
-			brandDescription: formState.brandDescription,
-			productName: formState.productName,
-			productDescription: formState.productDescription,
-			productLink: formState.productLink,
-			podcastLink: formState.podcastLink,
-			images: formState.imageUrls,
-			id: v4(),
+	const resetForm = () => {
+		setFormState({
+			year: "",
+			category: "",
+			brandName: "",
+			brandDescription: "",
+			productName: "",
+			productDescription: "",
+			productLink: "",
+			podcastLink: "",
+			brandLogo: null,
+			productImage: null,
+			images: [],
+			imageUrls: [],
 		});
-		setTimeout(() => {
-			setState({ ...state, uploading: false });
-		}, 3000);
-	} catch (error) {
-		console.error(error);
-	}
-};
+	};
 
-useEffect(() => {
-	const imageDownloadUrl = async () => {
+	useEffect(() => {
+		resetForm();
+	}, []);
+
+	const handleFormSubmit = async () => {
 		try {
-			const urls = [];
-			const images = formState.images;
-
-			for (let i = 0; i < images.length; i++) {
-				// Fixed the loop condition
-				const image = images[i];
-				const storageRef = ref(storage, `scienceOfSkinAwards/${image.name}`);
-				await uploadBytes(storageRef, image.image);
-				const url = await getDownloadURL(storageRef);
-				urls.push(url);
-			}
-			setFormState({ ...formState, imageUrls: urls });
-			// Do something with the URLs, e.g., set them in the state or call another function
+			setState({ ...state, uploading: true });
+			const colRef = collection(getFirestore(), "topPicks");
+			await addDoc(colRef, {
+				uploadDate: new Date(),
+				year: formState.year,
+				category: formState.category,
+				brandName: formState.brandName,
+				brandDescription: formState.brandDescription,
+				productName: formState.productName,
+				productDescription: formState.productDescription,
+				productLink: formState.productLink,
+				podcastLink: formState.podcastLink,
+				images: formState.imageUrls,
+				id: v4(),
+			});
+			setTimeout(() => {
+				setState({ ...state, uploading: false });
+			}, 3000);
 		} catch (error) {
 			console.error(error);
 		}
 	};
 
-	imageDownloadUrl();
-}, [formState.images]);
+	useEffect(() => {
+		const imageDownloadUrl = async () => {
+			try {
+				const urls = [];
+				const images = formState.images;
 
-const yearList = () => {
-	let years = [];
-	const currentYear = new Date().getFullYear();
-	for (let i = 2018; i < currentYear; i++) {
-		years.push(i);
-	}
-	return years;
-};
+				for (let i = 0; i < images.length; i++) {
+					// Fixed the loop condition
+					const image = images[i];
+					const storageRef = ref(storage, `scienceOfSkinAwards/${image.name}`);
+					await uploadBytes(storageRef, image.image);
+					const url = await getDownloadURL(storageRef);
+					urls.push(url);
+				}
+				setFormState({ ...formState, imageUrls: urls });
+				// Do something with the URLs, e.g., set them in the state or call another function
+			} catch (error) {
+				console.error(error);
+			}
+		};
 
-const handleImageOnChange = async (e) => {
-	e.preventDefault();
-	const newImage = e.target.files[0]; // Access the first file in the FileList
-	const name = e.target.name;
-	if (newImage) {
-		const imageUrl = URL.createObjectURL(newImage);
-		setFormState({
-			...formState,
-			images: [
-				...formState.images,
-				{
-					name: name,
-					image: newImage,
-					imageUrl: imageUrl,
-				},
-			],
-		});
-	} else {
-		console.error("No file selected");
-	}
+		imageDownloadUrl();
+	}, [formState.images]);
+
+	const yearList = () => {
+		let years = [];
+		const currentYear = new Date().getFullYear();
+		for (let i = 2018; i < currentYear; i++) {
+			years.push(i);
+		}
+		return years;
 	};
-	
-	const changeImageToSvgFromPng = async (e) => {
+
+	const handleImageOnChange = async (e) => {
 		e.preventDefault();
 		const newImage = e.target.files[0]; // Access the first file in the FileList
 		const name = e.target.name;
@@ -152,7 +130,7 @@ const handleImageOnChange = async (e) => {
 		} else {
 			console.error("No file selected");
 		}
-	}
+	};
 
 	return (
 		<div className='flex w-fit h-fit justify-center bg-zinc-700 py-6 px-12 rounded-lg  space-x-12 mx-auto my-8 shadow-xl shadow-gray-500'>
@@ -257,14 +235,21 @@ const handleImageOnChange = async (e) => {
 			<div className='flex flex-col items-center justify-evenly w-fit h-full  py-6 px-8 space-y-8'>
 				<div className='flex flex-col items-center justify-center text-white hover:text-blue-400 hover:font-semi-bold'>
 					<h1 className='text-2xl text-center h-fit w-full'>Brand Logo</h1>
-					<h1>IMAGES NEED TO BE A SVG FORMAT</h1>
-					<input className='w-fit h-64 py-4 px-2 text-white' onChange={handleImageOnChange} type='file' />
+					<h1 className='w-96 text-center text-red-500 text-sm italic mt-2'>IMAGES NEED TO BE A SVG FORMAT AND WITH A TRANSPARENT BACKGROUND</h1>
+					<input className='w-fit h-fit py-4 px-2 text-white' onChange={handleImageOnChange} type='file' />
 					{formState.images.length > 0 && <img className='w-fit h-64 py-4 px-2 ' src={formState.images[0].imageUrl} />}
 				</div>
 				<div className='flex flex-col items-center justify-center text-white hover:text-blue-400 hover:font-semi-bold'>
 					{" "}
 					<h1 className='text-2xl text-center h-fit w-full text-white'>Product Image</h1>
-					<input className='w-fit h-64 py-4 px-2 text-white' onChange={handleImageOnChange} type='file' />
+					<input className='w-fit h-fit py-4 px-2 text-white' onChange={handleImageOnChange} type='file' />
+					{formState.images.length > 1 && <img className='w-fit h-64 py-4 px-2' src={formState.images[1].imageUrl} />}
+				</div>
+			</div>
+			<div className='flex flex-col items-center justify-evenly w-fit h-full  py-6 px-8 space-y-8'>
+				<div className='flex flex-col items-center justify-center text-white hover:text-blue-400 hover:font-semi-bold'>
+					{" "}
+					<h1 className='text-2xl text-center h-fit w-full text-white'>Top Pick Image</h1>
 					{formState.images.length > 1 && <img className='w-fit h-64 py-4 px-2' src={formState.images[1].imageUrl} />}
 				</div>
 
