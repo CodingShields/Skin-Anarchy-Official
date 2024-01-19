@@ -3,7 +3,7 @@ import { UserAuth } from "../../context/AuthContext";
 import { db } from "../../fireBase/firebaseConfig";
 import AdminPage from "../admin/adminPage";
 import UserAccountPage from "./userAccountPage";
-import { doc, query, collection, getDoc, getDocs, onSnapshot, where, updateDoc, setDoc, deleteField } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 
 const AccountPage = () => {
 	const user = UserAuth();
@@ -32,7 +32,7 @@ const AccountPage = () => {
 		checkAdminAccess();
 	}, [userId]);
 
-	return <div className='flex flex-col h-full   w-full '>{adminAccess ? <AdminPage /> : <UserAccountPage />}</div>;
+	return <div className='flex flex-col h-screen w-screen'>{adminAccess ? <AdminPage /> : <UserAccountPage />}</div>;
 };
 
 export default AccountPage;

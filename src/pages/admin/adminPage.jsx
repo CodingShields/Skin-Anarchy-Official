@@ -50,7 +50,7 @@ const AdminPage = () => {
 			if (!navBarRender) {
 				return;
 			} else {
-				setNavBarRender(!navBarRender);
+				// setNavBarRender(!navBarRender);
 			}
 		}, 4000);
 	}, [navBarRender]);
@@ -61,23 +61,23 @@ const AdminPage = () => {
 				className={
 					navBarRender
 						? "top-44 left-0 w-64 h-full transform-gpu transform-translate translate-x-0 duration-700 ease-in-out "
-						: "transform-gpu  w-14 h-full transform-translate -translate-x-64 duration-1000 ease-in-out "
+						: "transform-gpu  w-14 h-full transform-translate -translate-x-42 duration-1000 ease-in-out "
 				}
 			>
 				<AdminNavBar onItemClicked={handleNavigation} />
 			</div>
 
 			{!navBarRender ? (
-				<div className='animate-pulse ease-in-out duration-700 -translate-x-96  absolute bottom-0 right-3/4 w-16 h-20  '>
+				<div className='animate-pulse ease-in-out duration-700 w-16 h-full  '>
 					<DoubleChevRightBtn onClick={handleNavRender} />
 				</div>
 			) : (
-				<div className='focus:translate-x-1  animate-pulse ease-in-out duration-700 translate-x-40  absolute bottom-0 left-25  w-16 h-20 '>
+				<div className='focus:translate-x-1  animate-pulse ease-in-out duration-700 w-16 h-full '>
 					<DoubleChevLeftBtn onClick={handleNavRender} />
 				</div>
 			)}
 
-			<div className='flex flex-col  max-h-screen   w-full overflow-y-hidden'>{renderStep}</div>
+			<div className='flex flex-col  h-full  w-full my-auto'>{renderStep}</div>
 		</div>
 	);
 };
