@@ -32,7 +32,7 @@ const AccountPage = () => {
 		checkAdminAccess();
 	}, [userId]);
 
-	return <div className='flex flex-col  h-full w-full bg-zinc-200'>{adminAccess ? <AdminPage /> : <UserAccountPage />}</div>;
+	return <div className='flex flex-col h-full   w-full '>{adminAccess ? <AdminPage /> : <UserAccountPage />}</div>;
 };
 
 export default AccountPage;

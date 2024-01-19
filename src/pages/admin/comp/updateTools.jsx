@@ -25,13 +25,13 @@ const UpdateTools = () => {
 	}
 
 	return (
-		<div className='flex flex-col items-center justify-start w-full h-full  bg-white'>
-			<h1 className='text-3xl font-bold text-black w-fit h-fit text-center mb-2 mt-4'>Skin Anarchy Database Update Tools</h1>
-			<div className='flex flex-row w-full justify-center items-center space-x-6 h-fit border-b-4 border-black pb-4 '>
+		<div className='flex flex-col items-center justify-center w-full h-fit bg-opacity-0'>
+			<h1 className='text-3xl font-bold text-black w-full h-fit text-center mb-2 mt-4'>Skin Anarchy Database Update Tools</h1>
+			<div className='flex flex-row w-full justify-center items-center h-fit border-b-4 border-black pb-4 bg-opacity-0'>
 				{state.adminNavBar.map((item, id) => {
 					return (
 						<div
-							className='flex flex-col items-center justify-center w-fit text-nowrap h-fit space-y-2 mt-4 px-6 group '
+							className='flex flex-col items-center justify-between w-full text-nowrap h-fit space-y-2 mt-4 px-8 group '
 							key={id}
 							onClick={() => handleNavBarClick(item)}
 						>
@@ -45,7 +45,7 @@ const UpdateTools = () => {
 							/>
 							<p
 								className={classNames(
-									"text-black text-xl truncate w-fit text-pretty group-hover:scale-125  group-hover:text-blue-600 group-hover:cursor-pointer",
+									"text-black text-xl truncate w-full text-pretty group-hover:scale-125  group-hover:text-blue-600 group-hover:cursor-pointer",
 									activeItem === item.name
 										? "text-green-500 scale-125 font-bold group-hover:text-green-500 underline  transition-all duration-200 ease-in-out"
 										: ""
@@ -57,7 +57,7 @@ const UpdateTools = () => {
 					);
 				})}
 			</div>
-			<div className='flex flex-col items-center justify-center w-full h-full overflow-y-auto bg-gray-200 '>{compState}</div>
+			<div className='flex flex-col items-center justify-center w-full h-fit overflow-y-auto '>{compState}</div>
 		</div>
 	);
 };

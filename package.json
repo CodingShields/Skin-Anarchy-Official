@@ -23,6 +23,7 @@
     "react-h5-audio-player": "^3.9.0",
     "react-router-dom": "^6.21.1",
     "uuid": "^9.0.1",
+    "validator": "^13.11.0",
     "zustand": "^4.4.7"
   },
   "devDependencies": {

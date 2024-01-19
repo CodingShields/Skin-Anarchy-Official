@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 //Nav Pages
 import AdminDashboard from "../admin/comp/adminDashboard";
@@ -41,13 +41,27 @@ const AdminPage = () => {
 		setNavBarRender(!navBarRender);
 	};
 
+	useEffect(() => {
+		setRenderStep(<AdminDashboard />);
+	}, []);
+
+	useEffect(() => {
+		setTimeout(() => {
+			if (!navBarRender) {
+				return;
+			} else {
+				setNavBarRender(!navBarRender);
+			}
+		}, 4000);
+	}, [navBarRender]);
+
 	return (
-		<div className='flex flex-row h-fit w-full '>
+		<div className='flex flex-row h-full  w-full bg-gradient-to-t from-blue-300 via-purple-500 to-pink-500 '>
 			<div
 				className={
 					navBarRender
-						? "top-44 left-0 w-54 h-screen transform-gpu transform-translate translate-x-0 duration-700 ease-in-out "
-						: "transform-gpu  w-0 transform-translate -translate-x-50 duration-1000 ease-in-out"
+						? "top-44 left-0 w-64 h-full transform-gpu transform-translate translate-x-0 duration-700 ease-in-out "
+						: "transform-gpu  w-14 h-full transform-translate -translate-x-64 duration-1000 ease-in-out "
 				}
 			>
 				<AdminNavBar onItemClicked={handleNavigation} />
@@ -62,7 +76,8 @@ const AdminPage = () => {
 					<DoubleChevLeftBtn onClick={handleNavRender} />
 				</div>
 			)}
-			<div className='flex h-fit w-full justify-center flex-col items-center overscroll-y-none'>{renderStep}</div>
+
+			<div className='flex flex-col  max-h-screen   w-full overflow-y-hidden'>{renderStep}</div>
 		</div>
 	);
 };

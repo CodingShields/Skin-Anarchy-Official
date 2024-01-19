@@ -14,9 +14,12 @@ const Footer = () => {
 					</a>
 				</div>
 				<div className='flex flex-col items-start justify-center w-full h-full'>
+					<a href={"www.codingshields.dev"} target={"_blank"}className='text-sm  h-fit text-gray-400 whitespace-nowrap hover:cursor-pointer'>
 					<h1 className=' transition-all duration-500 ml-4 group-hover:scale-105 group-hover:text-white text-start text-gray-600 text-sm font-bold '>
 						This Website was designed and powered by: CodingShields
-					</h1>
+						</h1>
+						
+					</a>
 				</div>
 			</div>
 			<div className='w-full px-0 py-2 h-fit'>
