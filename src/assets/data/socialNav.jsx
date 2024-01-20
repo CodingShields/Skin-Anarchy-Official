@@ -1,9 +1,9 @@
 import facebookIcon from "../icons/socialMediaIcons/facebookIcon.svg";
 import instagramIcon from "../icons/socialMediaIcons/instagramIcon.svg";
 import twitterIcon from "../icons/socialMediaIcons/twitterIcon.png";
-import youtubeIcon from "../icons/socialMediaIcons/youtubeIcon.svg";
+// import youtubeIcon from "../icons/socialMediaIcons/youtubeIcon.svg";
 
-const socialNavBar = [
+const socialNav = [
 	{
 		id: 0,
 		name: "Facebook",
@@ -24,12 +24,12 @@ const socialNavBar = [
 		href: "#",
 		icon: twitterIcon,
 	},
-	{
-		id: 3,
-		name: "YouTube",
-		href: "#",
-		icon: youtubeIcon,
-	},
+	// {
+	// 	id: 3,
+	// 	name: "YouTube",
+	// 	href: "#",
+	// 	icon: youtubeIcon,
+	// },
 ];
 
-export default socialNavBar;
+export default socialNav;

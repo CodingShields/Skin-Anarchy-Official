@@ -1,22 +1,23 @@
 import { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import footerDataArray from "../../assets/data/footer/footerDataArray";
-import socialNavBar from "../../assets/data/socialMediaLinkArray";
+import socialNav from "../../assets/data/socialNav";
 import codingShieldsLogo from "../../assets/images/codingShieldsLogo.png";
 
 const Footer = () => {
 	return (
 		<div className=' flex flex-row h-fit w-full bottom-0 bg-black bg-opacity-95 justify-center pt-4 group'>
-			<div className='flex   w-full justify-end items-end space-y-2 hover:scale-150 hover:-translate-y-50 transition-all duration-700 hover:animate-pulse hover:translate-x-50 group'>
-				<div className='flex flex-col items-start justify-center w-fit h-full '>
-					<a href='https://www.codingshields.dev/' target='_blank'>
-						<img className='h-fit w-28 ' src={codingShieldsLogo} />
-					</a>
-				</div>
+			<div className='flex flex-row w-full justify-center items-center space-y-2 hover:scale-125 hover:-translate-y-50 transition-all duration-700 hover:animate-pulse hover:translate-x-50 group hover:cursor-pointer '>
 				<div className='flex flex-col items-start justify-center w-full h-full'>
-					<h1 className=' transition-all duration-500 ml-4 group-hover:scale-105 group-hover:text-white text-start text-gray-600 text-sm font-bold '>
-						This Website was designed and powered by: CodingShields
-					</h1>
+					<a href={"https://www.codingshields.dev/"} target='_blank'>
+						<h1 className=' transition-all duration-500 ml-4 group-hover:scale-105 group-hover:animate-none group-hover:text-white text-center text-gray-800 text-sm font-bold mr-2'>
+							Website Powered By Coding Shields
+						</h1>
+						<img className='h-fit w-28 mx-auto grayscale group-hover:grayscale-0 animate-bounce group-hover:animate-none  ' src={codingShieldsLogo} />
+						<h1 className=' transition-all duration-500 ml-4 group-hover:scale-105 group-hover:animate-none group-hover:text-white text-center text-gray-800 text-sm font-bold mr-2'>
+							Visit Coding Shields
+						</h1>
+					</a>
 				</div>
 			</div>
 			<div className='w-full px-0 py-2 h-fit'>
@@ -30,9 +31,9 @@ const Footer = () => {
 					))}
 				</nav>
 				<div className='w-full flex justify-center mt-8 space-x-14 py-4'>
-					{socialNavBar.map((item, id) => (
+					{socialNav.map((item, id) => (
 						<div key={id} className='group'>
-							<a key={item.name} href={item.href} className=''>
+							<a key={item.name} href={item.link} target='_parent'>
 								{/* <span className='sr-only'>{item.name}</span> */}
 								<img
 									className='h-8 hover:scale-150 grayscale ease-in-out transition-all hover:grayscale-0 hover:-translate-y-1 hover:duration-300 '
