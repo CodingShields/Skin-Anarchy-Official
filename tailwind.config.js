@@ -76,6 +76,8 @@ export default {
         208: "52rem",
         224: "56rem",
         240: "60rem",
+        248: "62rem",
+        256: "64rem",
       },
       width: {
         112: "28rem",
@@ -276,7 +278,6 @@ export default {
     require("@tailwindcss/aspect-ratio"),
     require("@tailwindcss/container-queries"),
     require("@tailwindcss/forms"),
-    require("tailwind-scrollbar"),
     "prettier-plugin-tailwindcss",
   ],
 };

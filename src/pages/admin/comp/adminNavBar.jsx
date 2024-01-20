@@ -44,7 +44,6 @@ const AdminNavBar = ({ onItemClicked }) => {
 		if (onItemClicked) {
 			onItemClicked(itemName);
 			setActiveItem(itemName);
-
 		}
 	};
 
@@ -53,39 +52,36 @@ const AdminNavBar = ({ onItemClicked }) => {
 	}
 
 	return (
-		<div className='flex flex-col bg-blue-600 items-start justify-center w-72 h-full '>
-			<div className='flex flex-col items-start justify-center  h-full w-full  px-4 shadow-2xl shadow-black'>
-				{navigation.map((item, index) => {
-					return (
-						<div
-							onClick={() => handleItemClick(item.name)}
+		<div className='flex flex-col items-start justify-center w-fit h-full bg-blue-600 px-8 py-12 lg:space-y-16 md:space-y-24'>
+			{navigation.map((item, index) => {
+				return (
+					<div
+						onClick={() => handleItemClick(item.name)}
+						className={classNames(
+							"  h-fit flex space-x-4  py-4  group hover:cursor-pointer  ",
+							activeItem === item.name && " bg-blue-600 transition-all duration-500 ease-in-out h-fit w-fit px-4 py-4 "
+						)}
+						key={index}
+						value={item.name}
+					>
+						<item.icon
 							className={classNames(
-								"flex flex-row items-center justify-start w-full h-16 my-8 space-x-4 px-4 rounded-r-lg group hover:cursor-pointer  ",
-								activeItem === item.name
-									? "translate-x-18 pr-8 bg-blue-600 transition-all duration-500 ease-in-out border-b-4 border-r-4 border-green-500 h-24  "
-									: ""
+								"w-6 h-6 text-gray-200  group-hover:text-blue-800 group-hover:underline ",
+								activeItem === item.name ? "stroke-green-500 mr-4 group-hover:stroke-green-500 " : ""
 							)}
-							key={index}
-							value={item.name}
+						/>
+						<p
+							className={classNames(
+								activeItem === item.name
+									? "scale-125 font-bold text-green-500 group-hover:text-green-500 whitespace-nowrap "
+									: "text-white text-lg truncate w-fit group-hover:font-bold group-hover:text-blue-800 whitespace-nowrap"
+							)}
 						>
-							<item.icon
-								className={classNames(
-									"w-8 h-8 text-gray-200 group-hover:text-blue-800 group-hover:underline",
-									activeItem === item.name ? "stroke-green-500 mr-4 group-hover:stroke-green-500 " : ""
-								)}
-							/>
-							<p
-								className={classNames(
-									"text-white text-xl truncate w-32 group-hover:font-bold group-hover:text-blue-800 ",
-									activeItem === item.name ? "scale-125 font-bold text-green-500 group-hover:text-green-500" : ""
-								)}
-							>
-								{item.name}
-							</p>
-						</div>
-					);
-				})}
-			</div>
+							{item.name}
+						</p>
+					</div>
+				);
+			})}
 		</div>
 	);
 };
