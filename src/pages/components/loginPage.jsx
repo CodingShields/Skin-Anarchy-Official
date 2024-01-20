@@ -79,14 +79,24 @@ const LoginPage = () => {
 	}, [state.error]);
 
 	return (
-		<div className='flex w-full h-screen  flex-col justify-center  items-center space-y-8'>
+		<div className='flex w-full h-fit  flex-col justify-center  items-center space-y-8'>
+			{state.error ? (
+				<div className='flex absolute justify-center items-center  top-0 left-0 w-full h-full bg-opacity-50	bg-black'>
+					<div className='flex flex-col w-fit h-fit justify-center items-center bg-yellow-200 rounded-lg shadow-2xl shadow-black py-4 px-6 mb-10 overflow-hidden'>
+						<p className='font-bold color-black text-center'>{state.errorMessage}</p>
+					</div>
+				</div>
+			) : (
+				""
+			)}
+
 			<div className='h-fit w-full'>
-				<img className='mx-auto h-48 w-auto' src={logo} alt='skinanarchy' />
+				<img className='mx-auto lg:h-32 xl:h-32 w-auto mt-8' src={logo} alt='skinanarchy' />
 			</div>
 
-			<div className='w-112 flex flex-col justify-center items-center space-y-8'>
+			<div className='w-full flex flex-col justify-center items-center space-y-8'>
 				<h2 className='text-center text-2xl font-bold tracking-tight text-gray-900'>Sign in to your account</h2>
-				<div className='bg-white px-10 py-24 rounded-2xl shadow-gray-600 shadow-2xl border-2 border-gray-300'>
+				<div className='bg-white px-8 py-16 rounded-2xl shadow-gray-600 shadow-2xl border-2 border-gray-300'>
 					<form onSubmit={handleSubmit} className='space-y-6'>
 						<div>
 							<label htmlFor='email' className='block text-sm font-medium leading-6 text-gray-900'>
@@ -184,15 +194,6 @@ const LoginPage = () => {
 						</div> */}
 					</div>
 				</div>
-				{state.error ? (
-					<div className='flex fixed justify-center items-center  top-0 left-0 w-full h-full bg-opacity-50	bg-black'>
-						<div className='flex flex-col w-fit h-fit justify-center items-center bg-yellow-200 rounded-lg shadow-2xl shadow-black py-4 px-6 mb-10 overflow-hidden'>
-							<p className='font-bold color-black text-center'>{state.errorMessage}</p>
-						</div>
-					</div>
-				) : (
-					""
-				)}
 
 				<p className='mt-10 text-center text-md text-black'>
 					Not a member?{" "}

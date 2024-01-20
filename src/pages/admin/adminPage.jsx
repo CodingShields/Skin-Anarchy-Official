@@ -56,7 +56,7 @@ const AdminPage = () => {
 	}, [navBarRender]);
 
 	return (
-		<div className='flex flex-row h-full  w-full bg-gradient-to-t from-blue-300 via-purple-500 to-pink-500 '>
+		<div className='flex flex-row max-h-fit w-full bg-gradient-to-t from-blue-300 via-purple-500 to-pink-500 '>
 			<div
 				className={
 					navBarRender
@@ -76,8 +76,7 @@ const AdminPage = () => {
 					<DoubleChevLeftBtn onClick={handleNavRender} />
 				</div>
 			)}
-
-			<div className='flex flex-col  h-full  w-full my-auto'>{renderStep}</div>
+			<div className='flex flex-col  h-fit  w-full '>{renderStep}</div>
 		</div>
 	);
 };

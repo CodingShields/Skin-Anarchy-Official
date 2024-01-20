@@ -133,7 +133,7 @@ const TopPicksUpdateTool = () => {
 	};
 
 	return (
-		<div className='flex w-fit h-fit justify-center bg-zinc-700 py-6 px-12 rounded-lg  space-x-12 mx-auto my-8 shadow-xl shadow-gray-500'>
+		<div className='flex w-fit h-fit justify-center bg-zinc-700 py-6 px-2 rounded-lg  space-x-2 mx-auto my-8 shadow-xl shadow-gray-500'>
 			<div className='flex flex-col items-center justify-start w-fit h-fit  py-6 px-8 space-y-8'>
 				{state.uploading ? (
 					<div className='absolute bg-opacity-50 bg-black w-full h-full z-10 top-0 left-0'>

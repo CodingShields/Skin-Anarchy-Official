@@ -15,7 +15,7 @@ const HomeLayout = () => {
 					<Header />
 				</div>
 			)}
-			<main className='flex flex-col items-center justify-center w-full h-full '>
+			<main className='flex w-full h-full '>
 				<Outlet />
 			</main>
 			{!isAdminPage && (
