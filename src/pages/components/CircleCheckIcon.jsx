@@ -15,16 +15,9 @@ const CircleCheckIcon = ({savedState}) => {
 	}
 
 	return (
-		<div className='relative h-fit w-fit flex justify-center items-center'>
-			<img className='h-16 w-16 stroke-white' src={emptyCircle} />
-			<img
-				className={classNames("absolute",
-					stateSaved
-						? "absolute h-16 w-16 duration-1000 ease-in-out transition-all delay-200 "
-						: "absolute scale-0 duration-1000 ease-in-out transition-all delay-200"
-				)}
-				src={greenCheck}
-			/>
+		<div >
+			<img className='h-16 w-16 stroke-white ' src={emptyCircle} />
+		
 		</div>
 	);
 };

@@ -80,20 +80,20 @@ const AdminStats = () => {
   }, []);
 
   return (
-    <div className="flex flex-col w-full h-full justify-start items-center bg-gray-200 border-2">
-      <div className="flex flex-col justify-start items-center w-11/12 h-fit bg-gray-200 ">
+    <div className="w-full h-full ">
+      <div className="flex flex-col justify-start items-center w-full h-fit ">
         <div>
           <h1 className="text-4xl font-bold text-center text-gray-800 mt-20 mb-6">
             Podcast Stats Update Tool
           </h1>
-          <div className="flex flex-col justify-center items-center w-11/12 h-fit bg-gray-200 border-2 border-black rounded-md shadow-black shadow-lg rounded-b-md">
+          <div className="flex flex-col justify-center items-center w-full h-fit bg-gray-200 border-2 border-black rounded-md shadow-black shadow-lg rounded-b-md">
             <h1>Get Stats</h1>
             <div>
               <h1>icons with links</h1>
             </div>
           </div>
         </div>
-        <div className=" flex flex-col justify-center items-center w-11/12 h-full bg-white border-2 border-black rounded-md shadow-black shadow-lg  mt-4">
+        <div className=" flex flex-col justify-center items-center w-full h-full bg-white border-2 border-black rounded-md shadow-black shadow-lg  mt-4">
           <h1 className="text-4xl font-bold text-center underline px-4 py-2 mx-2 my-2 w-fit">
             Podcast Stats
           </h1>

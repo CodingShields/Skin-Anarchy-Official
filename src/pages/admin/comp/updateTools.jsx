@@ -25,7 +25,7 @@ const UpdateTools = () => {
 	}
 
 	return (
-		<div className='flex flex-col items-center justify-start w-full h-fit '>
+		<div className='flex flex-col items-center justify-start w-full h-full '>
 			<h1 className='text-3xl font-bold text-black w-full h-fit text-center mb-2 mt-4'>Skin Anarchy Database Update Tools</h1>
 			<div className='flex flex-row w-full justify-center items-center h-fit border-b-4 border-black pb-4 bg-opacity-0'>
 				{state.adminNavBar.map((item, id) => {
@@ -57,7 +57,7 @@ const UpdateTools = () => {
 					);
 				})}
 			</div>
-			<div className='flex '>{compState}</div>
+			<div className='flex'>{compState}</div>
 		</div>
 	);
 };

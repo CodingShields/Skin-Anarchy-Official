@@ -32,9 +32,9 @@ const ScienceOfSkinAwards = () => {
 	}
 
 	return (
-		<div className='flex flex-col items-center justify-start w-full h-full '>
+		<div className='flex flex-col items-center w-full h-full '>
 			<h1 className='text-4xl font-bold text-center h-fit w-full my-4'>Science Of Skin Awards </h1>
-			<div className='flex flex-row items-center justify-center w-fit h-fit rounded-md shadow-lg shadow-black mb-2'>
+			<div className='flex flex-row items-center justify-center w-fit h-fit rounded-md shadow-lg shadow-black mb-4'>
 				<button
 					value={"contact"}
 					onClick={(e) => handleOnClick(e)}
@@ -67,7 +67,7 @@ const ScienceOfSkinAwards = () => {
 					Update Tool
 				</button>
 			</div>
-			<div className='w-full h-11/12'>
+			<div className='w-full h-full'>
 				{state.renderContactForm ? <Contact /> : ""}
 				{state.renderPreviousYears ? <PreviousYears /> : ""}
 				{state.renderUpdateTool ? <UpdateTool /> : ""}

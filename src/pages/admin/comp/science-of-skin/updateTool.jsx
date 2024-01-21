@@ -11,7 +11,7 @@ import html2canvas from "html2canvas";
 import water from "../../../../assets/images/logos/water.jpg";
 import CircleCheckIcon from "../../../components/CircleCheckIcon";
 import isURL from "validator/lib/isURL";
-import AdjustImageButtons from "./AdjustImageButtons";
+import AdjustImageButtons from "../../../components/buttons/AdjustImageButtons";
 const UpdateTool = () => {
 	const [state, setState] = useState({
 		loading: false,
@@ -20,10 +20,6 @@ const UpdateTool = () => {
 		errorMessage: "",
 		success: false,
 		successMessage: "",
-		awardImageApproved: false,
-		awardImage: null,
-		finalImageApproved: false,
-		finalImage: null,
 	});
 
 	const [formState, setFormState] = useState({
@@ -31,15 +27,31 @@ const UpdateTool = () => {
 		category: "",
 		brandName: "",
 		brandDescription: "",
+		brandLogoImage: [],
 		productName: "",
 		productDescription: "",
+		productImage: [],
 		productLink: "",
 		podcastLink: "",
-		brandImage: null,
-		productImage: null,
 		images: [],
 		imageUrls: [],
 		awardImage: null,
+		awardBG: [
+			{
+				name: "background1",
+				selected: false,
+			},
+			{
+				name: "background2",
+				selected: false,
+			},
+			{
+				name: "background3",
+				selected: false,
+			},
+		],
+		stepsToCompletion: 0,
+		stepsToCompletionBtnText: ["Set Background Image", "Adjust Year Text", "Adjust Award Image", "Adjust Product Image", "Submit"],
 	});
 
 	// const resetForm = () => {
@@ -140,19 +152,13 @@ const UpdateTool = () => {
 			const imageUrl = URL.createObjectURL(newImage);
 			setFormState({
 				...formState,
-				images: [
-					...formState.images,
-					{
-						name: name,
-						image: newImage,
-						imageUrl: imageUrl,
-					},
-				],
+				[name]: [{ files: newImage }, { imageUrl: imageUrl }],
 			});
 		} else {
 			console.error("No file selected");
 		}
 	};
+
 	const handleImageConvert = async () => {
 		const elementToCapture = document.getElementById("html2Image");
 		html2canvas(elementToCapture).then((canvas) => {
@@ -189,129 +195,149 @@ const UpdateTool = () => {
 		}
 	};
 
-	return (
-		<div className='flex w-full h-full justify-center bg-zinc-700 py-6 px-12 rounded-lg  space-x-6 mx-auto my-8 shadow-xl shadow-gray-500 '>
-			<div className='flex flex-col items-center justify-start w-fit h-fit  py-6 px-8 space-y-2 '>
-				{state.uploading ? (
-					<div className='absolute bg-opacity-50 bg-gray-500 w-full h-full z-10 top-0 left-0'>
-						<div className='flex flex-row justify-center items-center place-content-center w-full h-full'>
-							<h1 className='w-full text-4xl font-bold animate-pulse text-white text-center '>
-								Uploading... <img src={hourGlass} className='w-32 h-32 mx-auto' />
-							</h1>
-						</div>
-					</div>
-				) : (
-					""
-				)}
+	const handleBackgroundImageChange = (e) => {
+		e.preventDefault();
+		const selectedBG = e.target.value;
+		setFormState({ ...formState, awardBG: selectedBG });
+		console.log(selectedBG);
+	};
 
-				<div className='group'>
-					<h1 className='text-2xl text-center h-12 w-full group-hover:text-blue-500 group-hover:font-bold text-white '>Select Year</h1>
-					<select
-						onChange={(e) => setFormState({ ...formState, year: e.target.value })}
-						className='w-48 h-12 border-2 border-black rounded-md group-hover:text-black group-hover:font-bold shadow-lg hover:shadow-white focus:shadow-blue-400'
-					>
-						{yearList().map((year, index) => {
-							return (
-								<option key={index} value={year}>
-									{year}
-								</option>
-							);
-						})}
-					</select>
-				</div>
-				<div className='group'>
-					<h1 className='text-2xl text-center h-12 w-full group-hover:text-blue-500 group-hover:font-bold text-white'>Select Category</h1>
-					<select
-						onChange={(e) => setFormState({ ...formState, category: e.target.value })}
-						className='w-48 h-12 border-2 border-black rounded-md group-hover:text-black group-hover:font-bold shadow-lg hover:shadow-white focus:shadow-blue-400'
-					>
-						{ScienceOfSkinAwardsCategoriesArray.map((year, index) => {
-							return (
-								<option key={index} value={year}>
-									{year}
-								</option>
-							);
-						})}
-					</select>
-				</div>
-				<div className='flex flex-col items-center justify-start w-fit h-fit  py-6 px-8 space-y-8'>
-					<div className='flex flex-col w-fit h-fit items-center justify-center group '>
-						<h1 className='text-2xl  text-center h-fit w-full text-white group-hover:text-blue-500 group-hover:font-bold'>Brand Name </h1>
-						<input
-							onChange={(e) => setFormState({ ...formState, brandName: e.target.value })}
-							className='w-72 h-12 border-2 border-black rounded-md group-hover:text-black group-hover:font-bold shadow-lg hover:shadow-white focus:shadow-blue-400'
-							type='text'
-						/>
+	const handleCompletionSteps = () => {
+		setFormState({ ...formState, stepsToCompletion: formState.stepsToCompletion + 1 });
+	};
+
+	return (
+		// Tab Window
+		<div className='flex w-full h-full '>
+			{/* Error Modal */}
+			{/* {state.uploading ? (
+				<div className='absolute bg-opacity-50 bg-gray-500 w-full h-full z-10 top-0 left-0'>
+					<div className='flex flex-row justify-center items-center place-content-center w-full h-full'>
+						<h1 className='w-full text-2xl font-bold animate-pulse text-white text-center '>
+							Uploading... <img src={hourGlass} className='w-32 h-32 mx-auto' />
+						</h1>
 					</div>
-					<div className='flex flex-col w-fit h-fit items-center justify-center group'>
-						{" "}
-						<h1 className='text-2xl group-hover:font-bold text-center h-fit w-full text-white group-hover:text-blue-400 '>Brand Description</h1>
-						<textarea
-							spellCheck='true'
-							onChange={(e) => setFormState({ ...formState, brandDescription: e.target.value })}
-							className='w-72 h-24 border-2 border-black rounded-md group-hover:text-black group-hover:font-bold shadow-lg hover:shadow-white focus:shadow-blue-400'
-							type='text'
-						/>
+				</div>
+			) : (
+				""
+			)} */}
+
+			{/* Main Container */}
+			<div className='flex flex-row w-fit h-fit bg-zinc-800 rounded-lg  shadow-xl shadow-gray-500 space-x-8 py-4'>
+				{/* Left Container */}
+				<div className=' flex flex-col w-full h-fit items-start justify-center text-xl space-y-2 px-4'>
+					<div className='group w-1/2 flex flex-col'>
+						<h1 className=' group-hover:text-blue-500 group-hover:font-bold text-white '>Select Year</h1>
+						<select
+							onChange={(e) => setFormState({ ...formState, year: e.target.value })}
+							className='border-2 border-black rounded-md group-hover:text-black group-hover:font-bold shadow-lg hover:shadow-white focus:shadow-blue-400'
+						>
+							{yearList().map((year, index) => {
+								return (
+									<option key={index} value={year}>
+										{year}
+									</option>
+								);
+							})}
+						</select>
 					</div>
-					<div className='flex flex-col w-fit h-fit items-center justify-center group'>
-						{" "}
-						<h1 className='text-2xl text-center h-fit w-full text-white group-hover:text-blue-500 group-hover:font-bold '>Product Name</h1>
+					<div className='group w-3/4 flex flex-col'>
+						<h1 className='group-hover:text-blue-500 group-hover:font-bold text-white'>Select Product Category</h1>
+						<select
+							onChange={(e) => setFormState({ ...formState, category: e.target.value })}
+							className='border-2 border-black rounded-md text-black group-hover:font-bold shadow-lg hover:shadow-white focus:shadow-blue-400'
+						>
+							{ScienceOfSkinAwardsCategoriesArray.map((year, index) => {
+								return (
+									<option key={index} value={year}>
+										{year}
+									</option>
+								);
+							})}
+						</select>
+					</div>
+
+					<div className='group w-full flex flex-col'>
+						<h1 className=' group-hover:text-blue-500 group-hover:font-bold text-white'>Product Name</h1>
 						<input
 							spellCheck='true'
 							onChange={(e) => setFormState({ ...formState, productName: e.target.value })}
-							className='w-72 h-12 border-2 border-black rounded-md group-hover:text-black group-hover:font-bold shadow-lg hover:shadow-white focus:shadow-blue-400'
+							className='border-2  border-black rounded-md group-hover:text-black group-hover:font-bold shadow-lg hover:shadow-white focus:shadow-blue-400'
 							type='text'
 						/>
 					</div>
-					<div className='flex flex-col w-fit h-fit items-center justify-center group '>
+
+					<div className='group w-full flex flex-col'>
 						{" "}
-						<h1 className='text-2xl group-hover:text-blue-500 group-hover:font-bold text-center h-fit w-full text-white '>Product Description</h1>
+						<h1 className=' group-hover:text-blue-500 group-hover:font-bold text-white'>Product Description</h1>
 						<textarea
 							spellCheck='true'
 							onChange={(e) => setFormState({ ...formState, productDescription: e.target.value })}
-							className='w-72 h-24 border-2 border-black rounded-md group-hover:font-bold shadow-lg hover:shadow-white focus:shadow-blue-400'
+							className='border-2 border-black rounded-md text-black group-hover:font-bold shadow-lg hover:shadow-white focus:shadow-blue-400 w-96 h-24'
 							type='text'
 						/>
 					</div>
-					<div className='flex flex-col w-fit h-fit items-center justify-center group '>
-						<h1 className='text-2xl group-hover:text-blue-500 group-hover:font-bold text-center h-fit w-full text-white '>Product Link</h1>
+					<div className='group w-full flex flex-col'>
+						<h1 className=' group-hover:text-blue-500 group-hover:font-bold text-white'>Product Link</h1>
 						<input
 							onChange={(e) => setFormState({ ...formState, productLink: e.target.value })}
-							className='w-72 h-12 border-2 border-black rounded-md group-hover:font-bold text-black shadow-lg hover:shadow-white focus:shadow-blue-400 focus:font-bold'
+							className='border-2 border-black rounded-md group-hover:font-bold text-black shadow-lg hover:shadow-white focus:shadow-blue-400 focus:font-bold'
 							type='url'
 						/>
 					</div>
-					<div className='flex flex-col w-fit h-fit items-center justify-center group'>
-						<h1 className='text-2xl group-hover:text-blue-500 group-hover:font-bold text-center h-fit w-full text-white '>Podcast Episode Link</h1>
+					<div className='group w-full flex flex-col'>
+						<h1 className='group-hover:text-blue-500 group-hover:font-bold text-white'>Podcast Episode Link</h1>
 						<input
 							onChange={(e) => setFormState({ ...formState, podcastLink: e.target.value })}
-							className='w-72 h-12 border-2 border-black rounded-md group-hover:text-blue-500  text-black group-hover:font-bold shadow-lg hover:shadow-white focus:shadow-blue-400'
+							className='border-2 border-black rounded-md group-hover:text-blue-500  text-black group-hover:font-bold shadow-lg hover:shadow-white focus:shadow-blue-400'
 							type='url'
 						/>
 					</div>
+					<div className='group w-full flex flex-col'>
+						<h1 className=' text-white group-hover:text-blue-500 group-hover:font-bold'>Brand Name </h1>
+						<input
+							onChange={(e) => setFormState({ ...formState, brandName: e.target.value })}
+							className='border-2 border-black rounded-md text-black group-hover:font-bold shadow-lg hover:shadow-white focus:shadow-blue-400'
+							type='text'
+						/>
+					</div>
+					<div className='group w-full flex flex-col'>
+						<h1 className='group-hover:font-bold text-white group-hover:text-blue-400 '>Brand Description</h1>
+						<textarea
+							spellCheck='true'
+							onChange={(e) => setFormState({ ...formState, brandDescription: e.target.value })}
+							className='border-2 border-black rounded-md text-black group-hover:font-bold shadow-lg hover:shadow-white focus:shadow-blue-400 w-96 h-24'
+							type='text'
+						/>
+					</div>
+					<div className='group border-2 border-gray-600 hover:border-2 hover:border-white text-center p-2'>
+						<h1 className='group-hover:text-blue-500 group-hover:font-bold text-white text-2xl'>Brand Logo</h1>
+						<input name='brandLogoImage' className='text-white truncate mx-auto' onChange={handleImageOnChange} type='file' />
+					</div>
+					<div className='group border-2 border-gray-600 hover:border-2 hover:border-white  text-center p-2'>
+						<h1 className='group-hover:text-blue-500 group-hover:font-bold text-white text-2xl'>Product Image</h1>
+						<input className='text-white' name='productImage' onChange={handleImageOnChange} type='file' />
+					</div>
 				</div>
-			</div>
-			x
-			<div className='flex flex-col items-center justify-evenly w-fit h-full  py-6 px-8 space-y-8'>
-				<div className='flex flex-col items-center justify-center text-white hover:text-blue-400 hover:font-semi-bold'>
-					<h1 className='text-2xl text-center h-fit w-full'>Brand Logo</h1>
-					<input className='w-fit h-fit py-4 px-2 text-white' onChange={handleImageOnChange} type='file' />
-					{formState.images.length > 0 && <img className='w-fit h-fit py-4 px-2 ' src={formState.images[0].imageUrl} />}
+
+				{/* Middle Container */}
+				<div className='flex flex-col w-full h-full justify-between text-xl space-y-2 px-4 my-auto'>
+					{formState.brandLogoImage.length > 0 && (
+						<img className='w-fit h-96 py-4 px-2 mx-auto hover:border-2 hover:border-white ' src={formState.brandLogoImage[1].imageUrl} />
+					)}
+					{formState.productImage.length > 0 && (
+						<img className='w-fit h-96 py-4 px-2 mx-auto hover:border-2 hover:border-white' src={formState.productImage[1].imageUrl} />
+					)}
 				</div>
-				<div className='flex flex-col items-center justify-center text-white hover:text-blue-400 hover:font-semi-bold'>
-					{" "}
-					<h1 className='text-2xl text-center h-fit w-full text-white'>Product Image</h1>
-					<input className='w-fit h-fit py-4 px-2 text-white' onChange={handleImageOnChange} type='file' />
-					{formState.images.length > 1 && <img className='w-fit h-fit py-4 px-2' src={formState.images[1].imageUrl} />}
-				</div>
-			</div>
-			<div className='flex flex-col items-center justify-evenly w-fit h-full  py-6 px-8 space-y-8'>
-				<div className='flex flex-col items-center justify-center text-white hover:text-blue-400 hover:font-semi-bold'>
-					<h1 className='text-2xl text-center h-fit w-full'>Science Of Skin Award Iamge</h1>
+
+				{/* Right Container */}
+				<div className=' flex flex-col w-fit h-fit items-start justify-center text-xl text-center text-white px-4'>
+					<h1 className='text-center w-full text-2xl font-semibold pb-4 underline'>Science Of Skin Award Image</h1>
 					<div onClick={(e) => handleImageSelection(e)} id='html2Image' className='w-112 h-112 bg-white relative object-center'>
-						<img src={!state.awardImageApproved ? scienceOfSkinAwardTemplate : water} alt='backgroundImage' />
-						<img id='productIamge' className='absolute bottom-0 right-0' src={formState.images.length > 0 && formState.images[0].imageUrl} />
-						{/* Template Image */}
+						{/* Award Image Background */}
+						<img src={!state.awardImageApproved ? scienceOfSkinAwardTemplate : water} />
+						{/* Template Award Image */}
+						<img id='productImage' className='absolute bottom-0 right-0' src={formState.images.length > 0 && formState.images[0].imageUrl} />
 						<div className='flex flex-col justify-center items-center w-full h-full absolute bottom-0 ml-4 mb-4 rounded-full'>
 							<img id='award' className='w-fit h-fit ' src={formState.awardImage ? formState.awardImage : ""} />
 							<h1
@@ -326,53 +352,50 @@ const UpdateTool = () => {
 							</h1>
 						</div>
 					</div>
-				</div>
 
-				<div className='flex flex-col items-center justify-center text-white hover:text-blue-400 hover:font-semi-bold space-y-8'>
-					<AdjustImageButtons setDirection={handleDirection} />
-					<h1>Select </h1>
-					<select>
-						<option>Top Pick</option>
-						<option>Best Value</option>
-						<option>Best Newcomer</option>
-					</select>
-					<button
-						onClick={handleImageConvert}
-						className={classNames(
-							!state.imageApproved
-								? "bg-red-700 text-white font-semibold text-lg  px-4 py-2 w-fit  hover:text-white hover:bg-red-500 hover:font-bold active:translate-y-2 rounded-lg shadow-lg hover:shadow-md shadow-gray-600 hover:shadow-white"
-								: "bg-blue-600 text-white font-semibold text-lg  px-4 py-2 w-fit  hover:text-white hover:bg-blue-400 hover:font-bold active:translate-y-2 rounded-lg shadow-lg hover:shadow-md shadow-gray-600 hover:shadow-white"
-						)}
-					>
-						Approve Award Image
-					</button>
-					{state.awardImageApproved ? (
+					<div className='flex flex-col w-full items-center justify-center text-xl h-fit   hover:font-semi-bold  '>
+						<div className='bg-gray-700 px-4 py-2 mt-2 rounded-xl hover:border-2 hover:border-white shadow-gray-500 hover:shadow-lg'>
+							<AdjustImageButtons setDirection={handleDirection} />
+						</div>
+						<div className='flex flex-row w-full h-fit justify-between items-center mt-2'>
+							<div className='w-full space-y-2'>
+								<h1 className='text-white'>Select BackGround</h1>
+								<select onChange={(e) => handleBackgroundImageChange(e)} className='text-black'>
+									<option value='background1'>Background</option>
+									<option value='background2'>Background2</option>
+									<option value='background3'>Background3</option>
+								</select>
+							</div>
+							<div className='w-fulL space-y-2'>
+								<h1 className='text-white whitespace-nowrap'>Select Image To Adjust</h1>
+								<select className='text-black'>
+									<option>Background</option>
+									<option>Award</option>
+									<option>Product</option>
+								</select>
+							</div>
+						</div>
+
 						<button
-							onClick={handleImageConvert}
 							type='submit'
-							className={classNames(
-								!state.templateApproved
-									? "bg-red-700 text-white font-semibold text-lg  px-4 py-2 w-fit  hover:text-white hover:bg-red-500 hover:font-bold active:translate-y-2 rounded-lg shadow-lg hover:shadow-md shadow-gray-600 hover:shadow-white"
-									: "bg-blue-600 text-white font-semibold text-lg  px-4 py-2 w-fit  hover:text-white hover:bg-blue-400 hover:font-bold active:translate-y-2 rounded-lg shadow-lg hover:shadow-md shadow-gray-600 hover:shadow-white"
-							)}
+							className='mx-auto bottom-0 bg-red-700 text-white text-lg px-4 py-2 w-64 rounded-md hover:bg-blue-400 hover:font-bold active:translate-y-2 mt-2'
+							onClick={handleCompletionSteps}
 						>
-							Approve Top Pick Image
+							{formState.stepsToCompletionBtnText[formState.stepsToCompletion]}
 						</button>
-					) : (
-						""
-					)}
-					Would you like an image download button??????? Add image directional butttons
-					{state.imageApproved ? (
-						<button
-							onClick={handleImageConvert}
-							type='submit'
-							className='bg-blue-600 text-white font-semibold text-lg  px-4 py-2 w-48  hover:text-white hover:bg-blue-400 hover:font-bold active:translate-y-2 rounded-lg shadow-lg hover:shadow-md shadow-gray-600 hover:shadow-white'
-						>
-							Submit
-						</button>
-					) : (
-						""
-					)}
+					</div>
+				</div>
+				<div
+				className="flex flex-col w-full h-full items-end justify-center text-xl my-auto text-white px-4"
+				>
+					{formState.stepsToCompletionBtnText.map((step, index) => {
+						return (
+							<div key={index} className='flex flex-row w-max px-2 h-full my-auto '>
+								<CircleCheckIcon />
+								<h1 className='text-white text-start w-48 whitespace-nowrap my-auto  '>{step}</h1>
+							</div>
+						);
+					})}
 				</div>
 			</div>
 		</div>
