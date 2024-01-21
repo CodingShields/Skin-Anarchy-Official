@@ -201,7 +201,7 @@ const UpdateTool = () => {
 		return classes.filter(Boolean).join(" ");
 	}
 	const [position, setPosition] = useState({
-		productImage: { x: 0, y: 0, centerX: true, centerY: false },
+		productImage: { x: 0, y: 0 },
 		awardImage: { x: 0, y: 0 },
 		brandLogoImage: { x: 0, y: 0 },
 		yearText: { x: 0, y: 0 },
