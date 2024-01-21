@@ -1,17 +1,16 @@
 import { useState, useEffect, useRef } from "react";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { getFirestore, collection, addDoc, getDoc } from "firebase/firestore";
 import { storage } from "../../../../fireBase/firebaseConfig";
 import { v4 } from "uuid";
-import hourGlass from "../../../../assets/iconsAnimated/hourGlass.svg";
 import ScienceOfSkinAwardsCategoriesArray from "../../../../assets/data/admin/updateTools/scienceOfSkinAwards/scienceOfSkinAwardsCategoriesArray";
-import scienceOfSkinAwardTemplate from "../../../../assets/images/logos/scienceOfSkinAwardTemplate.svg";
-import productOne from "../../../../assets/images/logos/productOne.png";
+import awardTemplateArray from "../../../../assets/data/admin/updateTools/scienceOfSkinAwards/awardTemplateArray";
 import html2canvas from "html2canvas";
-import water from "../../../../assets/images/logos/water.jpg";
-import CircleCheckIcon from "../../../components/CircleCheckIcon";
 import isURL from "validator/lib/isURL";
 import AdjustImageButtons from "../../../components/buttons/AdjustImageButtons";
+import greenCheck from "../../../../assets/icons/greenCheck.svg";
+import emptyCircle from "../../../../assets/icons/emptyCircle.svg";
+import awardBGArray from "../../../../assets/data/admin/updateTools/scienceOfSkinAwards/awardBackgroundArray";
 const UpdateTool = () => {
 	const [state, setState] = useState({
 		loading: false,
@@ -36,41 +35,64 @@ const UpdateTool = () => {
 		images: [],
 		imageUrls: [],
 		awardImage: null,
-		awardBG: [
-			{
-				name: "background1",
-				selected: false,
-			},
-			{
-				name: "background2",
-				selected: false,
-			},
-			{
-				name: "background3",
-				selected: false,
-			},
-		],
+		finalImage: null,
+		selectedBackground: awardBGArray[0].image,
+		selectedAwardTemplate: awardTemplateArray[0].image,
+		backgroundImageArray: [awardBGArray],
+		awardTemplateArray: [awardTemplateArray],
 		stepsToCompletion: 0,
-		stepsToCompletionBtnText: ["Set Background Image", "Adjust Year Text", "Adjust Award Image", "Adjust Product Image", "Submit"],
+		stepsArr: [
+			{ id: 0, name: "Set Background Image", completed: false },
+			{ id: 1, name: "Adjust Year Text", completed: false },
+			{ id: 2, name: "Download and Check Image", completed: false },
+			{ id: 3, name: "Adjust Award Image", completed: false },
+			{ id: 4, name: "Adjust Product Image", completed: false },
+			{ id: 5, name: "Submit", completed: false },
+		],
 	});
 
-	// const resetForm = () => {
-	// 	setFormState({
-	// 		year: "",
-	// 		category: "",
-	// 		brandName: "",
-	// 		brandDescription: "",
-	// 		productName: "",
-	// 		productDescription: "",
-	// 		productLink: "",
-	// 		podcastLink: "",
-	// 		brandLogo: null,
-	// 		productImage: null,
-	// 		images: [],
-	// 		imageUrls: [],
-	// 		awardImage: [],
-	// 	});
-	// };
+	const resetForm = () => {
+		setFormState({
+			year: "",
+			category: "",
+			brandName: "",
+			brandDescription: "",
+			brandLogoImage: [],
+			productName: "",
+			productDescription: "",
+			productImage: [],
+			productLink: "",
+			podcastLink: "",
+			images: [],
+			imageUrls: [],
+			awardImage: null,
+			awardBG: [
+				{
+					name: "background1",
+					selected: false,
+				},
+				{
+					name: "background2",
+					selected: false,
+				},
+				{
+					name: "background3",
+					selected: false,
+				},
+			],
+			stepsToCompletion: 0,
+			stepsArr: [
+				{ id: 0, name: "Select Award Template", completed: false },
+				{ id: 0, name: "Set Background Image", completed: false },
+				{ id: 1, name: "Adjust Product Image", completed: false },
+				{ id: 1, name: "Adjust Year Text", completed: false },
+				{ id: 2, name: "Download and Check Image", completed: false },
+				{ id: 3, name: "Adjust Award Image", completed: false },
+				{ id: 4, name: "Adjust Product Image", completed: false },
+				{ id: 5, name: "Submit", completed: false },
+			],
+		});
+	};
 
 	// useEffect(() => {
 	// 	resetForm();
@@ -144,7 +166,7 @@ const UpdateTool = () => {
 		return years;
 	};
 
-	const handleImageOnChange = async (e) => {
+	const handleImageUploadOnChange = async (e) => {
 		e.preventDefault();
 		const newImage = e.target.files[0]; // Access the first file in the FileList
 		const name = e.target.name;
@@ -172,40 +194,78 @@ const UpdateTool = () => {
 		});
 	};
 	// This is the start of adding an image alignment tool
-	const [selectedElement, setSelectedElement] = useState(null);
+	const [selectedImage, setSelectedImage] = useState(null);
 	const [activeImage, setActiveImage] = useState(null);
 
 	function classNames(...classes) {
 		return classes.filter(Boolean).join(" ");
 	}
 	const [position, setPosition] = useState({
-		x: 0,
-		y: 0,
+		productImage: { x: 0, y: 0, centerX: true, centerY: false },
+		awardImage: { x: 0, y: 0 },
+		brandLogoImage: { x: 0, y: 0 },
+		yearText: { x: 0, y: 0 },
 	});
 
 	const handleDirection = (name) => {
+		console.log(name);
+
 		if (name === "up") {
-			setPosition({ ...position, y: position.y - 10 });
+			setPosition({
+				...position,
+				[selectedImage]: { ...position[selectedImage], y: position[selectedImage].y - 5 },
+			});
 		} else if (name === "down") {
-			setPosition({ ...position, y: position.y + 10 });
+			setPosition({
+				...position,
+				[selectedImage]: { ...position[selectedImage], y: position[selectedImage].y + 5 },
+			});
 		} else if (name === "left") {
-			setPosition({ ...position, x: position.x - 10 });
+			setPosition({
+				...position,
+				[selectedImage]: { ...position[selectedImage], x: position[selectedImage].x - 5 },
+			});
 		} else if (name === "right") {
-			setPosition({ ...position, x: position.x + 10 });
+			setPosition({
+				...position,
+				[selectedImage]: { ...position[selectedImage], x: position[selectedImage].x + 5 },
+			});
 		}
 	};
 
-	const handleBackgroundImageChange = (e) => {
+	const handleImageChange = (e) => {
 		e.preventDefault();
-		const selectedBG = e.target.value;
-		setFormState({ ...formState, awardBG: selectedBG });
-		console.log(selectedBG);
+		const image = e.target.name;
+		const index = e.target.value;
+		console.log(image);
+		setFormState({ ...formState, selectedBackground: awardBGArray[index].image });
+	};
+	const handleCompletionSteps = (e) => {
+		const valueId = e.target.value;
+		if (valueId === 5) {
+			resetForm();
+		} else {
+			setFormState({
+				...formState,
+				stepsToCompletion: formState.stepsToCompletion + 1,
+				stepsArr: formState.stepsArr.map((item, id) => {
+					if (id === formState.stepsToCompletion) {
+						return { ...item, completed: true };
+					} else {
+						return item;
+					}
+				}),
+			});
+		}
 	};
 
-	const handleCompletionSteps = () => {
-		setFormState({ ...formState, stepsToCompletion: formState.stepsToCompletion + 1 });
+	const handleImageSelection = (e) => {
+		e.preventDefault();
+		const value = e.target.value;
+		setSelectedImage(value);
+		console.log(value);
 	};
-
+	console.log(formState.productImage);
 	return (
 		// Tab Window
 		<div className='flex w-full h-full '>
@@ -223,7 +283,7 @@ const UpdateTool = () => {
 			)} */}
 
 			{/* Main Container */}
-			<div className='flex flex-row w-fit h-fit bg-zinc-800 rounded-lg  shadow-xl shadow-gray-500 space-x-8 py-4'>
+			<div className='flex flex-row w-full h-fit bg-zinc-800 rounded-lg  shadow-xl shadow-gray-500 space-x-8 py-4'>
 				{/* Left Container */}
 				<div className=' flex flex-col w-full h-fit items-start justify-center text-xl space-y-2 px-4'>
 					<div className='group w-1/2 flex flex-col'>
@@ -312,38 +372,62 @@ const UpdateTool = () => {
 					</div>
 					<div className='group border-2 border-gray-600 hover:border-2 hover:border-white text-center p-2'>
 						<h1 className='group-hover:text-blue-500 group-hover:font-bold text-white text-2xl'>Brand Logo</h1>
-						<input name='brandLogoImage' className='text-white truncate mx-auto' onChange={handleImageOnChange} type='file' />
+						<input name='brandLogoImage' className='text-white truncate mx-auto' onChange={handleImageUploadOnChange} type='file' />
 					</div>
 					<div className='group border-2 border-gray-600 hover:border-2 hover:border-white  text-center p-2'>
 						<h1 className='group-hover:text-blue-500 group-hover:font-bold text-white text-2xl'>Product Image</h1>
-						<input className='text-white' name='productImage' onChange={handleImageOnChange} type='file' />
+						<input className='text-white' name='productImage' onChange={handleImageUploadOnChange} type='file' />
 					</div>
 				</div>
 
 				{/* Middle Container */}
 				<div className='flex flex-col w-full h-full justify-between text-xl space-y-2 px-4 my-auto'>
 					{formState.brandLogoImage.length > 0 && (
-						<img className='w-fit h-96 py-4 px-2 mx-auto hover:border-2 hover:border-white ' src={formState.brandLogoImage[1].imageUrl} />
+						<div className='hover:border-2 hover:border-white'>
+							<h1 className='text-center w-full text-2xl text-white underline'>Brand Logo Preview</h1>
+							<img className='w-fit h-96 ' src={formState.brandLogoImage[1].imageUrl} />
+						</div>
 					)}
 					{formState.productImage.length > 0 && (
-						<img className='w-fit h-96 py-4 px-2 mx-auto hover:border-2 hover:border-white' src={formState.productImage[1].imageUrl} />
+						<div className='hover:border-2 hover:border-white'>
+							<h1 className='text-center w-full text-2xl text-white underline'>Product Preview</h1>
+							<img className='w-fit h-96 mx-auto ' src={formState.productImage[1].imageUrl} />
+						</div>
 					)}
 				</div>
 
 				{/* Right Container */}
-				<div className=' flex flex-col w-fit h-fit items-start justify-center text-xl text-center text-white px-4'>
+				<div className=' flex flex-col w-fit h-fit items-center justify-center text-xl text-center text-white px-4'>
 					<h1 className='text-center w-full text-2xl font-semibold pb-4 underline'>Science Of Skin Award Image</h1>
-					<div onClick={(e) => handleImageSelection(e)} id='html2Image' className='w-112 h-112 bg-white relative object-center'>
+					<div
+						// onClick={(e) => handleImageSelection(e)}
+						id='html2Image'
+						className='w-112 h-112 bg-white relative '
+					>
+						<div className='w-1 h-full absolute left-1/2 bg-red-400'></div>
+						<div className='w-full h-1 absolute left-0 top-1/2 bg-red-400'></div>
 						{/* Award Image Background */}
-						<img src={!state.awardImageApproved ? scienceOfSkinAwardTemplate : water} />
+
+						<img src={formState.selectedBackground} className='w-full h-full' />
 						{/* Template Award Image */}
-						<img id='productImage' className='absolute bottom-0 right-0' src={formState.images.length > 0 && formState.images[0].imageUrl} />
+						{formState.stepsToCompletion >= 3 && (
+							<img
+								id='productImage'
+								className='absolute '
+								style={{
+									left: position.productImage.x + "px",
+									top: position.productImage.y + "px",
+								}}
+								src={formState.productImage[1].imageUrl}
+							/>
+						)}
 						<div className='flex flex-col justify-center items-center w-full h-full absolute bottom-0 ml-4 mb-4 rounded-full'>
-							<img id='award' className='w-fit h-fit ' src={formState.awardImage ? formState.awardImage : ""} />
+							{!formState.stepsToCompletion === 5 && <img id='award' className='w-fit h-fit ' src={formState.awardImage} />}
+
 							<h1
 								style={{
-									left: 200 + position.x + "px",
-									top: 325 + position.y + "px",
+									left: 200 + position.yearText.x + "px",
+									top: 325 + position.yearText.y + "px",
 								}}
 								id='awardYearText'
 								className='text-2xl text-black font-bold absolute'
@@ -354,45 +438,71 @@ const UpdateTool = () => {
 					</div>
 
 					<div className='flex flex-col w-full items-center justify-center text-xl h-fit   hover:font-semi-bold  '>
-						<div className='bg-gray-700 px-4 py-2 mt-2 rounded-xl hover:border-2 hover:border-white shadow-gray-500 hover:shadow-lg'>
+						<div className='bg-gray-700 px-4 py-2 mt-2 rounded-xl border-2 border-white shadow-gray-500 hover:shadow-lg'>
 							<AdjustImageButtons setDirection={handleDirection} />
 						</div>
-						<div className='flex flex-row w-full h-fit justify-between items-center mt-2'>
+						<div className='flex flex-row w-full h-fit justify-center items-center mt-2'>
+							<div className='w-full space-y-2'>
+								<h1 className='text-white whitespace-nowrap'>Select BackGround</h1>
+								<select onChange={handleImageChange} className='text-black'>
+									{awardBGArray.map((item, index) => {
+										return (
+											<option key={index} value={index}>
+												{item.name}
+											</option>
+										);
+									})}
+								</select>
+							</div>
 							<div className='w-full space-y-2'>
 								<h1 className='text-white'>Select BackGround</h1>
-								<select onChange={(e) => handleBackgroundImageChange(e)} className='text-black'>
-									<option value='background1'>Background</option>
-									<option value='background2'>Background2</option>
-									<option value='background3'>Background3</option>
+								<select onChange={handleImageChange} className='text-black'>
+									{awardTemplateArray.map((item, index) => {
+										return (
+											<option key={index} name='awardTemp' value={index}>
+												{item.name}
+											</option>
+										);
+									})}
 								</select>
 							</div>
 							<div className='w-fulL space-y-2'>
 								<h1 className='text-white whitespace-nowrap'>Select Image To Adjust</h1>
-								<select className='text-black'>
-									<option>Background</option>
-									<option>Award</option>
-									<option>Product</option>
+								<select onChange={handleImageSelection} className='text-black'>
+									<option value='yearText'>Year Text</option>
+									<option value='awardImage'>Award</option>
+									<option value='brandLogoImage'>Brand Logo</option>
+									<option value='productImage'>Product Image</option>
 								</select>
 							</div>
 						</div>
 
 						<button
 							type='submit'
-							className='mx-auto bottom-0 bg-red-700 text-white text-lg px-4 py-2 w-64 rounded-md hover:bg-blue-400 hover:font-bold active:translate-y-2 mt-2'
+							className='mx-auto bottom-0 bg-red-700 whitespace-nowrap text-white text-lg px-4 py-2 w-64 rounded-md hover:bg-blue-400 hover:font-bold active:translate-y-2 mt-2'
 							onClick={handleCompletionSteps}
+							name={formState.stepsArr[formState.stepsToCompletion].name}
+							value={formState.stepsArr[formState.stepsToCompletion].id}
 						>
-							{formState.stepsToCompletionBtnText[formState.stepsToCompletion]}
+							{formState.stepsArr[formState.stepsToCompletion].name}
 						</button>
 					</div>
 				</div>
-				<div
-				className="flex flex-col w-full h-full items-end justify-center text-xl my-auto text-white px-4"
-				>
-					{formState.stepsToCompletionBtnText.map((step, index) => {
+				<div className='flex flex-col w-full h-full items-end justify-center text-xl my-auto text-white px-4'>
+					{formState.stepsArr.map((item, index) => {
 						return (
-							<div key={index} className='flex flex-row w-max px-2 h-full my-auto '>
-								<CircleCheckIcon />
-								<h1 className='text-white text-start w-48 whitespace-nowrap my-auto  '>{step}</h1>
+							<div key={index} className='flex flex-row w-max px-12 h-full m-auto '>
+								<div>
+									{item.completed ? (
+										<div className='h-fit w-fit absolute'>
+											<img className='h-16 w-16 stroke-white ' src={greenCheck} />{" "}
+										</div>
+									) : (
+										""
+									)}
+									<img src={emptyCircle} className='h-16 w-16 stroke-white ' />
+								</div>
+								<h1 className='text-white text-start w-48 whitespace-nowrap my-auto  '>{item.name}</h1>
 							</div>
 						);
 					})}
