@@ -213,22 +213,22 @@ const UpdateTool = () => {
 		if (name === "up") {
 			setPosition({
 				...position,
-				[selectedImage]: { ...position[selectedImage], y: position[selectedImage].y - 5 },
+				[selectedImage]: { ...position[selectedImage], y: position[selectedImage].y - 2.5 },
 			});
 		} else if (name === "down") {
 			setPosition({
 				...position,
-				[selectedImage]: { ...position[selectedImage], y: position[selectedImage].y + 5 },
+				[selectedImage]: { ...position[selectedImage], y: position[selectedImage].y + 2.5 },
 			});
 		} else if (name === "left") {
 			setPosition({
 				...position,
-				[selectedImage]: { ...position[selectedImage], x: position[selectedImage].x - 5 },
+				[selectedImage]: { ...position[selectedImage], x: position[selectedImage].x - 2.5 },
 			});
 		} else if (name === "right") {
 			setPosition({
 				...position,
-				[selectedImage]: { ...position[selectedImage], x: position[selectedImage].x + 5 },
+				[selectedImage]: { ...position[selectedImage], x: position[selectedImage].x + 2.5 },
 			});
 		}
 	};
