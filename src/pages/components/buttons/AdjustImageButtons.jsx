@@ -13,11 +13,35 @@ const AdjustImageButtons = ({ setDirection }) => {
 	};
 
 	return (
-		<div className='flex flex-row w-f h-fit justify-evenly items-center space-y-2 space-x-8'>
-			<img onClick={(e) => handleDirectionClick(e)} name='left' className=' w-16 ' src={arrowLeft} alt='arrowLeft' />
-			<img onClick={(e) => handleDirectionClick(e)} name='up' className=' w-16' src={arrowUp} alt='arrowUp' />
-			<img onClick={(e) => handleDirectionClick(e)} name='down' className='w-16' src={arrowDown} alt='arrowDown' />
-			<img onClick={(e) => handleDirectionClick(e)} name='right' className='w-16' src={arrowRight} alt='arrowRight' />
+		<div className='flex flex-row w-fit h-fit justify-evenly items-center space-y-2 space-x-8'>
+			<img
+				onClick={(e) => handleDirectionClick(e)}
+				name='left'
+				className='w-12 hover:fill-green-500 hover:text-green-500 hover:bg-green-500 hover:rounded-full hover:cursor-pointer hover:shadow-black hover:shadow-xl hover:scale-125'
+				src={arrowLeft}
+				alt='arrowLeft'
+			/>
+			<img
+				onClick={(e) => handleDirectionClick(e)}
+				name='up'
+				className='w-12 hover:fill-green-500 hover:text-green-500 hover:bg-green-500 hover:rounded-full hover:cursor-pointer hover:shadow-black hover:shadow-xl hover:scale-125'
+				src={arrowUp}
+				alt='arrowUp'
+			/>
+			<img
+				onClick={(e) => handleDirectionClick(e)}
+				name='down'
+				className='w-12 hover:fill-green-500 hover:text-green-500 hover:bg-green-500 hover:rounded-full hover:cursor-pointer hover:shadow-black hover:shadow-xl hover:scale-125'
+				src={arrowDown}
+				alt='arrowDown'
+			/>
+			<img
+				onClick={(e) => handleDirectionClick(e)}
+				name='right'
+				className='w-12 hover:fill-green-500 hover:text-green-500 hover:bg-green-500 hover:rounded-full hover:cursor-pointer hover:shadow-black hover:shadow-xl hover:scale-125'
+				src={arrowRight}
+				alt='arrowRight'
+			/>
 
 			<AddCircleBtn />
 			<MinusCircleBtn />
