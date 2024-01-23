@@ -1,0 +1,16 @@
+@font-face {
+	font-family: "CormorantGaramondLight";
+	src: url("./assets//fonts/CormorantGaramond/CormorantGaramondLight.ttf") format("trueType");
+}
+
+@font-face {
+	font-family: "GFSDidotRegular";
+	src: url("./assets//fonts/Didot/GFSDidotRegular.ttf") format("trueType");
+}
+.scienceOfSkinYearTextCormorantGaramondLight {
+	font-family: "CormorantGaramondLight";
+}
+
+.scienceOfSkinYearTextGFSDidotRegular {
+    font-family: "GFSDidotRegular";
+}

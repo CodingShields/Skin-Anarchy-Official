@@ -13,7 +13,7 @@ const AdjustImageButtons = ({ setDirection }) => {
 	};
 
 	return (
-		<div className='flex flex-row w-fit h-fit justify-evenly items-center space-y-2 space-x-8'>
+		<div className='flex flex-row w-fit mx-auto h-fit justify-evenly items-center space-y-2 space-x-8 py-4'>
 			<img
 				onClick={(e) => handleDirectionClick(e)}
 				name='left'
@@ -43,8 +43,6 @@ const AdjustImageButtons = ({ setDirection }) => {
 				alt='arrowRight'
 			/>
 
-			<AddCircleBtn />
-			<MinusCircleBtn />
 		</div>
 	);
 };

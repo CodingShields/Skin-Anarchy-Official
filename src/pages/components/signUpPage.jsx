@@ -28,7 +28,6 @@ const SignUp = () => {
   const { setWeeklyNewsletterNotification } = useUserStoreActions(
     (actions) => actions,
   );
-  const userStore = useUserStore((state) => state);
 
   const [form, setForm] = useState({
     firstName: "",

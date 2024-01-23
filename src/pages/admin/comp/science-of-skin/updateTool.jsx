@@ -7,13 +7,14 @@ import ScienceOfSkinAwardsCategoriesArray from "../../../../assets/data/admin/up
 import awardTemplateArray from "../../../../assets/data/admin/updateTools/scienceOfSkinAwards/awardTemplateArray";
 import html2canvas from "html2canvas";
 import isURL from "validator/lib/isURL";
-import AdjustImageButtons from "../../../components/buttons/AdjustImageButtons";
 import greenCheck from "../../../../assets/icons/greenCheck.svg";
 import emptyCircle from "../../../../assets/icons/emptyCircle.svg";
 import awardBGArray from "../../../../assets/data/admin/updateTools/scienceOfSkinAwards/awardBackgroundArray";
-import fontFamily from "../../../../assets/data/admin/updateTools/scienceOfSkinAwards/fontFamily";
-import fontColor from "../../../../assets/data/admin/updateTools/scienceOfSkinAwards/fontColor";
-import ColorBox from "../../../components/buttons/colorBox";
+import ImageUpdateTools from "../../../components/ImageUpdateTools";
+import "../../../../scienceOfSkin.css";
+import { useImageStore } from "../../../../stateStore/imageToolStateStore";
+import { useImageStoreActions } from "../../../../stateStore/imageToolStateStore";
+import SideBarHideBtn from "../../../components/buttons/SideBarHideBtn.jsx";
 const UpdateTool = () => {
 	const [state, setState] = useState({
 		loading: false,
@@ -22,11 +23,24 @@ const UpdateTool = () => {
 		errorMessage: "",
 		success: false,
 		successMessage: "",
+		sideBarHide: true,
 	});
-
+	const resetForm = useImageStore((state) => state.actions.resetForm);
+	const previewLargeImage = useImageStore((state) => state.previewLargeImage);
+	const fontColor = useImageStore((state) => state.fontColor);
+	const fontSize = useImageStore((state) => state.fontSize);
+	const fontFamily = useImageStore((state) => state.fontFamily);
+	const fontStyle = useImageStore((state) => state.fontStyle);
+	const fontWeight = useImageStore((state) => state.fontWeight);
+	const fontLetterSpacing = useImageStore((state) => state.fontLetterSpacing);
+	const gridAlign = useImageStore((state) => state.gridAlign);
+	const productImage = useImageStore((state) => state.productImage);
+	const awardImage = useImageStore((state) => state.awardImage);
+	const brandLogoImage = useImageStore((state) => state.brandLogoImage);
+	const yearText = useImageStore((state) => state.yearText);
+	const selectedImage = useImageStore((state) => state.selectedImage);
+	const { setPreviewLargeImage } = useImageStoreActions((actions) => actions);
 	const [formState, setFormState] = useState({
-		fontColor: "#ffffff",
-		fontFamily: "arial",
 		year: "",
 		category: "",
 		brandName: "",
@@ -45,7 +59,6 @@ const UpdateTool = () => {
 		selectedAwardTemplate: awardTemplateArray[0].image,
 		backgroundImageArray: [awardBGArray],
 		awardTemplateArray: [awardTemplateArray],
-		grid: true,
 		stepsToCompletion: 0,
 		stepsArr: [
 			{ id: 0, name: "Select Award Template", completed: false },
@@ -58,40 +71,10 @@ const UpdateTool = () => {
 			{ id: 8, name: "Submit", completed: false },
 		],
 	});
-	const [selectedImage, setSelectedImage] = useState("award");
 
-	const resetForm = () => {
-		setFormState({
-			year: "",
-			category: "",
-			brandName: "",
-			brandDescription: "",
-			brandLogoImage: [],
-			productName: "",
-			productDescription: "",
-			productImage: [],
-			productLink: "",
-			podcastLink: "",
-			images: [],
-			imageUrls: [],
-			awardImage: null,
-			stepsToCompletion: 0,
-			stepsArr: [
-				{ id: 0, name: "Select Award Template", completed: false },
-				{ id: 1, name: "Set Background Image", completed: false },
-				{ id: 2, name: "Adjust Product Image", completed: false },
-				{ id: 3, name: "Adjust Year Text", completed: false },
-				{ id: 4, name: "Download and Check Image", completed: false },
-				{ id: 5, name: "Adjust Award Image", completed: false },
-				{ id: 6, name: "Adjust Product Image", completed: false },
-				{ id: 7, name: "Submit", completed: false },
-			],
-		});
-	};
-
-	// useEffect(() => {
-	// 	resetForm();
-	// }, []);
+	useEffect(() => {
+		resetForm();
+	}, []);
 
 	// const handleUrlChange = (value) => {
 	// 	e.preventDefault();
@@ -192,46 +175,7 @@ const UpdateTool = () => {
 	function classNames(...classes) {
 		return classes.filter(Boolean).join(" ");
 	}
-	const [position, setPosition] = useState({
-		productImage: { x: 0, y: 0 },
-		awardImage: { x: 0, y: 0 },
-		brandLogoImage: { x: 0, y: 0 },
-		yearText: { x: 0, y: 0 },
-	});
 
-	const handleDirection = (name) => {
-		console.log(name);
-
-		if (name === "up") {
-			setPosition({
-				...position,
-				[selectedImage]: { ...position[selectedImage], y: position[selectedImage].y - 2.5 },
-			});
-		} else if (name === "down") {
-			setPosition({
-				...position,
-				[selectedImage]: { ...position[selectedImage], y: position[selectedImage].y + 2.5 },
-			});
-		} else if (name === "left") {
-			setPosition({
-				...position,
-				[selectedImage]: { ...position[selectedImage], x: position[selectedImage].x - 2.5 },
-			});
-		} else if (name === "right") {
-			setPosition({
-				...position,
-				[selectedImage]: { ...position[selectedImage], x: position[selectedImage].x + 2.5 },
-			});
-		}
-	};
-
-	const handleImageChange = (e) => {
-		e.preventDefault();
-		const image = e.target.id;
-		const index = e.target.value;
-		console.log(image);
-		setFormState({ ...formState, selectedBackground: awardBGArray[index].image });
-	};
 	const handleCompletionSteps = (e) => {
 		const valueId = e.target.value;
 		if (valueId === 5) {
@@ -251,42 +195,23 @@ const UpdateTool = () => {
 		}
 	};
 
-	const handleImageSelection = (e) => {
-		e.preventDefault();
-		const value = e.target.value;
-		setSelectedImage(value);
-		console.log(value);
+	const handleSideBar = () => {
+		setState({ ...state, sideBarHide: !state.sideBarHide });
 	};
 
-	const handleGridChange = (e) => {
-		e.preventDefault();
-		const name = e.target.name;
-		if (name === "on") {
-			setFormState({ ...formState, grid: true });
-		} else if (name === "off") {
-			setFormState({ ...formState, grid: false });
+
+	useEffect(() => {
+		if (previewLargeImage) {
+			setState({ ...state, sideBarHide: false });
 		}
-	};
+	}
+	, [previewLargeImage]);
 
-	const handleFontColorChange = (item) => {
-		const value = item.value;
-		const name = item.name;
-		console.log(value);
-		console.log(name);
-		setFormState({ ...formState, fontColor: name });
-	};
 
-	const handleFontFamilyChange = (e) => {
-		const value = e.target.value;
-		const name = e.target.name;
-		setFormState({ ...formState, fontFamily: value });
-		console.log(value);
-		console.log(name);
-	};
-	console.log(formState.fontColor);
+
 	return (
 		// Tab Window
-		<div className='flex w-full h-full '>
+		<div className='flex w-fit h-fit mx-auto '>
 			{/* Error Modal */}
 			{/* {state.uploading ? (
 				<div className='absolute bg-opacity-50 bg-gray-500 w-full h-full z-10 top-0 left-0'>
@@ -301,9 +226,16 @@ const UpdateTool = () => {
 			)} */}
 
 			{/* Main Container */}
-			<div className='flex flex-row w-full h-fit bg-zinc-800 rounded-lg  shadow-xl shadow-gray-500 space-x-8 py-4'>
+			<div className='flex flex-row w-fit h-fit bg-zinc-800 rounded-lg  shadow-xl shadow-gray-500 space-x-8 py-4 transition-all duration-500 ease-in-out'>
 				{/* Left Container */}
-				<div className=' flex flex-col w-full h-fit items-start justify-center text-xl space-y-2 px-4'>
+				<div
+					className={classNames(
+						"transition-all ease-in-out duration-50",
+						state.sideBarHide
+							? "w-full flex flex-col h-fit items-start justify-center text-xl 0 space-y-2 px-4 scale-100 duration-500 ease-in-out"
+							: "duration-500 w-0 h-fit ease-in-out scale-0"
+					)}
+				>
 					<div className='group w-1/2 flex flex-col'>
 						<h1 className=' group-hover:text-blue-500 group-hover:font-bold text-white '>Select Year</h1>
 						<select
@@ -397,7 +329,10 @@ const UpdateTool = () => {
 						<input className='text-white' name='productImage' onChange={handleImageUploadOnChange} type='file' />
 					</div>
 				</div>
-
+				<div className='w-fit m-0 p-2 h-fit text-white text-center group group-hover:scale-115 hover:cursor-pointer'>
+					<SideBarHideBtn onClick={handleSideBar} />
+					<h1 className='text-white whitespace-nowrap mt-4 group-hover:text-green-500  '></h1>
+				</div>
 				{/* Middle Container */}
 				<div className='flex flex-col w-full h-full justify-between text-xl space-y-2 px-4 my-auto'>
 					{formState.brandLogoImage.length > 0 && (
@@ -413,15 +348,20 @@ const UpdateTool = () => {
 						</div>
 					)}
 				</div>
-
 				{/* Right Container */}
 				<div className=' flex flex-col w-fit h-fit items-center justify-center text-xl text-center text-white px-4'>
 					<h1 className='text-center w-full text-2xl font-semibold pb-4 underline'>Science Of Skin Award Image</h1>
-					<div id='html2Image' className='w-112 h-112 bg-white relative '>
-						<div className={classNames(formState.grid ? "w-1 h-full absolute left-1/2 bg-red-400" : "hidden")}></div>
-						<div className={classNames(formState.grid ? "w-full h-1 absolute left-0 top-1/2 bg-red-400" : "hidden")}></div>
+					<div
+						id='html2Image'
+						className={classNames(
+							"w-112 h-112 bg-white relative transition-all duration-400 ease-in-out rounded-2xl ",
+							previewLargeImage && "scale-150 mx-12 shadow-black shadow-2xl -translate-x-24"
+						)}
+					>
+						<div className={classNames(gridAlign ? "w-1 h-full absolute left-1/2 bg-red-400" : "hidden")}></div>
+						<div className={classNames(gridAlign ? "w-full h-1 absolute left-0 top-1/2 bg-red-400" : "hidden")}></div>
 						{/* Award Image Background */}
-						{formState.stepsToCompletion >= 3 && <img src={formState.selectedBackground} className='w-full h-full' />}
+						{formState.stepsToCompletion >= 3 && <img src={selectedBackground} className='w-full h-full' />}
 						{/* Award Iamge */}
 						<img src={formState.selectedAwardTemplate} className='w-full h-full' />
 						{/* Product Image */}
@@ -430,8 +370,8 @@ const UpdateTool = () => {
 								id='productImage'
 								className='absolute '
 								style={{
-									left: position.productImage.x + "px",
-									top: position.productImage.y + "px",
+									left: productImage.x + "px",
+									top: productImage.y + "px",
 								}}
 								src={formState.productImage[1].imageUrl}
 							/>
@@ -441,19 +381,20 @@ const UpdateTool = () => {
 
 							<h1
 								style={{
-									left: 200 + position.yearText.x + "px",
-									top: 325 + position.yearText.y + "px",
+									left: 200 + yearText.x + "px",
+									top: 325 + yearText.y + "px",
 								}}
 								id='awardYearText'
 								className='text-2xl text-black font-bold absolute'
 							>
 								<h1
-									fontLink={formState.fontFamily === "CormorantGaramondLight" ? CormorantGaramondLight : "none"}
 									style={{
-										fontFamily: formState.fontFamily === "CormorantGaramondLight" ? CormorantGaramondLight : "none",
-										color: formState.fontColor,
+										color: fontColor,
+										fontSize: fontSize + "px",
+										fontFamily: fontFamily,
+										fontStyle: fontStyle,
 									}}
-									className={`text-xl font-${formState.fontFamily} text-${formState.fontColor}`}
+									className={`text-${fontColor} ${fontWeight} ${fontLetterSpacing}`}
 								>
 									{formState.year}
 								</h1>
@@ -462,104 +403,12 @@ const UpdateTool = () => {
 					</div>
 
 					<div className='flex flex-col w-fit items-center justify-center text-xl h-fit   hover:font-semi-bold  '>
-						<div className='bg-gray-700 px-4 py-2 mt-2 rounded-xl border-2 border-white shadow-gray-500 hover:shadow-lg'>
-							<h1>Turn Alignment Grid On/Off</h1>
-							<input
-								onClick={handleGridChange}
-								className={formState.grid ? "mx-2 text-green-500 caret-green-500 bg-green-500 " : "bg-white mx-2"}
-								type='radio'
-								name='on'
-								checked={formState.grid}
-							/>
-							On
-							<input
-								onClick={handleGridChange}
-								className={!formState.grid ? "bg-red-500 mx-2" : "bg-white mx-2"}
-								type='radio'
-								name='off'
-								checked={!formState.grid}
-							/>
-							Off
-							<AdjustImageButtons setDirection={handleDirection} />
-							<div>
-								<div className='flex flex-col w-full justify-start items-start space-y-4 mt-4'>
-									<div className='flex flex-row w-full justify-start items-start text-xl space-x-6'>
-										<h1> Choose Font Color</h1>
-										{fontColor.map((item, index) => {
-											return (
-												<div
-													className='flex flex-row space-x-2 group'
-													onClick={() => handleFontColorChange(item)} // Pass the entire item object
-													key={index}
-												>
-													<ColorBox color={item.value} />
-													<h1 className='capitalize '>{item.name}</h1>
-												</div>
-											);
-										})}
-									</div>
-									<div className='flex flex-row w-full justify-start items-center text-xl space-x-4 '>
-										<h1> Choose Font Family</h1>
-										<select onChange={(e) => handleFontFamilyChange(e)} value={formState.fontFamily}>
-											{fontFamily.map((item, index) => {
-												return (
-													<option
-														style={{
-															fontFamily: item.fontFamily,
-														}}
-														className='text-black '
-														key={index}
-														value={item.fontFamily}
-													>
-														{item.name}
-													</option>
-												);
-											})}
-										</select>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div className='flex flex-row w-fit h-fit justify-center items-center mt-2 space-x-4'>
-							<div className='w-fulL space-y-2 group'>
-								<h1 className='text-white whitespace-nowrap group-hover:text-blue-500 group-hover:scale-110'>Image To Adjust</h1>
-								<select onChange={handleImageSelection} className='text-black group-hover:text-blue-500 group-hover:font-semibold rounded-md'>
-									<option value='awardImage'>Award</option>
-									<option value='yearText'>Year Text</option>
-									<option value='backgroundImage'>Background Image</option>
-									<option value='productImage'>Product Image</option>
-									<option value='brandLogoImage'>Brand Logo</option>
-								</select>
-							</div>
-							<div className='w-fit space-y-2'>
-								<h1 className='text-white'>Select Award</h1>
-								<select onChange={handleImageSelection} className='text-black group-hover:text-blue-500 group-hover:font-semibold rounded-md	'>
-									{awardTemplateArray.map((item, index) => {
-										return (
-											<option key={index} id='awardTemp' value={index}>
-												{item.name}
-											</option>
-										);
-									})}
-								</select>
-							</div>
-							<div className='w-fit space-y-2 group'>
-								<h1 className='text-white whitespace-nowrap group-hover:text-blue-500 group-hover:scale-110'>Select BackGround</h1>
-								<select onChange={handleImageSelection} className='text-black group-hover:text-blue-500 group-hover:font-semibold rounded-md'>
-									{awardBGArray.map((item, index) => {
-										return (
-											<option key={index} value={index} id='awardBG'>
-												{item.name}
-											</option>
-										);
-									})}
-								</select>
-							</div>
-						</div>
-
 						<button
 							type='submit'
-							className='mx-auto bottom-0 bg-red-700 whitespace-nowrap text-white text-lg px-4 py-2 w-64 rounded-md hover:bg-blue-400 hover:font-bold active:translate-y-2 mt-2'
+							className={classNames(
+								"mx-auto shadow-black shadow-xl bottom-0 bg-red-500 whitespace-nowrap text-white text-lg px-4 py-2 w-64 rounded-md hover:bg-blue-400 hover:font-bold active:translate-y-2 mt-2 ease-in-out transition-all active:delay-200 focus:duration-400",
+								previewLargeImage && "translate-y-40 -translate-x-24"
+							)}
 							onClick={handleCompletionSteps}
 							name={formState.stepsArr[formState.stepsToCompletion].name}
 							value={formState.stepsArr[formState.stepsToCompletion].id}
@@ -568,6 +417,7 @@ const UpdateTool = () => {
 						</button>
 					</div>
 				</div>
+				<ImageUpdateTools />{" "}
 				<div className='flex flex-col w-full h-full items-start text-xl  text-white px-4'>
 					<div className='w-full border-b-2 border-white mb-2'>
 						<h1 className='text-white text-2xl font-semibold text-center w-full h-full my-auto'>CheckList</h1>

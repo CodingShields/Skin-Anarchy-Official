@@ -8,11 +8,11 @@ const fontFamily = [
 	},
 	{
 		name: "Didot",
-		fontFamily: GFSDidotRegular,
+		fontFamily: "GFSDidotRegular",
 	},
 	{
 		name: "Cormorant Garamond Light",
-		fontFamily: CormorantGaramondLight,
+		fontFamily: "CormorantGaramondLight",
 	},
 ];
 
