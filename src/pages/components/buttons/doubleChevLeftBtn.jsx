@@ -1,7 +1,7 @@
 const DoubleChevLeftBtn = ({ onClick }) => {
 	return (
 		<svg
-			className='hover:stroke-green-500 hover:cursor-pointer active:translate-x-2 w-12'
+			className='hover:stroke-green-500 hover:cursor-pointer active:translate-x-2 w-12 mx-auto'
 			onClick={onClick}
 			xmlns='http://www.w3.org/2000/svg'
 			fill='none'

@@ -35,8 +35,8 @@ const ImageUpdateTools = () => {
 	const awardImage = useImageStore((state) => state.awardImage);
 	const brandLogoImage = useImageStore((state) => state.brandLogoImage);
 	const yearText = useImageStore((state) => state.yearText);
-    const selectedImage = useImageStore((state) => state.selectedImage);
-    const previewLargeImage = useImageStore((state) => state.previewLargeImage);
+	const selectedImage = useImageStore((state) => state.selectedImage);
+	const previewLargeImage = useImageStore((state) => state.previewLargeImage);
 
 	const handleImageSelection = (e) => {
 		e.preventDefault();
@@ -158,7 +158,7 @@ const ImageUpdateTools = () => {
 
 	const handleFontStyleChange = (e) => {
 		const value = e.target.value;
-		setImageState({ ...imageState, fontStyle: value });
+		setFontStyle(value);
 	};
 
 	const handleFontWeightChange = (e) => {
@@ -168,12 +168,11 @@ const ImageUpdateTools = () => {
 
 	const handleFontLetterSpacingChange = (e) => {
 		const value = e.target.value;
-        setFontLetterSpacing(value);
+		setFontLetterSpacing(value);
 	};
 
 	const handlePreviewImageClick = () => {
 		setPreviewLargeImage(!previewLargeImage);
-
 	};
 
 	function classNames(...classes) {
@@ -181,7 +180,7 @@ const ImageUpdateTools = () => {
 	}
 
 	return (
-		<div className='flex flex-col h-fit max-w-max bg-gray-700 px-4 py-2 mt-2 rounded-xl border-2 border-white shadow-gray-500 hover:shadow-lg text-white'>
+		<div className='flex flex-col h-fit w-fit bg-gray-700 px-4 py-2 mt-2 rounded-xl border-2 border-white shadow-gray-500 hover:shadow-lg text-white'>
 			<div className='flex flex-row w-fit h-fit justify-center items-center mt-2 space-x-4 text-center'>
 				<div className='w-fit space-y-2 group'>
 					<h1 className='text-white whitespace-nowrap group-hover:text-blue-500 group-hover:scale-110 '>Image To Adjust</h1>
@@ -260,12 +259,12 @@ const ImageUpdateTools = () => {
 				</div>
 				<div>
 					<div className='flex flex-col w-full space-y-4 mt-6'>
-						<div className='flex flex-row w-full justify-evenly items-center text-md space-x-6'>
-							<h1 className='whitespace-nowrap '> Choose Font Color</h1>
+						<div className='flex flex-row w-full h-12 justify-between items-center text-md space-x-6 group hover:border-2 hover:border-white hover:px-2 hover:py-2'>
+							<h1 className='whitespace-nowrap group-hover:text-blue-500 group-hover:font-semibold group-hover:underline'>Choose Font Color</h1>
 							{fontState.fontData.fontColor.map((item, index) => {
 								return (
 									<div
-										className='flex flex-row space-x-2 group justify-between items-center'
+										className='flex flex-row space-x-2 group justify-between items-center '
 										onClick={() => handleFontColorChange(item)} // Pass the entire item object
 										key={index}
 									>
@@ -276,9 +275,13 @@ const ImageUpdateTools = () => {
 							})}
 						</div>
 
-						<div className='flex flex-row w-full justify-between items-center text-md space-x-6'>
-							<h1 className='whitespace-nowrap'> Choose Font Family</h1>
-							<select className='w-64 text-black font-semibold' onChange={(e) => handleFontFamilyChange(e)} value={fontFamily}>
+						<div className='flex flex-row w-full justify-between items-center text-md space-x-6 group '>
+							<h1 className='whitespace-nowrap group-hover:text-blue-500 group-hover:font-semibold group-hover:underline'>Choose Font Family</h1>
+							<select
+								className='w-64 text-black font-semibold group-hover:text-blue-500 transition-all duration-300 ease-in-out group-hover:font-bold outline-1 outline-blue-500 group-hover:-translate-x-30'
+								onChange={(e) => handleFontFamilyChange(e)}
+								value={fontFamily}
+							>
 								{fontState.fontData.fontFamily.map((item, index) => {
 									return (
 										<option
@@ -295,9 +298,13 @@ const ImageUpdateTools = () => {
 								})}
 							</select>
 						</div>
-						<div className='flex flex-row w-full justify-between items-center text-md space-x-6'>
-							<h1 className='whitespace-nowrap'> Choose Font Weight</h1>
-							<select className='w-64 text-black font-semibold' onChange={(e) => handleFontWeightChange(e)} value={fontWeight}>
+						<div className='flex flex-row w-full justify-between items-center text-md space-x-6 group'>
+							<h1 className='whitespace-nowrap group-hover:text-blue-500 group-hover:font-semibold group-hover:underline'>Choose Font Weight</h1>
+							<select
+								className='w-64 text-black font-semibold group-hover:text-blue-500 transition-all duration-300 ease-in-out group-hover:font-bold outline-1 outline-blue-500 group-hover:-translate-x-30'
+								onChange={(e) => handleFontWeightChange(e)}
+								value={fontWeight}
+							>
 								{fontState.fontData.fontWeight.map((item, index) => {
 									return (
 										<option className='text-black text-lg font-bold' key={index} value={item.value}>
@@ -307,9 +314,13 @@ const ImageUpdateTools = () => {
 								})}
 							</select>
 						</div>
-						<div className='flex flex-row w-full justify-between items-center text-md space-x-6'>
-							<h1 className='whitespace-nowrap'> Choose Font Style</h1>
-							<select className='w-64 text-black font-semibold' onChange={(e) => handleFontStyleChange(e)} value={fontStyle}>
+						<div className='flex flex-row w-full justify-between items-center text-md space-x-6 group'>
+							<h1 className='whitespace-nowrap group-hover:text-blue-500 group-hover:font-semibold group-hover:underline'>Choose Font Style</h1>
+							<select
+								className='w-64 text-black font-semibold group-hover:text-blue-500 transition-all duration-300 ease-in-out group-hover:font-bold outline-1 outline-blue-500 group-hover:-translate-x-30'
+								onChange={(e) => handleFontStyleChange(e)}
+								value={fontStyle}
+							>
 								{fontState.fontData.fontStyle.map((item, index) => {
 									return (
 										<option className='text-black text-lg font-bold' key={index} value={item.value}>
@@ -319,9 +330,13 @@ const ImageUpdateTools = () => {
 								})}
 							</select>
 						</div>
-						<div className='flex flex-row w-fit justify-center items-center text-md space-x-6'>
-							<h1 className='whitespace-nowrap'>Choose Letter Spacing</h1>
-							<select className='w-64 text-black font-semibold' onChange={(e) => handleFontLetterSpacingChange(e)} value={fontLetterSpacing}>
+						<div className='flex flex-row w-full justify-between items-center text-md space-x-6 group'>
+							<h1 className='whitespace-nowrap group-hover:text-blue-500 group-hover:font-semibold group-hover:underline'>Choose Letter Spacing</h1>
+							<select
+								className='w-64 text-black font-semibold group-hover:text-blue-500 transition-all duration-300 ease-in-out group-hover:font-bold outline-1 outline-blue-500 group-hover:-translate-x-30'
+								onChange={(e) => handleFontLetterSpacingChange(e)}
+								value={fontLetterSpacing}
+							>
 								{fontState.fontData.fontLetterSpacing.map((item, index) => {
 									return (
 										<option className='text-black text-lg font-bold' key={index} value={item.value}>
@@ -336,8 +351,8 @@ const ImageUpdateTools = () => {
 							<button
 								onClick={handlePreviewImageClick}
 								className={classNames(
-									"w-fit h-fit bg-green-500 text-xl px-5 py-3 rounded-lg transition-all shadow-lg ease-in-out shadow-black hover:cursor-pointer",
-									!previewLargeImage ? "bg-green-500 active:translate-y-2 hover:bg-green-700" : "active:translate-y-2 bg-red-500 hover:bg-red-700"
+									"w-fit h-fit text-xl px-5 py-3 rounded-lg transition-all shadow-lg ease-in-out shadow-black hover:cursor-pointer hover:scale-125",
+									!previewLargeImage ? "active:bg-green-500 active:translate-y-2 hover:bg-green-700 bg-green-500" : "active:bg-red-500 bg-red-500 active:translate-y-2 focus:bg-red-500  hover:bg-red-700"
 								)}
 							>
 								View {!previewLargeImage ? "Larger Image" : "Smaller Image"}

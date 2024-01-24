@@ -74,6 +74,7 @@ const UpdateTool = () => {
 
 	useEffect(() => {
 		resetForm();
+		setState({ ...state, sideBarHide: true });
 	}, []);
 
 	// const handleUrlChange = (value) => {
@@ -199,15 +200,11 @@ const UpdateTool = () => {
 		setState({ ...state, sideBarHide: !state.sideBarHide });
 	};
 
-
 	useEffect(() => {
 		if (previewLargeImage) {
 			setState({ ...state, sideBarHide: false });
 		}
-	}
-	, [previewLargeImage]);
-
-
+	}, [previewLargeImage]);
 
 	return (
 		// Tab Window
@@ -226,13 +223,13 @@ const UpdateTool = () => {
 			)} */}
 
 			{/* Main Container */}
-			<div className='flex flex-row w-fit h-fit bg-zinc-800 rounded-lg  shadow-xl shadow-gray-500 space-x-8 py-4 transition-all duration-500 ease-in-out'>
+			<div className='flex flex-row w-fit h-fit bg-zinc-800 rounded-lg  shadow-xl shadow-gray-500 space-x-4 py-4 transition-all duration-500 ease-in-out'>
 				{/* Left Container */}
 				<div
 					className={classNames(
-						"transition-all ease-in-out duration-50",
+						"transition-all ease-in-out duration-50 m-0",
 						state.sideBarHide
-							? "w-full flex flex-col h-fit items-start justify-center text-xl 0 space-y-2 px-4 scale-100 duration-500 ease-in-out"
+							? "w-fit flex flex-col h-fit items-start justify-center text-xl  space-y-2 pl-4 scale-100 duration-500 ease-in-out"
 							: "duration-500 w-0 h-fit ease-in-out scale-0"
 					)}
 				>
@@ -329,12 +326,17 @@ const UpdateTool = () => {
 						<input className='text-white' name='productImage' onChange={handleImageUploadOnChange} type='file' />
 					</div>
 				</div>
-				<div className='w-fit m-0 p-2 h-fit text-white text-center group group-hover:scale-115 hover:cursor-pointer'>
+				<div className=' my-auto mx-0  w-fit h-fit text-white group group-hover:scale-115 hover:cursor-pointer'>
 					<SideBarHideBtn onClick={handleSideBar} />
-					<h1 className='text-white whitespace-nowrap mt-4 group-hover:text-green-500  '></h1>
 				</div>
 				{/* Middle Container */}
-				<div className='flex flex-col w-full h-full justify-between text-xl space-y-2 px-4 my-auto'>
+				<div
+					className={classNames(
+						formState.brandLogoImage.length === 0 && formState.productImage.length === 0
+							? "w-0 p-0 m-0 h-0 hidden collapse"
+							: "flex flex-col w-full h-full justify-center items-center text-xl space-y-2 m-0"
+					)}
+				>
 					{formState.brandLogoImage.length > 0 && (
 						<div className='hover:border-2 hover:border-white'>
 							<h1 className='text-center w-full text-2xl text-white underline'>Brand Logo Preview</h1>
@@ -342,20 +344,20 @@ const UpdateTool = () => {
 						</div>
 					)}
 					{formState.productImage.length > 0 && (
-						<div className='hover:border-2 hover:border-white'>
+						<div className='hover:border-2 hover:border-white w-fit'>
 							<h1 className='text-center w-full text-2xl text-white underline'>Product Preview</h1>
 							<img className='w-fit h-96 mx-auto ' src={formState.productImage[1].imageUrl} />
 						</div>
 					)}
 				</div>
 				{/* Right Container */}
-				<div className=' flex flex-col w-fit h-fit items-center justify-center text-xl text-center text-white px-4'>
+				<div className=' flex flex-col w-fit h-fit items-center justify-center text-xl text-center text-white p-0 m-0 my-auto'>
 					<h1 className='text-center w-full text-2xl font-semibold pb-4 underline'>Science Of Skin Award Image</h1>
 					<div
 						id='html2Image'
 						className={classNames(
 							"w-112 h-112 bg-white relative transition-all duration-400 ease-in-out rounded-2xl ",
-							previewLargeImage && "scale-150 mx-12 shadow-black shadow-2xl -translate-x-24"
+							previewLargeImage && "scale-175  shadow-black shadow-2xl -translate-x-32 mr-12 "
 						)}
 					>
 						<div className={classNames(gridAlign ? "w-1 h-full absolute left-1/2 bg-red-400" : "hidden")}></div>
@@ -417,8 +419,11 @@ const UpdateTool = () => {
 						</button>
 					</div>
 				</div>
-				<ImageUpdateTools />{" "}
-				<div className='flex flex-col w-full h-full items-start text-xl  text-white px-4'>
+				<div className='flex w-fit h-fit items-center justify-center m-0 my-auto'>
+					<ImageUpdateTools />{" "}
+				</div>
+
+				<div className='flex flex-col w-fit h-fit justify-center items-center my-auto text-xl  text-white px-4'>
 					<div className='w-full border-b-2 border-white mb-2'>
 						<h1 className='text-white text-2xl font-semibold text-center w-full h-full my-auto'>CheckList</h1>
 					</div>
