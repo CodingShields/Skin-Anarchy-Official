@@ -261,18 +261,22 @@ const ImageUpdateTools = () => {
 					<div className='flex flex-col w-full space-y-4 mt-6'>
 						<div className='flex flex-row w-full h-12 justify-between items-center text-md space-x-6 group hover:border-2 hover:border-white hover:px-2 hover:py-2'>
 							<h1 className='whitespace-nowrap group-hover:text-blue-500 group-hover:font-semibold group-hover:underline'>Choose Font Color</h1>
-							{fontState.fontData.fontColor.map((item, index) => {
-								return (
-									<div
-										className='flex flex-row space-x-2 group justify-between items-center '
-										onClick={() => handleFontColorChange(item)} // Pass the entire item object
-										key={index}
-									>
-										<ColorBox color={item.value} />
-										<h1 className='capitalize '>{item.name}</h1>
-									</div>
-								);
-							})}
+							<div
+							className="flex flex-row space-x-16 w-fit group justify-center items-center mx-auto"
+							>
+								{fontState.fontData.fontColor.map((item, index) => {
+									return (
+										<div
+											className='flex flex-row space-x-2 w-fit group justify-between items-center '
+											onClick={() => handleFontColorChange(item)} // Pass the entire item object
+											key={index}
+										>
+											<ColorBox color={item.value} />
+											<h1 className='capitalize w-fit text-lg '>{item.name}</h1>
+										</div>
+									);
+								})}
+							</div>
 						</div>
 
 						<div className='flex flex-row w-full justify-between items-center text-md space-x-6 group '>
@@ -352,7 +356,9 @@ const ImageUpdateTools = () => {
 								onClick={handlePreviewImageClick}
 								className={classNames(
 									"w-fit h-fit text-xl px-5 py-3 rounded-lg transition-all shadow-lg ease-in-out shadow-black hover:cursor-pointer hover:scale-125",
-									!previewLargeImage ? "active:bg-green-500 active:translate-y-2 hover:bg-green-700 bg-green-500" : "active:bg-red-500 bg-red-500 active:translate-y-2 focus:bg-red-500  hover:bg-red-700"
+									!previewLargeImage
+										? "active:bg-green-500 active:translate-y-2 hover:bg-green-700 bg-green-500"
+										: "active:bg-red-500 bg-red-500 active:translate-y-2 focus:bg-red-500  hover:bg-red-700"
 								)}
 							>
 								View {!previewLargeImage ? "Larger Image" : "Smaller Image"}
