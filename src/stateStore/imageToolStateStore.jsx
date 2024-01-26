@@ -14,7 +14,9 @@ const currentImageStore = {
 	awardImage: { x: 0, y: 0 },
 	brandLogoImage: { x: 0, y: 0 },
 	yearText: { x: 0, y: 0 },
-	selectedImage: "awardImage",
+	imageToAdjust: "awardImage",
+	selectedAwardTemplate: "",
+	selectedBackgroundTemplate: "",
 };
 
 export const useImageStore = create((set, get) => ({
@@ -36,7 +38,9 @@ export const useImageStore = create((set, get) => ({
 				awardImage: state.awardImage,
 				brandLogoImage: state.brandLogoImage,
 				yearText: state.yearText,
-				selectedImage: state.selectedImage,
+				imageToAdjust: state.imageToAdjust,
+				selectedAwardTemplate: state.selectedAwardTemplate,
+				selectedBackgroundTemplate: state.selectedBackgroundTemplate,
 			};
 		},
 		resetForm: () => set(currentImageStore),
@@ -53,7 +57,9 @@ export const useImageStore = create((set, get) => ({
 		setAwardImage: (obj) => set({ awardImage: obj }),
 		setBrandLogoImage: (obj) => set({ brandLogoImage: obj }),
 		setYearText: (obj) => set({ yearText: obj }),
-		setSelectedImage: (str) => set({ selectedImage: str }),
+		setImageToAdjust: (str) => set({ imageToAdjust: str }),
+		setSelectedAwardTemplate: (str) => set({ selectedAwardTemplate: str }),
+		setSelectedBackgroundTemplate: (str) => set({ selectedBackgroundTemplate: str }),
 	},
 }));
 

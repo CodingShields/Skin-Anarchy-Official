@@ -23,8 +23,9 @@ const ImageUpdateTools = () => {
 	const { setAwardImage } = useImageStoreActions((actions) => actions);
 	const { setBrandLogoImage } = useImageStoreActions((actions) => actions);
 	const { setYearText } = useImageStoreActions((actions) => actions);
-	const { setSelectedImage } = useImageStoreActions((actions) => actions);
-	const fontColor = useImageStore((state) => state.fontColor);
+	const { setImageToAdjust } = useImageStoreActions((actions) => actions);
+	const { setSelectedAwardTemplate } = useImageStoreActions((actions) => actions);
+	const { setSelectedBackgroundTemplate } = useImageStoreActions((actions) => actions);
 	const fontSize = useImageStore((state) => state.fontSize);
 	const fontFamily = useImageStore((state) => state.fontFamily);
 	const fontStyle = useImageStore((state) => state.fontStyle);
@@ -35,93 +36,109 @@ const ImageUpdateTools = () => {
 	const awardImage = useImageStore((state) => state.awardImage);
 	const brandLogoImage = useImageStore((state) => state.brandLogoImage);
 	const yearText = useImageStore((state) => state.yearText);
-	const selectedImage = useImageStore((state) => state.selectedImage);
+	const imageToAdjust = useImageStore((state) => state.imageToAdjust);
+	const selectedAwardTemplate = useImageStore((state) => state.awardTemplate);
+	const selectedBackgroundTemplate = useImageStore((state) => state.backgroundTemplate);
 	const previewLargeImage = useImageStore((state) => state.previewLargeImage);
 
-	const handleImageSelection = (e) => {
+	const handleImageToAdjustChange = (e) => {
 		e.preventDefault();
 		const value = e.target.value;
-		setSelectedImage(value);
+		setImageToAdjust(value);
+		console.log(value);
+	};
+
+	const handleAwardTemplateChange = (e) => {
+		e.preventDefault();
+		const value = e.target.value;
+		setSelectedAwardTemplate(value);
+		console.log(value);
+	};
+
+	const handleBackgroundSelection = (e) => {
+		e.preventDefault();
+		const value = e.target.value;
+		setSelectedBackgroundTemplate(value);
 		console.log(value);
 	};
 
 	const handleDirection = (name) => {
-		if (name === "up" && selectedImage === "productImage") {
+		if (name === "up" && imageToAdjust === "productImage") {
 			setProductImage({
 				...productImage,
 				y: productImage.y - 2.5,
 			});
-		} else if (name === "down" && selectedImage === "productImage") {
+		} else if (name === "down" && imageToAdjust === "productImage") {
 			setProductImage({
 				...productImage,
 				y: productImage.y + 2.5,
 			});
-		} else if (name === "left" && selectedImage === "productImage") {
+		} else if (name === "left" && imageToAdjust === "productImage") {
 			setProductImage({
 				...productImage,
 				x: productImage.x - 2.5,
 			});
-		} else if (name === "right" && selectedImage === "productImage") {
+		} else if (name === "right" && imageToAdjust === "productImage") {
 			setProductImage({
 				...productImage,
 				x: productImage.x + 2.5,
 			});
-		} else if (name === "up" && selectedImage === "awardImage") {
+		} else if (name === "up" && imageToAdjust === "awardImage") {
 			setAwardImage({
 				...awardImage,
 				y: awardImage.y - 2.5,
 			});
-		} else if (name === "down" && selectedImage === "awardImage") {
+		} else if (name === "down" && imageToAdjust === "awardImage") {
 			setAwardImage({
 				...awardImage,
 				y: awardImage.y + 2.5,
 			});
-		} else if (name === "left" && selectedImage === "awardImage") {
+		} else if (name === "left" && imageToAdjust === "awardImage") {
 			setAwardImage({
 				...awardImage,
 				x: awardImage.x - 2.5,
 			});
-		} else if (name === "right" && selectedImage === "awardImage") {
+		} else if (name === "right" && imageToAdjust === "awardImage") {
 			setAwardImage({
 				...awardImage,
 				x: awardImage.x + 2.5,
 			});
-		} else if (name === "up" && selectedImage === "brandLogoImage") {
+		} else if (name === "up" && imageToAdjust === "brandLogoImage") {
 			setBrandLogoImage({
 				...brandLogoImage,
 				y: brandLogoImage.y - 2.5,
 			});
-		} else if (name === "down" && selectedImage === "brandLogoImage") {
+		} else if (name === "down" && imageToAdjust === "brandLogoImage") {
 			setBrandLogoImage({
 				...brandLogoImage,
 				y: brandLogoImage.y + 2.5,
 			});
-		} else if (name === "left" && selectedImage === "brandLogoImage") {
+		} else if (name === "left" && imageToAdjust === "brandLogoImage") {
 			setBrandLogoImage({
 				...brandLogoImage,
 				x: brandLogoImage.x - 2.5,
 			});
-		} else if (name === "right" && selectedImage === "brandLogoImage") {
+		} else if (name === "right" && imageToAdjust === "brandLogoImage") {
 			setBrandLogoImage({
 				...brandLogoImage,
 				x: brandLogoImage.x + 2.5,
 			});
-		} else if (name === "up" && selectedImage === "yearText") {
+		} else if (name === "up" && imageToAdjust === "yearText") {
 			setYearText({
 				...yearText,
 				y: yearText.y - 2.5,
 			});
-		} else if (name === "down" && selectedImage === "yearText") {
+		} else if (name === "down" && imageToAdjust === "yearText") {
 			setYearText({
 				...yearText,
 				y: yearText.y + 2.5,
 			});
-		} else if (name === "left" && selectedImage === "yearText") {
+		} else if (name === "left" && imageToAdjust === "yearText") {
 			setYearText({
 				...yearText,
 				x: yearText.x - 2.5,
 			});
-		} else if (name === "right" && selectedImage === "yearText") {
+		} else if (name === "right" && imageToAdjust === "yearText") {
 			setYearText({
 				...yearText,
 				x: yearText.x + 2.5,
@@ -148,8 +165,20 @@ const ImageUpdateTools = () => {
 		setFontFamily(value);
 	};
 
-	const handleFontSizeClick = (name) => {
-		if (name === "increase") {
+	const handleSizeClick = (name) => {
+		if (imageToAdjust === "productImage" && name === "increase") {
+			setProductImage({
+				...productImage,
+				width: productImage.width + 1,
+				height: productImage.height + 1,
+			});
+		} else if (imageToAdjust === "productImage" && name === "decrease") {
+			setProductImage({
+				...productImage,
+				width: productImage.width - 1,
+				height: productImage.height - 1,
+			});
+		} else if (name === "increase") {
 			setFontSize(fontSize + 1);
 		} else {
 			setFontSize(fontSize - 1);
@@ -184,7 +213,11 @@ const ImageUpdateTools = () => {
 			<div className='flex flex-row w-fit h-fit justify-center items-center mt-2 space-x-4 text-center'>
 				<div className='w-fit space-y-2 group'>
 					<h1 className='text-white whitespace-nowrap group-hover:text-blue-500 group-hover:scale-110 '>Image To Adjust</h1>
-					<select onChange={handleImageSelection} className='text-black group-hover:text-blue-500 group-hover:font-semibold rounded-md w-full'>
+					<select
+						onChange={handleImageToAdjustChange}
+						value={imageToAdjust}
+						className='text-black group-hover:text-blue-500 group-hover:font-semibold rounded-md w-full'
+					>
 						<option value='awardImage'>Award</option>
 						<option value='yearText'>Year Text</option>
 						<option value='backgroundImage'>Background Image</option>
@@ -194,10 +227,14 @@ const ImageUpdateTools = () => {
 				</div>
 				<div className='w-fit space-y-2'>
 					<h1 className='text-white'>Select Award</h1>
-					<select onChange={handleImageSelection} className='text-black group-hover:text-blue-500 group-hover:font-semibold rounded-md w-full	'>
+					<select
+						onChange={handleAwardTemplateChange}
+						value={selectedAwardTemplate}
+						className='text-black group-hover:text-blue-500 group-hover:font-semibold rounded-md w-full	'
+					>
 						{awardTemplateArray.map((item, index) => {
 							return (
-								<option key={index} id='awardTemp' value={index}>
+								<option key={index} id='awardTemp' value={item.value}>
 									{item.name}
 								</option>
 							);
@@ -206,7 +243,11 @@ const ImageUpdateTools = () => {
 				</div>
 				<div className='w-fit space-y-2 group'>
 					<h1 className='text-white whitespace-nowrap group-hover:text-blue-500 group-hover:scale-110'>Select BackGround</h1>
-					<select onChange={handleImageSelection} className='text-black group-hover:text-blue-500 group-hover:font-semibold rounded-md w-full'>
+					<select
+						onChange={handleBackgroundSelection}
+						value={selectedBackgroundTemplate}
+						className='text-black group-hover:text-blue-500 group-hover:font-semibold rounded-md w-full'
+					>
 						{awardBGArray.map((item, index) => {
 							return (
 								<option key={index} value={index} id='awardBG'>
@@ -249,11 +290,11 @@ const ImageUpdateTools = () => {
 				<AdjustImageButtons setDirection={handleDirection} />
 				<div className='flex flex-row w-full justify-center items-center space-x-4'>
 					<div className='flex flex-col w-full justify-center items-center space-x-4'>
-						<AddCircleBtn name='increase' onClick={handleFontSizeClick} />
+						<AddCircleBtn name='increase' onClick={handleSizeClick} />
 						<h1>Increase Font Size</h1>
 					</div>
 					<div className='flex flex-col w-full justify-center items-center space-x-4'>
-						<MinusCircleBtn name='decrease' onClick={handleFontSizeClick} />
+						<MinusCircleBtn name='decrease' onClick={handleSizeClick} />
 						<h1>Increase Font Size</h1>
 					</div>
 				</div>
@@ -261,9 +302,7 @@ const ImageUpdateTools = () => {
 					<div className='flex flex-col w-full space-y-4 mt-6'>
 						<div className='flex flex-row w-full h-12 justify-between items-center text-md space-x-6 group hover:border-2 hover:border-white hover:px-2 hover:py-2'>
 							<h1 className='whitespace-nowrap group-hover:text-blue-500 group-hover:font-semibold group-hover:underline'>Choose Font Color</h1>
-							<div
-							className="flex flex-row space-x-16 w-fit group justify-center items-center mx-auto"
-							>
+							<div className='flex flex-row space-x-16 w-fit group justify-center items-center mx-auto'>
 								{fontState.fontData.fontColor.map((item, index) => {
 									return (
 										<div
