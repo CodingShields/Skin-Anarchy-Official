@@ -58,7 +58,7 @@ const AdminPage = () => {
 	return (
 		<div className='flex h-screen w-full bg-gradient-to-t from-blue-300 via-purple-500 to-pink-500 '>
 			<div
-			className="flex flex-row h-full w-full"
+			className="flex flex-row h-full w-full "
 			>
 				<div
 					className={
@@ -79,7 +79,7 @@ const AdminPage = () => {
 						<DoubleChevLeftBtn onClick={handleNavRender} />
 					</div>
 				)}
-				<div className='h-fit w-full '>{renderStep}</div>
+				<div className='w-full  overflow-y-auto'>{renderStep}</div>
 			</div>
 		</div>
 	);

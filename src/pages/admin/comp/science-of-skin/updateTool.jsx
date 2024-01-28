@@ -289,11 +289,11 @@ const UpdateTool = () => {
 		}
 	};
 	return (
-		<div className='flex w-full h-'>
+		<div className='size-full	pb-10 grow-0'>
 			{state.error ? <ErrorModal errorMessage={state.errorMessage} /> : null}
 			{state.uploading ? <WorkingModal /> : null}
 			{/* Main Container */}
-			<div className='flex flex-row w-fit h-fit bg-zinc-800 rounded-lg  shadow-xl shadow-gray-500 space-x-4 py-4 transition-all duration-500 ease-in-out'>
+			<div className='flex flex-row w-fit h-fit bg-zinc-800 rounded-lg  shadow-xl shadow-gray-500 space-x-4 py-4 transition-all duration-500 ease-in-out my-0 pb-0 grow-0'>
 				{/* Left Container */}
 				<div
 					className={classNames(
@@ -460,7 +460,7 @@ const UpdateTool = () => {
 				</div>
 				<div
 					className={
-						state.completedForm === true ? " my-auto mx-0  w-fit h-fit my-auto text-white group group-hover:scale-115 hover:cursor-pointer" : "hidden"
+						state.completedForm === true ? " my-auto mx-0  w-fit h-fit my-auto text-white group group-hover:scale-115 hover:cursor-pointer grow-0" : "hidden"
 					}
 				>
 					<SideBarHideBtn onClick={handleSideBar} />
@@ -470,7 +470,7 @@ const UpdateTool = () => {
 					className={classNames(
 						formState.brandLogoImage.length === 0 && formState.productImage.length === 0
 							? "w-0 p-0 m-0 h-0 hidden collapse"
-							: "flex flex-col w-full h-full justify-center items-center text-xl space-y-2 m-0"
+							: "w-full h-fit justify-center items-center text-xl space-y-2 m-0 grow-0"
 					)}
 				>
 					{formState.brandLogoImage.length > 0 && (
@@ -489,7 +489,7 @@ const UpdateTool = () => {
 				{/* Image Adjust Container*/}
 				<div
 					className={
-						state.completedForm ? " flex flex-col w-fit h-fit items-center justify-center text-xl text-center text-white p-0 m-0 " : "hidden"
+						state.completedForm ? " flex flex-col w-fit h-fit items-center justify-center text-xl text-center text-white p-0 m-0 grow-0" : "hidden"
 					}
 				>
 					<h1 className='text-center w-full text-2xl font-semibold pb-4 underline'>Science Of Skin Award Image</h1>
@@ -545,7 +545,7 @@ const UpdateTool = () => {
 						</div>
 					</div>
 
-					<div className='flex flex-col w-fit items-center justify-center text-xl h-fit  space-y-4 hover:font-semi-bold  '>
+					<div className='flex flex-col w-fit items-center justify-center text-xl h-fit  space-y-4 hover:font-semi-bold grow-0 '>
 						<button
 							className={classNames(
 								"mx-auto shadow-black shadow-xl bottom-0 bg-red-500 whitespace-nowrap text-white text-lg px-4 py-2 w-fit rounded-md hover:bg-blue-400 hover:font-bold active:translate-y-2 mt-2 ease-in-out transition-all active:delay-200 focus:duration-400",
@@ -566,19 +566,17 @@ const UpdateTool = () => {
 						)}
 					</div>
 				</div>
-				<div className={state.completedForm ? "w-fit h-fit m-0 " : "hidden"}>
+				{/* <div className={state.completedForm ? "w-fit m-0 h-fit grow-0" : "hidden"}>
 					<ImageUpdateTools />{" "}
-				</div>
+				</div> */}
 
 				<div
-					className={classNames(
-						state.completedForm ? "flex flex-col w-fit h-fit justify-center items-center text-xl  text-white px-4" : "hidden"
-					)}
+					className={classNames(state.completedForm ? "flex flex-col w-fit h-fit justify-center items-center text-xl  text-white px-4 grow-0" : "hidden")}
 				>
 					<div className='w-full border-b-2 border-white mb-2'>
 						<h1 className='text-white text-2xl font-semibold text-center w-full h-fit '>CheckList</h1>
 					</div>
-					{formState.stepsArr.map((item, index) => {
+					{/* {formState.stepsArr.map((item, index) => {
 						return (
 							<div key={index} className='flex flex-row w-max px-12 h-fit '>
 								<div>
@@ -594,7 +592,7 @@ const UpdateTool = () => {
 								<h1 className='text-white text-start w-48 whitespace-nowrap my-auto  '>{item.name}</h1>
 							</div>
 						);
-					})}
+					})} */}
 				</div>
 			</div>
 		</div>

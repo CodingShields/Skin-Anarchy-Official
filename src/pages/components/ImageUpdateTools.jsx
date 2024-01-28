@@ -209,7 +209,7 @@ const ImageUpdateTools = () => {
 	}
 
 	return (
-		<div className='flex flex-col h-fit w-fit bg-gray-700 px-4 py-2 mt-2 rounded-xl border-2 border-white shadow-gray-500 hover:shadow-lg text-white'>
+		<div className='flex flex-col h-fit w-fit bg-gray-700 px-4 py-2 mt-2 rounded-xl border-2 border-white shadow-gray-500 hover:shadow-lg text-white grow-0'>
 			<div className='flex flex-row w-fit h-fit justify-center items-center mt-2 space-x-4 text-center'>
 				<div className='w-fit space-y-2 group'>
 					<h1 className='text-white whitespace-nowrap group-hover:text-blue-500 group-hover:scale-110 '>Image To Adjust</h1>
