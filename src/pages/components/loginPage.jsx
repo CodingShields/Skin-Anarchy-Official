@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../../context/AuthContext";
-import { getFirestore, doc, updateDoc, setDoc } from "firebase/firestore";
+import { getFirestore, doc, setDoc } from "firebase/firestore";
 import logo from "../../assets/images/logo.png";
-
+import WorkingModal from "./WorkingModal";
+import ErrorModal from "./errorModal";
 const LoginPage = () => {
 	const navigate = useNavigate();
 	const { signIn } = UserAuth();
@@ -27,15 +28,19 @@ const LoginPage = () => {
 	}, []);
 
 	const user = UserAuth();
-
+	console.log(user);
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		setState({ error: false, errorMessage: "" });
+		setState({
+			error: false,
+			errorMessage: "",
+			loading: true,
+		});
+		getFirestore();
+
 		try {
 			await signIn(email, password);
-			console.log("User logged in successfully");
 			if (user) {
-				console.log("test");
 				const db = getFirestore();
 				const userId = user.user.uid;
 				const userDocRef = doc(db, "users", userId);
@@ -49,6 +54,11 @@ const LoginPage = () => {
 					{ merge: true }
 				);
 				navigate("/MembersArea/Home");
+				setState({
+					error: false,
+					errorMessage: "",
+					loading: false,
+				});
 			}
 		} catch (error) {
 			if (error.code === "auth/user-not-found") {
@@ -56,39 +66,36 @@ const LoginPage = () => {
 					error: true,
 					errorMessage: "User not found. Please try again.",
 				});
+				errorTimeOut();
 			} else if (error.code === "auth/wrong-password") {
 				setState({
 					error: true,
 					errorMessage: "Invalid credentials. Please try again.",
 				});
+				errorTimeOut();
 			} else {
 				setState({
 					error: true,
 					errorMessage: "Something went wrong. Please try again.",
 				});
+				errorTimeOut();
 			}
 		}
 	};
 
-	useEffect(() => {
-		if (state.error) {
-			setTimeout(() => {
-				setState({ error: false, errorMessage: "" });
-			}, 3000);
-		}
-	}, [state.error]);
+	const errorTimeOut = () => {
+		setTimeout(() => {
+			setState({
+				error: false,
+				errorMessage: "",
+			});
+		}, 3000);
+	};
 
 	return (
 		<div className='flex w-full h-fit  flex-col justify-center  items-center space-y-8'>
-			{state.error ? (
-				<div className='flex absolute justify-center items-center  top-0 left-0 w-full h-full bg-opacity-50	bg-black'>
-					<div className='flex flex-col w-fit h-fit justify-center items-center bg-yellow-200 rounded-lg shadow-2xl shadow-black py-4 px-6 mb-10 overflow-hidden'>
-						<p className='font-bold color-black text-center'>{state.errorMessage}</p>
-					</div>
-				</div>
-			) : (
-				""
-			)}
+			{state.error ? <ErrorModal errorMessage={state.errorMessage} /> : null}
+			{state.loading ? <WorkingModal /> : null}
 
 			<div className='h-fit w-full'>
 				<img className='mx-auto lg:h-32 xl:h-32 w-auto mt-8' src={logo} alt='skinanarchy' />

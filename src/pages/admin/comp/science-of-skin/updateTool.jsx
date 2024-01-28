@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { getFirestore, collection, addDoc, getDoc } from "firebase/firestore";
+import { getFirestore, collection, addDoc, getDoc, arrayRemove } from "firebase/firestore";
 import { storage } from "../../../../fireBase/firebaseConfig";
 import { v4 } from "uuid";
 import ScienceOfSkinAwardsCategoriesArray from "../../../../assets/data/admin/updateTools/scienceOfSkinAwards/scienceOfSkinAwardsCategoriesArray";
@@ -21,17 +21,18 @@ import WorkingModal from "../../../components/WorkingModal.jsx";
 import noImageAwardSelectedText from "../../../../assets/iconsAnimated/noImageAwardSelectedText.svg";
 import UrlLinkCheck from "../../../components/UrlLinkCheck.jsx";
 import ValidateEmptyInputElements from "../../../components/ValidateEmptyInputElements.jsx";
+import { data } from "autoprefixer";
 const UpdateTool = () => {
 	const [state, setState] = useState({
 		loading: false,
 		uploading: false,
 		error: null,
 		errorMessage: "",
-		productUrl: true,
-		podcastUrl: true,
+		productUrl: false,
+		podcastUrl: false,
 		success: false,
 		successMessage: "",
-		sideBarHide: true,
+		sideBarHide: false,
 		selectedAwardTemplate: null,
 		completedForm: true,
 	});
@@ -84,11 +85,10 @@ const UpdateTool = () => {
 		],
 	});
 
-	// useEffect(() => {
-	// 	resetForm();
-	// 	resetStep();
-	// 	setState({ ...state, sideBarHide: true });
-	// }, []);
+	useEffect(() => {
+		resetForm();
+		resetStep();
+	}, []);
 
 	const validateUrl = (url) => {
 		const regEx =
@@ -97,36 +97,24 @@ const UpdateTool = () => {
 	};
 
 	const handleUrlCheck = (e) => {
+		e.preventDefault();
 		const urlName = e.target.value;
-		let url;
-
-		if (urlName === formState.productUrl) {
-			url = formState.productUrl;
-		} else if (urlName === formState.podcastUrl) {
-			url = formState.podcastUrl;
-		} else {
-			url = null; // or any default value you prefer
-		}
+		console.log(urlName);
+		const url = formState[urlName];
+		console.log(url);
 
 		if (validateUrl(url)) {
 			console.log("Valid URL");
 			setState({
 				...state,
-				[urlName]: false,
+				[urlName]: true,
 			});
-			setFormState({
-				...formState,
-				[urlName]: urlName,
-			});
+			setFormState({ ...formState, [urlName]: url });
 		} else {
 			console.log("Invalid URL");
 			setState({
 				...state,
-				[urlName]: true,
-			});
-			setFormState({
-				...formState,
-				[urlName]: "",
+				[urlName]: false,
 			});
 		}
 	};
@@ -208,14 +196,17 @@ const UpdateTool = () => {
 
 	const handleImageConvert = async () => {
 		const elementToCapture = document.getElementById("html2Image");
+		const awardStep = currentStep === 3;
+		const awardImage = [];
 		html2canvas(elementToCapture).then((canvas) => {
 			const imageDataURL = canvas.toDataURL("image/png");
+			console.log(imageDataURL);
 			const downloadLink = document.createElement("a");
 			downloadLink.href = imageDataURL;
 			downloadLink.download = "captured-image.png";
-			console.log(imageDataURL);
 			downloadLink.click();
-			console.log("test");
+			awardImage.push(imageDataURL);
+			setFormState({ ...formState, awardImage: awardImage });
 		});
 	};
 
@@ -242,7 +233,7 @@ const UpdateTool = () => {
 			console.log(state.uploading, "state.uploading");
 			await handleImageConvert();
 			setState({ ...state, uploading: false });
-			console.log(test, "test");
+			increaseStep();
 		} else if (currentStep === 9) {
 			resetForm();
 		} else {
@@ -256,7 +247,7 @@ const UpdateTool = () => {
 
 	useEffect(() => {
 		if (previewLargeImage) {
-			setState({ ...state, sideBarHide: false });
+			setState({ ...state, sideBarHide: true });
 		}
 	}, [previewLargeImage]);
 
@@ -269,19 +260,32 @@ const UpdateTool = () => {
 		setState({ loading: true });
 		setFormState({ ...formState, selectedAwardTemplate: newImage });
 		setState({ loading: false });
-		console.log(newImage, "newImage");
 	}, [selectedAwardTemplate]);
 
 	const handleConfirmFormDataClick = (e) => {
 		e.preventDefault();
 		const dataCheck = () => {
-			for (let i = 0; i < formState.length; i++) {
-				let element = formState.elements[i];
-				if (element.value) return false;
+			const form = Object.values(formState)
+			console.log(form, "test");
+			for (let i = 0; i < form.length; i++) {
+				if (
+					form[i] === "" &&
+					form[i] !== 0 &&
+					form[i] !== false &&
+					form[i] !== null &&
+					form[i] !== undefined &&
+					form[i] !== arrayRemove 
+
+				) {
+					return true;
+				}
 			}
-			return true;
 		};
-		if (!dataCheck()) {
+		console.log(dataCheck());
+		if (dataCheck()) {
+			setState({ ...state, errorMessage: "Missing Data: Please Fill Out The Form", error: true });
+			runErrorTimer();
+		} else if (dataCheck() === undefined) {
 			setState({ ...state, errorMessage: "Missing Data: Please Fill Out The Form", error: true });
 			runErrorTimer();
 		} else {
@@ -289,11 +293,11 @@ const UpdateTool = () => {
 		}
 	};
 	return (
-		<div className='size-full	pb-10 grow-0'>
+		<div className='w-full h-max	pb-10 '>
 			{state.error ? <ErrorModal errorMessage={state.errorMessage} /> : null}
 			{state.uploading ? <WorkingModal /> : null}
 			{/* Main Container */}
-			<div className='flex flex-row w-fit h-fit bg-zinc-800 rounded-lg  shadow-xl shadow-gray-500 space-x-4 py-4 transition-all duration-500 ease-in-out my-0 pb-0 grow-0'>
+			<div className='flex flex-row w-fit h-max bg-zinc-800 rounded-lg  shadow-xl shadow-gray-500 space-x-4 py-4 transition-all duration-500 ease-in-out my-0 pb-0 '>
 				{/* Left Container */}
 				<div
 					className={classNames(
@@ -371,6 +375,7 @@ const UpdateTool = () => {
 						<h1 className=' group-hover:text-blue-500 group-hover:font-bold text-white '>Product URL Link</h1>
 						<input
 							id='productUrl'
+							value={formState.productUrl}
 							onChange={(e) => setFormState({ ...formState, productUrl: e.target.value })}
 							className={classNames(
 								"border-2 w-full h-12 rounded-md group-hover:font-bold text-black shadow-lg group-hover:shadow-white focus:shadow-blue-400 focus:font-bold",
@@ -460,7 +465,7 @@ const UpdateTool = () => {
 				</div>
 				<div
 					className={
-						state.completedForm === true ? " my-auto mx-0  w-fit h-fit my-auto text-white group group-hover:scale-115 hover:cursor-pointer grow-0" : "hidden"
+						state.completedForm === true ? " my-auto mx-0  w-fit h-fit my-auto text-white group group-hover:scale-115 hover:cursor-pointer" : "hidden"
 					}
 				>
 					<SideBarHideBtn onClick={handleSideBar} />
@@ -474,9 +479,9 @@ const UpdateTool = () => {
 					)}
 				>
 					{formState.brandLogoImage.length > 0 && (
-						<div className='hover:border-2 hover:border-white'>
+						<div className='hover:border-2 hover:border-white w-max'>
 							<h1 className='text-center w-full text-2xl text-white underline'>Brand Logo Preview</h1>
-							<img className='w-fit h-96 ' src={formState.brandLogoImage[1].imageUrl} />
+							<img className='w-auto h-96 ' src={formState.brandLogoImage[1].imageUrl} />
 						</div>
 					)}
 					{formState.productImage.length > 0 && (
@@ -489,7 +494,9 @@ const UpdateTool = () => {
 				{/* Image Adjust Container*/}
 				<div
 					className={
-						state.completedForm ? " flex flex-col w-fit h-fit items-center justify-center text-xl text-center text-white p-0 m-0 grow-0" : "hidden"
+						state.completedForm && state.sideBarHide
+							? " flex flex-col w-fit h-fit items-center justify-center text-xl text-center text-white p-0 m-0 "
+							: "hidden"
 					}
 				>
 					<h1 className='text-center w-full text-2xl font-semibold pb-4 underline'>Science Of Skin Award Image</h1>
@@ -504,11 +511,11 @@ const UpdateTool = () => {
 						<div className={classNames(gridAlign ? "w-1 h-full absolute left-1/2 bg-red-400" : "hidden")}></div>
 						<div className={classNames(gridAlign ? "w-full h-1 absolute left-0 top-1/2 bg-red-400" : "hidden")}></div>
 						{/* Award Image Background */}
-						{currentStep >= 4 && <img src={selectedBackgroundTemplate} className='w-full h-full' />}
+						{currentStep >= 4 && <img src={formState.selectedBackground} className='w-full h-full' />}
 						{/* Award Image */}
-						{formState.selectedAwardTemplate ? <img className='w-full h-full ' src={formState.selectedAwardTemplate.image} /> : ""}
+						{formState.selectedAwardTemplate && currentStep < 4 ? <img className='w-full h-full ' src={formState.selectedAwardTemplate.image} /> : ""}
 						{/* Product Image */}
-						{/* {formState.stepsToCompletion >= 4 && (
+						{formState.stepsToCompletion >= 4 && (
 							<img
 								id='productImage'
 								className='absolute '
@@ -518,7 +525,7 @@ const UpdateTool = () => {
 								}}
 								src={formState.productImage[1].imageUrl}
 							/>
-						)} */}
+						)}
 						<div className='flex flex-col justify-center items-center w-full h-full absolute bottom-0 ml-4 mb-4 rounded-full'>
 							{!currentStep === 0 && <img id='award' className='w-fit h-fit ' src={formState.awardImage} />}
 
@@ -539,7 +546,7 @@ const UpdateTool = () => {
 									}}
 									className={`text-${fontColor} ${fontWeight} ${fontLetterSpacing}`}
 								>
-									{formState.year}
+									{currentStep < 4 && formState.year}
 								</h1>
 							</h1>
 						</div>
@@ -557,26 +564,23 @@ const UpdateTool = () => {
 						>
 							{formState.stepsArr[currentStep].name}
 						</button>
-						{currentStep === 4 || currentStep === 10 ? (
-							<button className=' shadow-black shadow-xl  bg-red-500 whitespace-nowrap text-white text-lg px-4 py-2 w-fit rounded-md'>
-								Approve Image
-							</button>
-						) : (
-							""
-						)}
 					</div>
 				</div>
-				{/* <div className={state.completedForm ? "w-fit m-0 h-fit grow-0" : "hidden"}>
+				<div className={state.completedForm && state.sideBarHide ? "w-fit m-0 h-fit grow-0" : "hidden"}>
 					<ImageUpdateTools />{" "}
-				</div> */}
+				</div>
 
 				<div
-					className={classNames(state.completedForm ? "flex flex-col w-fit h-fit justify-center items-center text-xl  text-white px-4 grow-0" : "hidden")}
+					className={
+						state.completedForm && state.sideBarHide
+							? "flex flex-col w-fit h-fit justify-center items-center text-xl  text-white px-4 grow-0"
+							: "hidden"
+					}
 				>
 					<div className='w-full border-b-2 border-white mb-2'>
 						<h1 className='text-white text-2xl font-semibold text-center w-full h-fit '>CheckList</h1>
 					</div>
-					{/* {formState.stepsArr.map((item, index) => {
+					{formState.stepsArr.map((item, index) => {
 						return (
 							<div key={index} className='flex flex-row w-max px-12 h-fit '>
 								<div>
@@ -592,7 +596,7 @@ const UpdateTool = () => {
 								<h1 className='text-white text-start w-48 whitespace-nowrap my-auto  '>{item.name}</h1>
 							</div>
 						);
-					})} */}
+					})}
 				</div>
 			</div>
 		</div>
