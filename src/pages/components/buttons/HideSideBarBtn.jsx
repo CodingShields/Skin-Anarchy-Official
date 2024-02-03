@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import DoubleChevLeftBtn from "./doubleChevLeftBtn";
 import DoubleChevRightBtn from "./doubleChevRightBtn";
 
-const SideBarHideBtn = ({ onClick }) => {
+const HideSideBarBtn = ({ onClick }) => {
 	const [sideBar, setSideBar] = useState(false);
 
 	const handleSideBar = () => {
@@ -10,17 +10,12 @@ const SideBarHideBtn = ({ onClick }) => {
 		onClick(sideBar);
 	};
 
-	useEffect(() => {	
+	useEffect(() => {
 		setSideBar(false);
-	}
-	, []);
-
+	}, []);
 
 	return (
-		<div
-			onClick={handleSideBar}
-			className='w-fit h-fit cursor-pointer group hover:scale-125 hover:text-green-500 hover:animate-pulse '
-		>
+		<div onClick={handleSideBar} className='w-fit h-fit cursor-pointer group hover:scale-125 hover:text-green-500 hover:animate-pulse '>
 			<h1 className='flex flex-col mx-auto whitespace-nowrap w-full text-center text-white text-md group-hover:text-green-500 group-hover:font-semibold'>
 				{sideBar ? <DoubleChevRightBtn /> : <DoubleChevLeftBtn />}
 				{!sideBar ? "Close Left Panel" : "Open Data Panel"}
@@ -29,4 +24,4 @@ const SideBarHideBtn = ({ onClick }) => {
 	);
 };
 
-export default SideBarHideBtn;
+export default HideSideBarBtn;

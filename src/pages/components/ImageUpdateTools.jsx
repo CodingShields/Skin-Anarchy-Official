@@ -45,23 +45,21 @@ const ImageUpdateTools = () => {
 		e.preventDefault();
 		const value = e.target.value;
 		setImageToAdjust(value);
-		console.log(value);
 	};
 
 	const handleAwardTemplateChange = (e) => {
 		e.preventDefault();
 		const value = e.target.value;
-		setSelectedAwardTemplate(value);
 		console.log(value);
+		setSelectedAwardTemplate(value);
 	};
 
 	const handleBackgroundSelection = (e) => {
 		e.preventDefault();
 		const value = e.target.value;
-		setSelectedBackgroundTemplate(value);
 		console.log(value);
+		setSelectedBackgroundTemplate(value);
 	};
-
 	const handleDirection = (name) => {
 		if (name === "up" && imageToAdjust === "productImage") {
 			setProductImage({
@@ -209,7 +207,7 @@ const ImageUpdateTools = () => {
 	}
 
 	return (
-		<div className='flex flex-col h-fit w-fit bg-gray-700 px-4 py-2 mt-2 rounded-xl border-2 border-white shadow-gray-500 hover:shadow-lg text-white grow-0'>
+		<div className='flex flex-col h-fit w-fit bg-gray-700 px-4 py-2 mt-2 rounded-xl border-2 border-white shadow-gray-500  text-white grow-0'>
 			<div className='flex flex-row w-fit h-fit justify-center items-center mt-2 space-x-4 text-center'>
 				<div className='w-fit space-y-2 group'>
 					<h1 className='text-white whitespace-nowrap group-hover:text-blue-500 group-hover:scale-110 '>Image To Adjust</h1>
@@ -218,8 +216,8 @@ const ImageUpdateTools = () => {
 						value={imageToAdjust}
 						className='text-black group-hover:text-blue-500 group-hover:font-semibold rounded-md w-full'
 					>
-						<option value='awardImage'>Award</option>
 						<option value='yearText'>Year Text</option>
+						<option value='awardImage'>Award</option>
 						<option value='backgroundImage'>Background Image</option>
 						<option value='productImage'>Product Image</option>
 						<option value='brandLogoImage'>Brand Logo</option>
@@ -250,7 +248,7 @@ const ImageUpdateTools = () => {
 					>
 						{awardBGArray.map((item, index) => {
 							return (
-								<option key={index} value={index} id='awardBG'>
+								<option key={index} value={item.value} id='awardBG'>
 									{item.name}
 								</option>
 							);
@@ -321,7 +319,7 @@ const ImageUpdateTools = () => {
 						<div className='flex flex-row w-full justify-between items-center text-md space-x-6 group '>
 							<h1 className='whitespace-nowrap group-hover:text-blue-500 group-hover:font-semibold group-hover:underline'>Choose Font Family</h1>
 							<select
-								className='w-64 text-black font-semibold group-hover:text-blue-500 transition-all duration-300 ease-in-out group-hover:font-bold outline-1 outline-blue-500 group-hover:-translate-x-30'
+								className='w-64 text-black font-semibold group-hover:text-blue-500 transition-all duration-300 ease-in-out group-hover:font-bold outline-1 outline-blue-500 '
 								onChange={(e) => handleFontFamilyChange(e)}
 								value={fontFamily}
 							>
@@ -344,7 +342,7 @@ const ImageUpdateTools = () => {
 						<div className='flex flex-row w-full justify-between items-center text-md space-x-6 group'>
 							<h1 className='whitespace-nowrap group-hover:text-blue-500 group-hover:font-semibold group-hover:underline'>Choose Font Weight</h1>
 							<select
-								className='w-64 text-black font-semibold group-hover:text-blue-500 transition-all duration-300 ease-in-out group-hover:font-bold outline-1 outline-blue-500 group-hover:-translate-x-30'
+								className='w-64 text-black font-semibold group-hover:text-blue-500 transition-all duration-300 ease-in-out group-hover:font-bold outline-1 outline-blue-500 '
 								onChange={(e) => handleFontWeightChange(e)}
 								value={fontWeight}
 							>
@@ -360,7 +358,7 @@ const ImageUpdateTools = () => {
 						<div className='flex flex-row w-full justify-between items-center text-md space-x-6 group'>
 							<h1 className='whitespace-nowrap group-hover:text-blue-500 group-hover:font-semibold group-hover:underline'>Choose Font Style</h1>
 							<select
-								className='w-64 text-black font-semibold group-hover:text-blue-500 transition-all duration-300 ease-in-out group-hover:font-bold outline-1 outline-blue-500 group-hover:-translate-x-30'
+								className='w-64 text-black font-semibold group-hover:text-blue-500 transition-all duration-300 ease-in-out group-hover:font-bold outline-1 outline-blue-500 '
 								onChange={(e) => handleFontStyleChange(e)}
 								value={fontStyle}
 							>
@@ -376,7 +374,7 @@ const ImageUpdateTools = () => {
 						<div className='flex flex-row w-full justify-between items-center text-md space-x-6 group'>
 							<h1 className='whitespace-nowrap group-hover:text-blue-500 group-hover:font-semibold group-hover:underline'>Choose Letter Spacing</h1>
 							<select
-								className='w-64 text-black font-semibold group-hover:text-blue-500 transition-all duration-300 ease-in-out group-hover:font-bold outline-1 outline-blue-500 group-hover:-translate-x-30'
+								className='w-64 text-black font-semibold group-hover:text-blue-500 transition-all duration-300 ease-in-out group-hover:font-bold outline-1 outline-blue-500'
 								onChange={(e) => handleFontLetterSpacingChange(e)}
 								value={fontLetterSpacing}
 							>
