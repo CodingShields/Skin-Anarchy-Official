@@ -4,7 +4,7 @@ import { UserAuth } from "../../context/AuthContext";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 import logo from "../../assets/images/logo.png";
 import WorkingModal from "./WorkingModal";
-import ErrorModal from "./errorModal";
+import ErrorModal from "./ErrorModal";
 const LoginPage = () => {
 	const navigate = useNavigate();
 	const { signIn } = UserAuth();
@@ -28,7 +28,7 @@ const LoginPage = () => {
 	}, []);
 
 	const user = UserAuth();
-	console.log(user);
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setState({

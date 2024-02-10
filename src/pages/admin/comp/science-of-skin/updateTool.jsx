@@ -14,7 +14,7 @@ import { useImageStore } from "../../../../stateStore/imageToolStateStore";
 import { useImageStoreActions } from "../../../../stateStore/imageToolStateStore";
 import HideSideBarBtn from "../../../components/buttons/HideSideBarBtn.jsx";
 import { useRenderStepStore } from "../../../../stateStore/useStepStore.js";
-import ErrorModal from "../../../components/errorModal.jsx";
+import ErrorModal from "../../../components/ErrorModal.jsx";
 import WorkingModal from "../../../components/WorkingModal.jsx";
 import StepOneDataForm from "./update-tool-steps/StepOneDataForm.jsx";
 const UpdateTool = () => {
