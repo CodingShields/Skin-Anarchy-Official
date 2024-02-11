@@ -8,7 +8,7 @@ import { scale } from "@cloudinary/url-gen/actions/resize";
 import { source } from "@cloudinary/url-gen/actions/underlay";
 import { image } from "@cloudinary/url-gen/qualifiers/source";
 import { Position } from "@cloudinary/url-gen/qualifiers/position";
-
+import {upload} from "../../../cloudinary/cloudinaryConfig"
 const AdminMasterClass = () => {
 	const [state, setState] = useState({
 		error: false,
@@ -18,7 +18,8 @@ const AdminMasterClass = () => {
 		image: [],
 		modifiedImage: [],
 		imagePreviewUrl: null,
-		newImage: null, // Added for storing image preview URL
+		newImage: null,
+		publicId: null,
 	});
 	const cloudinaryCloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
 
@@ -39,10 +40,14 @@ const AdminMasterClass = () => {
 	};
 
 	useEffect(() => {
-		const newImage = cld.image(state.image.name);
-		console.log(newImage);
-		setState({ ...state, newImage: newImage });
+		const newImage = cld.image(state.image, {
+			actions: [backgroundRemoval(), scale("500")],
+		});
+		setState({ ...state, newImage: newImage.toURL() });
 	}, [state.image]);
+
+	console.log(state.newImage);
+
 
 	return (
 		<div className='text-black flex flex-col justify-center items-center place-content-center w-full h-11/12 bg-gray-100'>
@@ -53,7 +58,7 @@ const AdminMasterClass = () => {
 			<input type='file' onChange={handleImageChange} />
 			{/* Display the selected image before uploading */}
 			{state.imagePreviewUrl && <img src={state.imagePreviewUrl} alt='Selected Image' />}
-			{state.newImage && <Advanced className='w-64 h-96' src={state.newImage} alt='Selected Image' />}
+			{state.newImage && <img className='w-64 h-96' src={state.newImage} alt='Selected Image' />}
 		</div>
 	);
 };
