@@ -5,7 +5,6 @@ const apiKey = import.meta.env.VITE_CLOUDINARY_API_KEY;
 const apiSecret = import.meta.env.VITE_CLOUDINARY_API_SECRET;
 const apiEnvironmentVariable = import.meta.env.VITE_CLOUDINARY_API_ENVIRONMENT_VARIABLE;
 
-
 const cloudinaryConfig = cloudinary.config({
 	cloud_name: cloudName,
 	api_key: apiKey,
@@ -13,8 +12,4 @@ const cloudinaryConfig = cloudinary.config({
 	api_environment_variable: apiEnvironmentVariable,
 });
 
-const uploadImage = (imageUrl) => {
-	cloudinary.uploader.upload(imageUrl);
-};
-
-export { cloudinaryConfig, uploadImage };
+export default cloudinaryConfig;
