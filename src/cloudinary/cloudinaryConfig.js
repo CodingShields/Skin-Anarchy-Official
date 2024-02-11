@@ -7,6 +7,7 @@ const apiEnvironmentVariable = import.meta.env.VITE_CLOUDINARY_API_ENVIRONMENT_V
 
 const cloudinaryConfig = cloudinary.config({
 	cloud_name: cloudName,
+	uploadPreset: "skinAnarchyBGRemoval",
 	api_key: apiKey,
 	api_secret: apiSecret,
 	api_environment_variable: apiEnvironmentVariable,
