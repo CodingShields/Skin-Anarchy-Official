@@ -8,7 +8,6 @@ import { scale } from "@cloudinary/url-gen/actions/resize";
 import { source } from "@cloudinary/url-gen/actions/underlay";
 import { image } from "@cloudinary/url-gen/qualifiers/source";
 import { Position } from "@cloudinary/url-gen/qualifiers/position";
-import {upload} from "../../../cloudinary/cloudinaryConfig"
 const AdminMasterClass = () => {
 	const [state, setState] = useState({
 		error: false,
@@ -47,7 +46,6 @@ const AdminMasterClass = () => {
 	}, [state.image]);
 
 	console.log(state.newImage);
-
 
 	return (
 		<div className='text-black flex flex-col justify-center items-center place-content-center w-full h-11/12 bg-gray-100'>
