@@ -62,7 +62,7 @@ const AdminBlog = () => {
 	};
 
 	useEffect(() => {
-		const handleUpload = async () => {
+		const handleFireStoreUpload = async () => {
 			try {
 				const urls = [];
 
@@ -83,7 +83,7 @@ const AdminBlog = () => {
 			}
 		};
 
-		handleUpload();
+		handleFireStoreUpload();
 	}, [blogData.images]);
 
 	const handleUpload = async () => {

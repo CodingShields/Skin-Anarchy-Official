@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import TopPicksCurrentYear from "./top-picks/TopPicksCurrentYear";
 import TopPicksUpdateTool from "./top-picks/TopPicksUpdateTool";
 import TopPicksPreviousYears from "./top-picks/TopPicksPreviousYears";
+import DataUpload from "./top-picks/DataUpload";
 const AdminTopPicks = () => {
 	const [state, setState] = useState({
 		error: false,
@@ -12,6 +13,7 @@ const AdminTopPicks = () => {
 		renderPreviousYears: false,
 		renderUpdateTool: false,
 		renderCurrentYear: false,
+		renderDataUpload: false,
 	});
 	const handleOnClick = (e) => {
 		const name = e.target.value;
@@ -21,6 +23,8 @@ const AdminTopPicks = () => {
 			setState({ ...state, renderPreviousYears: false, renderUpdateTool: true, renderCurrentYear: false });
 		} else if (name === "current") {
 			setState({ ...state, renderPreviousYears: false, renderUpdateTool: false, renderCurrentYear: true });
+		} else if (name === "dataUpload") {
+			setState({ ...state, renderDataUpload: true, renderPreviousYears: false, renderUpdateTool: false, renderContactForm: false });
 		} else {
 			return;
 		}
@@ -32,7 +36,19 @@ const AdminTopPicks = () => {
 	return (
 		<div className='flex flex-col items-center justify-start w-full h-full '>
 			<h1 className='text-4xl font-bold text-center h-fit w-full my-4'>Top Picks</h1>
+			<h1 className='text-4xl font-bold text-center h-fit w-full my-4'>**Data Upload Tool Tab ** will be deleted after old data is uploaded</h1>
+
 			<div className='flex flex-row items-center justify-start w-fit h-fit '>
+				<button
+					value={"dataUpload"}
+					onClick={(e) => handleOnClick(e)}
+					className={classNames(
+						`bg-red-600 text-white text-lg px-4 py-2 w-64 rounded-l-md  hover:bg-blue-400 hover:font-bold active:translate-y-2`,
+						state.renderPreviousYears ? "font-bold bg-blue-400" : ""
+					)}
+				>
+					Data Upload
+				</button>
 				<button
 					value={"prev"}
 					onClick={(e) => handleOnClick(e)}
@@ -70,6 +86,7 @@ const AdminTopPicks = () => {
 				{state.renderCurrentYear ? <TopPicksCurrentYear /> : ""}
 				{state.renderUpdateTool ? <TopPicksUpdateTool /> : ""}
 				{state.renderPreviousYears ? <TopPicksPreviousYears /> : ""}
+				{state.renderDataUpload ? <DataUpload /> : ""}
 			</div>
 		</div>
 	);

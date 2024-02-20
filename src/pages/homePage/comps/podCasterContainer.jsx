@@ -3,7 +3,7 @@ import podcastIconLinks from "../../../assets/data/podcastIconLinks";
 const PodCastContainer = () => {
 	return (
 		<div className=' flex flex-row w-full h-full bg-gradient-to-b from-black via-black to-gray pb-20'>
-			<div className='flex flex-col w-full h-full py-10 px-12 m-8 ml-4 mb-4 rounded-2xl text-2xl  bg-black text-white shadow-black shadow-2xl'>
+			<div className='flex flex-col w-full h-full py-10 px-12 m-8 ml-4 mb-4 rounded-2xl text-2xl  bg-black text-white shadow-yellow-700 shadow-2xl'>
 				<h1 className='mb-6 text-4xl font-bold text-center'>Where TO FIND US</h1>
 				<div className='flex flex-col justify-center items-center text-center h-full w-full pt-4 text-md font-semibold'>
 					<p className='mb-6 text-center w-full'>We started our journey with Anchor FM and have expanded onto over 12 major podcast platforms.</p>
@@ -17,13 +17,15 @@ const PodCastContainer = () => {
 				</p> */}
 				</div>
 
-				<div className='grid grid-cols-4 gap-8 p-12 mt-8 bg-black rounded-lg shadow-2xl shadow-violet-800 ring-4 ring-violet-700 mb-8'>
+				<div className='grid grid-cols-4 gap-8 p-12 mt-8 bg-black rounded-lg shadow-2xl  ring-4 ring-yellow-700 mb-8'>
 					{podcastIconLinks.map((item, id) => (
 						<div key={id}>
 							<a href={item.link} target='_blank' rel='noreferrer'>
 								<img
-									className="w-20 h-20 mx-auto hover:animate-pulse hover:scale-110 transition-all duration-400 ease-in-out"
-									src={item.icon} alt={item.icon} />
+									className='w-20 h-20 mx-auto hover:animate-pulse hover:scale-110 transition-all duration-400 ease-in-out'
+									src={item.icon}
+									alt={item.icon}
+								/>
 							</a>
 						</div>
 					))}

@@ -24,6 +24,8 @@ export default {
 				marquee: "marquee 25s linear infinite",
 				marquee2: "marquee2 25s linear infinite",
 				slideIn: "slideIn .25s ease-in-out forwards var(--delay, 0)",
+				rotateLogo: "rotateLogo 5s linear infinite",
+				fadeIn: "fadeIn 3s ease-in forwards",
 			},
 			keyframes: {
 				marquee: {
@@ -37,6 +39,14 @@ export default {
 				slideIn: {
 					"0%": { opacity: 0, transform: "-translateX(100%)" },
 					"100%": { opacity: 1, transform: "translateX(0)" },
+				},
+				rotateLogo: {
+					"0%": { transform: "rotate(0deg)" },
+					"100%": { transform: "rotateY(360deg)" },
+				},
+				fadeIn: {
+					"0%": { opacity: 0 },
+					"100%": { opacity: 1 },
 				},
 			},
 
@@ -307,7 +317,24 @@ export default {
 			"11/12": "91.666667%",
 			full: "100%",
 		},
-	},
+		
+		
+	},duration: {
+			100: "100ms",
+			200: "200ms",
+			300: "300ms",
+			400: "400ms",
+			500: "500ms",
+			600: "600ms",
+			700: "700ms",
+			800: "800ms",
+			900: "900ms",
+			1000: "1000ms",
+			2000: "2000ms",
+			3000: "3000ms",
+			4000: "4000ms",
+			5000: "5000ms",
+		},
 
 	plugins: [
 		require("@tailwindcss/typography"),

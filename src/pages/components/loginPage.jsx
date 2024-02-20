@@ -13,6 +13,8 @@ const LoginPage = () => {
 	const [state, setState] = useState({
 		error: false,
 		errorMessage: "",
+		loading: false,
+		initialLoad: false,
 	});
 	const initializeState = () => {
 		setEmail("");
@@ -20,11 +22,21 @@ const LoginPage = () => {
 		setState({
 			error: false,
 			errorMessage: "",
+			loading: false,
+			initialLoad: true,
 		});
 	};
 
 	useEffect(() => {
 		initializeState();
+		setState({
+			initialLoad: true,
+		});
+		setTimeout(() => {
+			setState({
+				initialLoad: false,
+			});
+		}, 5000);
 	}, []);
 
 	const user = UserAuth();
@@ -93,20 +105,32 @@ const LoginPage = () => {
 	};
 
 	return (
-		<div className='flex w-full h-fit  flex-col justify-center  items-center space-y-8'>
+		<div className={"flex w-full h-fit  flex-col justify-center  items-center space-y-8 "}>
 			{state.error ? <ErrorModal errorMessage={state.errorMessage} /> : null}
 			{state.loading ? <WorkingModal /> : null}
 
-			<div className='h-fit w-full'>
-				<img className='mx-auto lg:h-32 xl:h-32 w-auto mt-8' src={logo} alt='skinanarchy' />
+			<div
+				className={
+					state.initialLoad
+						? "h-full w-full my-auto flex flex-col scale-150 translate-y-50 duration-700 ease-in-out animate-pulse"
+						: "h-full w-full my-auto flex flex-col scale-100  duration-700 ease-in-out animate-rotateLogo "
+				}
+			>
+				<img className='mx-auto lg:h-32 xl:h-32 w-auto mt-8 my-auto' src={logo} alt='skinanarchy' />
 			</div>
 
-			<div className='w-full flex flex-col justify-center items-center space-y-8'>
+			<div
+				className={
+					state.initialLoad
+						? "fixed h-fit w-full flex flex-col justify-center items-center space-y-8 scale-0 duration-700"
+						: " h-fit w-full flex flex-col justify-center items-center space-y-8 translate-y-100 scale-100 duration-700"
+				}
+			>
 				<h2 className='text-center text-2xl font-bold tracking-tight text-gray-900'>Sign in to your account</h2>
-				<div className='bg-white px-8 py-16 rounded-2xl shadow-gray-600 shadow-2xl border-2 border-gray-300'>
-					<form onSubmit={handleSubmit} className='space-y-6'>
+				<div className='bg-black px-8 py-10 rounded-2xl shadow-black shadow-2xl border-4 text-white border-gold-500 bg-opacity-70'>
+					<form onSubmit={handleSubmit} className='space-y-6 text-md text-white'>
 						<div>
-							<label htmlFor='email' className='block text-sm font-medium leading-6 text-gray-900'>
+							<label htmlFor='email' className='block text-sm font-medium leading-6 '>
 								Email address
 							</label>
 							<div className='mt-2'>
@@ -117,13 +141,13 @@ const LoginPage = () => {
 									type='email'
 									autoComplete='email'
 									required
-									className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
+									className='block w-full rounded-md border-0 py-1.5 bg-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gold-100 focus:ring-2 focus:ring-offset focus:ring-gold-500 sm:text-sm sm:leading-6'
 								/>
 							</div>
 						</div>
 
 						<div>
-							<label htmlFor='password' className='block text-sm font-medium leading-6 text-gray-900'>
+							<label htmlFor='password' className='block text-sm  leading-6 '>
 								Password
 							</label>
 							<div className='mt-2'>
@@ -134,15 +158,15 @@ const LoginPage = () => {
 									type='password'
 									autoComplete='current-password'
 									required
-									className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
+									className='block w-full rounded-md border-0 py-1.5 bg-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gold-100 focus:ring-2 focus:ring-offset focus:ring-gold-500 sm:text-sm sm:leading-6'
 								/>
 							</div>
 						</div>
 
 						<div className='flex flex-row w-full h-fit space-x-4'>
 							<div className='flex items-center justify-start '>
-								<input name='remember-me' type='checkbox' className='h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600' />
-								<label htmlFor='remember-me' className='ml-2 text-sm leading-6 text-gray-900'>
+								<input name='remember-me' type='checkbox' className='h-4 w-4 rounded border-gray-300 text-gold-500 focus:ring-gold-500' />
+								<label htmlFor='remember-me' className='ml-2 text-sm leading-6 '>
 									Remember me
 								</label>
 							</div>
@@ -203,8 +227,11 @@ const LoginPage = () => {
 				</div>
 
 				<p className='mt-10 text-center text-md text-black'>
-					Not a member?{" "}
-					<button onClick={(e) => navigate("/SignUp")} className='font-semibold leading-6  hover:text-violet-500 hover:-translate-y-1'>
+					Not a member ?
+					<button
+						onClick={() => navigate("/SignUp")}
+						className='font-semibold leading-6 hover:scale-125 hover:-translate-y-4 duration-300 transition-all ease-in-out'
+					>
 						Click Here To Sign-up For Free
 					</button>
 				</p>
