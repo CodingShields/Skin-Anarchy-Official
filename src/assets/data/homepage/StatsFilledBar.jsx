@@ -12,9 +12,14 @@ const StatsFilledBar = ({ value }) => {
 	};
 
 	return (
-		<div className='w-full h-auto flex flex-row justify-start items-center '>
-			<div className='bg-gray-400 h-1 hover:bg-white hover:cursor-pointer hover:animate-pulse' style={filledBarStyle}></div>
-			<h1 className='text-sm font-medium text-gray-400 truncate uppercase ml-8 over:animate-pulse'>{value}%</h1>
+		<div className='w-full h-auto flex flex-row justify-start items-center group '>
+			<div
+				className='bg-gray-400 h-1  group-hover:cursor-pointer group-hover:animate-pulse group-hover:bg-violet-500'
+				style={filledBarStyle}
+			></div>
+			<h1 className='text-sm font-medium text-gray-400 truncate uppercase ml-8 group-hover:text-violet-500 group-hover:scale-125 group-hover:animate-pulse'>
+				{value}%
+			</h1>
 		</div>
 	);
 };
