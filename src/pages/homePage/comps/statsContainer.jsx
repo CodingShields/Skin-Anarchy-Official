@@ -50,16 +50,16 @@ const StatsContainer = () => {
 				<h3 className='text-128 font-semibold text-white truncate uppercase'>PODCAST ANALYTICS</h3>
 
 				<div className='flex flex-row h-fit justify-evenly mt-32'>
-					<div className='flex flex-col w-96 h-72  px-2 py-2 bg-black rounded-lg shadow-2xl justify-center items-center bg-opacity-80 shadow-yellow-600 ring-4 ring-yellow-600 '>
-						<h3 className='mt-1 text-4xl font-semibold text-yellow-600 mb-4'>
+					<div className='flex flex-col w-96 h-72  px-2 py-2 bg-black rounded-lg shadow-2xl justify-center items-center bg-opacity-80 shadow-violet-700 ring-4 ring-violet-700 '>
+						<h3 className='mt-1 text-4xl font-semibold text-violet-500 mb-4'>
 							<img src={headset} alt='headSetBounceIn' id='icon' />
 							{prevStatsData.downloadsPerWeek}
 						</h3>
 						<h3 className='mr-4 text-xl font-medium text-white truncate uppercase'>Downloads Per Week</h3>
 					</div>
 
-					<div className='flex flex-col w-96  h-72 px-2 py-2 bg-black rounded-lg shadow-2xl justify-center items-center  bg-opacity-20  shadow-yellow-600 ring-4 ring-yellow-600 '>
-						<h3 className='mt-1 text-4xl font-semibold text-white mb-4'>
+					<div className='flex flex-col w-96  h-72 px-2 py-2 bg-black rounded-lg shadow-2xl justify-center items-center  bg-opacity-20  shadow-violet-700 ring-4 ring-violet-700 '>
+						<h3 className='mt-1 text-4xl font-semibold text-violet-500 mb-4'>
 							<img src={mic} alt='micBounceIn' id='icon' />
 							{prevStatsData.episodesRecorded}
 						</h3>
