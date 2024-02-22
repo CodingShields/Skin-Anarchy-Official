@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import whiteLogo from "../../assets/images/whiteLogo.png";
+import logo from "../../assets/images/logo.png";
+
 import Banner from "../homePage/comps/bannerContainer";
 import doubleChevronDown from "../../assets/icons/doubleChevronDown.svg";
 import doubleChevronUp from "../../assets/icons/doubleChevronUp.svg";
@@ -82,13 +84,15 @@ const Header = () => {
 				<div
 					className={
 						state.navBarOpen
-							? "text-center ease-in-out duration-1000 transition-all translate-x-100"
-							: "bg-black bg-opacity-50 rounded-full py-6 px-14 text-center ease-in-out duration-1000 transition-all scale-125 mt-8"
+							? "text-center ease-in-out duration-1000 transition-all translate-x-100 mr-8 mt-8"
+							: " brightness-100 bg-gold-500 bg-opacity-30 rounded-full py-6 px-12 text-center ease-in-out duration-1000 transition-all mt-10 mx-auto"
 					}
 				>
-					<NavLink to='/'>
-						<img src={whiteLogo} alt='logo' className='h-48 mt-4 mb-4 mr-4 hover:animate-pulse' />
-						<p className='text-white hover:animate-pulse'>SKIN ANARCHY</p>
+					<NavLink to='home'>
+						<div className='w-full mx-auto '>
+							<img src={whiteLogo} alt='logo' className='h-48 hover:animate-pulse' />
+							<p className="text-white hover:animate-pulse">SKIN ANARCHY</p>
+						</div>
 					</NavLink>
 					<AnimatedNavButton onClick={handleNavBar} />
 				</div>
@@ -96,7 +100,7 @@ const Header = () => {
 					className={
 						state.navBarOpen
 							? "flex flex-row rounded-xl p-2 border-2 border-gold-500  h-fit my-auto ease-in-out duration-200 transition-all scale-100"
-							: "border-0 ease-in-out duration-200 transition-all w-0 scale-0"
+							: "border-0 ease-in-out duration-200 transition-all w-0 scale-0 w-full"
 					}
 				>
 					<div
@@ -115,7 +119,7 @@ const Header = () => {
 							>
 								<NavLink to={card.link}>
 									<div className=' leading-1'>
-										<h3 className='font-semibold hover:transition-all duration-200 ease-in-out hover:text-white hover:scale-125 '>{card.name}</h3>
+										<h3 className='lg:text-2xl font-semibold hover:transition-all duration-200 ease-in-out hover:text-white hover:scale-125 '>{card.name}</h3>
 									</div>
 								</NavLink>
 							</div>

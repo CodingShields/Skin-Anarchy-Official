@@ -11,14 +11,23 @@ const AnimatedNavButton = ({ onClick }) => {
 		}
 	};
 
+	function classNames(...classes) {
+		return classes.filter(Boolean).join(" ");
+	}
+
 	return (
 		<div className='z-20 mt-4'>
 			<button
 				onClick={handleClick}
-				className='px-2 py-2 border-2 hover:scale-125 hover:text-gold-500 focus:translate-y-1 text-white animate-pulse hover:cursor-pointer transition-all duration-500 ease-in-out'
+				className={
+					openNavBar
+						? "px-1 py-1 border-2 hover:scale-125 hover:text-gold-500 focus:translate-y-1 text-white animate-pulse hover:cursor-pointer transition-all duration-500 ease-in-out"
+						: "text-xl px-1 py-1 border-2 hover:scale-125 hover:text-gold-500 focus:translate-y-1 text-gold-500 animate-pulse hover:cursor-pointer transition-all duration-500 ease-in-out"
+				}
 				id='navBarButton'
 			>
-				{!openNavBar ? "Open" : "Close" }<span> </span>
+				{!openNavBar ? "Open" : "Close"}
+				<span> </span>
 			</button>
 		</div>
 	);

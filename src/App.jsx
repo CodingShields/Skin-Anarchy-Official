@@ -23,20 +23,20 @@ function App() {
 			<AuthContextProvider>
 				<Routes>
 					<Route index element={<LoginPage />} />
-					<Route path='SignUp' element={<SignUpPage />} />
+					<Route path='sign-up' element={<SignUpPage />} />
 					<Route element={<ProtectedRoute />} />
-					<Route path='MembersArea' element={<HomeLayout />}>
-						<Route path='Home' element={<HomePage />} />
-						<Route path='About' element={<AboutPage />} />
-						<Route path='Connect' element={<ConnectPage />} />
-						<Route path='PodCast' element={<PodCastPage />} />
-						<Route path='TopPicks' element={<TopPicksPage />} />
-						<Route path='Blog' element={<BlogPage />} />
-						<Route path='MasterClass' element={<MasterClassPage />} />
-						<Route path='PrevBlogs' element={<PrevBlogs />} />
-						<Route path='ScienceOfSkinAwards' element={<ScienceOfSkinAwards />} />
-						<Route path='Account' element={<AccountPage />} />
-						<Route path='Logout' element={<LogoutPage />} />
+					<Route path='members-area' element={<HomeLayout />}>
+						<Route path='home' element={<HomePage />} />
+						<Route path='about' element={<AboutPage />} />
+						<Route path='connect' element={<ConnectPage />} />
+						<Route path='podcast' element={<PodCastPage />} />
+						<Route path='top-picks' element={<TopPicksPage />} />
+						<Route path='blog' element={<BlogPage />} />
+						<Route path='masterclass' element={<MasterClassPage />} />
+						<Route path='past-blog' element={<PrevBlogs />} />
+						<Route path='science-of-skin-awards' element={<ScienceOfSkinAwards />} />
+						<Route path='account' element={<AccountPage />} />
+						<Route path='log-out' element={<LogoutPage />} />
 					</Route>
 				</Routes>
 			</AuthContextProvider>

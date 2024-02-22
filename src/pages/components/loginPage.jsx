@@ -65,7 +65,7 @@ const LoginPage = () => {
 					},
 					{ merge: true }
 				);
-				navigate("/MembersArea/Home");
+				navigate("/members-area/home");
 				setState({
 					error: false,
 					errorMessage: "",
@@ -105,29 +105,29 @@ const LoginPage = () => {
 	};
 
 	return (
-		<div className={"flex w-full h-full  flex-col justify-center  items-center space-y-8 bg-white"}>
+		<div className={"flex w-full h-full  flex-col justify-center  items-center space-y-8 bg-white "}>
 			{state.error ? <ErrorModal errorMessage={state.errorMessage} /> : null}
 			{state.loading ? <WorkingModal /> : null}
 
 			<div
 				className={
 					state.initialLoad
-						? "h-full w-full my-auto flex flex-col scale-150 translate-y-50 duration-700 ease-in-out animate-pulse"
-						: "h-full w-full my-auto flex flex-col scale-100  duration-700 ease-in-out animate-rotateLogo "
+						? "h-full w-full my-auto flex flex-col scale-150 translate-y-50 duration-1000 ease-in-out animate-pulse absolute top-1/4"
+						: "h-full w-full my-auto flex flex-col scale-y-100 -translate-y-50  duration-1000 ease-in-out animate-rotateLogo "
 				}
 			>
-				<img className='mx-auto lg:h-32 xl:h-32 w-auto mt-8 my-auto' src={logo} alt='skinanarchy' />
+				<img className='mx-auto lg:h-32 xl:h-96 w-auto mt-8 my-auto' src={logo} alt='skinanarchy' />
 			</div>
 
 			<div
 				className={
 					state.initialLoad
-						? "fixed h-fit w-full flex flex-col justify-center items-center space-y-8 scale-0 duration-700"
+						? " h-fit w-full flex flex-col justify-center items-center space-y-8 scale-0 duration-700"
 						: " h-fit w-full flex flex-col justify-center items-center space-y-8 translate-y-100 scale-100 duration-700"
 				}
 			>
 				<h2 className='text-center text-2xl font-bold tracking-tight text-gray-900'>Sign in to your account</h2>
-				<div className='bg-black px-8 py-10 rounded-2xl shadow-black shadow-2xl border-4 text-white border-gold-500 bg-opacity-70'>
+				<div className='xl:size-64 bg-black px-8 py-10 rounded-2xl shadow-black shadow-2xl border-4 text-white border-gold-500 bg-opacity-70'>
 					<form onSubmit={handleSubmit} className='space-y-6 text-md text-white'>
 						<div>
 							<label htmlFor='email' className='block text-sm font-medium leading-6 '>

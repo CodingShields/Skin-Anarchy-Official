@@ -6,6 +6,7 @@ import NewsLetterContainer from "./comps/newsLetterContainer";
 import SponsorBarContainer from "./comps/sponsorBarContainer";
 import InterviewCategoryContainer from "./comps/interviewCategoryContainer";
 import BG from "../../assets/video/BG.mp4";
+import goldLogoIntro from "../../assets/video/goldLogoIntro.mp4";
 import FactsBar from "./comps/factsBar";
 import PodCastContainer from "./comps/podCasterContainer";
 import StatsContainer from "./comps/statsContainer";
@@ -20,7 +21,7 @@ const HomePage = () => {
 		<div className='flex flex-col w-full h-full bg-black bg-opacity-80'>
 			<div className='w-full h-full '>
 				<video className='w-full h-lg md:object-center' autoPlay muted loop id='video'>
-					<source src={BG} type='video/mp4' />
+					<source src={goldLogoIntro} type='video/mp4' />
 				</video>
 				<FactsBar />
 				<PodCastContainer />
