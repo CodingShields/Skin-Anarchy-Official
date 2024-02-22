@@ -105,7 +105,7 @@ const LoginPage = () => {
 	};
 
 	return (
-		<div className={"flex w-full h-fit  flex-col justify-center  items-center space-y-8 "}>
+		<div className={"flex w-full h-full  flex-col justify-center  items-center space-y-8 bg-white"}>
 			{state.error ? <ErrorModal errorMessage={state.errorMessage} /> : null}
 			{state.loading ? <WorkingModal /> : null}
 

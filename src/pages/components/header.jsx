@@ -4,6 +4,7 @@ import whiteLogo from "../../assets/images/whiteLogo.png";
 import Banner from "../homePage/comps/bannerContainer";
 import doubleChevronDown from "../../assets/icons/doubleChevronDown.svg";
 import doubleChevronUp from "../../assets/icons/doubleChevronUp.svg";
+import AnimatedNavButton from "../components/buttons/AnimatedNavButton";
 import { UserAuth } from "../../context/AuthContext";
 
 const Header = () => {
@@ -15,7 +16,7 @@ const Header = () => {
 		error: false,
 		errorMessage: "",
 		loading: false,
-		navBarOpen: false,
+		navBarOpen: true,
 		navigating: false,
 	});
 
@@ -63,12 +64,6 @@ const Header = () => {
 	];
 
 	useEffect(() => {
-		if (cards.name === "Logout") {
-			handleLogout();
-		}
-	}, [cards.name]);
-
-	useEffect(() => {
 		setState({
 			navBarOpen: true,
 		});
@@ -81,63 +76,53 @@ const Header = () => {
 		});
 	};
 
-	window.onscroll = function () {
-		setState({
-			...state,
-			navBarOpen: false,
-		});
-	};
-	useEffect(() => {
-		if (state.navBarOpen) {
-			setTimeout(() => {
-				setState({
-					navBarOpen: false,
-				});
-			}, 7000);
-		}
-	}, [state.navBarOpen]);
-
 	return (
-		<div
-			className={
-				state.navBarOpen
-					? "fixed z-30 w-full overflow-none bg-opacity-20 bg-zinc-800 place-content-center transition-all ease-in-out duration-500"
-					: "fixed z-30 w-full overflow-none bg-gold-500 place-content-center transition-all ease-in-out duration-700 -translate-y-64 "
-			}
-		>
-			<div className='flex flex-row p-0 m-auto w-max '>
-				<NavLink to='/'>
-					<div className='flex flex-col w-full mr-2 overflow-hidden place-items-center'>
+		<div className='fixed z-30 w-full overflow-none'>
+			<div className='flex flex-row p-0 m-auto w-max transition-all duration-700 ease-in-out'>
+				<div
+					className={
+						state.navBarOpen
+							? "text-center ease-in-out duration-1000 transition-all translate-x-100"
+							: "bg-black bg-opacity-50 rounded-full py-6 px-14 text-center ease-in-out duration-1000 transition-all scale-125 mt-8"
+					}
+				>
+					<NavLink to='/'>
 						<img src={whiteLogo} alt='logo' className='h-48 mt-4 mb-4 mr-4 hover:animate-pulse' />
 						<p className='text-white hover:animate-pulse'>SKIN ANARCHY</p>
+					</NavLink>
+					<AnimatedNavButton onClick={handleNavBar} />
+				</div>
+				<div
+					className={
+						state.navBarOpen
+							? "flex flex-row rounded-xl p-2 border-2 border-gold-500  h-fit my-auto ease-in-out duration-200 transition-all scale-100"
+							: "border-0 ease-in-out duration-200 transition-all w-0 scale-0"
+					}
+				>
+					<div
+						className={
+							state.navBarOpen
+								? "flex flex-row rounded-xl  bg-black text-gold-500 transition-all duration-1000 ease-in-out h-fit scale-100 my-auto"
+								: "flex flex-row rounded-xl  bg-gold-500 transition-all duration-1000 ease-in-out h-fit translate-x-full scale-x-0 my-auto"
+						}
+					>
+						{cards.map((card) => (
+							<div
+								onMouseEnter={() => setState({ ...state, navigating: true })}
+								onMouseLeave={() => setState({ ...state, navigating: false })}
+								key={card.name}
+								className='flex flex-row p-4 px-12 '
+							>
+								<NavLink to={card.link}>
+									<div className=' leading-1'>
+										<h3 className='font-semibold hover:transition-all duration-200 ease-in-out hover:text-white hover:scale-125 '>{card.name}</h3>
+									</div>
+								</NavLink>
+							</div>
+						))}
 					</div>
-				</NavLink>
-				<div className={"flex flex-row mb-auto max-w-fit sm:mt-20 lg:mx-0 lg:max-w-auto rounded-xl  bg-gold-500 "}>
-					{cards.map((card) => (
-						<div
-							onMouseEnter={() => setState({ ...state, navigating: true })}
-							onMouseLeave={() => setState({ ...state, navigating: false })}
-							key={card.name}
-							className='flex flex-row p-4 px-12 '
-						>
-							<NavLink to={card.link}>
-								<div className=' leading-1'>
-									<h3 className='font-semibold text-black hover:transition-all duration-200 ease-in-out hover:scale-125 '>{card.name}</h3>
-								</div>
-							</NavLink>
-						</div>
-					))}
 				</div>
 			</div>
-			<img
-				onClick={handleNavBar}
-				src={!state.navBarOpen ? doubleChevronDown : doubleChevronUp}
-				className={
-					state.navBarOpen
-						? "relative bottom-0 left-0 right-0 w-8 h-8 m-auto mt-0 animate-pulse h-sm"
-						: "relative bottom-0 left-0 right-0 w-8 h-8 m-auto mt-12 animate-pulse h-sm"
-				}
-			/>
 		</div>
 	);
 };

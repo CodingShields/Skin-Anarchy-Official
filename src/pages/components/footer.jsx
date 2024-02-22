@@ -27,7 +27,7 @@ const Footer = () => {
 				<div className='w-full flex justify-center mt-8 space-x-14 py-4'>
 					{socialNav.map((item, id) => (
 						<div key={id} className='group'>
-							<a key={item.name} href={item.link} target='_parent'>
+							<a key={item.name} href={item.link} target='_blank'>
 								{/* <span className='sr-only'>{item.name}</span> */}
 								<img
 									className='h-8 hover:scale-150 grayscale ease-in-out transition-all hover:grayscale-0 hover:-translate-y-1 hover:duration-300 '
