@@ -8,7 +8,7 @@ import ConnectPage from "./pages/connect/connectPage.jsx";
 import PodCastPage from "./pages/podcast/podcastPage.jsx";
 import TopPicksPage from "./pages/topPicks/topPicksPage.jsx";
 import BlogPage from "./pages/blog/blogPage.jsx";
-import ScienceOfSkinAwards from "./pages/awards/scienceOfSkinAwards.jsx";
+import ScienceOfSkinAwards from "./pages/awards/ScienceOfSkinAwards.jsx";
 import AccountPage from "./pages/account/accountPage.jsx";
 import HomeLayout from "./pages/layout/homeLayout.jsx";
 import HomePage from "./pages/homePage/homePage.jsx";

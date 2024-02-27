@@ -21,7 +21,7 @@ const AdminPage = () => {
 	const handleNavigation = (name) => {
 		const navTarget = name;
 		if (navTarget === "Website") {
-			navigate("/MembersArea/Home");
+			navigate("/members-area/home");
 		} else if (navTarget === "Dashboard") {
 			setRenderStep(<AdminDashboard />);
 		} else if (navTarget === "News Letter") {
@@ -57,9 +57,7 @@ const AdminPage = () => {
 
 	return (
 		<div className='flex h-screen w-full bg-gradient-to-t from-blue-300 via-purple-500 to-pink-500 '>
-			<div
-			className="flex flex-row h-full w-full "
-			>
+			<div className='flex flex-row h-full w-full '>
 				<div
 					className={
 						navBarRender

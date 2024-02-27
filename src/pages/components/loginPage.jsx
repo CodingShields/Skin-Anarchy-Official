@@ -78,18 +78,23 @@ const LoginPage = () => {
 					error: true,
 					errorMessage: "User not found. Please try again.",
 				});
+				console.log(error.code, "error code");
+
 				errorTimeOut();
 			} else if (error.code === "auth/wrong-password") {
 				setState({
 					error: true,
 					errorMessage: "Invalid credentials. Please try again.",
 				});
+				console.log(error.code, "error code");
+
 				errorTimeOut();
 			} else {
 				setState({
 					error: true,
 					errorMessage: "Something went wrong. Please try again.",
 				});
+				console.log(error.code, "error code");
 				errorTimeOut();
 			}
 		}

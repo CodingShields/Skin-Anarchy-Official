@@ -3,12 +3,10 @@ service cloud.firestore {
   match /databases/{database}/documents {
 
     // Allow anyone to read and write to any document in your Firestore database
-    match /{document=**} {
-      allow read, if request.auth.uid != null;
-      allow create: if request.auth.uid != "CUxg9yGTc8STuOrREKQHTvyLBek1";
-        allow update: if request.auth.uid != "CUxg9yGTc8STuOrREKQHTvyLBek1";
-        allow delete: if request.auth.uid != "CUxg9yGTc8STuOrREKQHTvyLBek1";
-        
+    match /users/{userId} {
+      allow read: if request.auth.uid != null;
+      allow create: if request.auth.uid == userId;
+
     }
   }
 }
