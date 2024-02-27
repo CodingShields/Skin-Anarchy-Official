@@ -38,6 +38,9 @@ const ScienceOfSkinAwards = () => {
 	return (
 		<div className='flex flex-col items-center w-full h-full '>
 			<h1 className='text-4xl font-bold text-center h-fit w-full my-4'>Science Of Skin Awards </h1>
+			<a href='https://youtu.be/OKsbW1LrUbU' target='_blank' rel='noreferrer'>
+				<p className='text-lg font-bold text-blue underline w-full  text-center py-2'>Click here for a video tutorial on how to use this tool</p>
+			</a>
 			<h1 className='text-4xl font-bold text-center h-fit w-full my-4'>**Data Upload Tool Tab ** will be deleted after old data is uploaded</h1>
 
 			<div className='flex flex-row items-center justify-center w-fit h-fit rounded-md shadow-lg shadow-black mb-4'>

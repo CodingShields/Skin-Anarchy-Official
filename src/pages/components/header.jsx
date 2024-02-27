@@ -25,43 +25,43 @@ const Header = () => {
 	const cards = [
 		{
 			name: "Home",
-			link: "/MembersArea/Home",
+			link: "/members-area/home",
 		},
 		{
 			name: "About",
-			link: "/MembersArea/About",
+			link: "/members-area/about",
 		},
 		{
 			name: "Connect",
-			link: "/MembersArea/Connect",
+			link: "/members-area/connect",
 		},
 		{
 			name: "Podcast",
-			link: "/MembersArea/PodCast",
+			link: "/members-area/podcast",
 		},
 		{
 			name: "Top Picks",
-			link: "/MembersArea/TopPicks",
+			link: "/members-area/top-picks",
 		},
 		{
 			name: "Blog",
-			link: "/MembersArea/Blog",
+			link: "/members-area/blog",
 		},
 		{
 			name: "Master Class",
-			link: "/MembersArea/MasterClass",
+			link: "/members-area/master-class",
 		},
 		{
 			name: "Science of Skin Awards",
-			link: "/MembersArea/ScienceOfSkinAwards",
+			link: "/members-area/science-of-skin-awards",
 		},
 		{
 			name: "Account",
-			link: "/MembersArea/Account",
+			link: "/members-area/account",
 		},
 		{
 			name: "Logout",
-			link: "/MembersArea/Logout",
+			link: "/members-area/log-out",
 		},
 	];
 
@@ -91,7 +91,7 @@ const Header = () => {
 					<NavLink to='home'>
 						<div className='w-full mx-auto '>
 							<img src={whiteLogo} alt='logo' className='h-48 hover:animate-pulse' />
-							<p className="text-white hover:animate-pulse">SKIN ANARCHY</p>
+							<p className='text-white hover:animate-pulse'>SKIN ANARCHY</p>
 						</div>
 					</NavLink>
 					<AnimatedNavButton onClick={handleNavBar} />
@@ -119,7 +119,9 @@ const Header = () => {
 							>
 								<NavLink to={card.link}>
 									<div className=' leading-1'>
-										<h3 className='lg:text-2xl font-semibold hover:transition-all duration-200 ease-in-out hover:text-white hover:scale-125 '>{card.name}</h3>
+										<h3 className='lg:text-2xl font-semibold hover:transition-all duration-200 ease-in-out hover:text-white hover:scale-125 '>
+											{card.name}
+										</h3>
 									</div>
 								</NavLink>
 							</div>

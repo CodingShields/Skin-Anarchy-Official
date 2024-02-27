@@ -177,6 +177,9 @@ const AdminBlog = () => {
 	return (
 		<div className=' flex-nowrap  w-full h-fit'>
 			<p className='text-2xl font-bold text-black w-full  text-center py-2'>Admin Blog Upload and Update Tool</p>
+			<a href='https://youtu.be/OWFajYNd3KY' target='_blank' rel='noreferrer'>
+				<p className='text-lg font-bold text-blue underline w-full  text-center py-2'>Click here for a video tutorial on how to use this tool</p>
+			</a>
 			{/* Main Container */}
 			<div className='flex items-start justify-center w-fit h-124 shadow-black shadow-2xl bg-zinc-600 rounded-2xl mx-auto'>
 				{/* Left Container Under Main */}

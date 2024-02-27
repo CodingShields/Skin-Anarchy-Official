@@ -6,7 +6,7 @@ import Footer from "../components/footer";
 const HomeLayout = () => {
 	const location = useLocation();
 
-	const isAdminPage = location.pathname.includes("/MembersArea/Account");
+	const isAdminPage = location.pathname.includes("/members-area/account");
 
 	return (
 		<>
