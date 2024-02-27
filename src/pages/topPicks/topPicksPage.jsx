@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import skinAwardsLogo from "../../assets/images/skinAwardsLogo.png";
 import verticalSheetsWaving from "../../assets/video/verticalSheetsWaving.mp4";
-import topPicksBgVideo from "../../assets/video/topPicksBgVideo.mp4";
+import topPicksBGVIDEO from "../../assets/video/topPicksBGVIDEO.mp4";
 import TabBar from "./comp/tabBar";
 import testData from "../../assets/data/topPicks/test/testData";
 
@@ -29,14 +29,10 @@ const TopPicksPage = () => {
 				${bGLoaded ? "opacity-100" : "opacity-0"}`}
 			>
 				<video className='w-full h-lg md:object-center' autoPlay muted loop id='video'>
-					<source src={topPicksBgVideo} type='video/mp4' />
+					<source src={topPicksBGVIDEO} type='video/mp4' />
 				</video>
 				<img className='absolute w-3/6 mt-20 z-20' src={skinAwardsLogo} alt='skinAwardsLogo' />
-				<svg
-					className='absolute bottom-70  w-full h-full opacity-90 z-10'
-					viewBox='0 0 100 100'
-					xmlns='http://www.w3.org/2000/svg'
-				>
+				<svg className='absolute bottom-70  w-full h-full opacity-90 z-10' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'>
 					<circle cx='50' cy='51.5' r='21' />
 				</svg>
 				<TabBar />
@@ -56,9 +52,7 @@ const TopPicksPage = () => {
 											<img className='object-contain  w-full h-full' src={item.image} alt='product' />
 											<p className='text-center text-black font-bold bg-white  h-1/6'>{item.description}</p>
 											<div className='flex justify-center'>
-												<button className='bg-black  text-white font-bold py-2 px-4  border-black border-lg rounded-lg '>
-													trackable click link
-												</button>
+												<button className='bg-black  text-white font-bold py-2 px-4  border-black border-lg rounded-lg '>trackable click link</button>
 											</div>
 										</div>
 									</div>
