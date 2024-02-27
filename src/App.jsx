@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthContextProvider } from "./context/AuthContext";
-
 import LoginPage from "./pages/components/LoginPage.jsx";
 import SignUpPage from "./pages/components/signUpPage.jsx";
 import AboutPage from "./pages/about/aboutPage.jsx";
