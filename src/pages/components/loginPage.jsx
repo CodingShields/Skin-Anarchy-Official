@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../../context/AuthContext.jsx";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 import logo from "../../assets/images/logo.png";
-import WorkingModal from "./WorkingModal.jsx";
-import ErrorModal from "./ErrorModal.jsx";
+import WorkingModal from "/WorkingModal.jsx";
+import ErrorModal from "/ErrorModal.jsx";
 const LoginPage = () => {
 	const navigate = useNavigate();
 	const { signIn } = UserAuth();
@@ -113,7 +113,7 @@ const LoginPage = () => {
 		<div className={"flex w-full h-fit  flex-col justify-center  items-center space-y-8 bg-white "}>
 			{state.error ? <ErrorModal errorMessage={state.errorMessage} /> : null}
 			{state.loading ? <WorkingModal /> : null}
-{/* Loading + Rotating Logo */}
+			{/* Loading + Rotating Logo */}
 			<div
 				className={
 					state.initialLoad
