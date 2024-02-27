@@ -6,6 +6,9 @@ service cloud.firestore {
     match /{document=**} {
       allow read, if request.auth.uid != null;
       allow create: if request.auth.uid != "CUxg9yGTc8STuOrREKQHTvyLBek1";
+        allow update: if request.auth.uid != "CUxg9yGTc8STuOrREKQHTvyLBek1";
+        allow delete: if request.auth.uid != "CUxg9yGTc8STuOrREKQHTvyLBek1";
+        
     }
   }
 }
