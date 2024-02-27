@@ -80,17 +80,17 @@ const Header = () => {
 
 	return (
 		<div className='fixed z-30 w-full overflow-none'>
-			<div className='flex flex-row p-0 m-auto w-max transition-all duration-700 ease-in-out'>
+			<div className='flex flex-row  m-auto w-max transition-all duration-700 ease-in-out'>
 				<div
 					className={
 						state.navBarOpen
-							? "text-center ease-in-out duration-1000 transition-all translate-x-100 mr-8 mt-8"
-							: " brightness-100 bg-gold-500 bg-opacity-30 rounded-full py-6 px-12 text-center ease-in-out duration-1000 transition-all mt-10 mx-auto"
+							? "text-center ease-in-out duration-1000 transition-all translate-x-100 lg:mr-6 mr-8 lg:mt-2 mt-8"
+							: " brightness-100 bg-gold-500 bg-opacity-30 rounded-full py-6 px-12 lg:py-2 lg:px-4 text-center ease-in-out duration-1000 transition-all mt-10 mx-auto"
 					}
 				>
 					<NavLink to='home'>
 						<div className='w-full mx-auto '>
-							<img src={whiteLogo} alt='logo' className='h-48 hover:animate-pulse' />
+							<img src={whiteLogo} alt='logo' className='xl:h-24 xxl:h-72 hover:animate-pulse' />
 							<p className='text-white hover:animate-pulse'>SKIN ANARCHY</p>
 						</div>
 					</NavLink>
@@ -115,11 +115,11 @@ const Header = () => {
 								onMouseEnter={() => setState({ ...state, navigating: true })}
 								onMouseLeave={() => setState({ ...state, navigating: false })}
 								key={card.name}
-								className='flex flex-row p-4 px-12 '
+								className='flex flex-row lg:py-2 p-4 lg:px-8 xxl:px-12 '
 							>
 								<NavLink to={card.link}>
 									<div className=' leading-1'>
-										<h3 className='lg:text-2xl font-semibold hover:transition-all duration-200 ease-in-out hover:text-white hover:scale-125 '>
+										<h3 className='lg:text-sm font-semibold  hover:transition-all duration-200 ease-in-out hover:text-white hover:scale-125 '>
 											{card.name}
 										</h3>
 									</div>

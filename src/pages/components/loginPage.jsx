@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { UserAuth } from "../../context/AuthContext";
+import { UserAuth } from "../../context/AuthContext.jsx";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 import logo from "../../assets/images/logo.png";
 import WorkingModal from "./WorkingModal.jsx";
@@ -110,20 +110,19 @@ const LoginPage = () => {
 	};
 
 	return (
-		<div className={"flex w-full h-full  flex-col justify-center  items-center space-y-8 bg-white "}>
+		<div className={"flex w-full h-fit  flex-col justify-center  items-center space-y-8 bg-white "}>
 			{state.error ? <ErrorModal errorMessage={state.errorMessage} /> : null}
 			{state.loading ? <WorkingModal /> : null}
-
+{/* Loading + Rotating Logo */}
 			<div
 				className={
 					state.initialLoad
-						? "h-full w-full my-auto flex flex-col scale-150 translate-y-50 duration-1000 ease-in-out animate-pulse absolute top-1/4"
-						: "h-full w-full my-auto flex flex-col scale-y-100 -translate-y-50  duration-1000 ease-in-out animate-rotateLogo "
+						? "h-fit w-full my-auto flex flex-col scale-150 translate-y-50 duration-1000 ease-in-out animate-pulse absolute top-0"
+						: "h-fit w-fit my-auto flex flex-col scale-y-100 -translate-y-50  duration-1000 ease-in-out animate-rotateLogo "
 				}
 			>
-				<img className='mx-auto lg:h-32 xl:h-96 w-auto mt-8 my-auto' src={logo} alt='skinanarchy' />
+				<img className='mx-auto lg:h-24 xl:h-44 w-auto mt-8 my-auto' src={logo} alt='skinanarchy' />
 			</div>
-
 			<div
 				className={
 					state.initialLoad
