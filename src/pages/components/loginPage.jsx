@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../../context/AuthContext";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 import logo from "../../assets/images/logo.png";
-import WorkingModal from "./WorkingModal";
-import ErrorModal from "./ErrorModal";
+import WorkingModal from "./WorkingModal.jsx";
+import ErrorModal from "./ErrorModal.jsx";
 const LoginPage = () => {
 	const navigate = useNavigate();
 	const { signIn } = UserAuth();
