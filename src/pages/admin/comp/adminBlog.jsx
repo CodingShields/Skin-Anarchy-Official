@@ -4,7 +4,7 @@ import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { storage } from "../../../fireBase/firebaseConfig";
 import { v4 } from "uuid";
 import AddCircleBtn from "../../components/buttons/AddCircleBtn";
-import MinusCircleBtn from "../../components/buttons/minusCircleBtn";
+import MinusCircleBtn from "../../components/buttons/MinusCircleBtn";
 import CommitBtn from "../../components/buttons/commitBtn";
 
 const AdminBlog = () => {
