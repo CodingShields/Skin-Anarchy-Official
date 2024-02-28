@@ -5,7 +5,6 @@ import NewsLetterContainer from "./comps/newsLetterContainer";
 // import StatsBar from "./comps/statsBar";
 import SponsorBarContainer from "./comps/sponsorBarContainer";
 import InterviewCategoryContainer from "./comps/interviewCategoryContainer";
-import BG from "../../assets/video/BG.mp4";
 import goldLogoIntro from "../../assets/video/goldLogoIntro.mp4";
 import FactsBar from "./comps/factsBar";
 import PodCastContainer from "./comps/podCasterContainer";

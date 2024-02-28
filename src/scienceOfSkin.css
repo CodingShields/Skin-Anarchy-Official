@@ -74,3 +74,28 @@ span:after {
 #navBarButton:hover span:after {
 	bottom: 0;
 }
+
+#phoneContainer {
+	box-shadow: 1px 35px 40px rgba(207, 185, 139, 40%);
+}
+
+@keyframes pulsingBackground {
+	0% {
+		background-color: #eea108;
+	}
+	/* 25% {
+		background-color: #f8e9c8;
+	} */
+	50% {
+		background-color: #f6e2bd;
+	}
+	/* 75% {
+		background-color: #f8e9c8;
+	} */
+	100% {
+		background-color: #eea108;
+	}
+}
+#backgroundPulse {
+	animation: pulsingBackground 3.5s linear infinite;
+}

@@ -85,7 +85,7 @@ const Header = () => {
 					className={
 						state.navBarOpen
 							? "text-center ease-in-out duration-1000 transition-all translate-x-100 lg:mr-6 mr-8 lg:mt-2 mt-8"
-							: " brightness-100 bg-gold-500 bg-opacity-30 rounded-full py-6 px-12 lg:py-2 lg:px-4 text-center ease-in-out duration-1000 transition-all mt-10 mx-auto"
+							: " brightness-100 bg-gold-500 bg-opacity-30 rounded-9xl hover:rounded-b-3xl  py-6 px-12 lg:py-2 lg:px-4 text-center ease-in-out duration-1000 transition-all mt-10 mx-auto"
 					}
 				>
 					<NavLink to='home'>
@@ -99,15 +99,15 @@ const Header = () => {
 				<div
 					className={
 						state.navBarOpen
-							? "flex flex-row rounded-xl p-2 border-2 border-gold-500  h-fit my-auto ease-in-out duration-200 transition-all scale-100"
+							? "flex flex-row  p-2 border-2 border-gold-500  h-fit my-auto ease-in-out duration-200 transition-all scale-100 rounded-2xl"
 							: "border-0 ease-in-out duration-200 transition-all w-0 scale-0 w-full"
 					}
 				>
 					<div
 						className={
 							state.navBarOpen
-								? "flex flex-row rounded-xl  bg-black text-gold-500 transition-all duration-1000 ease-in-out h-fit scale-100 my-auto"
-								: "flex flex-row rounded-xl  bg-gold-500 transition-all duration-1000 ease-in-out h-fit translate-x-full scale-x-0 my-auto"
+								? "flex flex-row   bg-black text-gold-500 transition-all duration-1000 ease-in-out h-fit scale-100 my-auto"
+								: "flex flex-row   bg-gold-500 transition-all duration-1000 ease-in-out h-fit translate-x-full scale-x-0 my-auto"
 						}
 					>
 						{cards.map((card) => (
