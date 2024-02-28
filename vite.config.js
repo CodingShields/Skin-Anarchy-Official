@@ -10,7 +10,7 @@ export default defineConfig(({ mode }) => {
 		plugins: [react()],
 		// vite config
 		define: {
-			VITE_API_KEY: JSON.stringify(env.VITE_API_KEY), // Make the env var available to your React client-side code
+			VITE_FIREBASE_API_KEY: JSON.stringify(env.VITE_FIREBASE_API_KEY), // Make the env var available to your React client-side code
 		},
 	};
 });
