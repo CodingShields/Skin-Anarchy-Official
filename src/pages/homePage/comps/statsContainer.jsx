@@ -120,7 +120,7 @@ const StatsContainer = () => {
 
 					<div className='flex flex-col w-fit h-auto px-2 py-2 lg:w-64 justify-center items-center whitespace-nowrap'>
 						<img className='h-22' src={micStatic} alt='micBounceIn' id='icon' />{" "}
-						<h3 className='mt-1 text-4xl font-semibold lg:text-2xl  text-black mb-4 font-glacialRegular'>
+						<h3 className='mt-1 text-4xl  lg:text-2xl  text-black mb-4 font-glacialRegular'>
 							<span className='text-4xl font-glacialRegular' id='counter' data-target={prevStatsData.episodesRecorded}>
 								{/* {episodesRecorded} */}
 							</span>
