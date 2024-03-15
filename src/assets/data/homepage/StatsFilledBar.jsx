@@ -4,6 +4,11 @@ const StatsFilledBar = ({ value }) => {
 	// Calculate the width of the filled bar based on the value
 	const filledWidth = `${value}%`;
 
+
+	const begin = 0;
+	
+	
+
 	// Define the style for the filled bar
 	const filledBarStyle = {
 		width: filledWidth,
@@ -14,10 +19,10 @@ const StatsFilledBar = ({ value }) => {
 	return (
 		<div className='w-full h-auto flex flex-row justify-start items-center group '>
 			<div
-				className='bg-gray-400 h-1  group-hover:cursor-pointer group-hover:animate-pulse group-hover:bg-violet-500'
+				className='bg-black h-[2px] animate-pulse'
 				style={filledBarStyle}
 			></div>
-			<h1 className='text-sm font-medium text-gray-400 truncate uppercase ml-8 group-hover:text-violet-500 group-hover:scale-125 group-hover:animate-pulse'>
+			<h1 className='text-[16px] font-glacial text-gray-400 truncate uppercase ml-8 animate-pulse'>
 				{value}%
 			</h1>
 		</div>

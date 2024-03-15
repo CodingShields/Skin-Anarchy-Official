@@ -1,30 +1,15 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { collection, getDocs, query } from "firebase/firestore";
 import { db } from "../../../fireBase/firebaseConfig";
+import { animateCounter } from "../../../assets/utilities/numberCounter";
 import StatsFilledBar from "../../../assets/data/homepage/StatsFilledBar";
-import rotatingMicrophone from "../../../assets/video/rotatingMicrophone.mp4";
-import headset from "../../../assets/icons/homepage/statsContainer/headset.svg";
-import mic from "../../../assets/icons/homepage/statsContainer/mic.svg";
-import people from "../../../assets/icons/homepage/statsContainer/people.svg";
-import link from "../../../assets/icons/homepage/statsContainer/link.svg";
+import headsetStatic from "../../../assets/icons/homepage/statsContainer/headsetStatic.svg";
+import micStatic from "../../../assets/icons/homepage/statsContainer/micStatic.svg";
+import peopleStatic from "../../../assets/icons/homepage/statsContainer/poepleStatic.svg";
+import linkStatic2 from "../../../assets/icons/homepage/statsContainer/linkStatic2.svg";
 
 const StatsContainer = () => {
-	const [state, setState] = useState({
-		error: false,
-		errorMessage: "",
-		loading: false,
-		success: false,
-		successMessage: "",
-	});
-
 	const [prevStatsData, setPrevStatsData] = useState({});
-
-	const [count, setCount] = useState({
-		downloadsPerWeek: 0,
-		episodesRecorded: 0,
-		subscribers: 0,
-		socialFollowers: 0,
-	});
 
 	useEffect(() => {
 		const getStats = async () => {
@@ -39,61 +24,139 @@ const StatsContainer = () => {
 		getStats();
 	}, []);
 
-	//
+	useEffect(() => {
+		const counters = document.querySelectorAll("#counter");
+		counters.forEach((counter) => {
+			const target = +counter.getAttribute("data-target");
+			animateCounter(counter, target); // Use the utility function
+		});
+	}, [prevStatsData]);
+
+	// const downloadsPerWeekDigits = prevStatsData.downloadsPerWeek
+	// 	.toString()
+	// 	.split("")
+	// 	.map((digit, index) => (
+	// 		<span key={index} className='digit'>
+	// 			{digit}
+	// 		</span>
+	// 	));
+
+	// const episodesRecordedDigits = prevStatsData.episodesRecorded
+	// 	.toString()
+	// 	.split("")
+	// 	.map((digit, index) => (
+	// 		<span key={index} className='digit'>
+	// 			{digit}
+	// 		</span>
+	// 	));
+	// const subscribersDigits = prevStatsData.subscribers
+	// 	.toString()
+	// 	.split("")
+	// 	.map((digit, index) => (
+	// 		<span key={index} className='digit'>
+	// 			{digit}
+	// 		</span>
+	// 	));
+	// const socialFollowersDigits = prevStatsData.socialFollowers
+	// 	.toString()
+	// 	.split("")
+	// 	.map((digit, index) => (
+	// 		<span key={index} className='digit'>
+	// 			{digit}
+	// 		</span>
+	// 	));
+
+	// function createDigitContainer() {
+	// 	const container = document.createElement("div");
+	// 	container.className = "counter-digit";
+	// 	for (let i = 9; i >= 0; i--) {
+	// 		// Create spans for digits 0 through 9
+	// 		const span = document.createElement("span");
+	// 		span.textContent = i;
+	// 		container.appendChild(span);
+	// 	}
+	// 	return container;
+	// }
+
+	// function animateCounter(element, target) {
+	// 	const targetStr = target.toString().padStart(6, "0"); // Ensure at least 6 digits, adjust as needed
+	// 	element.innerHTML = ""; // Clear existing content
+
+	// 	// Create a container for each digit in the target
+	// 	const digitContainers = Array.from(targetStr).map(() => createDigitContainer());
+	// 	digitContainers.forEach((container) => element.appendChild(container));
+
+	// 	// Animate each digit
+	// 	digitContainers.forEach((container, index) => {
+	// 		setTimeout(() => {
+	// 			// Delay each digit's animation for effect
+	// 			const targetDigit = parseInt(targetStr[index], 10);
+	// 			const span = container.querySelectorAll("span")[10 - targetDigit]; // 10 spans created, adjust for target digit
+	// 			span.style.transform = `translateY(-${container.offsetHeight * targetDigit}px)`;
+	// 		}, index * 65); // Stagger animations for effect
+	// 	});
+	// }
+
+	// document.addEventListener("DOMContentLoaded", () => {
+	// 	const counterElement = document.getElementById("counter");
+	// 	if (counterElement) {
+	// 		animateCounter(counterElement, 123456); // Example target number
+	// 	}
+	// });
+
 	return (
-		<div className='flex flex-col justify-center items-center text-center h-full w-full relative pt-10 transform-gpu'>
-			<div className='flex w-full h-72 bg-gradient-to-t from-black to-transparent '></div>
-			<div className=' h-full w-full z-10 overflow-hidden bg-black '>
-				<video className='w-full opacity-40' autoPlay muted loop id='video' src={rotatingMicrophone}></video>
-			</div>
-			<div className='absolute flex flex-col h-full w-full p-4 mb-8 text-5xl font-bold text-center text-white z-10 top-1/4'>
-				<h3 className='text-128 font-semibold text-white truncate uppercase'>PODCAST ANALYTICS</h3>
+		<div className='flex flex-col justify-center items-center text-center h-full w-full relative pt-28 bg-white'>
+			<div className='flex flex-col h-full w-full p-4 mb-8 text-5xl text-center text-white z-10 top-1/4 subpixel-antialiased	'>
+				<h3 className='text-128 text-black truncate uppercase font-playfair'>PODCAST ANALYTICS</h3>
 
-				<div className='flex flex-row h-fit justify-evenly mt-32'>
-					<div className='flex flex-col w-96 h-72 lg:h-88 lg:w-64 px-2 py-2 bg-black rounded-lg shadow-2xl justify-center items-center bg-opacity-80 shadow-gold-500  ring-4 ring-gold-500  '>
-						<h3 className='mt-1 text-4xl font-semibold lg:text-2xl  text-gold-500  mb-4'>
-							<img src={headset} alt='headSetBounceIn' id='icon' />
-							{prevStatsData.downloadsPerWeek}
+				<div className='grid grid-cols-4 mx-auto my-auto gap-[96px] mt-16'>
+					<div className='flex flex-col w-fit h-auto px-2 py-2 lg:w-64 justify-center items-center whitespace-nowrap'>
+						<img className='h-22' src={headsetStatic} alt='headSetBounceIn' id='icon' />{" "}
+						<h3 className='mt-1 text-4xl lg:text-2xl  text-black mb-4 font-glacialRegular'>
+							<span id='counter' className='text-4xl font-glacialRegular' data-target={prevStatsData.downloadsPerWeek}></span>
 						</h3>
-						<h3 className='text-center text-xl font-medium text-white truncate uppercase'>Downloads Per Week</h3>
+						<h3 className='text-center text-xl font-medium text-black truncate uppercase'>Downloads Per Week</h3>
 					</div>
 
-					<div className='flex flex-col w-96 h-72 lg:h-88 lg:w-64 px-2 py-2 bg-black rounded-lg shadow-2xl justify-center items-center  bg-opacity-20  shadow-gold-500  ring-4 ring-gold-500  '>
-						<h3 className='mt-1 text-4xl font-semibold lg:text-2xl  text-gold-500  mb-4'>
-							<img src={mic} alt='micBounceIn' id='icon' />
-							{prevStatsData.episodesRecorded}
+					<div className='flex flex-col w-fit h-auto px-2 py-2 lg:w-64 justify-center items-center whitespace-nowrap'>
+						<img className='h-22' src={micStatic} alt='micBounceIn' id='icon' />{" "}
+						<h3 className='mt-1 text-4xl font-semibold lg:text-2xl  text-black mb-4 font-glacialRegular'>
+							<span className='text-4xl font-glacialRegular' id='counter' data-target={prevStatsData.episodesRecorded}>
+								{/* {episodesRecorded} */}
+							</span>
 						</h3>
-						<h3 className='text-xl font-medium text-white truncate uppercase'>Episodes Recorded</h3>
+						<h3 className='text-xl font-medium text-black truncate uppercase'>Episodes Recorded</h3>
 					</div>
 
-					<div className='flex flex-col w-96 h-72 px-2 py-2 lg:h-88 lg:w-64  bg-black rounded-lg shadow-2xl justify-center items-center  bg-opacity-20 shadow-gold-500  ring-4 ring-gold-500'>
-						<h3 className='mt-1 text-4xl font-semibold lg:text-2xl  text-gold-500  mb-4'>
-							<img className='h-36' src={people} id='icon' alt='micBounceIn' />
-
-							{prevStatsData.subscribers}
+					<div className='flex flex-col w-fit h-auto px-2 py-2 lg:w-64 justify-center items-center whitespace-nowrap'>
+						<img className='h-22' src={peopleStatic} id='icon' alt='micBounceIn' />{" "}
+						<h3 className='mt-1 text-4xl lg:text-2xl  text-black mb-4'>
+							<span id='counter' className='text-4xl font-glacialRegular' data-target={prevStatsData.subscribers}>
+								{/* {subscribers} */}
+							</span>
 						</h3>
-
-						<h3 className=' text-xl font-medium text-white xxl:truncate lg:text-center uppercase'>SUBSCRIBERS ACROSS PLATFORMS</h3>
+						<h3 className=' text-xl font-medium text-black xxl:truncate lg:text-center uppercase'>SUBSCRIBERS ACROSS PLATFORMS</h3>
 					</div>
-					<div className='flex flex-col h-72  w-96 px-2 py-2 lg:h-88 lg:w-64 bg-black rounded-lg shadow-2xl justify-center items-center  bg-opacity-20 shadow-gold-500  ring-4 ring-gold-500  '>
-						<h3 className='mt-1 text-4xl lg:text-2xl font-semibold text-gold-500  mb-4'>
-							<img src={link} alt='micBounceIn' id='icon' />
-							{prevStatsData.socialFollowers}
+					<div className='flex flex-col w-fit h-auto px-2 py-2 lg:w-64 justify-center items-center whitespace-nowrap'>
+						<img className='h-22' src={linkStatic2} alt='micBounceIn' id='icon' />{" "}
+						<h3 className='mt-1 text-4xl lg:text-2xl  text-black mb-4 font-glacialRegular'>
+							<span id='counter' className='text-4xl font-glacialRegular' data-target={prevStatsData.socialFollowers}>
+								{/* {socialFollowers} */}
+							</span>
 						</h3>
-
-						<h3 className='text-xl font-semibold text-white truncate uppercase'>SOCIAL FOLLOWERS</h3>
+						<h3 className='text-xl font-semibold text-black truncate uppercase'>SOCIAL FOLLOWERS</h3>
 					</div>
 				</div>
-				<div className='flex flex-col mt-50 w-full px-40 '>
-					<h3 className='text-2xl font-semibold text-gray-300 truncate uppercase'>Listener Demographics</h3>
-					<div className='flex flex-col w-auto h-fit justify-start items-start space-y-4'>
-						<h2 className='text-sm font-medium text-gray-400 truncate uppercase'>Women</h2>
+				<div className='flex flex-col mt-48 w-full px-40 '>
+					<h3 className='text-2xl font-semibold text-black truncate uppercase mb-4'>Listener Demographics</h3>
+					<div className='flex flex-col w-auto h-fit justify-start items-start space-y-4 text-[16px] font-glacial truncate uppercase text-black'>
+						<h2>Women</h2>
 						<StatsFilledBar value={prevStatsData.women} />
-						<h2 className='text-sm font-medium text-gray-400 truncate uppercase'>Men</h2>
+						<h2>Men</h2>
 						<StatsFilledBar value={prevStatsData.men} />
-						<h2 className='text-sm font-medium text-gray-400 truncate uppercase'>Age 18 - 34</h2>
+						<h2>Age 18 - 34</h2>
 						<StatsFilledBar value={prevStatsData.age1834} />
-						<h2 className='text-sm font-medium text-gray-400 truncate uppercase'>AGE 35-59</h2>
+						<h2>AGE 35-59</h2>
 						<StatsFilledBar value={prevStatsData.age3559} />
 					</div>
 				</div>
