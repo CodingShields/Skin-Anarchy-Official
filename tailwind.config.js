@@ -4,6 +4,15 @@ export default {
 	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
 	theme: {
 		extend: {
+			fontFamily: {
+				glacialBold: ["Glacial Indifference Bold"],
+				glacialItalic: ["Glacial Indifference Italic"],
+				glacialRegular: ["Glacial Indifference Regular"],
+				playfair: ["PlayFair Display"],
+				openSans: ["Open Sans"],
+				signature: ["Hathem"],
+			},
+
 			duration: {
 				100: "100ms",
 				200: "200ms",
@@ -214,8 +223,7 @@ export default {
 				900: "#5F370E",
 			},
 			gold: {
-				100: "#e5ddc1",
-				500: "#cfbf8b",
+				500: "#af966f",
 			},
 			gray: {
 				50: "#f7fafc",
@@ -292,10 +300,10 @@ export default {
 			16: "16",
 		},
 		borderRadius: {
-			"sm": ".125rem",
-			"md": "0.375rem",
-			"lg": ".5rem",
-			"xl": "0.75rem",
+			sm: ".125rem",
+			md: "0.375rem",
+			lg: ".5rem",
+			xl: "0.75rem",
 			"2xl": "1rem",
 			"3xl": "1.5rem",
 			"4xl": "2rem",
@@ -304,6 +312,7 @@ export default {
 			"7xl": "3.5rem",
 			"8xl": "4rem",
 			"9xl": "4.5rem",
+			full: "9999px",
 		},
 		size: {
 			"1/2": "50%",

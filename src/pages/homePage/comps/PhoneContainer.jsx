@@ -2,7 +2,7 @@ import iphoneFrame from "../../../assets/images/iphone-frame.png";
 import podcast from "../../../assets/images/podcast.jpg";
 const PhoneContainer = () => {
 	return (
-		<div className='relative  rounded-9xl bg-black'>
+		<div className='relative  rounded-9xl bg-black transition-all ease-in-out duration-500'>
 			{" "}
 			<div className='absolute flex flex-col place-content-start place-items-start w-full  h-full p-10 mt-36 '>
 				<iframe
@@ -18,12 +18,12 @@ const PhoneContainer = () => {
 				href="https://podcasts.apple.com/us/podcast/skincare-anarchy/id1522162686?itsct=podcast_box_badge&amp;itscg=30200&amp;ls=1"
 			>
 				<img
-					className="w-64 h-36"
+					className="w-48 "
 					src="https://tools.applemediaservices.com/api/badges/listen-on-apple-podcasts/badge/en-us?size=250x83&amp;releaseDate=1708966800"
 					alt='Listen on Apple Podcasts'
 				/>
 			</a>
-			<img src={iphoneFrame} className='w-[600px] h-[1000px]' />
+			<img src={iphoneFrame} className='w-[600px] h-[950px]' />
 		</div>
 	);
 };

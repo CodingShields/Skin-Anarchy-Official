@@ -11,26 +11,27 @@ import PodCastContainer from "./comps/podCasterContainer";
 import StatsContainer from "./comps/statsContainer";
 import TestimonialsContainer from "./comps/testimonialsContainer";
 import BecomeSponsorContainer from "./comps/becomeSponsorContainer";
+import SignatureBar from "../homePage/comps/SignatureBar";
+import ShowInviteBar from "../homePage/comps/ShowInviteBar";
 
 const HomePage = () => {
 	const currentComponent = window.location.pathname;
 
 	console.log(currentComponent);
 	return (
-		<div className='flex flex-col w-full h-full bg-black bg-opacity-80'>
-			<div className='w-full h-full '>
-				<video className='w-full h-lg md:object-center' autoPlay muted loop id='video'>
+		<div className='flex flex-col w-full h-full bg-black'>
+				<video className='w-3/4 h-lg mx-auto md:object-center' autoPlay muted loop id='video'>
 					<source src={goldLogoIntro} type='video/mp4' />
 				</video>
-				<FactsBar />
-				<PodCastContainer />
-				<StatsContainer />
-				<NewsLetterContainer />
-				<InterviewCategoryContainer />
-				<SponsorBarContainer />
-				<BecomeSponsorContainer />
-				<TestimonialsContainer />
-			</div>
+			<SignatureBar />
+			<FactsBar />
+			<PodCastContainer />
+			<StatsContainer />
+			<NewsLetterContainer />
+			<InterviewCategoryContainer />
+			<SponsorBarContainer />
+			<BecomeSponsorContainer />
+			<TestimonialsContainer />
 		</div>
 	);
 };
