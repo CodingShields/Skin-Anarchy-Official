@@ -29,21 +29,21 @@ const AdminNewsLetter = () => {
 	};
 
 	return (
-		<div className='flex flex-col h-full w-full justify-start items-center'>
-				<h1 className='text-5xl font-bold text-gray-700 mb-2 text-center py-2'>News Letter</h1>
+		<div className='flex flex-col h-fit w-full justify-start items-center'>
+			<h1 className='text-5xl font-bold text-gray-700 mb-2 text-center py-2'>News Letter</h1>
 
 			<div className='flex flex-row w-fit justify-center items-center h-fit my-2 mx-auto '>
 				<button
 					onClick={(e) => handleTabClick(e)}
 					value='contactsTab'
-					className='bg-blue-500 text-white text-2xl px-8 py-4 rounded-l-lg shadow-lg w-fit h-fit active:translate-y-2 hover:text-black hover:bg-blue-300'
+					className='bg-black text-white text-md p-2 rounded-l-lg shadow-lg w-fit h-fit active:translate-y-2 hover:text-black hover:bg-gold-500'
 				>
 					Contacts
 				</button>
 				<button
 					value={"emailTab"}
 					onClick={(e) => handleTabClick(e)}
-					className='bg-blue-500 text-white text-2xl px-8 py-4 rounded-r-lg shadow-lg w-fit h-fit active:translate-y-2 hover:text-black hover:bg-blue-300'
+					className='bg-black text-white text-md p-2 rounded-r-lg shadow-lg w-fit h-fit active:translate-y-2 hover:text-black hover:bg-gold-500'
 				>
 					Email Tool
 				</button>

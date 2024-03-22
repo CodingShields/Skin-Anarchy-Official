@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowUturnLeftIcon, HomeIcon, UsersIcon, NewspaperIcon, WrenchScrewdriverIcon, WrenchIcon } from "@heroicons/react/24/outline";
-
+import whiteLogo from "../../../assets/images/whiteLogo.png";
 const AdminNavBar = ({ onItemClicked }) => {
 	const navigation = [
 		{
@@ -52,29 +52,34 @@ const AdminNavBar = ({ onItemClicked }) => {
 	}
 
 	return (
-		<div className='flex flex-col items-start justify-center w-fit h-full bg-blue-600 px-8 py-12 lg:space-y-16 md:space-y-24'>
+		<div className='flex flex-col items-center justify-start w-[245px] h-screen bg-black px-8 lg:space-y-12'>
+			<div>
+				<img src={whiteLogo} className='h-36 py-4 mt-4' alt='whiteLogo' />
+				<h1 className='text-white text-2xl font-glacialRegular text-center'>Admin</h1>
+			</div>
+
 			{navigation.map((item, index) => {
 				return (
 					<div
 						onClick={() => handleItemClick(item.name)}
 						className={classNames(
-							"  h-fit flex space-x-4  py-4  group hover:cursor-pointer  ",
-							activeItem === item.name && " bg-blue-600 transition-all duration-500 ease-in-out h-fit w-fit px-4 py-4 "
+							"  h-fit flex space-x-4 group hover:cursor-pointer  ",
+							activeItem === item.name && " ring-white ring-2 rounded-xl transition-all duration-500 ease-in-out h-fit w-fit px-4 py-2"
 						)}
 						key={index}
 						value={item.name}
 					>
 						<item.icon
 							className={classNames(
-								"w-6 h-6 text-gray-200  group-hover:text-blue-800 group-hover:underline ",
-								activeItem === item.name ? "stroke-green-500 mr-4 group-hover:stroke-green-500 " : ""
+								"w-4 h-6 text-gray-200  group-hover:text-gold-500 group-hover:underline ",
+								activeItem === item.name ? "stroke-gold-500 mr-4 group-hover:stroke-white " : ""
 							)}
 						/>
 						<p
 							className={classNames(
 								activeItem === item.name
-									? "scale-125 font-bold text-green-500 group-hover:text-green-500 whitespace-nowrap "
-									: "text-white text-lg truncate w-fit group-hover:font-bold group-hover:text-blue-800 whitespace-nowrap"
+									? "scale-125  text-gold-500 group-hover:text-white whitespace-nowrap font-glacialRegular "
+									: "text-white text-md w-fit group-hover:font-bold group-hover:text-gold-500 whitespace-nowrap font-glacialRegular"
 							)}
 						>
 							{item.name}

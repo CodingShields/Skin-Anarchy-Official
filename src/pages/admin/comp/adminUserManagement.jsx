@@ -4,6 +4,10 @@ import { UserAuth } from "../../../context/AuthContext";
 import StatsTab from "./user-management/StatsTab";
 import HamburgerUpBtn from "../../components/buttons/hamburgerUpBtn";
 import HamburgerDownBtn from "../../components/buttons/hamburgerDownBtn";
+
+const adminTable = ["Name", "Email", "Birthday", "Member Since", "Last Visit", "Blog Notification", "Podcast Notification", "News Letter", "Upcoming Notification", "Sub Member", "Delete User"];
+
+
 const AdminUserManagement = () => {
 	const [users, setUsers] = useState([]);
 	const [state, setState] = useState({
@@ -134,17 +138,17 @@ const AdminUserManagement = () => {
 					)}
 				</div>
 			</div>
-			<div className='w-full h-fit flex flex-row justify-center items-end text-center text-lg mb-4 '>
-				<div className='flex flex-row justify-evenly items-center text-center text-lg space-x-4'>
-					<h1 className='font-bold'>View By:</h1>
-					<select className='w-48'>
+			<div className='w-full h-fit flex flex-row justify-center items-end text-center mb-4 '>
+				<div className='flex flex-row justify-evenly items-center text-center text-lg space-x-4 text-sm'>
+					<h1 className='font-bold '>View By:</h1>
+					<select className='w-fit '>
 						<option>All Users</option>
 						<option>Active Subs </option>
 						<option>NonActive Subs </option>
 						<option>Cancelled </option>
 					</select>
 				</div>
-				<div className='flex flex-row justify-evenly items-center text-center text-lg space-x-4 ml-2'>
+				<div className='flex flex-row justify-evenly items-center text-center  space-x-4 mx-2 text-sm'>
 					<h1 className='font-bold'>Search:</h1>
 					<select className='w-48'>
 						<option>First Name </option>
@@ -152,39 +156,30 @@ const AdminUserManagement = () => {
 						<option>Email </option>
 						<option>User ID </option>
 					</select>
-					<input className='w-48' type='text' />
-					<button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>Search</button>
 				</div>
-				<div className='flex flex-row justify-evenly items-center text-center mt-8 text-lg space-x-4 ml-2'>
-					<h1 className='font-bold'>Export:</h1>
-					<button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>Export</button>
+				<div className='space-x-2'>
+					<input className='w-48' type='text' />
+					<button className='bg-black hover:bg-gold-500 text-white font-bold py-2 px-4 rounded'>Search</button>
+					<button className='bg-black hover:bg-gold-500 text-white font-bold py-2 px-4 rounded'>Export</button>
 				</div>
 			</div>
 			<div className='w-11/12 h-fit inline-flex justify-end items-end mx-auto'>
 				<table class='min-w-full border-collapse border border-gray-400 place-items-center place-content-center'>
 					<thead>
-						<tr className='bg-gray-50 border-b border-gray-200'>
-							<th class='py-2 px-3 bg-gray-200'>
-								<div
-								className=" mx-auto flex flex-col h-fit w-fit justify-center items-center  text-center"
-								>
+						<tr className='bg-gray-50 border-b border-gray-200 text-sm'>
+							<th class='border-black border-2 bg-gray-200'>
+								<div className=' mx-auto flex flex-col h-fit w-fit justify-center items-center  text-center whitespace-nowrap'>
 									Select All <input className='h-4 w-4 my-2' type='checkbox' />
 								</div>
 							</th>
-							<th class='py-2 px-3 bg-gray-200'>Name</th>
-							<th class='py-2 px-3 bg-gray-200'>Email</th>
-							<th class='py-2 px-3 bg-gray-200'>Birthday</th>
-							<th class='py-2 px-3 bg-gray-200'>Member Since</th>
-							<th class='py-2 px-3 bg-gray-200'>Last Visit</th>
-							<th class='py-2 px-3 bg-gray-200'>Blog Noti</th>
-							<th class='py-2 px-3 bg-gray-200'>Podcast Noti</th>
-							<th class='py-2 px-3 bg-gray-200'>News Letter</th>
-							<th class='py-2 px-3 bg-gray-200'>Upcoming Noti</th>
-							<th class='py-2 px-3 bg-gray-200'>Sub Member</th>
-							<th class='py-2 px-3 bg-gray-200'>Delete User</th>
+							{adminTable.map((item, index) => (
+								<th key={index} class='py-2 px-3 border border-black'>
+									{item}
+								</th>
+							))}
 						</tr>
 					</thead>
-					<tbody className='text-center group group-hover:bg-blue-200'>
+					<tbody className='text-center group group-hover:bg-blue-200 whitespace-nowrap text-sm'>
 						{users.map((user, id) => (
 							<tr key={id}>
 								<td class='py-2 px-3 border border-gray-400'>

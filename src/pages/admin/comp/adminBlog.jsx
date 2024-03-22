@@ -38,6 +38,7 @@ const AdminBlog = () => {
 		setBlogData({
 			date: "",
 			title: "",
+			author: "",
 			podcastUrl: "",
 			tags: "",
 			images: [],
@@ -92,6 +93,7 @@ const AdminBlog = () => {
 			await addDoc(colRef, {
 				date: blogData.date,
 				title: blogData.title,
+				author: blogData.author,
 				podcastUrl: blogData.podcastUrl,
 				tags: blogData.tags,
 				images: [...imageUrls, imageUrls[0]],
@@ -175,32 +177,34 @@ const AdminBlog = () => {
 	// };
 
 	return (
-		<div className=' flex-nowrap  w-full h-fit'>
-			<p className='text-2xl font-bold text-black w-full  text-center py-2'>Admin Blog Upload and Update Tool</p>
-			<a href='https://youtu.be/OWFajYNd3KY' target='_blank' rel='noreferrer'>
-				<p className='text-lg font-bold text-blue underline w-full  text-center py-2'>Click here for a video tutorial on how to use this tool</p>
-			</a>
+		<div className='w-full h-full '>
+			<div>
+				<p className='text-xl font-bold text-black w-full  text-center py-2'>Admin Blog Upload and Update Tool</p>
+				<a href='https://youtu.be/OWFajYNd3KY' target='_blank' rel='noreferrer'>
+					<p className='text-sm italic text-black underline w-full  text-center hover:font-bold hover:text-blue-600 '>Click here for a video tutorial on how to use this tool</p>
+				</a>
+			</div>
 			{/* Main Container */}
-			<div className='flex items-start justify-center w-fit h-124 shadow-black shadow-2xl bg-zinc-600 rounded-2xl mx-auto'>
+			<div className='flex items-start justify-center w-fit h-fit bg-zinc-600 border-black border-2 '>
 				{/* Left Container Under Main */}
-				<div className='flex flex-col items-center justify-center w-full border-r-2 h-full rounded-l-2xl overflow-y-scroll hover:bg-zinc-500 px-4 pb-4'>
-					<p className='text-lg text-white font-bold w-full h-fit text-center py-3 border-b-2'>Main Blog Data</p>
+				<div className='flex flex-col items-center justify-center w-full border-r-2 min-h-full hover:bg-zinc-700 px-4 pb-4'>
+					<p className='text-sm text-white w-full h-fit text-center py-3 border-b-2'>Main Blog Data</p>
 					<div className='flex flex-row items-center justify-center w-fit h-fit space-x-4'>
 						<div className='flex flex-col items-center justify-center w-fit h-fit'>
-							<p className='text-md text-white font-bold w-fit h-fit text-center '>BlogPost Date</p>
+							<p className='text-sm text-white w-fit h-fit text-center py-[2px]'>BlogPost Date</p>
 							<input
 								onChange={handleDateChange}
-								className='w-fit h-fit focus:outline-4 focus:outline-blue-500 text-sm text-center rounded-md border-2 border-black'
+								className='w-fit h-fit focus:outline-1 focus:outline-gold-500 text-xs text-center rounded-md '
 								type='date'
 								name='date'
 								id='date'
 							/>
 						</div>
 						<div className='flex flex-col items-center justify-start w-fit h-fit'>
-							<p className='text-md text-white font-bold text-center w-fit h-fit'>Blog Post Title</p>
+							<p className='text-sm text-white  text-center w-fit h-fit py-[2px]'>Blog Post Title</p>
 							<input
 								onChange={(e) => setBlogData({ ...blogData, title: e.target.value })}
-								className='w-fit h-fit focus:outline-4 focus:outline-blue-500 text-sm text-center rounded-md border-2 border-black'
+								className='w-fit h-fit focus:outline-1 focus:outline-gold-500 text-xs text-center rounded-md placeholder:text-white caret-white accent-white'
 								type='text'
 								name='title'
 								id='title'
@@ -208,32 +212,42 @@ const AdminBlog = () => {
 						</div>
 					</div>
 
-					<div className='flex flex-col items-center justify-start w-fit mt-2 h-fit  bg-zinc-300 text-start rounded-md border-2 border-black'>
-						<p className='text-xl text-black font-bold w-fit border-b-2 border-black text-center py-2'>Blog Title Image</p>
-						<div className='flex flex-col items-center justify-center w-full h-fit '>
+					<div className='flex flex-col items-center justify-start w-fit mt-2 h-fit'>
+						<div className='flex flex-col items-center justify-start w-fit h-fit'>
+							<p className='text-sm text-white  text-center w-fit h-fit py-2px'>Blog Author</p>
+							<input
+								onChange={(e) => setBlogData({ ...blogData, author: e.target.value })}
+								className='w-fit h-fit focus:outline-1 focus:outline-gold-500 text-xs text-center rounded-md placeholder:text-white caret-white accent-white'
+								type='text'
+								name='author'
+								id='author'
+							/>
+						</div>
+						<div className='flex flex-col items-center justify-center w-full h-fit  py-2'>
+							<p className='text-md text-white '>Blog Title Image</p>
+
 							{blogData.images.length > 0 && <img src={blogData.images[0].imageUrl} className='w-fit h-fit py-4 px-2' />}
 							<input
 								onChange={handleImageUploadOnchange}
-								className='w-fit h-fit focus:outline-4 focus:outline-blue-500 py-2 px-8 text-sm text-center rounded-lg cursor-pointer '
+								className='w-fit h-fit focus:outline-1 focus:outline-gold-500 py-2 px-8 text-sm text-center hover:cursor-pointer '
 								type='file'
 								name='titleImage'
 								id='titleImage'
 							/>
 						</div>
-						<div className='flex flex-col items-center justify-start w-full h-fit px-2'>
-							<p className='text-lg text-black font-bold border-t-2 border-black text-center'>Add #tags for data user searches</p>
-							<p className='text-sm text-gray-600 font-italic text-center '>Separate each tag with a comma</p>
-							<p className='text-sm text-gray-600 font-italic text-center py-2'>
-								<span className='text-sm text-gray-600 font-semibold text-center py-2'>Example: </span>#guestName, #product, #topic etc...
+						<div className='flex flex-col items-center justify-start w-full h-fit px-2 '>
+							<p className='text-md text-white font-bold underline text-center'>Add #tags for data user searches</p>
+							<p className='text-sm text-white italic text-center '>Separate each tag with a comma</p>
+							<p className='text-sm text-white italic text-center py-2'>
+								<span className='text-sm text-blackfont-semibold text-center py-2'>Example: </span>#guestName, #product, #topic etc...
 							</p>
 							<textarea
 								onChange={(e) => setBlogData({ ...blogData, tags: e.target.value })}
-								className='w-full h-fit  focus:outline-4 focus:outline-blue-500 text-lg text-center'
+								className='w-full h-auto focus:outline-4 focus:outline-blue-500 text-lg text-center'
 								type='text'
 								name='tags'
 								id='tags'
 							/>
-							I think we should add mandatory tags for each blog post.
 						</div>
 						<div>
 							<p className='text-xl text-black font-bold border-black text-center'>Podcast URL</p>
@@ -256,14 +270,14 @@ const AdminBlog = () => {
             /> */}
 					</div>
 				</div>
-				<div className='flex flex-col items-center justify-center w-full max-h-124 hover:bg-zinc-500 bg-gray-600 px-4 grow-0'>
+				<div className='flex flex-col items-center justify-center w-full  hover:bg-zinc-500 bg-gray-600 px-4 grow-0'>
 					{/* Middle Container */}
-					<p className='text-lg font-bold text-gray-100 w-full py-3 text-center border-b-2 border-white mb-4 '>Add Additional Image Uploads</p>
-					<div className='flex flex-row items-center justify-center w-full h-fit mb-2 space-x-4'>
+					<p className='text-md text-gray-100 w-full py-3 text-center border-b-2 border-white mb-4 '>Add Additional Image Uploads</p>
+					<div className='flex flex-row items-center justify-center w-full h-fit mb-2 space-x-2'>
 						<AddCircleBtn onClick={handleImageInputAdd} />
-						<p className='text-xl text-white font-bold w-fit'>Add </p>
+						<p className='text-md text-white  w-fit'>Add </p>
 						<MinusCircleBtn onClick={handleImageInputRemove} />
-						<p className='text-xl  text-white font-bold w-fit'>Remove </p>
+						<p className='text-md  text-white  w-fit'>Remove </p>
 					</div>
 					<div className='flex flex-col items-center justify-start w-full h-104 overscroll-y-auto overflow-y-scroll grow-0'>
 						{imageInputs.length >= 1 ? (
@@ -273,7 +287,7 @@ const AdminBlog = () => {
 										key={inputNumber}
 										className='flex flex-col items-center justify-start w-full h-full  bg-zinc-300 py-2 text-start shadow-lg shadow-black rounded-lg mb-2 border-2 border-black'
 									>
-										<p className='text-lg font-bold text-black w-11/12 text-center border-b-2 border-black'>Extra Image {inputNumber}</p>
+										<p className='text-md text-black w-11/12 text-center underline py-2'>Extra Image {inputNumber}</p>
 										{blogData.images[index + 1] && <img src={blogData.images[index + 1].imageUrl} className='w-fit h-fit py-6 px-6' />}
 										<div className='flex flex-col items-center justify-end w-full h-fit'>
 											<input
@@ -291,15 +305,14 @@ const AdminBlog = () => {
 						)}
 					</div>
 				</div>
-				<div className='flex flex-col items-center justify-start w-full max-h-124 hover:bg-zinc-500 bg-gray-600 border-l-2 border-white rounded-r-xl'>
+				<div className='flex flex-col items-center justify-start w-full  hover:bg-zinc-500 bg-gray-600 border-l-2 border-white rounded-r-xl'>
 					{/* Right Container */}
-					<p className='text-xl font-bold text-gray-100 text-center w-full border-b-2 border-white py-3 mb-4'>Add Titles and Contents</p>
-					<div className='flex flex-row items-center justify-center w-full h-fit mb-4 space-x-4 '>
+					<p className='text-md text-gray-100 text-center w-full border-b-2 border-white py-3 mb-4'>Add Titles and Contents</p>
+					<div className='flex flex-row items-center justify-center w-full h-fit mb-4 space-x-2 '>
 						<AddCircleBtn onClick={handleTitleContentInputs} />
-						<p className='text-xl  text-white font-bold w-fit '>Add</p>
+						<p className='text-md  text-white  w-fit '>Add</p>
 						<MinusCircleBtn onClick={handleTitleContentInputsRemove} />
-
-						<p className='text-xl  text-white font-bold w-fit'>Remove</p>
+						<p className='text-md  text-white  w-fit'>Remove</p>
 					</div>
 					<div className='flex flex-col items-center justify-start w-full h-104 overscroll-y-auto overflow-y-scroll grow-0'>
 						{contentInputs.length >= 1 ? (
@@ -309,14 +322,14 @@ const AdminBlog = () => {
 										key={inputNumber}
 										className='flex flex-col items-center justify-center w-full h-fit mb-2 space-y-1 border-2 bg-zinc-300 border-zinc-900 pb-4 text-start shadow-lg shadow-black rounded-lg px-2'
 									>
-										<p className='text-lg font-bold text-black text-center w-full '>Content Title {inputNumber}</p>
+										<p className='text-md font-bold text-black text-center w-full '>Content Title {inputNumber}</p>
 										<input
 											onChange={(e) => setContentTitle(e.target.value)}
 											className='w-96 h-fit focus:outline-4 focus:outline-blue-500 shadow-md shadow-black rounded-lg'
 											type='text'
 											name={`contentTitle${inputNumber}`}
 										/>
-										<p className='text-lg font-bold text-black text-center w-full'>Content {inputNumber}</p>
+										<p className='text-md font-bold text-black text-center w-full'>Content {inputNumber}</p>
 										<textarea
 											onChange={(e) => setContent(e.target.value)}
 											className='w-96 h-24 focus:outline-4 focus:outline-blue-500 shadow-md shadow-black rounded-lg'
@@ -333,14 +346,12 @@ const AdminBlog = () => {
 					</div>
 				</div>
 			</div>{" "}
-			<div className='flex flex-row w-full justify-center items-center py-10'>
 				<button
 					onClick={handleUpload}
-					className=' border-4 border-gray-700 rounded-lg text-xl shadow-lg shadow-black text-white font-bold px-8 py-4 hover:bg-zinc-500 bg-gray-600 hover:shadow-blue-400'
+					className=' border-4 border-gray-700 rounded-lg text-sm shadow-lg shadow-black text-white p-2 hover:bg-zinc-500 bg-gray-600 hover:shadow-blue-400'
 				>
 					Upload
 				</button>
-			</div>
 		</div>
 	);
 };

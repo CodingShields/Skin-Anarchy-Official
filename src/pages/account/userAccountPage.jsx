@@ -43,9 +43,9 @@ const UserAccountPage = () => {
 	};
 
 	return (
-		<div className='flex flex-row w-full h-screen justify-center items-center bg-white'>
+		<div className='flex flex-row w-full h-fit justify-center items-center bg-white'>
 			<div
-			className="flex flex-col w-full h-screen justify-center items-center bg-white"
+			className="flex flex-col w-full h-fit justify-center items-center bg-white"
 			>
 
 			</div>
@@ -113,7 +113,7 @@ const UserAccountPage = () => {
 				</div>
 			))}
 			<div
-			className="flex flex-row w-full h-screen justify-center items-center bg-white"
+			className="flex flex-row w-full h-full justify-center items-center bg-white"
 			>
 
 			</div>

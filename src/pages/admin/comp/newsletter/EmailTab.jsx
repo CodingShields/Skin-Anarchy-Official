@@ -3,7 +3,6 @@ const EmailTab = () => {
 		<div className='flex flex-col items-center justify-start w-full h-full'>
 			{" "}
 			<div className='flex flex-col h-fit w-full px-12 py-6'>
-				<h1 className='text-2xl font-bold text-gray-700 my-2'>Email</h1>
 				<div className='flex flex-row w-full h-fit justify-center items-center'>
 					<div className='w-full h-fit p-2  text-black flex flex-row justify-center items-center'>
 						<h1 className='mr-2 text-2xl'>To:</h1>

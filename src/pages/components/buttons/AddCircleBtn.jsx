@@ -3,7 +3,7 @@ const AddCircleBtn = ({ onClick, name }) => {
 
 	return (
 		<svg
-			className='w-12 h-12 text-white hover:scale-125 hover:fill-green-100 hover:stroke-green-600 active:translate-y-2 hover:cursor-pointer'
+			className='w-6 h-6 text-white hover:scale-125 hover:fill-green-100 hover:stroke-green-600 active:translate-y-2 hover:cursor-pointer'
 			onClick={() => onClick(name)}
 			xmlns='http://www.w3.org/2000/svg'
 			fill='none'

@@ -223,6 +223,7 @@ export default {
 				900: "#5F370E",
 			},
 			gold: {
+				100: "#fff9d4",
 				500: "#af966f",
 			},
 			gray: {

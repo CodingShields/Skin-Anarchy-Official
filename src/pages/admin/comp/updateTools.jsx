@@ -25,9 +25,8 @@ const UpdateTools = () => {
 	}
 
 	return (
-		<div className='flex flex-col items-center justify-start w-full h-full '>
-			<h1 className='text-3xl font-bold text-black w-full h-fit text-center mb-2 mt-4'>Skin Anarchy Database Update Tools</h1>
-			<div className='flex flex-row w-full justify-center items-center h-fit border-b-4 border-black pb-4 bg-opacity-0'>
+		<div className='flex flex-col items-center justify-start w-full '>
+			<div className='flex flex-row w-full justify-center items-center h-fit border-b-4 border-black py-4 bg-opacity-0'>
 				{state.adminNavBar.map((item, id) => {
 					return (
 						<div
@@ -37,17 +36,17 @@ const UpdateTools = () => {
 						>
 							<item.icon
 								className={classNames(
-									"w-6 h-6 text-black group-hover:text-blue-600  group-hover:cursor-pointer group-hover:scale-125  ",
+									"w-6 h-6 text-black group-hover:text-gold-500  group-hover:cursor-pointer group-hover:scale-125  ",
 									activeItem === item.name
-										? "stroke-green-500 scale-125 group-hover:text-green-500  group-hover:scale-125 transition-all duration-200 ease-in-out"
+										? "stroke-gold-500 scale-125 group-hover:text-gold-500  group-hover:scale-125 transition-all duration-200 ease-in-out"
 										: ""
 								)}
 							/>
 							<p
 								className={classNames(
-									"text-black text-md truncate w-full text-pretty group-hover:scale-125  group-hover:text-blue-600 group-hover:cursor-pointer",
+									"text-black text-sm truncate w-full text-pretty group-hover:scale-125  group-hover:text-gold-500 group-hover:cursor-pointer",
 									activeItem === item.name
-										? "text-green-500 scale-125 font-bold group-hover:text-green-500 underline  transition-all duration-200 ease-in-out"
+										? "text-gold-500 scale-125 font-bold group-hover:text-gold-500 underline  transition-all duration-200 ease-in-out"
 										: ""
 								)}
 							>
@@ -57,7 +56,7 @@ const UpdateTools = () => {
 					);
 				})}
 			</div>
-			<div className='flex'>{compState}</div>
+			<div className='overflow-y-none'>{compState}</div>
 		</div>
 	);
 };

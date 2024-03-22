@@ -2,7 +2,7 @@ import { useState } from "react";
 
 const ContactsTab = () => {
 	return (
-		<div className='flex flex-col items-center justify-center w-full h-fit space-x-4'>
+		<div className='flex flex-col items-center justify-start w-full h-fit space-x-4'>
 			<h1 className='text-2xl font-bold text-gray-700 my-2'>Users</h1>
 
 			<select className='w-fit h-12 px-12  text-black bg-gray-200 rounded-lg'>

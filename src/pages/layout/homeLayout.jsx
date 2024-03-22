@@ -10,19 +10,11 @@ const HomeLayout = () => {
 
 	return (
 		<>
-			{!isAdminPage && (
-				<div className='overflow-hidden bg-white'>
-					<Header />
-				</div>
-			)}
-			<main className='flex w-full h-full '>
+			{!isAdminPage && <Header />}
+			<main>
 				<Outlet />
 			</main>
-			{!isAdminPage && (
-				<div className='bottom-0 w-full'>
-					<Footer />
-				</div>
-			)}
+			{!isAdminPage && <Footer />}
 		</>
 	);
 };

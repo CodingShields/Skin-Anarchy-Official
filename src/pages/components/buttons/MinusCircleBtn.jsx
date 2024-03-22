@@ -2,7 +2,7 @@ const MinusCircleBtn = ({ onClick }) => {
   return (
     <svg
       onClick={onClick}
-      className="w-12 h-12 text-white hover:scale-125 hover:fill-red-100 hover:stroke-red-600 active:translate-y-2 hover:cursor-pointer"
+      className="w-6 h-6 text-white hover:scale-125 hover:fill-red-100 hover:stroke-red-600 active:translate-y-2 hover:cursor-pointer"
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
