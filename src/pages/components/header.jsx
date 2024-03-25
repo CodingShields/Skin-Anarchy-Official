@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { NavLink, Outlet } from "react-router-dom";
-import whiteLogo from "../../assets/images/whiteLogo.png";
 import logo from "../../assets/images/logo.png";
 
 import Banner from "../homePage/comps/bannerContainer";
@@ -10,16 +9,16 @@ import AnimatedNavButton from "../components/buttons/AnimatedNavButton";
 import { UserAuth } from "../../context/AuthContext";
 
 const Header = () => {
-	const user = UserAuth();
-
-	console.log(user, "user");
-
 	const [state, setState] = useState({
 		error: false,
 		errorMessage: "",
 		loading: false,
 		navBarOpen: true,
 		navigating: false,
+		selectedSubMenu: "",
+		subMenuOpen: false,
+		subMenuData: "",
+		activeMenuItem: null, // Track active menu item for submenu positioning
 	});
 
 	const cards = [
@@ -29,7 +28,16 @@ const Header = () => {
 		},
 		{
 			name: "About",
-			link: "/members-area/about",
+			subMenu: [
+				{
+					name: "About Us",
+					link: "/members-area/about",
+				},
+				{
+					name: "Featured Press",
+					link: "/members-area/about/featured-press",
+				},
+			],
 		},
 		{
 			name: "Connect",
@@ -38,22 +46,55 @@ const Header = () => {
 		{
 			name: "Podcast",
 			link: "/members-area/podcast",
+			subMenu: [
+				{
+					name: "Latest Episode",
+					link: "/members-area/podcast",
+				},
+				{
+					name: "Past Episodes",
+					link: "/members-area/podcast/podcast-summaries",
+				},
+			],
 		},
 		{
-			name: "Top Picks",
-			link: "/members-area/top-picks",
-		},
-		{
-			name: "Blog",
+			name: "Skin Anarchy Blog",
 			link: "/members-area/blog",
+			// subMenu: [
+			// 	{
+			// 		name: "Beauty Culture",
+			// 		link: "/members-area/blog/beauty-culture",
+			// 	},
+			// 	{
+			// 		name: "Fragrance",
+			// 		link: "/members-area/blog/fragrance",
+			// 	},
+			// 	{
+			// 		name: "Podcast Summaries",
+			// 		link: "/members-area/blog/podcast-summaries",
+			// 	},
+			// 	{
+			// 		name: "Science of Skin",
+			// 		link: "/members-area/blog/science-of-skin",
+			// 	},
+			// ],
 		},
 		{
-			name: "Master Class",
-			link: "/members-area/master-class",
+			name: "Awards",
+			subMenu: [
+				{
+					name: "Master Class",
+					link: "/members-area/master-class",
+				},
+				{
+					name: "Science of Skin Awards",
+					link: "/members-area/science-of-skin-awards",
+				},
+			],
 		},
 		{
-			name: "Science of Skin Awards",
-			link: "/members-area/science-of-skin-awards",
+			name: "Yugen Magazine",
+			link: "/members-area/yugen-magazine",
 		},
 		{
 			name: "Account",
@@ -77,32 +118,69 @@ const Header = () => {
 			navBarOpen: !state.navBarOpen,
 		});
 	};
+	const handleMenuMouseEnter = (name, subMenu) => {
+		setState((prevState) => ({
+			...prevState,
+			subMenuOpen: true,
+			subMenuData: subMenu || [],
+			activeMenuItem: name,
+		}));
+	};
+
+	const handleMenuMouseLeave = () => {
+		setState((prevState) => ({
+			...prevState,
+			subMenuOpen: false,
+			activeMenuItem: null,
+		}));
+	};
 
 	return (
-		<div className='z-30 w-full overflow-none bg-black'>
-			<div className='flex flex-row justify-between'>
-				<div className='text-center ease-in-out duration-1000 transition-all translate-x-100 '>
+		<div className='z-30 h-screen w-fit absolute'>
+			<div
+				onMouseEnter={handleNavBar}
+				onMouseLeave={handleNavBar}
+				className={
+					!state.navBarOpen
+						? "flex flex-col justify-evenly items-start bg-white fixed h-screen w-64 ease-in-out duration-700 transition-all z-40 bg-opacity-90"
+						: "flex flex-col justify-evenly  bg-gold-500 fixed h-screen w-64 -translate-x-60 ease-in-out duration-700 transition-all z-40"
+				}
+			>
+				<div className='w-full'>
 					<NavLink to='home'>
-						<div className='w-full mx-auto ml-4 mt-4'>
-							<img src={whiteLogo} alt='logo' className='xl:h-36 xxl:h-72 hover:animate-pulse mx-auto' />
-							<p className=' hover:animate-pulse mx-auto font-playfair text-white text-3xl'>SKIN ANARCHY</p>
-						</div>
+						<img src={logo} alt='logo' className='xl:h-24 xxl:h-64 hover:animate-pulse mx-auto ' />
 					</NavLink>
 				</div>
 
-				<div className='flex flex-row'>
-					{cards.map((card) => (
+				<div className='flex flex-col w-fit space-y-2 justify-center'>
+					{cards.map((card, index) => (
 						<div
-							onMouseEnter={() => setState({ ...state, navigating: true })}
-							onMouseLeave={() => setState({ ...state, navigating: false })}
-							key={card.name}
-							className='flex flex-row lg:py-2 p-4 lg:px-8 xxl:px-12 '
+							key={index}
+							className='relative'
+							onMouseEnter={() => handleMenuMouseEnter(card.name, card.subMenu)}
+							onMouseLeave={handleMenuMouseLeave}
 						>
-							<NavLink to={card.link}>
-								<div className=' leading-1'>
-									<h3 className='lg:text-sm font-glacialRegular font-thin text-white'>{card.name}</h3>
+							<div className='flex flex-row lg:py-2 p-4 lg:px-8 xxl:px-12 hover:scale-125 hover:underline hover:translate-x-5 transition-all duration-500 ease-in-out group hover:cursor-pointer'>
+								<NavLink to={card.link}>
+									<div className=' leading-1 w-full'>
+										<h3 className='lg:text-sm font-glacialRegular font-thin text-black'>{card.name}</h3>
+									</div>
+								</NavLink>
+								{card.subMenu ? <img src={doubleChevronDown} alt='chevron' className='w-4 h-4 ml-2 mt-1 ' /> : null}
+							</div>
+							{state.subMenuOpen && state.activeMenuItem === card.name && card.subMenu ? (
+								<div className='absolute left-1/2 top-0 mt-2 z-20 translate-x-8 duration-300 ease-in-out transition-all shadow-2xl'>
+									<div className='bg-white p-2 shadow-md rounded-md'>
+										{state.subMenuData.map((subMenu, subIndex) => (
+											<NavLink to={subMenu.link} key={subIndex}>
+												<h3 className='lg:text-sm font-glacialRegular font-thin text-black hover:text-gold-500 whitespace-nowrap py-2 hover:underline'>
+													{subMenu.name}
+												</h3>
+											</NavLink>
+										))}
+									</div>
 								</div>
-							</NavLink>
+							) : null}
 						</div>
 					))}
 				</div>

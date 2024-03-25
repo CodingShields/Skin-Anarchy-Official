@@ -13,6 +13,7 @@ import TestimonialsContainer from "./comps/testimonialsContainer";
 import BecomeSponsorContainer from "./comps/becomeSponsorContainer";
 import SignatureBar from "../homePage/comps/SignatureBar";
 import ShowInviteBar from "../homePage/comps/ShowInviteBar";
+import GifBg from "../../assets/images/Gif-Bg.gif";
 
 const HomePage = () => {
 	const currentComponent = window.location.pathname;
@@ -20,9 +21,10 @@ const HomePage = () => {
 	console.log(currentComponent);
 	return (
 		<div className='flex flex-col w-full h-full bg-black'>
-				<video className='w-3/4 h-lg mx-auto md:object-center' autoPlay muted loop id='video'>
+				{/* <video className='w-3/4 h-lg mx-auto md:object-center' autoPlay muted loop id='video'>
 					<source src={goldLogoIntro} type='video/mp4' />
-				</video>
+				</video> */}
+			<img src={GifBg} alt='gif' className='w-3/4 h-full mx-auto' />
 			<SignatureBar />
 			<FactsBar />
 			<PodCastContainer />

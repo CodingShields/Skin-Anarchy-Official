@@ -12,6 +12,25 @@ import PrevBlogs from "./comp/prevBlogs";
 const BlogPage = () => {
 	const navigate = useNavigate();
 
+	const categories = [
+		{
+			name: "Beauty Culture",
+			link: "/members-area/blog/beauty-culture",
+		},
+		{
+			name: "Fragrance",
+			link: "/members-area/blog/fragrance",
+		},
+		{
+			name: "Podcast Summaries",
+			link: "/members-area/blog/podcast-summaries",
+		},
+		{
+			name: "Science of Skin",
+			link: "/members-area/blog/science-of-skin",
+		},
+	];
+
 	return (
 		<div className='flex flex-col w-full h-full'>
 			<div className='w-full h-fit flex flex-row text-center'>
