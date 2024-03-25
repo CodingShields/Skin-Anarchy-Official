@@ -34,6 +34,10 @@ const Header = () => {
 					link: "/members-area/about",
 				},
 				{
+					name: "Mission",
+					link: "/members-area/about/mission",
+				},
+				{
 					name: "Featured Press",
 					link: "/members-area/about/featured-press",
 				},
