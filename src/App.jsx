@@ -1,20 +1,20 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthContextProvider } from "./context/AuthContext";
 import LoginPage from "./pages/components/LoginPage.jsx";
-import SignUpPage from "./pages/components/signUpPage.jsx";
-import AboutPage from "./pages/about/aboutPage.jsx";
-import ConnectPage from "./pages/connect/connectPage.jsx";
-import PodCastPage from "./pages/podcast/podcastPage.jsx";
-import TopPicksPage from "./pages/topPicks/topPicksPage.jsx";
-import BlogPage from "./pages/blog/blogPage.jsx";
+import SignUpPage from "./pages/components/SignUpPage.jsx";
+import AboutPage from "./pages/about/AboutPage.jsx";
+import ConnectPage from "./pages/connect/ConnectPage.jsx";
+import PodCastPage from "./pages/podcast/PodcastPage.jsx";
+import TopPicksPage from "./pages/topPicks/TopPicksPage.jsx";
+import BlogPage from "./pages/blog/BlogPage.jsx";
 import ScienceOfSkinAwards from "./pages/awards/ScienceOfSkinAwards.jsx";
-import AccountPage from "./pages/account/accountPage.jsx";
-import HomeLayout from "./pages/layout/homeLayout.jsx";
+import AccountPage from "./pages/account/AccountPage.jsx";
+import HomeLayout from "./pages/layout/HomeLayout.jsx";
 import HomePage from "./pages/homePage/HomePage.jsx";
-import ProtectedRoute from "./pages/components/protectedRoute.jsx";
-import LogoutPage from "./pages/logout/logoutPage.jsx";
-import PrevBlogs from "./pages/blog/comp/prevBlogs.jsx";
-import MasterClassPage from "./pages/masterClass/masterClassPage.jsx";
+import ProtectedRoute from "./pages/components/ProtectedRoute.jsx";
+import LogoutPage from "./pages/logout/LogoutPage.jsx";
+import PrevBlogs from "./pages/blog/comp/PrevBlogs.jsx";
+import MasterClassPage from "./pages/masterClass/MasterClassPage.jsx";
 
 function App() {
 	return (
