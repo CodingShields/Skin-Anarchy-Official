@@ -2,13 +2,12 @@ import React, { useState, useEffect } from "react";
 import { collection, getDocs, query } from "firebase/firestore";
 import { db } from "../../../fireBase/firebaseConfig";
 import { animateCounter } from "../../../assets/utilities/numberCounter";
-import StatsFilledBar from "../../../assets/data/homepage/StatsFilledBar";
 import headsetStatic from "../../../assets/icons/homepage/statsContainer/headsetStatic.svg";
 import micStatic from "../../../assets/icons/homepage/statsContainer/micStatic.svg";
 import peopleStatic from "../../../assets/icons/homepage/statsContainer/poepleStatic.svg";
 import linkStatic2 from "../../../assets/icons/homepage/statsContainer/linkStatic2.svg";
 
-const StatsContainer = () => {
+const PodcastAnalyticsContainer = () => {
 	const [prevStatsData, setPrevStatsData] = useState({});
 
 	useEffect(() => {
@@ -105,7 +104,7 @@ const StatsContainer = () => {
 	// });
 
 	return (
-		<div className='flex flex-col justify-center items-center text-center h-full w-full'>
+		<div className='flex flex-col justify-center items-center text-center h-full w-full bg-black'>
 			<div className='flex flex-col h-full w-full p-4 mb-8 text-5xl text-center text-white z-10 top-1/4 subpixel-antialiased	'>
 				<h3 className='text-128 text-black truncate uppercase font-playfair'>PODCAST ANALYTICS</h3>
 
@@ -147,22 +146,10 @@ const StatsContainer = () => {
 						<h3 className='text-xl font-semibold text-black truncate uppercase'>SOCIAL FOLLOWERS</h3>
 					</div>
 				</div>
-				<div className='flex flex-col w-full px-40 '>
-					<h3 className='text-2xl font-semibold text-black truncate uppercase mb-4'>Listener Demographics</h3>
-					<div className='flex flex-col w-auto h-fit justify-start items-start space-y-4 text-[16px] font-glacial truncate uppercase text-black'>
-						<h2>Women</h2>
-						<StatsFilledBar value={prevStatsData.women} />
-						<h2>Men</h2>
-						<StatsFilledBar value={prevStatsData.men} />
-						<h2>Age 18 - 34</h2>
-						<StatsFilledBar value={prevStatsData.age1834} />
-						<h2>AGE 35-59</h2>
-						<StatsFilledBar value={prevStatsData.age3559} />
-					</div>
-				</div>
+			
 			</div>
 		</div>
 	);
 };
 
-export default StatsContainer;
+export default PodcastAnalyticsContainer;

@@ -8,7 +8,8 @@ import InterviewCategoryContainer from "./comps/interviewCategoryContainer";
 import goldLogoIntro from "../../assets/video/goldLogoIntro.mp4";
 import FactsBar from "./comps/FactsBar";
 import PodCastContainer from "./comps/podCasterContainer";
-import StatsContainer from "./comps/StatsContainer";
+import PodcastAnalyticsContainer from "./comps/PodcastAnalyticsContainer";
+import ListenerDemoGraphicsContainer from "./comps/ListenerDemoGraphicsContainer";
 import TestimonialsContainer from "./comps/testimonialsContainer";
 import BecomeSponsorContainer from "./comps/becomeSponsorContainer";
 import SignatureBar from "./comps/SignatureBar";
@@ -21,14 +22,15 @@ const HomePage = () => {
 	console.log(currentComponent);
 	return (
 		<div className='flex flex-col w-full h-full bg-black'>
-				{/* <video className='w-3/4 h-lg mx-auto md:object-center' autoPlay muted loop id='video'>
+			{/* <video className='w-3/4 h-lg mx-auto md:object-center' autoPlay muted loop id='video'>
 					<source src={goldLogoIntro} type='video/mp4' />
 				</video> */}
 			<img src={GifBg} alt='gif' className='w-3/4 h-full mx-auto' />
 			<SignatureBar />
 			<FactsBar />
 			<PodCastContainer />
-			<StatsContainer />
+			<PodcastAnalyticsContainer />
+			<ListenerDemoGraphicsContainer />
 			<NewsLetterContainer />
 			<InterviewCategoryContainer />
 			<SponsorBarContainer />

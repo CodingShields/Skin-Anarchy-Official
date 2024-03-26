@@ -149,7 +149,7 @@ const Header = () => {
 				className={
 					!state.navBarOpen
 						? "flex flex-col justify-evenly items-start border-r-2 border-white bg-black fixed h-screen w-48 ease-in-out duration-700 transition-all z-40 "
-						: "flex flex-col justify-evenly  border-r-2 bg-black border-white fixed h-screen w-48 -translate-x-36 ease-in-out duration-700 transition-all z-40"
+						: "flex flex-col justify-evenly  border-r-2 bg-white border-white fixed h-screen w-48 -translate-x-[220px] ease-in-out duration-700 transition-all z-40"
 				}
 			>
 				<div className='w-fit ml-8'>
