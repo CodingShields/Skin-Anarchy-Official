@@ -7,7 +7,7 @@ import tealTypewriter from "../../assets/images/tealTypewriter.jpeg";
 import BlogKeys from "../../assets/images/blogKeys.jpeg";
 import blogBG from "../../assets/images/blogBG.jpeg";
 import blogKeys from "../../assets/images/blogKeys.jpeg";
-import PrevBlogs from "./comp/prevBlogs";
+import PrevBlogs from "./comp/PrevBlogs";
 
 const BlogPage = () => {
 	const navigate = useNavigate();

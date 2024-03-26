@@ -23,7 +23,7 @@ const ListenerDemoGraphicsContainer = () => {
 
 	return (
 		<div className='w-full h-fit bg-black py-12'>
-			<div className='grid grid-cols-1'>
+			<div className='grid grid-cols-1 mx-auto w-3/4'>
 				<h3 className='text-2xl font-semibold text-white truncate uppercase mb-4'>Listener Demographics</h3>
 				<div className='flex flex-col w-auto h-fit justify-start items-start space-y-4 text-[16px] font-glacial truncate uppercase text-white'>
 					<h2>Women</h2>

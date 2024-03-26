@@ -17,24 +17,16 @@ const BecomeSponsorContainer = () => {
 				<div className='flex items-center justify-center mt-10 gap-x-6'>
 					<button
 						href='#'
-						className='rounded-md bg-white px-3.5 py-2.5 text-sm font-glacialRegular text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white'
+						className='font-glacialRegular flex-none rounded-md bg-black px-3.5 py-2.5 text-sm font-semibold text-white border-2 border-gray-600 shadow-sm hover:border-white hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-all ease-in-out duration-500 hover:text-black hover:shadow-xl hover:shadow-black'
 					>
 						Contact Our Team
 					</button>
 				</div>
 				<svg
 					viewBox='0 0 1024 1024'
-					className='absolute left-1/2 top-1/2 -z-10 h-[64rem] w-[64rem] -translate-x-1/2 -translate-y-[50%] transform rotate-45 bg-black -z-10'
+					className='absolute left-1/2 top-1/2 -z-30 h-[64rem] w-[64rem] -translate-x-1/2 -translate-y-[50%] transform rotate-45 bg-black '
 					aria-hidden='true'
-				>
-					<circle cx={512} cy={512} r={512} fill='#af966' fillOpacity='0.7' />
-					<defs>
-						<radialGradient>
-							<stop stopColor='#ffff' />
-							<stop offset={1} stopColor='#af966f' />
-						</radialGradient>
-					</defs>
-				</svg>
+				></svg>
 			</div>
 		</div>
 	);

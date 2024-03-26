@@ -2,24 +2,18 @@ import interviewCategories from "../../../assets/data/homepage/interviewCategori
 
 const InterviewCategoryContainer = () => {
 	return (
-		<div className='w-full h-full bg-black p-36 z-20'>
-			<h1
-			className="font-playfair text-3xl text-white text-center mb-20"
-			>INTERVIEW CATEGORIES</h1>
-			<div className='grid grid-cols-3  gap-14 '>
+		<div className='block bg-black px-36 pt-16 h-[1100px] z-10'>
+			<h1 className='font-playfair text-3xl text-white text-center mb-20'>INTERVIEW CATEGORIES</h1>
+			<div className='flex flex-row flex-wrap'>
 				{interviewCategories.map((item) => (
 					<div
 						key={item.id}
-						className='flex flex-col w-fit h-auto  justify-center px-8 py-2 bg-black rounded-5xl  shadow-sm shadow-gold-500 group hover:bg-white hover:rounded-7xl hover:shadow-white hover:shadow-lg hover:scale-125 transition-all duration-500 ease-in-out'
-					><div
-					className="inline-flex w-fit justify-around items-center mx-auto mt-4"
-						>
-					
-						<h3 className='w-full font-openSans text-[22px] font-bold text-center text-gray-600 group-hover:text-black transition-all duration-500 ease-in-out'>
+						className='mx-auto grid grid-cols-1 w-fit h-32 my-10 hover:h-auto justify-center px-8 py-2 rounded-xl group hover:bg-white hover:shadow-white hover:shadow-lg hover:scale-115 transition-all duration-500 ease-in-out'
+					>
+						<h3 className='w-full py-2 font-openSans text-[22px] font-bold text-center text-white group-hover:text-black transition-all duration-500 ease-in-out'>
 							{item.title}
-							</h3>
-						</div>
-						<p className='font-glacialRegular text-sm text-center text-gray-400 group-hover:text-black transition-all duration-500 ease-in-out'>
+						</h3>
+						<p className='font-glacialRegular w-[350px] h-fit group-hover:leading-loose	 truncate group-hover:text-xs group-hover:whitespace-normal tracking-widest text-[18px] text-center text-gray-600 group-hover:text-black '>
 							{item.details}
 						</p>
 					</div>

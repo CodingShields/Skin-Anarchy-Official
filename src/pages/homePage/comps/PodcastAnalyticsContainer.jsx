@@ -104,50 +104,47 @@ const PodcastAnalyticsContainer = () => {
 	// });
 
 	return (
-		<div className='flex flex-col justify-center items-center text-center h-full w-full bg-black'>
-			<div className='flex flex-col h-full w-full p-4 mb-8 text-5xl text-center text-white z-10 top-1/4 subpixel-antialiased	'>
-				<h3 className='text-128 text-black truncate uppercase font-playfair'>PODCAST ANALYTICS</h3>
-
-				<div className='grid grid-cols-4 mx-auto my-auto gap-[96px] mt-16 bg-black'>
+		<div className='flex flex-col justify-center items-center text-center h-full w-full bg-char-900 py-10'>
+				<h3 className='text-4xl  text-white truncate uppercase font-playfair pb-12'>PODCAST ANALYTICS</h3>
+				<div className='grid grid-cols-4 gap-12'>
 					<div className='flex flex-col w-fit h-auto px-2 py-2 lg:w-64 justify-center items-center whitespace-nowrap'>
-						<img className='h-22' src={headsetStatic} alt='headSetBounceIn' id='icon' />{" "}
-						<h3 className='mt-1 text-4xl lg:text-2xl  text-black mb-4 font-glacialRegular'>
+						{/* <img className='h-22' src={headsetStatic} alt='headSetBounceIn' id='icon' />{" "} */}
+						<h3 className='mt-1 text-4xl lg:text-2xl  text-white mb-4 font-glacialRegular'>
 							<span id='counter' className='text-4xl font-glacialRegular' data-target={prevStatsData.downloadsPerWeek}></span>
 						</h3>
-						<h3 className='text-center text-xl font-medium text-black truncate uppercase'>Downloads Per Week</h3>
+						<h3 className='text-center text-lg font-medium text-white truncate uppercase'>Downloads Per Week</h3>
 					</div>
 
 					<div className='flex flex-col w-fit h-auto px-2 py-2 lg:w-64 justify-center items-center whitespace-nowrap'>
-						<img className='h-22' src={micStatic} alt='micBounceIn' id='icon' />{" "}
-						<h3 className='mt-1 text-4xl font-semibold lg:text-2xl  text-black mb-4 font-glacialRegular'>
+						{/* <img className='h-22' src={micStatic} alt='micBounceIn' id='icon' />{" "} */}
+						<h3 className='mt-1 text-4xl font-semibold lg:text-2xl  text-white mb-4 font-glacialRegular'>
 							<span className='text-4xl font-glacialRegular' id='counter' data-target={prevStatsData.episodesRecorded}>
 								{/* {episodesRecorded} */}
 							</span>
 						</h3>
-						<h3 className='text-xl font-medium text-black truncate uppercase'>Episodes Recorded</h3>
+						<h3 className='text-lg font-medium text-white truncate uppercase'>Episodes Recorded</h3>
 					</div>
 
 					<div className='flex flex-col w-fit h-auto px-2 py-2 lg:w-64 justify-center items-center whitespace-nowrap'>
-						<img className='h-22' src={peopleStatic} id='icon' alt='micBounceIn' />{" "}
-						<h3 className='mt-1 text-4xl lg:text-2xl  text-black mb-4'>
+						{/* <img className='h-22' src={peopleStatic} id='icon' alt='micBounceIn' />{" "} */}
+						<h3 className='mt-1 text-4xl lg:text-2xl  text-white mb-4'>
 							<span id='counter' className='text-4xl font-glacialRegular' data-target={prevStatsData.subscribers}>
 								{/* {subscribers} */}
 							</span>
 						</h3>
-						<h3 className=' text-xl font-medium text-black xxl:truncate lg:text-center uppercase'>SUBSCRIBERS ACROSS PLATFORMS</h3>
+						<h3 className=' text-lg font-medium text-white xxl:truncate lg:text-center uppercase'>SUBSCRIBERS ACROSS PLATFORMS</h3>
 					</div>
 					<div className='flex flex-col w-fit h-auto px-2 py-2 lg:w-64 justify-center items-center whitespace-nowrap'>
-						<img className='h-22' src={linkStatic2} alt='micBounceIn' id='icon' />{" "}
-						<h3 className='mt-1 text-4xl lg:text-2xl  text-black mb-4 font-glacialRegular'>
+						{/* <img className='h-22' src={linkStatic2} alt='micBounceIn' id='icon' />{" "} */}
+						<h3 className='mt-1 text-4xl lg:text-2xl  text-white mb-4 font-glacialRegular'>
 							<span id='counter' className='text-4xl font-glacialRegular' data-target={prevStatsData.socialFollowers}>
 								{/* {socialFollowers} */}
 							</span>
 						</h3>
-						<h3 className='text-xl font-semibold text-black truncate uppercase'>SOCIAL FOLLOWERS</h3>
+						<h3 className='text-lg font-semibold text-white truncate uppercase'>SOCIAL FOLLOWERS</h3>
 					</div>
 				</div>
 			
-			</div>
 		</div>
 	);
 };
