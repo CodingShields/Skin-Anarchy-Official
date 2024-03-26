@@ -10,7 +10,7 @@ import BlogPage from "./pages/blog/blogPage.jsx";
 import ScienceOfSkinAwards from "./pages/awards/ScienceOfSkinAwards.jsx";
 import AccountPage from "./pages/account/accountPage.jsx";
 import HomeLayout from "./pages/layout/homeLayout.jsx";
-import HomePage from "./pages/homePage/homePage.jsx";
+import HomePage from "./pages/homePage/HomePage.jsx";
 import ProtectedRoute from "./pages/components/protectedRoute.jsx";
 import LogoutPage from "./pages/logout/logoutPage.jsx";
 import PrevBlogs from "./pages/blog/comp/prevBlogs.jsx";
