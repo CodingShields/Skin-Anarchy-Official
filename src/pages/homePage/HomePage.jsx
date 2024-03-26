@@ -9,7 +9,7 @@ import TestimonialsContainer from "./comps/TestimonialsContainer";
 import BecomeSponsorContainer from "./comps/BecomeSponsorContainer";
 import SignatureBar from "./comps/SignatureBar";
 import ShowInviteBar from "./comps/ShowInviteBar";
-import GifBg from "../../assets/images/Gif-Bg.gif";
+import GifBg from "../../assets/images/Gif-BG.gif";
 
 const HomePage = () => {
 	const currentComponent = window.location.pathname;
