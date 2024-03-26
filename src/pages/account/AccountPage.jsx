@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { UserAuth } from "../../context/AuthContext";
 import { db } from "../../fireBase/firebaseConfig";
-import AdminPage from "../admin/adminPage";
+import AdminPage from "../admin/AdminPage";
 import UserAccountPage from "./userAccountPage";
 import { doc, getDoc } from "firebase/firestore";
 
