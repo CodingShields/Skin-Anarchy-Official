@@ -14,7 +14,7 @@ const LoginPage = () => {
 		error: false,
 		errorMessage: "",
 		loading: false,
-		initialLoad: false,
+		initialLoad: true,
 	});
 	const initializeState = () => {
 		setEmail("");
@@ -41,6 +41,7 @@ const LoginPage = () => {
 
 	const user = UserAuth();
 
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setState({
@@ -65,12 +66,15 @@ const LoginPage = () => {
 					},
 					{ merge: true }
 				);
-				navigate("/members-area/home");
-				setState({
-					error: false,
-					errorMessage: "",
-					loading: false,
-				});
+				setTimeout(() => {
+					navigate("/members-area/home");
+					setState({
+						error: false,
+						errorMessage: "",
+						loading: false,
+					});
+				}, 3000);
+				
 			}
 		} catch (error) {
 			if (error.code === "auth/user-not-found") {
@@ -112,7 +116,7 @@ const LoginPage = () => {
 	return (
 		<div className="flex w-full h-screen flex-col justify-center  items-center space-y-8 bg-black ">
 			{state.error ? <ErrorModal errorMessage={state.errorMessage} /> : null}
-			{state.loading ? <WorkingModal /> : null}
+			{state.loading ? <WorkingModal message={state.errorMessage} /> : null}
 			<div
 				className={
 					state.initialLoad

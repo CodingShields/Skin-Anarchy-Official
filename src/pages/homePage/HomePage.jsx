@@ -1,3 +1,4 @@
+import {useState, useEffect} from "react";
 import NewsLetterContainer from "./comps/NewsLetterContainer";
 import SponsorBarContainer from "./comps/SponsorBarContainer";
 import InterviewCategoryContainer from "./comps/InterviewCategoryContainer";
@@ -10,14 +11,23 @@ import BecomeSponsorContainer from "./comps/BecomeSponsorContainer";
 import SignatureBar from "./comps/SignatureBar";
 import ShowInviteBar from "./comps/ShowInviteBar";
 import GifBg from "../../assets/images/Gif-BG.gif";
-
+import WelcomeBackUserModal from "./comps/WelcomeBackUserModal";
 const HomePage = () => {
+	const [welcomeModal, setWelcomeModal] = useState(true);
 	const currentComponent = window.location.pathname;
+
+	useEffect(() => {
+		setTimeout(() => {
+			setWelcomeModal(false);
+		}, 5000);
+	}	, []);
 
 	console.log(currentComponent);
 	return (
 		<div className='grid grid-cols-1 w-full h-full bg-black'>
 			<img src={GifBg} alt='gif' className='w-3/4 h-full mx-auto' />
+		
+				{welcomeModal ? <WelcomeBackUserModal /> : null}
 			<SignatureBar />
 			<FactsBar />
 			<PodCastContainer />
