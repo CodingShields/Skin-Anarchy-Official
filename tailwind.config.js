@@ -34,7 +34,7 @@ export default {
 				marquee2: "marquee2 25s linear infinite",
 				slideIn: "slideIn .25s ease-in-out forwards var(--delay, 0)",
 				rotateLogo: "rotateLogo 5s linear infinite",
-				fadeIn: "fadeIn 3s ease-in forwards",
+				fadeIn: "fadeIn .5s ease-in forwards",
 			},
 			keyframes: {
 				marquee: {
@@ -137,6 +137,9 @@ export default {
 			black: "#000000",
 			gradientTransparent: {
 				100: "#ffffff00",
+			},
+			char: {
+				900: "#101010",
 			},
 			blue: {
 				50: "#f0f9ff",

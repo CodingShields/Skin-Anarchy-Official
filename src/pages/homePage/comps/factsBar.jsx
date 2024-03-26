@@ -27,10 +27,10 @@ const FactsBar = () => {
 	];
 
 	return (
-		<div className='flex flex-row justify-center w-full h-fit py-12  lg:justify-evenly mt-36 bg-black'>
+		<div className='grid grid-cols-3 justify-center w-full h-fit lg:justify-evenly bg-black px-18 py-12'>
 			{factsBarData.map((item) => (
-				<div key={item.id} className='flex flex-col items-center lg:w-96  h-fit'>
-					<img className='w-20 lg:h-18 xxl:h-24 pt-0 ' src={item.icon} />
+				<div key={item.id} className='flex flex-col items-center lg:w-96  h-fit mx-auto'>
+					{/* <img className='w-20 lg:h-18 xxl:h-24 pt-0 ' src={item.icon} /> */}
 					<h3 className='mt-2 lg:text-xl xxl:text-2xl text-center text-white hover:text-white transition-all ease-in-out duration-200 font-playfair font-thin	'>
 						{item.title}
 					</h3>

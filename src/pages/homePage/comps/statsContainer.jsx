@@ -105,11 +105,11 @@ const StatsContainer = () => {
 	// });
 
 	return (
-		<div className='flex flex-col justify-center items-center text-center h-full w-full relative pt-28 bg-white'>
+		<div className='flex flex-col justify-center items-center text-center h-full w-full'>
 			<div className='flex flex-col h-full w-full p-4 mb-8 text-5xl text-center text-white z-10 top-1/4 subpixel-antialiased	'>
 				<h3 className='text-128 text-black truncate uppercase font-playfair'>PODCAST ANALYTICS</h3>
 
-				<div className='grid grid-cols-4 mx-auto my-auto gap-[96px] mt-16'>
+				<div className='grid grid-cols-4 mx-auto my-auto gap-[96px] mt-16 bg-black'>
 					<div className='flex flex-col w-fit h-auto px-2 py-2 lg:w-64 justify-center items-center whitespace-nowrap'>
 						<img className='h-22' src={headsetStatic} alt='headSetBounceIn' id='icon' />{" "}
 						<h3 className='mt-1 text-4xl lg:text-2xl  text-black mb-4 font-glacialRegular'>
@@ -147,7 +147,7 @@ const StatsContainer = () => {
 						<h3 className='text-xl font-semibold text-black truncate uppercase'>SOCIAL FOLLOWERS</h3>
 					</div>
 				</div>
-				<div className='flex flex-col mt-48 w-full px-40 '>
+				<div className='flex flex-col w-full px-40 '>
 					<h3 className='text-2xl font-semibold text-black truncate uppercase mb-4'>Listener Demographics</h3>
 					<div className='flex flex-col w-auto h-fit justify-start items-start space-y-4 text-[16px] font-glacial truncate uppercase text-black'>
 						<h2>Women</h2>
@@ -160,7 +160,6 @@ const StatsContainer = () => {
 						<StatsFilledBar value={prevStatsData.age3559} />
 					</div>
 				</div>
-				<div className=' flex flex-col bg-gradient-to-b from-black via-gray-500 to-white'></div>
 			</div>
 		</div>
 	);

@@ -6,13 +6,13 @@ import NewsLetterContainer from "./comps/newsLetterContainer";
 import SponsorBarContainer from "./comps/sponsorBarContainer";
 import InterviewCategoryContainer from "./comps/interviewCategoryContainer";
 import goldLogoIntro from "../../assets/video/goldLogoIntro.mp4";
-import FactsBar from "./comps/factsBar";
+import FactsBar from "./comps/FactsBar";
 import PodCastContainer from "./comps/podCasterContainer";
-import StatsContainer from "./comps/statsContainer";
+import StatsContainer from "./comps/StatsContainer";
 import TestimonialsContainer from "./comps/testimonialsContainer";
 import BecomeSponsorContainer from "./comps/becomeSponsorContainer";
-import SignatureBar from "../homePage/comps/SignatureBar";
-import ShowInviteBar from "../homePage/comps/ShowInviteBar";
+import SignatureBar from "./comps/SignatureBar";
+import ShowInviteBar from "./comps/ShowInviteBar";
 import GifBg from "../../assets/images/Gif-Bg.gif";
 
 const HomePage = () => {

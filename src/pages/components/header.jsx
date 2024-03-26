@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { NavLink, Outlet } from "react-router-dom";
-import logo from "../../assets/images/logo.png";
+import whiteLogo from "../../assets/images/whiteLogo.png";
 
 import Banner from "../homePage/comps/bannerContainer";
 import doubleChevronDown from "../../assets/icons/doubleChevronDown.svg";
@@ -43,10 +43,7 @@ const Header = () => {
 				},
 			],
 		},
-		{
-			name: "Connect",
-			link: "/members-area/connect",
-		},
+
 		{
 			name: "Podcast",
 			link: "/members-area/podcast",
@@ -58,6 +55,19 @@ const Header = () => {
 				{
 					name: "Past Episodes",
 					link: "/members-area/podcast/podcast-summaries",
+				},
+			],
+		},
+		{
+			name: "Awards",
+			subMenu: [
+				{
+					name: "Master Class",
+					link: "/members-area/master-class",
+				},
+				{
+					name: "Science of Skin Awards",
+					link: "/members-area/science-of-skin-awards",
 				},
 			],
 		},
@@ -84,22 +94,14 @@ const Header = () => {
 			// ],
 		},
 		{
-			name: "Awards",
-			subMenu: [
-				{
-					name: "Master Class",
-					link: "/members-area/master-class",
-				},
-				{
-					name: "Science of Skin Awards",
-					link: "/members-area/science-of-skin-awards",
-				},
-			],
+			name: "Connect",
+			link: "/members-area/connect",
 		},
 		{
 			name: "Yugen Magazine",
 			link: "/members-area/yugen-magazine",
 		},
+
 		{
 			name: "Account",
 			link: "/members-area/account",
@@ -140,23 +142,23 @@ const Header = () => {
 	};
 
 	return (
-		<div className='z-30 h-screen w-fit absolute'>
+		<div className='z-30 h-screen w-48 absolute'>
 			<div
 				onMouseEnter={handleNavBar}
 				onMouseLeave={handleNavBar}
 				className={
 					!state.navBarOpen
-						? "flex flex-col justify-evenly items-start bg-white fixed h-screen w-64 ease-in-out duration-700 transition-all z-40 bg-opacity-90"
-						: "flex flex-col justify-evenly  bg-gold-500 fixed h-screen w-64 -translate-x-60 ease-in-out duration-700 transition-all z-40"
+						? "flex flex-col justify-evenly items-start border-r-2 border-white bg-black fixed h-screen w-48 ease-in-out duration-700 transition-all z-40 "
+						: "flex flex-col justify-evenly  border-r-2 bg-black border-white fixed h-screen w-48 -translate-x-36 ease-in-out duration-700 transition-all z-40"
 				}
 			>
-				<div className='w-full'>
+				<div className='w-fit ml-8'>
 					<NavLink to='home'>
-						<img src={logo} alt='logo' className='xl:h-24 xxl:h-64 hover:animate-pulse mx-auto ' />
+						<img src={whiteLogo} alt='logo' className='xl:h-24 xxl:h-64 hover:animate-pulse mx-auto ' />
 					</NavLink>
 				</div>
 
-				<div className='flex flex-col w-fit space-y-2 justify-center'>
+				<div className='flex flex-col w-fit space-y-2 justify-start'>
 					{cards.map((card, index) => (
 						<div
 							key={index}
@@ -164,20 +166,20 @@ const Header = () => {
 							onMouseEnter={() => handleMenuMouseEnter(card.name, card.subMenu)}
 							onMouseLeave={handleMenuMouseLeave}
 						>
-							<div className='flex flex-row lg:py-2 p-4 lg:px-8 xxl:px-12 hover:scale-125 hover:underline hover:translate-x-5 transition-all duration-500 ease-in-out group hover:cursor-pointer'>
+							<div className='flex flex-row justify-start items-center lg:py-2 p-4 lg:px-8 xxl:px-12 hover:scale-125  group hover:translate-x-5 transition-all duration-300 ease-in-out group hover:cursor-pointer'>
 								<NavLink to={card.link}>
 									<div className=' leading-1 w-full'>
-										<h3 className='lg:text-sm font-glacialRegular font-thin text-black'>{card.name}</h3>
+										<h3 className='lg:text-sm font-glacialRegular group-hover:underline font-thin text-white'>{card.name}</h3>
 									</div>
 								</NavLink>
-								{card.subMenu ? <img src={doubleChevronDown} alt='chevron' className='w-4 h-4 ml-2 mt-1 ' /> : null}
+								{card.subMenu ? <img src={doubleChevronDown} alt='chevron' className='w-4 h-4 ml-2 ' /> : null}
 							</div>
 							{state.subMenuOpen && state.activeMenuItem === card.name && card.subMenu ? (
-								<div className='absolute left-1/2 top-0 mt-2 z-20 translate-x-8 duration-300 ease-in-out transition-all shadow-2xl'>
-									<div className='bg-white p-2 shadow-md rounded-md'>
+								<div className='absolute left-1/2 top-0 mt-2 z-20 translate-x-8 ease-in-out transition-all shadow-2xl animate-fadeIn'>
+									<div className='bg-black p-2 rounded-md border-b-2 border-r-2 border-white shadow-md shadow-white'>
 										{state.subMenuData.map((subMenu, subIndex) => (
 											<NavLink to={subMenu.link} key={subIndex}>
-												<h3 className='lg:text-sm font-glacialRegular font-thin text-black hover:text-gold-500 whitespace-nowrap py-2 hover:underline'>
+												<h3 className='lg:text-sm font-glacialRegular font-thin text-white hover:font-semibold whitespace-nowrap py-2 hover:underline'>
 													{subMenu.name}
 												</h3>
 											</NavLink>

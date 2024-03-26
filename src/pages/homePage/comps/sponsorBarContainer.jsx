@@ -7,42 +7,23 @@ import sponsor4 from "../../../assets/images/sponsor-images/sponsor4.png";
 import sponsor5 from "../../../assets/images/sponsor-images/sponsor5.png";
 const SponsorBarContainer = () => {
 	return (
-		<div className='flex flex-col items-center justify-center w-full h-fit bg-white z-20 overflow-y-none relative space-y-24'>
-			<div className='w-full h-full flex flex-col justify-start'>
-				<h1 className='text-4xl font-bold text-center mt-20 font-glacialRegular'>Take a Look At Our Sponsors</h1>
-			</div>
-			<div id='carousel-container' className="w-full h-fit">
-				<div id='carousel'>
-					<div id='sponsor-image' className='block absolute bg-gold-500 bg-opacity-70'>
-						<img src={sponsor1} />
-					</div>
-					<div id='sponsor-image' className='block absolute bg-gold-500 bg-opacity-70'>
-						<img src={sponsor2} />
-					</div>
-					<div id='sponsor-image' className='block absolute bg-gold-500 bg-opacity-70'>
-						<img src={sponsor3} />
-					</div>
-					<div id='sponsor-image' className='block absolute bg-gold-500 bg-opacity-70'>
-						<img src={sponsor4} />
-					</div>
-					<div id='sponsor-image' className='block absolute bg-gold-500 bg-opacity-50'>
-						<img src={sponsor5} />
-					</div>
-					<div id='sponsor-image' className='block absolute bg-gold-500 bg-opacity-70'>
-						<img src={sponsor5} />
-					</div>
-					<div id='sponsor-image' className='block absolute bg-gold-500 bg-opacity-70'>
-						<img src={sponsor5} />
-					</div>
-					<div id='sponsor-image' className='block absolute bg-gold-500 bg-opacity-70'>
-						<img src={sponsor5} />
-					</div>
-					<div id='sponsor-image' className='block absolute bg-gold-500 bg-opacity-70'>
-						<img src={sponsor5} />
-					</div>
-					<div id='sponsor-image' className='block absolute bg-gold-500 bg-opacity-70'>
-						<img src={sponsor5} />
-					</div>
+		<div className='flex flex-col items-center justify-center w-full py-48 bg-white h-96 bg-gradient-to-b from-black via-gray-800 to-gray-900 text-white'>
+			<h1 className='text-4xl font-bold text-center'>Take a Look At Our Sponsors</h1>
+			<div className='relative flex w-full h-full overflow-x-hidden'>
+				<div class='py-12 animate-marquee whitespace-nowrap bg-opacity-0'>
+					<span className='text-4xl mx-4'>Marquee Item 1</span>
+					<span className='text-4xl mx-4'>Marquee Item 2</span>
+					<span className='text-4xl mx-4'>Marquee Item 3</span>
+					<span className='text-4xl mx-4'>Marquee Item 4</span>
+					<span className='text-4xl mx-4'>Marquee Item 5</span>
+				</div>
+
+				<div class='absolute top-0 py-12 animate-marquee2 whitespace-nowrap bg-opacity-0'>
+					<span className='text-4xl mx-4'>Marquee Item 1</span>
+					<span className='text-4xl mx-4'>Marquee Item 2</span>
+					<span className='text-4xl mx-4'>Marquee Item 3</span>
+					<span className='text-4xl mx-4'>Marquee Item 4</span>
+					<span className='text-4xl mx-4'>Marquee Item 5</span>
 				</div>
 			</div>
 		</div>
