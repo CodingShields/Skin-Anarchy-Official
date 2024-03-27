@@ -31,7 +31,6 @@ import LogoutPage from "./pages/logout/LogoutPage.jsx";
 //Account Pages
 import AccountPage from "./pages/account/AccountPage.jsx";
 import HomePage from "./pages/homePage/HomePage.jsx";
-
 import ConnectPage from "./pages/connect/ConnectPage.jsx";
 
 function App() {
