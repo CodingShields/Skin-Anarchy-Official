@@ -8,9 +8,9 @@ const InterviewCategoryContainer = () => {
 				{interviewCategories.map((item) => (
 					<div
 						key={item.id}
-						className='mx-auto grid grid-cols-1 w-fit h-32 my-10 hover:h-auto justify-center px-8 py-2 rounded-xl group hover:bg-white hover:shadow-white hover:shadow-lg hover:scale-115 transition-all duration-500 ease-in-out'
+						className='mx-auto grid grid-cols-1 w-fit h-48 my-10 hover:h-auto justify-center px-8 py-2 rounded-xl group hover:bg-white hover:shadow-white hover:shadow-lg hover:scale-115 transition-all duration-1000 ease-in-out'
 					>
-						<h3 className='w-full py-2 font-openSans text-[22px] font-bold text-center text-white group-hover:text-black transition-all duration-500 ease-in-out'>
+						<h3 className='w-full py-2 font-openSans text-[22px] font-bold text-center text-white group-hover:text-black transition-all duration-1000 ease-in-out'>
 							{item.title}
 						</h3>
 						<p className='font-glacialRegular w-[350px] h-fit group-hover:leading-loose	 truncate group-hover:text-xs group-hover:whitespace-normal tracking-widest text-[18px] text-center text-gray-600 group-hover:text-black '>

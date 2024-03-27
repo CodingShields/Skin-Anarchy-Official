@@ -1,13 +1,9 @@
 import { useState } from "react";
-import Mission from "./comp/mission";
-import Stats from "./comp/stats";
-import About from "./comp/About";
 
-const AboutPage = () => {
-
+const AboutUs = () => {
 	return (
-		<div className='flex flex-col justify-center items-center relative w-full h-full'>
-			<div>
+		<div className='w-full h-screen text-white'>
+			<div className='w-3/4 h-full mx-auto flex flex-col place-items-center  p-4'>
 				<h1>About Skincare Anarchy:</h1>
 				<p>
 					Skincare Anarchy is an award-winning and industry acclaimed podcast, recognized for its unique approach to skincare and beauty. SA
@@ -19,10 +15,8 @@ const AboutPage = () => {
 					timeless!
 				</p>
 			</div>
-			<Mission />
-			<Stats />
 		</div>
 	);
-}
+};
 
-export default AboutPage
+export default AboutUs;

@@ -1,5 +1,4 @@
-const PreviousEpisodes = () => {
-    
+const PodcastEpisodeLibrary = () => {
 	const categories = [
 		{
 			name: "Episode Categories",
@@ -12,11 +11,13 @@ const PreviousEpisodes = () => {
 	];
 
 	return (
-		<div>
-			<h1>Previous Episodes</h1>
-			<h1> Category Nav Bar</h1>
+		<div className='w-full h-screen'>
+			<div className='w-3/4 h-full mx-auto flex flex-col place-items-center bg-black text-white p-4'>
+				<h1>Previous Episodes</h1>
+				<h1> Category Nav Bar</h1>
+			</div>
 		</div>
 	);
 };
 
-export default PreviousEpisodes;
+export default PodcastEpisodeLibrary;

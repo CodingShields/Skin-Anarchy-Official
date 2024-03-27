@@ -5,27 +5,20 @@ import { getFirestore, doc, setDoc } from "firebase/firestore";
 import whiteLogo from "../../assets/images/whiteLogo.png";
 import WorkingModal from "./WorkingModal.jsx";
 import ErrorModal from "./ErrorModal.jsx";
+
 const LoginPage = () => {
 	const navigate = useNavigate();
 	const { signIn } = UserAuth();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [openModal, setOpenModal] = useState(false);
+	const [openErrorModal, setOpenErrorModal] = useState(false);
 	const [state, setState] = useState({
-		error: false,
 		errorMessage: "",
-		loading: false,
-		initialLoad: true,
+		initialLoad: false,
 	});
-	const initializeState = () => {
-		setEmail("");
-		setPassword("");
-		setState({
-			error: false,
-			errorMessage: "",
-			loading: false,
-			initialLoad: true,
-		});
-	};
+
+	const user = UserAuth(); // Call the hook unconditionally
 
 	useEffect(() => {
 		initializeState();
@@ -39,13 +32,20 @@ const LoginPage = () => {
 		}, 5000);
 	}, []);
 
-	const user = UserAuth();
-
+	const initializeState = () => {
+		setEmail("");
+		setPassword("");
+		setState({
+			errorMessage: "",
+			initialLoad: false,
+		});
+		setOpenModal(false);
+		setOpenErrorModal(false);
+	};
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setState({
-			error: false,
 			errorMessage: "",
 			loading: true,
 		});
@@ -66,61 +66,44 @@ const LoginPage = () => {
 					},
 					{ merge: true }
 				);
+				setOpenModal(true);
 				setTimeout(() => {
 					navigate("/members-area/home");
 					setState({
-						error: false,
 						errorMessage: "",
 						loading: false,
 					});
 				}, 3000);
-				
 			}
 		} catch (error) {
-			if (error.code === "auth/user-not-found") {
-				setState({
-					error: true,
-					errorMessage: "User not found. Please try again.",
-				});
-				console.log(error.code, "error code");
-
-				errorTimeOut();
-			} else if (error.code === "auth/wrong-password") {
-				setState({
-					error: true,
-					errorMessage: "Invalid credentials. Please try again.",
-				});
-				console.log(error.code, "error code");
-
-				errorTimeOut();
-			} else {
-				setState({
-					error: true,
-					errorMessage: "Something went wrong. Please try again.",
-				});
-				console.log(error.code, "error code");
-				errorTimeOut();
-			}
+			setState({
+				errorMessage: error.code,
+			});
+			setOpenErrorModal(true); // Ensure that openErrorModal is set to true
+			errorTimeOut();
+			console.log(error.code, "error code");
+			console.log(openErrorModal, "openErrorModal");
 		}
 	};
 
 	const errorTimeOut = () => {
 		setTimeout(() => {
 			setState({
-				error: false,
 				errorMessage: "",
 			});
-		}, 3000);
+			setOpenModal(false);
+			setOpenErrorModal(false);
+		}, 4000);
 	};
 
 	return (
-		<div className="flex w-full h-screen flex-col justify-center  items-center space-y-8 bg-black ">
-			{state.error ? <ErrorModal errorMessage={state.errorMessage} /> : null}
-			{state.loading ? <WorkingModal message={state.errorMessage} /> : null}
+		<div className='flex w-full h-screen flex-col justify-center  items-center space-y-8 bg-black '>
+			<ErrorModal open={openErrorModal} message={state.errorMessage} />
+			<WorkingModal open={openModal} />
 			<div
 				className={
 					state.initialLoad
-						? "h-fit w-full my-auto flex flex-col scale-150 translate-y-50 duration-1000 ease-in-out animate-pulse absolute top-0"
+						? "h-fit w-full my-auto flex flex-col scale-150 translate-y-50 duration-1000 ease-in-out absolute top-0 animate-fadeIn"
 						: "h-fit w-fit my-auto flex flex-col scale-y-100 -translate-y-50  duration-1000 ease-in-out animate-rotateLogo "
 				}
 			>

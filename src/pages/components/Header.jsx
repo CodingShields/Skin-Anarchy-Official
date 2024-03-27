@@ -27,15 +27,15 @@ const Header = () => {
 			link: "/members-area/home",
 		},
 		{
-			name: "About",
+			name: "About Us",
 			subMenu: [
 				{
 					name: "About Us",
-					link: "/members-area/about",
+					link: "/members-area/about/about-us",
 				},
 				{
 					name: "Mission",
-					link: "/members-area/about/mission",
+					link: "/members-area/about/mission-statement",
 				},
 				{
 					name: "Featured Press",
@@ -49,12 +49,12 @@ const Header = () => {
 			link: "/members-area/podcast",
 			subMenu: [
 				{
-					name: "Latest Episode",
-					link: "/members-area/podcast",
+					name: "Current Podcast Episode",
+					link: "/members-area/podcast/current-podcast-episode",
 				},
 				{
-					name: "Past Episodes",
-					link: "/members-area/podcast/podcast-summaries",
+					name: "Podcast Library",
+					link: "/members-area/podcast/podcast-episode-library",
 				},
 			],
 		},
@@ -63,35 +63,48 @@ const Header = () => {
 			subMenu: [
 				{
 					name: "Master Class",
-					link: "/members-area/master-class",
+					link: "/members-area/awards/master-class",
 				},
 				{
 					name: "Science of Skin Awards",
-					link: "/members-area/science-of-skin-awards",
+					link: "/members-area/awards/science-of-skin-awards",
+				},
+				{
+					name: "Top Picks",
+					link: "/members-area/awards/top-picks",
 				},
 			],
 		},
 		{
 			name: "Skin Anarchy Blog",
-			link: "/members-area/blog",
 			// subMenu: [
 			// 	{
-			// 		name: "Beauty Culture",
-			// 		link: "/members-area/blog/beauty-culture",
+			// 		name: "Blog Home",
+			// 		link: "/members-area/awards/blog-home",
 			// 	},
 			// 	{
-			// 		name: "Fragrance",
-			// 		link: "/members-area/blog/fragrance",
-			// 	},
-			// 	{
-			// 		name: "Podcast Summaries",
-			// 		link: "/members-area/blog/podcast-summaries",
-			// 	},
-			// 	{
-			// 		name: "Science of Skin",
-			// 		link: "/members-area/blog/science-of-skin",
+			// 		name: "Blog Library",
+			// 		link: "/members-area/awards/science-of-skin-awards",
 			// 	},
 			// ],
+			subMenu: [
+				{
+					name: "Beauty Culture",
+					link: "/members-area/skin-anarchy-blog/beauty-culture",
+				},
+				{
+					name: "Fragrance",
+					link: "/members-area/skin-anarchy-blog/fragrance",
+				},
+				{
+					name: "Podcast Summaries",
+					link: "/members-area/skin-anarchy-blog/podcast-summaries",
+				},
+				{
+					name: "Science of Skin",
+					link: "/members-area/skin-anarchy-blog/science-of-skin",
+				},
+			],
 		},
 		{
 			name: "Connect",
@@ -169,7 +182,7 @@ const Header = () => {
 							<div className='flex flex-row justify-start items-center lg:py-2 p-4 lg:px-8 xxl:px-12 hover:scale-125  group hover:translate-x-5 transition-all duration-300 ease-in-out group hover:cursor-pointer'>
 								<NavLink to={card.link}>
 									<div className=' leading-1 w-full'>
-										<h3 className='lg:text-sm font-glacialRegular group-hover:underline font-thin text-white'>{card.name}</h3>
+										<h3 className='lg:text-sm font-glacialRegular group-hover:underline font-thin text-white whitespace-nowrap'>{card.name}</h3>
 									</div>
 								</NavLink>
 								{card.subMenu ? <img src={doubleChevronDown} alt='chevron' className='w-4 h-4 ml-2 ' /> : null}

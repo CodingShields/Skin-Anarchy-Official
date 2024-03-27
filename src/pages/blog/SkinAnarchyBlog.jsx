@@ -7,9 +7,9 @@ import tealTypewriter from "../../assets/images/tealTypewriter.jpeg";
 import BlogKeys from "../../assets/images/blogKeys.jpeg";
 import blogBG from "../../assets/images/blogBG.jpeg";
 import blogKeys from "../../assets/images/blogKeys.jpeg";
-import PrevBlogs from "./comp/PrevBlogs";
+import PrevBlogs from "./PrevBlogs";
 
-const BlogPage = () => {
+const SkinAnarchyBlog = () => {
 	const navigate = useNavigate();
 
 	const categories = [
@@ -59,4 +59,4 @@ const BlogPage = () => {
 	);
 };
 
-export default BlogPage;
+export default SkinAnarchyBlog;

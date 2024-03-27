@@ -35,6 +35,7 @@ export default {
 				slideIn: "slideIn .25s ease-in-out forwards var(--delay, 0)",
 				rotateLogo: "rotateLogo 5s linear infinite",
 				fadeIn: "fadeIn .5s ease-in forwards",
+				fadeOut: "fadeOut .5s ease-out forwards",
 			},
 			keyframes: {
 				marquee: {
@@ -56,6 +57,10 @@ export default {
 				fadeIn: {
 					"0%": { opacity: 0 },
 					"100%": { opacity: 1 },
+				},
+				fadeOut: {
+					"0%": { opacity: 1 },
+					"100%": { opacity: 0 },
 				},
 			},
 
@@ -139,7 +144,7 @@ export default {
 				100: "#ffffff00",
 			},
 			char: {
-				900: "#101010",
+				900: "#252525",
 			},
 			blue: {
 				50: "#f0f9ff",
