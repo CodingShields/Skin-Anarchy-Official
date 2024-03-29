@@ -153,7 +153,8 @@ const Header = () => {
 			activeMenuItem: null,
 		}));
 	};
-
+	//  Change font to HIND and all Caps and More spacing 
+	
 	return (
 		<div className='z-30 h-screen w-48 absolute'>
 			<div

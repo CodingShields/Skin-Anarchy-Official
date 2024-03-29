@@ -12,6 +12,7 @@ import SignatureBar from "./comps/SignatureBar";
 import ShowInviteBar from "./comps/ShowInviteBar";
 import GifBg from "../../assets/images/Gif-BG.gif";
 import WelcomeBackUserModal from "./comps/WelcomeBackUserModal";
+import HighlightGuests from "./comps/HighlightGuests";
 const HomePage = () => {
 	const [openModal, setOpenModal] = useState(true);
 	const currentComponent = window.location.pathname;
@@ -29,14 +30,15 @@ const HomePage = () => {
 
 			<WelcomeBackUserModal open={openModal} />
 			<SignatureBar />
-			<FactsBar />
+			{/* <FactsBar /> */}
 			<PodCastContainer />
 			<PodcastAnalyticsContainer />
-			<ListenerDemoGraphicsContainer />
+			{/* <ListenerDemoGraphicsContainer /> */}
 			<NewsLetterContainer />
 			<InterviewCategoryContainer />
 			<SponsorBarContainer />
 			<BecomeSponsorContainer />
+			<HighlightGuests />
 			<TestimonialsContainer />
 		</div>
 	);

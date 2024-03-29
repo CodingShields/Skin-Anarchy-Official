@@ -7,7 +7,7 @@ import sponsor4 from "../../../assets/images/sponsor-images/sponsor4.png";
 import sponsor5 from "../../../assets/images/sponsor-images/sponsor5.png";
 const SponsorBarContainer = () => {
 	return (
-		<div className='block static w-full h-full text-black bg-white z-10'>
+		<div className='block static w-full h-full text-white bg-gradient-to-b from-black to-gold-500 z-10'>
 			<h1 className='text-4xl font-bold text-center py-12'>Take a Look At Our Sponsors</h1>
 			<div className='marquee'>
 				<div className='marquee-content'>

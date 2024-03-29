@@ -1,6 +1,6 @@
 const ShowInviteBar = () => {
 	return (
-		<div className='w-full h-full bg-gradient-to-t from-white to-black py-48'>
+		<div className='w-full h-full bg-black py-48'>
 			<div className='grid grid-cols-1 gap-10 px-6 mx-auto max-w-7xl lg:grid-cols-12 '>
 				<form className='w-full max-w-md lg:col-span-5 lg:pt-2'>
 					<div className='flex gap-x-4'>

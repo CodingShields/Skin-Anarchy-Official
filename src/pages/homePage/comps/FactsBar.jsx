@@ -34,7 +34,7 @@ const FactsBar = () => {
 					<h3 className='mt-2 lg:text-2xl xxl:text-3xl text-center text-white hover:text-white transition-all ease-in-out duration-200 font-playfair font-thin	'>
 						{item.title}
 					</h3>
-					<p className='mt-2 lg:text-md xxl:text-lg text-center text-gray-600 font-glacialRegular font-100 py-4'>{item.text}</p>
+					{/* <p className='mt-2 lg:text-md xxl:text-lg text-center text-gray-600 font-glacialRegular font-100 py-4'>{item.text}</p> */}
 				</div>
 			))}
 		</div>

@@ -1,6 +1,6 @@
 const SignatureBar = () => {
 	return (
-		<div className='flex flex-col justify-center items-center h-fit w-full bg-char-900'>
+		<div className='flex flex-col justify-center items-center h-[400px] w-full bg-gradient-b from-black to-white '>
 			<div className='w-3/4 py-6 mt-4'>
 				<h1 className=' text-gray-100 lg:text-[22px] xxl:text-4xl text-center font-playfair subpixel-antialiased tracking-[8px]'>
 					“ WE ARE A LIBRARY OF BEAUTY, A CURATED SOURCE FOUNDED ON SCIENCE AND FACTS, NOT TRENDS”
