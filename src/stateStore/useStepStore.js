@@ -6,3 +6,8 @@ export const useRenderStepStore = create((set) => ({
 	previousStep: () => set((state) => ({ step: state.step - 1 })),
 	resetStep: () => set((state) => ({ step: (state.step = 0) })),
 }));
+
+export const useNavBarStateStore = create((set) => ({
+	isActive: false,
+	setIsActive: (bool) => set({ isActive: bool }),
+}));

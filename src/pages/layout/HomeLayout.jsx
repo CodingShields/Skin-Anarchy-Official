@@ -10,11 +10,12 @@ const HomeLayout = () => {
 
 	return (
 		<>
-			{!isAdminPage && <Header />}
-			<main>
+			{/* {!isAdminPage && <Header />} */}
+			<main >
 				<Outlet />
+			
 			</main>
-			{!isAdminPage && <Footer />}
+			{/* {!isAdminPage && <Footer />} */}
 		</>
 	);
 };

@@ -7,7 +7,7 @@ import doubleChevronDown from "../../assets/icons/doubleChevronDown.svg";
 import doubleChevronUp from "../../assets/icons/doubleChevronUp.svg";
 import AnimatedNavButton from "../components/buttons/AnimatedNavButton";
 import { UserAuth } from "../../context/AuthContext";
-
+import "../../styles/custom.css";
 const Header = () => {
 	const [state, setState] = useState({
 		error: false,
@@ -153,25 +153,33 @@ const Header = () => {
 			activeMenuItem: null,
 		}));
 	};
-	//  Change font to HIND and all Caps and More spacing 
-	
+	//  Change font to HIND and all Caps and More spacing
+
+	const [activeNavBar, setActiveNavBar] = useState(false);
+
+	const hamburger_menu = document.querySelector(".hamburger-menu");
+	const container = document.querySelector(".container");
+	const [isActive, setIsActive] = useState(false);
+	const handleNavBarClick = () => {
+		setIsActive(!isActive);
+		console.log("test");
+	};
+
 	return (
 		<div className='z-30 h-screen w-48 absolute'>
 			<div
-				onMouseEnter={handleNavBar}
-				onMouseLeave={handleNavBar}
-				className={
-					!state.navBarOpen
-						? "flex flex-col justify-evenly items-start border-r-2 border-white bg-black fixed h-screen w-48 ease-in-out duration-700 transition-all z-40 "
-						: "flex flex-col justify-evenly  border-r-2 bg-white border-white fixed h-screen w-48 lg:-translate-x-[180px] ease-in-out duration-700 transition-all z-40"
-				}
+				// onMouseEnter={handleNavBar}
+				// onMouseLeave={handleNavBar}
+				className='flex flex-col justify-evenly items-start bg-black fixed h-screen w-48 ease-in-out duration-700 transition-all z-40 '
 			>
-				<div className='w-fit ml-8'>
+				{/* <div className='w-fit ml-8'>
 					<NavLink to='home'>
 						<img src={whiteLogo} alt='logo' className='xl:h-24 xxl:h-64 hover:animate-pulse mx-auto ' />
 					</NavLink>
+				</div> */}
+				<div onClick={handleNavBarClick} className='hamburger-menu'>
+					<div className='bar'></div>
 				</div>
-
 				<div className='flex flex-col w-fit space-y-2 justify-start'>
 					{cards.map((card, index) => (
 						<div

@@ -30,6 +30,7 @@
     "react-dom": "^18.2.0",
     "react-h5-audio-player": "^3.9.0",
     "react-router-dom": "^6.21.1",
+    "swiper": "^11.1.0",
     "uuid": "^9.0.1",
     "validator": "^13.11.0",
     "zustand": "^4.4.7"
