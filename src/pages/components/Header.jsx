@@ -10,6 +10,130 @@ import { useNavStoreActions } from "../../stateStore/useNavStateStore";
 import { useNavStore } from "../../stateStore/useNavStateStore";
 import "../../styles/custom.css";
 
+const cards = [
+	{
+		name: "Home",
+		link: "/members-area/home",
+	},
+	{
+		name: "About Us",
+		subMenu: [
+			{
+				name: "About Us",
+				link: "/members-area/about/about-us",
+			},
+			{
+				name: "Mission",
+				link: "/members-area/about/mission-statement",
+			},
+			{
+				name: "Featured Press",
+				link: "/members-area/about/featured-press",
+			},
+		],
+	},
+
+	{
+		name: "Podcast",
+		link: "/members-area/podcast/current-podcast-episode",
+		subMenu: [
+			{
+				name: "Current Podcast Episode",
+				link: "/members-area/podcast/current-podcast-episode",
+			},
+			{
+				name: "Top Make Up Artist Podcasts",
+				link: "/members-area/podcast/top-make-up-artists-podcasts",
+			},
+			{
+				name: "Top Doctor Podcasts",
+				link: "/members-area/podcast/top-doctors-podcasts",
+			},
+			{
+				name: "Brand Founder Podcasts",
+				link: "/members-area/podcast/brand-founders-podcasts",
+			},
+			{
+				name: "Thought Leader Podcasts",
+				link: "/members-area/podcast/thought-leaders-podcasts",
+			},
+			{
+				name: "EDITOR AND JOURNALIST PODCASTS",
+				link: "/members-area/podcast/editors-and-journalists-podcasts",
+			},
+			{
+				name: "Celebrity Podcasts",
+				link: "/members-area/podcast/celebrity-podcasts",
+			},
+		],
+	},
+	{
+		name: "Awards",
+		subMenu: [
+			{
+				name: "Master Class",
+				link: "/members-area/awards/master-class",
+			},
+			{
+				name: "Science of Skin Awards",
+				link: "/members-area/awards/science-of-skin-awards",
+			},
+			{
+				name: "Top Picks",
+				link: "/members-area/awards/top-picks",
+			},
+		],
+	},
+	{
+		name: "Skin Anarchy Blog",
+		// subMenu: [
+		// 	{
+		// 		name: "Blog Home",
+		// 		link: "/members-area/awards/blog-home",
+		// 	},
+		// 	{
+		// 		name: "Blog Library",
+		// 		link: "/members-area/awards/science-of-skin-awards",
+		// 	},
+		// ],
+		subMenu: [
+			{
+				name: "Beauty Culture",
+				link: "/members-area/skin-anarchy-blog/beauty-culture",
+			},
+			{
+				name: "Fragrance",
+				link: "/members-area/skin-anarchy-blog/fragrance",
+			},
+			{
+				name: "Podcast Summaries",
+				link: "/members-area/skin-anarchy-blog/podcast-summaries",
+			},
+			{
+				name: "Science of Skin",
+				link: "/members-area/skin-anarchy-blog/science-of-skin",
+			},
+		],
+	},
+	{
+		name: "Connect",
+		link: "/members-area/connect",
+	},
+	{
+		name: "Yugen Magazine",
+		link: "/members-area/yugen-magazine",
+	},
+
+	{
+		name: "Account",
+		link: "/members-area/account",
+	},
+	{
+		name: "Logout",
+		link: "/members-area/log-out",
+	},
+];
+
 const Header = () => {
 	const [state, setState] = useState({
 		error: false,
@@ -27,135 +151,8 @@ const Header = () => {
 	const navBarActive = useNavStore((state) => state.navBarActive);
 	const { setNavBarActive } = useNavStoreActions((actions) => actions);
 	const { resetForm } = useNavStoreActions((actions) => actions);
-	console.log(navBarActive);
 
-	useEffect(() => {
-		console.log(navBarActive);
-	}, [navBarActive]);
-	const cards = [
-		{
-			name: "Home",
-			link: "/members-area/home",
-		},
-		{
-			name: "About Us",
-			subMenu: [
-				{
-					name: "About Us",
-					link: "/members-area/about/about-us",
-				},
-				{
-					name: "Mission",
-					link: "/members-area/about/mission-statement",
-				},
-				{
-					name: "Featured Press",
-					link: "/members-area/about/featured-press",
-				},
-			],
-		},
-
-		{
-			name: "Podcast",
-			link: "/members-area/podcast",
-			subMenu: [
-				{
-					name: "Current Podcast Episode",
-					link: "/members-area/podcast/current-podcast-episode",
-				},
-				{
-					name: "Top Make Up Artist Podcasts",
-					link: "/members-area/podcast/top-make-up-artists-podcasts",
-				},
-				{
-					name: "Top Doctor Podcasts",
-					link: "/members-area/podcast/top-doctors-podcasts",
-				},
-				{
-					name: "Brand Founder Podcasts",
-					link: "/members-area/podcast/brand-founders-podcasts",
-				},
-				{
-					name: "Thought Leader Podcasts",
-					link: "/members-area/podcast/thought-leaders-podcasts",
-				},
-				{
-					name: "EDITOR AND JOURNALIST PODCASTS",
-					link: "/members-area/podcast/editors-and-journalists-podcasts",
-				},
-				{
-					name: "Celebrity Podcasts",
-					link: "/members-area/podcast/celebrity-podcasts",
-				},
-			
-			],
-		},
-		{
-			name: "Awards",
-			subMenu: [
-				{
-					name: "Master Class",
-					link: "/members-area/awards/master-class",
-				},
-				{
-					name: "Science of Skin Awards",
-					link: "/members-area/awards/science-of-skin-awards",
-				},
-				{
-					name: "Top Picks",
-					link: "/members-area/awards/top-picks",
-				},
-			],
-		},
-		{
-			name: "Skin Anarchy Blog",
-			// subMenu: [
-			// 	{
-			// 		name: "Blog Home",
-			// 		link: "/members-area/awards/blog-home",
-			// 	},
-			// 	{
-			// 		name: "Blog Library",
-			// 		link: "/members-area/awards/science-of-skin-awards",
-			// 	},
-			// ],
-			subMenu: [
-				{
-					name: "Beauty Culture",
-					link: "/members-area/skin-anarchy-blog/beauty-culture",
-				},
-				{
-					name: "Fragrance",
-					link: "/members-area/skin-anarchy-blog/fragrance",
-				},
-				{
-					name: "Podcast Summaries",
-					link: "/members-area/skin-anarchy-blog/podcast-summaries",
-				},
-				{
-					name: "Science of Skin",
-					link: "/members-area/skin-anarchy-blog/science-of-skin",
-				},
-			],
-		},
-		{
-			name: "Connect",
-			link: "/members-area/connect",
-		},
-		{
-			name: "Yugen Magazine",
-			link: "/members-area/yugen-magazine",
-		},
-
-		{
-			name: "Account",
-			link: "/members-area/account",
-		},
-		{
-			name: "Logout",
-			link: "/members-area/log-out",
-		},
-	];
+	useEffect(() => {}, [navBarActive]);
 
 	useEffect(() => {
 		setState({
@@ -164,12 +161,6 @@ const Header = () => {
 		setIsActive(false);
 	}, []);
 
-	const handleNavBar = () => {
-		setState({
-			...state,
-			navBarOpen: !state.navBarOpen,
-		});
-	};
 	const handleMenuMouseEnter = (name, subMenu) => {
 		setState((prevState) => ({
 			...prevState,
@@ -198,6 +189,11 @@ const Header = () => {
 		console.log(isActive);
 	};
 
+	const handleNavBarRender = () => {
+		setNavBarActive(!navBarActive);
+		setIsActive(!isActive);
+	};
+
 	return (
 		<div className='h-screen navbar fixed'>
 			{/* <div
@@ -218,15 +214,20 @@ const Header = () => {
 				{cards.map((card, index) => (
 					<div key={index} onMouseEnter={() => handleMenuMouseEnter(card.name, card.subMenu)} onMouseLeave={handleMenuMouseLeave}>
 						<div className='navLink flex flex-row justify-start items-center lg:py-2 p-4 lg:px-8 xxl:px-12 hover:scale-125  group hover:translate-x-5 transition-all duration-300 ease-in-out group hover:cursor-pointer uppercase'>
-							<NavLink to={card.link}>{card.name}</NavLink>
+							<NavLink onClick={handleNavBarRender} to={card.link}>
+								{card.name}
+							</NavLink>
 							{card.subMenu ? <img src={doubleChevronDown} alt='chevron' className='w-4 h-4 ml-2 ' /> : null}
 						</div>
 						{state.subMenuOpen && state.activeMenuItem === card.name && card.subMenu ? (
-							<div className='relative left-0 top-0 mt-2 z-20 translate-x-[24px] ease-in-out transition-all shadow-2xl animate-fadeIn'>
-								<div className='bg-black p-2 rounded-md   translate-x-[36px]'>
+							<div className='relative left-0 top-0 mt-2 z-20 translate-x-[24px]  transition-all shadow-2xl '>
+								<div className='bg-black p-2 rounded-md   translate-x-[36px] animate-fadeIn duration-500 ease-in-out'>
 									{state.subMenuData.map((subMenu, subIndex) => (
 										<NavLink to={subMenu.link} key={subIndex}>
-											<h3 className='lg:text-sm font-glacialRegular font-thin text-white hover:font-semibold whitespace-nowrap py-2 hover:underline uppercase'>
+											<h3
+												onClick={handleNavBarRender}
+												className='lg:text-sm font-glacialRegular font-thin text-white hover:font-semibold whitespace-nowrap py-2 hover:underline uppercase'
+											>
 												{subMenu.name}
 											</h3>
 										</NavLink>

@@ -9,10 +9,8 @@ import PodcastAnalyticsContainer from "./comps/PodcastAnalyticsContainer";
 import TestimonialsContainer from "./comps/TestimonialsContainer";
 import BecomeSponsorContainer from "./comps/BecomeSponsorContainer";
 import SignatureBar from "./comps/SignatureBar";
-import ShowInviteBar from "./comps/ShowInviteBar";
 import GifBg from "../../assets/images/Gif-BG.gif";
 import WelcomeBackUserModal from "./comps/WelcomeBackUserModal";
-import HighlightGuests from "./comps/HighlightGuests";
 import { useNavStore } from "../../stateStore/useNavStateStore";
 const HomePage = () => {
 	const [openModal, setOpenModal] = useState(true);
@@ -31,7 +29,7 @@ const HomePage = () => {
 		<div className={`home grid grid-cols-1  ${navBarActive ? "active" : ""}`}>
 			<img src={GifBg} alt='gif' className='w-full h-full mx-auto' />
 
-			{/* <WelcomeBackUserModal open={openModal} /> */}
+			<WelcomeBackUserModal open={openModal} />
 			<SignatureBar />
 			{/* <FactsBar /> */}
 			<PodCastContainer />
@@ -41,7 +39,6 @@ const HomePage = () => {
 			<InterviewCategoryContainer />
 			<SponsorBarContainer />
 			<BecomeSponsorContainer />
-			<HighlightGuests />
 			<TestimonialsContainer />
 		</div>
 	);
