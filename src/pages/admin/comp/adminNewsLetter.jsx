@@ -1,5 +1,5 @@
 import { useState } from "react";
-import emailjs from "emailjs-com";
+// import emailjs from "emailjs-com";
 import ContactsTab from "./newsletter/ContactsTab";
 import EmailTab from "./newsletter/EmailTab";
 const AdminNewsLetter = () => {

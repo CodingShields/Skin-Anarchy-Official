@@ -2,18 +2,20 @@ import iphoneFrame from "../../../assets/images/iphone-frame.png";
 import podcast from "../../../assets/images/podcast.jpg";
 const PhoneContainer = () => {
 	return (
-		<div className='relative  rounded-9xl bg-black transition-all ease-in-out duration-500'>
+		<div className='relative rounded-9xl bg-black transition-all ease-in-out duration-500'>
 			{" "}
-			<div className='absolute flex flex-col place-content-start place-items-start w-full  h-full p-10 mt-36 '>
+			<div className='ml-24'>
+				<img src={iphoneFrame} className='w-[600px] h-[950px] rotate-90 mb-12' />
+
 				<iframe
-					className='w-full h-[1000px] '
+					className='w-[800px] h-[500px] absolute top-0 left-0 right-0 bottom-0 m-auto z-50'
 					id='embedPlayer'
 					src='https://embed.podcasts.apple.com/us/podcast/skincare-anarchy/id1522162686?itsct=podcast_box_player&amp;itscg=30200&amp;ls=1&amp;theme=dark'
 					sandbox='allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation'
 					allow='autoplay *; encrypted-media *; clipboard-write'
 				></iframe>
 			</div>
-			<a
+			{/* <a
 				className='w-full h-48 absolute bottom-0 left-0 right-0 flex justify-center items-center'
 				href="https://podcasts.apple.com/us/podcast/skincare-anarchy/id1522162686?itsct=podcast_box_badge&amp;itscg=30200&amp;ls=1"
 			>
@@ -22,8 +24,7 @@ const PhoneContainer = () => {
 					src="https://tools.applemediaservices.com/api/badges/listen-on-apple-podcasts/badge/en-us?size=250x83&amp;releaseDate=1708966800"
 					alt='Listen on Apple Podcasts'
 				/>
-			</a>
-			<img src={iphoneFrame} className='w-[600px] h-[950px]' />
+			</a> */}
 		</div>
 	);
 };

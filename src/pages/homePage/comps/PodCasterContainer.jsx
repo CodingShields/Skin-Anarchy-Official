@@ -8,7 +8,7 @@ const PodCastContainer = () => {
 
 	return (
 		<div className=' flex flex-row w-full justify-evenly h-full bg-black pb-20 py-24'>
-			<div className=' h-full w-full overflow-hidden bg-black absolute mt-18'>
+			<div className=' h-fit w-full overflow-hidden bg-black absolute mt-18'>
 				<video className='w-full opacity-40' autoPlay muted loop id='video' src={rotatingMicrophone}></video>
 			</div>
 			<div className='flex flex-col justify-start items-center  w-fit rounded-9xl p-2 '>

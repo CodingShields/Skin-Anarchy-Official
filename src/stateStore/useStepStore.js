@@ -9,5 +9,6 @@ export const useRenderStepStore = create((set) => ({
 
 export const useNavBarStateStore = create((set) => ({
 	isActive: false,
-	setIsActive: (bool) => set({ isActive: bool }),
+	setIsActive: () => set({ isActive: true }),
+	setIsNotActive: () => set({ isActive: false }),
 }));

@@ -2,7 +2,7 @@
 
 const NewsLetterContainer = () => {
   return (
-		<div className='w-full h-fit bg-black py-48'>
+		<div className='w-full h-fit bg-gradient-to-t from-black to-char-900 py-48'>
 			<div className='grid grid-cols-1 gap-10 px-6 mx-auto max-w-7xl lg:grid-cols-12 '>
 				<div className='max-w-xl text-3xl font-bold text-white sm:text-4xl lg:col-span-7 font-playfair'>
 					<h2 className='inline sm:block lg:inline xl:block '>Want Skin Anarchy podcast news and updates?</h2>{" "}
@@ -24,7 +24,7 @@ const NewsLetterContainer = () => {
 						/>
 						<button
 							type='submit'
-							className='font-glacialRegular flex-none rounded-md bg-black px-3.5 py-2.5 text-sm font-semibold text-white border-2 border-gray-600 shadow-sm hover:border-white hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-all ease-in-out duration-500 hover:text-black hover:shadow-xl hover:shadow-black'
+							className='font-glacialRegular flex-none rounded-md bg-black px-3.5 py-2.5 text-sm font-semibold text-white border-2 border-char-900 shadow-sm hover:border-white hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-char-900 transition-all ease-in-out duration-500 hover:text-black hover:shadow-xl hover:shadow-black'
 						>
 							Subscribe
 						</button>
