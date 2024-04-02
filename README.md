@@ -9,7 +9,7 @@ Utilization of Modern Web Development Practices: Incorporates Vite for optimal d
 Technologies
 This application is built with a stack designed for efficiency, scalability, and performance:
 
-## Frontend: A modern JavaScript framework/library (Please specify if React, Vue, Angular, etc. was used), Tailwind CSS for styling.
+## Frontend: Utilizes React for dynamic user interfaces, enriched by Tailwind CSS for responsive and modern styling.
 Backend Services: Firebase for authentication, database, and hosting services.
 Development Tools: Vite for a fast development environment, ESLint for code quality, and PostCSS for advanced styling capabilities.
 Project Structure
