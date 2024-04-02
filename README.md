@@ -20,7 +20,7 @@ Development Tools: Leveraging the best practices in web development with ESLint 
 Getting Acquainted
 index.html: The primary entry point for user interaction.
 src: Contains all source code, including React components, Zustand stores, Tailwind configurations, and SCSS files for styling.
-# Note: The specifics of the custom backend tools and their implementation are maintained internally to preserve the integrity and security of the system.
+### Note: The specifics of the custom backend tools and their implementation are maintained internally to preserve the integrity and security of the system.
 ## Acknowledgments
 This project benefits from the contributions of the open-source community, especially those involved in the development of React, Tailwind CSS, Zustand, and Firebase. Their commitment to advancing web technology has been invaluable to the success of Skin Anarchy Official.
 
