@@ -1,5 +1,7 @@
 # README.md for Skin Anarchy Official
 
+## This site is still in development.
+
 ## Introduction
 Skin Anarchy Official is a pioneering web application that redefines the digital skincare landscape, providing personalized skincare recommendations and management tools through an advanced technological framework. This platform integrates a wide array of modern web technologies to deliver an exceptional user experience, emphasizing ease of use, customization, and interactive design.
 
