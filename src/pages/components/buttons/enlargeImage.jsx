@@ -1,3 +1,0 @@
-
-
-const EnlargeImage = ({ image, onClose }) => {

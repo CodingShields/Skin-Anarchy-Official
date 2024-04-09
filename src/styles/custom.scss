@@ -825,3 +825,33 @@
 .active .main {
   transform: perspective(1300px) rotateY(-20deg) translateZ(200px) scale(0.8);
 }
+
+// New Nav Bar animation for underline
+.navLink {
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.15em;
+
+  display: inline-block;
+  padding: 15px 20px;
+  position: relative;
+}
+
+.navLink:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: #fff;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+
+.navLink:hover:after {
+  width: 100%;
+  left: 0;
+}
