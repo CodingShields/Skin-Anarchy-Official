@@ -28,7 +28,6 @@ const TestimonialsContainer = () => {
 						<div className='mt-1 text-gray-400'>CEO of Workcation</div>
 					</figcaption>
 				</div>
-				<div className='w-full z-10'></div>
 			</div>
 		</div>
 	);

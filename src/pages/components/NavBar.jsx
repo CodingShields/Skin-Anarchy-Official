@@ -21,7 +21,7 @@ const about = [
 	},
 ];
 
-const podCast = [
+const podcast = [
 	{
 		name: "Current Podcast Episode",
 		link: "/members-area/podcast/current-podcast-episode",
@@ -114,62 +114,61 @@ const NavBar = () => {
 		<div className='w-full h-full pt-4 flex flex-row justify-center items-center'>
 			<div className='text-white text-md flex flex-row space-x-6 w-full justify-center'>
 				<NavBarMenu>
-					<NavBarButton to='/members-area/blog' text='Skin Anarchy Blog' icon={doubleChevronDown} />
+					<NavBarButton text='Skin Anarchy Blog' icon={doubleChevronDown} />
+
 					<NavBarMenuDropDown>
-						{blog.map((item) => (
-							<NavBarMenuItem key={item} to={item.link}>
-								{item.name}
-							</NavBarMenuItem>
+						{blog.map((blog, index) => (
+							<NavBarMenuItem key={index} to={blog.link} text={blog.name} />
 						))}
 					</NavBarMenuDropDown>
-					<NavBarButton to='/members-area/podcast' text='Podcasts' icon={doubleChevronDown} />
-					<NavBarMenuDropDown>
-						{podCast.map((item) => (
-							<NavBarMenuItem key={item} to={item.link}>
-								{item.name}
-							</NavBarMenuItem>
-						))}
-					</NavBarMenuDropDown>
-					<NavBarButton to='/members-area/awards' text='Awards' icon={doubleChevronDown} />
-					<NavBarMenuDropDown>
-						{awards.map((item) => (
-							<NavBarMenuItem key={item} to={item.link}>
-								{item.name}
-							</NavBarMenuItem>
-						))}
-					</NavBarMenuDropDown>
-					<NavBarButton to='/members-area/yugen' text='Yugen' icon={doubleChevronDown} />
 				</NavBarMenu>
+				<NavBarMenu>
+					<NavBarButton text='Podcasts' icon={doubleChevronDown} />
+					<NavBarMenuDropDown>
+						{podcast.map((podcast, index) => (
+							<NavBarMenuItem key={index} to={podcast.link} text={podcast.name} />
+						))}
+					</NavBarMenuDropDown>
+				</NavBarMenu>
+				<NavBarMenu>
+					<NavBarButton text='Awards' icon={doubleChevronDown} />
+					<NavBarMenuDropDown>
+						{awards.map((awards, index) => (
+							<NavBarMenuItem key={index} to={awards.link} text={awards.name} />
+						))}
+					</NavBarMenuDropDown>
+				</NavBarMenu>
+				<NavBarButton to='/members-area/yugen' text='Yugen' />
 			</div>
 			<div className='text-white text-md flex flex-row w-full justify-center'>
 				<img src={whiteLogo} alt='logo' className='xl:h-16 xxl:h-48 hover:animate-pulse mx-auto ' />
 			</div>
 			<div className='text-white text-md flex flex-row w-full justify-center'>
 				<NavBarButton to='/members-area/home' text='Home' />
-				<NavBarButton text='About' icon={doubleChevronDown} />
-				<NavBarMenuDropDown>
-					{about.map((item) => (
-						<NavBarMenuItem key={item} to={item.link}>
-							{item.name}
-						</NavBarMenuItem>
-					))}
-				</NavBarMenuDropDown>
-				<NavBarButton to='/members-area/connect' text='Connect' icon={doubleChevronDown} />
-				<NavBarMenuDropDown>
-					{connect.map((item) => (
-						<NavBarMenuItem key={item} to={item.link}>
-							{item.name}
-						</NavBarMenuItem>
-					))}
-				</NavBarMenuDropDown>
-				<NavBarButton to='/members-area/account' text='Account' icon={doubleChevronDown} />
-				<NavBarMenuDropDown>
-					{account.map((item) => (
-						<NavBarMenuItem key={item} to={item.link}>
-							{item.name}
-						</NavBarMenuItem>
-					))}
-				</NavBarMenuDropDown>
+				<NavBarMenu>
+					<NavBarButton text='About' icon={doubleChevronDown} />
+					<NavBarMenuDropDown>
+						{about.map((about, index) => (
+							<NavBarMenuItem key={index} to={about.link} text={about.name} />
+						))}
+					</NavBarMenuDropDown>
+				</NavBarMenu>
+				<NavBarMenu>
+					<NavBarButton to='/members-area/connect' text='Connect' icon={doubleChevronDown} />
+					<NavBarMenuDropDown>
+						{connect.map((connect, index) => (
+							<NavBarMenuItem key={index} to={connect.link} text={connect.name} />
+						))}
+					</NavBarMenuDropDown>
+				</NavBarMenu>
+				<NavBarMenu>
+					<NavBarButton to='/members-area/account' text='Account' icon={doubleChevronDown} />
+					<NavBarMenuDropDown>
+						{account.map((account, index) => (
+							<NavBarMenuItem key={index} to={account.link} text={account.name} />
+						))}
+					</NavBarMenuDropDown>
+				</NavBarMenu>
 			</div>
 		</div>
 	);

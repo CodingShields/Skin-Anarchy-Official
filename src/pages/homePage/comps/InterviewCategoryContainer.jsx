@@ -105,7 +105,7 @@ const InterviewCategoryContainer = () => {
 													/>
 												</svg>
 											</a>
-											<p className='textshadow text-xs'>Play Episode</p>
+											<p className='text-shadow text-xs'>Play Episode</p>
 										</div>
 									</div>
 								</div>

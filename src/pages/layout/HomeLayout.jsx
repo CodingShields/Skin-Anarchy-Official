@@ -10,27 +10,12 @@ const HomeLayout = () => {
 	const location = useLocation();
 
 	const isAdminPage = location.pathname.includes("/members-area/account");
-	const navBarActive = useNavStore((state) => state.navBarActive);
-
-	console.log(navBarActive);
-	useEffect(() => {
-		setIsActive(navBarActive);
-	}, [navBarActive]);
 
 	return (
 		<>
 			{!isAdminPage && <Header />}
-			<div className={`main ${isActive ? "active" : ""}`}>
-				<Outlet />
-				<div className='main'>
-					<div className='overlay'>
-						<div class='inner'>
-							<div class='shadow one'></div>
-							<div class='shadow two'></div>
-						</div>
-					</div>
-				</div>
-			</div>
+			<Outlet />
+
 			{!isAdminPage && <Footer />}
 		</>
 	);

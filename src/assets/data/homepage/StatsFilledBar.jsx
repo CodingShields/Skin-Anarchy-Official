@@ -19,7 +19,7 @@ const StatsFilledBar = ({ value }) => {
 	return (
 		<div className='w-full h-auto flex flex-row justify-start items-center group '>
 			<div
-				className='bg-white h-[2px] animate-pulse'
+				className='bg-black h-[2px] animate-pulse'
 				style={filledBarStyle}
 			></div>
 			<h1 className='text-[16px] font-glacial text-gray-400 truncate uppercase ml-8 animate-pulse'>

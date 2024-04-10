@@ -104,7 +104,7 @@ const PodcastAnalyticsContainer = () => {
 	// });
 
 	return (
-		<div className='flex flex-col justify-center items-center text-center h-full w-full bg-char-900 pt-36 pb-36 z-30 '>
+		<div className='flex flex-col justify-center items-center text-center h-fit w-full py-48 z-30'>
 				<h3 className='text-4xl  text-white truncate uppercase font-playfair pb-12'>PODCAST ANALYTICS</h3>
 				<div className='grid grid-cols-4 gap-18'>
 					<div className='flex flex-col w-fit h-auto px-2 py-2 lg:w-64 justify-center items-center whitespace-nowrap'>
