@@ -9,6 +9,9 @@ const HeadLine = () => {
 			<h1 className='text-4xl font-bold text-center pt-10 text-white font-playfair subpixel-antialiased tracking-[8px] '>
 				THE FASTEST GROWING BEAUTY PODCAST
 			</h1>
+			<h1>Add modal to get information to view the whole site </h1>
+			<h1>add modal for reviews and stars</h1>
+			<h1>suggestions box about products ...</h1>
 			{/* <img src={GifBg} className=' w-full h-full absolute bg-opacity-20' /> */}
 			{/* <div>
 				<video className='w-full h-1/2 opacity-20' autoPlay muted loop id='video' src={mic1}></video>

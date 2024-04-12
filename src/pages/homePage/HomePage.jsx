@@ -50,7 +50,8 @@ const HomePage = () => {
 	return (
 		<div className='w-full h-full '>
 			<div className='fixed'>
-				<video className='w-screen opacity-50 ' autoPlay muted loop id='video' src={mic1}></video>
+				{/* Set a custom 15 % opacity */}
+				<video className='w-screen opacity-20 ' autoPlay muted loop id='video' src={mic1}></video>
 			</div>
 			<div className='fixed'>
 				<div id='cursor' className='cursor '></div>
