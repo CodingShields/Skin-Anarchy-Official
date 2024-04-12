@@ -1,150 +1,64 @@
-import React, { useState, useEffect } from "react";
-import { collection, getDocs, query } from "firebase/firestore";
-import { db } from "../../../fireBase/firebaseConfig";
-import { animateCounter } from "../../../assets/utilities/numberCounter";
-import headsetStatic from "../../../assets/icons/homepage/statsContainer/headsetStatic.svg";
-import micStatic from "../../../assets/icons/homepage/statsContainer/micStatic.svg";
-import peopleStatic from "../../../assets/icons/homepage/statsContainer/poepleStatic.svg";
-import linkStatic2 from "../../../assets/icons/homepage/statsContainer/linkStatic2.svg";
+// import { useState, useEffect } from "react";
+// import { collection, getDocs, query } from "firebase/firestore";
+// import { db } from "../../../fireBase/firebaseConfig";
+// import { animateCounter } from "../../../assets/utilities/numberCounter";
 
 const PodcastAnalyticsContainer = () => {
-	const [prevStatsData, setPrevStatsData] = useState({});
+	// const [prevStatsData, setPrevStatsData] = useState({});
 
-	useEffect(() => {
-		const getStats = async () => {
-			const colRef = collection(db, "statsData");
-			const q = query(colRef);
-			const querySnapshot = await getDocs(q);
-			querySnapshot.forEach((doc) => {
-				setPrevStatsData(doc.data());
-				console.log(doc.id, " => ", doc.data());
-			});
-		};
-		getStats();
-	}, []);
+	// useEffect(() => {
+	// 	const getStats = async () => {
+	// 		const colRef = collection(db, "statsData");
+	// 		const q = query(colRef);
+	// 		const querySnapshot = await getDocs(q);
+	// 		querySnapshot.forEach((doc) => {
+	// 			setPrevStatsData(doc.data());
+	// 			console.log(doc.id, " => ", doc.data());
+	// 		});
+	// 	};
+	// 	getStats();
+	// }, []);
 
-	useEffect(() => {
-		const counters = document.querySelectorAll("#counter");
-		counters.forEach((counter) => {
-			const target = +counter.getAttribute("data-target");
-			animateCounter(counter, target); // Use the utility function
-		});
-	}, [prevStatsData]);
-
-	// const downloadsPerWeekDigits = prevStatsData.downloadsPerWeek
-	// 	.toString()
-	// 	.split("")
-	// 	.map((digit, index) => (
-	// 		<span key={index} className='digit'>
-	// 			{digit}
-	// 		</span>
-	// 	));
-
-	// const episodesRecordedDigits = prevStatsData.episodesRecorded
-	// 	.toString()
-	// 	.split("")
-	// 	.map((digit, index) => (
-	// 		<span key={index} className='digit'>
-	// 			{digit}
-	// 		</span>
-	// 	));
-	// const subscribersDigits = prevStatsData.subscribers
-	// 	.toString()
-	// 	.split("")
-	// 	.map((digit, index) => (
-	// 		<span key={index} className='digit'>
-	// 			{digit}
-	// 		</span>
-	// 	));
-	// const socialFollowersDigits = prevStatsData.socialFollowers
-	// 	.toString()
-	// 	.split("")
-	// 	.map((digit, index) => (
-	// 		<span key={index} className='digit'>
-	// 			{digit}
-	// 		</span>
-	// 	));
-
-	// function createDigitContainer() {
-	// 	const container = document.createElement("div");
-	// 	container.className = "counter-digit";
-	// 	for (let i = 9; i >= 0; i--) {
-	// 		// Create spans for digits 0 through 9
-	// 		const span = document.createElement("span");
-	// 		span.textContent = i;
-	// 		container.appendChild(span);
-	// 	}
-	// 	return container;
-	// }
-
-	// function animateCounter(element, target) {
-	// 	const targetStr = target.toString().padStart(6, "0"); // Ensure at least 6 digits, adjust as needed
-	// 	element.innerHTML = ""; // Clear existing content
-
-	// 	// Create a container for each digit in the target
-	// 	const digitContainers = Array.from(targetStr).map(() => createDigitContainer());
-	// 	digitContainers.forEach((container) => element.appendChild(container));
-
-	// 	// Animate each digit
-	// 	digitContainers.forEach((container, index) => {
-	// 		setTimeout(() => {
-	// 			// Delay each digit's animation for effect
-	// 			const targetDigit = parseInt(targetStr[index], 10);
-	// 			const span = container.querySelectorAll("span")[10 - targetDigit]; // 10 spans created, adjust for target digit
-	// 			span.style.transform = `translateY(-${container.offsetHeight * targetDigit}px)`;
-	// 		}, index * 65); // Stagger animations for effect
+	// useEffect(() => {
+	// 	const counters = document.querySelectorAll("#counter");
+	// 	counters.forEach((counter) => {
+	// 		const target = +counter.getAttribute("data-target");
+	// 		animateCounter(counter, target); // Use the utility function
 	// 	});
-	// }
-
-	// document.addEventListener("DOMContentLoaded", () => {
-	// 	const counterElement = document.getElementById("counter");
-	// 	if (counterElement) {
-	// 		animateCounter(counterElement, 123456); // Example target number
-	// 	}
-	// });
+	// }, [prevStatsData]);
 
 	return (
 		<div className='flex flex-col justify-center items-center text-center h-fit w-full py-48 z-30'>
-				<h3 className='text-4xl  text-white truncate uppercase font-playfair pb-12'>PODCAST ANALYTICS</h3>
-				<div className='grid grid-cols-4 gap-18'>
-					<div className='flex flex-col w-fit h-auto px-2 py-2 lg:w-64 justify-center items-center whitespace-nowrap'>
-						{/* <img className='h-22' src={headsetStatic} alt='headSetBounceIn' id='icon' />{" "} */}
-						<h3 className='mt-1 text-4xl lg:text-2xl  text-white mb-4 font-glacialRegular'>
-							<span id='counter' className='text-4xl font-glacialRegular' data-target={prevStatsData.downloadsPerWeek}></span>
-						</h3>
-						<h3 className='text-center text-lg font-medium text-white truncate uppercase'>Downloads Per Week</h3>
-					</div>
-
-					<div className='flex flex-col w-fit h-auto px-2 py-2 lg:w-64 justify-center items-center whitespace-nowrap'>
-						{/* <img className='h-22' src={micStatic} alt='micBounceIn' id='icon' />{" "} */}
-						<h3 className='mt-1 text-4xl lg:text-2xl  text-white mb-4 font-glacialRegular'>
-							<span className='text-4xl font-glacialRegular' id='counter' data-target={prevStatsData.episodesRecorded}>
-								{/* {episodesRecorded} */}
-							</span>
-						</h3>
-						<h3 className='text-lg font-medium text-white truncate uppercase'>Episodes Recorded</h3>
-					</div>
-
-					<div className='flex flex-col w-fit h-auto px-2 py-2 lg:w-64 justify-center items-center whitespace-nowrap'>
-						{/* <img className='h-22' src={peopleStatic} id='icon' alt='micBounceIn' />{" "} */}
-						<h3 className='mt-1 text-4xl lg:text-2xl  text-white mb-4'>
-							<span id='counter' className='text-4xl font-glacialRegular' data-target={prevStatsData.subscribers}>
-								{/* {subscribers} */}
-							</span>
-						</h3>
-						<h3 className=' text-lg font-medium text-white xxl:truncate lg:text-center uppercase'>SUBSCRIBERS ACROSS PLATFORMS</h3>
-					</div>
-					<div className='flex flex-col w-fit h-auto px-2 py-2 lg:w-64 justify-center items-center whitespace-nowrap'>
-						{/* <img className='h-22' src={linkStatic2} alt='micBounceIn' id='icon' />{" "} */}
-						<h3 className='mt-1 text-4xl lg:text-2xl  text-white mb-4 font-glacialRegular'>
-							<span id='counter' className='text-4xl font-glacialRegular' data-target={prevStatsData.socialFollowers}>
-								{/* {socialFollowers} */}
-							</span>
-						</h3>
-						<h3 className='text-lg font-semibold text-white truncate uppercase'>SOCIAL FOLLOWERS</h3>
-					</div>
+			<h3 className='text-4xl  text-white truncate uppercase font-playfair pb-24'>PODCAST ANALYTICS</h3>
+			<div className='grid grid-cols-4 gap-[75px]'>
+				<div className='space-y-4'>
+					<h3 className='text-center text-3xl font-thin text-white truncate uppercase'>Episodes Recorded</h3>
+					<h1 id='counter' className='text-4xl font-glacialRegular text-white' data-target='622'>
+						622+
+					</h1>
 				</div>
-			
+
+				<div className='space-y-4'>
+					<h3 className='text-3xl font-thin text-white truncate uppercase'>Total Downloads</h3>
+					<h1 id='counter' className='text-4xl font-glacialRegular text-white' data-target='622'>
+						9 Million
+					</h1>
+				</div>
+
+				<div className='space-y-4'>
+					<h1 className='text-3xl font-thin text-white truncate uppercase'>Global Recognition </h1>{" "}
+					<h1 id='counter' className='text-4xl font-glacialRegular text-white' data-target=''>
+						Streaming in 100+ Countries
+					</h1>
+				</div>
+				<div className='space-y-4'>
+					<h1 className='text-3xl font-thin text-white truncate uppercase'>Chart Position</h1>
+
+					<h2 id='counter' className='text-4xl font-glacialRegular text-white' data-target=''>
+						{/* {socialFollowers} */}Top 50 Beauty Podcast
+					</h2>
+				</div>
+			</div>
 		</div>
 	);
 };

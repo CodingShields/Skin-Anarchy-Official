@@ -1,4 +1,3 @@
-import iphoneFrame from "../../../assets/images/iphone-frame.png";
 import podcastIconLinks from "../../../assets/data/podcastIconLinks";
 import PhoneContainer from "./PhoneContainer";
 import rotatingMicrophone from "../../../assets/video/rotatingMicrophone.mp4";

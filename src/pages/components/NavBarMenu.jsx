@@ -1,8 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
-import ReactDOM from "react-dom";
-import NavBarButton from "./NavBarButton";
-import NavBarMenuDropDown from "./NavBarMenuDropDown";
-import NavBarMenuItem from "./NavBarMenuItem";
+// import NavBarButton from "./NavBarButton";
+// import NavBarMenuDropDown from "./NavBarMenuDropDown";
+// import NavBarMenuItem from "./NavBarMenuItem";
 
 const NavBarMenu = ({ children, toggle }) => {
 	const [open, setOpen] = useState(false);
@@ -19,10 +18,8 @@ const NavBarMenu = ({ children, toggle }) => {
 				setOpen(false);
 			}
 		};
-
 		// Add event listener when component mounts
 		document.addEventListener("mousedown", handleClickOutside);
-
 		// Cleanup function to remove event listener when component unmounts
 		return () => {
 			document.removeEventListener("mousedown", handleClickOutside);
@@ -30,7 +27,7 @@ const NavBarMenu = ({ children, toggle }) => {
 	}, []);
 
 	return (
-		<div ref={menuRef} onClick={handleNavNarClick} className='relative inline-block text-white z-50 whitespace-nowrap uppercase'>
+		<div ref={menuRef} onClick={handleNavNarClick} className='relative inline-block text-white whitespace-nowrap uppercase'>
 			{React.Children.map(children, (child) => {
 				return React.cloneElement(child, {
 					open,

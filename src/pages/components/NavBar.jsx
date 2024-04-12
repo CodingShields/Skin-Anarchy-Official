@@ -1,4 +1,4 @@
-import whiteLogo from "../../assets/images/whiteLogo.png";
+import goldLogo from "../../assets/images/logos/goldLogo.png";
 import doubleChevronDown from "../../assets/icons/doubleChevronDown.svg";
 import NavBarButton from "./NavBarButton";
 import NavBarMenu from "./NavBarMenu";
@@ -113,62 +113,81 @@ const NavBar = () => {
 	return (
 		<div className='w-full h-full pt-4 flex flex-row justify-center items-center'>
 			<div className='text-white text-md flex flex-row space-x-6 w-full justify-center'>
-				<NavBarMenu>
-					<NavBarButton text='Skin Anarchy Blog' icon={doubleChevronDown} />
+				<div>
+					<NavBarMenu>
+						<NavBarButton text='Skin Anarchy Blog' icon={doubleChevronDown} />
 
-					<NavBarMenuDropDown>
-						{blog.map((blog, index) => (
-							<NavBarMenuItem key={index} to={blog.link} text={blog.name} />
-						))}
-					</NavBarMenuDropDown>
-				</NavBarMenu>
-				<NavBarMenu>
-					<NavBarButton text='Podcasts' icon={doubleChevronDown} />
-					<NavBarMenuDropDown>
-						{podcast.map((podcast, index) => (
-							<NavBarMenuItem key={index} to={podcast.link} text={podcast.name} />
-						))}
-					</NavBarMenuDropDown>
-				</NavBarMenu>
-				<NavBarMenu>
-					<NavBarButton text='Awards' icon={doubleChevronDown} />
-					<NavBarMenuDropDown>
-						{awards.map((awards, index) => (
-							<NavBarMenuItem key={index} to={awards.link} text={awards.name} />
-						))}
-					</NavBarMenuDropDown>
-				</NavBarMenu>
-				<NavBarButton to='/members-area/yugen' text='Yugen' />
+						<NavBarMenuDropDown>
+							{blog.map((blog, index) => (
+								<NavBarMenuItem key={index} to={blog.link} text={blog.name} />
+							))}
+						</NavBarMenuDropDown>
+					</NavBarMenu>
+				</div>
+				<div>
+					<NavBarMenu>
+						<NavBarButton text='Podcasts' icon={doubleChevronDown} />
+						<NavBarMenuDropDown>
+							{podcast.map((podcast, index) => (
+								<NavBarMenuItem key={index} to={podcast.link} text={podcast.name} />
+							))}
+						</NavBarMenuDropDown>
+					</NavBarMenu>
+				</div>
+				<div>
+					<NavBarMenu>
+						<NavBarButton text='Awards' icon={doubleChevronDown} />
+						<NavBarMenuDropDown>
+							{awards.map((awards, index) => (
+								<NavBarMenuItem key={index} to={awards.link} text={awards.name} />
+							))}
+						</NavBarMenuDropDown>
+					</NavBarMenu>
+				</div>
+
+				<NavBarButton to='/members-area/yugen' text='YUGEN' />
 			</div>
 			<div className='text-white text-md flex flex-row w-full justify-center'>
-				<img src={whiteLogo} alt='logo' className='xl:h-16 xxl:h-48 hover:animate-pulse mx-auto ' />
+				<img src={goldLogo} alt='logo' className='xl:h-16 xxl:h-48 hover:animate-pulse mx-auto ' />
 			</div>
-			<div className='text-white text-md flex flex-row w-full justify-center'>
-				<NavBarButton to='/members-area/home' text='Home' />
-				<NavBarMenu>
-					<NavBarButton text='About' icon={doubleChevronDown} />
-					<NavBarMenuDropDown>
-						{about.map((about, index) => (
-							<NavBarMenuItem key={index} to={about.link} text={about.name} />
-						))}
-					</NavBarMenuDropDown>
-				</NavBarMenu>
-				<NavBarMenu>
-					<NavBarButton to='/members-area/connect' text='Connect' icon={doubleChevronDown} />
-					<NavBarMenuDropDown>
-						{connect.map((connect, index) => (
-							<NavBarMenuItem key={index} to={connect.link} text={connect.name} />
-						))}
-					</NavBarMenuDropDown>
-				</NavBarMenu>
-				<NavBarMenu>
-					<NavBarButton to='/members-area/account' text='Account' icon={doubleChevronDown} />
-					<NavBarMenuDropDown>
-						{account.map((account, index) => (
-							<NavBarMenuItem key={index} to={account.link} text={account.name} />
-						))}
-					</NavBarMenuDropDown>
-				</NavBarMenu>
+			<div className='text-white text-md flex flex-row space-x-6 w-full justify-center items-center'>
+				<div>
+					<NavBarButton to='/members-area/home' text='HOME' />
+				</div>
+				<div>
+					{" "}
+					<NavBarMenu>
+						<NavBarButton text='About' icon={doubleChevronDown} />
+						<NavBarMenuDropDown>
+							{about.map((about, index) => (
+								<NavBarMenuItem key={index} to={about.link} text={about.name} />
+							))}
+						</NavBarMenuDropDown>
+					</NavBarMenu>
+				</div>
+				<div>
+					{" "}
+					<NavBarMenu>
+						<NavBarButton to='/members-area/connect' text='Connect' icon={doubleChevronDown} />
+						<NavBarMenuDropDown>
+							{connect.map((connect, index) => (
+								<NavBarMenuItem key={index} to={connect.link} text={connect.name} />
+							))}
+						</NavBarMenuDropDown>
+					</NavBarMenu>
+				</div>
+
+				<div>
+					{" "}
+					<NavBarMenu>
+						<NavBarButton to='/members-area/account' text='Account' icon={doubleChevronDown} />
+						<NavBarMenuDropDown>
+							{account.map((account, index) => (
+								<NavBarMenuItem key={index} to={account.link} text={account.name} />
+							))}
+						</NavBarMenuDropDown>
+					</NavBarMenu>
+				</div>
 			</div>
 		</div>
 	);
