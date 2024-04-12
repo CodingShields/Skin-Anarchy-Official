@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import HeadLine from "./comps/HeadLine";
 import Podcast from "./comps/Podcast";
-import NewsLetterContainer from "./comps/NewsLetterContainer";
+// import NewsLetterContainer from "./comps/NewsLetterContainer";
 import SponsorBarContainer from "./comps/SponsorBarContainer";
 import InterviewCategoryContainer from "./comps/InterviewCategoryContainer";
 // import FactsBar from "./comps/FactsBar";
@@ -9,11 +9,10 @@ import InterviewCategoryContainer from "./comps/InterviewCategoryContainer";
 import PodcastAnalyticsContainer from "./comps/PodcastAnalyticsContainer";
 // import ListenerDemoGraphicsContainer from "./comps/ListenerDemoGraphicsContainer";
 import TestimonialsContainer from "./comps/TestimonialsContainer";
-import BecomeSponsorContainer from "./comps/BecomeSponsorContainer";
+// import BecomeSponsorContainer from "./comps/BecomeSponsorContainer";
 import SignatureBar from "./comps/SignatureBar";
-import GifBg from "../../assets/images/Gif-BG.gif";
+// import GifBg from "../../assets/images/Gif-BG.gif";
 import WelcomeBackUserModal from "./comps/WelcomeBackUserModal";
-import { useNavStore } from "../../stateStore/useNavStateStore";
 import PodcastPlatformBar from "./comps/PodcastPlatformBar";
 import mic1 from "../../assets/video/mic1.mp4";
 const HomePage = () => {
