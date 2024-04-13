@@ -5,8 +5,8 @@ import mic3 from "../../../assets/video/mic3.mp4";
 const HeadLine = () => {
 	return (
 		<div className='w-full h-screen bg-black text-white flex flex-col justify-center'>
-			<h1 className='text-4xl font-bold text-center pt-10 text-white font-playfair subpixel-antialiased tracking-[8px] '> Skin Anarchy</h1>
-			<h1 className='text-4xl font-bold text-center pt-10 text-white font-playfair subpixel-antialiased tracking-[8px] '>
+			<h1 className='text-[100px] text-center pt-10 text-gold-500 subpixel-antialiased tracking-[14px] font-hind '> SKIN ANARCHY</h1>
+			<h1 className='text-3xl text-center pt-10 text-white font-hind tracking-[10px]'>
 				THE FASTEST GROWING BEAUTY PODCAST
 			</h1>
 			<h1>Add modal to get information to view the whole site </h1>

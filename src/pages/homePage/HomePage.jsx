@@ -15,6 +15,7 @@ import SignatureBar from "./comps/SignatureBar";
 import WelcomeBackUserModal from "./comps/WelcomeBackUserModal";
 import PodcastPlatformBar from "./comps/PodcastPlatformBar";
 import mic1 from "../../assets/video/mic1.mp4";
+import ChatBot from "../components/ChatBot";
 const HomePage = () => {
 	const [openModal, setOpenModal] = useState(true);
 	const currentComponent = window.location.pathname;
@@ -68,6 +69,7 @@ const HomePage = () => {
 			<InterviewCategoryContainer />
 			{/* <BecomeSponsorContainer /> */}
 			<TestimonialsContainer />
+			<ChatBot />
 		</div>
 	);
 };

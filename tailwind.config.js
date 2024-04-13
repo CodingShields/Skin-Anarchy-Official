@@ -5,6 +5,7 @@ export default {
 	theme: {
 		extend: {
 			fontFamily: {
+				hind: ["Hind-Regular"],
 				glacialBold: ["Glacial Indifference Bold"],
 				glacialItalic: ["Glacial Indifference Italic"],
 				glacialRegular: ["Glacial Indifference Regular"],

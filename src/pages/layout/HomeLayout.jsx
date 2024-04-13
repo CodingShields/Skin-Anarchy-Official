@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useNavStoreActions } from "../../stateStore/useNavStateStore";
 import { useNavStore } from "../../stateStore/useNavStateStore";
+import ChatBot from "../components/ChatBot";
 const HomeLayout = () => {
 	const [isActive, setIsActive] = useState(false);
 
@@ -15,7 +16,6 @@ const HomeLayout = () => {
 		<>
 			{!isAdminPage && <Header />}
 			<Outlet />
-
 			{!isAdminPage && <Footer />}
 		</>
 	);

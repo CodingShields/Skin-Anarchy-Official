@@ -3,6 +3,11 @@
 @import "./styles/custom.scss";
 
 @font-face {
+	font-family: "Hind-Regular";
+	src: url("/src/assets/fonts/hind/Hind-Regular.ttf") format("trueType");
+}
+
+@font-face {
 	font-family: "Glacial Indifference Bold";
 	src: url("/src/assets/fonts/glacial-indifference/GlacialIndifference-Bold.otf") format("trueType");
 }
