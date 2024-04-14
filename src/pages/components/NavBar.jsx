@@ -111,7 +111,7 @@ const account = [
 ];
 const NavBar = () => {
 	return (
-		<div className='w-full h-full pt-4 flex flex-row justify-center items-center'>
+		<div className='w-full h-full pt-4 flex flex-row justify-center items-center bg-opacity-50'>
 			<div className='text-white text-md flex flex-row space-x-6 w-full justify-center'>
 				<div>
 					<NavBarMenu>

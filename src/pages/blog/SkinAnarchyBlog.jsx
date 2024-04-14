@@ -1,13 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link, NavLink } from "react-router-dom";
-import blackMarble from "../../assets/images/blackMarble.jpeg";
-import SearchBar from "../components/searchBar";
-import tealTypewriter from "../../assets/images/tealTypewriter.jpeg";
-import BlogKeys from "../../assets/images/blogKeys.jpeg";
-import blogBG from "../../assets/images/blogBG.jpeg";
-import blogKeys from "../../assets/images/blogKeys.jpeg";
-import PrevBlogs from "./PrevBlogs";
 
 const SkinAnarchyBlog = () => {
 	const navigate = useNavigate();
@@ -43,12 +36,12 @@ const SkinAnarchyBlog = () => {
 				<div className='w-full h-fit flex flex-row'>
 					<div className='w-full h-fit text-center flex flex-col  place-items-center space-y-16'>
 						<div>
-							<img src={blogKeys} className='h-32' alt='blogKeys' />
+							<img  className='h-32' alt='blogKeys' />
 							<p>title</p>
 							<p>description</p>
 						</div>
 						<div>
-							<img src={blogKeys} className='h-32' alt='blogKeys' />
+							<img  className='h-32' alt='blogKeys' />
 							<p>title</p>
 							<p>description</p>
 						</div>

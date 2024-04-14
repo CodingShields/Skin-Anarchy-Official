@@ -14,8 +14,9 @@ import SignatureBar from "./comps/SignatureBar";
 // import GifBg from "../../assets/images/Gif-BG.gif";
 import WelcomeBackUserModal from "./comps/WelcomeBackUserModal";
 import PodcastPlatformBar from "./comps/PodcastPlatformBar";
-import mic1 from "../../assets/video/mic1.mp4";
+import newMic from "../../assets/video/newMic.mp4";
 import ChatBot from "../components/ChatBot";
+import PodcastWidget from "../components/PodcastWidget";
 const HomePage = () => {
 	const [openModal, setOpenModal] = useState(true);
 	const currentComponent = window.location.pathname;
@@ -52,7 +53,7 @@ const HomePage = () => {
 		<div className='w-full h-full '>
 			<div className='fixed'>
 				{/* Set a custom 15 % opacity */}
-				<video className='w-screen opacity-20 ' autoPlay muted loop id='video' src={mic1}></video>
+				<video className='w-screen opacity-20 grayscale ' autoPlay muted loop id='video' src={newMic}></video>
 			</div>
 			<div className='fixed'>
 				<div id='cursor' className='cursor '></div>
@@ -62,7 +63,7 @@ const HomePage = () => {
 			<SignatureBar />
 			<SponsorBarContainer />
 			<WelcomeBackUserModal open={openModal} />
-			<Podcast />
+			<PodcastWidget />
 			<PodcastPlatformBar />
 			<PodcastAnalyticsContainer />
 			{/* <NewsLetterContainer /> */}

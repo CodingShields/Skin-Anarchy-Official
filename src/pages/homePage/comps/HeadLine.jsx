@@ -1,5 +1,5 @@
 import GifBg from "../../../assets/images/Gif-BG.gif";
-import mic1 from "../../../assets/video/mic1.mp4";
+import newMic from "../../../assets/video/newMic.mp4";
 import mic2 from "../../../assets/video/mic2.mp4";
 import mic3 from "../../../assets/video/mic3.mp4";
 const HeadLine = () => {
@@ -12,9 +12,9 @@ const HeadLine = () => {
 			<h1>Add modal to get information to view the whole site </h1>
 			<h1>add modal for reviews and stars</h1>
 			<h1>suggestions box about products ...</h1>
-			{/* <img src={GifBg} className=' w-full h-full absolute bg-opacity-20' /> */}
+			{/* <img src={} className=' w-full h-full absolute bg-opacity-20' /> */}
 			{/* <div>
-				<video className='w-full h-1/2 opacity-20' autoPlay muted loop id='video' src={mic1}></video>
+				<video className='w-full h-full opacity-20' autoPlay muted loop id='video' src={newMic}></video>
 			</div> */}
 		</div>
 	);
