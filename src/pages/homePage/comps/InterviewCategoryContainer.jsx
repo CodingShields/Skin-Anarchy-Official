@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 
 import interviewCategories from "../../../assets/data/homepage/interviewCategoriesArray";
-import makeup from "../../../assets/images/interviewCategories/makeup.jpg";
+import makeup from "../../../assets/images/interviewCategories/makeup.png";
 import thoughtLeaders from "../../../assets/images/interviewCategories/thoughtLeaders.png";
 import journalists from "../../../assets/images/interviewCategories/journalists.png";
-import brandFounders from "../../../assets/images/interviewCategories/brandFounders.jpg";
-import celebs from "../../../assets/images/interviewCategories/celebs.jpg";
-import topDoctor from "../../../assets/images/interviewCategories/topDoctor.jpg";
+import brandFounders from "../../../assets/images/interviewCategories/brandFounders.png";
+import celebs from "../../../assets/images/interviewCategories/celebs.png";
+import topDoctor from "../../../assets/images/interviewCategories/topDoctor.png";
 const InterviewCategoryContainer = () => {
 	const [openBar, setOpenBar] = useState(false);
 	const handleHoverOver = () => {
@@ -25,11 +25,11 @@ const InterviewCategoryContainer = () => {
 			</div>
 
 			<div onMouseOver={handleHoverOver} onMouseLeave={handleMouseLeave} className='w-full mx-auto relative'>
-				<div className='grid grid-cols-6 w-[80%] mx-auto transition-all duration-500 ease-in-out h-[700px]'>
-					<div className='relative group mx-auto '>
+				<div className='grid grid-cols-6 w-[95%] mx-auto transition-all duration-500 ease-in-out space-x-6 '>
+					<div className='relative group mx-auto  '>
 						<h2 className='text-white underline text-center z-30  '>TOP DOCTORS</h2>
 
-						<img src={topDoctor} className='w-64 h-96 object-cover grayscale hover:grayscale-0 transition-all ease-in-out duration-700 group' />
+						<img src={topDoctor} className='w-auto h-fit object-cover grayscale hover:grayscale-0 transition-all ease-in-out duration-700 group' />
 						<div className='flex flex-col items-center justify-center bg-opacity-80 bg-white absolute top-1/2 ml-6 mt-8 w-[350px] z-50 overflow-visible rounded-md group-hover:animate-fadeIn animate-fadeOut '>
 							<div className='inline-flex items-center space-x-4 text-[12px] text-char-900 cursor-pointer'>
 								<svg
@@ -58,7 +58,7 @@ const InterviewCategoryContainer = () => {
 					<div className='relative group mx-auto '>
 						<h2 className='text-white underline text-center z-30 whitespace-nowrap  '>MAKEUP ARTISTS</h2>
 
-						<img src={makeup} className='w-64 h-96 object-cover grayscale hover:grayscale-0 transition-all ease-in-out duration-700 group' />
+						<img src={makeup} className='w-auto h-fit object-cover grayscale hover:grayscale-0 transition-all ease-in-out duration-700 group' />
 						<div className='flex flex-col items-center justify-center bg-opacity-80 bg-white absolute top-1/2 ml-6 mt-8 w-[350px] z-50 overflow-visible rounded-md group-hover:animate-fadeIn animate-fadeOut '>
 							<div className='inline-flex items-center space-x-4 text-[12px] text-char-900 cursor-pointer'>
 								<svg
@@ -87,7 +87,7 @@ const InterviewCategoryContainer = () => {
 					<div className='relative group mx-auto '>
 						<h2 className='text-white underline text-center z-30'>THOUGHT LEADERS</h2>
 
-						<img src={thoughtLeaders} className='w-64 h-96 object-cover grayscale hover:grayscale-0 transition-all ease-in-out duration-700 group' />
+						<img src={thoughtLeaders} className='w-auto h-fit object-cover grayscale hover:grayscale-0 transition-all ease-in-out duration-700 group' />
 						<div className='flex flex-col items-center justify-center bg-opacity-80 bg-white absolute top-1/2 ml-6 mt-8 w-[350px] z-50 overflow-visible rounded-md group-hover:animate-fadeIn animate-fadeOut '>
 							<div className='inline-flex items-center space-x-4 text-[12px] text-char-900 cursor-pointer'>
 								<svg
@@ -116,7 +116,7 @@ const InterviewCategoryContainer = () => {
 					<div className='relative group mx-auto '>
 						<h2 className='text-white underline text-center z-30  '>BRAND FOUNDERS</h2>
 
-						<img src={brandFounders} className='w-64 h-96 object-cover grayscale hover:grayscale-0 transition-all ease-in-out duration-700 group' />
+						<img src={brandFounders} className='w-auto h-fit object-cover grayscale hover:grayscale-0 transition-all ease-in-out duration-700 group' />
 						<div className='flex flex-col items-center justify-center bg-opacity-80 bg-white absolute top-1/2 ml-6 mt-8 w-[350px] z-50 overflow-visible rounded-md group-hover:animate-fadeIn animate-fadeOut '>
 							<div className='inline-flex items-center space-x-4 text-[12px] text-char-900 cursor-pointer'>
 								<svg
@@ -145,7 +145,7 @@ const InterviewCategoryContainer = () => {
 					<div className='relative group mx-auto '>
 						<h2 className='text-white underline text-center z-30  '>EDITORS AND JOURNALISTS</h2>
 
-						<img src={journalists} className='w-64 h-96 object-cover grayscale hover:grayscale-0 transition-all ease-in-out duration-700 group' />
+						<img src={journalists} className='w-auto h-fit object-cover grayscale hover:grayscale-0 transition-all ease-in-out duration-700 group' />
 						<div className='flex flex-col items-center justify-center bg-opacity-80 bg-white absolute top-1/2 ml-6 mt-8 w-[350px] z-50 overflow-visible rounded-md group-hover:animate-fadeIn animate-fadeOut '>
 							<div className='inline-flex items-center space-x-4 text-[12px] text-char-900 cursor-pointer'>
 								<svg
@@ -173,7 +173,7 @@ const InterviewCategoryContainer = () => {
 					</div>
 					<div className='relative group mx-auto '>
 						<h2 className='text-white underline text-center z-30  '>CELEBRITIES</h2>
-						<img src={celebs} className='w-64 h-96 object-cover grayscale hover:grayscale-0 transition-all ease-in-out duration-700 group' />
+						<img src={celebs} className='w-auto h-fit object-cover grayscale hover:grayscale-0 transition-all ease-in-out duration-700 group' />
 						<div className='flex flex-col items-center justify-center bg-opacity-80 bg-white absolute top-1/2 ml-6 mt-8 w-[350px] z-50 overflow-visible rounded-md group-hover:animate-fadeIn animate-fadeOut '>
 							<div className='inline-flex items-center space-x-4 text-[12px] text-char-900 cursor-pointer'>
 								<svg

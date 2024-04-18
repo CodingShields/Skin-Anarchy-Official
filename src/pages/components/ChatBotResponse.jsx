@@ -1,10 +1,23 @@
+import React, { useState, useEffect } from "react";
+import LiveTyping from "./LiveTyping";
+const responses = ["Hello, and welcome to Skin Anarchy!", "How Can I help you?"];
+
 const ChatBotResponse = () => {
-	const responses = ["How can I help you today?"];
+	const [message, setMessage] = useState("");
+
+	useEffect(() => {
+		setMessage(responses[0]);
+		// setTimeout(() => {
+		// 	setMessage(responses[1]);
+		// }, 8000);
+	}, []);
 
 	return (
-		<>
-			<h1 className='text-3xl font-thin text-center py-4'>{responses}</h1>
-		</>
+		<React.Fragment>
+			<h1>
+				<LiveTyping message={message} />
+			</h1>
+		</React.Fragment>
 	);
 };
 

@@ -1,15 +1,11 @@
-
-
-const Button = ({ children, onClick, }) => {
-
-
-
-    return (
-        <button onClick={onClick} className='bg-gold-500 hover:bg-gold-600 text-white font-bold py-2 px-4 rounded'>
-            
-            {children}
-        </button>
-    );
-}
+const Button = ({ children, onClick, className, image, text }) => {
+	return (
+		<button onClick={onClick}>
+			<img src={image ? image : ""} alt='button' className='w-32 fixed bottom-0 right-0 mr-10 mb-10 cursor-pointer' />
+			{children ? { children } : ""}
+			{text ? { text } : ""}
+		</button>
+	);
+};
 
 export default Button;

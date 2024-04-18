@@ -1,20 +1,22 @@
-import { useEffect, useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import chatBotIcon from "../../assets/iconsAnimated/chatBotIcon.svg";
 import chatBotEnterBtn from "../../assets/iconsAnimated/chatBotEnterBtn.svg";
 import CloseButton from "./CloseButton";
 import ChatBotMessage from "./ChatBotMessage";
+import ButtonImage from "./ButtonImage";
+import Button from "./Button";
+const chatBotButtonImage = chatBotIcon;
 const ChatBot = () => {
 	const [openChat, setOpenChat] = useState(false);
 
 	return (
 		<div className='w-full h-fit relative z-50'>
-			<div className='flex flex-row justify-between items-center w-full h-fit'>
-				<img src={chatBotIcon} onClick={() => setOpenChat(true)} className='w-32 fixed bottom-0 right-0 mr-10 mb-10 cursor-pointer' />
-			</div>
+		
+			<ButtonImage image={chatBotButtonImage} onClick={() => setOpenChat(true)} />
 			<div className={openChat ? "w-1/4 h-fit fixed bottom-0 right-0 mr-10 mb-10 " : "hidden"}>
 				<div className='w-auto h-32 p-2  rounded-t-lg  bg-char-900'>
 					<div className='w-full flex flex-row justify-start items-center h-full'>
-						<div className='w-fit h-fit rounded-full bg-black p-4'>
+						<div className='w-fit h-fit rounded-full bg-black p-4 '>
 							<svg
 								xmlns='http://www.w3.org/2000/svg'
 								fill='none'
@@ -41,8 +43,8 @@ const ChatBot = () => {
 						/>
 					</div>
 				</div>
-				<div className='w-auto h-96 mx-2p-2 rounded-b-lg bg-white '>
-					<ChatBotMessage />
+				<div className='w-auto h-96 mx-2p-2 rounded-b-lg bg-white animate-fadeIn '>
+					<ChatBotMessage openChat={openChat} />
 				</div>
 				{/* <div className='w-auto h-1/4 x-2 mt-2 p-2 border-4 border-black rounded-lg bg-white '></div> */}
 			</div>

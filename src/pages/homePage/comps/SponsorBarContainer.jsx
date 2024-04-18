@@ -1,8 +1,8 @@
 import sponsorImages from "../../../assets/data/homepage/sponsorImages.js";
 const SponsorBarContainer = () => {
 	return (
-		<div className='block static w-full h-full text-white bg-opacity-100 z-10 pt-36 pb-24'>
-			<h1 className='text-4xl font-bold text-center py-12'>Take a Look At Our Sponsors</h1>
+		<div className='block relative w-full h-fit text-white bg-opacity-100 z-10 pb-24'>
+			{/* <h1 className='text-4xl font-bold text-center py-12'>Take a Look At Our Sponsors</h1> */}
 			<div className='marquee'>
 				<div className='marquee-content'>
 					{sponsorImages.map((image, index) => (

@@ -16,27 +16,27 @@ const PodcastPlatformBar = () => {
 		setOpen(false);
 	};
 	return (
-		<div className='w-[1700px] h-48 grid grid-cols-12 justify-evenly items-center mx-auto  '>
+		<div className='w-3/4 h-64 grid grid-cols-12 relative mx-auto py-48'>
 			{podcastIconLinks.map((item, id) => (
-				<div className='w-20' onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} key={id}>
+				<div className=' h-32 w-20' onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} key={id}>
 					<a href={item.link} target='_blank' rel='noreferrer'>
 						<img
 							id={item.id}
-							className='lg:w-12 w-20 h-auto mx-auto transition-all duration-300 ease-in-out grayscale hover:grayscale-0'
+							className='w-auto h-12 transition-all duration-300 ease-in-out grayscale hover:grayscale-0 hover:scale-125'
 							src={item.icon}
 							alt={item.icon}
 							name={item.name}
-						/>
+						/>{" "}
+						<h1
+							className={
+								open && activeIcon === item.name
+									? "transition-all duration-300 ease-in-out text-white animate-fadeIn translate-y-2 whitespace-nowrap text-start"
+									: "transition-all duration-300 ease-in-out animate-fadeOut whitespace-nowrap text-start "
+							}
+						>
+							{activeIcon}
+						</h1>
 					</a>
-					<h1
-						className={
-							open && activeIcon === item.name
-								? "transition-all duration-300 ease-in-out text-white before::animate-fadeIn translate-y-6 whitespace-nowrap text-center w-20"
-								: "transition-all duration-300 ease-in-out after::animate-fadeOut whitespace-nowrap text-center"
-						}
-					>
-						{activeIcon}
-					</h1>
 				</div>
 			))}
 		</div>

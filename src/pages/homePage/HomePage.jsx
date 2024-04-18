@@ -1,22 +1,16 @@
 import { useState, useEffect } from "react";
 import HeadLine from "./comps/HeadLine";
-import Podcast from "./comps/Podcast";
-// import NewsLetterContainer from "./comps/NewsLetterContainer";
 import SponsorBarContainer from "./comps/SponsorBarContainer";
 import InterviewCategoryContainer from "./comps/InterviewCategoryContainer";
-// import FactsBar from "./comps/FactsBar";
-// import PodCastContainer from "./comps/PodCasterContainer";
 import PodcastAnalyticsContainer from "./comps/PodcastAnalyticsContainer";
-// import ListenerDemoGraphicsContainer from "./comps/ListenerDemoGraphicsContainer";
 import TestimonialsContainer from "./comps/TestimonialsContainer";
-// import BecomeSponsorContainer from "./comps/BecomeSponsorContainer";
 import SignatureBar from "./comps/SignatureBar";
-// import GifBg from "../../assets/images/Gif-BG.gif";
 import WelcomeBackUserModal from "./comps/WelcomeBackUserModal";
 import PodcastPlatformBar from "./comps/PodcastPlatformBar";
-import newMic from "../../assets/video/newMic.mp4";
+import TopPicks from "./comps/TopPicks";
 import ChatBot from "../components/ChatBot";
 import PodcastWidget from "../components/PodcastWidget";
+import headLineBg from "../../assets/images/headLineBg.png";
 const HomePage = () => {
 	const [openModal, setOpenModal] = useState(true);
 	const currentComponent = window.location.pathname;
@@ -53,22 +47,22 @@ const HomePage = () => {
 		<div className='w-full h-full '>
 			<div className='fixed'>
 				{/* Set a custom 15 % opacity */}
-				<video className='w-screen opacity-20 grayscale ' autoPlay muted loop id='video' src={newMic}></video>
+				{/* <video className='w-screen opacity-20 grayscale ' autoPlay muted loop id='video' src={newMic}></video> */}
+				<img className='w-screen opacity-20 grayscale ' autoPlay muted loop id='video' src={headLineBg} />
 			</div>
 			<div className='fixed'>
 				<div id='cursor' className='cursor '></div>
 			</div>
 			<div className='w-full h-full bg-black bg-opacity-50'></div>
 			<HeadLine />
-			<SignatureBar />
 			<SponsorBarContainer />
+			<SignatureBar />
+			<InterviewCategoryContainer />
 			<WelcomeBackUserModal open={openModal} />
 			<PodcastWidget />
 			<PodcastPlatformBar />
 			<PodcastAnalyticsContainer />
-			{/* <NewsLetterContainer /> */}
-			<InterviewCategoryContainer />
-			{/* <BecomeSponsorContainer /> */}
+			<TopPicks />
 			<TestimonialsContainer />
 			<ChatBot />
 		</div>

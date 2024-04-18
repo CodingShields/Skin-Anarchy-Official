@@ -1,4 +1,4 @@
-import NavBar from "./NavBar";
+import NavBar from "../navBar/NavBar";
 import "../../styles/custom.css";
 
 const Header = () => {
@@ -6,7 +6,7 @@ const Header = () => {
 
 	return (
 		<div
-		className="bg-opacity-50"
+		className="relative"
 		>
 			<NavBar />
 		</div>

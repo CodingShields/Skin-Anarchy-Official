@@ -85,7 +85,7 @@ const TestimonialsContainer = () => {
 	// Empty array as second argument ensures this effect runs only once after the component is mounted
 
 	return (
-		<div className='w-full h-screen bg-black '>
+		<div className='w-full h-fit relative pt-48 pb-48'>
 			<div className='flex flex-col items-center px-6 mx-auto '>
 				<h1 className='text-6xl font-extrabold tracking-tight text-center text-white mt-10 font-playfair z-40 whitespace-nowrap'>
 					Our Clients Love Us
