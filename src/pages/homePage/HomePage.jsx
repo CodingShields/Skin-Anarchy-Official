@@ -11,6 +11,7 @@ import TopPicks from "./comps/TopPicks";
 import ChatBot from "../components/ChatBot";
 import PodcastWidget from "../components/PodcastWidget";
 import headLineBg from "../../assets/images/headLineBg.png";
+import ListenerDemoGraphicsContainer from "./comps/ListenerDemoGraphicsContainer";
 const HomePage = () => {
 	const [openModal, setOpenModal] = useState(true);
 	const currentComponent = window.location.pathname;
@@ -44,7 +45,7 @@ const HomePage = () => {
 	}, []);
 
 	return (
-		<div className='w-full h-full '>
+		<div className='w-full h-full relative'>
 			<div className='fixed'>
 				{/* Set a custom 15 % opacity */}
 				{/* <video className='w-screen opacity-20 grayscale ' autoPlay muted loop id='video' src={newMic}></video> */}
@@ -53,7 +54,7 @@ const HomePage = () => {
 			<div className='fixed'>
 				<div id='cursor' className='cursor '></div>
 			</div>
-			<div className='w-full h-full bg-black bg-opacity-50'></div>
+			<div className='w-full h-full relative'></div>
 			<HeadLine />
 			<SponsorBarContainer />
 			<SignatureBar />

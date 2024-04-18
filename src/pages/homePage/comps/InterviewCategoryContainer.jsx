@@ -19,7 +19,7 @@ const InterviewCategoryContainer = () => {
 	};
 
 	return (
-		<div className='w-full h-fit bg-black pb-24 mt-36 '>
+		<div className='w-full h-fit pb-24 mt-36 relative'>
 			<div>
 				<h1 className='text-white text-4xl font-bold text-center py-12'>Interview Categories</h1>
 			</div>
