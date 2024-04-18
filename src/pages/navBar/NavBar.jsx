@@ -4,7 +4,6 @@ import NavBarButton from "./NavBarButton";
 import NavBarMenu from "./NavBarMenu";
 import NavBarMenuItem from "./NavBarMenuItem";
 import NavBarMenuDropDown from "./NavBarMenuDropDown";
-import NavBarMenuHighLight from "./NavBarMenuHighLight";
 import makeup from "../../assets/images/interviewCategories/makeup.png";
 import celebs from "../../assets/images/interviewCategories/celebs.png";
 import brandFounders from "../../assets/images/interviewCategories/brandFounders.png";
@@ -53,6 +52,31 @@ const podcast = [
 	{
 		name: "Celebrity Podcasts",
 		link: "/members-area/podcast/celebrity-podcasts",
+	},
+	{
+		top: [
+			{
+				name: "Makeup By Mario",
+				description: " Launches Most Requested Product: Learning About SURREALSKIN AWAKENING CONCEALER",
+				guest: "Mario Dedivanovic ",
+				image: makeup,
+				link: "https://open.spotify.com/episode/7GRct64o58RL4hnWUGqVmz?si=CAVOTN_7TAObZOthErhCaQ ",
+			},
+			{
+				name: "Celebrity Tia Mowry",
+				description: "Podcast interview with Tia Mowry, Founder of ‘4U by Tia’ Haircare",
+				guest: "Tia Mowry",
+				image: celebs,
+				link: "https://open.spotify.com/episode/7hNlatkWtg0tH27NwfivPB?si=k_wuyUXbRdeQqhsqTvhiMA ",
+			},
+			{
+				name: "Surgically-Precise Skincare",
+				description: "Surgically-Precise Skincare Is The Best Option For Clinically Proven Results ft. 111SKIN",
+				guest: "Dr Yannis Alexandrides ",
+				image: brandFounders,
+				link: "https://open.spotify.com/episode/7dZVBWXPC09ssig7cKcbUb?si=s78nsKmQQKqq3zl6FBAqtA 	",
+			},
+		],
 	},
 ];
 
@@ -113,7 +137,6 @@ const blog = [
 		],
 	},
 ];
-console.log(blog[4].top);
 const connect = [
 	{
 		name: "Get Featured On Our Show",
@@ -154,16 +177,15 @@ const NavBar = () => {
 				</NavBarMenu>
 				<NavBarMenu>
 					<NavBarButton text='Podcasts' icon={doubleChevronDown} />
-					<NavBarMenuDropDown>
-						<h1 className='text-white text-xl w-32 underline text-center'>Browse Podcast Categories</h1>
+					<NavBarMenuDropDown data={podcast[7].top} text={"Check Out Our Top 5 Podcasts"} title={"Podcast Categories"}>
 						{podcast.map((podcast, index) => (
-							<NavBarMenuItem key={index} to={podcast.link} text={podcast.name} />
+							<NavBarMenuItem key={index} link={podcast.link} text={podcast.name} />
 						))}
 					</NavBarMenuDropDown>
 				</NavBarMenu>
 				<NavBarMenu>
 					<NavBarButton text='Skin Anarchy Blog' icon={doubleChevronDown} />
-					<NavBarMenuDropDown data={blog[4].top} text={"Check Out Our Top 5 Podcasts"} title={"Browse Blog Categories"}>
+					<NavBarMenuDropDown data={blog[4].top} text={"Check Out Our Top 5 Podcasts"} title={"Blog Categories"}>
 						{blog.map((blog, index) => (
 							<NavBarMenuItem key={index} to={blog.link} text={blog.name} />
 						))}
@@ -185,7 +207,7 @@ const NavBar = () => {
 
 				<NavBarButton to='/members-area/yugen' text='YUGEN' />
 				<NavBarMenu>
-					<NavBarButton to='/members-area/connect' text='Connect' icon={doubleChevronDown} />
+					<NavBarButton  text='Connect' icon={doubleChevronDown} />
 					<NavBarMenuDropDown>
 						{connect.map((connect, index) => (
 							<NavBarMenuItem key={index} to={connect.link} text={connect.name} />
@@ -194,7 +216,7 @@ const NavBar = () => {
 				</NavBarMenu>
 
 				<NavBarMenu>
-					<NavBarButton to='/members-area/account' text='Account' icon={doubleChevronDown} />
+					<NavBarButton  text='Account' icon={doubleChevronDown} />
 					<NavBarMenuDropDown>
 						{account.map((account, index) => (
 							<NavBarMenuItem key={index} to={account.link} text={account.name} />
