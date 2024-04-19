@@ -165,7 +165,7 @@ const account = [
 const NavBar = () => {
 	return (
 		<div className='w-full h-full py-4 flex flex-row justify-center items-center bg-opacity-50 relative z-40 bg-black'>
-			<div className='text-white text-md flex flex-row w-full justify-end items-center space-x-12'>
+			<div className='text-white lg:text-sm text-md flex flex-row w-full justify-end items-center space-x-12 lg:space-x-8'>
 				<NavBarButton to='/members-area/home' text='HOME' />
 				<NavBarMenu>
 					<NavBarButton text='About' icon={doubleChevronDown} />
@@ -177,15 +177,15 @@ const NavBar = () => {
 				</NavBarMenu>
 				<NavBarMenu>
 					<NavBarButton text='Podcasts' icon={doubleChevronDown} />
-					<NavBarMenuDropDown data={podcast[7].top} text={"Check Out Our Top 5 Podcasts"} title={"Podcast Categories"}>
+					<NavBarMenuDropDown data={podcast[7].top} text={"Check Out Our Top 5 Podcasts"} title={"Podcast Categories"} >
 						{podcast.map((podcast, index) => (
-							<NavBarMenuItem key={index} link={podcast.link} text={podcast.name} />
+							<NavBarMenuItem key={index} to={podcast.link} text={podcast.name} />
 						))}
 					</NavBarMenuDropDown>
 				</NavBarMenu>
 				<NavBarMenu>
 					<NavBarButton text='Skin Anarchy Blog' icon={doubleChevronDown} />
-					<NavBarMenuDropDown data={blog[4].top} text={"Check Out Our Top 5 Podcasts"} title={"Blog Categories"}>
+					<NavBarMenuDropDown data={blog[4].top} title={"Blog Categories"}>
 						{blog.map((blog, index) => (
 							<NavBarMenuItem key={index} to={blog.link} text={blog.name} />
 						))}
@@ -195,7 +195,7 @@ const NavBar = () => {
 			<div className='text-white text-md flex flex-row w-1/4 justify-center'>
 				<img src={goldLogo} alt='logo' className='xl:h-16 xxl:h-48 hover:animate-pulse mx-auto w-auto h-fit' />
 			</div>
-			<div className='text-white text-md flex flex-row w-full justify-start items-center space-x-12'>
+			<div className='text-white lg:text-sm text-md flex flex-row w-full justify-start items-center lg:space-x-8 space-x-12'>
 				<NavBarMenu>
 					<NavBarButton text='Awards' icon={doubleChevronDown} />
 					<NavBarMenuDropDown>
@@ -207,7 +207,7 @@ const NavBar = () => {
 
 				<NavBarButton to='/members-area/yugen' text='YUGEN' />
 				<NavBarMenu>
-					<NavBarButton  text='Connect' icon={doubleChevronDown} />
+					<NavBarButton text='Connect' icon={doubleChevronDown} />
 					<NavBarMenuDropDown>
 						{connect.map((connect, index) => (
 							<NavBarMenuItem key={index} to={connect.link} text={connect.name} />
@@ -216,7 +216,7 @@ const NavBar = () => {
 				</NavBarMenu>
 
 				<NavBarMenu>
-					<NavBarButton  text='Account' icon={doubleChevronDown} />
+					<NavBarButton text='Account' icon={doubleChevronDown} />
 					<NavBarMenuDropDown>
 						{account.map((account, index) => (
 							<NavBarMenuItem key={index} to={account.link} text={account.name} />
