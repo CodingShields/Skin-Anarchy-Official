@@ -155,15 +155,13 @@ const connect = [
 const account = [
 	{
 		name: "My Account",
-		link: "/members-area/account",
+		link: "/members-area/account/my-account",
 	},
 	{
 		name: "Logout",
 		link: "/logout",
 	},
 ];
-
-console.log(podcast[0].link);
 const NavBar = () => {
 	return (
 		<div className='w-full h-full py-4 flex flex-row justify-center items-center bg-opacity-50 relative z-40 bg-black'>
@@ -173,15 +171,15 @@ const NavBar = () => {
 					<NavBarButton text='About' icon={doubleChevronDown} />
 					<NavBarMenuDropDown>
 						{about.map((about, index) => (
-							<NavBarMenuItem key={index} link={about.link} text={about.name} />
+							<NavBarMenuItem key={index} to={about.link} text={about.name} />
 						))}
 					</NavBarMenuDropDown>
 				</NavBarMenu>
 				<NavBarMenu>
 					<NavBarButton text='Podcasts' icon={doubleChevronDown} />
-					<NavBarMenuDropDown data={podcast[7].top} text={"Check Out Our Top 5 Podcasts"} title={"Podcast Categories"}>
+					<NavBarMenuDropDown data={podcast[7].top} text={"Check Out Our Top 5 Podcasts"} title={"Podcast Categories"} >
 						{podcast.map((podcast, index) => (
-							<NavBarMenuItem key={index} link={podcast.link} text={podcast.name} />
+							<NavBarMenuItem key={index} to={podcast.link} text={podcast.name} />
 						))}
 					</NavBarMenuDropDown>
 				</NavBarMenu>
@@ -189,7 +187,7 @@ const NavBar = () => {
 					<NavBarButton text='Skin Anarchy Blog' icon={doubleChevronDown} />
 					<NavBarMenuDropDown data={blog[4].top} title={"Blog Categories"}>
 						{blog.map((blog, index) => (
-							<NavBarMenuItem key={index} link={blog.link} text={blog.name} />
+							<NavBarMenuItem key={index} to={blog.link} text={blog.name} />
 						))}
 					</NavBarMenuDropDown>
 				</NavBarMenu>
@@ -202,7 +200,7 @@ const NavBar = () => {
 					<NavBarButton text='Awards' icon={doubleChevronDown} />
 					<NavBarMenuDropDown>
 						{awards.map((awards, index) => (
-							<NavBarMenuItem key={index} link={awards.link} text={awards.name} />
+							<NavBarMenuItem key={index} to={awards.link} text={awards.name} />
 						))}
 					</NavBarMenuDropDown>
 				</NavBarMenu>
@@ -212,7 +210,7 @@ const NavBar = () => {
 					<NavBarButton text='Connect' icon={doubleChevronDown} />
 					<NavBarMenuDropDown>
 						{connect.map((connect, index) => (
-							<NavBarMenuItem key={index} link={connect.link} text={connect.name} />
+							<NavBarMenuItem key={index} to={connect.link} text={connect.name} />
 						))}
 					</NavBarMenuDropDown>
 				</NavBarMenu>
@@ -221,7 +219,7 @@ const NavBar = () => {
 					<NavBarButton text='Account' icon={doubleChevronDown} />
 					<NavBarMenuDropDown>
 						{account.map((account, index) => (
-							<NavBarMenuItem key={index} link={account.link} text={account.name} />
+							<NavBarMenuItem key={index} to={account.link} text={account.name} />
 						))}
 					</NavBarMenuDropDown>
 				</NavBarMenu>

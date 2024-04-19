@@ -4,7 +4,10 @@ import PropTypes from "prop-types";
 
 const NavBarMenu = ({ children, toggle }) => {
 	// Add prop validation for 'children'
-
+	NavBarMenu.propTypes = {
+		children: PropTypes.node.isRequired,
+		toggle: PropTypes.func.isRequired,
+	};
 	const [open, setOpen] = useState(false);
 	const menuRef = useRef(null);
 
@@ -38,8 +41,5 @@ const NavBarMenu = ({ children, toggle }) => {
 		</div>
 	);
 };
-NavBarMenu.propTypes = {
-	children: PropTypes.node.isRequired,
-	toggle: PropTypes.func.isRequired,
-};
+
 export default NavBarMenu;

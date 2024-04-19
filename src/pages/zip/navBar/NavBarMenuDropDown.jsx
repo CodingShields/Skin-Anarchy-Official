@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-NavBarMenuDropDown.propTypes = {
+
+export default function NavBarMenuDropDown({ children, open, data, text, title }) {
+	NavBarMenuDropDown.propTypes = {
 		children: PropTypes.node,
 		open: PropTypes.bool, // Add the missing 'open' prop
 		data: PropTypes.array,
-		// text: PropTypes.string,
+		text: PropTypes.string,
 		title: PropTypes.string,
 	};
-export default function NavBarMenuDropDown({ children, open, data, title }) {
-	
 	const [highlightData, setHighlightData] = useState(null);
 
 	useEffect(() => {
@@ -17,8 +17,8 @@ export default function NavBarMenuDropDown({ children, open, data, title }) {
 
 	return open ? (
 		<div className='absolute left-0 mt-4 text-white flex flex-row animate-fadeIn bg-[#565656] py-4 px-4 w-full h-fit '>
-			<div className={highlightData && highlightData.length > 0 ? "flex flex-col " : "inline-flex w-full 	 "}>
-				<h1 className='text-white lg:text-2xl text-3xl text-end underline underline-offset-8 decoration-1 font-thin h-24 pt-4 '>{title}</h1>
+			<div className={highlightData && highlightData.length > 0 ? "flex flex-col " : "inline-flex w-full items-stretch	 "}>
+				{/* <h1 className='text-white lg:text-2xl text-3xl text-end underline underline-offset-8 decoration-1 font-thin h-24 pt-4 '>{title}</h1> */}
 				{/* {children.map((child, index) => {
 					return (
 						<h1 className='text-black lg:text-lg text-2xl px-6 font-thin lg:text-end cursor-pointer items-stretch relative' key={index}>
