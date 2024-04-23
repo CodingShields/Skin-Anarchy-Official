@@ -1,10 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
-
 import PropTypes from "prop-types";
 
-const NavBarMenu = ({ children, toggle }) => {
+const NavBarMenu = ({ children }) => {
 	// Add prop validation for 'children'
-
 	const [open, setOpen] = useState(false);
 	const menuRef = useRef(null);
 
@@ -32,7 +30,6 @@ const NavBarMenu = ({ children, toggle }) => {
 			{React.Children.map(children, (child) => {
 				return React.cloneElement(child, {
 					open,
-					toggle,
 				});
 			})}
 		</div>

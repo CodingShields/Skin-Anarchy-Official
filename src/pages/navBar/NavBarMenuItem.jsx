@@ -1,12 +1,21 @@
-import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-const NavBarMenuItem = ({ text, link }) => {
-	console.log(link); // This is to ensure that the link is being passed correctly.
+const NavBarMenuItem = ({ ...props }) => {
+
+	const handleOnClick = (e) => {
+		console.log(e.target);
+	}
+console.log(props.link);
 	return (
-		<Link to={link} className='relative text-white lg:text-lg text-2xl px-6 py-8 font-thin text-end hover:scale-125 cursor-pointer'>
-			{text}
-		</Link>
+		<h1
+			onMouseEnter={console.log(props.link)}
+			to={props.link}
+			onClick={handleOnClick}
+			value={props.link}
+			className='text-white lg:text-lg text-2xl px-6 py-8 font-thin text-end hover:scale-125 cursor-pointer font-montserrat h-16 '
+		>
+			{props.text}
+		</h1>
 	);
 };
 NavBarMenuItem.propTypes = {

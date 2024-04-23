@@ -26,31 +26,31 @@ const about = [
 
 const podcast = [
 	{
-		name: "Current Podcast Episode",
+		name: "Current Episode",
 		link: "/members-area/podcast/current-podcast-episode",
 	},
 	{
-		name: "Top Make Up Artist Podcasts",
+		name: "Top Make Up Artists ",
 		link: "/members-area/podcast/top-make-up-artists-podcasts",
 	},
 	{
-		name: "Top Doctor Podcasts",
+		name: "Top Doctors ",
 		link: "/members-area/podcast/top-doctors-podcasts",
 	},
 	{
-		name: "Brand Founder Podcasts",
+		name: "Brand Founders ",
 		link: "/members-area/podcast/brand-founders-podcasts",
 	},
 	{
-		name: "Thought Leader Podcasts",
+		name: "Thought Leaders ",
 		link: "/members-area/podcast/thought-leaders-podcasts",
 	},
 	{
-		name: "EDITOR AND JOURNALIST PODCASTS",
+		name: "EDITORS AND JOURNALISTS",
 		link: "/members-area/podcast/editors-and-journalists-podcasts",
 	},
 	{
-		name: "Celebrity Podcasts",
+		name: "Celebrities ",
 		link: "/members-area/podcast/celebrity-podcasts",
 	},
 	{
@@ -178,10 +178,10 @@ const NavBar = () => {
 					</NavBarMenuDropDown>
 				</NavBarMenu>
 				<NavBarMenu>
-					<NavBarButton text='Podcasts' icon={doubleChevronDown} />
-					<NavBarMenuDropDown data={podcast[7].top} text={"Check Out Our Top 5 Podcasts"} title={"Podcast Categories"}>
+					<NavBarButton text='Episodes' icon={doubleChevronDown} />
+					<NavBarMenuDropDown data={podcast[7].top} text={"Listen To Our Top 5 Episodes"} title={"Podcast Categories"}>
 						{podcast.map((podcast, index) => (
-							<NavBarMenuItem key={index} link={podcast.link} text={podcast.name} />
+							<NavBarMenuItem key={index} link={podcast.link} text={podcast.name}  />
 						))}
 					</NavBarMenuDropDown>
 				</NavBarMenu>

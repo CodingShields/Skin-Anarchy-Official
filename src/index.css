@@ -2,9 +2,9 @@
 
 @import "./styles/custom.scss";
 
-@font-face {
-	font-family: "Hind-Regular";
-	src: url("/src/assets/fonts/hind/Hind-Regular.ttf") format("trueType");
+@font-face{
+	font-family: "Montserrat";
+	src: url("/src/assets/fonts/Montserrat/Montserrat.ttf") format("trueType");
 }
 
 @font-face {

@@ -5,7 +5,7 @@ export default {
 	theme: {
 		extend: {
 			fontFamily: {
-				hind: ["Hind-Regular"],
+				montserrat: ["Montserrat"],
 				glacialBold: ["Glacial Indifference Bold"],
 				glacialItalic: ["Glacial Indifference Italic"],
 				glacialRegular: ["Glacial Indifference Regular"],
@@ -159,18 +159,7 @@ export default {
 				800: "#075985",
 				900: "#0c4a6e",
 			},
-			violet: {
-				50: "#f8f7fc",
-				100: "#f0ebfa",
-				200: "#e1d4f5",
-				300: "#d3bdf0",
-				400: "#b78de7",
-				500: "#9a5de0",
-				600: "#8a4fd1",
-				700: "#773fba",
-				800: "#5e3499",
-				900: "#4a2a7a",
-			},
+
 			zinc: {
 				50: "#f7fafc",
 				100: "#edf2f7",
@@ -182,18 +171,6 @@ export default {
 				700: "#2d3748",
 				800: "#1a202c",
 				900: "#171923",
-			},
-			gold: {
-				50: "#fffdf2",
-				100: "#fff9d4",
-				200: "#fff4b3",
-				300: "#ffed8f",
-				400: "#ffe66a",
-				500: "#ffe045",
-				600: "#ffce2f",
-				700: "#ffca1f",
-				800: "#ffc60f",
-				900: "#ffc200",
 			},
 			red: {
 				50: "#fff5f5",

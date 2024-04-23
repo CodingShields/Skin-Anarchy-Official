@@ -88,7 +88,7 @@ const TestimonialsContainer = () => {
 		<div className='w-full h-fit relative pt-48 pb-48'>
 			<div className='flex flex-col items-center px-6 mx-auto '>
 				<h1 className='text-6xl font-extrabold tracking-tight text-center text-white mt-10 font-playfair z-40 whitespace-nowrap'>
-					Our Clients Love Us
+					THE Skin Authority
 				</h1>
 				<figure className='relative pt-6 isolate sm:pt-12'>
 					<svg viewBox='0 0 162 128' fill='none' aria-hidden='hidden' className='absolute top-0 left-0 h-32 -z-10 stroke-gray-600'>

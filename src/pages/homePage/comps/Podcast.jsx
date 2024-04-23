@@ -1,33 +1,80 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { getStorage, ref, getDownloadURL } from "firebase/storage";
 
 const Podcast = () => {
-	const [open, setOpen] = useState(false);
-	const [activeIcon, setActiveIcon] = useState("");
+	const [state, setState] = useState({
+		loading: false,
+		error: null,
+		errorMessage: "",
+	});
+	const [episodes, setEpisodes] = useState([]);
+	const [currentEpisode, setCurrentEpisode] = useState("");
 
-	const handleMouseOver = (e) => {
-		const name = e.target.name;
-		setOpen(true);
-		setActiveIcon(name);
-	};
+	useEffect(() => {
+		setState({
+			loading: true,
+			error: true,
+			errorMessage: "Loading Previous Blogs",
+		});
+		const fetchData = async () => {
+			const db = getFirestore();
+			await getDocs(collection(db, "podCastData")).then((snapshot) => {
+				const episodeUrls = snapshot.docs.map((doc) => ({
+					id: doc.id,
+					...doc.data(),
+				}));
+				setEpisodes(episodeUrls);
+				setState({ loading: false, error: false, errorMessage: "" });
+			});
+		};
 
-	const handleMouseOut = () => {
-		console.log("test");
-		setOpen(false);
-	};
+		fetchData();
+	}, []);
+
+
+	const handleEpisodeChange = (e) => {
+		console.log(e.target.value);
+
+	}
+
+	const lastIndex = episodes.length - 1;
+	const lastEpisode = episodes[lastIndex]?.episodeUrl;
 
 	return (
-		<div className='w-full h-fit bg-black py-12 mt-36 z-50'>
-			<div className='w-full h-full space-y-12'>
-				<h1 className='text-4xl text-center font-playfair text-white z-50'>LISTEN TO OUR TOP PODCASTS</h1>
+		<div className='w-full h-fit relative py-12 mt-36 mx-auto z-50'>
+			<div className='w-full h-full '>
+				<h1 className='text-4xl text-center font-playfair text-white z-50 py-12'>LISTEN TO OUR LATEST EPISODE</h1>
+				<div className='w-full'>
+					{lastEpisode && (
+						<iframe
+							src={`https://open.spotify.com/embed/episode/${lastEpisode}?utm_source=generator&theme=0`}
+							className='w-1/2 h-[400px] mx-auto'
+							allowfullscreen=''
+							allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'
+							loading='lazy'
+						></iframe>
+					)}
+				</div>
+				<h1 className='text-4xl text-center font-montserrat text-white z-50 py-12'>LATEST EPISODES</h1>
 
-				<iframe
-					className='w-[1100px] h-96 
-					mx-auto'
-					id='embedPlayer'
-					src='https://embed.podcasts.apple.com/us/podcast/skincare-anarchy/id1522162686?itsct=podcast_box_player&amp;itscg=30200&amp;ls=1&amp;theme=dark'
-					sandbox='allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation'
-					allow='autoplay *; encrypted-media *; clipboard-write'
-				></iframe>
+				<div className='flex flex-row space-x-12 justify-center w-full'>
+					{episodes?.map((item, index) => {
+						return (
+							<div key={index}
+								onClick={handleEpisodeChange}
+								className={lastIndex === index ? 'hidden collapse' : 'w-fit'}>
+								<iframe
+									src={`https://open.spotify.com/embed/episode/${item.episodeUrl}?utm_source=generator&theme=0`}
+									className='w-[400px] h-[400px] mx-auto'
+									allowfullscreen=''
+									allow=' clipboard-write; encrypted-media; fullscreen; picture-in-picture'
+									loading='lazy'
+								></iframe>
+							</div>
+						);
+					})}
+				</div>
 			</div>
 		</div>
 	);

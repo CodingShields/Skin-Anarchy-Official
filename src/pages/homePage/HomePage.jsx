@@ -12,6 +12,7 @@ import ChatBot from "../components/ChatBot";
 import PodcastWidget from "../components/PodcastWidget";
 import headLineBg from "../../assets/images/headLineBg.png";
 import ListenerDemoGraphicsContainer from "./comps/ListenerDemoGraphicsContainer";
+import PodCast from "../homePage/comps/Podcast"
 const HomePage = () => {
 	const [openModal, setOpenModal] = useState(true);
 	const currentComponent = window.location.pathname;
@@ -58,11 +59,12 @@ const HomePage = () => {
 			<HeadLine />
 			<SponsorBarContainer />
 			<SignatureBar />
-			<InterviewCategoryContainer />
+			{/* <InterviewCategoryContainer /> */}
 			<WelcomeBackUserModal open={openModal} />
 			<PodcastWidget />
-			<PodcastPlatformBar />
 			<PodcastAnalyticsContainer />
+			<PodcastPlatformBar />
+			<PodCast />
 			<TopPicks />
 			<TestimonialsContainer />
 			<ChatBot />
