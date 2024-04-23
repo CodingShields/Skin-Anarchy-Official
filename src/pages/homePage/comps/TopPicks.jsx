@@ -9,37 +9,75 @@ import pcaSkin from "../../../assets/images/topPicks/pca-skin.svg";
 import revive from "../../../assets/images/topPicks/revive.svg";
 import victoriaBeckham from "../../../assets/images/topPicks/victoria-beckham.svg";
 
-const topPicks = [
-    codex,
-    elta,
-    epicutis,
-    hairOil,
-    janMarini,
-    makeUpMario,
-    oneSkin,
-    pcaSkin,
-    revive,
-    victoriaBeckham,
-];
 
 const TopPicks = () => {
-    
-
-
-    return (
-			<div className='block w-full h-fit text-white bg-opacity-100 z-10 pb-24 relative'>
-				{/* <h1 className='text-4xl font-bold text-center py-12'>Take a Look At Our Sponsors</h1> */}
-				<div className='marquee'>
-					<div className='marquee-content'>
-						{topPicks.map((image, index) => (
-							<div key={index} className='marquee-item m-auto bg-opacity-100'>
-								<img src={image} alt='' />
-							</div>
-						))}
-					</div>
+	return (
+		<div className='relative topPicksBar '>
+			<div className='topPicksBar-content'>
+				<div className='topPicksBar-item'>
+					<img src={codex} />
+				</div>
+				<div className='topPicksBar-item'>
+					<img src={elta} />
+				</div>
+				<div className='topPicksBar-item'>
+					<img src={epicutis} />
+				</div>
+				<div className='topPicksBar-item'>
+					<img src={hairOil} />
+				</div>
+				<div className='topPicksBar-item'>
+					<img src={janMarini} />
+				</div>
+				<div className='topPicksBar-item'>
+					<img src={makeUpMario} />
+				</div>
+				<div className='topPicksBar-item'>
+					<img src={oneSkin} />
+				</div>
+				<div className='topPicksBar-item'>
+					<img src={pcaSkin} />
+				</div>
+				<div className='topPicksBar-item'>
+					<img src={revive} />
+				</div>
+				<div className='topPicksBar-item'>
+					<img src={victoriaBeckham} />
+				</div>
+				{/* Marquee Split */}
+				<div className='topPicksBar-item'>
+					<img src={codex} />
+				</div>
+				<div className='topPicksBar-item'>
+					<img src={elta} />
+				</div>
+				<div className='topPicksBar-item'>
+					<img src={epicutis} />
+				</div>
+				<div className='topPicksBar-item'>
+					<img src={hairOil} />
+				</div>
+				<div className='topPicksBar-item'>
+					<img src={janMarini} />
+				</div>
+				<div className='topPicksBar-item'>
+					<img src={makeUpMario} />
+				</div>
+				<div className='topPicksBar-item'>
+					<img src={oneSkin} />
+				</div>
+				<div className='topPicksBar-item'>
+					<img src={pcaSkin} />
+				</div>
+				<div className='topPicksBar-item'>
+					<img src={revive} />
+				</div>
+				<div className='topPicksBar-item'>
+					<img src={victoriaBeckham} />
 				</div>
 			</div>
-		);
-}
+		</div>
+	);
+};
 
-export default TopPicks
+export default TopPicks;

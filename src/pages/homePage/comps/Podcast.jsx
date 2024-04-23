@@ -44,7 +44,7 @@ const Podcast = () => {
 	return (
 		<div className='w-full h-fit relative py-12 mt-36 mx-auto z-50'>
 			<div className='w-full h-full '>
-				<h1 className='text-4xl text-center font-playfair text-white z-50 py-12'>LISTEN TO OUR LATEST EPISODE</h1>
+				<h1 className='text-4xl text-center font-playfair text-white z-50 py-12'>LISTEN TO OUR CURRENT EPISODE</h1>
 				<div className='w-full'>
 					{lastEpisode && (
 						<iframe
@@ -56,7 +56,7 @@ const Podcast = () => {
 						></iframe>
 					)}
 				</div>
-				<h1 className='text-4xl text-center font-montserrat text-white z-50 py-12'>LATEST EPISODES</h1>
+				<h1 className='text-4xl text-center font-playfair text-white z-50 py-12'>LATEST EPISODES</h1>
 
 				<div className='flex flex-row space-x-12 justify-center w-full'>
 					{episodes?.map((item, index) => {

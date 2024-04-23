@@ -12,7 +12,8 @@ import ChatBot from "../components/ChatBot";
 import PodcastWidget from "../components/PodcastWidget";
 import headLineBg from "../../assets/images/headLineBg.png";
 import ListenerDemoGraphicsContainer from "./comps/ListenerDemoGraphicsContainer";
-import PodCast from "../homePage/comps/Podcast"
+import PodCast from "../homePage/comps/Podcast";
+import "../../styles/custom.scss";
 const HomePage = () => {
 	const [openModal, setOpenModal] = useState(true);
 	const currentComponent = window.location.pathname;
@@ -47,11 +48,21 @@ const HomePage = () => {
 
 	return (
 		<div className='w-full h-full relative'>
-			<div className='fixed'>
-				{/* Set a custom 15 % opacity */}
-				{/* <video className='w-screen opacity-20 grayscale ' autoPlay muted loop id='video' src={newMic}></video> */}
-				<img className='w-screen opacity-20 grayscale ' autoPlay muted loop id='video' src={headLineBg} />
-			</div>
+			<div
+				className='with-bg-size h-screen w-full opacity-30'
+				style={{
+					position: "fixed",
+					top: 0,
+					left: 0,
+					width: "100%",
+					margin: "auto",
+				}}
+			></div>
+			{/* <div className='fixed card'>
+				Set a custom 15 % opacity
+				<video className='w-screen opacity-20 grayscale ' autoPlay muted loop id='video' src={newMic}></video>
+				<img className='w-screen opacity-20 grayscale ' src={headLineBg} />
+			</div> */}
 			<div className='fixed'>
 				<div id='cursor' className='cursor '></div>
 			</div>
@@ -63,6 +74,7 @@ const HomePage = () => {
 			<WelcomeBackUserModal open={openModal} />
 			<PodcastWidget />
 			<PodcastAnalyticsContainer />
+			{/* <ListenerDemoGraphicsContainer /> */}
 			<PodcastPlatformBar />
 			<PodCast />
 			<TopPicks />
