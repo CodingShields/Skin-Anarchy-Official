@@ -87,7 +87,7 @@ const TestimonialsContainer = () => {
 	return (
 		<div className='w-full h-fit relative mb-64 '>
 			<div className='flex flex-col items-center px-6 mx-auto '>
-				<h1 className='text-6xl font-extrabold tracking-tight text-center text-white py-48 font-playfair z-40 whitespace-nowrap'>
+				<h1 className='text-[150px] font-thin tracking-widest uppercase text-center text-white py-48 font-montserrat z-40 whitespace-nowrap'>
 					THE Skin Authority
 				</h1>
 				<figure className='relative pt-6 isolate sm:pt-12'>
@@ -102,12 +102,12 @@ const TestimonialsContainer = () => {
 			</div>
 			<div className='w-full'>
 				<div className='w-3/4 line mx-auto'>
-					<blockquote className='text-xl font-semibold text-white  '>
-						<p className='font-thin'>{testimonials[testimonialIndex].lineOne}</p>
+					<blockquote className='  text-white  '>
+						<p className=' text-5xl font-montserrat uppercase'>{testimonials[testimonialIndex].lineOne}</p>
 					</blockquote>
-					<figcaption className='mt-8 text-base'>
-						<div className='font-semibold text-white text-2xl'>{'"' + testimonials[testimonialIndex].lineTwo + '"'}</div>
-						<div className='mt-1 text-gray-400 py-4'>{testimonials[testimonialIndex].lineThree}</div>
+					<figcaption className='mt-8 '>
+						<div className=' font-thin text-white text-4xl font-montserrat leading-[60px]'>{'"' + testimonials[testimonialIndex].lineTwo + '"'}</div>
+						<div className='mt-1 font-thin text-white py-4 font-montserrat'>{testimonials[testimonialIndex].lineThree}</div>
 					</figcaption>
 				</div>
 			</div>

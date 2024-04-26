@@ -29,32 +29,32 @@ const PodcastAnalyticsContainer = () => {
 
 	return (
 		<div className='flex flex-col justify-center items-center text-center h-screen w-full  z-30 relative'>
-			<h3 className='text-6xl  text-white truncate uppercase font-playfair pb-24'>Award Winning Podcast</h3>
+			<h3 className='text-6xl  text-white truncate uppercase font-montserrat pb-24'>Award Winning Podcast</h3>
 			<div className='grid grid-cols-4 gap-[75px]'>
 				<div className='space-y-4 tracking-widest'>
 					<h3 className='text-center text-4xl font-montserrat font-thin text-white truncate uppercase'>Episodes Recorded</h3>
-					<h1 id='counter' className='text-4xl font-glacialRegular text-white' data-target='622'>
+					<h1 id='counter' className='text-4xl font-montserrat text-white' data-target='622'>
 						622+
 					</h1>
 				</div>
 
 				<div className='space-y-4'>
 					<h3 className='text-4xl font-montserrat font-thin text-white truncate uppercase'>Total Downloads</h3>
-					<h1 id='counter' className='text-4xl font-glacialRegular text-white' data-target='622'>
+					<h1 id='counter' className='text-4xl font-montserrat text-white' data-target='622'>
 						9 Million
 					</h1>
 				</div>
 
 				<div className='space-y-4'>
 					<h1 className='text-4xl font-montserrat font-thin text-white truncate uppercase'>Global Recognition </h1>{" "}
-					<h1 id='counter' className='text-4xl font-glacialRegular text-white' data-target=''>
+					<h1 id='counter' className='text-4xl font-montserrat text-white' data-target=''>
 						Streaming in 100+ Countries
 					</h1>
 				</div>
 				<div className='space-y-4'>
 					<h1 className='text-4xl font-montserrat font-thin text-white truncate uppercase'>Chart Position</h1>
 
-					<h2 id='counter' className='text-4xl font-glacialRegular text-white tracking-widest' data-target=''>
+					<h2 id='counter' className='text-4xl font-montserrat text-white tracking-widest' data-target=''>
 						{/* {socialFollowers} */}Top 50 Beauty Podcast
 					</h2>
 				</div>

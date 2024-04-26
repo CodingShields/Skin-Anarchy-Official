@@ -2,9 +2,9 @@ const AboutComp = () => {
 	return (
 		<div className='w-3/4 mx-auto h-screen text-white flex flex-col justify-center items-center'>
 			<div>
-				<h1 className='font-playfair font-thin text-6xl py-16 '>Discover the Art of Personalized Beauty with Skincare Anarchy</h1>
+				<h1 className='font-montserrat font-thin text-6xl py-16 tracking-widest uppercase whitespace-nowrap'>Discover the Art of Personalized Beauty with Skincare Anarchy</h1>
 			</div>
-			<div className='text-2xl leading-[80px] font-montserrat text-justify tracking-widest pl-8 space-y-4 w-full mx-auto'>
+			<div className='font-thin text-2xl leading-[80px] font-montserrat text-justify tracking-widest pl-8 space-y-12 w-full mx-auto'>
 				<p>
 					Join us on a journey to explore the multifaceted world of beauty, both inside and out, with the award winning and industry acclaimed
 					Skincare Anarchy podcast. Available across all major platforms, including Apple Podcasts, Spotify, Google Podcasts, and many more, we bring

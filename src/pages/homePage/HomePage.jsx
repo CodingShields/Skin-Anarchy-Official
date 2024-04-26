@@ -72,11 +72,10 @@ const HomePage = () => {
 			<SignatureBar />
 			{/* <InterviewCategoryContainer /> */}
 			{/* <WelcomeBackUserModal open={openModal} /> */}
-			<PodcastWidget />
+			<PodcastWidget /> <PodCast />
 			<PodcastAnalyticsContainer />
 			{/* <ListenerDemoGraphicsContainer /> */}
 			<PodcastPlatformBar />
-			<PodCast />
 			<TopPicks />
 			<TestimonialsContainer />
 			<ChatBot />

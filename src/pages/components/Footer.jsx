@@ -11,7 +11,7 @@ const Footer = () => {
 		<div className='w-full bg-black flex flex-row justify-evenly pt-36 pb-12'>
 			<div className='w-3/4 h-[500px] '>
 				<div className=' w-1/2 mx-auto'>
-					<h1 className='text-white font-semibold font-montserrat text-2xl py-4 '>News Letter</h1>
+					<h1 className='text-white font-semibold font-montserrat text-3xl py-4 uppercase'>NewsLetter</h1>
 					<p className='text-white font-montserrat text-lg'>Be the first to recieve updates about new episodes, ground breaking science, and more.</p>
 					<div className='w-[90%] inline-flex justify-end items-center py-8 text-left'>
 						<input
@@ -36,13 +36,13 @@ const Footer = () => {
 					))}
 				</div>
 				<div className='w-1/2 mx-auto grid grid-cols-1 text-white mt-4'>
-					<h1 className='font-thin text-6xl tracking-widest font-montserrat py-2'>Skin Anarchy</h1>
+					<h1 className=' text-6xl tracking-widest font-montserrat py-2'>Skin Anarchy</h1>
 					<p className='font-thin font-montserrat text-xl  py-2 whitespace-nowrap'>Copyright © 2022 Skin Anarchy. All rights reserved.</p>
 				</div>
 			</div>
 			<div className='flex flex-row justify-center items-start text-white w-full   h-fit space-x-18 my-auto'>
 				<div>
-					<h1 className='font-semibold text-3xl font-montserrat py-4'>Episodes</h1>
+					<h1 className='font-semibold text-3xl font-montserrat py-4 uppercase'>Episodes</h1>
 					<div className='font-thin font-montserrat font-2xl space-y-4'>
 						{" "}
 						<p>Current Episode</p>
@@ -55,7 +55,7 @@ const Footer = () => {
 					</div>
 				</div>
 				<div>
-					<h1 className='font-semibold text-3xl font-montserrat  py-4'>Blog</h1>
+					<h1 className='font-semibold text-3xl font-montserrat uppercase py-4'>Blog</h1>
 					<div className='font-thin font-montserrat font-2xl space-y-4'>
 						<p>Beauty Culture</p>
 						<p>Fragrance</p>
@@ -64,16 +64,16 @@ const Footer = () => {
 					</div>
 				</div>
 				<div>
-					<h1 className='font-semibold text-3xl font-montserrat  py-4'>Awards</h1>
+					<h1 className='font-semibold text-3xl font-montserrat uppercase  py-4'>Awards</h1>
 					<div className='font-thin font-montserrat font-2xl space-y-4'>
 						<p>Science of Skin Awards</p>
 						<p>Top Picks</p>
 					</div>
 				</div>
 				<div>
-					<h1 className='font-semibold text-3xl font-montserrat  py-4'>Connect</h1>
+					<h1 className='font-semibold text-3xl font-montserrat uppercase py-4'>Connect</h1>
 					<div className='font-thin font-montserrat font-2xl space-y-4'>
-						<p>SkinAnarchy@gmail.com</p>
+						<p>pr@skincareanarchypodcast.com</p>
 						<p>Get Featured On Our Show</p>
 						<p>Become A Sponsor</p>
 						<p>Join Our Team</p>

@@ -135,10 +135,10 @@ const blogHighlight = [
 ];
 
 const connect = [
-	{
-		name: "Join Our Team",
-		link: "/members-area/connect/join-our-team",
-	},
+	// {
+	// 	name: "Join Our Team",
+	// 	link: "/members-area/connect/join-our-team",
+	// },
 	{
 		name: "Get Featured On Our Show",
 		link: "/members-area/connect/get-featured-on-our-show",
