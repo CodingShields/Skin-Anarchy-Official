@@ -39,7 +39,11 @@
 
 .topPicksBar-content {
   display: flex;
-  animation: scrollingTopPicksBar 10s linear infinite;
+  animation: scrollingTopPicksBar 18s linear infinite;
+}
+
+.topPicksBar-content:hover {
+  animation-play-state: paused;
 }
 
 .topPicksBar-item {
