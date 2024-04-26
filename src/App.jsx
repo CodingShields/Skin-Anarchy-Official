@@ -2,9 +2,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthContextProvider } from "./context/AuthContext";
 
 //About Pages
-import AboutUs from "./pages/about/AboutUs.jsx";
-import FeaturedPress from "./pages/about/FeaturedPress.jsx";
-import MissionStatement from "./pages/about/MissionStatement.jsx";
+import AboutPage from "./pages/about/AboutPage.jsx";
+
 //Podcast Pages
 import CurrentPodcastEpisode from "./pages/podcast/CurrentPodcastEpisode.jsx";
 import BrandFoundersPodcasts from "./pages/podcast/BrandFoundersPodcasts.jsx";
@@ -49,9 +48,7 @@ function App() {
 					<Route path='members-area' element={<HomeLayout />}>
 						<Route path='home' element={<HomePage />} />
 						{/* About Pages */}
-						<Route path='about/about-us' element={<AboutUs />} />
-						<Route path='about/featured-press' element={<FeaturedPress />} />
-						<Route path='about/mission-statement' element={<MissionStatement />} />
+						<Route path='about-us' element={<AboutPage />} />
 						{/* PodCast Pages */}
 						<Route path='podcast/current-podcast-episode' element={<CurrentPodcastEpisode />} />
 						<Route path='podcast/celebrity-podcasts' element={<CelebrityPodcasts />} />
@@ -62,7 +59,7 @@ function App() {
 						<Route path='podcast/editors-and-journalists-podcasts' element={<EditorsAndJournalistsPodcasts />} />
 						{/* Award Pages */}
 						<Route path='awards/top-picks' element={<TopPicksPage />} />
-						<Route path='awards/master-class' element={<MasterClassPage />} />
+						{/* <Route path='awards/master-class' element={<MasterClassPage />} /> */}
 						<Route path='awards/science-of-skin-awards' element={<ScienceOfSkinAwards />} />
 						{/* Blog Pages */}
 						<Route path='skin-anarchy-blog' element={<SkinAnarchyBlog />} />

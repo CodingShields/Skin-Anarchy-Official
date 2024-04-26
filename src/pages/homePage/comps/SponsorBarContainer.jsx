@@ -76,7 +76,8 @@ import "../../../styles/custom.scss";
 const SponsorBarContainer = () => {
 	console.log(sponsorImages.length);
 	return (
-		<div className='relative sponsorBar'>
+		<div className='relative sponsorBar '>
+			<h1></h1>
 			<div className='sponsorBar-content'>
 				{/* Images */}
 				{sponsorImages.map((sponsor, index) => {

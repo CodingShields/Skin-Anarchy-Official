@@ -47,7 +47,7 @@ const HomePage = () => {
 	}, []);
 
 	return (
-		<div className='w-full h-full relative'>
+		<div className='w-full h-full relative animate-fadeIn'>
 			<div
 				className='with-bg-size h-screen w-full opacity-30'
 				style={{
@@ -71,7 +71,7 @@ const HomePage = () => {
 			<SponsorBarContainer />
 			<SignatureBar />
 			{/* <InterviewCategoryContainer /> */}
-			<WelcomeBackUserModal open={openModal} />
+			{/* <WelcomeBackUserModal open={openModal} /> */}
 			<PodcastWidget />
 			<PodcastAnalyticsContainer />
 			{/* <ListenerDemoGraphicsContainer /> */}

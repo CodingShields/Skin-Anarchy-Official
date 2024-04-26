@@ -1,12 +1,10 @@
-import NavBar from "../navBar/NavBar";
-import "../../styles/custom.css";
-
+import NavBar from "./navBar/NavBar"
 const Header = () => {
 
 
 	return (
 		<div
-		className="relative"
+		className="relative z-20"
 		>
 			<NavBar />
 		</div>

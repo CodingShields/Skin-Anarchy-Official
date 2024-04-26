@@ -1,15 +1,14 @@
 // ProtectedLayout.jsx
 
-import React from "react";
-import { Route } from "react-router-dom";
 import ProtectedRoute from "../components/ProtectedRoute";
+import HomeLayout from "./HomeLayout";
 
 function ProtectedLayout() {
-  return (
-    <ProtectedRoute>
-      <HomeLayout></HomeLayout>
-    </ProtectedRoute>
-  );
+	return (
+		<ProtectedRoute>
+			<HomeLayout></HomeLayout>
+		</ProtectedRoute>
+	);
 }
 
 export default ProtectedLayout;

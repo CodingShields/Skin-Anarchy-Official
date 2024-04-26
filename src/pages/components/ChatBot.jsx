@@ -11,8 +11,7 @@ const ChatBot = () => {
 
 	return (
 		<div className='w-full h-fit relative z-50'>
-		
-			<ButtonImage image={chatBotButtonImage} onClick={() => setOpenChat(true)} />
+			<ButtonImage image={chatBotButtonImage} open={openChat} onClick={() => setOpenChat(true)} />
 			<div className={openChat ? "w-1/4 h-fit fixed bottom-0 right-0 mr-10 mb-10 " : "hidden"}>
 				<div className='w-auto h-32 p-2  rounded-t-lg  bg-char-900'>
 					<div className='w-full flex flex-row justify-start items-center h-full'>

@@ -23,7 +23,7 @@ const TopPicksPage = () => {
 	}, []);
 
 	return (
-		<div className='w-full h-full mix-blend-multiply	'>
+		<div className='w-full h-full '>
 			<div
 				className={`flex flex-col relative  items-center h-fit w-full transition-opacity duration-1000 ease-in-out transform scale-100 
 				${bGLoaded ? "opacity-100" : "opacity-0"}`}

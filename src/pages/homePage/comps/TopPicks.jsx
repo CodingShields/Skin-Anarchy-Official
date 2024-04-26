@@ -9,11 +9,12 @@ import pcaSkin from "../../../assets/images/topPicks/pca-skin.svg";
 import revive from "../../../assets/images/topPicks/revive.svg";
 import victoriaBeckham from "../../../assets/images/topPicks/victoria-beckham.svg";
 
-
 const TopPicks = () => {
 	return (
-		<div className='relative topPicksBar '>
-			<div className='topPicksBar-content'>
+		<div className='relative topPicksBar py-96 '>
+			<h1 className='text-white text-6xl text-center font-playfair uppercase tracking-widest py-6'>Skincare Anarchy Awards </h1>
+			<h2 className='text-white lowercase text-center font-montserrat text-4xl'>#toppicks</h2>
+			<div className='topPicksBar-content py-12'>
 				<div className='topPicksBar-item'>
 					<img src={codex} />
 				</div>
