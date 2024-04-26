@@ -1,4 +1,3 @@
-import e from "express";
 import codex from "../../../assets/images/topPicks/codex.svg";
 import elta from "../../../assets/images/topPicks/elta.svg";
 import epicutis from "../../../assets/images/topPicks/epicutis.svg";
