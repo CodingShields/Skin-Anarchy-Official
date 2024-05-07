@@ -11,11 +11,10 @@ export default function MenuDropdown({ data, highlight, openHl, openNoHL }) {
 		setMenuData(data);
 		setHighlightMenu(highlight);
 	}, [data, highlight]);
-	console.log(openNoHL);
-	console.log(openHl);
+
 	return (
 		<>
-			<HighLightMenuComp open={openHl}>
+			{/* <HighLightMenuComp open={openHl}>
 				<div className='flex flex-row py-8 bg-black w-[80%] mx-auto rounded-b-xl'>
 					<div className='flex flex-col justify-start w-1/4 items-center text-center px-6'>
 						<h2 className='text-4xl font-montserrat text-white text-left uppercase underline underline-offset-8 decoration-0 pb-6 tracking-widest	'>
@@ -64,7 +63,7 @@ export default function MenuDropdown({ data, highlight, openHl, openNoHL }) {
 						);
 					})}
 				</div>
-			</NoHighLightMenuComp>
+			</NoHighLightMenuComp> */}
 		</>
 	);
 }

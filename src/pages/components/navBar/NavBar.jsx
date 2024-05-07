@@ -218,6 +218,9 @@ export default function NavBar() {
 	return (
 		<div className='w-full h-fit fixed top-0 block'>
 			<div className='flex flex-row items-center justify-center space-x-26 py-4 bg-black/60 relative'>
+				
+			</div>
+			<div className='flex flex-row items-center justify-center space-x-26 py-4 bg-black/60 relative'>
 				<Button
 					style={buttonStyle}
 					text={"home"}

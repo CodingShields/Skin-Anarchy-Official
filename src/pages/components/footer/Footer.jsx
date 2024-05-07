@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import footerDataArray from "../../assets/data/footer/footerDataArray";
-import socialNav from "../../assets/data/socialNav";
-import codingShieldsLogo from "../../assets/images/codingShieldsLogo.png";
+import footerDataArray from "../../../assets/data/footer/footerDataArray";
+import socialNav from "../../../assets/data/socialNav";
+// import codingShieldsLogo from "../../assets/images/codingShieldsLogo.png";
 
-import arrow from "../../assets/icons/arrow.svg";
+import arrow from "../../../assets/icons/arrow.svg";
 
 const Footer = () => {
 	return (

@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 
-const Button = ({ text, style, onClick}) => {
+const Button = ({ text, onClick }) => {
 	return (
-		<button onClick={onClick} className={`inline-flex items-center cursor-pointer underlineAnimate ${style}`} name={text}>
+		<button onClick={onClick} name={text}>
 			{text}
 		</button>
 	);
