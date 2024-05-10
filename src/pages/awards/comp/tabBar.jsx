@@ -15,7 +15,7 @@ function classNames(...classes) {
 
 export default function TabBar() {
 	return (
-		<div className='absolute bottom-0 top-225 mb-4 justify-center w-full mx-auto px-4 sm:px-10 lg:px-60'>
+		<div className='relative flex justify-center h- w-full mx-auto px-4 sm:px-10 lg:px-60 font-montserrat uppercase tracking-widest '>
 			<div className='sm:hidden'>
 				<label htmlFor='tabs' className='sr-only'>
 					Select a tab
@@ -24,7 +24,7 @@ export default function TabBar() {
 				<select
 					id='tabs'
 					name='tabs'
-					className='block w-full rounded-md border-gray-300 text-center focus:border-indigo-500 focus:ring-indigo-500'
+					className='block w-full rounded-md border-gray-300 text-center focus:border-white focus:ring-white'
 					defaultValue={tabs.find((tab) => tab.current).name}
 				>
 					{tabs.map((tab) => (
@@ -39,7 +39,7 @@ export default function TabBar() {
 							key={tab.name}
 							href={tab.href}
 							className={classNames(
-								tab.current ? "text-black" : "text-white hover:text-gray-700",
+								tab.current ? "text-white hover:text-black" : "text-black hover:text-black",
 								tabIdx === 0 ? "rounded-l-lg" : "",
 								tabIdx === tabs.length - 1 ? "rounded-r-lg" : "",
 								"group relative min-w-0 flex-1 overflow-hidden bg-gold-500 bg-opacity-50 py-2 px-8 text-center text-sm font-medium hover:bg-gold-100 focus:z-10"
@@ -47,10 +47,7 @@ export default function TabBar() {
 							aria-current={tab.current ? "page" : undefined}
 						>
 							<span>{tab.name}</span>
-							<span
-								aria-hidden='true'
-								className={classNames(tab.current ? "bg-indigo-500" : "bg-transparent", "absolute inset-x-0 bottom-0 h-0.5")}
-							/>
+							<span aria-hidden='true' className={classNames(tab.current ? "bg-white" : "bg-transparent", "absolute inset-x-0 bottom-0 h-0.5")} />
 						</a>
 					))}
 				</nav>

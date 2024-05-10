@@ -1,17 +1,11 @@
 import { useState, useEffect } from "react";
-import { Link, NavLink } from "react-router-dom";
 import skinAwardsLogo from "../../assets/images/skinAwardsLogo.png";
-import verticalSheetsWaving from "../../assets/video/verticalSheetsWaving.mp4";
 import topPicksBGVIDEO from "../../assets/video/topPicksBGVIDEO.mp4";
 import TabBar from "./comp/tabBar";
 import testData from "../../assets/data/topPicks/test/testData";
 
 const TopPicksPage = () => {
 	const [bGLoaded, setBGLoaded] = useState(false);
-	const [prodState, setProdState] = useState({
-		prodHover: false,
-		prodClicked: false,
-	});
 
 	useEffect(() => {
 		// Delay setting videoLoaded to true to make the video load slowly
@@ -23,19 +17,19 @@ const TopPicksPage = () => {
 	}, []);
 
 	return (
-		<div className='w-full h-full '>
+		<div className='w-full h-full z-50 relative text-white'>
 			<div
 				className={`flex flex-col relative  items-center h-fit w-full transition-opacity duration-1000 ease-in-out transform scale-100 
 				${bGLoaded ? "opacity-100" : "opacity-0"}`}
 			>
-				<video className='w-full h-lg md:object-center' autoPlay muted loop id='video'>
+				{/* <video className='w-full h-lg md:object-center' autoPlay muted loop id='video'>
 					<source src={topPicksBGVIDEO} type='video/mp4' />
-				</video>
-				<img className='absolute w-3/6 mt-20 z-20' src={skinAwardsLogo} alt='skinAwardsLogo' />
-				<svg className='absolute bottom-70  w-full h-full opacity-90 z-10' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'>
+				</video> */}
+				{/* <img className='absolute w-3/6 mt-20 z-20' src={skinAwardsLogo} alt='skinAwardsLogo' /> */}
+				{/* <svg className='absolute bottom-70  w-full h-full opacity-90 z-10' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'>
 					<circle cx='50' cy='51.5' r='21' />
-				</svg>
-				<TabBar />
+				</svg> */}
+				{/* <TabBar /> */}
 			</div>
 			<div className='bg-black bg-opacity-50 w-full h-screen   justify-center	'>
 				<div>

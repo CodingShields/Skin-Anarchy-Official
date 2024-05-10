@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../../context/AuthContext.jsx";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
-import whiteLogo from "../../assets/images/whiteLogo.png";
-import WorkingModal from "./WorkingModal.jsx";
-import ErrorModal from "./ErrorModal.jsx";
-
-const LoginPage = () => {
+import { useNavigate } from "react-router-dom";
+import ErrorModal from "../components/ErrorModal.jsx";
+import WorkingModal from "../components/WorkingModal.jsx";
+const LoginModal = ({ open }) => {
 	const navigate = useNavigate();
 	const { signIn } = UserAuth();
 	const [email, setEmail] = useState("");
@@ -15,21 +13,13 @@ const LoginPage = () => {
 	const [openErrorModal, setOpenErrorModal] = useState(false);
 	const [state, setState] = useState({
 		errorMessage: "",
-		initialLoad: false,
 	});
 
 	const user = UserAuth(); // Call the hook unconditionally
 
 	useEffect(() => {
 		initializeState();
-		setState({
-			initialLoad: true,
-		});
-		setTimeout(() => {
-			setState({
-				initialLoad: false,
-			});
-		}, 5000);
+
 	}, []);
 
 	const initializeState = () => {
@@ -95,29 +85,19 @@ const LoginPage = () => {
 			setOpenErrorModal(false);
 		}, 4000);
 	};
-
 	return (
-		<div className='w-full h-full bg-black '>
-			<ErrorModal open={openErrorModal} message={state.errorMessage} />
-			<WorkingModal open={openModal} />
-			<div
-				className={
-					state.initialLoad
-						? "flex h-full w-full scale-150 translate-y-50 duration-1000 ease-in-out animate-fadeIn"
-						: "flex h-full w-full scale-y-100 -translate-y-50  duration-1000 ease-in-out animate-rotateLogo pt-24 pb-24"
-				}
-			>
-				<img className='mx-auto lg:h-24 xl:h-72 w-auto mt-8 my-auto' src={whiteLogo} alt='skinanarchy' />
-			</div>
-			<div
-				className={
-					state.initialLoad
-						? " h-full w-full flex flex-col justify-center items-center space-y-8 scale-0 duration-700"
-						: " h-full w-full flex flex-col justify-center items-center space-y-8 translate-y-100 scale-100 duration-700"
-				}
-			>
-				<h2 className='text-center text-xl font-bold  text-white font-openSans tracking-wider	'>Sign in to your account</h2>
-				<div className='xl:size-64 bg-black px-8 py-10 rounded-2xl border-[1px] text-white border-white bg-opacity-70'>
+		<div
+			className={
+				open
+					? "w-full h-full fixed top-0 left-0 transition-all duration-700 translate-y-64 z-20"
+					: "-translate-y-96 w-full h-full fixed top-0 left-0 transition-all duration-700 "
+			}
+		>
+			<div className='w-full h-fit flex flex-col justify-center items-center '>
+				<ErrorModal open={openErrorModal} message={state.errorMessage} />
+				<WorkingModal open={openModal} />
+				<h2 className='text-center text-2xl text-white font-montserrat font-thin tracking-widest	py-4 '>Sign in to your account</h2>
+				<div className='xl:size-64 bg-black px-8 py-10 rounded-2xl border-[1px] text-white border-white bg-opacity-70 z-50'>
 					<form onSubmit={handleSubmit} className='space-y-6 text-md text-white'>
 						<div>
 							<label htmlFor='email' className='block text-sm font-medium leading-6 font-glacialRegular'>
@@ -200,4 +180,4 @@ const LoginPage = () => {
 	);
 };
 
-export default LoginPage;
+export default LoginModal;

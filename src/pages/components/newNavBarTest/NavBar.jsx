@@ -239,29 +239,29 @@ const blog = [
 		link: "/members-area/skin-anarchy-blog/science-of-skin",
 	},
 ];
-const blogHighlight = [
-	{
-		name: "Makeup By Mario",
-		description: " Launches Most Requested Product: Learning About SURREALSKIN AWAKENING CONCEALER",
-		guest: "Mario Dedivanovic ",
-		image: makeup,
-		link: "https://open.spotify.com/episode/7GRct64o58RL4hnWUGqVmz?si=CAVOTN_7TAObZOthErhCaQ ",
-	},
-	{
-		name: "Celebrity Tia Mowry",
-		description: "Podcast interview with Tia Mowry, Founder of ‘4U by Tia’ Haircare",
-		guest: "Tia Mowry",
-		image: celebs,
-		link: "https://open.spotify.com/episode/7hNlatkWtg0tH27NwfivPB?si=k_wuyUXbRdeQqhsqTvhiMA ",
-	},
-	{
-		name: "Surgically-Precise Skincare",
-		description: "Surgically-Precise Skincare Is The Best Option For Clinically Proven Results ft. 111SKIN",
-		guest: "Dr Yannis Alexandrides ",
-		image: brandFounders,
-		link: "https://open.spotify.com/episode/7dZVBWXPC09ssig7cKcbUb?si=s78nsKmQQKqq3zl6FBAqtA 	",
-	},
-];
+// const blogHighlight = [
+// 	{
+// 		name: "Makeup By Mario",
+// 		description: " Launches Most Requested Product: Learning About SURREALSKIN AWAKENING CONCEALER",
+// 		guest: "Mario Dedivanovic ",
+// 		image: makeup,
+// 		link: "https://open.spotify.com/episode/7GRct64o58RL4hnWUGqVmz?si=CAVOTN_7TAObZOthErhCaQ ",
+// 	},
+// 	{
+// 		name: "Celebrity Tia Mowry",
+// 		description: "Podcast interview with Tia Mowry, Founder of ‘4U by Tia’ Haircare",
+// 		guest: "Tia Mowry",
+// 		image: celebs,
+// 		link: "https://open.spotify.com/episode/7hNlatkWtg0tH27NwfivPB?si=k_wuyUXbRdeQqhsqTvhiMA ",
+// 	},
+// 	{
+// 		name: "Surgically-Precise Skincare",
+// 		description: "Surgically-Precise Skincare Is The Best Option For Clinically Proven Results ft. 111SKIN",
+// 		guest: "Dr Yannis Alexandrides ",
+// 		image: brandFounders,
+// 		link: "https://open.spotify.com/episode/7dZVBWXPC09ssig7cKcbUb?si=s78nsKmQQKqq3zl6FBAqtA 	",
+// 	},
+// ];
 
 const connect = [
 	{
@@ -349,7 +349,6 @@ const blogArray = [
 	scienceOfSkin,
 	// episodeSummaries,
 ];
-console.log(episodesArray, "episodesArray");
 const mainNavBar = ["home", "about", "episodes", "blog", "awards", "yugen", "connect", "account"];
 
 const buttonStyle = "uppercase font-thin underlineAnimate subpixel-antialiased tracking-[6px] text-white text-xl";
@@ -367,8 +366,17 @@ const NavBar = () => {
 
 	const handleClick = (e) => {
 		const currentMenu = e.target.name;
+		console.log(currentMenu);
 		setMenu(currentMenu);
-		if (open && (currentMenu === "blog" || currentMenu === "episodes" || currentMenu === "awards")) {
+		if (
+			open &&
+			(currentMenu === "blog" ||
+				currentMenu === "episodes" ||
+				currentMenu === "awards" ||
+				currentMenu === "yugen" ||
+				currentMenu === "connect" ||
+				currentMenu === "account")
+		) {
 			setOpen(open);
 		} else {
 			setOpen(!open);
@@ -402,12 +410,11 @@ const NavBar = () => {
 				<Button className={buttonStyle} text={mainNavBar[1]} onClick={handleClick} to={"/members-area/about-us"}></Button>
 				<Button className={buttonStyle} text={mainNavBar[2]} onClick={handleClick}></Button>
 				<Button className={buttonStyle} text={mainNavBar[3]} onClick={handleClick}></Button>
-
 				<img src={goldLogo} alt='logo' className='w-18 h-18' />
 				<Button className={buttonStyle} text={mainNavBar[4]} onClick={handleClick}></Button>
 				<Button className={buttonStyle} text={mainNavBar[5]} to={"/members-area/yugen"}></Button>
-				<Button className={buttonStyle} text={mainNavBar[6]}></Button>
-				<Button className={buttonStyle} text={mainNavBar[7]}></Button>
+				<Button className={buttonStyle} text={mainNavBar[6]} onClick={handleClick}></Button>
+				<Button className={buttonStyle} text={mainNavBar[7]} onClick={handleClick}></Button>
 			</div>
 			<div ref={menuRef} className='w-full'>
 				{/* Episodes Drop Down */}
@@ -475,17 +482,40 @@ const NavBar = () => {
 					</div>
 				</NavBarDropDown>
 				<NavBarDropDown open={open} menu={menu} text={"awards"}>
-					<div className='w-1/4 h-fit flex flex-col space-y-12 py-12 '>
-						<h1 className='uppercase text-center text-white underline text-3xl font-montserrat font-thin underline-offset-8'>Categories</h1>
+					<div className='w-full h-fit flex flex-row justify-center items-center p-12 space-x-24'>
 						{awards.map((item, index) => {
 							return (
-								<div
-									onMouseEnter={() => handleSubMenuHover(item.name)}
-									key={index}
-									className='uppercase text-white text-xl font-montserrat font-thin ml-4 hover:underline transition-all duration-500 ease-in-out text-center '
-								>
-									<a href={item.link}>{item.name}</a>
-								</div>
+								<>
+									<a key={index} href={item.link}>
+										<h1 className='text-2xl text-white font-montserrat font-thin uppercase underlineAnimate'>{item.name}</h1>
+									</a>
+								</>
+							);
+						})}
+					</div>
+				</NavBarDropDown>
+				<NavBarDropDown open={open} menu={menu} text={"connect"}>
+					<div className='w-full h-fit flex flex-row justify-center items-center p-12 space-x-24'>
+						{connect.map((item, index) => {
+							return (
+								<>
+									<a key={index} href={item.link}>
+										<h1 className='text-2xl text-white font-montserrat font-thin uppercase underlineAnimate'>{item.name}</h1>
+									</a>
+								</>
+							);
+						})}
+					</div>
+				</NavBarDropDown>
+				<NavBarDropDown open={open} menu={menu} text={"account"}>
+					<div className='w-full h-fit flex flex-row justify-center items-center p-12 space-x-24'>
+						{account.map((item, index) => {
+							return (
+								<>
+									<a key={index} href={item.link}>
+										<h1 className='text-2xl text-white font-montserrat font-thin uppercase underlineAnimate'>{item.name}</h1>
+									</a>
+								</>
 							);
 						})}
 					</div>

@@ -26,7 +26,7 @@ import FragranceBlog from "./pages/blog/FragranceBlog.jsx";
 import PrevBlogs from "./pages/blog/PrevBlogs.jsx";
 
 //Components
-import LoginPage from "./pages/components/LoginPage.jsx";
+import LoginPage from "./pages/loginPage/LoginPage.jsx";
 import SignUpPage from "./pages/components/SignUpPage.jsx";
 import HomeLayout from "./pages/layout/HomeLayout.jsx";
 import ProtectedRoute from "./pages/components/ProtectedRoute.jsx";

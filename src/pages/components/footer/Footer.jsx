@@ -76,7 +76,6 @@ const Footer = () => {
 						<p>pr@skincareanarchypodcast.com</p>
 						<p>Get Featured On Our Show</p>
 						<p>Become A Sponsor</p>
-						<p>Join Our Team</p>
 					</div>
 				</div>
 			</div>
