@@ -19,7 +19,6 @@ const LoginModal = ({ open }) => {
 
 	useEffect(() => {
 		initializeState();
-
 	}, []);
 
 	const initializeState = () => {
@@ -90,17 +89,17 @@ const LoginModal = ({ open }) => {
 			className={
 				open
 					? "w-full h-full fixed top-0 left-0 transition-all duration-700 translate-y-64 z-20"
-					: "-translate-y-96 w-full h-full fixed top-0 left-0 transition-all duration-700 "
+					: "-translate-y-[600px] w-full h-full fixed top-0 left-0 transition-all duration-700 "
 			}
 		>
+			<ErrorModal open={openErrorModal} message={state.errorMessage} />
+			<WorkingModal open={openModal} />
 			<div className='w-full h-fit flex flex-col justify-center items-center '>
-				<ErrorModal open={openErrorModal} message={state.errorMessage} />
-				<WorkingModal open={openModal} />
 				<h2 className='text-center text-2xl text-white font-montserrat font-thin tracking-widest	py-4 '>Sign in to your account</h2>
 				<div className='xl:size-64 bg-black px-8 py-10 rounded-2xl border-[1px] text-white border-white bg-opacity-70 z-50'>
 					<form onSubmit={handleSubmit} className='space-y-6 text-md text-white'>
 						<div>
-							<label htmlFor='email' className='block text-sm font-medium leading-6 font-glacialRegular'>
+							<label htmlFor='email' className='block text-sm font-medium leading-6 font-montserrat uppercase'>
 								Email address
 							</label>
 							<div className='mt-2'>
@@ -117,7 +116,7 @@ const LoginModal = ({ open }) => {
 						</div>
 
 						<div>
-							<label htmlFor='password' className='block text-sm font-medium leading-6 font-glacialRegular '>
+							<label htmlFor='password' className='block text-sm font-medium leading-6 font-montserrat uppercase'>
 								Password
 							</label>
 							<div className='mt-2'>
@@ -142,14 +141,14 @@ const LoginModal = ({ open }) => {
 								/>
 								<label
 									htmlFor='remember-me'
-									className='ml-2 text-gray-600 group-hover:text-white transition-all ease-in-out duration-300 font-glacialRegular '
+									className='ml-2 text-gray-600 group-hover:text-white transition-all ease-in-out duration-300 font-montserrat '
 								>
 									Remember me
 								</label>
 							</div>
 
-							<div className='text-sm leading-6'>
-								<a href='#' className=' text-gray-600 hover:text-white transition-all ease-in-out duration-300 font-glacialRegular '>
+							<div className='text-md leading-6'>
+								<a href='#' className=' text-gray-600 hover:text-white transition-all ease-in-out duration-300 font-montserrat '>
 									Forgot password?
 								</a>
 							</div>
@@ -158,23 +157,22 @@ const LoginModal = ({ open }) => {
 						<div className='block w-full text-center'>
 							<button
 								type='submit'
-								className='font-glacialRegular mx-auto rounded-md bg-black px-8 py-2.5 text-sm font-semibold text-white border-2 border-gray-600 shadow-sm hover:border-white hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-all ease-in-out duration-500 hover:text-black hover:shadow-xl hover:shadow-black'
+								className=' font-montserrat font-thin mx-auto rounded-md bg-black px-12 py-2.5 text-md text-white border-2 border-gray-600 shadow-sm  hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 hover:font-semibold hover:text-black transition-all ease-in-out duration-500 '
 							>
 								Sign in
 							</button>
 						</div>
 					</form>
-				</div>
+					<p className=' py-4 text-center text-md text-gray-200 font-montserrat font-thin tracking-widest'>Not a member ? </p>
 
-				<p className='mt-10 text-center text-md text-black'>
-					Not a member ?
 					<button
-						onClick={() => navigate("/SignUp")}
-						className='font-semibold leading-6 hover:scale-125 hover:-translate-y-4 duration-300 transition-all ease-in-out'
+						onClick={() => navigate("/sign-up")}
+						className='font-thin font-montserrat leading-6 duration-300 transition-all ease-in-out tracking-widest'
 					>
-						Click Here To Sign-up For Free
+						<span className='cursor-pointer tracking-widest underline underline-offset-4 hover:animate-pulse text-center'>Click Here </span>To Sign-up
+						For Free
 					</button>
-				</p>
+				</div>
 			</div>
 		</div>
 	);

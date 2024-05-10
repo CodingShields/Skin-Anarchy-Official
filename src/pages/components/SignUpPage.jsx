@@ -9,8 +9,7 @@ import personIcon from "../../assets/icons/formIcons/personIcon.svg";
 import passwordIcon from "../../assets/icons/formIcons/passwordIcon.svg";
 import { useUserStoreActions } from "../../stateStore/userStore.jsx";
 import { useUserStore } from "../../stateStore/userStore.jsx";
-import logo from "../../assets/images/logo.png";
-import whiteLogo from "../../assets/images/whiteLogo.png";
+import whiteLogo from "../../assets/images/logos/white-logo.png";
 const SignUp = () => {
 	const navigate = useNavigate();
 	const { createUser } = UserAuth();
@@ -184,19 +183,19 @@ const SignUp = () => {
 
 	return (
 		<div className='flex flex-row h-full'>
-			<div className='w-3/4 bg-gradient-to-l from-black via-zinc-600 to-white'></div>
 			<div className='flex flex-col justify-center items-center w-5/6 h-full bg-black  duration-700 ease-in-out animate-fadeIn mx-auto'>
-				<div className={"h-fit w-full duration-700 ease-in-out animate-rotateLogo "}>
-					<img className='mx-auto lg:h-32 xl:h-32 w-auto mt-8 my-auto mb-4 delay-300 animate-fadeIn' src={whiteLogo} alt='skinanarchy' />
+				<div className='h-fit w-full duration-700 ease-in-out '>
+					<img className='mx-auto lg:h-32 xl:h-48 w-auto mt-8 my-auto mb-4 delay-300 animate-fadeIn' src={whiteLogo} alt='skinanarchy' />
 				</div>
-				<h1 className='text-2xl text-center text-white'>SkinAnarchy</h1>
-				<form className='flex flex-col justify-start items-center mt-10 space-y-10 bg-black text-white'>
+				<h1 className='text-3xl text-center text-white font-montserrat font-thin '> Welcome to the Skin Authority Family</h1>
+				<h1 className='text-xl text-center text-white font-montserrat font-thin py-2'>We respect privacy and will never sell your information</h1>
+				<form className='flex flex-col justify-start items-center mt-4 space-y-10 bg-black text-white'>
 					<fieldset>
-						<legend className='text-sm font-semibold leading-6 '>Personal Information</legend>
+						<legend className='text-2xl font-montserrat font-thin text-white leading-6 '>Personal Information</legend>
 						<div className='mt-6 space-y-6 gap-x-3'>
 							<div className='relative mt-2 rounded-md shadow-sm w-72 text-white'>
 								<input
-									className='block w-full rounded-md border-0 py-1.5 pr-10 indent-7  ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
+									className='block w-full rounded-md border-0 py-1.5 pr-10 indent-9 focus:shadow-xl focus:shadow-gold-500 placeholder:font-montserrat placeholder:text-gray-400 focus:ring-[3px] focus:ring-inset focus:ring-white sm:text-sm sm:leading-6'
 									name='firstName'
 									value={form.firstName}
 									onChange={(e) => {
@@ -212,7 +211,7 @@ const SignUp = () => {
 							</div>
 							<div className='relative mt-2 rounded-md shadow-sm'>
 								<input
-									className='block w-full rounded-md border-0 py-1.5 pr-10 indent-7  ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
+									className='block w-full rounded-md border-0 py-1.5 pr-10 indent-9 focus:shadow-xl focus:shadow-gold-500 placeholder:font-montserrat placeholder:text-gray-400 focus:ring-[3px] focus:ring-inset focus:ring-white sm:text-sm sm:leading-6'
 									name='lastName'
 									value={form.lastName}
 									onChange={(e) => {
@@ -230,7 +229,7 @@ const SignUp = () => {
 								<input
 									name='email'
 									value={form.email}
-									className='block w-full rounded-md border-0 py-1.5 pr-10 indent-7 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
+									className='block w-full rounded-md border-0 py-1.5 pr-10 indent-9 focus:shadow-xl focus:shadow-gold-500 placeholder:font-montserrat placeholder:text-gray-400 focus:ring-[3px] focus:ring-inset focus:ring-white sm:text-sm sm:leading-6'
 									onChange={(e) => {
 										setForm({ ...form, email: e.target.value });
 									}}
@@ -247,7 +246,7 @@ const SignUp = () => {
 								<input
 									name='birthday'
 									value={form.birthday}
-									className='block w-full rounded-md border-0 py-1.5 pr-10 indent-10  ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
+									className='block w-full rounded-md border-0 py-1.5 pr-10 indent-12 focus:shadow-xl focus:shadow-gold-500 placeholder:font-montserrat placeholder:text-gray-400 focus:ring-[3px] focus:ring-inset focus:ring-white sm:text-sm sm:leading-6'
 									onChange={(e) => {
 										setForm({ ...form, birthday: e.target.value });
 									}}
@@ -264,7 +263,7 @@ const SignUp = () => {
 								<input
 									name='phone'
 									value={form.phone}
-									className='block w-full rounded-md border-0 py-1.5 pr-10 indent-11 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
+									className='block w-full rounded-md border-0 py-1.5 pr-10 indent-12 focus:shadow-xl focus:shadow-gold-500 placeholder:font-montserrat placeholder:text-gray-400 focus:ring-[3px] focus:ring-inset focus:ring-white sm:text-sm sm:leading-6'
 									onChange={(e) => {
 										setForm({ ...form, phone: e.target.value });
 									}}
@@ -281,7 +280,7 @@ const SignUp = () => {
 									autoComplete='current-password'
 									name='password'
 									value={form.password}
-									className='block w-full rounded-md border-0 py-1.5 pr-10 indent-7 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
+									className='block w-full rounded-md border-0 py-1.5 pr-10 indent-9 focus:shadow-xl focus:shadow-gold-500 placeholder:font-montserrat placeholder:text-gray-400 focus:ring-[3px] focus:ring-inset focus:ring-white sm:text-sm sm:leading-6'
 									onChange={(e) => {
 										setForm({ ...form, password: e.target.value });
 									}}
@@ -296,16 +295,16 @@ const SignUp = () => {
 						</div>
 					</fieldset>
 
-					<div className='border-b border-gray-900/10 pb-12'>
-						<h2 className='text-base font-semibold leading-7 text-white'>Notifications</h2>
-						<p className='mt-1 text-sm leading-6 text-white'>
-							We'll always let you know about important changes, but you pick what else you want to hear about.
+					<div className='py-12 w-3/4 border-y-2 border-white '>
+						<h2 className='text-5xl font-montserrat font-thin leading-7 text-white uppercase'>Skin Anarchy Notifications</h2>
+						<p className='mt-4 text-2xl font-montserrat font-thin ml-4 text-white tracking-widest py-4 '>
+							We'll always let you know about important changes, never spam your, just pick what else you want to hear about.
 						</p>
 
 						<div className='mt-10 space-y-10'>
 							<fieldset>
-								<legend className='text-sm font-semibold leading-6 text-white'>By Email</legend>
-								<div className='mt-6 space-y-6'>
+								<legend className='text-3xl font-montserrat font-thin leading-6 text-white uppercase'>Email Notifications</legend>
+								<div className='ml-2 mt-6 space-y-6'>
 									<div className='relative flex gap-x-3'>
 										<div className='flex h-6 items-center'>
 											<input
@@ -317,11 +316,11 @@ const SignUp = () => {
 												className='h-4 w-4 rounded border-gold-100 text-gold-500 focus:ring-gold-500 focus:bg-gold-500'
 											/>
 										</div>
-										<div className='text-sm leading-6'>
-											<label htmlFor='comments' className='font-medium text-white'>
-												New Podcast
+										<div>
+											<label htmlFor='comments' className='font-montserrat text-2xl text-white uppercase'>
+												New Episode notifications
 											</label>
-											<p className='text-gray-500'>Get notified when we drop a New Podcast.</p>
+											<p className='text-white font-montserrat font-thin text-lg indent-4 uppercase py-2'>Get notified when we drop a New Podcast.</p>
 										</div>
 									</div>
 									<div className='relative flex gap-x-3 text-white'>
@@ -336,10 +335,10 @@ const SignUp = () => {
 											/>
 										</div>
 										<div className='text-sm leading-6 group'>
-											<label htmlFor='candidates' className='font-medium group-hover:text-gold-500'>
+											<label htmlFor='candidates' className='font-montserrat text-2xl text-white uppercase'>
 												Upcoming Podcasts
 											</label>
-											<p className='text-gray-500'>Get notified about upcoming Podcasts.</p>
+											<p className='text-white font-montserrat font-thin text-lg indent-4 uppercase py-2'>Get notified about upcoming Podcasts.</p>
 										</div>
 									</div>
 									<div className='relative flex gap-x-3'>
@@ -354,10 +353,10 @@ const SignUp = () => {
 											/>
 										</div>
 										<div className='text-sm leading-6'>
-											<label htmlFor='candidates' className='font-medium text-gray-900'>
-												Blog Post
+											<label htmlFor='candidates' className='font-montserrat text-2xl text-white uppercase'>
+												Blog Notifications
 											</label>
-											<p className='text-gray-500'>Get notified about NEW Blog Posts.</p>
+											<p className='text-white font-montserrat font-thin text-lg indent-4 uppercase py-2'>Get notified about NEW Blog Posts.</p>
 										</div>
 									</div>
 									<div className='relative flex gap-x-3'>
@@ -372,10 +371,10 @@ const SignUp = () => {
 											/>
 										</div>
 										<div className='text-sm leading-6'>
-											<label htmlFor='candidates' className='font-medium text-gray-900'>
+											<label htmlFor='candidates' className='font-montserrat text-2xl text-white uppercase'>
 												Weekly NewsLetter
 											</label>
-											<p className='text-gray-500'>Get Weekly News Letters from Dr. Ekta.</p>
+											<p className='text-white font-montserrat font-thin text-lg indent-4 uppercase py-2'>Get Weekly News Letters from Dr. Ekta.</p>
 										</div>
 									</div>
 									{/* <div className='relative flex gap-x-3'>
@@ -444,9 +443,6 @@ const SignUp = () => {
 						</button>
 					</p>
 					<p>Don't worry, we do not sell your data ... we hate that too lol</p>
-					<button type='button' className='rounded-md bg-white/10 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-white/20'>
-						Privacy Policy
-					</button>
 				</form>
 				{state.renderPrivacyPolicy ? (
 					<div className='flex fixed justify-center items-center  top-0 left-0 w-full h-full bg-opacity-50	bg-black'>
@@ -474,7 +470,6 @@ const SignUp = () => {
 					Sign-Up
 				</button>
 			</div>
-			<div className='w-3/4 bg-gradient-to-r from-black via-zinc-600 to-white'></div>
 		</div>
 	);
 };

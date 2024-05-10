@@ -205,13 +205,17 @@ const episodes = [
 		name: "Celebrities",
 		link: "/members-area/podcast/celebrity-podcasts",
 	},
+	{
+		name: "Master Class",
+		link: "/members-area/podcast/master-class",
+	}
 ];
 
 const awards = [
-	// {
-	// 	name: "Master Class",
-	// 	link: "/members-area/awards/master-class",
-	// },
+	{
+		name: "Safe Seal",
+		link: "/members-area/awards/master-class",
+	},
 	{
 		name: "Science of Skin Awards",
 		link: "/members-area/awards/science-of-skin-awards",
@@ -223,6 +227,10 @@ const awards = [
 ];
 const blog = [
 	{
+		name: "Current Blog",
+		link: "/members-area/skin-anarchy-blog",
+	},
+	{
 		name: "Beauty Culture",
 		link: "/members-area/skin-anarchy-blog/beauty-culture",
 	},
@@ -230,10 +238,10 @@ const blog = [
 		name: "Fragrance",
 		link: "/members-area/skin-anarchy-blog/fragrance",
 	},
-	// {
-	// 	name: "Episode Summaries",
-	// 	link: "/members-area/skin-anarchy-blog/podcast-summaries",
-	// },
+	{
+		name: "Episode Summaries",
+		link: "/members-area/skin-anarchy-blog/podcast-summaries",
+	},
 	{
 		name: "Science of Skin",
 		link: "/members-area/skin-anarchy-blog/science-of-skin",
@@ -413,7 +421,8 @@ const NavBar = () => {
 				<img src={goldLogo} alt='logo' className='w-18 h-18' />
 				<Button className={buttonStyle} text={mainNavBar[4]} onClick={handleClick}></Button>
 				<Button className={buttonStyle} text={mainNavBar[5]} to={"/members-area/yugen"}></Button>
-				<Button className={buttonStyle} text={mainNavBar[6]} onClick={handleClick}></Button>
+				{/* SafeSeal */}
+				<Button className={buttonStyle} text={mainNavBar[6]} onClick={handleClick} to={"/members-area/connect"}></Button>
 				<Button className={buttonStyle} text={mainNavBar[7]} onClick={handleClick}></Button>
 			</div>
 			<div ref={menuRef} className='w-full'>
