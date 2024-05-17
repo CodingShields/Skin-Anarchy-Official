@@ -208,7 +208,7 @@ const episodes = [
 	{
 		name: "Master Class",
 		link: "/members-area/podcast/master-class",
-	}
+	},
 ];
 
 const awards = [
@@ -289,7 +289,7 @@ const connect = [
 const account = [
 	{
 		name: "My Account",
-		link: "/members-area/account/my-account",
+		link: "/members-area/account",
 	},
 	{
 		name: "Logout",

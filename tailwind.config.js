@@ -75,6 +75,14 @@ export default {
 					},
 				},
 			},
+			blur: {
+				0: "0",
+				sm: "2px",
+				md: "8px",
+				lg: "16px",
+				xl: "24px",
+				"2xl": "40px",
+			},
 
 			spacing: {
 				2: "0.5rem",
@@ -360,6 +368,7 @@ export default {
 	},
 
 	plugins: [
+		require("tailwind-scrollbar-hide"),
 		require("@tailwindcss/typography"),
 		require("@tailwindcss/aspect-ratio"),
 		require("@tailwindcss/container-queries"),

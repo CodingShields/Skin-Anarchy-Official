@@ -1,3 +1,37 @@
+// medium import 
+@font-face {
+  font-family: 'Montserrat';
+    src: url("/src/assets/fonts/Montserrat/Montserrat.ttf") format("trueType");
+  font-weight: 100;
+  font-style: 100;
+}
+
+.montserrat-medium {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.poetsen-one-regular {
+  font-family: "Poetsen One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+// hide scroll bar
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
 //Sponsor Images Marquee
 .sponsorBar {
   overflow: hidden;

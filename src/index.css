@@ -2,11 +2,11 @@
 
 @import "./styles/custom.scss";
 
-@font-face{
+@font-face {
 	font-family: "Montserrat";
 	src: url("/src/assets/fonts/Montserrat/Montserrat.ttf") format("trueType");
 }
-
+/* 
 @font-face {
 	font-family: "Glacial Indifference Bold";
 	src: url("/src/assets/fonts/glacial-indifference/GlacialIndifference-Bold.otf") format("trueType");
@@ -26,7 +26,7 @@
 @font-face {
 	font-family: "Open Sans Regular";
 	src: url("/src/assets/fonts/open-sans/OpenSans-Regular.ttf") format("trueType");
-}
+} */
 @font-face {
 	font-family: "Hathem";
 	src: url("/src/assets/fonts/Signature/Hathem Bosteem.ttf") format("trueType");
