@@ -38,6 +38,8 @@ export default {
 				fadeIn: "fadeIn .5s ease-in forwards",
 				fadeOut: "fadeOut .5s ease-out forwards",
 				navBarDown: "navBarDown .5s ease-in-out forwards",
+				chatBotSlideIn: "chatBotSlideIn 1.5s ease-in-out forwards",
+				chatBotSlideOut: "chatBotSlideOut 1.5s ease-in-out forwards",
 			},
 			keyframes: {
 				marquee: {
@@ -74,6 +76,26 @@ export default {
 						opacity: 1,
 					},
 				},
+				chatBotSlideIn: {
+					"0%": {
+						transform: "translateY(100%)",
+						opacity: 0,
+					},
+					"100%": {
+						transform: "translateY(0)",
+						opacity: 1,
+					},
+				},
+				chatBotSlideOut: {
+					"0%": {
+						transform: "translateY(0)",
+						opacity: 1,
+					},
+					"100%": {
+						transform: "translateY(100%)",
+						opacity: 0,
+					},
+				}
 			},
 			blur: {
 				0: "0",

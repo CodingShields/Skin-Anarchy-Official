@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 const Button = ({ className, text, to, onClick }) => {
 	if (to) {
 		return (
-			<NavLink to={to} className={className} onClick={onClick}>
+			<NavLink to={to} className={className} name={text} onClick={onClick}>
 				{text}
 			</NavLink>
 		);

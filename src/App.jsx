@@ -37,6 +37,15 @@ import AccountPage from "./pages/account/AccountPage.jsx";
 import HomePage from "./pages/homePage/HomePage.jsx";
 import ConnectPage from "./pages/connect/ConnectPage.jsx";
 
+//Safe Seal Page
+import SafeSealPage from "./pages/safe-seal/SafeSealPage.jsx";
+
+//Shop Page
+import ShopMain from "./pages/shop/ShopMain.jsx";
+
+//Yugen Page
+import YugenPage from "./pages/yugen/YugenPage.jsx";
+
 function App() {
 	return (
 		<BrowserRouter>
@@ -59,8 +68,10 @@ function App() {
 						<Route path='podcast/editors-and-journalists-podcasts' element={<EditorsAndJournalistsPodcasts />} />
 						{/* Award Pages */}
 						<Route path='awards/top-picks' element={<TopPicksPage />} />
-						{/* <Route path='awards/master-class' element={<MasterClassPage />} /> */}
+						<Route path='awards/master-class' element={<MasterClassPage />} />
 						<Route path='awards/science-of-skin-awards' element={<ScienceOfSkinAwards />} />
+						{/* Yugen Pages	 */}
+						<Route path='yugen' element={<YugenPage />} />
 						{/* Blog Pages */}
 						<Route path='skin-anarchy-blog' element={<SkinAnarchyBlog />} />
 						<Route path='skin-anarchy-blog/beauty-culture' element={<BeautyCultureBlog />} />
@@ -68,6 +79,10 @@ function App() {
 						<Route path='skin-anarchy-blog/science-of-skin' element={<ScienceOfSkinBlog />} />
 						<Route path='skin-anarchy-blog/fragrance' element={<FragranceBlog />} />
 						<Route path='past-blog' element={<PrevBlogs />} />
+						{/* Safe Seal Page */}
+						<Route path='safe-seal' element={<SafeSealPage />} />
+						{/* Shop Page */}
+						<Route path='shop' element={<ShopMain />} />
 						<Route path='account' element={<AccountPage />} />
 						<Route path='log-out' element={<LogoutPage />} />
 						<Route path='connect' element={<ConnectPage />} />

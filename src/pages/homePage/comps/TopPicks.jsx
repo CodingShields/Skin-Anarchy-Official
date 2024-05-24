@@ -11,12 +11,12 @@ import victoriaBeckham from "../../../assets/images/topPicks/victoria-beckham.sv
 
 const TopPicks = () => {
 	return (
-		<div className='w-full h-screen'>
+		<div className='w-full h-fit my-64'>
 			<div className=''>
-				<h1 className='text-white text-6xl text-center font-playfair uppercase tracking-widest py-6'>Skincare Anarchy Awards </h1>
-				<h2 className='text-white lowercase text-center font-montserrat text-4xl'>#toppicks</h2>
+				<h1 className='text-white text-6xl text-center font-montserrat font-thin uppercase tracking-widest py-6'>Skincare Anarchy Awards </h1>
+				<h2 className='text-white lowercase text-center font-montserrat text-4xl font-thin'>#toppicks</h2>
 			</div>
-			<div className='relative topPicksBar h-screen'>
+			<div className='relative topPicksBar h-fit'>
 				<div className='topPicksBar-content py-12 mt-12'>
 					<div className='topPicksBar-item'>
 						<img onMouseEnter={() => console.log("test")} src={codex} />

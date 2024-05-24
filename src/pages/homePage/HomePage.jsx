@@ -1,17 +1,12 @@
 import { useState, useEffect } from "react";
 import HeadLine from "./comps/HeadLine";
 import SponsorBarContainer from "./comps/SponsorBarContainer";
-import InterviewCategoryContainer from "./comps/InterviewCategoryContainer";
 import PodcastAnalyticsContainer from "./comps/PodcastAnalyticsContainer";
 import TestimonialsContainer from "./comps/TestimonialsContainer";
 import SignatureBar from "./comps/SignatureBar";
 import WelcomeBackUserModal from "./comps/WelcomeBackUserModal";
 import PodcastPlatformBar from "./comps/PodcastPlatformBar";
 import TopPicks from "./comps/TopPicks";
-import ChatBot from "../components/ChatBot";
-import PodcastWidget from "../components/PodcastWidget";
-import headLineBg from "../../assets/images/headLineBg.png";
-import ListenerDemoGraphicsContainer from "./comps/ListenerDemoGraphicsContainer";
 import PodCast from "../homePage/comps/Podcast";
 import "../../styles/custom.scss";
 const HomePage = () => {
@@ -47,9 +42,9 @@ const HomePage = () => {
 	}, []);
 
 	return (
-		<div className='w-full h-full relative animate-fadeIn'>
+		<div className='w-full h-fit relative animate-fadeIn'>
 			<div
-				className='with-bg-size h-screen w-full opacity-30'
+				className='with-bg-size h-full w-full opacity-30'
 				style={{
 					position: "fixed",
 					top: 0,
@@ -58,27 +53,17 @@ const HomePage = () => {
 					margin: "auto",
 				}}
 			></div>
-			{/* <div className='fixed card'>
-				Set a custom 15 % opacity
-				<video className='w-screen opacity-20 grayscale ' autoPlay muted loop id='video' src={newMic}></video>
-				<img className='w-screen opacity-20 grayscale ' src={headLineBg} />
-			</div> */}
-			<div className='fixed'>
-				<div id='cursor' className='cursor '></div>
-			</div>
-			<div className='w-full h-full relative'></div>
+
+			<div id='cursor' className='fixed cursor'></div>
 			<HeadLine />
 			<SponsorBarContainer />
 			<SignatureBar />
-			{/* <InterviewCategoryContainer /> */}
 			{/* <WelcomeBackUserModal open={openModal} /> */}
-			<PodcastWidget /> <PodCast />
-			<PodcastAnalyticsContainer />
-			{/* <ListenerDemoGraphicsContainer /> */}
+			<PodCast />
 			<PodcastPlatformBar />
+			<PodcastAnalyticsContainer />
 			<TopPicks />
 			<TestimonialsContainer />
-			<ChatBot />
 		</div>
 	);
 };

@@ -12,13 +12,12 @@ const PodcastPlatformBar = () => {
 	};
 
 	const handleMouseOut = () => {
-		console.log("test");
 		setOpen(false);
 	};
 	return (
-		<div className='w-3/4 h-64 grid grid-cols-12 relative mx-auto py-48'>
+		<div className='w-3/4 h-fit grid grid-cols-12 relative mx-auto pb-64'>
 			{podcastIconLinks.map((item, id) => (
-				<div className=' h-32 w-20' onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} key={id}>
+				<div className=' h-fit w-20' onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} key={id}>
 					<a href={item.link} target='_blank' rel='noreferrer'>
 						<img
 							id={item.id}

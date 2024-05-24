@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { getFirestore, collection, getDocs } from "firebase/firestore";
 
-const PrevBlogs = () => {
+const PrevBlogs = ({ activeBlogWindow }) => {
 	const [blogs, setBlogs] = useState([]);
+	const [currentBlog, setCurrentBlog] = useState(null);
 	const [state, setState] = useState({
 		loading: false,
 		error: null,
@@ -61,7 +62,7 @@ const PrevBlogs = () => {
 				const body = doc.body;
 
 				if (body) {
-					body.style.overflowY = "hidden";
+					// body.style.overflowY = "hidden";
 					body.style.overflowX = "hidden";
 				}
 
@@ -99,18 +100,33 @@ const PrevBlogs = () => {
 		modifyContent();
 	}, [blogs]);
 
-	const handleClick = (e) => {
-		console.log(e.target.value);
-	}
+	const handleClick = (index) => {
+		const activeBlog = modifiedContent[index];
+		console.log(activeBlog);
+		setCurrentBlog(activeBlog);
+		activeBlogWindow(activeBlog);
+		console.log(activeBlogWindow(activeBlog));
+	};
+
+	const buttonIcon = (
+		<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' strokeWidth={1.5}>
+			<path strokeLinecap='round' strokeLinejoin='round' d='m18.75 4.5-7.5 7.5 7.5 7.5m-6-15L5.25 12l7.5 7.5' />
+		</svg>
+	);
 
 	return (
-		<div className='grid grid-cols-1 bg-black space-y-24'>
+		<div className='grid grid-cols-1 bg-gradient-to-r from-white to-black space-y-24'>
 			{modifiedContent.map((item, index) => (
-				<div key={index} className='bg-white h-[200px] w-[800px] mx-auto relative hover:h-[500px] transition-all duration-300 ease-in-out group'>
-					<iframe srcDoc={item} onClick={handleClick} className='w-full h-full flex z-20' />
-					{/* <button className='absolute text-xl italic text-white/50 font-montserrat text-center mx-auto w-full h-full group-hover:flex justify-center items-start group-hover:mb-12 group-hover:-translate-y-48 transition-all duration-300 ease-in-out group-hover:bg-black/50 group-hover:py-12 group-hover:text-white hidden group-hover:visible'>
-						Read Full Article
-					</button> */}
+				<div key={index} className='bg-white h-[140px] w-[800px] mx-auto relative transition-all duration-300 ease-in-out group'>
+					<iframe srcDoc={item} className='w-full h-full flex z-20' scrolling="no" />
+					<div className='w-full bg-white text-center'>
+						<button
+							onClick={() => handleClick(index)}
+							className='h-fit w-fit text-black bg-white px-2 py-2 text-center cursor-pointer hover:text-white hover:bg-black hover:px-8 transition-all ease-linear duration-200 hover:rounded-t-xl uppercase'
+						>
+							Read More
+						</button>
+					</div>
 				</div>
 			))}
 		</div>

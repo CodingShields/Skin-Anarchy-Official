@@ -74,7 +74,6 @@ import Womaness from "../../../assets/images/sponsor-images/Womaness.svg";
 import "../../../styles/custom.scss";
 
 const SponsorBarContainer = () => {
-	console.log(sponsorImages.length);
 	return (
 		<div className='relative sponsorBar '>
 			<h1></h1>

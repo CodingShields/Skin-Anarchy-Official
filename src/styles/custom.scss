@@ -13,11 +13,6 @@
   font-style: normal;
 }
 
-.poetsen-one-regular {
-  font-family: "Poetsen One", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
 
 // hide scroll bar
 .scrollbar-hide::-webkit-scrollbar {
@@ -73,7 +68,7 @@
 
 .topPicksBar-content {
   display: flex;
-  animation: scrollingTopPicksBar 18s linear infinite;
+  animation: scrollingTopPicksBar 22s linear infinite;
 }
 
 .topPicksBar-content:hover {
@@ -132,7 +127,7 @@
   color: #fff;
   text-transform: uppercase;
   text-decoration: none;
-  letter-spacing: 0.15em;
+  // letter-spacing: 0.15em;
 
   display: inline-block;
   padding: 15px 20px;
@@ -208,3 +203,13 @@
   }
   /* Animation Does Not End At 100% Because It Makes The Images Transition In/Out Better For Some Reason*/
 }
+
+// Chat Bot Break
+
+.half-space {
+  line-height: 0.5;
+  padding-top: "4px";
+  padding-bottom: "4px";
+}
+
+

@@ -2,11 +2,13 @@
 
 import ProtectedRoute from "../components/ProtectedRoute";
 import HomeLayout from "./HomeLayout";
-
+import { Outlet } from "react-router-dom";
 function ProtectedLayout() {
 	return (
 		<ProtectedRoute>
-			<HomeLayout></HomeLayout>
+			<HomeLayout>
+				<Outlet />
+			</HomeLayout>
 		</ProtectedRoute>
 	);
 }
