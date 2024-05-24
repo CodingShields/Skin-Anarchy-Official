@@ -81,38 +81,47 @@ const SkinAnarchyBlog = () => {
 
 
 	return (
-		<div className='flex flex-col w-full h-fit animate-fadeIn '>
+		<div className='flex flex-col w-full h-fit animate-fadeIn bg-white'>
 			<div className=' w-full h-full mt-24 text-center '>
 				<div className='w-full h-[300px] relative'>
 					<div className='w-full h-fit absolute flex flex-col z-10 pt-8'>
-						<h1 className='text-8xl text-white font-montserrat uppercase font-thin w-full tracking-widest mt-4'>Skin Anarchy Blog</h1>
-						<div className='flex flex-row text-white w-1/2 mx-auto justify-evenly mt-14 '>
-							<button className='hover:bg-white hover:text-black uppercase font-montserrat transition-all ease-in-out duration-500 w-full '>
+						<h1
+							
+							style={{
+								fontWeight:"400",
+							}}
+							className='text-8xl text-black font-montserrat uppercase w-full tracking-widest mt-4'>Skin Anarchy Blog</h1>
+						<div className='flex flex-row text-black w-1/2 mx-auto justify-evenly mt-14 '>
+							<button className='hover:bg-white uppercase font-montserrat transition-all ease-in-out duration-500 w-full '>
 								Beauty Culture
 							</button>
-							<button className='hover:bg-white hover:text-black uppercase font-montserrat transition-all ease-in-out duration-500 w-full'>
+							<button className='hover:bg-white uppercase font-montserrat transition-all ease-in-out duration-500 w-full'>
 								Fragrance
 							</button>
-							<button className='hover:bg-white hover:text-black uppercase font-montserrat transition-all ease-in-out duration-500 w-full'>
+							<button className='hover:bg-white uppercase font-montserrat transition-all ease-in-out duration-500 w-full'>
 								Episode Summaries
 							</button>
-							<button className='hover:bg-white hover:text-black uppercase font-montserrat transition-all ease-in-out duration-500 w-full'>
+							<button className='hover:bg-white  uppercase font-montserrat transition-all ease-in-out duration-500 w-full'>
 								Science of Skin
+							</button>
+							<button className='hover:bg-white  uppercase font-montserrat transition-all ease-in-out duration-500 w-full'>
+								Previous Blogs
 							</button>
 						</div>
 					</div>
-					<video className='w-full h-full object-cover opacity-30 ' autoPlay muted loop id='video'>
+					{/* <video className='w-full h-full object-cover opacity-30 ' autoPlay muted loop id='video'>
 						<source src={blogBG} type='video/mp4' />
-					</video>
+					</video> */}
 				</div>
 			</div>{" "}
 			<ActiveBlogWindow open={openBlogWindow} close={() => setOpenBlogWindow(false)} data={activeBlogWindow} />
-			<div className={openBlogWindow ? "grid grid-cols-3 blur-sm " : "grid grid-cols-3 "}>
-				<div className='flex flex-col bg-white h-[350px] w-[800px] mx-auto '>
-					<iframe id='mediumImport' title='External Content' src={test} className='w-full h-full ' />
-				</div>
-				<div className='w-full h-full  font-montserrat bg-white'> Main Blog Data</div>
-				<div className='w-full h-full font-montserrat bg-white overflow-y-scroll'>
+			<div className={openBlogWindow ? "grid grid-cols-3 blur-sm " : "flex flex-row justify-between"}>
+				<div className='w-full h-screen  font-montserrat bg-white text-2xl text-center'> Main Blog Data</div>
+				add heart
+				comment
+				bookmark
+				share
+				<div className='w-1/2 h-full font-montserrat bg-white overflow-y-scroll '>
 					<PrevBlogs activeBlogWindow={setActiveBlogWindow} />
 				</div>
 			</div>

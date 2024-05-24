@@ -115,7 +115,7 @@ const PrevBlogs = ({ activeBlogWindow }) => {
 	);
 
 	return (
-		<div className='grid grid-cols-1 bg-gradient-to-r from-white to-black space-y-24'>
+		<div className='grid grid-cols-1 bg-white space-y-24'>
 			{modifiedContent.map((item, index) => (
 				<div key={index} className='bg-white h-[140px] w-[800px] mx-auto relative transition-all duration-300 ease-in-out group'>
 					<iframe srcDoc={item} className='w-full h-full flex z-20' scrolling="no" />
