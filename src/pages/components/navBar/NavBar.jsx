@@ -327,9 +327,9 @@ const blogArray = [
 ];
 const mainNavBar = ["home", "about", "episodes", "blog", "awards", "yugen", "connect", "account"];
 
-const buttonStyle = "uppercase font-thin underlineAnimate subpixel-antialiased tracking-[6px] text-white text-md";
+const buttonStyle = "uppercase font-thin underlineAnimate subpixel-antialiased tracking-[6px] text-white text-md lg:text-[14px]";
 const activeNavButton =
-	"uppercase font-semibold text-gold-500 subpixel-antialiased tracking-[6px]  text-md underline underline-offset-8 decoration-1";
+	"uppercase font-semibold text-gold-500 subpixel-antialiased tracking-[6px]  lg:text-sm text-md underline underline-offset-8 decoration-1";
 const smallMenuclassName =
 	"uppercase py-4 animate-fadeIn w-fit px-24 translate-x-[-400px] bg-char-900 text-white font-montserrat w-fit gap-12 text-[22px] flex flex-col translate-y-[50px] absolute bg-black transition-all duration-500 ease-in-out rounded-b-xl";
 const largeMenuclassName =
@@ -383,8 +383,8 @@ const NavBar = () => {
 	}, []);
 	console.log(menu);
 	return (
-		<div ref={menuRef} id='menu' className={open ? "w-full h-fit bg-black py-4 border-b border-white" : "w-full h-fit bg-black py-4 "}>
-			<div className='w-full h-full flex flex-row justify-center space-x-16 items-center mx-auto'>
+		<div ref={menuRef} id='menu' className={open ? "w-full h-14 bg-black border-b border-white" : "w-full h-14 bg-black"}>
+			<div className='w-full flex flex-row justify-center items-center lg:space-x-10 xl:space-x-14 mx-auto'>
 				<Button className={menu === "home" ? activeNavButton : buttonStyle} text={"home"} onClick={handleClick} to={"/members-area/home"}></Button>
 				<Button
 					className={menu === "about" ? activeNavButton : buttonStyle}
@@ -395,7 +395,7 @@ const NavBar = () => {
 				<Button className={menu === "episodes" ? activeNavButton : buttonStyle} text={"episodes"} onClick={handleClick}></Button>
 				<Button className={menu === "blog" ? activeNavButton : buttonStyle} text={"blog"} onClick={handleClick}></Button>
 				<Button className={menu === "safe seal" ? activeNavButton : buttonStyle} text={"safe seal"} onClick={handleClick}></Button>
-				<img src={goldLogo} alt='logo' className='w-14 h-14' />
+				<img src={goldLogo} alt='logo' className='w-auto xl:h-10 lg:h-8 md:h-6 mt-2' />
 				<Button className={menu === "awards" ? activeNavButton : buttonStyle} text={"awards"} onClick={handleClick}></Button>
 				<Button className={menu === "yugen" ? activeNavButton : buttonStyle} text={"yugen"} to={"/members-area/yugen"} onClick={handleClick}></Button>
 				<Button
@@ -415,15 +415,15 @@ const NavBar = () => {
 			<div ref={menuRef} className='w-full '>
 				{/* Episodes Drop Down */}
 				<NavBarDropDown open={open} menu={menu} text={"episodes"}>
-					<div className='flex flex-row w-full justify-start items-center  '>
-						<div className='w-[475px] h-fit flex flex-col space-y-12 py-12 px-12 whitespace-nowrap '>
-							<h1 className='uppercase  text-white underline text-2xl font-montserrat font-thin underline-offset-8  decoration-1 '>Categories</h1>
+					<div className='flex flex-row w-full justify-start items-center bg-black border-white border-b-[1px]'>
+						<div className='w-[475px] h-fit flex flex-col space-y-12 xl:py-2 py-12 px-12 whitespace-nowrap '>
+							<h1 className='uppercase  text-white underline text-2xl xl:text-lg font-montserrat font-thin underline-offset-8  decoration-1 '>Categories</h1>
 							{episodes.map((item, index) => {
 								return (
 									<div
 										onMouseEnter={() => handleSubMenuHover(item, index)}
 										key={index}
-										className='w-11/12 uppercase text-white text-lg font-montserrat font-thin ml-4 hover:underline underline-offset-8 decoration-1 transition-all duration-500 ease-in-out text-left '
+										className='w-11/12 uppercase text-white text-lg xl:text-sm font-montserrat font-thin ml-4 hover:underline underline-offset-8 decoration-1 transition-all duration-500 ease-in-out text-left '
 									>
 										<a href={item.link}>{item.name}</a>
 									</div>
@@ -434,11 +434,11 @@ const NavBar = () => {
 							<div className='w-full grid grid-cols-3 duration-500 ease-in-out transition-all animate-fadeIn '>
 								{episodesArray[subMenuIndex]?.map((item, index) => {
 									return (
-										<div key={index} className='w-full h-full ml-4 text-center animate-fadeIn transition-all delay-200 '>
+										<div key={index} className='w-full xl:w-3/4 h-full ml-4 text-center animate-fadeIn transition-all delay-200 '>
 											<h1 className='uppercase text-white text-4xl font-montserrat font-thin py-6 whitespace-nowrap'>{item.playerTitle}</h1>
 											{item.player}
-											<img src={item.image} className='w-3/4 mx-auto rounded-md ' />
-											<h1 className='uppercase text-white text-2xl font-montserrat font-thin whitespace-nowrap py-4'>{item.name}</h1>
+											<img src={item.image} className='w-3/4   mx-auto rounded-md ' />
+											<h1 className='uppercase text-white xl:text-xl text-2xl font-montserrat font-thin whitespace-nowrap py-4'>{item.name}</h1>
 										</div>
 									);
 								})}
