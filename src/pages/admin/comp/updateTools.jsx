@@ -56,7 +56,7 @@ const UpdateTools = () => {
 					);
 				})}
 			</div>
-			<div className='overflow-y-none'>{compState}</div>
+			<div className='w-full h-lvh'>{compState}</div>
 		</div>
 	);
 };

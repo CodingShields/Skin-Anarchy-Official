@@ -11,7 +11,7 @@ const HomeLayout = () => {
 		<>
 			{!isAdminPage && <Header />}
 			<Outlet />
-			<ChatBot />
+			{!isAdminPage && <ChatBot />}
 			{!isAdminPage && <Footer />}
 		</>
 	);

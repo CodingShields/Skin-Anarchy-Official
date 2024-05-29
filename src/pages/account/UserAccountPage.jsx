@@ -43,12 +43,8 @@ const UserAccountPage = () => {
 	};
 
 	return (
-		<div className='flex flex-row w-full h-fit justify-center items-center bg-white'>
-			<div
-			className="flex flex-col w-full h-fit justify-center items-center bg-white"
-			>
-
-			</div>
+		<div className=' w-full h-lvh justify-center items-center bg-white'>
+			<div className=' w-full h-fit justify-center items-center bg-white'></div>
 			{userProfile.map((user, index) => (
 				<div className=' shadow-gray-800 shadow-xl bg-gray-400 flex flex-col w-fit justify-center items-center px-12 py-12' key={index}>
 					<div className='grid grid-rows-8 grid-flow-row w-128 h-full whitespace-nowrap gap-10 justify-center items-center'>
@@ -112,11 +108,7 @@ const UserAccountPage = () => {
 					</div>
 				</div>
 			))}
-			<div
-			className="flex flex-row w-full h-full justify-center items-center bg-white"
-			>
-
-			</div>
+			<div className='flex flex-row w-full h-full justify-center items-center bg-white'></div>
 		</div>
 	);
 };

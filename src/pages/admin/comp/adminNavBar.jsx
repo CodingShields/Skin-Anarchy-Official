@@ -52,41 +52,41 @@ const AdminNavBar = ({ onItemClicked }) => {
 	}
 
 	return (
-		<div className='flex flex-col items-center justify-start w-[245px] h-screen bg-black px-8 lg:space-y-12'>
-			<div>
+		<div className='fixed w-fit h-full '>
+			<div className='flex flex-col items-center justify-center grow h-full bg-black px-8 lg:space-y-16 my-auto'>
 				<img src={whiteLogo} className='h-36 py-4 mt-4' alt='whiteLogo' />
 				<h1 className='text-white text-2xl font-glacialRegular text-center'>Admin</h1>
-			</div>
 
-			{navigation.map((item, index) => {
-				return (
-					<div
-						onClick={() => handleItemClick(item.name)}
-						className={classNames(
-							"  h-fit flex space-x-4 group hover:cursor-pointer  ",
-							activeItem === item.name && " ring-white ring-2 rounded-xl transition-all duration-500 ease-in-out h-fit w-fit px-4 py-2"
-						)}
-						key={index}
-						value={item.name}
-					>
-						<item.icon
+				{navigation.map((item, index) => {
+					return (
+						<div
+							onClick={() => handleItemClick(item.name)}
 							className={classNames(
-								"w-4 h-6 text-gray-200  group-hover:text-gold-500 group-hover:underline ",
-								activeItem === item.name ? "stroke-gold-500 mr-4 group-hover:stroke-white " : ""
+								"  h-lvh flex space-x-4 group hover:cursor-pointer  ",
+								activeItem === item.name && " ring-white ring-2 rounded-xl transition-all duration-500 ease-in-out h-fit w-fit px-4 py-2"
 							)}
-						/>
-						<p
-							className={classNames(
-								activeItem === item.name
-									? "scale-125  text-gold-500 group-hover:text-white whitespace-nowrap font-glacialRegular "
-									: "text-white text-md w-fit group-hover:font-bold group-hover:text-gold-500 whitespace-nowrap font-glacialRegular"
-							)}
+							key={index}
+							value={item.name}
 						>
-							{item.name}
-						</p>
-					</div>
-				);
-			})}
+							<item.icon
+								className={classNames(
+									"w-4 h-6 text-gray-200  group-hover:text-gold-500 group-hover:underline ",
+									activeItem === item.name ? "stroke-gold-500 mr-4 group-hover:stroke-white " : ""
+								)}
+							/>
+							<p
+								className={classNames(
+									activeItem === item.name
+										? "scale-125  text-gold-500 group-hover:text-white whitespace-nowrap font-glacialRegular "
+										: "text-white text-md w-fit group-hover:font-bold group-hover:text-gold-500 whitespace-nowrap font-glacialRegular"
+								)}
+							>
+								{item.name}
+							</p>
+						</div>
+					);
+				})}
+			</div>
 		</div>
 	);
 };

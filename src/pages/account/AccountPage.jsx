@@ -32,7 +32,7 @@ const AccountPage = () => {
 		checkAdminAccess();
 	}, [userId]);
 
-	return <div className='w-full h-full '>{adminAccess ? <AdminPage /> : <UserAccountPage />}</div>;
+	return <AdminPage />;
 };
 
 export default AccountPage;

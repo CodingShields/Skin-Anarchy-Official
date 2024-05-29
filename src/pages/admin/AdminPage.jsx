@@ -38,12 +38,10 @@ const AdminPage = () => {
 	}, []);
 
 	return (
-		<div className='flex flex-row  w-full max-h-fit bg-white overscroll-contain'>
-			<div className='h-full w-fit '>
-				<AdminNavBar onItemClicked={handleNavigation} />
+		<div className=' w-full h-full bg-white relative '>
+			<div className='flex flex-row  w-full h-full bg-white overscroll-y-none	'>
+				<AdminNavBar onItemClicked={handleNavigation} /> {renderStep}
 			</div>
-
-			<div className='w-full h-full overscroll-contain'>{renderStep}</div>
 		</div>
 	);
 };
