@@ -30,6 +30,11 @@ import beauty3 from "../../../assets/images/navBar/blog/beauty/beauty3.png";
 import science1 from "../../../assets/images/navBar/blog/scienceOfSkin/science1.png";
 import science2 from "../../../assets/images/navBar/blog/scienceOfSkin/science2.png";
 import science3 from "../../../assets/images/navBar/blog/scienceOfSkin/science3.png";
+import devitto from "../../../assets/images/navBar/episodes/devitto.png";
+import gersten from "../../../assets/images/navBar/episodes/gersten.png";
+import allenby from "../../../assets/images/navBar/masterclass/allenby.png";
+import codex from "../../../assets/images/navBar/masterclass/codex.png";
+import veytsman from "../../../assets/images/navBar/masterclass/veytsman.png";
 
 const about = [
 	{
@@ -124,7 +129,7 @@ const ThoughtLeaders = [
 	},
 	{
 		name: "Rich Gersten",
-		image: "",
+		image: gersten,
 		link: "",
 	},
 	{
@@ -155,7 +160,7 @@ const EditorsAndJournalists = [
 const Celebrities = [
 	{
 		name: "Torrey DeVitto",
-		image: "",
+		image: devitto,
 		link: "",
 	},
 	{
@@ -166,6 +171,24 @@ const Celebrities = [
 	{
 		name: "Demi Tebow ",
 		image: tebow,
+		link: "",
+	},
+];
+
+const Masterclass = [
+	{
+		name: "Torrey DeVitto",
+		image: allenby,
+		link: "",
+	},
+	{
+		name: "Tia Mowry",
+		image: codex,
+		link: "",
+	},
+	{
+		name: "Demi Tebow ",
+		image: veytsman,
 		link: "",
 	},
 ];
@@ -318,6 +341,8 @@ const scienceOfSkin = [
 		image: science2,
 	},
 ];
+
+
 
 const blogArray = [
 	beautyCulture,

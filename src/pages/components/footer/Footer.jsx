@@ -8,7 +8,7 @@ import arrow from "../../../assets/icons/arrow.svg";
 
 const Footer = () => {
 	return (
-		<div className='w-full  h-screen  bg-black relative pt-4'>
+		<div className='w-full  h-fit  bg-black relative pt-4'>
 			<div className='w-full h-full bg-black flex flex-row justify-evenly  '>
 				<div className='w-3/4 h-fit '>
 					<div className=' w-1/2 mx-auto'>
