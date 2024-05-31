@@ -54,7 +54,7 @@ import SupportPage from "./pages/support/SupportPage.jsx";
 // Disclaimer and Privacy Policy PagePages
 import DisclaimerPage from "./pages/disclaimer-privacy-policy/DisclaimerPage.jsx";
 import PrivacyPolicyPage from "./pages/disclaimer-privacy-policy/PrivacyPolicyPage.jsx";
-
+console.log("test");
 function App() {
 	return (
 		<BrowserRouter>
