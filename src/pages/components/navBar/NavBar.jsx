@@ -192,7 +192,7 @@ const Masterclass = [
 		link: "",
 	},
 ];
-const episodesArray = [currentEpisode, TopMakeupArtists, TopDoctors, BrandFounders, ThoughtLeaders, EditorsAndJournalists, Celebrities];
+const episodesArray = [currentEpisode, TopMakeupArtists, TopDoctors, BrandFounders, ThoughtLeaders, EditorsAndJournalists, Celebrities, Masterclass];
 
 const episodes = [
 	{
@@ -411,12 +411,7 @@ const NavBar = () => {
 		<div ref={menuRef} id='menu' className={open ? "w-full h-14 bg-black border-b border-white" : "w-full h-14 bg-black"}>
 			<div className='w-full flex flex-row justify-center items-center lg:space-x-10 xl:space-x-14 mx-auto'>
 				<Button className={menu === "home" ? activeNavButton : buttonStyle} text={"home"} onClick={handleClick} to={"/members-area/home"}></Button>
-				<Button
-					className={menu === "about" ? activeNavButton : buttonStyle}
-					text={"about"}
-					onClick={handleClick}
-					to={"/members-area/about-us"}
-				></Button>
+				<Button className={menu === "about" ? activeNavButton : buttonStyle} text={"about"} onClick={handleClick}></Button>
 				<Button className={menu === "episodes" ? activeNavButton : buttonStyle} text={"episodes"} onClick={handleClick}></Button>
 				<Button className={menu === "blog" ? activeNavButton : buttonStyle} text={"blog"} onClick={handleClick}></Button>
 				<Button className={menu === "safe seal" ? activeNavButton : buttonStyle} text={"safe seal"} onClick={handleClick}></Button>
@@ -438,11 +433,26 @@ const NavBar = () => {
 				></Button>
 			</div>
 			<div ref={menuRef} className='w-full '>
+				<NavBarDropDown open={open} menu={menu} text={"about"}>
+					<div className='flex flex-row w-full justify-center items-center bg-black border-white border-b-[1px] py-12 space-x-12'>
+						{about.map((item, index) => {
+							return (
+								<>
+									<a key={index} href={item.link}>
+										<h1 className='text-2xl text-white font-montserrat font-thin uppercase underlineAnimate'>{item.name}</h1>
+									</a>
+								</>
+							);
+						})}
+					</div>
+				</NavBarDropDown>
 				{/* Episodes Drop Down */}
 				<NavBarDropDown open={open} menu={menu} text={"episodes"}>
 					<div className='flex flex-row w-full justify-start items-center bg-black border-white border-b-[1px]'>
 						<div className='w-[475px] h-fit flex flex-col space-y-12 xl:py-2 py-12 px-12 whitespace-nowrap '>
-							<h1 className='uppercase  text-white underline text-2xl xl:text-lg font-montserrat font-thin underline-offset-8  decoration-1 '>Categories</h1>
+							<h1 className='uppercase  text-white underline text-2xl xl:text-lg font-montserrat font-thin underline-offset-8  decoration-1 '>
+								Categories
+							</h1>
 							{episodes.map((item, index) => {
 								return (
 									<div
@@ -473,7 +483,7 @@ const NavBar = () => {
 				</NavBarDropDown>
 				{/* Blog Drop Down */}
 				<NavBarDropDown open={open} menu={menu} text={"blog"}>
-					<div className='flex flex-row w-full justify-start items-center '>
+					<div className='flex flex-row w-full justify-start items-center bg-black border-white border-b-[1px]'>
 						<div className='w-[475px] h-fit flex flex-col space-y-12 py-12 px-12 whitespace-nowrap  '>
 							<h1 className='uppercase  text-white underline text-2xl font-montserrat font-thin underline-offset-8 decoration-1'>Categories</h1>
 							{blog.map((item, index) => {
@@ -534,7 +544,7 @@ const NavBar = () => {
 					</div>
 				</NavBarDropDown>
 				<NavBarDropDown open={open} menu={menu} text={"awards"}>
-					<div className='w-full h-fit flex flex-row justify-center items-end mt-4 space-x-24 '>
+					<div className='flex flex-row w-full justify-center items-center bg-black border-white border-b-[1px] py-4 space-x-12'>
 						{awards.map((item, index) => {
 							return (
 								<>

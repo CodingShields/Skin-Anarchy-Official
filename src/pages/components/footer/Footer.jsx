@@ -7,6 +7,7 @@ import socialNav from "../../../assets/data/socialNav";
 import arrow from "../../../assets/icons/arrow.svg";
 
 const Footer = () => {
+	const navigate = useNavigate();
 	return (
 		<div className='w-full  h-fit  bg-black relative pt-4'>
 			<div className='w-full h-full bg-black flex flex-row justify-evenly  '>
@@ -40,7 +41,9 @@ const Footer = () => {
 					</div>
 					<div className='w-1/2 mx-auto block text-white mt-4 bg-black h-fit'>
 						<h1 className=' text-6xl tracking-widest font-montserrat py-2 whitespace-nowrap font-light uppercase'>Skin Anarchy</h1>
-						<p className='font-thin font-montserrat text-lg text-center  py-2 whitespace-nowrap'>Copyright © 2022 Skin Anarchy. All rights reserved.</p>
+						<p className='font-thin font-montserrat text-lg text-center  py-2 whitespace-nowrap'>
+							Copyright © 2022 Skin Anarchy. All rights reserved.
+						</p>
 					</div>
 				</div>
 				<div className='flex flex-row space-x-8  text-white w-3/4  h-fit gap-4'>
@@ -150,10 +153,12 @@ const Footer = () => {
 							<p>pr@skincareanarchypodcast.com</p>
 							<p>Get Featured On Our Show</p>
 							<p>Become A Sponsor</p>
+							<p>Support</p>
 						</div>
 					</div>
 				</div>
 			</div>
+	
 		</div>
 	);
 };

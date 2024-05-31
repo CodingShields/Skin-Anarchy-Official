@@ -3,6 +3,9 @@ import { AuthContextProvider } from "./context/AuthContext";
 
 //About Pages
 import AboutPage from "./pages/about/AboutPage.jsx";
+import MissionStatementComp from "./pages/about/MissionStatementComp.jsx";
+import AboutUs from "./pages/about/AboutUs";
+import FeaturedPress from "./pages/about/FeaturedPressComp.jsx";
 
 //Podcast Pages
 import CurrentPodcastEpisode from "./pages/podcast/CurrentPodcastEpisode.jsx";
@@ -46,6 +49,12 @@ import ShopMain from "./pages/shop/ShopMain.jsx";
 //Yugen Page
 import YugenPage from "./pages/yugen/YugenPage.jsx";
 
+// Support Page
+import SupportPage from "./pages/support/SupportPage.jsx";
+// Disclaimer and Privacy Policy PagePages
+import DisclaimerPage from "./pages/disclaimer-privacy-policy/DisclaimerPage.jsx";
+import PrivacyPolicyPage from "./pages/disclaimer-privacy-policy/PrivacyPolicyPage.jsx";
+
 function App() {
 	return (
 		<BrowserRouter>
@@ -53,11 +62,16 @@ function App() {
 				<Routes>
 					<Route index element={<LoginPage />} />
 					<Route path='sign-up' element={<SignUpPage />} />
+					<Route path='disclaimer' element={<DisclaimerPage />} />
+					<Route path='privacy-policy' element={<PrivacyPolicyPage />} />
 					<Route element={<ProtectedRoute />} />
 					<Route path='members-area' element={<HomeLayout />}>
 						<Route path='home' element={<HomePage />} />
 						{/* About Pages */}
-						<Route path='about-us' element={<AboutPage />} />
+						{/* <Route path='about-us' element={<AboutPage />} /> */}
+						<Route path='about/about-us' element={<AboutUs />} />
+						<Route path='about/mission-statement' element={<MissionStatementComp />} />
+						<Route path='about/featured-press' element={<FeaturedPress />} />
 						{/* PodCast Pages */}
 						<Route path='podcast/current-podcast-episode' element={<CurrentPodcastEpisode />} />
 						<Route path='podcast/celebrity-podcasts' element={<CelebrityPodcasts />} />
@@ -86,6 +100,9 @@ function App() {
 						<Route path='account' element={<AccountPage />} />
 						<Route path='log-out' element={<LogoutPage />} />
 						<Route path='connect' element={<ConnectPage />} />
+						{/* Support Page */}
+						<Route path='support' element={<SupportPage />} />
+						{/* Disclaimer and Privacy Policy PagePages */}
 					</Route>
 				</Routes>
 			</AuthContextProvider>

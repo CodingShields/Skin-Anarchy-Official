@@ -2,6 +2,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer.jsx";
 import ChatBot from "../components/chat-bot/ChatBot";
+import PolicyBar from "../disclaimer-privacy-policy/PolicyBar";
 const HomeLayout = () => {
 	const location = useLocation();
 
@@ -13,6 +14,7 @@ const HomeLayout = () => {
 			<Outlet />
 			{!isAdminPage && <ChatBot />}
 			{!isAdminPage && <Footer />}
+			{!isAdminPage && <PolicyBar />}
 		</>
 	);
 };
