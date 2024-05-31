@@ -1,5 +1,5 @@
 # README.md for Skin Anarchy Official
-
+[![Netlify Status](https://api.netlify.com/api/v1/badges/03d43ebf-9387-4b17-a89c-c738a6773290/deploy-status)](https://app.netlify.com/sites/skin-anarchy-test-site/deploys)
 ## This site is still in development.
 
 ## Introduction
