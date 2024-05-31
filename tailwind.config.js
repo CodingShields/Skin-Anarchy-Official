@@ -369,10 +369,10 @@ export default {
 	},
 
 	plugins: [
-		require("tailwind-scrollbar-hide"),
+		// require("tailwind-scrollbar-hide"),
 		require("@tailwindcss/typography"),
 		require("@tailwindcss/aspect-ratio"),
-		require("@tailwindcss/container-queries"),
+		// require("@tailwindcss/container-queries"),
 		require("@tailwindcss/forms"),
 		"prettier-plugin-tailwindcss",
 	],
