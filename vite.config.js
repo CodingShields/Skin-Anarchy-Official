@@ -8,9 +8,16 @@ export default defineConfig(({ mode }) => {
 
 	return {
 		plugins: [react()],
-		// Add assetsInclude option to include HTML files as assets
-		assetsInclude: ["**/*.html"],
-		// vite config
+		build: {
+			outDir: "dist",
+			rollupOptions: {
+				output: {
+					entryFileNames: "assets/[name].[hash].js",
+					chunkFileNames: "assets/[name].[hash].js",
+					assetFileNames: "assets/[name].[hash].[ext]",
+				},
+			},
+		},
 		define: {
 			VITE_FIREBASE_API_KEY: JSON.stringify(env.VITE_FIREBASE_API_KEY), // Make the env var available to your React client-side code
 		},
