@@ -1,34 +1,31 @@
 import { useState, useEffect } from "react";
 import { getFirestore, collection, getDocs } from "firebase/firestore";
+import BlogUserResponse from "./BlogUserResponse";
 
 const PrevBlogs = ({ activeBlogWindow }) => {
 	const [blogs, setBlogs] = useState([]);
 	const [currentBlog, setCurrentBlog] = useState(null);
 	const [state, setState] = useState({
 		loading: false,
-		error: null,
+		error: false,
 		errorMessage: "",
 	});
 	const [modifiedContent, setModifiedContent] = useState([]);
 
 	useEffect(() => {
-		setState({
-			loading: true,
-			error: true,
-			errorMessage: "Loading Previous Blogs",
-		});
-
 		const fetchData = async () => {
+			setState({ loading: true, error: false, errorMessage: "Loading Previous Blogs" });
 			const db = getFirestore();
 			try {
-				const snapshot = await getDocs(collection(db, "mediumData"));
-				const blogsData = snapshot.docs.map((doc) => doc.data());
-				const newData = blogsData[0]?.mediumData || [];
-				setBlogs(newData);
+				const snapshot = await getDocs(collection(db, "blogData"));
+				const blogs = snapshot.docs.map((doc) => ({
+					id: doc.id,
+					...doc.data(),
+				}));
+				setBlogs(blogs);
 				setState({ loading: false, error: false, errorMessage: "" });
 			} catch (error) {
-				console.error("Error fetching data:", error);
-				setState({ loading: false, error: true, errorMessage: "Failed to fetch data" });
+				setState({ loading: false, error: true, errorMessage: error.message });
 			}
 		};
 
@@ -37,21 +34,19 @@ const PrevBlogs = ({ activeBlogWindow }) => {
 
 	useEffect(() => {
 		const modifyContent = () => {
-			const modifiedContents = [];
-			blogs.forEach((item) => {
+			const modifiedContents = blogs.map((item) => {
 				const parser = new DOMParser();
-				const doc = parser.parseFromString(item.data, "text/html");
+				const doc = parser.parseFromString(item.blog, "text/html");
 				const root = doc.querySelector(".h-entry");
 				const styleElement = doc.createElement("style");
 
 				styleElement.textContent = `
                     @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
-                    /* Override the font family for all elements */
                     * {
                         font-family: 'Montserrat', sans-serif !important;
                     }
                 `;
+
 				const title = doc.querySelector(".p-name");
 				if (title) {
 					title.style.color = "black";
@@ -59,10 +54,9 @@ const PrevBlogs = ({ activeBlogWindow }) => {
 					title.style.fontWeight = 500;
 					title.style.fontSize = "35rem";
 				}
-				const body = doc.body;
 
+				const body = doc.body;
 				if (body) {
-					// body.style.overflowY = "hidden";
 					body.style.overflowX = "hidden";
 				}
 
@@ -71,14 +65,6 @@ const PrevBlogs = ({ activeBlogWindow }) => {
 
 				if (root) {
 					const headings = root.querySelectorAll("h1, h2, h3");
-					const h1 = root.querySelector("h1");
-					if (h1) {
-						console.log("true");
-						h1.style.color = "black";
-						h1.style.fontFamily = "Montserrat";
-						h1.style.fontWeight = 500;
-						h1.style.fontSize = "35rem";
-					}
 					headings.forEach((heading) => {
 						heading.style.color = "black";
 						heading.style.fontFamily = "Montserrat";
@@ -91,44 +77,104 @@ const PrevBlogs = ({ activeBlogWindow }) => {
 					}
 				}
 
-				modifiedContents.push(doc.documentElement.outerHTML);
+				return doc.documentElement.outerHTML;
 			});
 
 			setModifiedContent(modifiedContents);
 		};
 
-		modifyContent();
+		if (blogs.length > 0) {
+			modifyContent();
+		}
 	}, [blogs]);
 
 	const handleClick = (index) => {
 		const activeBlog = modifiedContent[index];
-		console.log(activeBlog);
 		setCurrentBlog(activeBlog);
 		activeBlogWindow(activeBlog);
-		console.log(activeBlogWindow(activeBlog));
 	};
 
-	const buttonIcon = (
-		<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' strokeWidth={1.5}>
-			<path strokeLinecap='round' strokeLinejoin='round' d='m18.75 4.5-7.5 7.5 7.5 7.5m-6-15L5.25 12l7.5 7.5' />
-		</svg>
-	);
+	const isValidUrl = (url) => {
+		try {
+			new URL(url);
+			return true;
+		} catch (e) {
+			return false;
+		}
+	};
+
+	const renderBlogContent = (content) => {
+		const parts = content.split(/\n{2,}/); // Split by empty lines
+
+		return (
+			<div>
+				{parts.map((part, index) => {
+					let trimmedPart = part.trim();
+					if (!trimmedPart) {
+						return null; // Skip empty strings
+					}
+
+					// Check for image or title tag
+					const imageTagMatch = trimmedPart.match(/\[IMAGE:\s*(.*?)\s*\]/);
+					const titleTagMatch = trimmedPart.match(/\[TITLE:\s*(.*?)\s*\]/);
+
+					if (imageTagMatch) {
+						const imageUrl = imageTagMatch[1];
+						if (isValidUrl(imageUrl)) {
+							return <img key={index} src={imageUrl} alt='Blog Image' className='w-64 mx-auto h-full object-cover py-4' />;
+						}
+					} else if (titleTagMatch) {
+						const titleImage = titleTagMatch[1];
+						if (isValidUrl(titleImage)) {
+							return (
+								<div key={index} className='text-center py-4'>
+									<img src={titleImage} alt='Title Image' className='w-96 mx-auto h-full object-cover py-4' />
+								</div>
+							);
+						}
+					} else {
+						// Parse markdown syntax
+						trimmedPart = trimmedPart
+							.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>") // Bold
+							.replace(/\n(\d+\..*?)/g, "\n<li>$1</li>") // Ordered list
+							.replace(/\n(\*\s*.*?)\n/g, "\n<li>$1</li>") // Unordered list
+							.replace(/\n/g, "<br />") // Newline
+							.replace(/\t/g, "&emsp;"); // Tab to spaces
+
+						// Default to paragraph
+						return (
+							<p
+								className='w-3/4 text-xl font-montserrat mx-auto whitespace-pre-wrap'
+								key={index}
+								dangerouslySetInnerHTML={{ __html: trimmedPart }}
+							/>
+						);
+					}
+				})}
+			</div>
+		);
+	};
+
 
 	return (
 		<div className='grid grid-cols-1 bg-white space-y-24'>
-			{modifiedContent.map((item, index) => (
-				<div key={index} className='bg-white h-[140px] w-[800px] mx-auto relative transition-all duration-300 ease-in-out group'>
-					<iframe srcDoc={item} className='w-full h-full flex z-20' scrolling="no" />
-					<div className='w-full bg-white text-center'>
-						<button
-							onClick={() => handleClick(index)}
-							className='h-fit w-fit text-black bg-white px-2 py-2 text-center cursor-pointer hover:text-white hover:bg-black hover:px-8 transition-all ease-linear duration-200 hover:rounded-t-xl uppercase'
-						>
-							Read More
-						</button>
-					</div>
+			{blogs.length > 0 && (
+				<div className='bg-white h-[800px] w-[800px] mx-auto relative transition-all duration-300 ease-in-out group space-y-4'>
+					{blogs.map((blog, index) => (
+						<div key={index}>
+							<h1 className='text-3xl text-center font-montserrat font-semibold py-4'>{blog.title}</h1>
+							<div className='inline-flex justify-between w-full py-2'>
+								<p>Date: {blog.date}</p>
+								<p>Written By: {blog.author}</p>
+							</div>
+							<BlogUserResponse />
+
+							{renderBlogContent(blog.blog)}
+						</div>
+					))}
 				</div>
-			))}
+			)}
+			{blogs.length === 0 && !state.loading && <p>No blogs available</p>}
 		</div>
 	);
 };

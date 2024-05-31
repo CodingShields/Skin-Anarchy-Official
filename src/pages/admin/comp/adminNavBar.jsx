@@ -52,7 +52,7 @@ const AdminNavBar = ({ onItemClicked }) => {
 	}
 
 	return (
-		<div className='fixed w-fit h-full '>
+		<div className='fixed w-fit h-full overscroll-y-none z-10'>
 			<div className='flex flex-col items-center justify-center grow h-full bg-black px-8 lg:space-y-16 my-auto'>
 				<img src={whiteLogo} className='h-36 py-4 mt-4' alt='whiteLogo' />
 				<h1 className='text-white text-2xl font-glacialRegular text-center'>Admin</h1>

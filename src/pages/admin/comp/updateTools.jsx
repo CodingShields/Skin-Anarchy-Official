@@ -25,7 +25,7 @@ const UpdateTools = () => {
 	}
 
 	return (
-		<div className='flex flex-col items-center justify-start w-full '>
+		<div className='flex flex-col items-center justify-start w-full fixed'>
 			<div className='flex flex-row w-full justify-center items-center h-fit border-b-4 border-black py-4 bg-opacity-0'>
 				{state.adminNavBar.map((item, id) => {
 					return (
@@ -56,7 +56,7 @@ const UpdateTools = () => {
 					);
 				})}
 			</div>
-			<div className='w-full h-lvh'>{compState}</div>
+			<div className='w-full h-full'>{compState}</div>
 		</div>
 	);
 };
