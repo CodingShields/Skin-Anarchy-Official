@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { TweenMax, TimelineLite } from "gsap";
+import { gsap } from "gsap";
+
 // import { set } from "firebase/database";
 
 const TestimonialsContainer = () => {
@@ -35,11 +36,11 @@ const TestimonialsContainer = () => {
 		const line = document.querySelectorAll(".line");
 
 		function QuoteAnimation() {
-			const tl = new TimelineLite();
+			const tl = gsap.timeline();
 			const time = 3;
 			const y = 100;
-			tl.add(
-				TweenMax.staggerFromTo(
+			tl.add("start")
+				.fromTo(
 					line,
 					time,
 					{
@@ -50,10 +51,9 @@ const TestimonialsContainer = () => {
 						opacity: 1,
 						y: 0,
 					},
-					2
+					0
 				)
-			).add(
-				TweenMax.staggerTo(
+				.to(
 					line,
 					time,
 					{
@@ -61,10 +61,8 @@ const TestimonialsContainer = () => {
 						opacity: 0,
 						y: y,
 					},
-					2
-				),
-				1.3
-			);
+					"start+=1.3"
+				);
 		}
 
 		QuoteAnimation();
@@ -122,7 +120,6 @@ const TestimonialsContainer = () => {
 							</svg>
 						</figure>
 						<p className=' text-5xl font-montserrat uppercase indent-8 text-center'>{testimonials[testimonialIndex].lineOne}</p>
-					
 					</blockquote>
 					<figcaption className='mt-8 '>
 						<div className=' font-thin text-white text-2xl font-montserrat leading-[60px] py-4'>
