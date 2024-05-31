@@ -11,7 +11,7 @@ const DisclaimerPage = () => {
 		if (user) {
 			navigate("/members-area/home");
 		} else {
-			navigate("/login");
+			navigate("/");
 		}
 	};
 

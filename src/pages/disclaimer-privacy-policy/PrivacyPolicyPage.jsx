@@ -10,7 +10,7 @@ const PrivacyPolicyPage = () => {
 		if (user) {
 			navigate("/members-area/home");
 		} else {
-			navigate("/login");
+			navigate("/");
 		}
 	};
 
