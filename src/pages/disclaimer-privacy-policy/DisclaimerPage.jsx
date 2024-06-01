@@ -17,7 +17,7 @@ const DisclaimerPage = () => {
 
 	return (
 		<div className='w-full h-fit text-white'>
-			<div className='w-3/4 h-fit flex flex-col justify-center items-center mx-auto py-24'>
+			<div className='w-3/4 h-fit flex flex-col justify-center items-center mx-auto py-24 '>
 				<img src={whiteLogo} className='w-64' />
 				<h1 className='text-7xl uppercase font-montserrat font-thin pt-12 pb-24'>Skin Anarchy Disclaimer</h1>
 				<div className='w-[1000px] border-[.5px] border-white px-14'>
