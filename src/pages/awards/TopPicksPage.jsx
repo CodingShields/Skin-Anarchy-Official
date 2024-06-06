@@ -1,67 +1,118 @@
-import { useState, useEffect } from "react";
-import { Link, NavLink } from "react-router-dom";
-import skinAwardsLogo from "../../assets/images/skinAwardsLogo.png";
-import verticalSheetsWaving from "../../assets/video/verticalSheetsWaving.mp4";
-import topPicksBGVIDEO from "../../assets/video/topPicksBGVIDEO.mp4";
-import TabBar from "./comp/tabBar";
-import testData from "../../assets/data/topPicks/test/testData";
+import React, { useState } from "react";
+import TopPicksNavBar from "./comp/TopPicksNavBar";
+import TopPicksNavButton from "./TopPicksNavButton";
+import TopPicksNavBarDropDown from "./TopPicksNavBarDropDown";
+import TopPicksSubMenuButton from "./TopPicksSubMenuButton";
+import TopPicksImagesCard from "./TopPicksImagesCard";
+import topPicks2023 from "../../assets/images/topPicks/2023/topPicks2023.js"
+
+const topPicksNavBar = [
+	{
+		name: "skincare",
+		subMenu: [
+			"treatments, peels, patches",
+			"toners & essence",
+			"supplements",
+			"sunscreens",
+			"skincare devices",
+			"serums",
+			"oils",
+			"moisturizers",
+			"masks",
+			"makeup remover & mist",
+			"lips, hands & feet",
+			"eye masks, lash & brow serums, eye creams",
+			"cleaners",
+			"body care",
+		],
+	},
+	{
+		name: "makeup",
+		subMenu: ["primer, foundation, concealer", "lips & nails", "eyes & brows", "blushes, bronzers, highlighters"],
+	},
+	{
+		name: "hair",
+		subMenu: ["tools & styling products", "shampoo, conditioner & leave-ins", "dry shampoo, oils, masks, & scalp care"],
+	},
+	{
+		name: "fragrance",
+		subMenu: ["perfume", "candles"],
+	},
+];
+
 
 const TopPicksPage = () => {
-	const [bGLoaded, setBGLoaded] = useState(false);
-	const [prodState, setProdState] = useState({
-		prodHover: false,
-		prodClicked: false,
+	const [activeMenu, setActiveMenu] = useState({
+		name: "",
+		subMenu: [],
 	});
+	const [activeSubMenu, setActiveSubMenu] = useState("");
 
-	useEffect(() => {
-		// Delay setting videoLoaded to true to make the video load slowly
-		const timer = setTimeout(() => {
-			setBGLoaded(true);
-		}, 500); // Adjust the delay time as needed (in milliseconds)
+	const [subMenuData, setSubMenuData] = useState([]);
 
-		return () => clearTimeout(timer); // Cleanup the timer if the component unmounts
-	}, []);
+	const [shopMyLink, setShopMyLink] = useState("");
+	const handleNavClick = (name, subMenu) => {
+		setActiveSubMenu("");
+		setActiveMenu({ name, subMenu });
+	};
+console.log(subMenuData);
+	const handleSubMenuClick = (subMenuItem) => {
+		setActiveSubMenu(subMenuItem);
+		const data = findObject(topPicks2023, activeMenu.name)
+		setShopMyLink(data.shopMyLink);
+		const subMenuArray = data.data;
+		setSubMenuData(findObject(subMenuArray, subMenuItem));
+
+	};
+
+	console.log(subMenuData);
+
+	const findObject = (arr, name) => {
+		return arr.find((obj) => obj.name === name);		
+	};
+
+	const handleOnHover = (item) => {
+		const name = item.name;
+		console.log(name);
+
+	};
 
 	return (
-		<div className='w-full h-full animate-fadeIn	'>
-			<div
-				className={`flex flex-col relative  items-center h-fit w-full transition-opacity duration-1000 ease-in-out transform scale-100 
-				${bGLoaded ? "opacity-100" : "opacity-0"}`}
-			>
-				<video className='w-full h-1/2 md:object-center' autoPlay muted loop id='video'>
-					<source src={topPicksBGVIDEO} type='video/mp4' />
-				</video>
-				{/* <img className='absolute w-3/6 mt-20 z-20' src={skinAwardsLogo} alt='skinAwardsLogo' />
-				<svg className='absolute bottom-70  w-full h-full opacity-90 z-10' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'>
-					<circle cx='50' cy='51.5' r='21' />
-				</svg> */}
-				<TabBar />
+		<div className='w-full min-h-screen animate-fadeIn '>
+			<div className='mt-24 text-center w-full mb-12'>
+				<h1 className='text-5xl text-white font-montserrat font-thin uppercase tracking-widest'>Skin Anarchy Top Picks</h1>
 			</div>
-			<div className='bg-black bg-opacity-50 w-full h-screen   justify-center	'>
-				<div>
-					<h1 className='text-white text-4xl text-center'>Top Picks</h1>
-				</div>
-				<div className='grid grid-cols-4 w-full h-full gap-2 '>
-					{testData.map((item) => {
-						return (
-							<div className=' h-11/12 w-full col-span-1 flex justify-center' key={item.id}>
-								<div className='group w-2/4 h-fit my-auto justify-start bg-white overflow-hidden rounded-lg transition-transform  transform-gpu duration-500 ease-in-out hover:shadow-black hover:shadow-2xl  hover:scale-125 hover:translate-y-10 hover:m-y-auto hover:h-2/5 hover:w-1/6  hover:absolute hover:z-10 '>
-									<p className='text-black text-center font-bold mb-4'>{item.brand}</p>
-									<div className='aspect-w-4 aspect-h-3'>
-										<div className='w-full h-full '>
-											<img className='object-contain  w-full h-full' src={item.image} alt='product' />
-											<p className='text-center text-black font-bold bg-white  h-1/6'>{item.description}</p>
-											<div className='flex justify-center'>
-												<button className='bg-black  text-white font-bold py-2 px-4  border-black border-lg rounded-lg '>trackable click link</button>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						);
-					})}
-				</div>
+			<TopPicksNavBar>
+				{topPicksNavBar.map((item, index) => (
+					<TopPicksNavButton key={index} name={item.name} subMenu={item.subMenu} active={activeMenu.name} onClick={handleNavClick}>
+						<TopPicksNavBarDropDown>
+							{activeMenu.name === item.name &&
+								activeMenu?.subMenu?.map((subItem, subIndex) => (
+									<TopPicksSubMenuButton active={activeSubMenu} key={subIndex} name={subItem} onClick={handleSubMenuClick} />
+								))}
+						</TopPicksNavBarDropDown>
+					</TopPicksNavButton>
+				))}
+			</TopPicksNavBar>
+			<div className="w-10/12 h-[1000px]py-36 flex justify-center items-center mx-auto my-24">
+				<TopPicksImagesCard>
+				{subMenuData?.data?.map((item, index) => {
+
+					return (
+						<div key={index} onMouseOver={handleOnHover(item)} className="block h-fit p-4 w-96 group hover:bg-white  rounded-2xl ease-in-out duration-300 transition-all">
+							<a href={shopMyLink} target="_blank" rel="noreferrer">
+								<img src={item.image} alt={`award ${index}`} className='w-36 h-36 mx-auto' />
+								<p className="text-white font-montserrat underline-offset-4 decoration-1 delay-100 group-hover:text-black whitespace-nowrap text-center">{item.name}</p>
+							</a>
+						</div>) 
+				}
+					
+
+				)}
+
+			</TopPicksImagesCard>
 			</div>
+			
 		</div>
 	);
 };

@@ -1,6 +1,6 @@
 const AboutUs = () => {
 	return (
-		<div className='w-3/4 mx-auto h-lvh text-white flex flex-col justify-center items-center mt-36 '>
+		<div className='w-3/4 mx-auto h-fit text-white flex flex-col justify-center items-center mt-36 pb-64'>
 			{/* <div> */}
 
 			<div className='w-full h-full flex flex-row justify-between'>

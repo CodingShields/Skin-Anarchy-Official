@@ -388,7 +388,6 @@ const NavBar = () => {
 	};
 
 	const handleSubMenuHover = (item, index) => {
-		console.log(index);
 		setSubMenuIndex(index);
 	};
 
