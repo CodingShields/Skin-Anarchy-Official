@@ -1,14 +1,13 @@
-import { image } from "@cloudinary/url-gen/qualifiers/source";
 import AugustinusBader from "./AugustinusBader.svg";
-import codex from "./codex.avif";
-import ELTAMD from "./ELTAMD.png";
-import ErnoLaszlo from "./ErnoLaszlo.png";
+import codex from "./codex.svg";
+import ELTAMD from "./ELTAMD.svg";
+import ErnoLaszlo from "./ErnoLaszlo.svg";
 import ForeoSweden from "./ForeoSweden.svg";
-import JMSR from "./JMSR.png";
-import nicholsmd from "./nicholsmd.png";
+import JMSR from "./JMSR.svg";
+import nicholsmd from "./nicholsmd.svg";
 import niod from "./niod.svg";
-import retrouvee from "./retrouvee.png";
-import Revive from "./Revive.webp";
+import retrouvee from "./retrouvee.svg";
+import Revive from "./Revive.svg";
 
 
 export const imageArray2022 = [

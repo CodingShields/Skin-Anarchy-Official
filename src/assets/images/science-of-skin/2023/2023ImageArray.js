@@ -1,14 +1,13 @@
-import { image } from "@cloudinary/url-gen/qualifiers/source";
-import oneEleven from "./oneEleven.png";
-import Delavie from "./Delavie.png";
-import dennisGross from "./dennisGross.png";
-import editrix from "./editrix.webp";
-import epicutis from "./epicutis.png";
-import michalMorrison from "./michalMorrison.png";
-import novos from "./novos.png";
-import PCA from "./PCA.png";
-import REVEA from "./REVEA.png";
-import theOrdinary from "./theOrdinary.png";
+import oneEleven from "./oneEleven.svg";
+import Delavie from "./Delavie.svg";
+import dennisGross from "./dennisGross.svg";
+import editrix from "./editrix.svg";
+import epicutis from "./epicutis.svg";
+import michalMorrison from "./michalMorrison.svg";
+import novos from "./novos.svg";
+import PCA from "./PCA.svg";
+import REVEA from "./REVEA.svg";
+import theOrdinary from "./theOrdinary.svg";
 export const imageArray2023 = [
     {
         image: oneEleven,
