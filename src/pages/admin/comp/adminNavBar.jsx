@@ -52,8 +52,8 @@ const AdminNavBar = ({ onItemClicked }) => {
 	}
 
 	return (
-		<div className='fixed w-fit h-full overscroll-y-none z-10'>
-			<div className='flex flex-col items-center justify-center grow h-full bg-black px-8 lg:space-y-16 my-auto'>
+		<div className='fixed w-48 h-full overscroll-y-none z-10'>
+			<div className='flex flex-col items-center justify-start h-full bg-black px-8 lg:space-y-16 my-auto'>
 				<img src={whiteLogo} className='h-36 py-4 mt-4' alt='whiteLogo' />
 				<h1 className='text-white text-2xl font-glacialRegular text-center'>Admin</h1>
 
@@ -62,7 +62,7 @@ const AdminNavBar = ({ onItemClicked }) => {
 						<div
 							onClick={() => handleItemClick(item.name)}
 							className={classNames(
-								"  h-lvh flex space-x-4 group hover:cursor-pointer  ",
+								"  h-fit flex space-x-4 group hover:cursor-pointer  ",
 								activeItem === item.name && " ring-white ring-2 rounded-xl transition-all duration-500 ease-in-out h-fit w-fit px-4 py-2"
 							)}
 							key={index}

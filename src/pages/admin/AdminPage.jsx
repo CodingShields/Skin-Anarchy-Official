@@ -38,9 +38,11 @@ const AdminPage = () => {
 	}, []);
 
 	return (
-		<div className=' w-full h-full bg-white inline-flex overscroll-y-none'>
+		<div className=' w-full h-full bg-white overscroll-y-none'>
 			<AdminNavBar onItemClicked={handleNavigation} />
-			{renderStep}
+
+				{renderStep}
+
 		</div>
 	);
 };
