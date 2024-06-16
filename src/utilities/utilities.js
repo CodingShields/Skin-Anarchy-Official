@@ -1,5 +1,6 @@
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import {storage} from "../fireBase/firebaseConfig";
+import { storage } from "../fireBase/firebaseConfig";
+import { useEffect, useState } from "react";
 
 
 const imageBlobCreator = (image) => {
@@ -43,3 +44,9 @@ const addHashtags = (inputText)=> {
 }
 
 export { addHashtags };
+
+const StartPageLoadTop = () => {
+window.scrollTo(0, 0);
+}
+
+export { StartPageLoadTop };

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { StartPageLoadTop } from "../../utilities/utilities";
 import HeadLine from "./comps/HeadLine";
 import SponsorBarContainer from "./comps/SponsorBarContainer";
 import PodcastAnalyticsContainer from "./comps/PodcastAnalyticsContainer";
@@ -19,7 +20,9 @@ const HomePage = () => {
 		}, 5000);
 	}, []);
 
-	console.log(currentComponent);
+	useEffect(() => {
+		StartPageLoadTop();
+	}, []);
 
 	useEffect(() => {
 		const handleMouseMove = (event) => {

@@ -352,7 +352,7 @@ const blogArray = [
 ];
 const mainNavBar = ["home", "about", "episodes", "blog", "awards", "yugen", "connect", "account"];
 
-const buttonStyle = "uppercase font-thin underlineAnimate subpixel-antialiased tracking-[6px] text-white text-md lg:text-[14px]";
+const buttonStyle = "uppercase font-thin underlineAnimate subpixel-antialiased tracking-[6px] text-white text-md lg:text-[18px]";
 const activeNavButton =
 	"uppercase font-semibold text-gold-500 subpixel-antialiased tracking-[6px]  lg:text-sm text-md underline underline-offset-8 decoration-1";
 const smallMenuclassName =
@@ -405,15 +405,37 @@ const NavBar = () => {
 			document.removeEventListener("mousedown", handleClickOutside);
 		};
 	}, []);
-	console.log(menu);
+
+		useEffect(() => {
+			// Function to close menu when clicked outside
+	
+
+			const handleMouseOutside = (event) => {
+				if (menuRef.current && !menuRef.current.contains(event.target)) {
+					setOpen(false);
+				}
+			};
+			// Add event listener when component mounts
+			document.addEventListener("mouseout", handleMouseOutside);
+			// Cleanup function to remove event listener when component unmounts
+			return () => {
+				document.removeEventListener("mouseout", handleMouseOutside);
+			};
+		}, []);
+	
 	return (
-		<div ref={menuRef} id='menu' className={open ? "w-full h-14 bg-black border-b border-white" : "w-full h-14 bg-black"}>
+		<div ref={menuRef} id='menu' className='w-full h-14 bg-black border-b border-white'>
 			<div className='w-full flex flex-row justify-center items-center lg:space-x-10 xl:space-x-14 mx-auto'>
 				<Button className={menu === "home" ? activeNavButton : buttonStyle} text={"home"} onClick={handleClick} to={"/members-area/home"}></Button>
 				<Button className={menu === "about" ? activeNavButton : buttonStyle} text={"about"} onClick={handleClick}></Button>
 				<Button className={menu === "episodes" ? activeNavButton : buttonStyle} text={"episodes"} onClick={handleClick}></Button>
 				<Button className={menu === "blog" ? activeNavButton : buttonStyle} text={"blog"} onClick={handleClick}></Button>
-				<Button className={menu === "safe seal" ? activeNavButton : buttonStyle} text={"safe seal"} onClick={handleClick}></Button>
+				<Button
+					className={menu === "safe seal" ? activeNavButton : buttonStyle}
+					text={"safe seal"}
+					to={"/members-area/safe-seal"}
+					onClick={handleClick}
+				></Button>
 				<img src={goldLogo} alt='logo' className='w-auto xl:h-10 lg:h-8 md:h-6 mt-2' />
 				<Button className={menu === "awards" ? activeNavButton : buttonStyle} text={"awards"} onClick={handleClick}></Button>
 				<Button className={menu === "yugen" ? activeNavButton : buttonStyle} text={"yugen"} to={"/members-area/yugen"} onClick={handleClick}></Button>
@@ -433,12 +455,12 @@ const NavBar = () => {
 			</div>
 			<div ref={menuRef} className='w-full '>
 				<NavBarDropDown open={open} menu={menu} text={"about"}>
-					<div className='flex flex-row w-full justify-center items-center bg-black border-white border-b-[1px] py-12 space-x-12'>
+					<div className='flex flex-row w-full justify-center items-center bg-black border-white border-b-[1px] py-10 space-x-24'>
 						{about.map((item, index) => {
 							return (
 								<>
 									<a key={index} href={item.link}>
-										<h1 className='text-2xl text-white font-montserrat font-thin uppercase underlineAnimate'>{item.name}</h1>
+										<h1 className='text-lg text-white font-montserrat font-thin uppercase underlineAnimate'>{item.name}</h1>
 									</a>
 								</>
 							);
@@ -448,7 +470,7 @@ const NavBar = () => {
 				{/* Episodes Drop Down */}
 				<NavBarDropDown open={open} menu={menu} text={"episodes"}>
 					<div className='flex flex-row w-full justify-start items-center bg-black border-white border-b-[1px]'>
-						<div className='w-[475px] h-fit flex flex-col space-y-12 xl:py-2 py-12 px-12 whitespace-nowrap '>
+						<div className='w-[475px] h-fit flex flex-col space-y-12 py-12 px-12 whitespace-nowrap pb-8'>
 							<h1 className='uppercase  text-white underline text-2xl xl:text-lg font-montserrat font-thin underline-offset-8  decoration-1 '>
 								Categories
 							</h1>
@@ -457,7 +479,7 @@ const NavBar = () => {
 									<div
 										onMouseEnter={() => handleSubMenuHover(item, index)}
 										key={index}
-										className='w-11/12 uppercase text-white text-lg xl:text-sm font-montserrat font-thin ml-4 hover:underline underline-offset-8 decoration-1 transition-all duration-500 ease-in-out text-left '
+										className='w-11/12 uppercase text-white text-lg font-montserrat font-thin ml-4 hover:underline underline-offset-8 decoration-1 transition-all duration-500 ease-in-out text-left '
 									>
 										<a href={item.link}>{item.name}</a>
 									</div>
@@ -512,36 +534,7 @@ const NavBar = () => {
 					</div>
 				</NavBarDropDown>
 				{/* Sale Seal Drop Down */}
-				<NavBarDropDown open={open} menu={menu} text={"safe seal"}>
-					<div className='flex flex-row w-full justify-start items-center'>
-						<div className='w-[475px] h-fit flex flex-col space-y-12 py-12 px-12 whitespace-nowrap '>
-							<h1 className='uppercase  text-white underline text-3xl font-montserrat font-thin underline-offset-8 decoration-1 '>Categories</h1>
-							{blog.map((item, index) => {
-								return (
-									<div
-										onMouseEnter={() => handleSubMenuHover(item, index)}
-										key={index}
-										className='underline-offset-8 decoration-1 w-11/12 uppercase text-white text-xl font-montserrat font-thin ml-4 hover:underline transition-all duration-500 ease-in-out text-left '
-									>
-										<a href={item.link}>{item.name}</a>
-									</div>
-								);
-							})}
-						</div>
-						<HighlightMenu key={subMenuIndex}>
-							<div className='w-full grid grid-cols-3 duration-500 ease-in-out transition-all animate-fadeIn py-12 '>
-								{blogArray[subMenuIndex]?.map((item, index) => {
-									return (
-										<div key={index} className='w-full h-full text-center animate-fadeIn transition-all delay-200 mx-auto'>
-											<img src={item.image} className='w-3/5 mx-auto rounded-md ' />
-											{/* <h1 className='w-3/5 mx-auto uppercase text-white text-xl font-montserrat font-thin  py-4'>{item.name}</h1> */}
-										</div>
-									);
-								})}
-							</div>
-						</HighlightMenu>
-					</div>
-				</NavBarDropDown>
+				<NavBarDropDown open={open} menu={menu} text={"safe seal"}></NavBarDropDown>
 				<NavBarDropDown open={open} menu={menu} text={"awards"}>
 					<div className='flex flex-row w-full justify-center items-center bg-black border-white border-b-[1px] py-4 space-x-12'>
 						{awards.map((item, index) => {
@@ -556,7 +549,7 @@ const NavBar = () => {
 					</div>
 				</NavBarDropDown>
 				<NavBarDropDown open={open} menu={menu} text={"connect"}>
-					<div className='w-full h-fit flex flex-row justify-center items-end mt-4 space-x-24 '>
+					<div className='flex flex-row w-full justify-center items-center bg-black border-white border-b-[1px] py-10 space-x-24'>
 						{connect.map((item, index) => {
 							return (
 								<>

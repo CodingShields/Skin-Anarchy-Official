@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthContextProvider } from "./context/AuthContext";
 
 //About Pages
-import AboutPage from "./pages/about/AboutPage.jsx";
 import MissionStatementComp from "./pages/about/MissionStatementComp.jsx";
 import AboutUs from "./pages/about/AboutUs";
 import FeaturedPress from "./pages/about/FeaturedPressComp.jsx";

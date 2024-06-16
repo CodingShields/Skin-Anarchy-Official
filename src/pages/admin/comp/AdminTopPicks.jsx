@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import TopPicksCurrentYear from "./top-picks/TopPicksCurrentYear";
 import TopPicksUpdateTool from "./top-picks/TopPicksUpdateTool";
 import TopPicksPreviousYears from "./top-picks/TopPicksPreviousYears";
-import DataUpload from "./top-picks/DataUpload";
 const AdminTopPicks = () => {
 
 

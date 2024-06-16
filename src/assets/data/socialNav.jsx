@@ -14,14 +14,15 @@ const socialNav = [
 	{
 		id: 1,
 		name: "Instagram",
-		href: "#",
+		href: "https://www.instagram.com/skincareanarchy/?hl=en",
 		icon: instagramIcon,
-		link: "https://pca.st/qplbcjmo",
+		link: "https://www.instagram.com/skincareanarchy/?hl=en",
 	},
 	{
 		id: 2,
 		name: "Twitter",
-		href: "#",
+		href: "https://twitter.com/skincareanarchy",
+		link: "https://twitter.com/skincareanarchy",
 		icon: twitterIcon,
 	},
 	// {

@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-
 import whiteLogo from "../../assets/images/logos/white-logo.png";
 
 const LoginPageNavBar = ({ onClick }) => {
@@ -10,7 +9,7 @@ const LoginPageNavBar = ({ onClick }) => {
 				<img className='w-11' src={whiteLogo} />
 				<h1 className='text-5xl font-montserrat font-thin'>Skin Anarchy</h1>
 			</div>
-			<div>
+			<div className="inline-flex items-end justify-end w-1/2 space-x-8">
 				<button className='uppercase underlineAnimate'>Our Story</button>
 				<button className='uppercase underlineAnimate'>Listen Now</button>
 				<button onClick={onClick} className='uppercase underlineAnimate'>

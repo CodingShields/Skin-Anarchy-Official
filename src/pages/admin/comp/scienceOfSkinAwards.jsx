@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import PreviousYears from "./science-of-skin/previousYears";
 import UpdateTool from "./science-of-skin/updateTool";
 import Contact from "./science-of-skin/contact";
-import DataUpload from "./science-of-skin/DataUpload";
 const ScienceOfSkinAwards = () => {
 	const [state, setState] = useState({
 		error: false,
@@ -90,7 +89,6 @@ const ScienceOfSkinAwards = () => {
 				{state.renderContactForm ? <Contact /> : ""}
 				{state.renderPreviousYears ? <PreviousYears /> : ""}
 				{state.renderUpdateTool ? <UpdateTool /> : ""}
-				{state.renderDataUpload ? <DataUpload /> : ""}
 			</div>
 		</div>
 	);
