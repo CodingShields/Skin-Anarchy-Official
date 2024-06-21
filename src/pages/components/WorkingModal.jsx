@@ -1,5 +1,3 @@
-import React from "react";
-import workingGears from "../../assets/iconsAnimated/workingGears.svg";
 import workingCircle from "../../assets/iconsAnimated/workingCircle.svg";
 const WorkingModal = ({ message, open }) => {
 	if (!open) return null;

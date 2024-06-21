@@ -2,33 +2,42 @@ import { useEffect, useState } from "react";
 import { StartPageLoadTop } from "../../utilities/utilities";
 import ContactForm from "../components/ContactForm";
 import socialNav from "../../assets/data/socialNav";
+import FormModal from "../components/FormModal";
 const ConnectPage = () => {
 	const [state, setState] = useState({
 		error: false,
 		errorMessage: "",
 		loading: false,
+		openFormModal: false,
 	});
+
+	console.log(state.openFormModal);
+
 	useEffect(() => {
 		StartPageLoadTop();
 	}, []);
 
-
 	return (
-		<div className='isolate overflow-hidden bg-black w-full h-fit block my-24'>
+		<div className='isolate overflow-hidden bg-black w-full h-fit block my-24 '>
+			<FormModal open={state.openFormModal}>
+				<ContactForm close={() => setState({ ...state, openFormModal: !state.openFormModal })} />
+			</FormModal>
 			<div className='mx-auto mt-24 grid max-w-2xl grid-cols-1 gap-12 h-fit '>
-				<h2 className='text-6xl font-montserrat text-white tracking-widest whitespace-nowrap '>CONNECT WITH US</h2>
+				<h2 className='text-6xl font-montserrat text-white tracking-widest whitespace-nowrap font-thin '>CONNECT WITH US</h2>
 
 				<div className='tracking-widest flex h-[300px]  min-w-[800px]  text-center text-white uppercase font-montserrat  rounded-xl  p-6 ring-1 ring-inset ring-white justify-center items-center'>
 					<div className='text-base leading-7 '>
-						<h3 className='font-montserrat text-2xl underline underline-offset-8 decoration-1 '>Interested in coming on the show?</h3>
-						<p className='my-4 text-md w-11/12 mx-auto'>
+						<h3 className='font-montserrat text-2xl  tracking-widest underline underline-offset-8 decoration-1 '>
+							Interested in coming on the show?
+						</h3>
+						<p className='my-4 text-md w-11/12 mx-auto font-thin'>
 							Join our exclusive community of Top Doctors, Makeup Artists, Celebrities and many more leaders of the skin care industry.
 						</p>
 
 						<button
-							onClick={() => setIsModalOpen(true)}
+							onClick={() => setState({ ...state, openFormModal: !state.openFormModal })}
 							type='button'
-							className=' rounded-md bg-black hover:bg-white px-2.5 py-1.5 text-sm font-semibold font-montserrat uppercase shadow-sm hover:text-black text-white transition-all ease-in-out duration-500 '
+							className=' ring-white ring-1 rounded-md bg-black hover:bg-white px-2.5 py-1.5 text-sm font-semibold font-montserrat uppercase shadow-sm hover:text-black text-white transition-all ease-in-out duration-500 '
 						>
 							Apply Here
 						</button>
@@ -58,9 +67,9 @@ const ConnectPage = () => {
 						<h3 className='font-montserrat text-2xl underline underline-offset-8 decoration-1 tracking-widest'>Interested in becoming a sponsor?</h3>
 						<p className='my-4 text-md w-11/12 mx-auto'>Some text</p>
 						<button
-							onClick={() => setIsModalOpen(true)}
+							onClick={() => setState({ ...state, openFormModal: !state.openFormModal })}
 							type='button'
-							className=' rounded-md bg-black hover:bg-white px-2.5 py-1.5 text-sm font-semibold font-montserrat uppercase shadow-sm hover:text-black text-white transition-all ease-in-out duration-500 '
+							className=' rounded-md ring-white ring-1 bg-black hover:bg-white px-2.5 py-1.5 text-sm font-semibold font-montserrat uppercase shadow-sm hover:text-black text-white transition-all ease-in-out duration-500 '
 						>
 							Apply Here
 						</button>
