@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { StartPageLoadTop } from "../../utilities/utilities";
-import ContactForm from "../components/ContactForm";
+import ContactForm from "./ContactForm";
 import socialNav from "../../assets/data/socialNav";
 import FormModal from "../components/FormModal";
 const ConnectPage = () => {

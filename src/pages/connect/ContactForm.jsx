@@ -7,6 +7,7 @@ import singleChevronDown from "../../assets/icons/singleChevronDown.svg";
 import WorkingModal from "../components/WorkingModal";
 import ErrorModal from "../components/ErrorModal";
 const ContactForm = ({ close }) => {
+	
 	const [state, setState] = useState({
 		loading: false,
 		error: false,
