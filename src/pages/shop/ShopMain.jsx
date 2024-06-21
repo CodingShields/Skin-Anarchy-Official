@@ -3,7 +3,7 @@
 
 const ShopMain = () => {
     return (
-        <div>Shop Page</div>
+        <div>Coming Soon! </div>
     )
 }
 

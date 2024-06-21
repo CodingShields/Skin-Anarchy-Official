@@ -24,8 +24,8 @@ const FeaturedPress = () => {
 	return (
 		<div className='min-h-screen  w-full flex flex-col items-center justify-center bg-black mt-36'>
 			<FeaturedPressModal link={featuredPressLink.link} open={featuredPressLink.openModal} close={() => setFeaturedPressLink({link: "", openModal: false})} />
-			<h1 className="text-white text-6xl font-montserrat font-thin tracking-widest underline underline-offset-4 decoration-1 uppercase">Featured Press Page</h1>
-			<p className="text-white text-2xl font-montserrat font-thin tracking-widest mt-4">Published articles and press releases</p>
+			<h1 className="text-white text-6xl font-montserrat font-thin tracking-widest underline decoration-1 uppercase underline-offset-[10px]">Featured Press Page</h1>
+			<p className="text-white text-2xl font-montserrat font-thin tracking-widest mt-4">Published Articles and Press Releases</p>
 			<div className='min-h-screen grid grid-cols-3 gap-10 w-3/4 mx-auto mb-24 mt-8'>
 				{imageArray.map((item, index) => (
 					<img key={index} src={item.image} alt={`featured press ${index}`}

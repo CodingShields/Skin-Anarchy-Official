@@ -48,7 +48,7 @@ const AboutUs = () => {
 						</div>
 						<div className='py-4 grid grid-cols-2 w-full border-r border-b rounded-bl-lg '>
 							<div className='block font-montserrat uppercase text-center'>
-								<h1 className='text-lg uppercase'>Darren</h1>
+								<h1 className='text-lg uppercase'>Robert</h1>
 								<p className='text-lg italic'>CFO</p>
 
 								<h1> short bio</h1>
