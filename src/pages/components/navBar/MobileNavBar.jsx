@@ -374,26 +374,6 @@ const MobileNavBar = () => {
 		open: false,
 	});
 	const menuRef = useRef(null);
-	console.log(menuRef.current);
-	// const handleClick = (e) => {
-	// 	const currentMenu = e.target.name;
-	// 	console.log(currentMenu);
-	// 	setMenu(currentMenu);
-	// 	if (
-	// 		open &&
-	// 		(currentMenu === "blog" ||
-	// 			currentMenu === "episodes" ||
-	// 			currentMenu === "awards" ||
-	// 			currentMenu === "yugen" ||
-	// 			currentMenu === "connect" ||
-	// 			currentMenu === "safe seal" ||
-	// 			currentMenu === "account")
-	// 	) {
-	// 		setOpen(open);
-	// 	} else {
-	// 		setOpen(!open);
-	// 	}
-	// };
 
 	const handleMenuToggle = () => {
 		setOpenMenu(!openMenu);
