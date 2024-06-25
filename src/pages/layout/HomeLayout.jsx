@@ -27,10 +27,10 @@ const HomeLayout = () => {
 	return (
 		<>
 			{!isAdmin && <Header />}
-			{/* <Outlet /> */}
-			{/* {!isAdmin && <ChatBot />}
+			<Outlet /> 
+			{!isAdmin && <ChatBot />}
 			{!isAdmin && <Footer />}
-			{isAdmin && <PolicyBar />} */}
+			{isAdmin && <PolicyBar />}
 		</>
 	);
 };

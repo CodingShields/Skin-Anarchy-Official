@@ -1,37 +1,39 @@
 import { useRef, useState } from "react";
 import { Editor } from "@tinymce/tinymce-react";
-import { image } from "@cloudinary/url-gen/qualifiers/source";
 
 const BlogEditor = ({ blogSubmission }) => {
-	const [blog, setBlog] = useState();
-	console.log(blog);
 	const apiKey = import.meta.env.VITE_TINYMCE_API_KEY;
 
 	const editorRef = useRef(null);
+	const [content, setContent] = useState("This is the initial content of the editor.");
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		blogSubmission(blog);
+	const [text, setText] = useState();
+	const log = () => {
+		if (editorRef.current) {
+			console.log(editorRef.current.getContent());
+		}
 	};
-
+	const onEditorChange = function (a, editor) {
+		// console.log(a);
+		setContent(a);
+		setText(editor.getContent({ format: "text" }));
+		//console.log(editor);
+	};
 	return (
 		<div className='w-full h-full flex flex-col justify-center items-center mt-24'>
+			<div style={{ height: "80px", overflow: "auto" }}>{text}</div>
+
 			<Editor
-				onEditorChange={(content, editor) => {
-					setBlog(content);
-					console.log("Content was updated:", content);
-				}}
-				selector='textarea'
+				onEditorChange={onEditorChange}
 				apiKey={apiKey}
-				onInit={(evt, editor) => {
-					const content = editor.getContent();
-					console.log("Initial content:", content);
-				}}
+				value={content}
+				onInit={(evt, editor) => (editorRef.current = editor)}
+				// initialValue="<p>This is the initial content of the editor.</p>"
 				init={{
-					closed: /^(br|hr|input|meta|img|link|param|area|source)$/,
-					doctype: "<!DOCTYPE html>",
 					height: 500,
 					menubar: true,
+					closed: /^(br|hr|input|meta|img|link|param|area|source)$/,
+
 					plugins: [
 						"advlist",
 						"autolink",
@@ -53,26 +55,20 @@ const BlogEditor = ({ blogSubmission }) => {
 						"wordcount",
 					],
 					toolbar:
-						"undo redo | formatselect | bold italic forecolor | alignleft aligncenter " +
+						"undo redo | formatselect | " +
+						"bold italic backcolor | alignleft aligncenter " +
 						"alignright alignjustify | bullist numlist outdent indent | " +
-						"removeformat | image link | help",
-					init_instance_callback: function (editor) {
-						editor.on("BeforeSetContent", function (e) {
-							console.log(e.content.substr(0, 4));
-							if (e.content.substr(0, 4) === "<img") {
-								let imgTag = e.content;
-								let wrappedTag = `<div class="foo">${imgTag}</div>`;
-								console.log(wrappedTag);
-								return (e.content = wrappedTag);
-							}
-						});
+						"removeformat | emoticons| help",
+					content_style: "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
+					emoticons_append: {
+						custom_mind_explode: {
+							keywords: ["brain", "mind", "explode", "blown"],
+							char: "🤯",
+						},
 					},
-					content_style: "body { font-family: Montserrat,Helvetica,Arial,sans-serif; font-size:14px }",
 				}}
 			/>
-			<button onClick={handleSubmit} className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
-				Log editor content
-			</button>
+			<button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>Log editor content</button>
 		</div>
 	);
 };
