@@ -1,0 +1,230 @@
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+
+
+
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+// medium import 
+@font-face {
+  font-family: 'Montserrat';
+    src: url("/src/assets/fonts/Montserrat/Montserrat.ttf") format("trueType");
+  font-weight: 100;
+  font-style: 100;
+}
+
+.montserrat-medium {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+// hide scroll bar
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+//Sponsor Images Marquee
+.sponsorBar {
+  overflow: hidden;
+}
+
+.sponsorBar-content {
+  display: flex;
+  animation: scrollingSponsors 115s linear infinite;
+}
+
+.sponsorBar-item {
+  flex: 0 0 16vw;
+  margin: 0 1vw;
+ 
+}
+
+.sponsorBar-item img {
+  display: block;
+  width: 100%;
+  padding: 0 20px; 
+}
+
+@keyframes scrollingSponsors {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-1296vw);// multiply the number of images by 18
+  }
+}
+
+
+
+//Top Picks Marquee
+.topPicksBar {
+  overflow: hidden;
+}
+
+.topPicksBar-content {
+  display: flex;
+  animation: scrollingTopPicksBar 22s linear infinite;
+}
+
+.topPicksBar-content:hover {
+  animation-play-state: paused;
+}
+
+.topPicksBar-item {
+  flex: 0 0 16vw;
+  margin: 0 1vw;
+
+}
+
+.topPicksBar-item img {
+  display: block;
+  width: 100%;
+  padding: 0 20px;
+}
+
+@keyframes scrollingTopPicksBar {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-180vw);// multiply the number of images by 18
+  }
+}
+
+
+
+
+//  cursor glow
+.cursor {
+  height: 450px;
+  /* Adjust height and width to match your cursor size */
+  width: 450px;
+  border: transparent;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(175, 150, 105, 0.8) -1%,
+      rgba(175, 150, 105, 0.2) 90%);
+  box-shadow: 0px 0px 100px rgba(200, 170, 105, 8);
+  position: relative;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: -10;
+  opacity: 50%;
+}
+
+
+
+
+
+
+// underline animation
+.underlineAnimate {
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  // letter-spacing: 0.15em;
+
+  display: inline-block;
+  position: relative;
+}
+
+.underlineAnimate:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 1px;
+  left: 50%;
+  position: absolute;
+  background: #fff;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+
+.underlineAnimate:hover:after {
+  width: 100%;
+  left: 0;
+}
+
+@media screen and (max-height: 300px) {
+  ul {
+    margin-top: 40px;
+  }
+}
+// Testimonial Slider
+.line {
+  /* 	flex-basis: 50%; */
+  font-size: 40px;
+  color: white;
+  letter-spacing: 10px;
+  opacity: 0;
+}
+
+//background animation
+
+/* Setup For An Image That Fits On Most Screens And Resizes*/
+.with-bg-size {
+  background-image: url("../assets/images/headLineBg.png");
+  width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+
+
+  -webkit-animation: back 10s infinite;
+  /* Safari 4+ */
+  -moz-animation: back 10s infinite;
+  /* Fx 5+ */
+  -o-animation: back 10s infinite;
+  /* Opera 12+ */
+  animation: back 10s infinite;
+  /* IE 10+, Fx 29+ */
+
+
+}
+
+@keyframes back {
+  25% {
+    background-image: url("../assets/images/headLineBg.png");
+  }
+
+  50% {
+    background-image: url("../assets/images/headlineBg2.png");
+  }
+
+  75% {
+    background-image: url("../assets/images/headlineBg3.png");
+  }
+  /* Animation Does Not End At 100% Because It Makes The Images Transition In/Out Better For Some Reason*/
+}
+
+// Chat Bot Break
+
+.half-space {
+  line-height: 0.5;
+  padding-top: "4px";
+  padding-bottom: "4px";
+}
+
+

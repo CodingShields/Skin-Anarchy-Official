@@ -1,0 +1,101 @@
+@font-face {
+	font-family: "CormorantGaramondLight";
+	src: url("./assets//fonts/CormorantGaramond/CormorantGaramondLight.ttf") format("trueType");
+}
+
+@font-face {
+	font-family: "GFSDidotRegular";
+	src: url("./assets//fonts/Didot/GFSDidotRegular.ttf") format("trueType");
+}
+.scienceOfSkinYearTextCormorantGaramondLight {
+	font-family: "CormorantGaramondLight";
+}
+
+.scienceOfSkinYearTextGFSDidotRegular {
+	font-family: "GFSDidotRegular";
+}
+#navBarButton {
+	border: none;
+	text-transform: uppercase;
+	letter-spacing: 10px;
+	background-color: transparent;
+	position: relative;
+	overflow: hidden;
+}
+#navBarButton:before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 100%;
+	height: 2px;
+	background-color: #cfb98b;
+	transition: all 1s;
+}
+#navBarButton:after {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	right: -100%;
+	width: 100%;
+	height: 2px;
+	background-color: #cfb98b;
+	transition: all 1s;
+}
+#navBarButton:hover:before {
+	left: 0;
+}
+#navBarButton:hover:after {
+	right: 0;
+}
+span:before {
+	content: "";
+	position: absolute;
+	top: -100%;
+	right: 0%;
+	width: 2px;
+	height: 100%;
+	background-color: #cfb98b;
+	transition: all 1s;
+}
+#navBarButton:hover span:before {
+	top: 0;
+}
+span:after {
+	content: "";
+	position: absolute;
+	bottom: -100%;
+	left: 0%;
+	width: 2px;
+	height: 100%;
+	background-color: #cfb98b;
+	transition: all 1s;
+}
+#navBarButton:hover span:after {
+	bottom: 0;
+}
+
+#phoneContainer {
+	box-shadow: 1px 35px 40px rgba(207, 185, 139, 40%);
+}
+
+@keyframes pulsingBackground {
+	0% {
+		background-color: #eea108;
+	}
+	/* 25% {
+		background-color: #f8e9c8;
+	} */
+	50% {
+		background-color: #f6e2bd;
+	}
+	/* 75% {
+		background-color: #f8e9c8;
+	} */
+	100% {
+		background-color: #eea108;
+	}
+}
+#backgroundPulse {
+	animation: pulsingBackground 3.5s linear infinite;
+}
