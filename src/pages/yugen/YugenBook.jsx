@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from "react";
 import HTMLFlipBook from "react-pageflip";
 import whiteLogo from "../../assets/images/logos/white-logo.png";
 import page1yugenvol2 from "../../assets/data/yugen/page1yugenvol2.jpg";
@@ -20,30 +21,55 @@ import page17yugenvol2 from "../../assets/data/yugen/page17yugenvol2.jpg";
 import page18yugenvol2 from "../../assets/data/yugen/page18yugenvol2.jpg";
 import page19yugenvol2 from "../../assets/data/yugen/page19yugenvol2.jpg";
 import page20yugenvol2 from "../../assets/data/yugen/page20yugenvol2.jpg";
-const YugenBook = () => {
+import MagnifierTool from "./MagnifierTool";
+
+const pages = [
+	page1yugenvol2,
+	page2yugenvol2,
+	page3yugenvol2,
+	page4yugenvol2,
+	page5yugenvol2,
+	page6yugenvol2,
+	page7yugenvol2,
+	page8yugenvol2,
+	page9yugenvol2,
+	page10yugenvol2,
+	page11yugenvol2,
+	page12yugenvol2,
+	page13yugenvol2,
+	page14yugenvol2,
+	page15yugenvol2,
+	page16yugenvol2,
+	page17yugenvol2,
+	page18yugenvol2,
+	page19yugenvol2,
+	page20yugenvol2,
+];
+const YugenBook = ({ toggleMag }) => {
+	console.log(toggleMag);
+	const [bookOpen, setBookOpen] = useState(false);
+	const [currentPage, setCurrentPage] = useState(0);
+	console.log(currentPage);
+	const bookRef = useRef();
+	const onFlip = (e) => {
+		setCurrentPage(e.data);
+		console.log("Current page: " + e.data);
+	};
+
 	return (
-		<HTMLFlipBook width={300} height={600}>
-            <img src={whiteLogo} />
-			<img src={page1yugenvol2} />
-			<img src={page2yugenvol2} />
-			<img src={page3yugenvol2} />
-			<img src={page4yugenvol2} />
-			<img src={page5yugenvol2} />
-			<img src={page6yugenvol2} />
-			<img src={page7yugenvol2} />
-			<img src={page8yugenvol2} />
-			<img src={page9yugenvol2} />
-			<img src={page10yugenvol2} />
-			<img src={page11yugenvol2} />
-			<img src={page12yugenvol2} />
-			<img src={page13yugenvol2} />
-			<img src={page14yugenvol2} />
-			<img src={page15yugenvol2} />
-			<img src={page16yugenvol2} />
-			<img src={page17yugenvol2} />
-			<img src={page18yugenvol2} />
-			<img src={page19yugenvol2} />
-			<img src={page20yugenvol2} />
+		<HTMLFlipBook
+			onFlip={onFlip}
+			ref={bookRef}
+			className={`hover:cursor-grab active:cursor-grabbing ${currentPage !== 0 ? "shadow-2xl shadow-gold-500/30" : ""} `}
+			maxShadowOpacity={1}
+			drawShadow={true}
+			width={600}
+			height={700}
+			usePortrait={true}
+		>
+			{pages.map((page, index) => (
+				<img key={index} src={page} alt={`page ${index + 1}`} />
+			))}
 		</HTMLFlipBook>
 	);
 };
