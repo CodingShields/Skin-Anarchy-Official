@@ -45,7 +45,7 @@ const HomePage = () => {
 	}, []);
 
 	return (
-		<div className='w-full h-fit relative animate-fadeIn'>
+		<div className='w-full min-h-screen relative animate-fadeIn'>
 			<div
 				className='with-bg-size h-full w-full opacity-30'
 				style={{

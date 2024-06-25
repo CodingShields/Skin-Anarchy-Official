@@ -1,8 +1,27 @@
 /* eslint-disable no-undef */
+
+import { visibility } from "html2canvas/dist/types/css/property-descriptors/visibility";
+
 /** @type {import('tailwindcss').Config} */
 export default {
 	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
 	theme: {
+		screens: {
+			xxl: { max: "1535px" },
+			// => @media (max-width: 1535px) { ... }
+
+			xl: { max: "1279px" },
+			// => @media (max-width: 1279px) { ... }
+
+			lg: { max: "1023px" },
+			// => @media (max-width: 1023px) { ... }
+
+			md: { max: "767px" },
+			// => @media (max-width: 767px) { ... }
+
+			sm: { max: "639px" },
+			// => @media (max-width: 639px) { ... }
+		},
 		extend: {
 			fontFamily: {
 				montserrat: ["Montserrat"],
@@ -37,7 +56,8 @@ export default {
 				rotateLogo: "rotateLogo 5s linear infinite",
 				fadeIn: "fadeIn .5s ease-in forwards",
 				fadeOut: "fadeOut .5s ease-out forwards",
-				navBarDown: "navBarDown .5s ease-in-out forwards",
+				navBarOpen: "navBarOpen 1s ease-in-out forwards",
+				navBarClose: "navBarClose .75s ease-in-out forwards",
 				chatBotSlideIn: "chatBotSlideIn 1.5s ease-in-out forwards",
 				chatBotSlideOut: "chatBotSlideOut 1.5s ease-in-out forwards",
 			},
@@ -66,14 +86,28 @@ export default {
 					"0%": { opacity: 1 },
 					"100%": { opacity: 0 },
 				},
-				navBarDown: {
+				navBarOpen: {
 					"0%": {
+						height: "100vh",
 						transform: "translateY(-100%)",
 						opacity: 0,
 					},
 					"100%": {
+						height: "100vh",
 						transform: "translateY(0)",
 						opacity: 1,
+					},
+				},
+				navBarClose: {
+					"0%": {
+						height: "100vh",
+						transform: "translateY(0)",
+						opacity: 1,
+					},
+					"100%": {
+						height: "100vh",
+						transform: "translateY(-100%)",
+						opacity: 0,
 					},
 				},
 				chatBotSlideIn: {
@@ -96,14 +130,6 @@ export default {
 						opacity: 0,
 					},
 				},
-			},
-			blur: {
-				0: "0",
-				sm: "2px",
-				md: "8px",
-				lg: "16px",
-				xl: "24px",
-				"2xl": "40px",
 			},
 
 			spacing: {
@@ -290,22 +316,7 @@ export default {
 				900: "#14532d",
 			},
 		},
-		screens: {
-			sm: "640px",
-			// => @media (min-width: 640px) { ... }
 
-			md: "768px",
-			// => @media (min-width: 768px) { ... }
-
-			lg: "1024px",
-			// => @media (min-width: 1024px) { ... }
-
-			xl: "1280px",
-			// => @media (min-width: 1280px) { ... }
-
-			"2xl": "1536px",
-			// => @media (min-width: 1536px) { ... }
-		},
 		borderRadius: {
 			sm: ".125rem",
 			md: "0.375rem",
@@ -320,35 +331,6 @@ export default {
 			"8xl": "4rem",
 			"9xl": "4.5rem",
 			full: "9999px",
-		},
-		size: {
-			"1/2": "50%",
-			"1/3": "33.333333%",
-			"2/3": "66.666667%",
-			"1/4": "25%",
-			"2/4": "50%",
-			"3/4": "75%",
-			"1/5": "20%",
-			"2/5": "40%",
-			"3/5": "60%",
-			"4/5": "80%",
-			"1/6": "16.666667%",
-			"2/6": "33.333333%",
-			"3/6": "50%",
-			"4/6": "66.666667%",
-			"5/6": "83.333333%",
-			"1/12": "8.333333%",
-			"2/12": "16.666667%",
-			"3/12": "25%",
-			"4/12": "33.333333%",
-			"5/12": "41.666667%",
-			"6/12": "50%",
-			"7/12": "58.333333%",
-			"8/12": "66.666667%",
-			"9/12": "75%",
-			"10/12": "83.333333%",
-			"11/12": "91.666667%",
-			full: "100%",
 		},
 	},
 	duration: {
@@ -371,7 +353,7 @@ export default {
 	plugins: [
 		// require("tailwind-scrollbar-hide"),
 		require("@tailwindcss/typography"),
-		require("@tailwindcss/aspect-ratio"),
+		// require("@tailwindcss/aspect-ratio"),
 		// require("@tailwindcss/container-queries"),
 		require("@tailwindcss/forms"),
 		"prettier-plugin-tailwindcss",

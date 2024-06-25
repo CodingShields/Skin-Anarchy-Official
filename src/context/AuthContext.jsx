@@ -60,8 +60,6 @@ export const AuthContextProvider = ({ children }) => {
 		});
 	};
 
-	console.log(authCurrentUser());
-
 	const signIn = (email, password) => {
 		return signInWithEmailAndPassword(auth, email, password);
 	};

@@ -1,11 +1,20 @@
+import { useState, useEffect } from "react";
+import { userDeviceInfo } from "../../../utilities/utilities";
 import NavBar from "../navBar/NavBar";
-
+import MobileNavBar from "../navBar/MobileNavBar";
 const Header = () => {
-	return (
-		<div className='fixed z-30 flex flex-row justify-center items-center w-full top-0'>
-			<NavBar />
-		</div>
-	);
+	const [isMobile, setIsMobile] = useState(false);
+
+	console.log(userDeviceInfo());
+	useEffect(() => {
+		if (userDeviceInfo()) {
+			setIsMobile(true);
+		} else {
+			setIsMobile(false);
+		}
+	}, []);
+
+	return <div className='fixed w-full top-0 z-30 flex'>{isMobile ? <MobileNavBar /> : <NavBar />}</div>;
 };
 
 export default Header;

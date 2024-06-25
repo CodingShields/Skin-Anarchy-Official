@@ -4,7 +4,7 @@ const PolicyBar = () => {
 
     const navigate = useNavigate();
 	return (
-		<div className='flex flex-row w-full justify-center items-center space-x-48 h-fit bg-black relative cursor-pointer z-10'>
+		<div className='flex flex-row w-full justify-center items-center sm:space-x-8 space-x-48 h-fit bg-black relative cursor-pointer z-10'>
 			<button
 				className='font-thin font-montserrat  py-4 text-white/30 transition-all ease-in-out duration-300 hover:text-white uppercase'
 				onClick={() => navigate("/disclaimer")}

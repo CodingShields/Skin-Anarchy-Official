@@ -2,27 +2,32 @@ import PropTypes from "prop-types";
 import whiteLogo from "../../assets/images/logos/white-logo.png";
 
 const LoginPageNavBar = ({ onClick }) => {
-
 	return (
-		<div className='flex flex-row justify-between items-center space-x-12 text-white font-montserrat font-thin text-xl  py-4 uppercase pr-12 bg-black z-20 relative'>
-			<div className='inline-flex items-center w-1/2 ml-8 space-x-8'>
-				<img className='w-11' src={whiteLogo} />
-				<h1 className='text-5xl font-montserrat font-thin'>Skin Anarchy</h1>
+		<div className='sm:w-full flex flex-row sm:flex-col justify-between items-center sm:space-x-2 space-x-12 text-white font-montserrat font-thin text-xl  py-4 uppercase  bg-black z-50 relative'>
+			<div className='inline-flex items-center w-1/2 sm:w-full sm:justify-center ml-8 space-x-8'>
+				<img className='w-11 cursor-pointer' src={whiteLogo} onClick={onClick} />
+				<h1 className='sm:text-2xl text-5xl font-montserrat font-thin whitespace-nowrap'>Skin Anarchy</h1>
 			</div>
-			<div className="inline-flex items-end justify-end w-1/2 space-x-8">
-				<button className='uppercase underlineAnimate'>Our Story</button>
-				<button className='uppercase underlineAnimate'>Listen Now</button>
-				<button onClick={onClick} className='uppercase underlineAnimate'>
+			<div className='inline-flex  sm:mt-4 sm:bg-white sm:py-4 lg:items-end lg:justify-end sm:w-full w-1/2  space-x-8 '>
+				<button onClick={onClick} className='sm:text-xs uppercase underlineAnimate sm:hidden sm:collapse'>
+					Our Story
+				</button>
+				<button onClick={onClick} className='sm:text-xs uppercase underlineAnimate sm:text-center sm:text-black sm:w-full sm:font-semibold '>
+					Listen Now
+				</button>
+				<button onClick={onClick} className=' sm:text-xs uppercase underlineAnimate sm:text-center sm:text-black sm:w-full sm:font-semibold'>
 					Sign In
 				</button>
-				<button className='uppercase underlineAnimate'>Join The Movement</button>
+				<button onClick={onClick} className='sm:text-xs uppercase underlineAnimate sm:hidden sm:collapse'>
+					Join The Movement
+				</button>
 			</div>
 		</div>
 	);
 };
 
 LoginPageNavBar.propTypes = {
-    onClick: PropTypes.func.isRequired,
-}
+	onClick: PropTypes.func.isRequired,
+};
 
 export default LoginPageNavBar;

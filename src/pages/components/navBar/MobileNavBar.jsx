@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from "react";
-import { userDeviceInfo } from "../../../utilities/utilities";
 import { Bars3Icon } from "@heroicons/react/24/solid";
 import HighlightMenu from "./HighlightMenu";
 import goldLogo from "../../../assets/images/logos/goldLogo.png";
@@ -37,6 +36,7 @@ import gersten from "../../../assets/images/navBar/episodes/gersten.png";
 import allenby from "../../../assets/images/navBar/masterclass/allenby.png";
 import codex from "../../../assets/images/navBar/masterclass/codex.png";
 import veytsman from "../../../assets/images/navBar/masterclass/veytsman.png";
+import WorkingModal from "../WorkingModal";
 
 const about = [
 	{
@@ -352,113 +352,158 @@ const blogArray = [
 ];
 const mainNavBar = ["home", "about", "episodes", "blog", "awards", "yugen", "connect", "account"];
 
-const buttonStyle = "uppercase font-thin underlineAnimate subpixel-antialiased tracking-[6px] text-white sm:text-[8px] text-[16px]";
+const buttonStyle = "sm:py-3 uppercase font-thin underlineAnimate  tracking-[6px] text-white sm:text-[16px]";
 const activeNavButton =
-	"uppercase font-semibold text-gold-500 subpixel-antialiased tracking-[6px] text-sm  underline underline-offset-8 decoration-1";
+	"uppercase font-semibold sm:py-3 text-gold-500 subpixel-antialiased tracking-[6px] text-sm  underline underline-offset-8 sm:text-[18px] decoration-1";
 const smallMenuclassName =
 	"uppercase py-4 animate-fadeIn w-fit px-24 translate-x-[-400px] bg-char-900 text-white font-montserrat w-fit gap-12 text-[22px] flex flex-col translate-y-[50px] absolute bg-black transition-all duration-500 ease-in-out rounded-b-xl";
 const largeMenuclassName =
 	"uppercase py-4 animate-fadeIn w-full px-24 translate-x-[-800px] bg-char-900 text-white font-montserrat w-fit gap-12 text-[22px] flex flex-row translate-y-[50px] absolute bg-black transition-all duration-500 ease-in-out rounded-b-xl";
 const navMenu = "text-white font-montserrat text-3xl uppercase tracking-[2px] flex flex-col gap-14 pb-12 w-[300px]";
 const highlightMenu = "text-white font-montserrat  uppercase tracking-[2px] flex flex-row justify-center items-center w-3/4 ";
-const NavBar = () => {
+const MobileNavBar = () => {
+	const [state, setState] = useState({
+		loading: false,
+	});
 	const [open, setOpen] = useState(false);
+	const [openMenu, setOpenMenu] = useState(false);
+	console.log(openMenu);
 	const [subMenuIndex, setSubMenuIndex] = useState(0);
-	const [menu, setMenu] = useState("");
-	const [isMobile, setIsMobile] = useState(false);
+	const [menu, setMenu] = useState({
+		menu: "home",
+		open: false,
+	});
 	const menuRef = useRef(null);
-	console.log(userDeviceInfo());
-	useEffect(() => {
-		if (userDeviceInfo()) {
-			setIsMobile(true);
-		} else {
-			setIsMobile(false);
-		}
-	}, []);
-	const handleClick = (e) => {
-		const currentMenu = e.target.name;
-		console.log(currentMenu);
-		setMenu(currentMenu);
-		if (
-			open &&
-			(currentMenu === "blog" ||
-				currentMenu === "episodes" ||
-				currentMenu === "awards" ||
-				currentMenu === "yugen" ||
-				currentMenu === "connect" ||
-				currentMenu === "safe seal" ||
-				currentMenu === "account")
-		) {
-			setOpen(open);
-		} else {
-			setOpen(!open);
-		}
+	console.log(menuRef.current);
+	// const handleClick = (e) => {
+	// 	const currentMenu = e.target.name;
+	// 	console.log(currentMenu);
+	// 	setMenu(currentMenu);
+	// 	if (
+	// 		open &&
+	// 		(currentMenu === "blog" ||
+	// 			currentMenu === "episodes" ||
+	// 			currentMenu === "awards" ||
+	// 			currentMenu === "yugen" ||
+	// 			currentMenu === "connect" ||
+	// 			currentMenu === "safe seal" ||
+	// 			currentMenu === "account")
+	// 	) {
+	// 		setOpen(open);
+	// 	} else {
+	// 		setOpen(!open);
+	// 	}
+	// };
+
+	const handleMenuToggle = () => {
+		setOpenMenu(!openMenu);
+		console.log("test");
 	};
-
-	const handleSubMenuHover = (item, index) => {
-		setSubMenuIndex(index);
-	};
-
-	useEffect(() => {
-		// Function to close menu when clicked outside
-		const handleClickOutside = (event) => {
-			if (menuRef.current && !menuRef.current.contains(event.target)) {
-				setOpen(false);
-			}
-		};
-		// Add event listener when component mounts
-		document.addEventListener("mousedown", handleClickOutside);
-		// Cleanup function to remove event listener when component unmounts
-		return () => {
-			document.removeEventListener("mousedown", handleClickOutside);
-		};
-	}, []);
-
-	useEffect(() => {
-		// Function to close menu when clicked outside
-
-		const handleMouseOutside = (event) => {
-			if (menuRef.current && !menuRef.current.contains(event.target)) {
-				setOpen(false);
-			}
-		};
-		// Add event listener when component mounts
-		document.addEventListener("mouseout", handleMouseOutside);
-		// Cleanup function to remove event listener when component unmounts
-		return () => {
-			document.removeEventListener("mouseout", handleMouseOutside);
-		};
-	}, []);
 
 	return (
-		<div ref={menuRef} id='menu' className='w-full sm:w-fit h-16 bg-black border-b border-white'>
-			<div className='w-full  flex flex-row  justify-center items-center sm:space-x-2 space-x-18 mx-auto mt-2'>
+		<div ref={menuRef} id='menu' className='sm:w-full sm:h-fit bg-black'>
+			<div
+				onClick={handleMenuToggle}
+				className='sm:inline-flex sm:w-full sm:justify-center sm:items-center  sm:space-x-4 sm:border-b sm:py-2 sm:z-20'
+			>
+				<Bars3Icon className='sm:w-10 sm:h-10 text-white sm:ml-2 sm:mr-auto ' />
+				<h1 className='text-white font-montserrat  sm:w-full sm:text-xl uppercase'>
+					Skin Anarchy - <span className='sm:text-gold-500 animate-fadeIn'>{menu.menu}</span>
+				</h1>
+			</div>
+			<div
+				className={`sm:w-fit  sm:flex sm:flex-col sm:justify-start sm:items-start  sm:mt-8 sm:ml-4 ${openMenu ? "sm:space-y-2 sm:animate-navBarOpen " : " animate-navBarClose"}`}
+			>
 				<Button
-					className={menu === "home" ? activeNavButton : buttonStyle + " sm:text-[6px] text-[16px]"}
+					className={menu.menu === "home" ? activeNavButton : buttonStyle}
 					text={"home"}
-					onClick={handleClick}
+					onClick={() => {
+						setMenu({ menu: "home", open: false });
+						setOpenMenu(false);
+					}}
 					to={"/members-area/home"}
 				/>
-				<Button className={menu === "about" ? activeNavButton : buttonStyle} text={"about"} onClick={handleClick} />
-				<Button className={menu === "episodes" ? activeNavButton : buttonStyle} text={"episodes"} onClick={handleClick} />
-				<Button className={menu === "blog" ? activeNavButton : buttonStyle} text={"blog"} onClick={handleClick} />
 				<Button
-					className={menu === "safe seal" ? activeNavButton : buttonStyle}
+					className={menu.menu === "about" ? activeNavButton : buttonStyle}
+					text={"about"}
+					onClick={() => {
+						setMenu({ menu: "about", open: true });
+						setOpenMenu(false);
+					}}
+				/>
+				<Button
+					className={menu.menu === "episodes" ? activeNavButton : buttonStyle}
+					text={"episodes"}
+					onClick={() => {
+						setMenu({ menu: "episodes", open: true });
+						setOpenMenu(false);
+					}}
+				/>
+				<Button
+					className={menu.menu === "blog" ? activeNavButton : buttonStyle}
+					text={"blog"}
+					onClick={() => {
+						setOpenMenu(false);
+						setMenu({ menu: "blog", open: true });
+					}}
+					to={"/members-area/blog"}
+				/>
+				<Button
+					className={menu.menu === "safe seal" ? activeNavButton : buttonStyle}
 					text={"safe seal"}
 					to={"/members-area/safe-seal"}
-					onClick={handleClick}
+					onClick={() => {
+						setOpenMenu(false);
+						setMenu({ menu: "safe seal", open: false });
+					}}
 				/>
-				<div className={`${!isMobile && "inline-flex w-fit space-x-4"}`}>
-					<img src={goldLogo} alt='logo' className='w-10 h-10 ' />
-					<Bars3Icon className={`w-10 h-10 text-white ${!isMobile && "hidden"}`} />
-				</div>
-				<Button className={menu === "awards" ? activeNavButton : buttonStyle} text={"awards"} onClick={handleClick} />
-				<Button className={menu === "yugen" ? activeNavButton : buttonStyle} text={"yugen"} to={"/members-area/yugen"} onClick={handleClick} />
-				<Button className={menu === "connect" ? activeNavButton : buttonStyle} text={"connect"} onClick={handleClick} to={"/members-area/connect"} />
-				<Button className={menu === "shop" ? activeNavButton : buttonStyle} text={"shop"} onClick={handleClick} to={"/members-area/shop"} />
-				<Button className={menu === "account" ? activeNavButton : buttonStyle} text={"account"} onClick={handleClick} to={"/members-area/account"} />
+
+				<Button
+					className={menu.menu === "awards" ? activeNavButton : buttonStyle}
+					text={"awards"}
+					onClick={() => {
+						setOpenMenu(false);
+						setMenu({ menu: "awards", open: true });
+					}}
+				/>
+				<Button
+					className={menu.menu === "yugen" ? activeNavButton : buttonStyle}
+					text={"yugen"}
+					to={"/members-area/yugen"}
+					onClick={() => {
+						setOpenMenu(false);
+						setMenu({ menu: "yugen", open: false });
+					}}
+				/>
+				<Button
+					className={menu.menu === "connect" ? activeNavButton : buttonStyle}
+					text={"connect"}
+					onClick={() => {
+						setOpenMenu(false);
+						setMenu({ menu: "connect", open: true });
+					}}
+					to={"/members-area/connect"}
+				/>
+				<Button
+					className={menu.menu === "shop" ? activeNavButton : buttonStyle}
+					text={"shop"}
+					onClick={() => {
+						setOpenMenu(false);
+						setMenu({ menu: "shop", open: false });
+					}}
+					to={"/members-area/shop"}
+				/>
+				<Button
+					className={menu.menu === "account" ? activeNavButton : buttonStyle}
+					text={"account"}
+					onClick={() => {
+						setOpenMenu(false);
+						setMenu({ menu: "account", open: false });
+					}}
+					to={"/members-area/account"}
+				/>
 			</div>
-			<div ref={menuRef} className='w-full '>
+			<div ref={menuRef} className='w-full hidden'>
 				<NavBarDropDown open={open} menu={menu} text={"about"}>
 					<div className='flex flex-row w-full justify-center items-center bg-black border-white border-b-[1px] py-10 space-x-24'>
 						{about.map((item, index) => {
@@ -473,7 +518,7 @@ const NavBar = () => {
 					</div>
 				</NavBarDropDown>
 				{/* Episodes Drop Down */}
-				<NavBarDropDown open={open} menu={menu} text={"episodes"}>
+				<NavBarDropDown open={menu.open} menu={menu.menu} text={"episodes"}>
 					<div className='flex flex-row w-full justify-start items-center bg-black border-white border-b-[1px]'>
 						<div className='w-[475px] h-fit flex flex-col space-y-12 py-12 px-12 whitespace-nowrap pb-8'>
 							<h1 className='uppercase  text-white underline text-2xl xl:text-lg font-montserrat font-thin underline-offset-8  decoration-1 '>
@@ -482,7 +527,7 @@ const NavBar = () => {
 							{episodes.map((item, index) => {
 								return (
 									<div
-										onMouseEnter={() => handleSubMenuHover(item, index)}
+										// onMouseEnter={() => handleSubMenuHover(item, index)}
 										key={index}
 										className='w-11/12 uppercase text-white text-lg font-montserrat font-thin ml-4 hover:underline underline-offset-8 decoration-1 transition-all duration-500 ease-in-out text-left '
 									>
@@ -508,14 +553,14 @@ const NavBar = () => {
 					</div>
 				</NavBarDropDown>
 				{/* Blog Drop Down */}
-				<NavBarDropDown open={open} menu={menu} text={"blog"}>
+				<NavBarDropDown open={menu.open} menu={menu.menu} text={"blog"}>
 					<div className='flex flex-row w-full justify-start items-center bg-black border-white border-b-[1px]'>
 						<div className='w-[475px] h-fit flex flex-col space-y-12 py-12 px-12 whitespace-nowrap  '>
 							<h1 className='uppercase  text-white underline text-2xl font-montserrat font-thin underline-offset-8 decoration-1'>Categories</h1>
 							{blog.map((item, index) => {
 								return (
 									<div
-										onMouseEnter={() => handleSubMenuHover(item, index)}
+										// onMouseEnter={() => handleSubMenuHover(item, index)}
 										key={index}
 										className='w-11/12 underline-offset-8 decoration-1 uppercase text-white text-xl font-montserrat font-thin ml-4 hover:underline transition-all duration-500 ease-in-out text-left '
 									>
@@ -539,8 +584,8 @@ const NavBar = () => {
 					</div>
 				</NavBarDropDown>
 				{/* Sale Seal Drop Down */}
-				<NavBarDropDown open={open} menu={menu} text={"safe seal"}></NavBarDropDown>
-				<NavBarDropDown open={open} menu={menu} text={"awards"}>
+				<NavBarDropDown open={menu.open} menu={menu.menu} text={"safe seal"}></NavBarDropDown>
+				<NavBarDropDown open={menu.open} menu={menu.menu} text={"awards"}>
 					<div className='flex flex-row w-full justify-center items-center bg-black border-white border-b-[1px] py-4 space-x-12'>
 						{awards.map((item, index) => {
 							return (
@@ -553,7 +598,7 @@ const NavBar = () => {
 						})}
 					</div>
 				</NavBarDropDown>
-				<NavBarDropDown open={open} menu={menu} text={"connect"}>
+				<NavBarDropDown open={menu.open} menu={menu.menu} text={"connect"}>
 					<div className='flex flex-row w-full justify-center items-center bg-black border-white border-b-[1px] py-10 space-x-24'>
 						{connect.map((item, index) => {
 							return (
@@ -571,4 +616,4 @@ const NavBar = () => {
 	);
 };
 
-export default NavBar;
+export default MobileNavBar;

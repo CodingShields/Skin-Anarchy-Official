@@ -2,14 +2,18 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { doc, getDoc, collection, getDocs } from "firebase/firestore";
 import { storage, db } from "../fireBase/firebaseConfig";
 import { UserAuth } from "../context/AuthContext";
-import { useEffect, useState } from "react";
 
+const userDeviceInfo = () => {
+	return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+};
+
+export { userDeviceInfo };
+	
 const imageBlobCreator = (image) => {
 	const newImageUrl = URL.createObjectURL(image);
 	return newImageUrl;
 };
 export { imageBlobCreator };
-	
 
 const imageDownloadUrl = async (image) => {
 	try {
@@ -99,15 +103,13 @@ const formatTimeStamp = (timestamp) => {
 };
 
 export { formatTimeStamp };
-	
-	const formatDate = (date) => {
-		const dateArray = date.split("-");
-		const year = dateArray[0];
-		const month = dateArray[1];
-		const day = dateArray[2];
-		return `${month}-${day}-${year}`;
-};
-	
-export { formatDate };
-	
 
+const formatDate = (date) => {
+	const dateArray = date.split("-");
+	const year = dateArray[0];
+	const month = dateArray[1];
+	const day = dateArray[2];
+	return `${month}-${day}-${year}`;
+};
+
+export { formatDate };
