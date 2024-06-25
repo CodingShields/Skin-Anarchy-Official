@@ -21,7 +21,6 @@ import page17yugenvol2 from "../../assets/data/yugen/page17yugenvol2.jpg";
 import page18yugenvol2 from "../../assets/data/yugen/page18yugenvol2.jpg";
 import page19yugenvol2 from "../../assets/data/yugen/page19yugenvol2.jpg";
 import page20yugenvol2 from "../../assets/data/yugen/page20yugenvol2.jpg";
-import MagnifierTool from "./MagnifierTool";
 
 const pages = [
 	page1yugenvol2,
