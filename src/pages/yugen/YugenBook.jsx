@@ -60,11 +60,11 @@ const YugenBook = ({ toggleMag }) => {
 			onFlip={onFlip}
 			ref={bookRef}
 			className={`hover:cursor-grab active:cursor-grabbing ${currentPage !== 0 ? "shadow-2xl shadow-gold-500/30" : ""} `}
-			maxShadowOpacity={1}
+			maxShadowOpacity={0}
 			drawShadow={true}
-			width={600}
-			height={700}
-			usePortrait={true}
+			width={900}
+			height={1000}
+			// usePortrait={true}
 		>
 			{pages.map((page, index) => (
 				<img key={index} src={page} alt={`page ${index + 1}`} />
