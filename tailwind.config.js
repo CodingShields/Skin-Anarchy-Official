@@ -6,6 +6,17 @@ import { visibility } from "html2canvas/dist/types/css/property-descriptors/visi
 export default {
 	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
 	theme: {
+		zIndex: {
+			"10": 10,
+			"20": 20,
+			"30": 30,
+			"40": 40,
+			"50": 50,
+			"60": 60,
+			"70": 70,
+			"80": 80,
+			"90": 90,
+		},
 		screens: {
 			xxl: { max: "1535px" },
 			// => @media (max-width: 1535px) { ... }
@@ -54,12 +65,13 @@ export default {
 				marquee2: "marquee2 25s linear infinite",
 				slideIn: "slideIn .25s ease-in-out forwards var(--delay, 0)",
 				rotateLogo: "rotateLogo 5s linear infinite",
-				fadeIn: "fadeIn .5s ease-in forwards",
-				fadeOut: "fadeOut .5s ease-out forwards",
+				fadeIn: "fadeIn 1s ease-in forwards",
+				fadeOut: "fadeOut 1s ease-out forwards",
 				navBarOpen: "navBarOpen 1s ease-in-out forwards",
 				navBarClose: "navBarClose .75s ease-in-out forwards",
 				chatBotSlideIn: "chatBotSlideIn 1.5s ease-in-out forwards",
 				chatBotSlideOut: "chatBotSlideOut 1.5s ease-in-out forwards",
+				scrollingSponsors: "scrollingSponsors 115s linear infinite",
 			},
 			keyframes: {
 				marquee: {
@@ -129,6 +141,10 @@ export default {
 						transform: "translateY(100%)",
 						opacity: 0,
 					},
+				},
+				scrollingSponsors: {
+					"0% ": { transform: "translateX(0)" },
+					"100%": { transform: "translateX(-1296vw)" },
 				},
 			},
 

@@ -367,7 +367,6 @@ const MobileNavBar = () => {
 	});
 	const [open, setOpen] = useState(false);
 	const [openMenu, setOpenMenu] = useState(false);
-	console.log(openMenu);
 	const [subMenuIndex, setSubMenuIndex] = useState(0);
 	const [menu, setMenu] = useState({
 		menu: "home",
@@ -381,18 +380,21 @@ const MobileNavBar = () => {
 	};
 
 	return (
-		<div ref={menuRef} id='menu' className='sm:w-full sm:h-fit bg-black'>
+		<div ref={menuRef} id='menu' className='sm:w-full sm:h-full relative z-40'>
 			<div
 				onClick={handleMenuToggle}
-				className='sm:inline-flex sm:w-full sm:justify-center sm:items-center  sm:space-x-4 sm:border-b sm:py-2 sm:z-20'
+				className='sm:inline-flex sm:w-full sm:justify-center sm:h-fit sm:items-center  sm:space-x-4 sm:border-b sm:py-2 sm:z-30  sm:bg-black'
 			>
-				<Bars3Icon className='sm:w-10 sm:h-10 text-white sm:ml-2 sm:mr-auto ' />
-				<h1 className='text-white font-montserrat  sm:w-full sm:text-xl uppercase'>
+				<Bars3Icon onClick={handleMenuToggle} className='sm:w-10 sm:h-10 text-white sm:ml-2 sm:mr-auto ' />
+				{/* <h1 onClick={handleMenuToggle} className='text-white font-montserrat  sm:w-full sm:text-xl uppercase'>
 					Skin Anarchy - <span className='sm:text-gold-500 animate-fadeIn'>{menu.menu}</span>
+				</h1> */}
+				<h1 onClick={handleMenuToggle} className='text-white font-montserrat  sm:w-full sm:text-xl uppercase'>
+					<span className='sm:text-gold-500 animate-fadeIn'>{menu.menu}</span>
 				</h1>
 			</div>
 			<div
-				className={`sm:w-fit  sm:flex sm:flex-col sm:justify-start sm:items-start  sm:mt-8 sm:ml-4 ${openMenu ? "sm:space-y-2 sm:animate-navBarOpen " : " animate-navBarClose"}`}
+				className={`sm:w-fit  sm:flex sm:flex-col sm:justify-start sm:items-start sm:z-20 bg-black sm:h-fit  pr-8 sm:pt-4 sm:pl-4 ${openMenu ? "sm:space-y-4 sm:animate-navBarOpen sm:border-r-[1px] sm:border-b-white sm:border-r-white" : " animate-navBarClose"}`}
 			>
 				<Button
 					className={menu.menu === "home" ? activeNavButton : buttonStyle}
@@ -410,6 +412,7 @@ const MobileNavBar = () => {
 						setMenu({ menu: "about", open: true });
 						setOpenMenu(false);
 					}}
+					
 				/>
 				<Button
 					className={menu.menu === "episodes" ? activeNavButton : buttonStyle}

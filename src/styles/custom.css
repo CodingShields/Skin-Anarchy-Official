@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 /* .navbar {
 	position: fixed;
 	top: 0;

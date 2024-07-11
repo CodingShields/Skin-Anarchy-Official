@@ -8,75 +8,96 @@ import oneSkin from "../../../assets/images/topPicks/one-skin.svg";
 import pcaSkin from "../../../assets/images/topPicks/pca-skin.svg";
 import revive from "../../../assets/images/topPicks/revive.svg";
 import victoriaBeckham from "../../../assets/images/topPicks/victoria-beckham.svg";
-
+import { userDeviceInfo } from "../../../utilities/utilities";
+import { useState, useEffect } from "react";
 const TopPicks = () => {
+
+	const [isMobile, setIsMobile] = useState(false);
+
+	console.log(userDeviceInfo());
+	useEffect(() => {
+		if (userDeviceInfo()) {
+			setIsMobile(true);
+		} else {
+			setIsMobile(false);
+		}
+	}, []);
+
+
 	return (
-		<div className='w-full h-fit my-64'>
+		<div className='w-full h-fit my-64 sm:my-32'>
 			<div className=''>
-				<h1 className='text-white text-6xl text-center font-montserrat font-thin uppercase tracking-widest py-6'>Skincare Anarchy Awards </h1>
-				<h2 className='text-white lowercase text-center font-montserrat text-4xl font-thin'>#toppicks</h2>
+				<h1 className='text-white text-6xl sm:text-3xl text-center font-montserrat font-thin uppercase tracking-widest py-6'>
+					Skincare Anarchy Awards{" "}
+				</h1>
+				<h2 className='text-white lowercase text-center sm:text-3xl font-montserrat text-4xl font-thin'>#toppicks</h2>
 			</div>
-			<div className='relative topPicksBar h-fit'>
-				<div className='topPicksBar-content py-12 mt-12'>
-					<div className='topPicksBar-item'>
+			<div className='relative overflow-hidden'>
+				<div
+					className='topPicksBar-content py-12 mt-12 '
+					style={{
+						animation: `scrollingSponsors  ${isMobile ? "35s" : "115s"} linear infinite`,
+					}}
+				>
+					<div className='flex flex-grow-0 flex-shrink-0 w-64 sm:w-32'>
 						<img onMouseEnter={() => console.log("test")} src={codex} />
 					</div>
-					<div className='topPicksBar-item'>
+					<div className='flex flex-grow-0 flex-shrink-0 w-64 sm:w-32'>
 						<img src={elta} />
 					</div>
-					<div className='topPicksBar-item'>
+					<div className='flex flex-grow-0 flex-shrink-0 w-64 sm:w-32'>
 						<img src={epicutis} />
 					</div>
-					<div className='topPicksBar-item'>
+					<div className='flex flex-grow-0 flex-shrink-0 w-64 sm:w-32'>
 						<img src={hairOil} />
 					</div>
-					<div className='topPicksBar-item'>
+					<div className='flex flex-grow-0 flex-shrink-0 w-64 sm:w-32'>
 						<img src={janMarini} />
 					</div>
-					<div className='topPicksBar-item'>
+					<div className='flex flex-grow-0 flex-shrink-0 w-64 sm:w-32'>
 						<img src={makeUpMario} />
 					</div>
-					<div className='topPicksBar-item'>
+					<div className='flex flex-grow-0 flex-shrink-0 w-64 sm:w-32'>
 						<img src={oneSkin} />
 					</div>
-					<div className='topPicksBar-item'>
+					<div className='flex flex-grow-0 flex-shrink-0 w-64 sm:w-32'>
 						<img src={pcaSkin} />
 					</div>
-					<div className='topPicksBar-item'>
+					<div className='flex flex-grow-0 flex-shrink-0 w-64 sm:w-32'>
 						<img src={revive} />
 					</div>
-					<div className='topPicksBar-item'>
+					<div className='flex flex-grow-0 flex-shrink-0 w-64 sm:w-32'>
 						<img src={victoriaBeckham} />
 					</div>
 					{/* Marquee Split */}
-					<div className='topPicksBar-item'>
+					<div className='flex flex-grow-0 flex-shrink-0 w-64 sm:w-32'>
 						<img src={codex} />
 					</div>
-					<div className='topPicksBar-item'>
+					<div className='flex flex-grow-0 flex-shrink-0 w-64 sm:w-32'>
 						<img src={elta} />
 					</div>
-					<div className='topPicksBar-item'>
+					<div className='flex flex-grow-0 flex-shrink-0 w-64 sm:w-32'>
 						<img src={epicutis} />
 					</div>
-					<div className='topPicksBar-item'>
+					<div className='flex flex-grow-0 flex-shrink-0 w-64 sm:w-32'>
 						<img src={hairOil} />
 					</div>
-					<div className='topPicksBar-item'>
+					<div className='flex flex-grow-0 flex-shrink-0 w-64 sm:w-32'>
 						<img src={janMarini} />
 					</div>
-					<div className='topPicksBar-item'>
+					<div className='flex flex-grow-0 flex-shrink-0 w-64 sm:w-32'>
 						<img src={makeUpMario} />
 					</div>
-					<div className='topPicksBar-item'>
+					<div className='flex flex-grow-0 flex-shrink-0 w-64 sm:w-32'>
 						<img src={oneSkin} />
 					</div>
-					<div className='topPicksBar-item'>
+					<div className='flex flex-grow-0 flex-shrink-0 w-64 sm:w-32'>
 						<img src={pcaSkin} />
 					</div>
-					<div className='topPicksBar-item'>
+					<div className='flex flex-grow-0 flex-shrink-0 w-64 sm:w-32'>
 						<img src={revive} />
 					</div>
-					<div className='topPicksBar-item'>
+					<div className='flex flex-grow-0 flex-shrink-0 w-64 sm:w-32'>
 						<img src={victoriaBeckham} />
 					</div>
 				</div>

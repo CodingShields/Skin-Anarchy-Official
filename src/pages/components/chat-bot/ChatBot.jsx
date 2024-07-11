@@ -12,7 +12,7 @@ const ChatBot = () => {
 			<div className={openChat ? "w-1/4 h-fit fixed bottom-0 right-0 mr-10 mb-10 z-20 " : "hidden"}>
 				<div className='w-auto h-32 p-2  rounded-t-lg  bg-char-900'>
 					<div className='w-full flex flex-row justify-start items-center h-full '>
-						<div className='w-fit h-fit rounded-full bg-black p-4 shadow-lg shadow-white/50'>
+						<div className='w-fit h-fit rounded-full  p-4 shadow-lg shadow-white/50'>
 							<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' strokeWidth='1' stroke='white' className='w-14 h-14 text-white'>
 								<path
 									strokeLinecap='round'

@@ -14,7 +14,7 @@ const Header = () => {
 		}
 	}, []);
 
-	return <div className='fixed w-full top-0 z-30 flex'>{isMobile ? <MobileNavBar /> : <NavBar />}</div>;
+	return <div className='fixed w-screen top-0 z-30 flex h-fit sm:overscroll-x-none '>{isMobile ? <MobileNavBar /> : <NavBar />}</div>;
 };
 
 export default Header;

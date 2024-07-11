@@ -72,23 +72,43 @@ import thyrst from "../../../assets/images/sponsor-images/thyrst.svg";
 import veytsman from "../../../assets/images/sponsor-images/veytsman.svg";
 import Womaness from "../../../assets/images/sponsor-images/Womaness.svg";
 import "../../../styles/custom.scss";
+import { userDeviceInfo } from "../../../utilities/utilities";
+
+import { useState, useEffect } from "react";
 
 const SponsorBarContainer = () => {
+	const [isMobile, setIsMobile] = useState(false);
+
+	console.log(userDeviceInfo());
+	useEffect(() => {
+		if (userDeviceInfo()) {
+			setIsMobile(true);
+		} else {
+			setIsMobile(false);
+		}
+	}, []);
+	const screenWidth = window.innerWidth;
+	console.log(screenWidth)
+
 	return (
-		<div className='relative sponsorBar '>
-			<h1></h1>
-			<div className='sponsorBar-content'>
-				{/* Images */}
+		<div className='relative overflow-hidden'>
+			<h1>Check Out Our Sponsors</h1>
+			<div
+				className=' flex animate-scrollingSponsors'
+				style={{
+					animation: `scrollingSponsors  ${isMobile ? "35s" : "115s"} linear infinite`,
+				}}
+			>
 				{sponsorImages.map((sponsor, index) => {
 					return (
-						<div className='sponsorBar-item' key={index}>
+						<div className='flex flex-grow-0 flex-shrink-0 w-64 sm:w-32' key={index}>
 							<img src={sponsor} />
 						</div>
 					);
 				})}
 				{sponsorImages.map((sponsor, index) => {
 					return (
-						<div className='sponsorBar-item' key={index}>
+						<div className='block w-full py-[20px] ' key={index}>
 							<img src={sponsor} />
 						</div>
 					);

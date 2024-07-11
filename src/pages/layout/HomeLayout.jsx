@@ -5,6 +5,7 @@ import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer.jsx";
 import ChatBot from "../components/chat-bot/ChatBot";
 import PolicyBar from "../disclaimer-privacy-policy/PolicyBar";
+import Radio from "../components/radio/Radio";
 const HomeLayout = () => {
 	const [isAdmin, setIsAdmin] = useState(false);
 
@@ -27,8 +28,9 @@ const HomeLayout = () => {
 	return (
 		<>
 			{!isAdmin && <Header />}
-			<Outlet /> 
-			{!isAdmin && <ChatBot />}
+			<Outlet />
+			{/* {!isAdmin && <ChatBot />} */}
+			{!isAdmin && <Radio />}
 			{!isAdmin && <Footer />}
 			{isAdmin && <PolicyBar />}
 		</>
