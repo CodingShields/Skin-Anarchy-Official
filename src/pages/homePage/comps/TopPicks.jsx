@@ -32,7 +32,7 @@ const TopPicks = () => {
 				</h1>
 				<h2 className='text-white lowercase text-center sm:text-3xl font-montserrat text-4xl font-thin'>#toppicks</h2>
 			</div>
-			<div className='relative overflow-hidden'>
+			<div className='relative '>
 				<div
 					className='topPicksBar-content py-12 mt-12 '
 					style={{

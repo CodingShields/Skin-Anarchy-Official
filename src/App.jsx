@@ -67,7 +67,6 @@ function App() {
 					<Route path='members-area' element={<HomeLayout />}>
 						<Route path='home' element={<HomePage />} />
 						{/* About Pages */}
-						{/* <Route path='about-us' element={<AboutPage />} /> */}
 						<Route path='about/about-us' element={<AboutUs />} />
 						<Route path='about/mission-statement' element={<MissionStatementComp />} />
 						<Route path='about/featured-press' element={<FeaturedPress />} />
@@ -101,7 +100,6 @@ function App() {
 						<Route path='connect' element={<ConnectPage />} />
 						{/* Support Page */}
 						<Route path='support' element={<SupportPage />} />
-						{/* Disclaimer and Privacy Policy PagePages */}
 					</Route>
 				</Routes>
 			</AuthContextProvider>

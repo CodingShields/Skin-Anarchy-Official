@@ -1,15 +1,14 @@
 import { useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { checkAdminAccess } from "../../utilities/utilities.js";
-import Header from "../components/header/Header";
+import Header from "../components/header/Header.jsx";
 import Footer from "../components/footer/Footer.jsx";
-import ChatBot from "../components/chat-bot/ChatBot";
-import PolicyBar from "../disclaimer-privacy-policy/PolicyBar";
-import Radio from "../components/radio/Radio";
+import ChatBot from "../components/chat-bot/ChatBot.jsx";
+import PolicyBar from "../disclaimer-privacy-policy/PolicyBar.jsx";
+import Radio from "../components/radio/Radio.jsx";
 const HomeLayout = () => {
 	const [isAdmin, setIsAdmin] = useState(false);
 
-	console.log("isAdmin", isAdmin);
 	useEffect(() => {
 		const fetchAdminAccess = async () => {
 			try {
@@ -38,4 +37,3 @@ const HomeLayout = () => {
 };
 
 export default HomeLayout;
-

@@ -17,33 +17,34 @@ const Podcast = () => {
 	});
 
 	const openRadioOn = useRadioStore((state) => state.openRadioOn);
+	console.log(openRadioOn)
 	const playing = useRadioStore((state) => state.playing);
 
 	const { setOpenRadioOn, setPlaying } = useRadioStoreActions((state) => state.actions);
 	const handleClick = () => {
 		console.log("test");
-    };
-    
-    	const [isMobile, setIsMobile] = useState(false);
+	};
 
-			useEffect(() => {
-				if (userDeviceInfo()) {
-					setIsMobile(true);
-				} else {
-					setIsMobile(false);
-				}
-			}, []);
+	const [isMobile, setIsMobile] = useState(false);
+
+	useEffect(() => {
+		if (userDeviceInfo()) {
+			setIsMobile(true);
+		} else {
+			setIsMobile(false);
+		}
+	}, []);
 
 	return (
 		<div className={`${openRadioOn && !isMobile ? "w-fit h-fit  fixed top-0 mt-24 right-0  animate-fadeIn" : "hidden"} `}>
 			<div className='flex flex-col justify-center items-end w-full h-full pr-10 relative'>
-                <button
-                    onClick={() => setOpenRadioOn(false)}
-                    className='transition-all duration-700 ease-in-out text-white/50 absolute bg-char-900 hover:font-semibold  hover:text-black hover:bg-white/70 border-[3px] -top-1 w-18 mr-4 uppercase border-r-char-900  border-t-char-900  border-l-char-900 text-sm  p-2 rounded-tr-2xl rounded-tl-2xl'>
+				<button
+					onClick={() => setOpenRadioOn(!openRadioOn)}
+					className='transition-all duration-700 ease-in-out text-white/50 absolute bg-char-900 hover:font-semibold  hover:text-black hover:bg-white/70 border-[3px] -top-1 w-18 mr-4 uppercase border-r-char-900  border-t-char-900  border-l-char-900 text-sm  p-2 rounded-tr-2xl rounded-tl-2xl'
+				>
 					close
 				</button>
-                <iframe
-                    onClick={handleClick}
+				<iframe
 					className='mt-6 z-20'
 					src='https://open.spotify.com/embed/show/298oIu74qjd3pXaaBMDr19?utm_source=generator&theme=0&t=0'
 					width='200%'

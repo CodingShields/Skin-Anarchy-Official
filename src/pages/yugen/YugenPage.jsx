@@ -16,7 +16,7 @@ const YugenPage = () => {
 
 
 	return (
-		<div className='w-full h-screen'>
+		<div className='w-full h-screen animate-fadeIn'>
 			<div>
 				<img src={yugenbg5} className='w-full h-full object-cover absolute opacity-40 bottom-0' />
 			</div>

@@ -1,8 +1,8 @@
-const Button = ({ children, onClick, className, image, text }) => {
+const Button = ({ children, onClick, style, image, text, imageStyle }) => {
 	return (
 		<>
-			<button className={className} onClick={onClick}>
-				{image && <img src={image} alt='button' className={className} />}
+			<button className={style} onClick={onClick}>
+				{image && <img src={image} alt='button' className={imageStyle} />}
 				{children && children}
 				{text && text}
 			</button>

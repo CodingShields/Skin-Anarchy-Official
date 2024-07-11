@@ -1,5 +1,3 @@
-// ProtectedLayout.jsx
-
 import ProtectedRoute from "../components/ProtectedRoute";
 import HomeLayout from "./HomeLayout";
 import { Outlet } from "react-router-dom";

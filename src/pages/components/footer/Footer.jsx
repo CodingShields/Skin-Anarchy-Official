@@ -4,7 +4,7 @@ import footerDataArray from "../../../assets/data/footer/footerDataArray";
 import socialNav from "../../../assets/data/socialNav";
 import { ArrowRightCircleIcon } from "@heroicons/react/24/outline";
 import { userDeviceInfo } from "../../../utilities/utilities";
-
+import Button from "../button/Button";
 // import codingShieldsLogo from "../../assets/images/codingShieldsLogo.png";
 
 const Footer = () => {
@@ -34,7 +34,7 @@ const Footer = () => {
 	}, []);
 	const screenWidth = window.innerWidth;
 	console.log(screenWidth);
-
+	const buttonStyle = "  hover:underline decoration-1 underline-offset-8 ease-in-out duration-500 hover:font-normal transition-all ";
 	return (
 		<div
 			className={`w-full h-[550px] sm:h-fit bg-black flex flex-row justify-evenly border-t transition-all duration-300 ease-in-out ${activeFooter && "relative"}`}
@@ -79,14 +79,9 @@ const Footer = () => {
 			<div className='inline-flex space-x-8 sm:space-x-0 text-white sm:w-full  sm:h-fit w-11/12 h-full gap-4 sm:flex sm:flex-col sm:mt-4  sm:mx-auto sm:pb-4'>
 				<div className='w-fit h-full sm:h-fit flex flex-col justify-start items-start sm:items-end sm:justify-center sm:pt-0 sm:mt-4 pt-6 sm:w-3/4 '>
 					<h1 className='font-normal sm:text-sm text-3xl font-montserrat py-4 uppercase sm:py-0 '>Episodes</h1>
-					<div className='font-thin font-montserrat font-2xl space-y-4 grid sm:hidden'>
+					<div className='font-thin font-montserrat font-2xl space-y-4 grid sm:hidden indent-8'>
 						{" "}
-						<NavLink
-							to='podcast/current-podcast-episode'
-							className='  hover:underline decoration-1 underline-offset-8 ease-in-out duration-500 hover:font-normal transition-all '
-						>
-							Current Episode
-						</NavLink>
+						<Button text="Current Episode" style={buttonStyle} to="podcast/current-podcast-episode" />
 						<NavLink
 							to='podcast/top-make-up-artists-podcasts'
 							className='hover:underline decoration-1 underline-offset-8 ease-in-out duration-500 hover:font-normal transition-all'
@@ -127,7 +122,7 @@ const Footer = () => {
 				</div>
 				<div className='w-fit h-full sm:h-fit flex flex-col justify-start items-start sm:items-end sm:justify-center sm:pt-0 sm:mt-4 pt-6 sm:w-3/4 '>
 					<h1 className='font-normal text-3xl sm:text-sm font-montserrat py-4 sm:py-0 uppercase sm:block  '>Blog</h1>
-					<div className='font-thin font-montserrat font-2xl space-y-4 grid sm:hidden'>
+					<div className='font-thin font-montserrat font-2xl space-y-4 grid sm:hidden  indent-8'>
 						<NavLink
 							to='skin-anarchy-blog/beauty-culture'
 							className='hover:underline decoration-1 underline-offset-8 ease-in-out duration-500 hover:font-normal transition-all'
@@ -156,7 +151,7 @@ const Footer = () => {
 				</div>
 				<div className='w-fit h-full sm:h-fit flex flex-col justify-start items-start sm:items-end sm:justify-center sm:pt-0 sm:mt-4 pt-6 sm:w-3/4 '>
 					<h1 className='font-normal text-3xl sm:text-sm font-montserrat py-4 uppercase sm:block '>Awards</h1>
-					<div className='font-thin font-montserrat font-2xl space-y-4 grid sm:hidden'>
+					<div className='font-thin font-montserrat font-2xl space-y-4 grid sm:hidden indent-8'>
 						<NavLink
 							to='awards/science-of-skin-awards'
 							className='hover:underline decoration-1 underline-offset-8 ease-in-out duration-500 hover:font-normal transition-all'
@@ -179,7 +174,7 @@ const Footer = () => {
 				</div>
 				<div className='w-fit h-full sm:h-fit flex flex-col justify-start items-start sm:items-end sm:justify-center sm:pt-0 sm:mt-4 pt-6 sm:w-3/4 '>
 					<h1 className='font-normal text-3xl sm:text-sm font-montserrat py-4 sm:py-0 uppercase sm:block '>Connect</h1>
-					<div className='font-thin font-montserrat font-2xl space-y-4 grid sm:hidden'>
+					<div className='font-thin font-montserrat font-2xl space-y-4 grid sm:hidden indent-8'>
 						<p>pr@skincareanarchypodcast.com</p>
 						<p>Get Featured On Our Show</p>
 						<p>Become A Sponsor</p>

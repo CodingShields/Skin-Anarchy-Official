@@ -15,18 +15,13 @@ const Podcast = () => {
 
 	const openRadioOn = useRadioStore((state) => state.openRadioOn);
 
-	console.log(openRadioOn);
 
 	const { setOpenRadioOn } = useRadioStoreActions((state) => state.actions);
 
-	const toggleRadio = (e) => {
-		e.preventDefault();
-		setOpenRadioOn(!openRadioOn);
-	};
+
 
 	const [isMobile, setIsMobile] = useState(false);
 
-	console.log(userDeviceInfo());
 	useEffect(() => {
 		if (userDeviceInfo()) {
 			setIsMobile(true);
@@ -58,20 +53,22 @@ const Podcast = () => {
 					<div
 						onMouseOut={() => setState({ radioActive: false })}
 						onMouseOver={() => setState({ radioActive: true })}
-						className={`inline-flex justify-center items-center w-full space-x-2 h-fit py-4 group ${isMobile && "hidden"}`}
+						className={`inline-flex justify-center items-center w-full space-x-2 h-fit py-4 group animate-fadeIn ${isMobile === true || openRadioOn === true ? "animate-fadeOut" : ""}`}
 					>
 						<div className='w-fit h-fit inline-flex justify-center items-center p-4 '>
 							<p className='text-white/50 font-montserrat font-thin text-xl uppercase tracking-widest group-hover:text-white transition-all duration-700 ease-in-out'>
 								Listen While You Scroll
 							</p>
-							<ArrowRightCircleIcon className='w-8 h-8 text-white/30 stroke-1 group-hover:animate-bounce group-hover:mr-2 group-hover:text-white transition-all duration-700 ease-in-out ml-4 mr-12 group-hover:ml-10' />
+							<ArrowRightCircleIcon className='w-8 h-8 text-white/30 stroke-1 group-hover:w-14 group-hover:h-14 group-hover:animate-bounce group-hover:mr-2 group-hover:text-white transition-all duration-700 ease-in-out ml-4 mr-12 group-hover:ml-10' />
 						</div>
-						<div className='w-fit h-fit p-2 group hover:border-white cursor-pointer group-hover:scale-125 transition-all duration-700 ease-in-out'>
+						<div className='w-fit h-fit p-2 group hover:border-white cursor-pointer group-hover:scale-150 transition-all duration-700 ease-in-out'>
 							<div
-								onClick={toggleRadio}
-								className='w-fit h-fit border-2 border-white/50  group-hover:bg-white group-hover:shadow-xl group-hover:shadow-gold-500  transition-all duration-700 ease-in-out rounded-xl inline-flex justify-center items-center p-3 space-x-4'
+								onClick={() => {
+									setOpenRadioOn(!openRadioOn);
+								}}
+								className='w-fit h-fit border-2 border-white/50   group-hover:shadow-lg group-hover:shadow-gold-500  transition-all duration-700 ease-in-out rounded-xl inline-flex justify-center items-center p-3 space-x-4'
 							>
-								<RadioIcon className='w-8 h-8 text-white/30 group-hover:text-black transition-all duration-700 ease-in-out stroke-2 group-hover:stroke-1' />
+								{/* <RadioIcon className='w-8 h-8 text-white/30 group-hover:text-black transition-all duration-700 ease-in-out stroke-2 group-hover:stroke-1' /> */}
 								<img
 									src={state.radioActive ? animatedEqualizerColor : staticEqualizerGray}
 									alt='equalizer'

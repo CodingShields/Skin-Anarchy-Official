@@ -1,23 +1,23 @@
 import { useState, useEffect } from "react";
 import { userDeviceInfo } from "../../../utilities/utilities";
 const PodcastAnalyticsContainer = () => {
-		const [isMobile, setIsMobile] = useState(false);
+	const [isMobile, setIsMobile] = useState(false);
 
-		console.log(userDeviceInfo());
-		useEffect(() => {
-			if (userDeviceInfo()) {
-				setIsMobile(true);
-			} else {
-				setIsMobile(false);
-			}
-		}, []);
+	console.log(userDeviceInfo());
+	useEffect(() => {
+		if (userDeviceInfo()) {
+			setIsMobile(true);
+		} else {
+			setIsMobile(false);
+		}
+	}, []);
 	return (
-		<div className='flex flex-col justify-center items-center text-center h-screen screen:w-full  relative sm:h-auto'>
+		<div className='flex flex-col justify-center items-center text-center h-screen sm:w-full  relative sm:h-auto'>
 			<h3 className='text-6xl sm:text-3xl    text-white uppercase font-montserrat pb-24 sm:pb-0 font-thin tracking-widest sm:mx-auto  sm:text-center'>
 				Award Winning {isMobile && <br />}
 				Podcast
 			</h3>
-			<div className='sm:border-t-[1px] sm:border-white  sm:w-3/4 screen:hidden my-2'></div>
+			<div className='sm:border-t-[1px] sm:border-white  sm:w-3/4 hidden my-2'></div>
 			<div className='grid grid-cols-4 gap-8 sm:grid-cols-1'>
 				<div className='space-y-4 tracking-widest mx-auto sm:pt-8'>
 					<h3 className='text-center text-2xl sm:text-lg font-montserrat font-thin text-white truncate uppercase'>Episodes Recorded</h3>
