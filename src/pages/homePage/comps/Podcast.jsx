@@ -12,16 +12,9 @@ const Podcast = () => {
 		errorMessage: "",
 		radioActive: false,
 	});
-
 	const openRadioOn = useRadioStore((state) => state.openRadioOn);
-
-
 	const { setOpenRadioOn } = useRadioStoreActions((state) => state.actions);
-
-
-
 	const [isMobile, setIsMobile] = useState(false);
-
 	useEffect(() => {
 		if (userDeviceInfo()) {
 			setIsMobile(true);
@@ -37,18 +30,22 @@ const Podcast = () => {
 					LISTEN TO OUR CURRENT EPISODE
 				</h1>
 				<div className='w-full px-2'>
-					{!isMobile &&<iframe
-						src='https://open.spotify.com/embed/show/298oIu74qjd3pXaaBMDr19?utm_source=generator&theme=0&autoplay=1'
-						className='w-1/2 h-[450px] mx-auto'
-						allowfullscreen=''
-						allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'
-						loading='lazy'
-					></iframe>}
-					{isMobile &&<iframe
-						src='https://open.spotify.com/embed/show/298oIu74qjd3pXaaBMDr19?utm_source=generator&theme=0&t=0'
-						width='100%'
-						height='152'
-					></iframe>}
+					{!isMobile && (
+						<iframe
+							src='https://open.spotify.com/embed/show/298oIu74qjd3pXaaBMDr19?utm_source=generator&theme=0&autoplay=1'
+							className='w-1/2 h-[450px] mx-auto'
+							allowfullscreen=''
+							allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'
+							loading='lazy'
+						></iframe>
+					)}
+					{isMobile && (
+						<iframe
+							src='https://open.spotify.com/embed/show/298oIu74qjd3pXaaBMDr19?utm_source=generator&theme=0&t=0'
+							width='100%'
+							height='152'
+						></iframe>
+					)}
 
 					<div
 						onMouseOut={() => setState({ radioActive: false })}

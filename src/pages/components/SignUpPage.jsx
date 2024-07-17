@@ -7,8 +7,8 @@ import emailIcon from "../../assets/icons/formIcons/emailIcon.svg";
 import phoneIcon from "../../assets/icons/formIcons/phoneIcon.svg";
 import personIcon from "../../assets/icons/formIcons/personIcon.svg";
 import passwordIcon from "../../assets/icons/formIcons/passwordIcon.svg";
-import { useUserStoreActions } from "../../stateStore/userStore.jsx";
-import { useUserStore } from "../../stateStore/userStore.jsx";
+import { useUserStoreActions } from "../../stateStore/userStore.js";
+import { useUserStore } from "../../stateStore/userStore.js";
 import whiteLogo from "../../assets/images/logos/white-logo.png";
 const SignUp = () => {
 	const navigate = useNavigate();

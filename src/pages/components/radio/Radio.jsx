@@ -17,14 +17,8 @@ const Podcast = () => {
 	});
 
 	const openRadioOn = useRadioStore((state) => state.openRadioOn);
-	console.log(openRadioOn)
 	const playing = useRadioStore((state) => state.playing);
-
 	const { setOpenRadioOn, setPlaying } = useRadioStoreActions((state) => state.actions);
-	const handleClick = () => {
-		console.log("test");
-	};
-
 	const [isMobile, setIsMobile] = useState(false);
 
 	useEffect(() => {

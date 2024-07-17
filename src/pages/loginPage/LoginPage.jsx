@@ -10,7 +10,7 @@ const LoginPage = () => {
 	const [loginModal, setLoginModal] = useState(false);
 	console.log(userDeviceInfo());
 	return (
-		<div className='w-full max-h-screen bg-black animate-fadeIn'>
+		<div className='w-full h-full bg-black animate-fadeIn overflow-y-clip'>
 			<LoginPageNavBar onClick={() => setLoginModal(!loginModal)} />
 			<LoginModal open={loginModal} />
 
@@ -22,8 +22,8 @@ const LoginPage = () => {
 			<div
 				className={
 					!loginModal
-						? "flex flex-col justify-center items-center animate-fadeIn w-full mx-auto h-full z-10 relative border-b-2 border-white space-y-8 text-center py-8"
-						: "flex flex-col justify-center items-center animate-fadeOut w-full mx-auto h-full z-10 relative py-48 border-b-2 border-white"
+						? "flex flex-col justify-center items-center animate-fadeIn w-full mx-auto h-max z-10 relative border-b-2 border-white space-y-8 text-center py-48"
+						: "flex flex-col justify-center items-center animate-fadeOut w-full mx-auto h-max z-10 relative py-48 border-b-2 border-white"
 				}
 			>
 				<h1 className='sm:text-2xl text-8xl text-gold-500 font-montserrat font-thin uppercase tracking-widest whitespace-nowrap sm:mt-8 mt-24'>
@@ -40,7 +40,7 @@ const LoginPage = () => {
 					<Button onClick={() => setLoginModal(!loginModal)} className={buttonStyle} text='Sign In'></Button>
 				</div>
 			</div>
-			<div className='w-full h-full block text-white sm:text-xs text-3xl font-montserrat font-thin uppercase tracking-widest text-center '>
+			<div className='w-full h-fit block text-white sm:text-xs text-3xl font-montserrat font-thin uppercase tracking-widest text-center '>
 				<h1> Was thinking about putting some scrolling highlights of blogs podcasts etc ....</h1>
 				<PolicyBar />
 			</div>

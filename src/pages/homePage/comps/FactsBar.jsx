@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { nanoid } from "nanoid";
+
 import earthIcon from "../../../assets/icons/earthIcon.svg";
 import flaskIcon from "../../../assets/icons/flaskIcon.svg";
 import trophyIcon from "../../../assets/icons/trophyIcon.svg";

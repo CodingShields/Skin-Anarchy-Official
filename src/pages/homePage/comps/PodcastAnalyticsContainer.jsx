@@ -3,7 +3,6 @@ import { userDeviceInfo } from "../../../utilities/utilities";
 const PodcastAnalyticsContainer = () => {
 	const [isMobile, setIsMobile] = useState(false);
 
-	console.log(userDeviceInfo());
 	useEffect(() => {
 		if (userDeviceInfo()) {
 			setIsMobile(true);

@@ -1,7 +1,7 @@
 import { create } from "zustand";
 
 const currentRadioState = {
-    openRadioOn: true,
+    openRadioOn: false,
     playing: false,
 };
 

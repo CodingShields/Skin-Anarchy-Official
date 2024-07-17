@@ -1,15 +1,4 @@
-import { useState, useEffect } from "react";
-import ContactForm from "../../components/contactForm";
-
 const BecomeSponsorContainer = () => {
-	const [state, setState] = useState({
-		error: false,
-		errorMessage: "",
-		success: false,
-		successMessage: "",
-		loading: false,
-	});
-
 	return (
 		<div className='w-full mx-auto h-[400px]  pb-20 z-60 bg-gradient-to-t to-gold-500 from-black pt-12'>
 				<h2 className='max-w-2xl mx-auto text-3xl font-bold tracking-tight text-white font-playfair'>INTERESTED IN COMING ONTO OUR SHOW?</h2>
@@ -21,13 +10,7 @@ const BecomeSponsorContainer = () => {
 						Contact Our Team
 					</button>
 				</div>
-				{/* <svg
-					viewBox='0 0 1024 1024'
-					className='absolute left-1/2 top-1/2 -z-30 h-[64rem] w-[64rem] -translate-x-1/2 -translate-y-[50%] transform rotate-45 bg-black '
-					aria-hidden='true'
-				></svg> */}
 		</div>
 	);
 };
-
 export default BecomeSponsorContainer;
