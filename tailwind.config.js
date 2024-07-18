@@ -7,15 +7,15 @@ export default {
 	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
 	theme: {
 		zIndex: {
-			"10": 10,
-			"20": 20,
-			"30": 30,
-			"40": 40,
-			"50": 50,
-			"60": 60,
-			"70": 70,
-			"80": 80,
-			"90": 90,
+			10: 10,
+			20: 20,
+			30: 30,
+			40: 40,
+			50: 50,
+			60: 60,
+			70: 70,
+			80: 80,
+			90: 90,
 		},
 		screens: {
 			xxl: { max: "1535px" },
@@ -67,6 +67,7 @@ export default {
 				rotateLogo: "rotateLogo 5s linear infinite",
 				fadeIn: "fadeIn 1s ease-in forwards",
 				fadeOut: "fadeOut 1s ease-out forwards",
+				fadeInSlow: "fadeIn 4.5s ease-in forwards",
 				navBarOpen: "navBarOpen 1s ease-in-out forwards",
 				navBarClose: "navBarClose .75s ease-in-out forwards",
 				chatBotSlideIn: "chatBotSlideIn 1.5s ease-in-out forwards",
@@ -97,6 +98,10 @@ export default {
 				fadeOut: {
 					"0%": { opacity: 1 },
 					"100%": { opacity: 0 },
+				},
+				fadeInSlow: {
+					"0%": { opacity: 0 },
+					"100%": { opacity: 1 },
 				},
 				navBarOpen: {
 					"0%": {

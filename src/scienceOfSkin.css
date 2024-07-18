@@ -48,7 +48,7 @@
 #navBarButton:hover:after {
 	right: 0;
 }
-span:before {
+/* span:before {
 	content: "";
 	position: absolute;
 	top: -100%;
@@ -57,11 +57,11 @@ span:before {
 	height: 100%;
 	background-color: #cfb98b;
 	transition: all 1s;
-}
+} */
 #navBarButton:hover span:before {
 	top: 0;
 }
-span:after {
+/* span:after {
 	content: "";
 	position: absolute;
 	bottom: -100%;
@@ -70,7 +70,7 @@ span:after {
 	height: 100%;
 	background-color: #cfb98b;
 	transition: all 1s;
-}
+} */
 #navBarButton:hover span:after {
 	bottom: 0;
 }

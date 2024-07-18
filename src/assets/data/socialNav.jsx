@@ -10,6 +10,7 @@ const socialNav = [
 		href: "#",
 		icon: facebookIcon,
 		link: "https://www.facebook.com/skincareanarchhy",
+		hover: "shadow-blue-500 shadow-2xl",
 	},
 	{
 		id: 1,
@@ -17,12 +18,15 @@ const socialNav = [
 		href: "https://www.instagram.com/skincareanarchy/?hl=en",
 		icon: instagramIcon,
 		link: "https://www.instagram.com/skincareanarchy/?hl=en",
+		hover: "shadow-blue-500 shadow-2xl",
 	},
 	{
 		id: 2,
 		name: "Twitter",
 		href: "https://twitter.com/skincareanarchy",
 		link: "https://twitter.com/skincareanarchy",
+		hover: "shadow-blue-500 shadow-2xl",
+
 		icon: twitterIcon,
 	},
 	// {

@@ -82,7 +82,7 @@ TextAreaComp.propTypes = {
 };
 
 const Button = (props) => {
-	const {children, onClick, style, image, text, imageStyle, icon} = props;
+	const { children, onClick, style, image, text, imageStyle, icon } = props;
 	return (
 		<>
 			<button className={style} onClick={onClick}>
@@ -166,10 +166,5 @@ Modal.propTypes = {
 	children: PropTypes.node.isRequired,
 	open: PropTypes.bool.isRequired,
 };
-
-
-
-
-
 
 export { SelectComp, InputComp, TextAreaComp, Button, FormComp, WorkingModal, ErrorModal, Modal };

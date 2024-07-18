@@ -29,7 +29,7 @@ const HomeLayout = () => {
 			{!isAdmin && <Header />}
 			<Outlet />
 			{/* {!isAdmin && <ChatBot />} */}
-			{!isAdmin && <Radio />}
+			{/* {!isAdmin && <Radio />} */}
 			{!isAdmin && <Footer />}
 			{isAdmin && <PolicyBar />}
 		</>

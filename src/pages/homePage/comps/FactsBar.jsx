@@ -1,42 +1,46 @@
-
-import earthIcon from "../../../assets/icons/earthIcon.svg";
-import flaskIcon from "../../../assets/icons/flaskIcon.svg";
-import trophyIcon from "../../../assets/icons/trophyIcon.svg";
+import React, { useState, useEffect, useRef } from "react";
 
 const FactsBar = () => {
-	const factsBarData = [
-		{
-			id: 0,
-			title: "FACTS ONLY",
-			text: "Professional interviews focused on the science and facts around skin health and wellness, without the fluff of marketing.",
-			icon: flaskIcon,
-		},
-		{
-			id: 1,
-			title: "GLOBALLY RECOGNIZED",
-			text: "Skincare Anarchy is streamed in over 100 countries and has been ranked in the top 50 Beauty/Fashion Podcasts in the largest geographical regions representing beauty consumers.",
-			icon: earthIcon,
-		},
-		{
-			id: 2,
-			title: "INDUSTRY ACCLAIMED",
-			text: "We are committed to bringing you the latest scientific research and information from the industry’s leading experts.",
-			icon: trophyIcon,
-		},
-	];
+	const [index, setIndex] = useState(0);
+	const animationRef = useRef(null);
+
+	const arr = ["INDUSTRY EXPERTS", "FACTS ONLY", "GLOBALLY RECOGNIZED", "INDUSTRY ACCLAIMED"];
+
+	useEffect(() => {
+		const handleAnimationEnd = () => {
+			// Change fact after animation completes
+			setIndex((prevIndex) => (prevIndex + 1) % arr.length);
+		};
+
+		// Attach animationend event listener to handle animation completion
+		if (animationRef.current) {
+			animationRef.current.addEventListener("animationend", handleAnimationEnd);
+		}
+
+		return () => {
+			// Cleanup: remove event listener when component unmounts
+			if (animationRef.current) {
+				animationRef.current.removeEventListener("animationend", handleAnimationEnd);
+			}
+		};
+	}, [arr.length]); // Include arr.length in dependency array to handle changes in the array size
+
+	useEffect(() => {
+		// Ensure animation is reset when index changes
+		if (animationRef.current) {
+			animationRef.current.style.animation = "none";
+			void animationRef.current.offsetWidth; // Trigger reflow
+			animationRef.current.style.animation = `text 3.5s forwards`; // Adjust duration if needed
+		}
+	}, [index]); // Trigger effect when index changes
 
 	return (
-		<div className='grid grid-cols-3 justify-center w-full h-fit lg:justify-evenly bg-black px-18 py-12'>
-			{factsBarData.map((item) => (
-				<div key={item.id} className='flex flex-col items-center lg:w-96  h-fit mx-auto'>
-					{/* <img className='w-20 lg:h-18 xxl:h-24 pt-0 ' src={item.icon} /> */}
-					<h3 className='mt-2 lg:text-2xl xxl:text-3xl text-center text-white hover:text-white transition-all ease-in-out duration-200 font-playfair font-thin	'>
-						{item.title}
-					</h3>
-					{/* <p className='mt-2 lg:text-md xxl:text-lg text-center text-gray-600 font-glacialRegular font-100 py-4'>{item.text}</p> */}
-				</div>
-			))}
+		<div className='w-full h-36 flex flex-col justify-center items-center relative -z-10'>
+			<div ref={animationRef} className='text1'>
+				{arr[index]}
+			</div>
 		</div>
 	);
 };
+
 export default FactsBar;

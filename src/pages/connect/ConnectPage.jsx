@@ -11,6 +11,9 @@ const ConnectPage = () => {
 		errorMessage: "",
 		loading: false,
 		openFormModal: false,
+		openFb: false,
+		openInsta: false,
+		openTwi: false,
 	});
 
 	useEffect(() => {
@@ -35,15 +38,15 @@ const ConnectPage = () => {
 						</p>
 						<Button onClick={() => setState({ ...state, openFormModal: !state.openFormModal })} text='Apply Here' type='button' style={buttonStyle} />
 					</div>
-					<div className='tracking-widest flex h-fit min-w-[800px] p-8  flex-col space-y-4 text-center text-white uppercase font-montserrat hover:shadow-lg hover:shadow-white/50 duration-300 ease-in-out transition-all rounded-xl ring-1 ring-inset ring-white justify-center items-center'>
+					<div className=' tracking-widest flex h-fit min-w-[800px] p-8  flex-col space-y-4 text-center text-white uppercase font-montserrat hover:shadow-lg hover:shadow-white/50 duration-300 ease-in-out transition-all rounded-xl ring-1 ring-inset ring-white justify-center items-center'>
 						<h3 className='font-montserrat text-2xl underline underline-offset-8 decoration-1 tracking-widest'>Come Join & Follow Us</h3>
 						<div className='flex gap-x-14 p-6 '>
 							{socialNav.map((item, id) => {
 								return (
-									<div key={id} className='h-fit w-full flex py-6 justify-center items-center group'>
+									<div key={id} className='h-fit w-full flex py-6 justify-center items-center group '>
 										<a key={item.name} href={item.link} target='_blank' rel='noreferrer'>
 											<img
-												className='h-10 grayscale ease-in-out transition-all hover:grayscale-0  hover:duration-300 hover:animate-pulse hover:-translate-y-1.5 hover:cursor-pointer hover:scale-175 '
+												className={`h-10 grayscale ease-in-out transition-all hover:grayscale-0  hover:duration-500 hover:animate-pulse hover:-translate-y-1.5 hover:cursor-pointer hover:scale-175 `}
 												src={item.icon}
 											/>
 										</a>

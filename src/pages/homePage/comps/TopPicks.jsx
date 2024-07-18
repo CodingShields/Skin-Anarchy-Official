@@ -25,7 +25,7 @@ const TopPicks = () => {
 
 
 	return (
-		<div className='w-full h-fit my-64 sm:my-32'>
+		<div className='w-full h-fit my-64 sm:my-32 relative'>
 			<div className=''>
 				<h1 className='text-white text-6xl sm:text-3xl text-center font-montserrat font-thin uppercase tracking-widest py-6'>
 					Skincare Anarchy Awards{" "}

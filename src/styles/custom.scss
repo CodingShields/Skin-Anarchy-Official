@@ -1,46 +1,39 @@
-
 html,
 body,
 #root {
-  height: 100%;
-  margin: 0;
+	height: 100%;
+	margin: 0;
 }
-
-
-
-
 
 body {
-  display: flex;
-  flex-direction: column;
+	-webkit-font-smoothing: antialiased;
 }
-// medium import 
+// medium import
 @font-face {
-  font-family: 'Montserrat';
-    src: url("/src/assets/fonts/Montserrat/Montserrat.ttf") format("trueType");
-  font-weight: 100;
-  font-style: 100;
+	font-family: "Montserrat";
+	src: url("/src/assets/fonts/Montserrat/Montserrat.ttf") format("trueType");
+	font-weight: 100;
+	font-style: 100;
 }
 
 .montserrat-medium {
-  font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
+	font-family: "Montserrat", sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 400;
+	font-style: normal;
 }
-
 
 // hide scroll bar
 .scrollbar-hide::-webkit-scrollbar {
-  display: none;
+	display: none;
 }
 
 /* For IE, Edge and Firefox */
 .scrollbar-hide {
-  -ms-overflow-style: none;
-  /* IE and Edge */
-  scrollbar-width: none;
-  /* Firefox */
+	-ms-overflow-style: none;
+	/* IE and Edge */
+	scrollbar-width: none;
+	/* Firefox */
 }
 
 //Sponsor Images Marquee
@@ -49,20 +42,20 @@ body {
 // }
 
 .sponsorBar-content {
-  display: flex;
-  animation: scrollingSponsors 115s linear infinite;
+	display: flex;
+	animation: scrollingSponsors 115s linear infinite;
 }
 
 // .sponsorBar-item {
 //   flex: 0 0 16vw;
 //   margin: 0 1vw;
- 
+
 // }
 
 // .sponsorBar-item img {
 //   display: block;
 //   width: 100%;
-//   padding: 0 20px; 
+//   padding: 0 20px;
 // }
 
 // @keyframes scrollingSponsors {
@@ -75,110 +68,100 @@ body {
 //   }
 // }
 
-
-
 //Top Picks Marquee
 .topPicksBar {
-  overflow: hidden;
+	overflow: hidden;
 }
 
 .topPicksBar-content {
-  display: flex;
-  animation: scrollingTopPicksBar 22s linear infinite;
+	display: flex;
+	animation: scrollingTopPicksBar 22s linear infinite;
 }
 
 .topPicksBar-content:hover {
-  animation-play-state: paused;
+	animation-play-state: paused;
 }
 
 .topPicksBar-item {
-  flex: 0 0 16vw;
-  margin: 0 1vw;
-
+	flex: 0 0 16vw;
+	margin: 0 1vw;
 }
 
 .topPicksBar-item img {
-  display: block;
-  width: 100%;
-  padding: 0 20px;
+	display: block;
+	width: 100%;
+	padding: 0 20px;
 }
 
 @keyframes scrollingTopPicksBar {
-  0% {
-    transform: translateX(0);
-  }
+	0% {
+		transform: translateX(0);
+	}
 
-  100% {
-    transform: translateX(-180vw);// multiply the number of images by 18
-  }
+	100% {
+		transform: translateX(-180vw); // multiply the number of images by 18
+	}
 }
-
-
-
 
 //  cursor glow
 .cursor {
-  height: 450px;
-  /* Adjust height and width to match your cursor size */
-  width: 450px;
-  border: transparent;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(175, 150, 105, 0.8) -1%,
-      rgba(175, 150, 105, 0.2) 90%);
-  box-shadow: 0px 0px 100px rgba(200, 170, 105, 8);
-  position: relative;
-  filter: blur(80px);
-  pointer-events: none;
-  z-index: -10;
-  opacity: 50%;
+	height: 450px;
+	/* Adjust height and width to match your cursor size */
+	width: 450px;
+	border: transparent;
+	border-radius: 50%;
+	background: radial-gradient(circle, rgba(175, 150, 105, 0.8) -1%, rgba(175, 150, 105, 0.2) 90%);
+	box-shadow: 0px 0px 100px rgba(200, 170, 105, 8);
+	position: relative;
+	filter: blur(80px);
+	pointer-events: none;
+	z-index: -10;
+	opacity: 50%;
 }
-
-
-
-
-
 
 // underline animation
 .underlineAnimate {
-  color: #fff;
-  text-transform: uppercase;
-  text-decoration: none;
-  // letter-spacing: 0.15em;
+	color: #fff;
+	text-transform: uppercase;
+	text-decoration: none;
+	// letter-spacing: 0.15em;
 
-  display: inline-block;
-  position: relative;
+	display: inline-block;
+	position: relative;
 }
 
 .underlineAnimate:after {
-  background: none repeat scroll 0 0 transparent;
-  bottom: 0;
-  content: "";
-  display: block;
-  height: 1px;
-  left: 50%;
-  position: absolute;
-  background: #fff;
-  transition: width 0.3s ease 0s, left 0.3s ease 0s;
-  width: 0;
+	background: none repeat scroll 0 0 transparent;
+	bottom: 0;
+	content: "";
+	display: block;
+	height: 1px;
+	left: 50%;
+	position: absolute;
+	background: #fff;
+	transition:
+		width 0.3s ease 0s,
+		left 0.3s ease 0s;
+	width: 0;
 }
 
 .underlineAnimate:hover:after {
-  width: 100%;
-  left: 0;
+	width: 100%;
+	left: 0;
 }
 
 @media screen and (max-height: 300px) {
-  ul {
-    margin-top: 40px;
-  }
+	ul {
+		margin-top: 40px;
+	}
 }
 // Testimonial Slider
 .line {
-  /* 	flex-basis: 50%; */
-  font-size: 40px;
-  color: white;
-  letter-spacing: 10px;
-  opacity: 0;
+	/* 	flex-basis: 50%; */
+	font-size: 40px;
+	color: white;
+	letter-spacing: 10px;
+	opacity: 0;
 }
 
 //background animation
@@ -195,7 +178,6 @@ body {
 //   /* Opera 12+ */
 //   animation: back 10s infinite;
 //   /* IE 10+, Fx 29+ */
-
 
 // }
 
@@ -214,43 +196,235 @@ body {
 // }
 
 .with-bg-size {
-    background-image: url("../assets/images/headLineBg.png");
-    background-size: cover; /* Adjust as needed */
-    height:"screenHeight";
+	background-image: url("../assets/images/headLineBg.png");
+	background-size: cover; /* Adjust as needed */
+	height: "screenHeight";
 
-    /* Animation properties */
-    -webkit-animation: back 10s infinite;
-    -moz-animation: back 10s infinite;
-    -o-animation: back 10s infinite;
-    animation: back 10s infinite;
+	/* Animation properties */
+	-webkit-animation: back 10s infinite;
+	-moz-animation: back 10s infinite;
+	-o-animation: back 10s infinite;
+	animation: back 10s infinite;
 }
 
 @keyframes back {
-    25% {
-        background-image: url("../assets/images/headlineBg2.png");
-    }
-    50% {
-        background-image: url("../assets/images/headlineBg3.png");
-    }
-    75% {
-        background-image: url("../assets/images/headLineBg.png");
-    }
+	25% {
+		background-image: url("../assets/images/headlineBg2.png");
+	}
+	50% {
+		background-image: url("../assets/images/headlineBg3.png");
+	}
+	75% {
+		background-image: url("../assets/images/headLineBg.png");
+	}
 }
 
 /* Adjust animations for different screen sizes if needed */
 @media (max-width: 768px) {
-    .with-bg-size {
-        background-image: url("../assets/images/headLineBg.png");
-        /* Adjust other styles for mobile */
-    }
+	.with-bg-size {
+		background-image: url("../assets/images/headLineBg.png");
+		/* Adjust other styles for mobile */
+	}
 }
 
 // Chat Bot Break
 
 .half-space {
-  line-height: 0.5;
-  padding-top: "4px";
-  padding-bottom: "4px";
+	line-height: 0.5;
+	padding-top: "4px";
+	padding-bottom: "4px";
 }
 
+// Light Effect
+.shopMain {
+	font-family: arial;
+	background-color: black;
+	/*background:#000 -webkit-radial-gradient(circle,rgba(255,255,255,0.9),rgba(255,255,255,0)) no-repeat 0 0;*/
+}
+.shopText {
+	font-size: 6em;
+	font-weight: bold;
+	font-family: "montserrat";
+	font-weight: 200;
+	/*background:#333 -webkit-linear-gradient(0deg,rgba(255,255,255,0),rgba(255,255,255,0.9),rgba(255,255,255,0)) no-repeat -50px 0;
+  background: #222 -webkit-gradient(linear, left top, right top, from(#222), to(#222), color-stop(0.5, #fff)) 0 0 no-repeat; */
+	background: #333 -webkit-radial-gradient(circle, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)) no-repeat -280px -94px;
+	-webkit-background-clip: text;
+	-webkit-background-size: 388px;
+	color: rgba(255, 255, 255, 0.1);
+	/*-webkit-text-fill-color:transparent;*/
 
+	-webkit-animation: ani 6s linear infinite;
+}
+
+@keyframes ani {
+	from {
+		background-position: -280px -94px;
+	}
+	to {
+		background-position: 680px -94px;
+	}
+}
+
+.shopText2 {
+	font-size: 6em;
+	font-weight: bold;
+	font-family: "montserrat";
+	font-weight: 200;
+	/*background:#333 -webkit-linear-gradient(0deg,rgba(255,255,255,0),rgba(255,255,255,0.9),rgba(255,255,255,0)) no-repeat -50px 0;
+  background: #222 -webkit-gradient(linear, left top, right top, from(#222), to(#222), color-stop(0.5, #fff)) 0 0 no-repeat; */
+	background: #333 -webkit-radial-gradient(circle, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)) no-repeat -280px -94px;
+	-webkit-background-clip: text;
+	-webkit-background-size: 388px;
+	color: rgba(255, 255, 255, 0.1);
+	/*-webkit-text-fill-color:transparent;*/
+
+	-webkit-animation: ani2 5s linear infinite;
+}
+
+@keyframes ani2 {
+	from {
+		background-position: -280px -94px;
+	}
+	to {
+		background-position: 680px -94px;
+	}
+}
+
+// login page
+
+.text1 {
+	color: white;
+	font-size: 60px;
+	font-weight: 700;
+	letter-spacing: 8px;
+	margin-bottom: 20px;
+	background: transparent;
+	position: relative;
+	/*   shorthand animation property: name | duration | iteration count 
+/*   animation: text 4s 1; */
+	animation-name: text;
+	animation-duration: 3.5s;
+	animation-iteration-count: infinite;
+}
+
+@keyframes text {
+	0% {
+		margin-bottom: -40px;
+		opacity: 0;
+		transform: translateX(400px);
+		position: absolute;
+	}
+	30% {
+		letter-spacing: 25px;
+		margin-bottom: -40px;
+	}
+	85% {
+		letter-spacing: 8px;
+		margin-bottom: -40px;
+	}
+	100% {
+		font-weight: 200;
+		margin-bottom: -1000px;
+		opacity: 1;
+		z-index: 10;
+	}
+}
+
+// login page title
+.login-title-wrapper {
+	text-align: center;
+	-webkit-font-smoothing: antialiased;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.titleText {
+	position: absolute;
+	left: 50%;
+	top: 70%;
+	transform: translate(-50%, -75%);
+}
+
+#title {
+	display: inline-flex;
+	margin: -5px;
+	padding: 5px;
+}
+
+.title-letter {
+	margin-left: -2px;
+}
+
+#sub-title {
+	text-transform: uppercase;
+	position: relative;
+	top: -5px;
+}
+
+/* Opacity For Start */
+.title-letter,
+#sub-title {
+	opacity: 0;
+}
+
+/* Adjust FactsBar styling */
+.text1 {
+	color: white;
+	font-size: 40px;
+	font-weight: 600;
+	letter-spacing: 8px;
+	margin-bottom: 20px;
+	position: relative;
+	animation-name: text;
+	animation-duration: 3;
+	animation-iteration-count: infinite;
+	font-family: "montserrat";
+}
+
+@keyframes text {
+	0% {
+		margin-bottom: -60px;
+		opacity: 0;
+		transform: translateX(400px);
+		position: absolute;
+	}
+	30% {
+    font-weight: 300;
+		letter-spacing: 25px;
+		margin-bottom: -40px;
+	}
+	85% {
+    		font-weight: 200;
+
+		letter-spacing: 8px;
+		margin-bottom: -40px;
+	}
+	100% {
+		font-weight: 100;
+		margin-bottom: -1000px;
+		opacity: 1;
+		z-index: 10;
+	}
+}
+
+// border grow
+
+.borderGrow {
+	height: .5px;
+	width: 0; /* Start with a width of 0 */
+	animation-name: loginBorder;
+	animation-duration: 2s;
+	animation-timing-function: ease-in-out;
+	animation-fill-mode: forwards; /* Ensures the animation does not repeat and stays at 100% width */
+}
+
+@keyframes loginBorder {
+	0% {
+		width: 0%;
+	}
+	100% {
+		width: 100%;
+	}
+}

@@ -45,7 +45,7 @@ const HomePage = () => {
 	}, []);
 
 	return (
-		<div className='w-full min-h-screen relative animate-fadeIn  sm:overscroll-x-none sm:overflow-hidden'>
+		<div className='w-full min-h-screen relative animate-fadeIn  sm:overscroll-x-none sm:overflow-hidden  '>
 			<div className='with-bg-size h-full sm:h-screen w-full  opacity-30 fixed top-0 left-0   sm:bg-no-repeat	sm:bg-contain sm:bg-center bg-center bg-cover overflow-x-hidden'></div>
 
 			<div id='cursor' className='fixed cursor'></div>
