@@ -9,11 +9,8 @@ import whiteLogo from "../../assets/images/logos/white-logo.png";
 const CurrentPodcastEpisode = () => {
 	return (
 		<div className='w-full h-full animate-fadeIn'>
-			<div className='inline-flex justify-center items-center mt-24 w-full mb-14'>
-				{/* <img src={whiteLogo} className='w-32 h-32object-cover' /> */}
-				{/* <h1 className='text-5xl font-montserrat font-thin text-white uppercase tracking-widest'>Podcast Episodes</h1> */}
-			</div>
-			<div className='w-full h-full flex flex-col justify-start items-center text-center '>
+	
+			<div className='w-full h-full flex flex-col justify-start items-center text-center mt-24'>
 				<div className=' w-[1600px] h-fit '>
 					<h1 className='text-4xl font-montserrat font-thin text-white uppercase tracking-widest mb-4'>Current Episode</h1>
 					<iframe

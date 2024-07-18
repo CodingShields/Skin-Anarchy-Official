@@ -8,12 +8,6 @@ import FeaturedPress from "./pages/about/FeaturedPressComp.jsx";
 
 //Podcast Pages
 import CurrentPodcastEpisode from "./pages/podcast/CurrentPodcastEpisode.jsx";
-import BrandFoundersPodcasts from "./pages/podcast/BrandFoundersPodcasts.jsx";
-import CelebrityPodcasts from "./pages/podcast/CelebrityPodcasts.jsx";
-import TopDoctorsPodcasts from "./pages/podcast/TopsDoctorsPodcasts.jsx";
-import ThoughtLeadersPodcasts from "./pages/podcast/ThoughtLeadersPodcasts.jsx";
-import TopMakeUpArtistPodcasts from "./pages/podcast/TopMakeUpArtistPodcasts.jsx";
-import EditorsAndJournalistsPodcasts from "./pages/podcast/EditorsAndJournalistsPodcasts.jsx";
 //Awards Pages
 import TopPicksPage from "./pages/awards/TopPicksPage.jsx";
 import ScienceOfSkinAwards from "./pages/awards/ScienceOfSkinAwards.jsx";
@@ -72,12 +66,7 @@ function App() {
 						<Route path='about/featured-press' element={<FeaturedPress />} />
 						{/* PodCast Pages */}
 						<Route path='podcast/current-podcast-episode' element={<CurrentPodcastEpisode />} />
-						<Route path='podcast/celebrity-podcasts' element={<CelebrityPodcasts />} />
-						<Route path='podcast/top-doctors-podcasts' element={<TopDoctorsPodcasts />} />
-						<Route path='podcast/brand-founders-podcasts' element={<BrandFoundersPodcasts />} />
-						<Route path='podcast/thought-leaders-podcasts' element={<ThoughtLeadersPodcasts />} />
-						<Route path='podcast/top-make-up-artists-podcasts' element={<TopMakeUpArtistPodcasts />} />
-						<Route path='podcast/editors-and-journalists-podcasts' element={<EditorsAndJournalistsPodcasts />} />
+			
 						{/* Award Pages */}
 						<Route path='awards/top-picks' element={<TopPicksPage />} />
 						<Route path='awards/master-class' element={<MasterClassPage />} />

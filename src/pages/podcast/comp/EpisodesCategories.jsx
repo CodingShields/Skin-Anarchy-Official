@@ -1,5 +1,4 @@
-import Button from "../../components/Components"
-import { buttonStyle } from "../../../styles/responsiveStyling";
+import {Button} from "../../components/Components";
 
 const categoryNav = [
 	{
@@ -43,13 +42,15 @@ const categoryNav = [
 		value: "masterclass",
 		selected: false,
 	},
-]
+];
 
 const EpisodesCategories = () => {
 	return (
-		<div className='flex flex-row justify-evenly items-center w-full h-14 px-24 text-white text-[16px] font-montserrat uppercase'>
+		<div className='flex flex-row w-full h-fit px-64 text-white text-[16px] font-montserrat uppercase justify-center items-center'>
 			{categoryNav.map((item, index) => (
-				<Button key={index} text={item.name} style={buttonStyle} />
+				<div key={index} className="m-4">
+					<Button text={item.name} style={"border-white text-[16px] rounded-full px-4 py-2 border w-48 hover:bg-white hover:text-black hover:font-semibold transition-all duration-500 ease-in-out"} />
+				</div>
 			))}
 		</div>
 	);
