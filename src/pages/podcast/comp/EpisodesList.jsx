@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import EpisodesCategories from "./EpisodesCategories";
 import episode1 from "../../../assets/images/podcast-widget/episode1.png";
 import { BarsArrowDownIcon, ChevronDoubleRightIcon } from "@heroicons/react/24/outline";
@@ -13,28 +13,90 @@ const EpisodesList = () => {
 		message: "",
 		selectedEpisode: false,
 	});
+
+	const videoRef = useRef(null);
+
+	useEffect(() => {
+		if (videoRef.current) {
+			videoRef.current.playbackRate = .85; // Set the desired playback rate here
+		}
+	}, []);
+
+
 	return (
-		<div>
-			<h1>EpisodesList</h1>
+		<div className='w-full h-screen'>
 			<EpisodesCategories />
-			<div className='w-full inline-flex h-fit'>
-				<div className='w-full  relative '>
-					{/* <video autoPlay muted loop className='object-contain w-full h-fit opacity-40 absolute bottom-'>
-						<source src={gold} type='video/mp4' />
-					</video> */}
-				</div>
-				<div className='w-full flex flex-col border-t h-[800px]  absolute'>
-					<div className='bg-black w-fit mx-auto h-full px-14 border-x'>
+			<div className='w-full inline-flex h-full '>
+				<video autoPlay muted loop ref={videoRef} className='object-contain w-full h-fit  absolute opacity-[.1] grayscale'>
+					<source src={gold} type='video/mp4' />
+				</video>
+				<div className='w-full border-t h-[1200px]  grow mx-auto flex justify-center items-center z-20'>
+					<div className=' w-fit mx-auto h-full px-16 bg-black/60 flex flex-col items-center justify-start overflow-y-scroll py-8  scrollbar-thumb-black scrollbar-thin scroll scrollbar-track-gold-900'>
+						<EpisodeCard open={state.selectedEpisode}>
+							<EpisodeCardButton open={state.selectedEpisode} onClick={() => setState({ ...state, selectedEpisode: !state.selectedEpisode })} />
+							<EpisodeDetailsCard open={state.selectedEpisode} />
+						</EpisodeCard>
+						<EpisodeCard open={state.selectedEpisode}>
+							<EpisodeCardButton open={state.selectedEpisode} onClick={() => setState({ ...state, selectedEpisode: !state.selectedEpisode })} />
+							<EpisodeDetailsCard open={state.selectedEpisode} />
+						</EpisodeCard>
+						<EpisodeCard open={state.selectedEpisode}>
+							<EpisodeCardButton open={state.selectedEpisode} onClick={() => setState({ ...state, selectedEpisode: !state.selectedEpisode })} />
+							<EpisodeDetailsCard open={state.selectedEpisode} />
+						</EpisodeCard>
+						<EpisodeCard open={state.selectedEpisode}>
+							<EpisodeCardButton open={state.selectedEpisode} onClick={() => setState({ ...state, selectedEpisode: !state.selectedEpisode })} />
+							<EpisodeDetailsCard open={state.selectedEpisode} />
+						</EpisodeCard>
+						<EpisodeCard open={state.selectedEpisode}>
+							<EpisodeCardButton open={state.selectedEpisode} onClick={() => setState({ ...state, selectedEpisode: !state.selectedEpisode })} />
+							<EpisodeDetailsCard open={state.selectedEpisode} />
+						</EpisodeCard>
+						<EpisodeCard open={state.selectedEpisode}>
+							<EpisodeCardButton open={state.selectedEpisode} onClick={() => setState({ ...state, selectedEpisode: !state.selectedEpisode })} />
+							<EpisodeDetailsCard open={state.selectedEpisode} />
+						</EpisodeCard>
+						<EpisodeCard open={state.selectedEpisode}>
+							<EpisodeCardButton open={state.selectedEpisode} onClick={() => setState({ ...state, selectedEpisode: !state.selectedEpisode })} />
+							<EpisodeDetailsCard open={state.selectedEpisode} />
+						</EpisodeCard>
+						<EpisodeCard open={state.selectedEpisode}>
+							<EpisodeCardButton open={state.selectedEpisode} onClick={() => setState({ ...state, selectedEpisode: !state.selectedEpisode })} />
+							<EpisodeDetailsCard open={state.selectedEpisode} />
+						</EpisodeCard>
+						<EpisodeCard open={state.selectedEpisode}>
+							<EpisodeCardButton open={state.selectedEpisode} onClick={() => setState({ ...state, selectedEpisode: !state.selectedEpisode })} />
+							<EpisodeDetailsCard open={state.selectedEpisode} />
+						</EpisodeCard>
+						<EpisodeCard open={state.selectedEpisode}>
+							<EpisodeCardButton open={state.selectedEpisode} onClick={() => setState({ ...state, selectedEpisode: !state.selectedEpisode })} />
+							<EpisodeDetailsCard open={state.selectedEpisode} />
+						</EpisodeCard>
+						<EpisodeCard open={state.selectedEpisode}>
+							<EpisodeCardButton open={state.selectedEpisode} onClick={() => setState({ ...state, selectedEpisode: !state.selectedEpisode })} />
+							<EpisodeDetailsCard open={state.selectedEpisode} />
+						</EpisodeCard>
+						<EpisodeCard open={state.selectedEpisode}>
+							<EpisodeCardButton open={state.selectedEpisode} onClick={() => setState({ ...state, selectedEpisode: !state.selectedEpisode })} />
+							<EpisodeDetailsCard open={state.selectedEpisode} />
+						</EpisodeCard>
+						<EpisodeCard open={state.selectedEpisode}>
+							<EpisodeCardButton open={state.selectedEpisode} onClick={() => setState({ ...state, selectedEpisode: !state.selectedEpisode })} />
+							<EpisodeDetailsCard open={state.selectedEpisode} />
+						</EpisodeCard>
+						<EpisodeCard open={state.selectedEpisode}>
+							<EpisodeCardButton open={state.selectedEpisode} onClick={() => setState({ ...state, selectedEpisode: !state.selectedEpisode })} />
+							<EpisodeDetailsCard open={state.selectedEpisode} />
+						</EpisodeCard>
+						<EpisodeCard open={state.selectedEpisode}>
+							<EpisodeCardButton open={state.selectedEpisode} onClick={() => setState({ ...state, selectedEpisode: !state.selectedEpisode })} />
+							<EpisodeDetailsCard open={state.selectedEpisode} />
+						</EpisodeCard>
 						<EpisodeCard open={state.selectedEpisode}>
 							<EpisodeCardButton open={state.selectedEpisode} onClick={() => setState({ ...state, selectedEpisode: !state.selectedEpisode })} />
 							<EpisodeDetailsCard open={state.selectedEpisode} />
 						</EpisodeCard>
 					</div>
-				</div>
-				<div className='w-full  relative '>
-					{/* <video autoPlay muted loop className='object-contain w-full h-fit opacity-40 absolute bottom-'>
-						<source src={gold} type='video/mp4' />
-					</video> */}
 				</div>
 			</div>
 		</div>

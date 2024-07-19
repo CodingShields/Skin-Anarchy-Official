@@ -8,7 +8,7 @@ import EpisodesList from "./comp/EpisodesList.jsx";
 import whiteLogo from "../../assets/images/logos/white-logo.png";
 const CurrentPodcastEpisode = () => {
 	return (
-		<div className='w-full h-full animate-fadeIn'>
+		<div className='w-full min-h-screen animate-fadeIn'>
 	
 			<div className='w-full h-full flex flex-col justify-start items-center text-center mt-24'>
 				<div className=' w-[1600px] h-fit '>
@@ -20,7 +20,7 @@ const CurrentPodcastEpisode = () => {
 						loading='lazy'
 					></iframe>
 				</div>
-				<div className='w-full mt-12'>
+				<div className='w-full mt-12 h-full'>
 					<EpisodesList />
 				</div>
 			</div>

@@ -298,7 +298,10 @@ export default {
 			},
 			gold: {
 				100: "#fff9d4",
+				200: "#ffedc2",
+				300: "#fdd49e",
 				500: "#af966f",
+				900: "#7f6a53",
 			},
 			gray: {
 				50: "#f7fafc",
@@ -373,6 +376,7 @@ export default {
 
 	plugins: [
 		// require("tailwind-scrollbar-hide"),
+		require('tailwind-scrollbar'),
 		require("@tailwindcss/typography"),
 		// require("@tailwindcss/aspect-ratio"),
 		// require("@tailwindcss/container-queries"),

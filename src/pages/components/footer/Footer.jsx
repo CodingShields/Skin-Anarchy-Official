@@ -36,7 +36,7 @@ const Footer = () => {
 	const screenWidth = window.innerWidth;
 	const buttonStyle = "  hover:underline decoration-1 underline-offset-8 ease-in-out duration-500 hover:font-normal transition-all ";
 	return (
-		<div className={`w-full h-fit sm:h-fit bg-black block border-t relative  ${activeFooter && "relative"}`}>
+		<div className={`w-full h-fit sm:h-fit bg-black block border-t relative  ${activeFooter && "relative"} z-40`}>
 			<div className='w-full h-fit flex flex-row justify-start items-start'>
 				<div className='w-3/4 h-fit pt-4 sm:w-2/3'>
 					<div className=' w-3/5 flex flex-col justify-center items-center ml-12 sm:ml-4'>

@@ -9,7 +9,7 @@ const EpisodeDetailsCard = (props) => {
 		>
 			{" "}
 			<div className='w-full h-full inline-flex '>
-				<img src={episode1} className='min-w-48 h-full  transition-all duration-700 ease-in-out object-cover object-left ' />
+				<img src={episode1} className= {`h-full  transition-all duration-700 ease-in-out object-cover ${!open ? "object-left min-w-48 " : "object-center "}  `} />
 				<div className={`flex flex-col justify-center  ${!open ?  " h-24 items-center" :"items-start h-full" }`}>
 					<p
 						className={`text-[16px] h-fit whitespace-nowrap border-b border-white transition-all duration-700 ease-in-out font-semibold ${!open ? "truncate text-left indent-8 w-full" : "text-center text-black w-full"}  py-2`}
