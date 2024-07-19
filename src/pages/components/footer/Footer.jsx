@@ -4,39 +4,46 @@ import footerDataArray from "../../../assets/data/footer/footerDataArray";
 import socialNav from "../../../assets/data/socialNav";
 import { ArrowRightCircleIcon } from "@heroicons/react/24/outline";
 import { userDeviceInfo } from "../../../utilities/utilities";
-import Button from "../button/Button";
 import PolicyBar from "../../disclaimer-privacy-policy/PolicyBar";
+import ConnectForm from "../../connect/ContactForm";
+import { FormComp, Modal, Button } from "../Components.jsx";
+import { formStyle, inputStyle } from "../../../styles/responsiveStyling";
+
 // import codingShieldsLogo from "../../assets/images/codingShieldsLogo.png";
 
-const Footer = () => {
-	const [activeFooter, setActiveFooter] = useState(false);
-
-	useEffect(() => {
-		window.addEventListener("scroll", () => {
-			if (window.scrollY > 100) {
-				setActiveFooter(true);
-			} else {
-				setActiveFooter(false);
-			}
-		});
-	}, []);
-
+const Footer = ({ handleModal }) => {
+	const [state, setState] = useState({
+		loading: false,
+		success: false,
+		error: false,
+		message: "",
+		activeFooter: false,
+		isMobile: false,
+	});
 	const navigate = useNavigate();
 
-	const [isMobile, setIsMobile] = useState(false);
-
-	console.log(userDeviceInfo());
 	useEffect(() => {
 		if (userDeviceInfo()) {
-			setIsMobile(true);
+			setState({
+				...state,
+				isMobile: true,
+			})
 		} else {
-			setIsMobile(false);
+			setState({
+				...state,
+				isMobile: false,
+			});
 		}
 	}, []);
+
+
+	const handleModalClick = () => {
+		handleModal();
+	};
 	const screenWidth = window.innerWidth;
 	const buttonStyle = "  hover:underline decoration-1 underline-offset-8 ease-in-out duration-500 hover:font-normal transition-all ";
 	return (
-		<div className={`w-full h-fit sm:h-fit bg-black block border-t relative  ${activeFooter && "relative"} z-40`}>
+		<div className={`w-full h-fit sm:h-fit bg-black block border-t relative  ${state.activeFooter && "relative"} z-40`}>
 			<div className='w-full h-fit flex flex-row justify-start items-start'>
 				<div className='w-3/4 h-fit pt-4 sm:w-2/3'>
 					<div className=' w-3/5 flex flex-col justify-center items-center ml-12 sm:ml-4'>
@@ -47,7 +54,7 @@ const Footer = () => {
 						<div className='w-[90%] inline-flex sm:w-fit justify-end items-center py-8 sm:py-0 text-left group'>
 							<input
 								className='w-full h-12  text-white sm:text-sm group-hover:border-white border-white/50 sm:placeholder:text-white/50 sm:placeholder:text-center group-hover:shadow-lg group-hover:shadow-white/50 placeholder:text-white placeholder:tracking-widest bg-black/20 rounded-lg py-4 placeholder:text-left z-20 transition-all duration-200 ease-in-out'
-								placeholder={isMobile ? "Notify Me" : "Enter Your Email Address"}
+								placeholder={state.isMobile ? "Notify Me" : "Enter Your Email Address"}
 								type='text'
 							/>
 							<ArrowRightCircleIcon className='w-10 h-10 sm:hidden sm:h-6 sm:w-6 absolute mr-4 z-10  stroke-white/50 transition-all duration-150 ease-in-out group-hover:stroke-white' />
@@ -75,7 +82,7 @@ const Footer = () => {
 						</div>
 					</div>
 				</div>
-				<div className='inline-flex space-x-8 sm:space-x-0 text-white justify-start items-start sm:w-full  sm:h-fit w-11/12 h-full gap-4 sm:flex sm:flex-col sm:mt-4  sm:mx-auto sm:pb-4'>
+				<div className='inline-flex space-x-8 sm:space-x-0 text-white justify-center items-start sm:w-full  sm:h-fit w-11/12 h-full gap-4 sm:flex sm:flex-col sm:mt-4  sm:mx-auto sm:pb-4'>
 					<div className='w-fit h-full sm:h-fit flex flex-col justify-start items-start sm:items-end sm:justify-center sm:pt-0 sm:mt-4 pt-6 sm:w-3/4 text-white '>
 						<h1 className='font-normal sm:text-sm text-3xl font-montserrat py-4 uppercase sm:py-0 '>Episodes</h1>
 						<div className='font-thin font-montserrat font-2xl space-y-4 grid sm:hidden indent-8'>
@@ -163,21 +170,32 @@ const Footer = () => {
 							>
 								Top Picks
 							</NavLink>
-							<NavLink
+							{/* <NavLink
 								to='awards/master-class'
 								className='hover:underline decoration-1 underline-offset-8 ease-in-out duration-500 hover:font-normal transition-all'
 							>
 								Master Class
-							</NavLink>
+							</NavLink> */}
 						</div>
 					</div>{" "}
 					<div className='w-fit h-full sm:h-fit flex flex-col justify-start items-start sm:items-end sm:justify-center sm:pt-0 sm:mt-4 pt-6 sm:w-3/4 text-white '>
 						<h1 className='font-normal text-3xl sm:text-sm font-montserrat py-4 sm:py-0 uppercase sm:block '>Connect</h1>
 						<div className='font-thin font-montserrat font-2xl space-y-4 grid sm:hidden indent-8'>
-							<p>pr@skincareanarchypodcast.com</p>
-							<p>Get Featured On Our Show</p>
-							<p>Become A Sponsor</p>
-							<p>Support</p>
+							<Button
+								style='indent-8 transition-all ease-in-out duration-500 hover:underline decoration-1 underline-offset-8 mr-auto'
+								text='Get Featured On Our Show'
+								onClick={handleModalClick}
+							/>
+							<Button
+								style='indent-8 transition-all ease-in-out duration-500 hover:underline decoration-1 underline-offset-8 mr-auto'
+								text='Become A Sponsor'
+								onClick={handleModalClick}
+							/>
+							<Button
+								style='indent-8 transition-all ease-in-out duration-500 hover:underline decoration-1 underline-offset-8 mr-auto'
+								text='Support'
+								onClick={() => navigate("/members-area/support")}
+							/>
 						</div>
 					</div>
 				</div>

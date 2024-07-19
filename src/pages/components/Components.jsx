@@ -26,19 +26,22 @@ SelectComp.propTypes = {
 };
 
 const InputComp = (props) => {
-	const { type, placeholder, style, onChange, required, id, autoComplete, value } = props;
+	const { type, placeholder, style, onChange, required, id, autoComplete, value, icon } = props;
 
 	return (
-		<input
-			value={value}
-			autoComplete={autoComplete}
-			id={id}
-			required={required ? required : ""}
-			type={type}
-			placeholder={placeholder}
-			className={style}
-			onChange={onChange}
-		/>
+		<div className='w-full inline-flex relative items-center'>
+			<div className={`absolute "left-0 ml-2`}>{icon}</div>
+			<input
+				value={value}
+				autoComplete={autoComplete}
+				id={id}
+				required={required ? required : ""}
+				type={type}
+				placeholder={placeholder}
+				className={style}
+				onChange={onChange}
+			/>
+		</div>
 	);
 };
 
@@ -51,6 +54,7 @@ InputComp.propTypes = {
 	id: PropTypes.string,
 	autoComplete: PropTypes.string,
 	value: PropTypes.string,
+	icon: PropTypes.node,
 };
 
 const TextAreaComp = (props) => {
@@ -62,7 +66,7 @@ const TextAreaComp = (props) => {
 			value={value}
 			onChange={onChange}
 			id={id}
-			required={required ? required : ""}
+			required={required}
 			placeholder={placeholder}
 			autoComplete={autoComplete}
 			rows={rows}
@@ -105,13 +109,15 @@ Button.propTypes = {
 	imageStyle: PropTypes.string,
 };
 
-const FormComp = ({ children, style }) => {
+const FormComp = ({ children, style, open }) => {
+	if (!open) return null;
 	return <form className={style}>{children}</form>;
 };
 
 FormComp.propTypes = {
 	children: PropTypes.node,
 	style: PropTypes.string,
+	open: PropTypes.bool,
 };
 
 const WorkingModal = ({ message, open }) => {
@@ -153,11 +159,16 @@ ErrorModal.propTypes = {
 	message: PropTypes.string,
 };
 
-const Modal = ({ children, open }) => {
+const Modal = ({ children, open, handleClose }) => {
 	if (!open) return null;
+
 	return (
-		<div className='absolute w-full h-screen z-20 top-0 left-0 animate-fadeIn'>
-			<div className='flex justify-center items-center place-content-center w-full h-full relative animate-fadeIn'>{children}</div>
+		<div className='fixed inset-0 z-50 flex justify-center items-center'>
+			<div
+				className='absolute inset-0 z-40 bg-black opacity-75'
+				onClick={handleClose} // Close modal on click outside
+			/>
+			<div className='z-50 bg-white rounded-lg p-8 w-3/4 h-3/4 flex flex-col justify-center items-center'>{children}</div>
 		</div>
 	);
 };
@@ -165,6 +176,15 @@ const Modal = ({ children, open }) => {
 Modal.propTypes = {
 	children: PropTypes.node.isRequired,
 	open: PropTypes.bool.isRequired,
+	handleClose: PropTypes.func.isRequired,
 };
 
-export { SelectComp, InputComp, TextAreaComp, Button, FormComp, WorkingModal, ErrorModal, Modal };
+const PageWrapper = ({ children }) => {
+	return <div className='w-full min-h-screen my-auto mt-24'>{children}</div>;
+};
+
+PageWrapper.propTypes = {
+	children: PropTypes.node.isRequired,
+};
+
+export { SelectComp, InputComp, TextAreaComp, Button, FormComp, WorkingModal, ErrorModal, Modal, PageWrapper };

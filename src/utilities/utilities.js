@@ -7,15 +7,13 @@ const userDeviceInfo = () => {
 	return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 };
 
-export { userDeviceInfo };
-	
 const imageBlobCreator = (image) => {
 	const newImageUrl = URL.createObjectURL(image);
 	return newImageUrl;
 };
-export { imageBlobCreator };
 
 const imageDownloadUrl = async (image) => {
+	console.log(image)
 	try {
 		const storageRef = ref(storage, `topPicks`);
 		await uploadBytes(storageRef, image);
@@ -27,8 +25,6 @@ const imageDownloadUrl = async (image) => {
 	}
 };
 
-export { imageDownloadUrl };
-
 const yearList = () => {
 	let years = [];
 	const currentYear = new Date().getFullYear();
@@ -38,21 +34,15 @@ const yearList = () => {
 	return years;
 };
 
-export { yearList };
-
 const addHashtags = (inputText) => {
 	// Logic to split input text and return array of hashtags
 	const hashtags = inputText.match(/#\w+/g) || []; // Match hashtags (starting with # and followed by word characters)
 	return hashtags.map((tag) => tag.toLowerCase()); // Convert all hashtags to lowercase for consistency
 };
 
-export { addHashtags };
-
 const StartPageLoadTop = () => {
 	window.scrollTo(0, 0);
 };
-
-export { StartPageLoadTop };
 
 const checkAdminAccess = async () => {
 	const currentUser = UserAuth();
@@ -73,8 +63,6 @@ const checkAdminAccess = async () => {
 	}
 };
 
-export { checkAdminAccess };
-
 const findCurrentUser = async () => {
 	const currentUser = UserAuth();
 	const userId = currentUser.user.uid;
@@ -86,13 +74,12 @@ const findCurrentUser = async () => {
 			}));
 			const currentUserProfile = users.find((user) => user.id === userId && user.profile);
 			console.log(currentUserProfile);
+			return currentUserProfile;
 		});
 	} catch (error) {
 		console.log(error);
 	}
 };
-
-export { findCurrentUser };
 
 const formatTimeStamp = (timestamp) => {
 	const date = timestamp.toDate();
@@ -102,8 +89,6 @@ const formatTimeStamp = (timestamp) => {
 	return `${month}/${day}/${year}`;
 };
 
-export { formatTimeStamp };
-
 const formatDate = (date) => {
 	const dateArray = date.split("-");
 	const year = dateArray[0];
@@ -112,4 +97,27 @@ const formatDate = (date) => {
 	return `${month}-${day}-${year}`;
 };
 
-export { formatDate };
+const handleSearch = (arr, searchItem) => {
+	console.log(arr);
+	console.log(searchItem);
+	const arrVal = arr.filter((arr) => arr.value === searchItem);
+	if (arrVal.length > 0) {
+		return arrVal;
+	} else {
+		return null;
+	}
+};
+
+export {
+	handleSearch,
+	formatDate,
+	formatTimeStamp,
+	userDeviceInfo,
+	imageBlobCreator,
+	imageDownloadUrl,
+	yearList,
+	addHashtags,
+	StartPageLoadTop,
+	checkAdminAccess,
+	findCurrentUser,
+};

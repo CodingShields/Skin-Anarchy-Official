@@ -1,13 +1,14 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 import { db } from "../../fireBase/firebaseConfig";
-import { arrayUnion, setDoc, doc} from "firebase/firestore";
+import { arrayUnion, setDoc, doc } from "firebase/firestore";
 import { nanoid } from "nanoid";
 import whiteLogo from "../../assets/images/logos/white-logo.png";
 import singleChevronDown from "../../assets/icons/singleChevronDown.svg";
 import { InputComp, SelectComp, TextAreaComp, Button, FormComp, ErrorModal, WorkingModal } from "../components/Components";
 import { inputStyle, buttonStyle, formStyle, selectStyle, smallSelectStyle, textAreaStyle } from "../../styles/responsiveStyling";
-import PropTypes from 'prop-types';
-import {XCircleIcon} from "@heroicons/react/24/outline";
+import { XCircleIcon } from "@heroicons/react/24/outline";
+
 const country = [
 	{ value: "us", name: "US" },
 	{ value: "eu", name: "EU" },
@@ -20,6 +21,7 @@ const formInterest = [
 	{ value: "both", name: "Both" },
 	{ value: "other", name: "Other" },
 ];
+
 const ContactForm = ({ close }) => {
 	const [state, setState] = useState({
 		loading: false,
@@ -39,9 +41,11 @@ const ContactForm = ({ close }) => {
 	});
 
 	const currentDate = new Date();
+
 	const handleFormSubmit = async (e) => {
 		e.preventDefault();
 		setState({ ...state, loading: true });
+
 		try {
 			const docRef = doc(db, "forms", "contact");
 			await setDoc(
@@ -60,35 +64,34 @@ const ContactForm = ({ close }) => {
 						message: form.message,
 						read: false,
 						reply: false,
-						
 					}),
 				},
 				{ merge: true }
-			),
-				setState({ ...state, loading: false, error: true, message:'' });
-				close();
+			);
+
+			setState({ ...state, loading: false, error: false, message: "" });
+			close(); // Close modal after successful form submission
 		} catch (e) {
 			setState({ ...state, loading: false, error: true, message: e.message });
 			console.error("Error adding document: ", e, e.message);
 		}
 	};
 
-
 	return (
-		<FormComp style={formStyle}>
+		<FormComp>
 			<div className='relative'>
-					<Button
-						onClick={close}
-						style='absolute right-0 top-0 flex flex-col hover:text-white text-black justify-center items-center transition-all ease-in-out hover:text-white duration-300 group font-montserrat font-thin' 
-						text='close'
-						icon={<XCircleIcon className='w-8 h-8 text-white/50 transition-all ease-in-out group-hover:text-white duration-300' />}
-					/>
+				<Button
+					onClick={close}
+					style='absolute right-0 top-0 flex flex-col hover:text-white text-black justify-center items-center transition-all ease-in-out hover:text-white duration-300 group font-montserrat font-thin'
+					text='close'
+					icon={<XCircleIcon className='w-8 h-8 text-white/50 transition-all ease-in-out group-hover:text-white duration-300' />}
+				/>
 			</div>
 			<WorkingModal message={state.message} open={state.loading} />
 			<ErrorModal open={state.error} message={state.message} />
-			<div className='mx-auto w-full text-center  pt-2 pb-8'>
+			<div className='mx-auto w-full text-center pt-2 pb-8'>
 				<img src={whiteLogo} alt='white logo' className='mx-auto h-32' />
-			</div>{" "}
+			</div>
 			<div className='flex flex-col justify-center items-center space-y-10'>
 				<InputComp
 					type='text'
@@ -165,7 +168,7 @@ const ContactForm = ({ close }) => {
 					/>
 				</div>
 				<div>
-					<h1 className='block text-sm  leading-6 text-white tracking-widest mb-2'>What are you interested in?</h1>
+					<h1 className='block text-sm leading-6 text-white tracking-widest mb-2'>What are you interested in?</h1>
 					<SelectComp onChange={(e) => setForm({ ...form, interest: e.target.value })} style={`${selectStyle}`} options={formInterest} />
 				</div>
 				<TextAreaComp
@@ -173,25 +176,21 @@ const ContactForm = ({ close }) => {
 					name='message'
 					id='message'
 					rows={4}
-					defaultValue={""}
+					defaultValue=''
 					value={form.message}
 					placeholder='Message'
 					style={textAreaStyle}
 				/>
 			</div>
 			<div className='pt-8 w-full inline-flex justify-center'>
-				<Button onClick={handleFormSubmit} type='submit' style={buttonStyle} text='Lets Talk' />
+				<Button onClick={handleFormSubmit} type='submit' style={buttonStyle} text="Let's Talk" />
 			</div>
 		</FormComp>
 	);
 };
 
 ContactForm.propTypes = {
-	close: PropTypes.func,
+	close: PropTypes.func.isRequired,
 };
-
-
-
-
 
 export default ContactForm;
