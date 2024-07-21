@@ -109,7 +109,8 @@ Button.propTypes = {
 	imageStyle: PropTypes.string,
 };
 
-const FormComp = ({ children, style }) => {
+const FormComp = ({ children, style, open}) => {
+	if (!open) return null;
 	return <form className={style}>{children}</form>;
 };
 
@@ -162,7 +163,7 @@ const Modal = ({ children, open, close }) => {
 	if (!open) return null;
 
 	return (
-		<div className='fixed inset-0 z-50 flex justify-center items-center'>
+		<div className='fixed inset-0 z-50 flex justify-center items-center animate-fadeIn'>
 			<div
 				className='absolute inset-0 z-40 bg-black opacity-75'
 				onClick={close} // Close modal on click outside

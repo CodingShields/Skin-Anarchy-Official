@@ -553,7 +553,7 @@ const NavBar = () => {
 						})}
 					</div>
 				</NavBarDropDown>
-				<NavBarDropDown open={open} menu={menu} text={"connect"}>
+				{/* <NavBarDropDown open={open} menu={menu} text={"connect"}>
 					<div className='flex flex-row w-full justify-center items-center bg-black border-white border-b-[1px] py-10 space-x-24'>
 						{connect.map((item, index) => {
 							return (
@@ -565,7 +565,7 @@ const NavBar = () => {
 							);
 						})}
 					</div>
-				</NavBarDropDown>
+				</NavBarDropDown> */}
 			</div>
 		</div>
 	);

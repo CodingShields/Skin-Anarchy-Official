@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
 import { UserAuth } from "../../context/AuthContext.jsx";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
+import { db } from "../../fireBase/firebaseConfig";
 import { useNavigate } from "react-router-dom";
 import ErrorModal from "../components/ErrorModal.jsx";
 import WorkingModal from "../components/WorkingModal.jsx";
 import Button from "../components/Button.jsx";
+import { UserCircleIcon, LockClosedIcon } from "@heroicons/react/24/outline";
 import { InputComp, SelectComp, TextAreaComp, FormComp, Modal } from "../components/Components";
 import { buttonStyle, inputStyle, formStyle, buttonStyleLessSoft } from "../../styles/responsiveStyling.js";
-const LoginModal = ({ open, close}) => {
+const LoginModal = ({ open, close }) => {
 	const navigate = useNavigate();
 	const { signIn } = UserAuth();
 	const [email, setEmail] = useState("");
@@ -15,25 +17,25 @@ const LoginModal = ({ open, close}) => {
 	const [openModal, setOpenModal] = useState(false);
 	const [openErrorModal, setOpenErrorModal] = useState(false);
 	const [state, setState] = useState({
-		errorMessage: "",
+		loading: true,
+		error: false,
+		message: "",
+		currentUser: "",
+		formModal: true,
 	});
 
 	const user = UserAuth();
+	console.log(user.user.uid);
 
 	useEffect(() => {
-		initializeState();
-	}, []);
-
-	const initializeState = () => {
-		setEmail("");
-		setPassword("");
-		setState({
-			errorMessage: "",
-			initialLoad: false,
-		});
-		setOpenModal(false);
-		setOpenErrorModal(false);
-	};
+		if (user) {
+			setState({
+				...state,
+				currentUser: user.user.uid,
+				loading: false,
+			});
+		}
+	}, [user]);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -41,14 +43,10 @@ const LoginModal = ({ open, close}) => {
 			errorMessage: "",
 			loading: true,
 		});
-		getFirestore();
-
 		try {
 			await signIn(email, password);
-			if (user) {
-				const db = getFirestore();
-				const userId = user.user.uid;
-				const userDocRef = doc(db, "users", userId);
+			if (state.currentUser) {
+				const userDocRef = doc(db, "users", state.currentUser);
 				await setDoc(
 					userDocRef,
 					{
@@ -69,12 +67,11 @@ const LoginModal = ({ open, close}) => {
 			}
 		} catch (error) {
 			setState({
-				errorMessage: error.code,
+				loading: false,
+				error: true,
+				message: error.code,
 			});
-			setOpenErrorModal(true); // Ensure that openErrorModal is set to true
 			errorTimeOut();
-			console.log(error.code, "error code");
-			console.log(openErrorModal, "openErrorModal");
 		}
 	};
 
@@ -92,13 +89,14 @@ const LoginModal = ({ open, close}) => {
 		"rounded-xl border-2 border-white text-white uppercase font-montserrat sm:text-sm text-xl hover:font-semibold sm:px-4 px-12 py-2 mx-auto cursor-pointer hover:bg-white hover:text-black transition-all duration-500 ease-in-out";
 	return (
 		<Modal open={open} close={close}>
-			<ErrorModal open={openErrorModal} message={state.errorMessage} />
-			<WorkingModal open={openModal} />
-			<FormComp style={`${formStyle} `}>
+			<ErrorModal open={state.error} message={state.message} />
+			<WorkingModal open={state.loading} />
+			<FormComp style={formStyle} open={state.formModal} close={state.loading}>
 				<h2 className='text-center sm:text-sm sm:whitespace-nowrap text-2xl text-white font-montserrat font-thin tracking-widest	py-4 uppercase'>
 					Sign in to your account
 				</h2>
 				<InputComp
+					icon={<UserCircleIcon className='w-6 h-6 text-black/50' />}
 					style={inputStyle}
 					onChange={(e) => setEmail(e.target.value)}
 					value={email}
@@ -109,6 +107,7 @@ const LoginModal = ({ open, close}) => {
 					placeholder='Email'
 				/>
 				<InputComp
+					icon={<LockClosedIcon className='w-6 h-6 text-black/50' />}
 					style={inputStyle}
 					onChange={(e) => setPassword(e.target.value)}
 					value={password}
@@ -127,7 +126,7 @@ const LoginModal = ({ open, close}) => {
 						/>
 						<label
 							htmlFor='remember-me'
-							className='ml-2 text-gray-600 sm:text-xs  group-hover:text-white transition-all ease-in-out duration-300 font-montserrat '
+							className='ml-2 text-gray-600 sm:text-xs  group-hover:text-white transition-all ease-in-out duration-300 font-montserrat whitespace-nowrap'
 						>
 							Remember me
 						</label>

@@ -17,7 +17,7 @@ const HomePage = () => {
 	useEffect(() => {
 		setTimeout(() => {
 			setOpenModal(false);
-		}, 5000);
+		}, 3000);
 	}, []);
 
 	useEffect(() => {
@@ -52,7 +52,7 @@ const HomePage = () => {
 			<HeadLine />
 			<SponsorBarContainer />
 			<SignatureBar />
-			{/* <WelcomeBackUserModal open={openModal} /> */}
+			<WelcomeBackUserModal open={openModal} />
 			<PodCast />
 			<PodcastPlatformBar />
 			<PodcastAnalyticsContainer />

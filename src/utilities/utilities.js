@@ -13,7 +13,7 @@ const imageBlobCreator = (image) => {
 };
 
 const imageDownloadUrl = async (image) => {
-	console.log(image)
+	console.log(image);
 	try {
 		const storageRef = ref(storage, `topPicks`);
 		await uploadBytes(storageRef, image);
@@ -73,11 +73,30 @@ const findCurrentUser = async () => {
 				...doc.data(),
 			}));
 			const currentUserProfile = users.find((user) => user.id === userId && user.profile);
-			console.log(currentUserProfile);
 			return currentUserProfile;
 		});
 	} catch (error) {
 		console.log(error);
+	}
+};
+
+const findCurrentUserName = async () => {
+	const currentUser = UserAuth(); // Assuming this gets the current user
+	const userId = currentUser.user.uid; // Assuming this gets the user's ID
+
+	try {
+		const snapshot = await getDocs(collection(db, "users")); // Fetch all users
+		const users = snapshot.docs.map((doc) => ({
+			id: doc.id,
+			...doc.data(),
+		}));
+
+		const currentUserProfile = users.find((user) => user.id === userId);
+		console.log(currentUserProfile.profile.first); // Find current user
+		return currentUserProfile.profile.first; // Return the first name
+	} catch (error) {
+		console.log("Error fetching user profile:", error);
+		return null; // Handle error gracefully
 	}
 };
 
@@ -120,4 +139,5 @@ export {
 	StartPageLoadTop,
 	checkAdminAccess,
 	findCurrentUser,
+	findCurrentUserName,
 };

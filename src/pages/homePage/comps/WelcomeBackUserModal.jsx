@@ -1,19 +1,47 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { UserAuth } from "../../../context/AuthContext";
+import { db } from "../../../fireBase/firebaseConfig";
+import { collection, getDocs } from "firebase/firestore";
+import { Modal } from "../../components/Components";
+import PropTypes from "prop-types";
+const WelcomeBackUserModal = ({ open }) => {
+	const [userName, setUserName] = useState(null);
+	const [openModal, setOpenModal] = useState(false);
 
-const WelcomeBackUserModal = ({ open, message }) => {
-	if (!open) return null;
+	const findCurrentUserName = async () => {
+		const currentUser = UserAuth();
+		const userId = currentUser.user.uid;
+
+		try {
+			const snapshot = await getDocs(collection(db, "users"));
+			const users = snapshot.docs.map((doc) => ({
+				id: doc.id,
+				...doc.data(),
+			}));
+
+			const currentUserProfile = users.find((user) => user.id === userId);
+			setUserName(currentUserProfile.profile.first);
+			setOpenModal(true);
+		} catch (error) {
+			console.log("Error fetching user profile:", error);
+		}
+	};
+
+	findCurrentUserName();
+
+	if (!open) {
+		return null;
+	}
 
 	return (
-		<div className='absolute bg-opacity-50 bg-char-900 w-full h-full z-10 top-0 left-0 animate-fadeIn'>
-			<div onClick={(e) => e.stopPropagation()} className='flex flex-row justify-center items-center place-content-center w-full h-full'>
-				<div className='w-full h-fit bg-white'>
-					<h1 className='w-full text-4xl font-bold text-black text-center py-2'>
-						Welcome Back Skin Anarchy Team .... current logged in user name will go here{message}
-					</h1>
-				</div>
-			</div>
-		</div>
+		<Modal open={open && openModal}>
+			<h1 className='w-full text-6xl font-thin text-white text-center py-4 font-montserrat'>Welcome {userName ? userName : "User"}</h1>
+		</Modal>
 	);
+};
+
+WelcomeBackUserModal.propTypes = {
+	open: PropTypes.bool.isRequired,
 };
 
 export default WelcomeBackUserModal;

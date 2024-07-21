@@ -7,22 +7,16 @@ import whiteLogo from "../../assets/images/logos/white-logo.png";
 import singleChevronDown from "../../assets/icons/singleChevronDown.svg";
 import { InputComp, SelectComp, TextAreaComp, Button, FormComp, ErrorModal, WorkingModal } from "../components/Components";
 import { inputStyle, buttonStyle, formStyle, selectStyle, smallSelectStyle, textAreaStyle } from "../../styles/responsiveStyling";
-import { XCircleIcon, BuildingOfficeIcon, AtSymbolIcon, PhoneIcon, UserCircleIcon  } from "@heroicons/react/24/outline";
+import { XCircleIcon, BuildingOfficeIcon, AtSymbolIcon, UserCircleIcon } from "@heroicons/react/24/outline";
 
 const country = [
 	{ value: "us", name: "US" },
 	{ value: "eu", name: "EU" },
 ];
 
-const formInterest = [
-	{ value: null, name: "Select an option" },
-	{ value: "sponsorship", name: "Sponsorship" },
-	{ value: "guestShow", name: "Being a guest on the show" },
-	{ value: "both", name: "Both" },
-	{ value: "other", name: "Other" },
-];
 
-const ContactForm = ({ close, open }) => {
+
+const ReviewForm = ({ close, open }) => {
 	const [state, setState] = useState({
 		loading: false,
 		error: false,
@@ -47,11 +41,11 @@ const ContactForm = ({ close, open }) => {
 		setState({ ...state, loading: true });
 
 		try {
-			const docRef = doc(db, "forms", "contact");
+			const docRef = doc(db, "forms", "reviews");
 			await setDoc(
 				docRef,
 				{
-					unreadMessages: arrayUnion({
+					reviews: arrayUnion({
 						id: nanoid(),
 						date: currentDate.toDateString(),
 						time: currentDate.toLocaleTimeString(),
@@ -156,7 +150,7 @@ const ContactForm = ({ close, open }) => {
 							style={`${smallSelectStyle} ${form.phoneCountry && "text-black"}`}
 							required
 						/>
-						<img src={singleChevronDown} className='pointer-events-none absolute right-3 top-0 h-full w-5 text-black' aria-hidden='true' />
+						<img src={singleChevronDown} className='pointer-events-none absolute right-3 top-0 h-full w-5 text-gray-400' aria-hidden='true' />
 					</div>
 					<InputComp
 						type='tel'
@@ -169,12 +163,7 @@ const ContactForm = ({ close, open }) => {
 						required
 						autoFocus
 						value={form.phone}
-						
 					/>
-				</div>
-				<div>
-					<h1 className='block text-sm leading-6 text-white tracking-widest mb-2'>What are you interested in?</h1>
-					<SelectComp onChange={(e) => setForm({ ...form, interest: e.target.value })} style={`${selectStyle}`} options={formInterest} />
 				</div>
 				<TextAreaComp
 					onChange={(e) => setForm({ ...form, message: e.target.value })}
@@ -183,7 +172,7 @@ const ContactForm = ({ close, open }) => {
 					rows={4}
 					defaultValue=''
 					value={form.message}
-					placeholder='Message'
+					placeholder='Review Message'
 					style={textAreaStyle}
 				/>
 			</div>
@@ -194,8 +183,8 @@ const ContactForm = ({ close, open }) => {
 	);
 };
 
-ContactForm.propTypes = {
+ReviewForm.propTypes = {
 	close: PropTypes.func.isRequired,
 };
 
-export default ContactForm;
+export default ReviewForm;
