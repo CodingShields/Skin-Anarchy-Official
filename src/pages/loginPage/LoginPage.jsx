@@ -27,7 +27,7 @@ const LoginPage = () => {
 	return (
 		<div className='w-full h-screen bg-black animate-fadeIn '>
 			<LoginPageNavBar onClick={() => setLoginModal(!loginModal)} />
-			<LoginModal open={loginModal} />
+			<LoginModal open={loginModal} close={() => setLoginModal(false)} />
 
 			<div className={`absolute sm:hidden top-0 right-0 h-full w-full opacity-20  ${loginModal && "blur-md"}`}>
 				<video autoPlay muted loop className='w-full h-screen object-cover relative'>

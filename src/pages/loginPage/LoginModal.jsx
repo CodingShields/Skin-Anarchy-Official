@@ -7,7 +7,7 @@ import WorkingModal from "../components/WorkingModal.jsx";
 import Button from "../components/Button.jsx";
 import { InputComp, SelectComp, TextAreaComp, FormComp, Modal } from "../components/Components";
 import { buttonStyle, inputStyle, formStyle, buttonStyleLessSoft } from "../../styles/responsiveStyling.js";
-const LoginModal = ({ open }) => {
+const LoginModal = ({ open, close}) => {
 	const navigate = useNavigate();
 	const { signIn } = UserAuth();
 	const [email, setEmail] = useState("");
@@ -91,10 +91,10 @@ const LoginModal = ({ open }) => {
 	const buttonStyle =
 		"rounded-xl border-2 border-white text-white uppercase font-montserrat sm:text-sm text-xl hover:font-semibold sm:px-4 px-12 py-2 mx-auto cursor-pointer hover:bg-white hover:text-black transition-all duration-500 ease-in-out";
 	return (
-		<Modal open={open}>
+		<Modal open={open} close={close}>
 			<ErrorModal open={openErrorModal} message={state.errorMessage} />
 			<WorkingModal open={openModal} />
-			<FormComp style={`${formStyle} ${state.loading ? "hidden" : ""}`}>
+			<FormComp style={`${formStyle} `}>
 				<h2 className='text-center sm:text-sm sm:whitespace-nowrap text-2xl text-white font-montserrat font-thin tracking-widest	py-4 uppercase'>
 					Sign in to your account
 				</h2>

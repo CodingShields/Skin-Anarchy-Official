@@ -109,8 +109,7 @@ Button.propTypes = {
 	imageStyle: PropTypes.string,
 };
 
-const FormComp = ({ children, style, open }) => {
-	if (!open) return null;
+const FormComp = ({ children, style }) => {
 	return <form className={style}>{children}</form>;
 };
 
@@ -159,16 +158,16 @@ ErrorModal.propTypes = {
 	message: PropTypes.string,
 };
 
-const Modal = ({ children, open, handleClose }) => {
+const Modal = ({ children, open, close }) => {
 	if (!open) return null;
 
 	return (
 		<div className='fixed inset-0 z-50 flex justify-center items-center'>
 			<div
 				className='absolute inset-0 z-40 bg-black opacity-75'
-				onClick={handleClose} // Close modal on click outside
+				onClick={close} // Close modal on click outside
 			/>
-			<div className='z-50 bg-white rounded-lg p-8 w-3/4 h-3/4 flex flex-col justify-center items-center'>{children}</div>
+			<div className='z-50 w-fit h-fit flex flex-col justify-center items-center'>{children}</div>
 		</div>
 	);
 };
@@ -176,7 +175,7 @@ const Modal = ({ children, open, handleClose }) => {
 Modal.propTypes = {
 	children: PropTypes.node.isRequired,
 	open: PropTypes.bool.isRequired,
-	handleClose: PropTypes.func.isRequired,
+	close: PropTypes.func.isRequired,
 };
 
 const PageWrapper = ({ children }) => {

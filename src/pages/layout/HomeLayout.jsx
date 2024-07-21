@@ -48,9 +48,9 @@ const HomeLayout = () => {
 		<>
 			{!isAdmin && <Header />}
 			<Outlet />
-			<Modal open={state.modalOpen} handleClose={handleCloseModal}>
+			{/* <Modal open={state.modalOpen} handleClose={handleCloseModal}>
 				<ConnectForm close={() => setState({ ...state, modalOpen: false })} />
-			</Modal>
+			</Modal> */}
 			{/* {!isAdmin && <ChatBot />} */}
 			{/* {!isAdmin && <Radio />} */}
 			{!isAdmin && <Footer handleModal={handleModalClick} />}
