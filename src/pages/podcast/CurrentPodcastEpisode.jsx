@@ -1,9 +1,5 @@
 import { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
-import CategoryList from "./comp/categoryList.jsx";
-import LatestEpisodeBanner from "./comp/latestEpisodeBanner.jsx";
-import SearchBar from "./comp/SearchBar.jsx";
-import SelectPlayerList from "./comp/selectPlayerList.jsx";
 import EpisodesList from "./comp/EpisodesList.jsx";
 import whiteLogo from "../../assets/images/logos/white-logo.png";
 const CurrentPodcastEpisode = () => {

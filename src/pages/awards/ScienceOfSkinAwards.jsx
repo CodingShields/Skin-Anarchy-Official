@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import ScienceOfSkinYearsTabs from "./comp/ScienceOfSkinYearsTabs";
 import ScienceAwardCard from "./comp/ScienceAwardCard";
 import ScienceAwards from "./comp/ScienceAwards";
@@ -9,7 +9,7 @@ import { imageArray2024 } from "../../assets/images/science-of-skin/2024/2024Ima
 import Science2024Seal from "../../assets/images/science-of-skin/2024/Science2024Seal.png";
 import Science2022Seal from "../../assets/images/science-of-skin/2022/Science2022Seal.png";
 import Science2023Seal from "../../assets/images/science-of-skin/2023/Science2023Seal.png";
-
+import { StartPageLoadTop } from "../../utilities/utilities";
 const imageData = [
 	{
 		name: "2022",
@@ -56,6 +56,10 @@ const ScienceOfSkinAwards = () => {
 	const findData = (year) => {
 		return imageData.find((item) => item.name === year)?.data;
 	};
+
+	useEffect(() => {
+		StartPageLoadTop();
+	}, []);
 
 	return (
 		<div className='h-fit w-full bg-black '>

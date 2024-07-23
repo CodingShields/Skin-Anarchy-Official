@@ -1,9 +1,9 @@
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
 import { PageWrapper, SelectComp, InputComp, TextAreaComp, Button, FormComp } from "../components/Components";
 import { buttonStyle, inputStyle, textAreaStyle, formStyle } from "../../styles/responsiveStyling";
 import { handleSearch, imageDownloadUrl } from "../../utilities/utilities";
-import { UserIcon, AtSymbolIcon, PhotoIcon} from "@heroicons/react/24/outline";
+import { UserIcon, AtSymbolIcon, PhotoIcon } from "@heroicons/react/24/outline";
+import { StartPageLoadTop } from "../../utilities/utilities";
 const options = [
 	{
 		name: "Select an option",
@@ -62,14 +62,15 @@ const SupportPage = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log("test");
 	};
 
-    console.log(state.image)
+	useEffect(() => {
+		StartPageLoadTop();
+	}, []);
 
 	return (
 		<PageWrapper>
-			<div className='w-full h-3/4 flex flex-col justify-center items-center mt-48'>
+			<div className='w-full h-3/4 flex flex-col justify-center items-center mt-48 animate-fadeIn'>
 				<h1 className='text-5xl text-white font-montserrat uppercase font-thin tracking-widest'>Skin Anarchy Support</h1>
 				<div className='w-1/4 mx-auto border rounded-2xl p-8 mt-12 text-center flex flex-col justify-center items-center'>
 					<h1 className='text-2xl text-white font-montserrat uppercase font-thin tracking-widest'>How can we help you?</h1>

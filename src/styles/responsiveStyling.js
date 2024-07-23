@@ -8,7 +8,7 @@ const inputStyle =
 	"block w-full rounded-md border-0 px-3.5 py-2 pl-10 text-black  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-black/50 placeholder:indent-3 hover:border-gold-500 " 
 
 const formStyle =
-	"rounded-2xl bg-black border-[1px] text-white border-white  z-60 flex flex-col h-fit bg-black text-white p-10 rounded-2xl font-montserrat w-fit space-y-4 shadow-2xl shadow-black";
+	"rounded-2xl bg-black animate-fadeIn border-[1px] text-white border-white  z-60 flex flex-col h-fit bg-black text-white p-10 rounded-2xl font-montserrat w-fit space-y-4 shadow-2xl shadow-black";
 
 const selectStyle =
 	"block w-full rounded-md border-0 px-3.5 py-2 pl-20 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-4 focus:ring-inset focus:ring-gold-500 sm:text-sm sm:leading-6";

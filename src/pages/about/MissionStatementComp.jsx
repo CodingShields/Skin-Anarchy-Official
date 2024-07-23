@@ -1,4 +1,14 @@
+import { useEffect } from "react";
+import { StartPageLoadTop } from "../../utilities/utilities";
+
+
 const MissionStatementComp = () => {
+
+	useEffect(() => {
+		StartPageLoadTop();
+	}, []);
+
+	
 	return (
 		<div className='w-full flex flex-col h-full justify-start items-center mx-auto mb-24 animate-fadeIn'>
 			<div>

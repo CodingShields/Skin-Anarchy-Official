@@ -1,8 +1,8 @@
 import { BarsArrowDownIcon, ChevronDoubleRightIcon, BookmarkIcon, BookmarkSlashIcon, StarIcon } from "@heroicons/react/24/outline";
 import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 const EpisodeCardButton = (props) => {
-	const { children, onClick, data, image, icon, open, index } = props;
-	console.log(open);
+	const {onClick, open, index } = props;
 	return (
 		<div key={index} onClick={onClick} className='w-fit h-full flex flex-col justify-center items-center space-y-6 px-2 text-white '>
 			<ChevronDoubleRightIcon
@@ -16,6 +16,16 @@ const EpisodeCardButton = (props) => {
 			/>
 		</div>
 	);
+};
+
+EpisodeCardButton.propTypes = {
+	children: PropTypes.node,
+	onClick: PropTypes.func,
+	data: PropTypes.object,
+	image: PropTypes.string,
+	icon: PropTypes.string,
+	open: PropTypes.bool,
+	index: PropTypes.number,
 };
 
 export default EpisodeCardButton;

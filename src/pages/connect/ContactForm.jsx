@@ -92,7 +92,7 @@ const ContactForm = ({ close, open }) => {
 			<div className='mx-auto w-full text-center pt-2 pb-8'>
 				<img src={whiteLogo} alt='white logo' className='mx-auto h-32' />
 			</div>
-			<div className='flex flex-col justify-center items-center space-y-10'>
+			<div className='flex flex-col justify-center items-center space-y-8'>
 				<InputComp
 					type='text'
 					style={`${inputStyle} ${form.firstName && "text-black"}`}

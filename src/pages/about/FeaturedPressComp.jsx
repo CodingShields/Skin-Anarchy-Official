@@ -1,6 +1,7 @@
 import {useState, useEffect} from "react";
 import { imageArray } from "../../assets/images/about/pressLogos/featuredPress"
 import FeaturedPressModal from "../components/FeaturedPressModal"
+import { StartPageLoadTop } from "../../utilities/utilities";
 const FeaturedPress = () => {
 	const [state, setState] = useState({
 		loading: false,
@@ -21,8 +22,12 @@ const FeaturedPress = () => {
 		setFeaturedPressLink({link: e.target.name, openModal: true})
 	}
 
+	useEffect(() => {
+		StartPageLoadTop();
+	}, []);
+
 	return (
-		<div className='min-h-screen  w-full flex flex-col items-center justify-center bg-black mt-36'>
+		<div className='min-h-screen  w-full flex flex-col items-center justify-center bg-black mt-36 animate-fadeIn'>
 			<FeaturedPressModal link={featuredPressLink.link} open={featuredPressLink.openModal} close={() => setFeaturedPressLink({link: "", openModal: false})} />
 			<h1 className="text-white text-6xl font-montserrat font-thin tracking-widest underline decoration-1 uppercase underline-offset-[10px]">Featured Press Page</h1>
 			<p className="text-white text-2xl font-montserrat font-thin tracking-widest mt-4">Published Articles and Press Releases</p>

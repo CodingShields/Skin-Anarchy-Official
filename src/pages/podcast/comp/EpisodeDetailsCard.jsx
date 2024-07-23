@@ -1,8 +1,7 @@
 import episode1 from "../../../assets/images/podcast-widget/episode1.png";
-
+import PropTypes from "prop-types";
 const EpisodeDetailsCard = (props) => {
 	const { children, onClick, data, image, icon, open } = props;
-	console.log(open);
 	return (
 		<div
 			className={`flex flex-col transition-all duration-700 ease-in-out  ${!open ? "bg-black text-white justify-start items-start z-30" : "bg-white text-black justify-center items-center w-full"} `}
@@ -31,6 +30,15 @@ const EpisodeDetailsCard = (props) => {
 			{children}
 		</div>
 	);
+};
+
+EpisodeDetailsCard.propTypes = {
+	children: PropTypes.node,
+	onClick: PropTypes.func,
+	data: PropTypes.object,
+	image: PropTypes.string,
+	icon: PropTypes.string,
+	open: PropTypes.bool,
 };
 
 export default EpisodeDetailsCard;

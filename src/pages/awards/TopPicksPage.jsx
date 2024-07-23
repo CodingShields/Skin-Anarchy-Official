@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import TopPicksNavBar from "./comp/TopPicksNavBar";
 import TopPicksNavButton from "./TopPicksNavButton";
 import TopPicksNavBarDropDown from "./TopPicksNavBarDropDown";
 import TopPicksSubMenuButton from "./TopPicksSubMenuButton";
 import TopPicksImagesCard from "./TopPicksImagesCard";
 import topPicks2023 from "../../assets/images/topPicks/2023/topPicks2023.js"
-
+import { StartPageLoadTop } from "../../utilities/utilities.js";
 const topPicksNavBar = [
 	{
 		name: "skincare",
@@ -55,17 +55,13 @@ const TopPicksPage = () => {
 		setActiveSubMenu("");
 		setActiveMenu({ name, subMenu });
 	};
-console.log(subMenuData);
 	const handleSubMenuClick = (subMenuItem) => {
 		setActiveSubMenu(subMenuItem);
 		const data = findObject(topPicks2023, activeMenu.name)
 		setShopMyLink(data.shopMyLink);
 		const subMenuArray = data.data;
 		setSubMenuData(findObject(subMenuArray, subMenuItem));
-
 	};
-
-	console.log(subMenuData);
 
 	const findObject = (arr, name) => {
 		return arr.find((obj) => obj.name === name);		
@@ -74,8 +70,11 @@ console.log(subMenuData);
 	const handleOnHover = (item) => {
 		const name = item.name;
 		console.log(name);
-
 	};
+
+	useEffect(() => {
+		StartPageLoadTop();
+	}, []);
 
 	return (
 		<div className='w-full min-h-screen animate-fadeIn '>

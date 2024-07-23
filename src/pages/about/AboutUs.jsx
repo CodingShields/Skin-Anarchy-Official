@@ -1,6 +1,14 @@
+import { useEffect } from "react";
+import { StartPageLoadTop } from "../../utilities/utilities";
+
 const AboutUs = () => {
+
+	useEffect(() => {
+		StartPageLoadTop();
+	}, []);
+	
 	return (
-		<div className='w-full mx-auto h-fit text-white flex flex-col justify-between items-center mt-36 pb-64 space-x-4'>
+		<div className='w-full mx-auto h-fit text-white flex flex-col justify-between items-center mt-36 pb-64 space-x-4 animate-fadeIn'>
 			{/* <div> */}
 
 			<div className='w-full  h-full flex flex-row justify-evenly '>
