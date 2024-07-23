@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { userDeviceInfo } from "../../../utilities/utilities";
 import { Bars3Icon } from "@heroicons/react/24/solid";
 import HighlightMenu from "./HighlightMenu";
@@ -7,7 +8,7 @@ import NavBarDropDown from "./NavBarDropDown";
 import makeup from "../../../assets/images/interviewCategories/makeup.png";
 import celebs from "../../../assets/images/interviewCategories/celebs.png";
 import brandFounders from "../../../assets/images/interviewCategories/brandFounders.png";
-import Button from "../button/Button";
+import { Button } from "../Components";
 import mario from "../../../assets/images/navBar/episodes/mario.png";
 import danessa from "../../../assets/images/navBar/episodes/danessa.png";
 import sirJohn from "../../../assets/images/navBar/episodes/sirJohn.png";
@@ -350,24 +351,24 @@ const blogArray = [
 	scienceOfSkin,
 	// episodeSummaries,
 ];
-const mainNavBar = ["home", "about", "episodes", "blog", "awards", "yugen", "connect", "account"];
-
 const buttonStyle = "uppercase font-thin underlineAnimate subpixel-antialiased tracking-[6px] text-white sm:text-[8px] text-[16px]";
 const activeNavButton =
 	"uppercase font-semibold text-gold-500 subpixel-antialiased tracking-[6px] text-sm  underline underline-offset-8 decoration-1";
-const smallMenuclassName =
-	"uppercase py-4 animate-fadeIn w-fit px-24 translate-x-[-400px] bg-char-900 text-white font-montserrat w-fit gap-12 text-[22px] flex flex-col translate-y-[50px] absolute bg-black transition-all duration-500 ease-in-out rounded-b-xl";
-const largeMenuclassName =
-	"uppercase py-4 animate-fadeIn w-full px-24 translate-x-[-800px] bg-char-900 text-white font-montserrat w-fit gap-12 text-[22px] flex flex-row translate-y-[50px] absolute bg-black transition-all duration-500 ease-in-out rounded-b-xl";
-const navMenu = "text-white font-montserrat text-3xl uppercase tracking-[2px] flex flex-col gap-14 pb-12 w-[300px]";
-const highlightMenu = "text-white font-montserrat  uppercase tracking-[2px] flex flex-row justify-center items-center w-3/4 ";
 const NavBar = () => {
+	const [state, setState] = useState({
+		loading: false,
+		error: false,
+		message: "",
+		openSubMenu: false,
+		currentMenu: "home",
+		subMenuIndex: 0,
+	});
 	const [open, setOpen] = useState(false);
 	const [subMenuIndex, setSubMenuIndex] = useState(0);
-	const [menu, setMenu] = useState("");
+	const [menu, setMenu] = useState("home");
 	const [isMobile, setIsMobile] = useState(false);
 	const menuRef = useRef(null);
-	console.log(userDeviceInfo());
+	const navigate = useNavigate();
 	useEffect(() => {
 		if (userDeviceInfo()) {
 			setIsMobile(true);
@@ -376,6 +377,7 @@ const NavBar = () => {
 		}
 	}, []);
 	const handleClick = (e) => {
+		console.log("first");
 		const currentMenu = e.target.name;
 		console.log(currentMenu);
 		setMenu(currentMenu);
@@ -400,31 +402,24 @@ const NavBar = () => {
 	};
 
 	useEffect(() => {
-		// Function to close menu when clicked outside
 		const handleClickOutside = (event) => {
 			if (menuRef.current && !menuRef.current.contains(event.target)) {
 				setOpen(false);
 			}
 		};
-		// Add event listener when component mounts
 		document.addEventListener("mousedown", handleClickOutside);
-		// Cleanup function to remove event listener when component unmounts
 		return () => {
 			document.removeEventListener("mousedown", handleClickOutside);
 		};
 	}, []);
 
 	useEffect(() => {
-		// Function to close menu when clicked outside
-
 		const handleMouseOutside = (event) => {
 			if (menuRef.current && !menuRef.current.contains(event.target)) {
 				setOpen(false);
 			}
 		};
-		// Add event listener when component mounts
 		document.addEventListener("mouseout", handleMouseOutside);
-		// Cleanup function to remove event listener when component unmounts
 		return () => {
 			document.removeEventListener("mouseout", handleMouseOutside);
 		};
@@ -434,32 +429,129 @@ const NavBar = () => {
 		<div ref={menuRef} id='menu' className='w-full sm:w-fit h-16 bg-black border-b border-white'>
 			<div className='w-full  flex flex-row  justify-center items-center sm:space-x-2 space-x-18 mx-auto mt-2'>
 				<Button
-					className={menu === "home" ? activeNavButton : buttonStyle + " sm:text-[6px] text-[16px]"}
+					style={state.currentMenu === "home" ? activeNavButton : buttonStyle + " sm:text-[6px] text-[16px]"}
 					text={"home"}
-					onClick={handleClick}
-					to={"/members-area/home"}
+					onClick={() => {
+						setState({
+							...state,
+							currentMenu: "home",
+							openSubMenu: false,
+						});
+						navigate("/members-area/home");
+					}}
 				/>
-				<Button className={menu === "about" ? activeNavButton : buttonStyle} text={"about"} onClick={handleClick} />
-				<Button className={menu === "episodes" ? activeNavButton : buttonStyle} text={"episodes"} onClick={handleClick} />
-				<Button className={menu === "blog" ? activeNavButton : buttonStyle} text={"blog"} onClick={handleClick} />
 				<Button
-					className={menu === "safe seal" ? activeNavButton : buttonStyle}
+					style={state.currentMenu === "about" ? activeNavButton : buttonStyle}
+					text={"about"}
+					onClick={() => {
+						setState({
+							...state,
+							currentMenu: "about",
+							openSubMenu: true,
+						});
+					}}
+				/>
+				<Button
+					style={state.currentMenu === "episodes" ? activeNavButton : buttonStyle}
+					text={"episodes"}
+					onClick={() => {
+						setState({
+							...state,
+							currentMenu: "episodes",
+							openSubMenu: true,
+						});
+					}}
+				/>
+				<Button
+					style={state.currentMenu === "blog" ? activeNavButton : buttonStyle}
+					text={"blog"}
+					onClick={() => {
+						setState({
+							...state,
+							currentMenu: "blog",
+							openSubMenu: true,
+						});
+					}}
+				/>
+				<Button
+					style={state.currentMenu === "safe seal" ? activeNavButton : buttonStyle}
 					text={"safe seal"}
-					to={"/members-area/safe-seal"}
-					onClick={handleClick}
+					onClick={() => {
+						setState({
+							...state,
+							currentMenu: "safe seal",
+							openSubMenu: false,
+						});
+						navigate("/members-area/safe-seal");
+					}}
 				/>
 				<div className={`${!isMobile && "inline-flex w-fit space-x-4"}`}>
 					<img src={goldLogo} alt='logo' className='w-10 h-10 ' />
 					<Bars3Icon className={`w-10 h-10 text-white ${!isMobile && "hidden"}`} />
 				</div>
-				<Button className={menu === "awards" ? activeNavButton : buttonStyle} text={"awards"} onClick={handleClick} />
-				<Button className={menu === "yugen" ? activeNavButton : buttonStyle} text={"yugen"} to={"/members-area/yugen"} onClick={handleClick} />
-				<Button className={menu === "connect" ? activeNavButton : buttonStyle} text={"connect"} onClick={handleClick} to={"/members-area/connect"} />
-				<Button className={menu === "shop" ? activeNavButton : buttonStyle} text={"shop"} onClick={handleClick} to={"/members-area/shop"} />
-				<Button className={menu === "account" ? activeNavButton : buttonStyle} text={"account"} onClick={handleClick} to={"/members-area/account"} />
+				<Button
+					style={state.currentMenu === "awards" ? activeNavButton : buttonStyle}
+					text={"awards"}
+					onClick={() => {
+						setState({
+							...state,
+							currentMenu: "awards",
+							openSubMenu: true,
+						});
+					}}
+				/>
+				<Button
+					style={state.currentMenu === "yugen" ? activeNavButton : buttonStyle}
+					text={"yugen"}
+					to={"/members-area/yugen"}
+					onClick={() => {
+						setState({
+							...state,
+							currentMenu: "yugen",
+							openSubMenu: false,
+						});
+						navigate("/members-area/yugen");
+					}}
+				/>
+				<Button
+					style={state.currentMenu === "connect" ? activeNavButton : buttonStyle}
+					text={"connect"}
+					onClick={() => {
+						setState({
+							...state,
+							currentMenu: "connect",
+							openSubMenu: true,
+						});
+						navigate("/members-area/connect");
+					}}
+				/>
+				<Button
+					style={menu === "shop" ? activeNavButton : buttonStyle}
+					text={"shop"}
+					onClick={() => {
+						setState({
+							...state,
+							currentMenu: "shop",
+							openSubMenu: false,
+						});
+						navigate("/members-area/shop");
+					}}
+				/>
+				<Button
+					style={menu === "account" ? activeNavButton : buttonStyle}
+					text={"account"}
+					onClick={() => {
+						setState({
+							...state,
+							currentMenu: "account",
+							openSubMenu: false,
+						});
+						navigate("/members-area/account");
+					}}
+				/>
 			</div>
 			<div ref={menuRef} className='w-full '>
-				<NavBarDropDown open={open} menu={menu} text={"about"}>
+				<NavBarDropDown open={state.openSubMenu} menu={state.currentMenu} text={"about"}>
 					<div className='flex flex-row w-full justify-center items-center bg-black border-white border-b-[1px] py-10 space-x-24'>
 						{about.map((item, index) => {
 							return (
@@ -473,7 +565,7 @@ const NavBar = () => {
 					</div>
 				</NavBarDropDown>
 				{/* Episodes Drop Down */}
-				<NavBarDropDown open={open} menu={menu} text={"episodes"}>
+				<NavBarDropDown open={state.openSubMenu} menu={state.currentMenu} text={"episodes"}>
 					<div className='flex flex-row w-full justify-start items-center bg-black border-white border-b-[1px]'>
 						<div className='w-[475px] h-fit flex flex-col space-y-12 py-12 px-12 whitespace-nowrap pb-8'>
 							<h1 className='uppercase  text-white underline text-2xl xl:text-lg font-montserrat font-thin underline-offset-8  decoration-1 '>
@@ -491,9 +583,9 @@ const NavBar = () => {
 								);
 							})}
 						</div>
-						<HighlightMenu key={subMenuIndex}>
+						<HighlightMenu key={state.subMenuIndex}>
 							<div className='w-full grid grid-cols-3 duration-500 ease-in-out transition-all animate-fadeIn '>
-								{episodesArray[subMenuIndex]?.map((item, index) => {
+								{episodesArray[state.subMenuIndex]?.map((item, index) => {
 									return (
 										<div key={index} className='w-full xl:w-3/4 h-full ml-4 text-center animate-fadeIn transition-all delay-200 '>
 											<h1 className='uppercase text-white text-4xl font-montserrat font-thin py-6 whitespace-nowrap'>{item.playerTitle}</h1>
@@ -508,7 +600,7 @@ const NavBar = () => {
 					</div>
 				</NavBarDropDown>
 				{/* Blog Drop Down */}
-				<NavBarDropDown open={open} menu={menu} text={"blog"}>
+				<NavBarDropDown open={state.openSubMenu} menu={state.currentMenu} text={"blog"}>
 					<div className='flex flex-row w-full justify-start items-center bg-black border-white border-b-[1px]'>
 						<div className='w-[475px] h-fit flex flex-col space-y-12 py-12 px-12 whitespace-nowrap  '>
 							<h1 className='uppercase  text-white underline text-2xl font-montserrat font-thin underline-offset-8 decoration-1'>Categories</h1>
@@ -524,9 +616,9 @@ const NavBar = () => {
 								);
 							})}
 						</div>
-						<HighlightMenu key={subMenuIndex}>
+						<HighlightMenu key={state.subMenuIndex}>
 							<div className='w-full grid grid-cols-3 duration-500 ease-in-out transition-all animate-fadeIn py-12 '>
-								{blogArray[subMenuIndex]?.map((item, index) => {
+								{blogArray[state.subMenuIndex]?.map((item, index) => {
 									return (
 										<div key={index} className='w-full h-full text-center animate-fadeIn transition-all delay-200 mx-auto'>
 											<img src={item.image} className='w-3/5 mx-auto rounded-md ' />
@@ -539,8 +631,8 @@ const NavBar = () => {
 					</div>
 				</NavBarDropDown>
 				{/* Sale Seal Drop Down */}
-				<NavBarDropDown open={open} menu={menu} text={"safe seal"}></NavBarDropDown>
-				<NavBarDropDown open={open} menu={menu} text={"awards"}>
+				{/* <NavBarDropDown open={open} menu={menu} text={"safe seal"}></NavBarDropDown> */}
+				<NavBarDropDown open={state.openSubMenu} menu={state.currentMenu} text={"awards"}>
 					<div className='flex flex-row w-full justify-center items-center bg-black border-white border-b-[1px] py-4 space-x-12'>
 						{awards.map((item, index) => {
 							return (

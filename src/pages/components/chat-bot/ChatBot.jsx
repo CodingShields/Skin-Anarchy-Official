@@ -1,14 +1,19 @@
 import { useState } from "react";
 import chatBotIcon from "../../../assets/iconsAnimated/chatBotIcon.svg";
-import CloseButton from "../CloseButton";
 import ChatBotMessage from "./ChatBotMessage";
-import ButtonImage from "../ButtonImage";
+import { Button } from "../Components";
 const ChatBot = () => {
 	const [openChat, setOpenChat] = useState(false);
 
 	return (
 		<div className='w-full h-fit z-30 absolute bottom-0 right-0'>
-			<ButtonImage image={chatBotIcon} open={openChat} onClick={() => setOpenChat(true)} />
+			<Button
+				image={chatBotIcon}
+				open={openChat}
+				imageStyle='h-32 w-32'
+				style='fixed bottom-0 right-0 mr-10 mb-10 z-20 hover:animate-pulse'
+				onClick={() => setOpenChat(true)}
+			/>
 			<div className={openChat ? "w-1/4 h-fit fixed bottom-0 right-0 mr-10 mb-10 z-20 " : "hidden"}>
 				<div className='w-auto h-32 p-2  rounded-t-lg  bg-char-900'>
 					<div className='w-full flex flex-row justify-start items-center h-full '>
@@ -23,12 +28,24 @@ const ChatBot = () => {
 						</div>
 						<h1 className='text-white text-2xl font-thin font-montserrat ml-8 underline underline-offset-8 decoration-1'>Skin Anarchy Support Bot</h1>
 					</div>
-					<CloseButton
-						color={"white"}
+					<Button
+						style='absolute top-0 right-0 z-50 cursor-pointer hover:scale-110 mr-4 mt-4'
+						text='X'
 						onClick={() => {
 							setOpenChat(false);
 						}}
-					/>
+					>
+						<svg
+							xmlns='http://www.w3.org/2000/svg'
+							fill='none'
+							viewBox='0 0 24 24'
+							strokeWidth='1.5'
+							stroke='currentColor'
+							className={`hover:scale-125 w-6 h-6 transition-all ease-in-out duration-200 text-${color}`}
+						>
+							<path strokeLinecap='round' strokeLinejoin='round' d='M6 18 18 6M6 6l12 12' />
+						</svg>
+					</Button>
 				</div>
 				<div className='w-auto h-fit rounded-b-lg bg-white animate-fadeIn '>
 					<ChatBotMessage openChat={openChat} />

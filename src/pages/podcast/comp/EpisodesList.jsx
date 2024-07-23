@@ -1,7 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 import EpisodesCategories from "./EpisodesCategories";
-import episode1 from "../../../assets/images/podcast-widget/episode1.png";
-import { BarsArrowDownIcon, ChevronDoubleRightIcon } from "@heroicons/react/24/outline";
 import EpisodeCard from "./EpisodeCard";
 import EpisodeDetailsCard from "./EpisodeDetailsCard";
 import EpisodeCardButton from "./EpisodeCardButton";

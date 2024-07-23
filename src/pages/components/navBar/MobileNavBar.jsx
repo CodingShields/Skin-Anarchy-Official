@@ -6,7 +6,7 @@ import NavBarDropDown from "./NavBarDropDown";
 import makeup from "../../../assets/images/interviewCategories/makeup.png";
 import celebs from "../../../assets/images/interviewCategories/celebs.png";
 import brandFounders from "../../../assets/images/interviewCategories/brandFounders.png";
-import Button from "../button/Button";
+import { Button } from "../Components"
 import mario from "../../../assets/images/navBar/episodes/mario.png";
 import danessa from "../../../assets/images/navBar/episodes/danessa.png";
 import sirJohn from "../../../assets/images/navBar/episodes/sirJohn.png";
@@ -36,7 +36,6 @@ import gersten from "../../../assets/images/navBar/episodes/gersten.png";
 import allenby from "../../../assets/images/navBar/masterclass/allenby.png";
 import codex from "../../../assets/images/navBar/masterclass/codex.png";
 import veytsman from "../../../assets/images/navBar/masterclass/veytsman.png";
-import WorkingModal from "../WorkingModal";
 
 const about = [
 	{
@@ -412,7 +411,6 @@ const MobileNavBar = () => {
 						setMenu({ menu: "about", open: true });
 						setOpenMenu(false);
 					}}
-					
 				/>
 				<Button
 					className={menu.menu === "episodes" ? activeNavButton : buttonStyle}

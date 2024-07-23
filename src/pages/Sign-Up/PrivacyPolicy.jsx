@@ -1,25 +1,8 @@
-import { useNavigate } from "react-router-dom";
-import { UserAuth } from "../../context/AuthContext";
-import { useEffect } from "react";
-import { StartPageLoadTop } from "../../utilities/utilities";
 import whiteLogo from "../../assets/images/logos/white-logo.png";
-const PrivacyPolicyPage = () => {
-	const navigate = useNavigate();
-	const { user } = UserAuth();
-
-	const isMember = () => {
-		if (user) {
-			navigate("/members-area/home");
-		} else {
-			navigate("/");
-		}
-	};
-
-	useEffect(() => {
-		StartPageLoadTop();
-	}, []);
-
-
+import PropTypes from "prop-types";
+import { Button } from "../components/Components";
+import { buttonStyle } from "../../styles/responsiveStyling";
+const PrivacyPolicy = ({ close }) => {
 	return (
 		<div className='w-full h-fit text-white py-12'>
 			<div className='w-3/4 h-fit flex flex-col justify-center items-center mx-auto '>
@@ -156,12 +139,7 @@ const PrivacyPolicyPage = () => {
 						</p>
 					</ol>
 					<div className='inline-flex justify-center items-center w-full mb-2'>
-						<button
-							onClick={isMember}
-							className='uppercase font-montserrat transition-all duration-500 ease-in-out hover:bg-white hover:text-black tracking-widest px-6 py-2 rounded-xl'
-						>
-							Back To Website
-						</button>
+						<Button text='Close' style={buttonStyle} onClick={close} />
 					</div>
 				</div>
 			</div>
@@ -169,4 +147,8 @@ const PrivacyPolicyPage = () => {
 	);
 };
 
-export default PrivacyPolicyPage;
+PrivacyPolicy.propTypes = {
+	handleModal: PropTypes.func,
+};
+
+export default PrivacyPolicy;

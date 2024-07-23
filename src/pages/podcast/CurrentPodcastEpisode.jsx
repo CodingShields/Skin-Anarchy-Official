@@ -1,7 +1,4 @@
-import { useState, useEffect } from "react";
-import { Link, NavLink } from "react-router-dom";
 import EpisodesList from "./comp/EpisodesList.jsx";
-import whiteLogo from "../../assets/images/logos/white-logo.png";
 const CurrentPodcastEpisode = () => {
 	return (
 		<div className='w-full min-h-screen animate-fadeIn'>

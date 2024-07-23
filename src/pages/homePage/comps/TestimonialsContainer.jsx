@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { gsap } from "gsap";
 
-// import { set } from "firebase/database";
-
 const TestimonialsContainer = () => {
 	const [testimonialIndex, setTestimonialIndex] = useState(0);
 	const [testimonials] = useState([
@@ -63,10 +61,7 @@ const TestimonialsContainer = () => {
 					"start+=1.3"
 				);
 		}
-
 		QuoteAnimation();
-
-		// Update testimonialIndex after animation
 		const timeout = setTimeout(() => {
 			setTestimonialIndex((prevIndex) => {
 				if (prevIndex === 3) {
@@ -75,11 +70,10 @@ const TestimonialsContainer = () => {
 					return prevIndex + 1;
 				}
 			});
-		}, 6000); // Adjust the delay based on your animation duration
+		}, 6000); 
 
 		return () => clearTimeout(timeout);
 	}, [testimonialIndex]);
-	// Empty array as second argument ensures this effect runs only once after the component is mounted
 
 	return (
 		<div className='w-full h-[1500px] sm:h-fit relative  z-10'>

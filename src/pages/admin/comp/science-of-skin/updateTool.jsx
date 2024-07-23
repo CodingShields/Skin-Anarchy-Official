@@ -9,7 +9,6 @@ import greenCheck from "../../../../assets/icons/greenCheck.svg";
 import emptyCircle from "../../../../assets/icons/emptyCircle.svg";
 import awardBGArray from "../../../../assets/data/admin/updateTools/scienceOfSkinAwards/awardBackgroundArray";
 import ImageUpdateTools from "../../../components/ImageUpdateTools";
-import "../../../../scienceOfSkin.css";
 import { useImageStore } from "../../../../stateStore/imageToolStateStore";
 import { useImageStoreActions } from "../../../../stateStore/imageToolStateStore";
 import HideSideBarBtn from "../../../components/buttons/HideSideBarBtn.jsx";

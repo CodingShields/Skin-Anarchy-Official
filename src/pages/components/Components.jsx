@@ -89,7 +89,7 @@ const Button = (props) => {
 	const { children, onClick, style, image, text, imageStyle, icon } = props;
 	return (
 		<>
-			<button className={style} onClick={onClick}>
+			<button  className={style} onClick={onClick}>
 				{icon}
 				{image && <img src={image} alt='button' className={imageStyle} />}
 				{children && children}
@@ -187,4 +187,19 @@ PageWrapper.propTypes = {
 	children: PropTypes.node.isRequired,
 };
 
-export { SelectComp, InputComp, TextAreaComp, Button, FormComp, WorkingModal, ErrorModal, Modal, PageWrapper };
+const InputCheckBox = (props) => {
+	const { name, id, checked, onChange, value, placeholder, style } = props;
+	return (
+		<input
+			checked={checked}
+			value={value}
+			id={id}
+			type={"checkbox"}
+			placeholder={placeholder}
+			className={style}
+			onChange={onChange}
+		/>
+	)
+}
+
+export { SelectComp, InputComp, TextAreaComp, Button, FormComp, WorkingModal, ErrorModal, Modal, PageWrapper, InputCheckBox };

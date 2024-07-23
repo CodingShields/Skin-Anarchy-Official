@@ -5,9 +5,8 @@ import { db } from "../../fireBase/firebaseConfig";
 import { useNavigate } from "react-router-dom";
 import ErrorModal from "../components/ErrorModal.jsx";
 import WorkingModal from "../components/WorkingModal.jsx";
-import Button from "../components/Button.jsx";
 import { UserCircleIcon, LockClosedIcon } from "@heroicons/react/24/outline";
-import { InputComp, SelectComp, TextAreaComp, FormComp, Modal } from "../components/Components";
+import { InputComp, SelectComp, TextAreaComp, FormComp, Modal, Button } from "../components/Components";
 import { buttonStyle, inputStyle, formStyle, buttonStyleLessSoft } from "../../styles/responsiveStyling.js";
 const LoginModal = ({ open, close }) => {
 	const navigate = useNavigate();

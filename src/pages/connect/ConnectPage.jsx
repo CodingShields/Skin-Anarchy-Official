@@ -4,7 +4,7 @@ import ContactForm from "./ContactForm";
 import ReviewForm from "./ReviewForm";
 import socialNav from "../../assets/data/socialNav";
 import FormModal from "../components/FormModal";
-import Button from "../components/Button";
+import {Button} from "../components/Components"
 import { buttonStyle } from "../../styles/responsiveStyling";
 const ConnectPage = () => {
 	const [state, setState] = useState({
@@ -21,7 +21,7 @@ const ConnectPage = () => {
 	}, []);
 
 	return (
-		<div className='isolate overflow-hidden bg-black w-full h-screen block my-24 '>
+		<div className='isolate overflow-hidden bg-black w-full h-screen block my-24 animate-fadeIn'>
 			<FormModal open={state.openFormModal} close={() => setState({ ...state, openFormModal: !state.openFormModal })}>
 				<ContactForm close={() => setState({ ...state, openFormModal: !state.openFormModal, openContactForm: !state.openContactForm })} open={state.openContactForm} />
 				<ReviewForm	close={() => setState({ ...state, openFormModal: !state.openFormModal, openReviewForm: !state.openReviewForm })} open={state.openReviewForm}/>

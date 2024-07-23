@@ -3,7 +3,7 @@ import { UserAuth } from "../../context/AuthContext";
 import whiteLogo from "../../assets/images/logos/white-logo.png";
 import { useEffect } from "react";
 import { StartPageLoadTop } from "../../utilities/utilities";
-import Button from "../components/Button";
+import {Button} from "../components/Components"
 const DisclaimerPage = () => {
 	const navigate = useNavigate();
 	const { user } = UserAuth();
