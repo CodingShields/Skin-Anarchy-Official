@@ -4,10 +4,26 @@ import PrevBlogs from "./PrevBlogs";
 import ActiveBlogWindow from "./ActiveBlogWindow";
 import BlogUserResponse from "./BlogUserResponse";
 import podcast from "../../assets/images/podcast.jpg";
+import { InputComp, Button } from "../components/Components";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+
+
+
+const buttonStyle = "uppercase font-thin underlineAnimate subpixel-antialiased tracking-[6px] text-white sm:text-[8px] text-[16px] animate-fadeIn";
+const activeButtonStyle =
+	"uppercase font-semibold text-gold-500 subpixel-antialiased tracking-[6px] text-sm  underline underline-offset-8 decoration-1 animate-fadeIn";
 const SkinAnarchyBlog = () => {
-	const [title, setTitle] = useState("");
-	const [activeBlogWindow, setActiveBlogWindow] = useState("");
-	const [openBlogWindow, setOpenBlogWindow] = useState(false);
+	const [state, setState] = useState({
+		loading: false,
+		error: false,
+		errorMessage: "",
+		searchInput: "",
+		title: "",
+		activeBlogWindow: "",
+		blogWindowOpen: false,
+		activeMenu: "beautyCulture",
+	});
+
 	// useEffect(() => {
 	// 	const iframe = document.getElementById("mediumImport");
 
@@ -18,13 +34,13 @@ const SkinAnarchyBlog = () => {
 
 	// 		// Set the content of the <style> element with the @import rule
 	// 		styleElement.textContent = `
-    //         @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+	//         @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-    //         /* Override the font family for all elements */
-    //         * {
-    //             font-family: 'Montserrat', sans-serif !important;
-    //         }
-    //     `;
+	//         /* Override the font family for all elements */
+	//         * {
+	//             font-family: 'Montserrat', sans-serif !important;
+	//         }
+	//     `;
 	// 		const title = iframeDocument.querySelector(".p-name");
 	// 		setTitle(title.innerText);
 	// 		console.log();
@@ -78,9 +94,11 @@ const SkinAnarchyBlog = () => {
 	// }, [activeBlogWindow]);
 
 	const handleOnSelect = (e) => {
-		console.log("test");
 		e.preventDefault();
-		console.log(e.target.value);
+	};
+	
+	const handleSearch = () => {
+		console.log("test")
 	};
 
 	return (
@@ -91,37 +109,52 @@ const SkinAnarchyBlog = () => {
 						style={{
 							fontWeight: "400",
 						}}
-						className='text-8xl text-black font-montserrat uppercase w-full tracking-widest mt-4 text-center'
+						className='text-8xl text-black font-montserrat uppercase w-full tracking-widest mt-4 text-center py-12'
 					>
 						Skin Anarchy Blog
 					</h1>
-					<div className='flex flex-row text-black w-full mx-auto justify-center py-6'>
-						<div className='flex flex-row justify-center items-center whitespace-nowrap w-full space-x-12'>
-							<button className='hover:bg-black hover:text-white hover:rounded-l-xl uppercase font-montserrat transition-all ease-in-out duration-500 w-fit px-2'>
-								Beauty Culture
-							</button>
-							<button className='hover:bg-black hover:text-white  uppercase font-montserrat transition-all ease-in-out duration-500 w-fit px-2'>
-								Fragrance
-							</button>
-							<button className='hover:bg-black hover:text-white  uppercase font-montserrat transition-all ease-in-out duration-500 w-fit px-2'>
-								Episode Summaries
-							</button>
-							<button className='hover:bg-black hover:text-white  uppercase font-montserrat transition-all ease-in-out duration-500 w-fit px-2'>
-								Science of Skin
-							</button>
-							<button className='hover:bg-black hover:text-white hover:rounded-r-xl uppercase font-montserrat transition-all ease-in-out duration-500 w-fit px-2'>
-								Previous Blogs
-							</button>
-						</div>
-						<div className='w-fit h-fit  mx-auto inline-flex justify-start items-start pr-12 '>
-							<input type='text' className='w-64 h-fit text-white rounded-lg' placeholder='Search Blog' />
+					<div className='flex flex-row text-black w-full mx-auto justify-center py-6 bg-black'>
+						<div className='flex flex-row justify-center items-center whitespace-nowrap w-full space-x-12 relative'>
+							<Button
+								text='Beauty Culture'
+								style={`${state.activeMenu === "beautyCulture" ? activeButtonStyle : buttonStyle}`}
+								onClick={() => setState({ ...state, activeMenu: "beautyCulture" })}
+							/>
+							<Button
+								text='Fragrance'
+								style={`${state.activeMenu === "fragrance" ? activeButtonStyle : buttonStyle}`}
+								onClick={() => setState({ ...state, activeMenu: "fragrance" })}
+							/>
+							<Button
+								text='Science of Skin'
+								style={`${state.activeMenu === "scienceOfSkin" ? activeButtonStyle : buttonStyle}`}
+								onClick={() => setState({ ...state, activeMenu: "scienceOfSkin" })}
+							/>
+							<Button
+								text='Previous Blogs'
+								style={`${state.activeMenu === "previousBlogs" ? activeButtonStyle  : buttonStyle}`}
+								onClick={() => setState({ ...state, activeMenu: "previousBlogs" })}
+							/>
+							<div className='absolute right-5 flex items-center '>
+								<InputComp
+									value={state.searchInput}
+									type='text'
+									placeholder='Search '
+									style={`block w-fit rounded-md font-montserrat group hover:ring-black hover:placeholder:text-black hover:shadow-lg hover:shadow-black/50 transition-all ease-in-out duration-500  border-0 px-3.5 py-2 pl-10 text-black absolute right-5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-black/50 placeholder:indent-3 hover:border-gold-500 `}
+									onChange={(e) => setState({ ...state, searchInput: e.target.value })}
+								/>
+								<MagnifyingGlassIcon
+									className={`${state.searchInput.length > 0 ? "text-green-500 animate-bounce animate-fadeIn" : "text-black/40 animate-fadeIn"} w-8 h-8  group-hover:text-black transition-all ease-in-out duration-500 right-[280px] absolute cursor-pointer`}
+									onClick={handleSearch}
+								/>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 			{/* <ActiveBlogWindow open={openBlogWindow} close={() => setOpenBlogWindow(false)} data={activeBlogWindow} /> */}
-			<div className={openBlogWindow ? "grid grid-cols-3 blur-sm " : "flex flex-row justify-between"}>
-				<div className=' pt-4 w-full h-screen  font-montserrat bg-white text-2xl text-center overflow-y-scroll space-y-8'>
+			<div className={state.blogWindowOpen ? "grid grid-cols-3 blur-sm " : "flex flex-row justify-between"}>
+				<div className=' pt-4 w-full h-screen  font-montserrat bg-white text-2xl text-center overflow-y-scroll space-y-8 pb-96 t-12'>
 					<h1 onSelect={handleOnSelect} className='text-5xl font-montserrat py-4'>
 						How Art Eras Influence Perfumery
 					</h1>
@@ -179,7 +212,7 @@ const SkinAnarchyBlog = () => {
 				</div>
 
 				<div className='w-1/2 h-full font-montserrat bg-white overflow-y-scroll '>
-					<PrevBlogs activeBlogWindow={setActiveBlogWindow} />
+					<PrevBlogs />
 				</div>
 			</div>
 		</div>

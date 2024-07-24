@@ -4,7 +4,6 @@ import BlogUserResponse from "./BlogUserResponse";
 
 const PrevBlogs = ({ activeBlogWindow }) => {
 	const [blogs, setBlogs] = useState([]);
-	console.log(blogs);
 	const [currentBlog, setCurrentBlog] = useState(null);
 	const [state, setState] = useState({
 		loading: false,
@@ -158,7 +157,6 @@ const PrevBlogs = ({ activeBlogWindow }) => {
 
 	return (
 		<div className='grid grid-cols-1 bg-white space-y-24'>
-			<h1>Test Title</h1>
 			{blogs.length > 0 && (
 				<div className='bg-white h-[800px] w-[800px] mx-auto relative transition-all duration-300 ease-in-out group space-y-4'>
 					{blogs.map((blog, index) => (
