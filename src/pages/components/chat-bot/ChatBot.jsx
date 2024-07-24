@@ -2,11 +2,13 @@ import { useState } from "react";
 import chatBotIcon from "../../../assets/iconsAnimated/chatBotIcon.svg";
 import ChatBotMessage from "./ChatBotMessage";
 import { Button } from "../Components";
-const ChatBot = () => {
+import {XCircleIcon} from '@heroicons/react/24/outline'
+const ChatBot = ({ openChatBot }) => {
 	const [openChat, setOpenChat] = useState(false);
+	if (!openChatBot) return null;
 
 	return (
-		<div className='w-full h-fit z-30 absolute bottom-0 right-0'>
+		<div className='w-full h-fit z-50 absolute bottom-0 right-0 animate-fadeIn'>
 			<Button
 				image={chatBotIcon}
 				open={openChat}
@@ -29,22 +31,12 @@ const ChatBot = () => {
 						<h1 className='text-white text-2xl font-thin font-montserrat ml-8 underline underline-offset-8 decoration-1'>Skin Anarchy Support Bot</h1>
 					</div>
 					<Button
-						style='absolute top-0 right-0 z-50 cursor-pointer hover:scale-110 mr-4 mt-4'
-						text='X'
+						icon={<XCircleIcon className='w-6 h-6' /> }
+						style='absolute top-0 right-0 z-50 cursor-pointer hover:scale-110 mr-4 mt-4 text-white'
 						onClick={() => {
 							setOpenChat(false);
 						}}
 					>
-						<svg
-							xmlns='http://www.w3.org/2000/svg'
-							fill='none'
-							viewBox='0 0 24 24'
-							strokeWidth='1.5'
-							stroke='currentColor'
-							className={`hover:scale-125 w-6 h-6 transition-all ease-in-out duration-200 text-${color}`}
-						>
-							<path strokeLinecap='round' strokeLinejoin='round' d='M6 18 18 6M6 6l12 12' />
-						</svg>
 					</Button>
 				</div>
 				<div className='w-auto h-fit rounded-b-lg bg-white animate-fadeIn '>

@@ -29,8 +29,6 @@ const UserAccountPage = () => {
 					...doc.data(),
 				}));
 				const currentUserProfile = users.find((user) => user.id === userId && user.profile);
-				console.log(currentUserProfile.profile);
-				console.log(currentUserProfile.notifications);
 				setProfile([currentUserProfile.profile]);
 				setNotifications([currentUserProfile.notifications]);
 				setState({ loading: false, error: false, errorMessage: "", loadProfile: true });
@@ -40,7 +38,7 @@ const UserAccountPage = () => {
 	}, []);
 
 	return (
-		<div className=' w-full h-full bg-black'>
+		<div className=' w-full min-h-[1200px] bg-black animate-fadeIn'>
 			<div className=' w-fit h-[500px] mt-36 justify-center items-center flex flex-row mx-auto space-x-12 mb-12'>
 				<UserProfile profileData={profile} />
 				<UserNotifications notificationsData={Notifications} />

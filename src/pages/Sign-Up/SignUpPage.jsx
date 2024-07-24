@@ -1,55 +1,16 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../../context/AuthContext.jsx";
-import { Modal } from "../components/Components.jsx";
-// import PrivacyPolicy from "./privacyPolicy.jsx";
-import birthdayIcon from "../../assets/icons/formIcons/birthdayIcon.svg";
-import emailIcon from "../../assets/icons/formIcons/emailIcon.svg";
-import phoneIcon from "../../assets/icons/formIcons/phoneIcon.svg";
-import personIcon from "../../assets/icons/formIcons/personIcon.svg";
-import passwordIcon from "../../assets/icons/formIcons/passwordIcon.svg";
 import { useUserStoreActions } from "../../stateStore/userStore.js";
-import { useUserStore } from "../../stateStore/userStore.js";
 import whiteLogo from "../../assets/images/logos/white-logo.png";
-import PrivacyPolicy from "../disclaimer-privacy-policy/PrivacyPolicyPage.jsx";
-import { Button, InputComp, InputCheckBox } from "../components/Components.jsx";
+import PrivacyPolicy from "./PrivacyPolicy.jsx";
+import { Button, InputComp, InputCheckBox, Modal } from "../components/Components.jsx";
 import { buttonStyle, inputStyle } from "../../styles/responsiveStyling";
 import { UserCircleIcon, PhoneIcon, AtSymbolIcon, CalendarDaysIcon, LockClosedIcon, BellAlertIcon, BellSlashIcon } from "@heroicons/react/24/outline";
+import WorkingModal from "../components/WorkingModal.jsx";
+import ErrorModal from "../components/ErrorModal.jsx";
 const SignUp = () => {
 	const navigate = useNavigate();
-	const { createUser } = UserAuth();
-	//   const { resetForm } = useUserStoreActions((actions) => actions.resetForm);
-	const { setFirstName } = useUserStoreActions((actions) => actions);
-	const { setLastName } = useUserStoreActions((actions) => actions);
-	const { setEmail } = useUserStoreActions((actions) => actions);
-	const { setBirthday } = useUserStoreActions((actions) => actions);
-	const { setPhone } = useUserStoreActions((actions) => actions);
-	const { setUserId } = useUserStoreActions((actions) => actions);
-	const { setPodcastNotification } = useUserStoreActions((actions) => actions);
-	const { setUpComingNotifications } = useUserStoreActions((actions) => actions);
-	const { setBlogNotification } = useUserStoreActions((actions) => actions);
-	const { setWeeklyNewsletterNotification } = useUserStoreActions((actions) => actions);
-
-	const [form, setForm] = useState({
-		firstName: "",
-		lastName: "",
-		phone: "",
-		email: "",
-		confirmEmail: "",
-		birthday: "",
-		password: "",
-		confirmPassword: "",
-		newPodCastNotification: true,
-		upcomingPodcastNotification: true,
-		newBlogPost: true,
-		newsLetter: true,
-		adminAccess: false,
-	});
-	const [state, setState] = useState({
-		error: false,
-		errorMessage: "",
-		renderPrivacyPolicy: false,
-	});
 	const initializeForm = {
 		firstName: "",
 		lastName: "",
@@ -65,17 +26,14 @@ const SignUp = () => {
 		newsLetter: true,
 		adminAccess: false,
 	};
-	useEffect(() => {
-		setForm(initializeForm);
-	}, []);
-
-	useEffect(() => {
-		if (state.error) {
-			setTimeout(() => {
-				setState({ ...state, error: false, errorMessage: "" });
-			}, 2000);
-		}
-	}, [state.error]);
+	const [form, setForm] = useState({ initializeForm });
+	const [state, setState] = useState({
+		error: false,
+		errorMessage: "",
+		privacyPolicyOpen: false,
+		openModal: false,
+	});
+	const { createUser } = UserAuth();
 
 	const formatBirthdayToString = (birthday) => {
 		const date = birthday;
@@ -85,97 +43,111 @@ const SignUp = () => {
 		return `${month}/${day}/${year}`;
 	};
 
-	const stateStoreUser = () => {
-		setFirstName(form.firstName);
-		setLastName(form.lastName);
-		setBirthday(formatBirthdayToString(form.birthday));
-		setEmail(form.email);
-		setPhone(form.phone);
-		setPodcastNotification(form.newPodCastNotification);
-		setUpComingNotifications(form.upcomingPodcastNotification);
-		setBlogNotification(form.newBlogPost);
-		setWeeklyNewsletterNotification(form.newsLetter);
-	};
-
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		const noEmptyFields = Object.values(form).every((item) => item !== "");
-		if (!noEmptyFields) {
+		if (noEmptyFields) {
 			setState({
 				...state,
 				error: true,
 				errorMessage: "Please fill out all fields",
+				openModal: true,
 			});
+			console.log("Please fill out all fields");
 		} else if (form.password.length < 6) {
 			setState({
 				...state,
 				error: true,
 				errorMessage: "Password must be at least 6 characters",
 			});
+			console.log("Password must be at least 6 characters");
 		} else if (form.password.length > 20) {
 			setState({
 				...state,
 				error: true,
 				errorMessage: "Password must be less than 20 characters",
 			});
+			console.log("Password must be less than 20 characters");
 		} else if (form.password.search(/[a-z]/i) < 0) {
 			setState({
 				...state,
 				error: true,
 				errorMessage: "Password must contain at least one letter",
 			});
+			console.log("Password must contain at least one letter");
 		} else if (form.password.search(/[0-9]/) < 0) {
 			setState({
 				...state,
 				error: true,
 				errorMessage: "Password must contain at least one digit",
 			});
+			console.log("Password must contain at least one digit");
 		} else if (form.password.search(/[!@#$%^&*]/) < 0) {
 			setState({
 				...state,
 				error: true,
 				errorMessage: "Password must contain at least one special character",
 			});
+			console.log("Password must contain at least one special character");
 		} else if (form.password.search(/[^a-zA-Z0-9!@#$%^&*]/) > 0) {
 			setState({
 				...state,
 				error: true,
 				errorMessage: "Password must not contain spaces",
 			});
-		}
-		try {
-			stateStoreUser();
-			await createUser(form);
-			navigate("/MembersArea/Home");
-		} catch (error) {
-			if (error.code === "auth/email-already-in-use") {
-				setState({
-					...state,
-					error: true,
-					errorMessage: "User already exists with this email",
-				});
-			} else if (error.code === "auth/invalid-email") {
-				setState({ ...state, error: true, errorMessage: "Invalid email" });
-			} else if (error.code === "auth/weak-password") {
-				setState({ ...state, error: true, errorMessage: "Weak password" });
+			console.log("Password must not contain spaces");
+		} else if (form.password !== form.confirmPassword) {
+			setState({
+				...state,
+				error: true,
+				errorMessage: "Passwords do not match",
+			});
+			console.log("Passwords do not match");
+		} else if (form.email !== form.confirmEmail) {
+			setState({
+				...state,
+				error: true,
+				errorMessage: "Emails do not match",
+			});
+			console.log("Emails do not match");
+		} else {
+			try {
+				await createUser(form);
+				navigate("/welcome");
+			} catch (error) {
+				if (error.code === "auth/email-already-in-use") {
+					setState({
+						...state,
+						error: true,
+						errorMessage: "User already exists with this email",
+					});
+				} else if (error.code === "auth/invalid-email") {
+					setState({ ...state, error: true, errorMessage: "Invalid email" });
+				} else if (error.code === "auth/weak-password") {
+					setState({ ...state, error: true, errorMessage: "Weak password" });
+				}
 			}
 		}
 	};
-
-	const handleModal = () => {
-		setState({ ...state, renderPrivacyPolicy: !state.renderPrivacyPolicy });
-	};
-
 	return (
-		<div className='flex flex-row h-full'>
-			<Modal open={state.renderPrivacyPolicy}></Modal>
-			<div className='flex flex-col justify-center items-center w-5/6 h-full bg-black  duration-700 ease-in-out animate-fadeIn mx-auto'>
+		<div className='h-screen'>
+			<Modal open={state.openModal} close={() => setState({ ...state, openModal: !state.openModal })}>
+				<ErrorModal
+					open={state.error}
+					message={state.errorMessage}
+					close={() => setState({ ...state, error: false, message: "", openModal: false })}
+				/>
+				<WorkingModal open={state.loading} />
+				<PrivacyPolicy close={() => setState({ ...state, privacyPolicyOpen: false, openModal: false })} open={state.privacyPolicyOpen} />
+			</Modal>
+
+			<div className='flex flex-col justify-center items-center w-5/6 h-fit bg-black  duration-700 ease-in-out animate-fadeIn mx-auto mt-8'>
 				<div className='h-fit w-full duration-700 ease-in-out '>
-					<img className='mx-auto lg:h-32 xl:h-48 w-auto mt-8 my-auto mb-4 delay-300 animate-fadeIn' src={whiteLogo} alt='skinanarchy' />
+					<img className='mx-auto lg:h-32 xl:h-48 w-auto my-16  delay-300 animate-fadeIn ' src={whiteLogo} alt='skinanarchy' />
 				</div>
 				<h1 className='text-3xl text-center text-white font-montserrat font-thin '> Welcome to the Skin Authority Family</h1>
-				<h1 className='text-xl text-center text-white font-montserrat font-thin py-2'>We respect privacy and will never sell your information</h1>
-				<form className='flex flex-col justify-start items-center mt-4 space-y-10 bg-black text-white'>
+				<h1 className='text-lg text-center text-white font-montserrat font-semibold py-2'>We respect privacy and will never sell your information</h1>
+				<form className='flex flex-col justify-start items-center mt-4 space-y-10 bg-black text-white mb-24'>
 					<fieldset>
 						<legend className='text-2xl font-montserrat font-thin text-white leading-6 '>Personal Information</legend>
 						<div className='mt-6 space-y-6 gap-x-3'>
@@ -211,7 +183,7 @@ const SignUp = () => {
 									name='email'
 									value={form.birthday}
 									onChange={(e) => {
-										setForm({ ...form, birthday: e.target.value });
+										setForm({ ...form, birthday: formatBirthdayToString(e.target.value) });
 									}}
 									required
 								/>
@@ -242,10 +214,11 @@ const SignUp = () => {
 
 								<InputComp
 									icon={<PhoneIcon className='w-5 h-5 text-gray-400' />}
-									type='phone'
+									type='tel'
 									style={inputStyle}
 									name='phone'
 									placeholder='Phone Number'
+									pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
 									value={form.phone}
 									onChange={(e) => {
 										setForm({ ...form, phone: e.target.value });
@@ -258,7 +231,7 @@ const SignUp = () => {
 									placeholder='Password'
 									style={inputStyle}
 									name='phone'
-									value={form.phone}
+									value={form.password}
 									onChange={(e) => {
 										setForm({ ...form, passWord: e.target.value });
 									}}
@@ -270,7 +243,7 @@ const SignUp = () => {
 									placeholder='Confirm Password'
 									style={inputStyle}
 									name='phone'
-									value={form.phone}
+									value={form.confirmPassword}
 									onChange={(e) => {
 										setForm({ ...form, confirmPassword: e.target.value });
 									}}
@@ -291,10 +264,10 @@ const SignUp = () => {
 								<legend className='text-3xl font-montserrat font-thin leading-6 text-white uppercase'>Email Notifications</legend>
 								<div className='ml-2 mt-6 space-y-6'>
 									<div className='relative flex gap-x-3'>
-										<div className='inline-flex justify-center items-start space-x-6'>
+										<div className='inline-flex justify-center items-center space-x-6'>
 											<InputCheckBox
 												type='checkbox'
-												style={` w-6 h-6 mt-2 accent-gold-500 bg-gray-600`}
+												style={` w-5 h-5  accent-gold-500 bg-gray-600 active:accent-gold-500`}
 												checked={form.newPodCastNotification}
 												value={form.newPodCastNotification}
 												onChange={() => {
@@ -304,21 +277,21 @@ const SignUp = () => {
 											{form.newPodCastNotification === true ? (
 												<BellAlertIcon className='w-8 h-8 text-white animate-fadeIn' />
 											) : (
-												<BellSlashIcon className='w-8 h-8 text-red-300 animate-fadeIn' />
+												<BellSlashIcon className='w-8 h-8 text-red-300/50 animate-fadeIn' />
 											)}
 										</div>
 										<div>
-											<label htmlFor='comments' className='font-montserrat text-2xl text-white uppercase'>
+											<label htmlFor='comments' className='font-montserrat text-xl text-white uppercase'>
 												New Episode notifications
 											</label>
 											<p className='text-white font-montserrat font-thin text-lg indent-4 uppercase py-2'>Get notified when we drop a New Podcast.</p>
 										</div>
 									</div>
 									<div className='relative flex gap-x-3'>
-										<div className='inline-flex justify-center items-start space-x-6'>
+										<div className='inline-flex justify-center items-center space-x-6'>
 											<InputCheckBox
 												type='checkbox'
-												style={` w-6 h-6 mt-2 accent-gold-500 bg-gray-600`}
+												style={` w-5 h-5  accent-gold-500 bg-gray-600 active:accent-gold-500`}
 												checked={form.upcomingPodcastNotification}
 												value={form.upcomingPodcastNotification}
 												onChange={() => {
@@ -328,7 +301,7 @@ const SignUp = () => {
 											{form.upcomingPodcastNotification ? (
 												<BellAlertIcon className='w-8 h-8 text-white animate-fadeIn' />
 											) : (
-												<BellSlashIcon className='w-8 h-8 text-red-300 animate-fadeIn' />
+												<BellSlashIcon className='w-8 h-8 text-red-300/50 animate-fadeIn' />
 											)}
 										</div>
 										<div>
@@ -339,10 +312,10 @@ const SignUp = () => {
 										</div>
 									</div>
 									<div className='relative flex gap-x-3'>
-										<div className='inline-flex justify-center items-start space-x-6'>
+										<div className='inline-flex justify-center items-center space-x-6'>
 											<InputCheckBox
 												type='checkbox'
-												style={` w-6 h-6 mt-2 accent-gold-500 bg-gray-600`}
+												style={` w-5 h-5  accent-gold-500 bg-gray-600 active:accent-gold-500`}
 												checked={form.newBlogPost}
 												value={form.newBlogPost}
 												onChange={() => {
@@ -352,7 +325,7 @@ const SignUp = () => {
 											{form.newBlogPost ? (
 												<BellAlertIcon className='w-8 h-8 text-white animate-fadeIn' />
 											) : (
-												<BellSlashIcon className='w-8 h-8 text-red-300 animate-fadeIn' />
+												<BellSlashIcon className='w-8 h-8 text-red-300/50 animate-fadeIn' />
 											)}
 										</div>
 										<div>
@@ -363,10 +336,10 @@ const SignUp = () => {
 										</div>
 									</div>
 									<div className='relative flex gap-x-3'>
-										<div className='inline-flex justify-center items-start space-x-6'>
+										<div className='inline-flex justify-center items-center space-x-6'>
 											<InputCheckBox
 												type='checkbox'
-												style={` w-6 h-6 mt-2 accent-gold-500 bg-gray-600 active:accent-gold-500`}
+												style={` w-5 h-5  accent-gold-500 bg-gray-600 active:accent-gold-500`}
 												checked={form.newsLetter}
 												value={form.newsLetter}
 												onChange={() => {
@@ -376,7 +349,7 @@ const SignUp = () => {
 											{form.newsLetter ? (
 												<BellAlertIcon className='w-8 h-8 text-white animate-fadeIn' />
 											) : (
-												<BellSlashIcon className='w-8 h-8 text-red-300 animate-fadeIn' />
+												<BellSlashIcon className='w-8 h-8 text-red-300/50 animate-fadeIn' />
 											)}
 										</div>
 										<div>
@@ -390,33 +363,16 @@ const SignUp = () => {
 							</fieldset>
 						</div>
 					</div>
-					<p className='sign-up-disclaimer-text'>
-						To Complete Sign-Up Please View and Agree to{" "}
-						<button onClick={handleModal} className='text-blue-500 hover:underline'>
-							Privacy Policy
-						</button>
-					</p>
-					<p>Don't worry, we do not sell your data ... we hate that too lol</p>
+					<div className='inline-flex justify-start items-center space-x-2 mb-4 w-3/4'>
+						<p className='font-montserrat uppercase tracking-widest'>Please Review Our </p>
+						<Button
+							text='Privacy Policy'
+							onClick={() => setState({ ...state, privacyPolicyOpen: true, openModal: true })}
+							style='text-xl uppercase font-montserrat text-white/30 transition-all ease-in-out duration-300 hover:text-white pl-4'
+						/>
+					</div>
+					<Button text='Submit' onClick={handleSubmit} style={buttonStyle} />
 				</form>
-				{state.renderPrivacyPolicy ? (
-					<div className='flex fixed justify-center items-center  top-0 left-0 w-full h-full bg-opacity-50	bg-black'>
-						<div className='flex flex-col w-3/6 h-fit justify-center items-center bg-white rounded-lg shadow-2xl shadow-black py-4 px-6 mb-10 overflow-hidden'>
-							<PrivacyPolicy close={() => setState({ ...state, renderPrivacyPolicy: false })} />{" "}
-						</div>
-					</div>
-				) : (
-					""
-				)}
-				{state.error ? (
-					<div className='flex fixed justify-center items-center  top-0 left-0 w-full h-full bg-opacity-50	bg-black'>
-						<div className='flex flex-col w-fit h-fit justify-center items-center bg-yellow-200 rounded-lg shadow-2xl shadow-black py-4 px-6 mb-10 overflow-hidden'>
-							<p className='font-bold color-black text-center'>{state.errorMessage}</p>
-						</div>
-					</div>
-				) : (
-					""
-				)}
-				<Button text='Submit' onClick={handleSubmit} style={buttonStyle} />
 			</div>
 		</div>
 	);

@@ -376,26 +376,6 @@ const NavBar = () => {
 			setIsMobile(false);
 		}
 	}, []);
-	const handleClick = (e) => {
-		console.log("first");
-		const currentMenu = e.target.name;
-		console.log(currentMenu);
-		setMenu(currentMenu);
-		if (
-			open &&
-			(currentMenu === "blog" ||
-				currentMenu === "episodes" ||
-				currentMenu === "awards" ||
-				currentMenu === "yugen" ||
-				currentMenu === "connect" ||
-				currentMenu === "safe seal" ||
-				currentMenu === "account")
-		) {
-			setOpen(open);
-		} else {
-			setOpen(!open);
-		}
-	};
 
 	const handleSubMenuHover = (item, index) => {
 		setSubMenuIndex(index);
@@ -526,7 +506,7 @@ const NavBar = () => {
 					}}
 				/>
 				<Button
-					style={menu === "shop" ? activeNavButton : buttonStyle}
+					style={state.currentMenu === "shop" ? activeNavButton : buttonStyle}
 					text={"shop"}
 					onClick={() => {
 						setState({
@@ -538,7 +518,7 @@ const NavBar = () => {
 					}}
 				/>
 				<Button
-					style={menu === "account" ? activeNavButton : buttonStyle}
+					style={state.currentMenu === "account" ? activeNavButton : buttonStyle}
 					text={"account"}
 					onClick={() => {
 						setState({

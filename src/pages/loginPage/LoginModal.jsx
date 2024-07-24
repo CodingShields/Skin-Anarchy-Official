@@ -11,76 +11,75 @@ import { buttonStyle, inputStyle, formStyle, buttonStyleLessSoft } from "../../s
 const LoginModal = ({ open, close }) => {
 	const navigate = useNavigate();
 	const { signIn } = UserAuth();
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
-	const [openModal, setOpenModal] = useState(false);
-	const [openErrorModal, setOpenErrorModal] = useState(false);
 	const [state, setState] = useState({
-		loading: true,
+		loading: false,
 		error: false,
 		message: "",
-		currentUser: "",
-		formModal: true,
+		formModalOpen: false,
+		userEmail: "",
+		userPassword: "",
 	});
 
-	const user = UserAuth();
-	console.log(user.user.uid);
-
 	useEffect(() => {
-		if (user) {
-			setState({
-				...state,
-				currentUser: user.user.uid,
-				loading: false,
-			});
+		if (open) {
+			setState({ ...state, formModalOpen: true });
+		} else {
+			setState({ ...state, formModalOpen: false });
 		}
-	}, [user]);
+	}, [open]);
+
+
+	
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setState({
 			errorMessage: "",
 			loading: true,
+			formModalOpen: false,
 		});
 		try {
-			await signIn(email, password);
-			if (state.currentUser) {
-				const userDocRef = doc(db, "users", state.currentUser);
-				await setDoc(
-					userDocRef,
-					{
-						profile: {
-							lastLogin: new Date(),
-						},
-					},
-					{ merge: true }
-				);
-				setOpenModal(true);
+			await signIn(state.userEmail, state.userPassword);
+			// if (state.currentUser) {
+			// 	const userDocRef = doc(db, "users");
+			// 	await setDoc(
+			// 		userDocRef,
+			// 		{
+			// 			profile: {
+			// 				lastLogin: new Date(),
+			// 			},
+			// 		},
+			// 		{ merge: true }
+			// 	);
 				setTimeout(() => {
 					navigate("/members-area/home");
 					setState({
 						errorMessage: "",
 						loading: false,
+						setFormModalOpen: false,	
 					});
 				}, 3000);
-			}
+			// }
 		} catch (error) {
 			setState({
 				loading: false,
 				error: true,
 				message: error.code,
+				formModal: false,
 			});
 			errorTimeOut();
 		}
 	};
-
 	const errorTimeOut = () => {
 		setTimeout(() => {
 			setState({
+				loading: false,
+				error: false,
 				errorMessage: "",
+				formModal: false,
 			});
-			setOpenModal(false);
-			setOpenErrorModal(false);
+			close();
+	
 		}, 4000);
 	};
 
@@ -89,16 +88,16 @@ const LoginModal = ({ open, close }) => {
 	return (
 		<Modal open={open} close={close}>
 			<ErrorModal open={state.error} message={state.message} />
-			<WorkingModal open={state.loading} />
-			<FormComp style={formStyle} open={state.formModal} close={state.loading}>
+			<WorkingModal open={state.loading} close={()=>setState({ ...state, error: false, loading: false, message: "" })} />
+			<FormComp style={formStyle} open={state.formModalOpen} close={state.loading}>
 				<h2 className='text-center sm:text-sm sm:whitespace-nowrap text-2xl text-white font-montserrat font-thin tracking-widest	py-4 uppercase'>
 					Sign in to your account
 				</h2>
 				<InputComp
 					icon={<UserCircleIcon className='w-6 h-6 text-black/50' />}
 					style={inputStyle}
-					onChange={(e) => setEmail(e.target.value)}
-					value={email}
+					onChange={(e) => setState({ ...state, userEmail: e.target.value })}
+					value={state.userEmail}
 					name='email'
 					type='email'
 					autoComplete='email'
@@ -108,8 +107,8 @@ const LoginModal = ({ open, close }) => {
 				<InputComp
 					icon={<LockClosedIcon className='w-6 h-6 text-black/50' />}
 					style={inputStyle}
-					onChange={(e) => setPassword(e.target.value)}
-					value={password}
+					onChange={(e) => setState({ ...state, userPassword: e.target.value })}
+					value={state.userPassword}
 					name='password'
 					type='password'
 					autoComplete='current-password'

@@ -32,7 +32,7 @@ const AccountPage = () => {
 		checkAdminAccess();
 	}, [userId]);
 
-	return <div className="w-full h-full overscroll-y-none overflow-y-hidden">{!adminAccess ? <UserAccountPage /> : <AdminPage />}</div>;
+	return <div className="w-full min-h-screen overscroll-y-none overflow-y-hidden">{!adminAccess ? <UserAccountPage /> : <AdminPage />}</div>;
 };
 
 export default AccountPage;

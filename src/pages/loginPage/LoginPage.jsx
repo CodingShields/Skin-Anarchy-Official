@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import LoginModal from "./LoginModal.jsx";
 import LoginPageNavBar from "./LoginPageNavBar.jsx";
 import mic1 from "../../assets/video/mic1.mp4";
@@ -40,11 +40,11 @@ const LoginPage = () => {
 					<>
 						<div className='borderGrow bg-white/50' />
 						<FactsBar />
-						
 						<PolicyBar />
 					</>
 				)}
 			</div>
+			<h1 className="text-red-500 text-3xl"> WANT TO ADD MORE CONTENT HERE</h1>
 		</div>
 	);
 };

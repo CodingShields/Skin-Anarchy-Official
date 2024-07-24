@@ -47,7 +47,9 @@ import SupportPage from "./pages/support/SupportPage.jsx";
 // Disclaimer and Privacy Policy PagePages
 import DisclaimerPage from "./pages/disclaimer-privacy-policy/DisclaimerPage.jsx";
 import PrivacyPolicyPage from "./pages/disclaimer-privacy-policy/PrivacyPolicyPage.jsx";
-console.log("test");
+// Redirect Pages
+import ThankYouPage from "./pages/redirect-pages/ThankYouPage.jsx";
+import WelcomePage from "./pages/redirect-pages/WelcomePage.jsx";
 function App() {
 	return (
 		<BrowserRouter>
@@ -57,6 +59,7 @@ function App() {
 					<Route path='sign-up' element={<SignUpPage />} />
 					<Route path='disclaimer' element={<DisclaimerPage />} />
 					<Route path='privacy-policy' element={<PrivacyPolicyPage />} />
+
 					<Route element={<ProtectedRoute />} />
 					<Route path='members-area' element={<HomeLayout />}>
 						<Route path='home' element={<HomePage />} />
@@ -66,7 +69,6 @@ function App() {
 						<Route path='about/featured-press' element={<FeaturedPress />} />
 						{/* PodCast Pages */}
 						<Route path='podcast/current-podcast-episode' element={<CurrentPodcastEpisode />} />
-			
 						{/* Award Pages */}
 						<Route path='awards/top-picks' element={<TopPicksPage />} />
 						<Route path='awards/master-class' element={<MasterClassPage />} />
@@ -89,6 +91,9 @@ function App() {
 						<Route path='connect' element={<ConnectPage />} />
 						{/* Support Page */}
 						<Route path='support' element={<SupportPage />} />
+						{/* Redirect Pages */}
+						<Route path='thank-you' element={<ThankYouPage />} />
+						<Route path='welcome' element={<WelcomePage />} />
 					</Route>
 				</Routes>
 			</AuthContextProvider>

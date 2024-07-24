@@ -13,7 +13,6 @@ const imageBlobCreator = (image) => {
 };
 
 const imageDownloadUrl = async (image) => {
-	console.log(image);
 	try {
 		const storageRef = ref(storage, `topPicks`);
 		await uploadBytes(storageRef, image);
@@ -126,6 +125,8 @@ const handleSearch = (arr, searchItem) => {
 		return null;
 	}
 };
+
+
 
 export {
 	handleSearch,

@@ -8,9 +8,7 @@ import PolicyBar from "../../disclaimer-privacy-policy/PolicyBar";
 import ConnectForm from "../../connect/ContactForm";
 import { FormComp, Modal, Button } from "../Components.jsx";
 import { formStyle, inputStyle } from "../../../styles/responsiveStyling";
-
-// import codingShieldsLogo from "../../assets/images/codingShieldsLogo.png";
-
+import { UserAuth } from "../../../context/AuthContext";
 const Footer = ({ handleModal }) => {
 	const [state, setState] = useState({
 		loading: false,
@@ -21,13 +19,14 @@ const Footer = ({ handleModal }) => {
 		isMobile: false,
 	});
 	const navigate = useNavigate();
+	const { logout } = UserAuth();
 
 	useEffect(() => {
 		if (userDeviceInfo()) {
 			setState({
 				...state,
 				isMobile: true,
-			})
+			});
 		} else {
 			setState({
 				...state,
@@ -35,7 +34,6 @@ const Footer = ({ handleModal }) => {
 			});
 		}
 	}, []);
-
 
 	const handleModalClick = () => {
 		handleModal();
@@ -82,119 +80,93 @@ const Footer = ({ handleModal }) => {
 						</div>
 					</div>
 				</div>
-				<div className='inline-flex space-x-8 sm:space-x-0 text-white justify-center items-start sm:w-full  sm:h-fit w-11/12 h-full gap-4 sm:flex sm:flex-col sm:mt-4  sm:mx-auto sm:pb-4'>
+				<div className='inline-flex space-x-8 sm:space-x-0 text-white justify-center items-start mr-4 sm:w-full  sm:h-fit w-11/12 h-full gap-4 sm:flex sm:flex-col sm:mt-4  sm:mx-auto sm:pb-4'>
 					<div className='w-fit h-full sm:h-fit flex flex-col justify-start items-start sm:items-end sm:justify-center sm:pt-0 sm:mt-4 pt-6 sm:w-3/4 text-white '>
 						<h1 className='font-normal sm:text-sm text-3xl font-montserrat py-4 uppercase sm:py-0 '>Episodes</h1>
-						<div className='font-thin font-montserrat font-2xl space-y-4 grid sm:hidden indent-8'>
-							{" "}
-							<Button text='Current Episode' style={buttonStyle} to='podcast/current-podcast-episode' />
-							<NavLink
-								to='podcast/top-make-up-artists-podcasts'
-								className='hover:underline decoration-1 underline-offset-8 ease-in-out duration-500 hover:font-normal transition-all'
-							>
+						<div className='font-montserrat font-2xl space-y-4 grid text-white/50 text-sm sm:hidden '>
+							<NavLink to='podcast/current-podcast-episode' className=' ease-in-out duration-500 hover:text-white transition-all'>
+								Current Episode
+							</NavLink>
+							<NavLink to='podcast/top-make-up-artists-podcasts' className=' ease-in-out duration-500  transition-all'>
 								Top Make Up Artists
 							</NavLink>
-							<NavLink
-								to='podcast/top-doctors-podcasts'
-								className='hover:underline decoration-1 underline-offset-8 ease-in-out duration-500 hover:font-normal transition-all'
-							>
+							<NavLink to='podcast/top-doctors-podcasts' className=' ease-in-out duration-500 hover:text-white transition-all'>
 								Top Doctors
 							</NavLink>
-							<NavLink
-								to='podcast/brand-founders-podcasts'
-								className='hover:underline decoration-1 underline-offset-8 ease-in-out duration-500 hover:font-normal transition-all'
-							>
+							<NavLink to='podcast/brand-founders-podcasts' className=' ease-in-out duration-500 hover:text-white transition-all'>
 								Brand Founders
 							</NavLink>
-							<NavLink
-								to='podcast/thought-leaders-podcasts'
-								className='hover:underline decoration-1 underline-offset-8 ease-in-out duration-500 hover:font-normal transition-all'
-							>
+							<NavLink to='podcast/thought-leaders-podcasts' className=' ease-in-out duration-500 hover:text-white transition-all'>
 								Thought Leaders
 							</NavLink>
-							<NavLink
-								to='podcast/editors-and-journalists-podcasts'
-								className='hover:underline decoration-1 underline-offset-8 ease-in-out duration-500 hover:font-normal transition-all'
-							>
+							<NavLink to='podcast/editors-and-journalists-podcasts' className=' ease-in-out duration-500 hover:text-white transition-all'>
 								Editors and Journalists
 							</NavLink>
-							<NavLink
-								to='podcast/celebrity-podcasts'
-								className='hover:underline decoration-1 underline-offset-8 ease-in-out duration-500 hover:font-normal transition-all'
-							>
+							<NavLink to='podcast/celebrity-podcasts' className=' ease-in-out duration-500 hover:text-white transition-all'>
 								Celebrities
 							</NavLink>
 						</div>
 					</div>
 					<div className='w-fit h-full sm:h-fit flex flex-col justify-start items-start sm:items-end sm:justify-center sm:pt-0 sm:mt-4 pt-6 sm:w-3/4 text-white '>
 						<h1 className='font-normal text-3xl sm:text-sm font-montserrat py-4 sm:py-0 uppercase sm:block  '>Blog</h1>
-						<div className='font-thin font-montserrat font-2xl space-y-4 grid sm:hidden  indent-8'>
-							<NavLink
-								to='skin-anarchy-blog/beauty-culture'
-								className='hover:underline decoration-1 underline-offset-8 ease-in-out duration-500 hover:font-normal transition-all'
-							>
+						<div className='font-montserrat font-2xl space-y-4 grid text-white/50 text-sm sm:hidden '>
+							<NavLink to='skin-anarchy-blog/beauty-culture' className=' ease-in-out duration-500 hover:text-white transition-all'>
 								Beauty Culture
 							</NavLink>
-							<NavLink
-								to='skin-anarchy-blog/fragrance'
-								className='hover:underline decoration-1 underline-offset-8 ease-in-out duration-500 hover:font-normal transition-all'
-							>
+							<NavLink to='skin-anarchy-blog/fragrance' className=' ease-in-out duration-500 hover:text-white transition-all'>
 								Fragrance
 							</NavLink>
-							<NavLink
-								to='skin-anarchy-blog/podcast-summaries'
-								className='hover:underline decoration-1 underline-offset-8 ease-in-out duration-500 hover:font-normal transition-all'
-							>
+							<NavLink to='skin-anarchy-blog/podcast-summaries' className=' ease-in-out duration-500 hover:text-white transition-all'>
 								Podcast Summaries
 							</NavLink>
-							<NavLink
-								to='skin-anarchy-blog/science-of-skin'
-								className='hover:underline decoration-1 underline-offset-8 ease-in-out duration-500 hover:font-normal transition-all'
-							>
+							<NavLink to='skin-anarchy-blog/science-of-skin' className=' ease-in-out duration-500 hover:text-white transition-all'>
 								Science of Skin
 							</NavLink>
 						</div>
 					</div>
 					<div className='w-fit h-full sm:h-fit flex flex-col justify-start items-start sm:items-end sm:justify-center sm:pt-0 sm:mt-4 pt-6 sm:w-3/4 text-white '>
 						<h1 className='font-normal text-3xl sm:text-sm font-montserrat py-4 uppercase sm:block '>Awards</h1>
-						<div className='font-thin font-montserrat font-2xl space-y-4 grid sm:hidden indent-8'>
-							<NavLink
-								to='awards/science-of-skin-awards'
-								className='hover:underline decoration-1 underline-offset-8 ease-in-out duration-500 hover:font-normal transition-all'
-							>
+						<div className='font-montserrat font-2xl space-y-4 grid text-white/50 text-sm sm:hidden '>
+							<NavLink to='awards/science-of-skin-awards' className=' ease-in-out duration-500 hover:text-white transition-all'>
 								Science of Skin Awards
 							</NavLink>
-							<NavLink
-								to='awards/top-picks'
-								className='hover:underline decoration-1 underline-offset-8 ease-in-out duration-500 hover:font-normal transition-all'
-							>
+							<NavLink to='awards/top-picks' className=' ease-in-out duration-500 hover:text-white transition-all'>
 								Top Picks
 							</NavLink>
 							{/* <NavLink
-								to='awards/master-class'
-								className='hover:underline decoration-1 underline-offset-8 ease-in-out duration-500 hover:font-normal transition-all'
-							>
+								to='awards/master-class' className=' ease-in-out duration-500  transition-all'							>
 								Master Class
 							</NavLink> */}
 						</div>
-					</div>{" "}
+					</div>
 					<div className='w-fit h-full sm:h-fit flex flex-col justify-start items-start sm:items-end sm:justify-center sm:pt-0 sm:mt-4 pt-6 sm:w-3/4 text-white '>
 						<h1 className='font-normal text-3xl sm:text-sm font-montserrat py-4 sm:py-0 uppercase sm:block '>Connect</h1>
-						<div className='font-thin font-montserrat font-2xl space-y-4 grid sm:hidden indent-8'>
+						<div className='font-montserrat font-2xl space-y-4 grid text-white/50 text-sm sm:hidden '>
 							<Button
-								style='indent-8 transition-all ease-in-out duration-500 hover:underline decoration-1 underline-offset-8 mr-auto'
+								style=' ease-in-out duration-500 hover:text-white transition-all text-left'
 								text='Get Featured On Our Show'
 								onClick={handleModalClick}
 							/>
 							<Button
-								style='indent-8 transition-all ease-in-out duration-500 hover:underline decoration-1 underline-offset-8 mr-auto'
+								style=' ease-in-out duration-500 hover:text-white transition-all text-left'
 								text='Become A Sponsor'
 								onClick={handleModalClick}
 							/>
 							<Button
-								style='indent-8 transition-all ease-in-out duration-500 hover:underline decoration-1 underline-offset-8 mr-auto'
+								style=' ease-in-out duration-500 hover:text-white transition-all text-left'
 								text='Support'
 								onClick={() => navigate("/members-area/support")}
+							/>
+						</div>
+					</div>
+					<div className='w-fit h-full sm:h-fit flex flex-col justify-start items-start sm:items-end sm:justify-center sm:pt-0 sm:mt-4 pt-6 sm:w-3/4 text-white '>
+						<h1 className='font-normal text-3xl sm:text-sm font-montserrat py-4 sm:py-0 uppercase sm:block '>Account</h1>
+						<div className='font-montserrat font-2xl space-y-4 flex flex-col justify-start items-center text-left text-white/50 text-sm sm:hidden '>
+							<Button style=' ease-in-out duration-500 hover:text-white transition-all text-left' text='Settings' onClick={handleModalClick} />
+							<Button
+								style=' ease-in-out duration-500 hover:text-white transition-all text-left'
+								text='Logout'
+								onClick={logout}
 							/>
 						</div>
 					</div>

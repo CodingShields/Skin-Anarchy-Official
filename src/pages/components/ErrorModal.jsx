@@ -1,6 +1,11 @@
 import errorIcon from "../../assets/iconsAnimated/errorIcon.svg";
-const ErrorModal = ({ open, message }) => {
+const ErrorModal = ({ open, message, close }) => {
 	if (!open) return null;
+
+	setTimeout(() => {
+		close();
+	}, 3000);
+
 	return (
 		<div className='absolute bg-opacity-50 bg-gray-500 w-full h-full z-50 top-0 left-0'>
 			<div className='flex justify-center items-center place-content-center w-full h-full animate-fadeIn'>
