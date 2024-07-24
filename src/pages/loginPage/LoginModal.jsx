@@ -6,8 +6,12 @@ import { useNavigate } from "react-router-dom";
 import ErrorModal from "../components/ErrorModal.jsx";
 import WorkingModal from "../components/WorkingModal.jsx";
 import { UserCircleIcon, LockClosedIcon } from "@heroicons/react/24/outline";
-import { InputComp, SelectComp, TextAreaComp, FormComp, Modal, Button } from "../components/Components";
-import { buttonStyle, inputStyle, formStyle, buttonStyleLessSoft } from "../../styles/responsiveStyling.js";
+import { InputComp, FormComp, Modal, Button } from "../components/Components";
+import { inputStyle, formStyle } from "../../styles/responsiveStyling.js";
+import { getAuth, signInWithPopup, GoogleAuthProvider, getAdditionalUserInfo } from "firebase/auth";
+import { auth } from "../../fireBase/firebaseConfig";
+import google from "../../assets/icons/google.png";
+import facebook from "../../assets/icons/socialMediaIcons/facebookIcon.svg";
 const LoginModal = ({ open, close }) => {
 	const navigate = useNavigate();
 	const { signIn } = UserAuth();
@@ -27,9 +31,6 @@ const LoginModal = ({ open, close }) => {
 			setState({ ...state, formModalOpen: false });
 		}
 	}, [open]);
-
-
-	
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -51,14 +52,14 @@ const LoginModal = ({ open, close }) => {
 			// 		},
 			// 		{ merge: true }
 			// 	);
-				setTimeout(() => {
-					navigate("/members-area/home");
-					setState({
-						errorMessage: "",
-						loading: false,
-						setFormModalOpen: false,	
-					});
-				}, 3000);
+			setTimeout(() => {
+				navigate("/members-area/home");
+				setState({
+					errorMessage: "",
+					loading: false,
+					setFormModalOpen: false,
+				});
+			}, 3000);
 			// }
 		} catch (error) {
 			setState({
@@ -79,16 +80,73 @@ const LoginModal = ({ open, close }) => {
 				formModal: false,
 			});
 			close();
-	
 		}, 4000);
 	};
 
+	const handleGoogle = async (e) => {
+		e.preventDefault();
+		const provider = await new GoogleAuthProvider();
+		const auth = getAuth();
+		signInWithPopup(auth, provider)
+			.then((result) => {
+				// This gives you a Google Access Token. You can use it to access the Google API.
+				const credential = GoogleAuthProvider.credentialFromResult(result);
+				const user = result.user;
+				console.log(user.displayName)
+				console.log(user.uid);
+				const additionalUserInfo = getAdditionalUserInfo(result)
+				console.log(additionalUserInfo);
+				console.log(additionalUserInfo.profile.given_name);
+				console.log(additionalUserInfo.profile.family_name);
+				// ...
+			})
+			.catch((error) => {
+				// Handle Errors here.
+				const errorCode = error.code;
+				const errorMessage = error.message;
+				// The email of the user's account used.
+				const email = error.customData.email;
+				// The AuthCredential type that was used.
+				const credential = GoogleAuthProvider.credentialFromError(error);
+				// ...
+			});
+	};
+
+	const handleFacebook = async (e) => {
+		e.preventDefault();
+		const provider = await new GoogleAuthProvider();
+		const auth = getAuth();
+		signInWithPopup(auth, provider)
+			.then((result) => {
+				// This gives you a Google Access Token. You can use it to access the Google API.
+				const credential = GoogleAuthProvider.credentialFromResult(result);
+				console.log(credential);
+				const token = credential.accessToken;
+				console.log(token);
+				// The signed-in user info.
+				const user = result.user;
+				console.log(user);
+				// IdP data available using getAdditionalUserInfo(result)
+				// ...
+			})
+			.catch((error) => {
+				// Handle Errors here.
+				const errorCode = error.code;
+				const errorMessage = error.message;
+				// The email of the user's account used.
+				const email = error.customData.email;
+				// The AuthCredential type that was used.
+				const credential = GoogleAuthProvider.credentialFromError(error);
+				// ...
+			});
+	};
+	// https://skinanarchy.firebaseapp.com/__/auth/handler
 	const buttonStyle =
 		"rounded-xl border-2 border-white text-white uppercase font-montserrat sm:text-sm text-xl hover:font-semibold sm:px-4 px-12 py-2 mx-auto cursor-pointer hover:bg-white hover:text-black transition-all duration-500 ease-in-out";
 	return (
 		<Modal open={open} close={close}>
 			<ErrorModal open={state.error} message={state.message} />
-			<WorkingModal open={state.loading} close={()=>setState({ ...state, error: false, loading: false, message: "" })} />
+			<WorkingModal open={state.loading} close={() => setState({ ...state, error: false, loading: false, message: "" })} />
 			<FormComp style={formStyle} open={state.formModalOpen} close={state.loading}>
 				<h2 className='text-center sm:text-sm sm:whitespace-nowrap text-2xl text-white font-montserrat font-thin tracking-widest	py-4 uppercase'>
 					Sign in to your account
@@ -139,9 +197,32 @@ const LoginModal = ({ open, close }) => {
 				<Button onClick={handleSubmit} style={buttonStyle}>
 					Sign in
 				</Button>
-				<div className='inline-flex items-center justify-center space-x-6 w-full'>
-					<p className=' py-4 text-center text-sm uppercase text-gray-200 font-montserrat font-thin tracking-widest'>Not a member ? </p>
-					<Button onClick={() => navigate("/sign-up")} style={`${buttonStyleLessSoft} text-white/50`} text='Sign-up For Free' />
+				<div className='flex flex-col items-center justify-center space-y-4 w-full'>
+					<div className='relative block'>
+						<Button
+							onClick={handleGoogle}
+							text='Sign In With Google'
+							style='inline-flex items-center  w-56 text-[18px] text-center  indent-8 whitespace-nowrap px-4 h-10 rounded-md hover:text-black transition-all ease-in-out duration-500 text-white/50 hover:bg-white text-black '
+						/>
+						<img src={google} className=' w-fit h-8 absolute left-1 top-1' />
+					</div>
+					<div className='relative flex items-center'>
+						<Button
+							onClick={handleFacebook}
+							text='Sign In With Facebook'
+							style='inline-flex items-center  w-56 text-[18px] text-center   indent-8 whitespace-nowrap px-4 h-10 rounded-md hover:text-black transition-all ease-in-out duration-500 text-white/50 hover:bg-white text-black '
+						/>
+						<img src={facebook} className=' w-fit h-8 absolute left-1 top-1' />
+					</div>
+				</div>
+
+				<div className='inline-flex items-center justify-center  w-full '>
+					<p className=' py-4 text-center text-sm uppercase text-white font-montserrat  tracking-widest px-6'>Not a member ? </p>
+					<Button
+						onClick={() => navigate("/sign-up")}
+						style={`rounded-xl  w-fit  text-white/50  cursor-pointer uppercase font-montserrat text-[16px] tracking-widest hover:font-semibold sm:px-4 px-6 py-2 cursor-pointer hover:bg-white hover:text-black transition-all duration-500 ease-in-out"text-white/50`}
+						text='Sign-up For Free'
+					/>
 				</div>
 			</FormComp>
 		</Modal>

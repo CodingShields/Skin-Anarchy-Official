@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../../context/AuthContext.jsx";
-import { useUserStoreActions } from "../../stateStore/userStore.js";
+import { useUserStoreActions, useUserStore } from "../../stateStore/userStore.js";
 import whiteLogo from "../../assets/images/logos/white-logo.png";
 import PrivacyPolicy from "./PrivacyPolicy.jsx";
 import { Button, InputComp, InputCheckBox, Modal } from "../components/Components.jsx";
@@ -11,22 +11,35 @@ import WorkingModal from "../components/WorkingModal.jsx";
 import ErrorModal from "../components/ErrorModal.jsx";
 const SignUp = () => {
 	const navigate = useNavigate();
-	const initializeForm = {
-		firstName: "",
-		lastName: "",
-		phone: "",
-		email: "",
-		confirmEmail: "",
-		birthday: "",
-		password: "",
-		confirmPassword: "",
-		newPodCastNotification: true,
-		upcomingPodcastNotification: true,
-		newBlogPost: true,
-		newsLetter: true,
-		adminAccess: false,
-	};
-	const [form, setForm] = useState({ initializeForm });
+
+	const {
+		setFirstName,
+		setLastName,
+		setPhone,
+		setEmail,
+		setConfirmEmail,
+		setBirthday,
+		setPodcastNotification,
+		setBlogNotification,
+		setUpComingNotifications,
+		setWeeklyNewsletterNotification,
+		setPassword,
+		setConfirmPassword,
+		resetForm,
+	} = useUserStoreActions((state) => state.actions);
+	const firstName = useUserStore((state) => state.firstName);
+	const lastName = useUserStore((state) => state.lastName);
+	const phone = useUserStore((state) => state.phone);
+	const email = useUserStore((state) => state.email);
+	const confirmEmail = useUserStore((state) => state.confirmEmail);
+	const password = useUserStore((state) => state.password);
+	const confirmPassword = useUserStore((state) => state.confirmPassword);
+	const birthday = useUserStore((state) => state.birthday);
+	const podcastNotification = useUserStore((state) => state.podcastNotification);
+	const blogNotification = useUserStore((state) => state.blogNotification);
+	const upcomingNotifications = useUserStore((state) => state.upcomingPodcastNotification);
+	const weeklyNewsletterNotification = useUserStore((state) => state.weeklyNewsletterNotification);
+
 	const [state, setState] = useState({
 		error: false,
 		errorMessage: "",
@@ -43,77 +56,73 @@ const SignUp = () => {
 		return `${month}/${day}/${year}`;
 	};
 
+	const [form, setForm] = useState({
+		firstName: "",
+		lastName: "",
+		phone: "",
+		email: "",
+		birthday: "",
+		password: "",
+		newPodCastNotification: false,
+		upcomingPodcastNotification: false,
+		newBlogPost: false,
+		newsLetter: false,
+		adminAccess: false,
+	});
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		const noEmptyFields = Object.values(form).every((item) => item !== "");
-		if (noEmptyFields) {
-			setState({
-				...state,
-				error: true,
-				errorMessage: "Please fill out all fields",
-				openModal: true,
-			});
-			console.log("Please fill out all fields");
-		} else if (form.password.length < 6) {
-			setState({
-				...state,
-				error: true,
-				errorMessage: "Password must be at least 6 characters",
-			});
-			console.log("Password must be at least 6 characters");
-		} else if (form.password.length > 20) {
-			setState({
-				...state,
-				error: true,
-				errorMessage: "Password must be less than 20 characters",
-			});
-			console.log("Password must be less than 20 characters");
-		} else if (form.password.search(/[a-z]/i) < 0) {
-			setState({
-				...state,
-				error: true,
-				errorMessage: "Password must contain at least one letter",
-			});
-			console.log("Password must contain at least one letter");
-		} else if (form.password.search(/[0-9]/) < 0) {
-			setState({
-				...state,
-				error: true,
-				errorMessage: "Password must contain at least one digit",
-			});
-			console.log("Password must contain at least one digit");
-		} else if (form.password.search(/[!@#$%^&*]/) < 0) {
-			setState({
-				...state,
-				error: true,
-				errorMessage: "Password must contain at least one special character",
-			});
-			console.log("Password must contain at least one special character");
-		} else if (form.password.search(/[^a-zA-Z0-9!@#$%^&*]/) > 0) {
-			setState({
-				...state,
-				error: true,
-				errorMessage: "Password must not contain spaces",
-			});
-			console.log("Password must not contain spaces");
-		} else if (form.password !== form.confirmPassword) {
-			setState({
-				...state,
-				error: true,
-				errorMessage: "Passwords do not match",
-			});
-			console.log("Passwords do not match");
-		} else if (form.email !== form.confirmEmail) {
-			setState({
-				...state,
-				error: true,
-				errorMessage: "Emails do not match",
-			});
-			console.log("Emails do not match");
-		} else {
+		// if (!noEmptyFields) {
+		// 	setState({
+		// 		...state,
+		// 		error: true,
+		// 		errorMessage: "Please fill out all fields",
+		// 	});
+		// } else 
+		// if (password != confirmPassword) {
+		// 	setState({ ...state, error: true, errorMessage: "Passwords do not match" });
+		// } else if (email != confirmEmail) {
+		// 	setState({ ...state, error: true, errorMessage: "Emails do not match" });
+		// } else if (password.length < 6) {
+		// 	setState({
+		// 		...state,
+		// 		error: true,
+		// 		errorMessage: "Password must be at least 6 characters",
+		// 	});
+		// } else if (password.length > 20) {
+		// 	setState({
+		// 		...state,
+		// 		error: true,
+		// 		errorMessage: "Password must be less than 20 characters",
+		// 	});
+		// } else if (password.search(/[a-z]/i) < 0) {
+		// 	setState({
+		// 		...state,
+		// 		error: true,
+		// 		errorMessage: "Password must contain at least one letter",
+		// 	});
+		// } else if (password.search(/[0-9]/) < 0) {
+		// 	setState({
+		// 		...state,
+		// 		error: true,
+		// 		errorMessage: "Password must contain at least one digit",
+		// 	});
+		// } else if (password.search(/[!@#$%^&*]/) < 0) {
+		// 	setState({
+		// 		...state,
+		// 		error: true,
+		// 		errorMessage: "Password must contain at least one special character",
+		// 	});
+		// } else if (password.search(/[^a-zA-Z0-9!@#$%^&*]/) > 0) {
+		// 	setState({
+		// 		...state,
+		// 		error: true,
+		// 		errorMessage: "Password must not contain spaces",
+		// 	});
+		// } else {
 			try {
-				await createUser(form);
-				navigate("/welcome");
+				await createUser({ firstName, lastName, email, phone, password });
+				navigate("/members-area/welcome");
 			} catch (error) {
 				if (error.code === "auth/email-already-in-use") {
 					setState({
@@ -127,8 +136,9 @@ const SignUp = () => {
 					setState({ ...state, error: true, errorMessage: "Weak password" });
 				}
 			}
-		}
+		// }
 	};
+
 	return (
 		<div className='h-screen'>
 			<Modal open={state.openModal} close={() => setState({ ...state, openModal: !state.openModal })}>
@@ -158,9 +168,9 @@ const SignUp = () => {
 									style={inputStyle}
 									placeholder='First Name'
 									name='firstName'
-									value={form.firstName}
+									value={firstName}
 									onChange={(e) => {
-										setForm({ ...form, firstName: e.target.value });
+										setFirstName(e.target.value);
 									}}
 									required
 								/>
@@ -170,9 +180,9 @@ const SignUp = () => {
 									style={inputStyle}
 									placeholder='Last Name'
 									name='lastName'
-									value={form.lastName}
+									value={lastName}
 									onChange={(e) => {
-										setForm({ ...form, lastName: e.target.value });
+										setLastName(e.target.value);
 									}}
 									required
 								/>
@@ -181,9 +191,9 @@ const SignUp = () => {
 									type='date'
 									style={inputStyle}
 									name='email'
-									value={form.birthday}
+									value={birthday}
 									onChange={(e) => {
-										setForm({ ...form, birthday: formatBirthdayToString(e.target.value) });
+										setBirthday(e.target.value);
 									}}
 									required
 								/>
@@ -193,9 +203,9 @@ const SignUp = () => {
 									style={inputStyle}
 									placeholder='Email'
 									name='email'
-									value={form.email}
+									value={email}
 									onChange={(e) => {
-										setForm({ ...form, email: e.target.value });
+										setEmail(e.target.value);
 									}}
 									required
 								/>
@@ -205,9 +215,9 @@ const SignUp = () => {
 									style={inputStyle}
 									placeholder='Confirm Email'
 									name='confirmEmail'
-									value={form.email}
+									value={confirmEmail}
 									onChange={(e) => {
-										setForm({ ...form, email: e.target.value });
+										setConfirmEmail(e.target.value);
 									}}
 									required
 								/>
@@ -219,9 +229,9 @@ const SignUp = () => {
 									name='phone'
 									placeholder='Phone Number'
 									pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
-									value={form.phone}
+									value={phone}
 									onChange={(e) => {
-										setForm({ ...form, phone: e.target.value });
+										setPhone(e.target.value);
 									}}
 									required
 								/>
@@ -231,9 +241,9 @@ const SignUp = () => {
 									placeholder='Password'
 									style={inputStyle}
 									name='phone'
-									value={form.password}
+									value={password}
 									onChange={(e) => {
-										setForm({ ...form, passWord: e.target.value });
+										setPassword(e.target.value);
 									}}
 									required
 								/>
@@ -243,9 +253,9 @@ const SignUp = () => {
 									placeholder='Confirm Password'
 									style={inputStyle}
 									name='phone'
-									value={form.confirmPassword}
+									value={confirmPassword}
 									onChange={(e) => {
-										setForm({ ...form, confirmPassword: e.target.value });
+										setConfirmPassword(e.target.value);
 									}}
 									required
 								/>
@@ -268,13 +278,13 @@ const SignUp = () => {
 											<InputCheckBox
 												type='checkbox'
 												style={` w-5 h-5  accent-gold-500 bg-gray-600 active:accent-gold-500`}
-												checked={form.newPodCastNotification}
-												value={form.newPodCastNotification}
+												checked={podcastNotification}
+												value={podcastNotification}
 												onChange={() => {
-													setForm({ ...form, newPodCastNotification: !form.newPodCastNotification });
+													setPodcastNotification(!podcastNotification);
 												}}
 											/>
-											{form.newPodCastNotification === true ? (
+											{podcastNotification === true ? (
 												<BellAlertIcon className='w-8 h-8 text-white animate-fadeIn' />
 											) : (
 												<BellSlashIcon className='w-8 h-8 text-red-300/50 animate-fadeIn' />
@@ -292,13 +302,13 @@ const SignUp = () => {
 											<InputCheckBox
 												type='checkbox'
 												style={` w-5 h-5  accent-gold-500 bg-gray-600 active:accent-gold-500`}
-												checked={form.upcomingPodcastNotification}
-												value={form.upcomingPodcastNotification}
+												checked={upcomingNotifications}
+												value={upcomingNotifications}
 												onChange={() => {
-													setForm({ ...form, upcomingPodcastNotification: !form.upcomingPodcastNotification });
+													setUpComingNotifications(!upcomingNotifications);
 												}}
 											/>
-											{form.upcomingPodcastNotification ? (
+											{upcomingNotifications ? (
 												<BellAlertIcon className='w-8 h-8 text-white animate-fadeIn' />
 											) : (
 												<BellSlashIcon className='w-8 h-8 text-red-300/50 animate-fadeIn' />
@@ -316,13 +326,11 @@ const SignUp = () => {
 											<InputCheckBox
 												type='checkbox'
 												style={` w-5 h-5  accent-gold-500 bg-gray-600 active:accent-gold-500`}
-												checked={form.newBlogPost}
-												value={form.newBlogPost}
-												onChange={() => {
-													setForm({ ...form, newBlogPost: !form.newBlogPost });
-												}}
+												checked={blogNotification}
+												value={blogNotification}
+												onChange={() => setBlogNotification(!blogNotification)}
 											/>
-											{form.newBlogPost ? (
+											{blogNotification ? (
 												<BellAlertIcon className='w-8 h-8 text-white animate-fadeIn' />
 											) : (
 												<BellSlashIcon className='w-8 h-8 text-red-300/50 animate-fadeIn' />
@@ -340,13 +348,13 @@ const SignUp = () => {
 											<InputCheckBox
 												type='checkbox'
 												style={` w-5 h-5  accent-gold-500 bg-gray-600 active:accent-gold-500`}
-												checked={form.newsLetter}
-												value={form.newsLetter}
+												checked={weeklyNewsletterNotification}
+												value={weeklyNewsletterNotification}
 												onChange={() => {
-													setForm({ ...form, newsLetter: !form.newsLetter });
+													setWeeklyNewsletterNotification(weeklyNewsletterNotification);
 												}}
 											/>
-											{form.newsLetter ? (
+											{weeklyNewsletterNotification ? (
 												<BellAlertIcon className='w-8 h-8 text-white animate-fadeIn' />
 											) : (
 												<BellSlashIcon className='w-8 h-8 text-red-300/50 animate-fadeIn' />

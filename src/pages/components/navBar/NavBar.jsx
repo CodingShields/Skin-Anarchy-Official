@@ -204,31 +204,31 @@ const episodes = [
 	},
 	{
 		name: "Top Makeup Artists",
-		link: "/members-area/podcast/top-make-up-artists-podcasts",
+		link: "/members-area/podcast/current-podcast-episode",
 	},
 	{
 		name: "Top Doctors",
-		link: "/members-area/podcast/top-doctors-podcasts",
+		link: "/members-area/podcast/current-podcast-episode",
 	},
 	{
 		name: "Brand Founders",
-		link: "/members-area/podcast/brand-founders-podcasts",
+		link: "/members-area/podcast/current-podcast-episode",
 	},
 	{
 		name: "Thought Leaders",
-		link: "/members-area/podcast/thought-leaders-podcasts",
+		link: "/members-area/podcast/current-podcast-episode",
 	},
 	{
 		name: "Editors And Journalists",
-		link: "/members-area/podcast/editors-and-journalists-podcasts",
+		link: "/members-area/podcast/current-podcast-episode",
 	},
 	{
 		name: "Celebrities",
-		link: "/members-area/podcast/celebrity-podcasts",
+		link: "/members-area/podcast/current-podcast-episode",
 	},
 	{
 		name: "Master Class",
-		link: "/members-area/podcast/master-class",
+		link: "/members-area/podcast/current-podcast-episode",
 	},
 ];
 
@@ -249,47 +249,22 @@ const blog = [
 	},
 	{
 		name: "Beauty Culture",
-		link: "/members-area/skin-anarchy-blog/beauty-culture",
+		link: "/members-area/skin-anarchy-blog",
 	},
 	{
 		name: "Fragrance",
-		link: "/members-area/skin-anarchy-blog/fragrance",
+		link: "/members-area/skin-anarchy-blog",
 	},
 	{
 		name: "Episode Summaries",
-		link: "/members-area/skin-anarchy-blog/podcast-summaries",
+		link: "/members-area/skin-anarchy-blog",
 	},
 	{
 		name: "Science of Skin",
-		link: "/members-area/skin-anarchy-blog/science-of-skin",
+		link: "/members-area/skin-anarchy-blog",
 	},
 ];
 
-const connect = [
-	{
-		name: "Get Featured On Our Show",
-		link: "/members-area/connect/get-featured-on-our-show",
-	},
-	{
-		name: "Join Our Team",
-		link: "/members-area/connect/join-our-team",
-	},
-	{
-		name: "Become A Sponsor",
-		link: "/members-area/connect/become-a-sponsor",
-	},
-];
-
-const account = [
-	{
-		name: "My Account",
-		link: "/members-area/account",
-	},
-	{
-		name: "Logout",
-		link: "/logout",
-	},
-];
 
 const beautyCulture = [
 	{

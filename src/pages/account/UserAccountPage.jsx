@@ -30,7 +30,7 @@ const UserAccountPage = () => {
 				}));
 				const currentUserProfile = users.find((user) => user.id === userId && user.profile);
 				setProfile([currentUserProfile.profile]);
-				setNotifications([currentUserProfile.notifications]);
+				setNotifications([currentUserProfile]);
 				setState({ loading: false, error: false, errorMessage: "", loadProfile: true });
 			});
 		};

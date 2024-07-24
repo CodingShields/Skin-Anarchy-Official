@@ -39,9 +39,9 @@ const UserProfile = ({ profileData }) => {
 							{user?.first} {user?.last}
 						</p>{" "}
 						<p className='mr-6 w-30 text-right uppercase tracking-widest '>Last Login:</p>
-						<p> {formatTimeStamp(user?.lastLogin)}</p>
+						{/* <p> {formatTimeStamp(user?.lastLogin)}</p> */}
 						<p className='mr-6 w-30 text-right uppercase tracking-widest '>Joined:</p>
-						<p> {formatTimeStamp(user?.signUpDate)}</p>
+						{/* <p> {formatTimeStamp(user?.signUpDate)}</p> */}
 						<p className='mr-6 w-30 text-right uppercase tracking-widest '>Birthday:</p>
 						<p>{user?.birthday}</p>
 						<p className='mr-6 w-30 text-right uppercase tracking-widest '> Email:</p>
