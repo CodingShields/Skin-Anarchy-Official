@@ -265,7 +265,6 @@ const blog = [
 	},
 ];
 
-
 const beautyCulture = [
 	{
 		name: "Mastering Your Shower Routine: A Step-by-Step Guide to Optimize Skincare and Haircare Efficacy",
@@ -325,6 +324,37 @@ const blogArray = [
 	fragrance,
 	scienceOfSkin,
 	// episodeSummaries,
+];
+
+const safeSealArray = [
+	{
+		name: "Home",
+		link: "/members-area/safe-seal/home",
+	},
+	{
+		name: "About",
+		link: "/members-area/safe-seal/about",
+	},
+	{
+		name: "Board of Advisors",
+		link: "/members-area/safe-seal/board-of-advisors",
+	},
+	{
+		name: "Review Committee",
+		link: "/members-area/safe-seal/review-committee",
+	},
+	{
+		name: "Tiers",
+		link: "/members-area/safe-seal/tiers",
+	},
+	{
+		name: "S.A.F.E. Brands",
+		link: "/members-area/safe-seal/safe-seal-brands",
+	},
+	{
+		name: "Contact",
+		link: "/members-area/safe-seal/Contact",
+	},
 ];
 const buttonStyle = "uppercase font-thin underlineAnimate subpixel-antialiased tracking-[6px] text-white sm:text-[8px] text-[16px]";
 const activeNavButton =
@@ -429,15 +459,14 @@ const NavBar = () => {
 					}}
 				/>
 				<Button
-					style={state.currentMenu === "safe seal" ? activeNavButton : buttonStyle}
-					text={"safe seal"}
+					style={state.currentMenu === "safe-seal" ? activeNavButton : buttonStyle}
+					text={"s.a.f.e. seal"}
 					onClick={() => {
 						setState({
 							...state,
-							currentMenu: "safe seal",
-							openSubMenu: false,
+							currentMenu: "safe-seal",
+							openSubMenu: true,
 						});
-						navigate("/members-area/safe-seal");
 					}}
 				/>
 				<div className={`${!isMobile && "inline-flex w-fit space-x-4"}`}>
@@ -577,7 +606,6 @@ const NavBar = () => {
 									return (
 										<div key={index} className='w-full h-full text-center animate-fadeIn transition-all delay-200 mx-auto'>
 											<img src={item.image} className='w-3/5 mx-auto rounded-md ' />
-											{/* <h1 className='w-3/5 mx-auto uppercase text-white text-xl font-montserrat font-thin  py-4'>{item.name}</h1> */}
 										</div>
 									);
 								})}
@@ -585,8 +613,6 @@ const NavBar = () => {
 						</HighlightMenu>
 					</div>
 				</NavBarDropDown>
-				{/* Sale Seal Drop Down */}
-				{/* <NavBarDropDown open={open} menu={menu} text={"safe seal"}></NavBarDropDown> */}
 				<NavBarDropDown open={state.openSubMenu} menu={state.currentMenu} text={"awards"}>
 					<div className='flex flex-row w-full justify-center items-center bg-black border-white border-b-[1px] py-4 space-x-12'>
 						{awards.map((item, index) => {
@@ -600,9 +626,9 @@ const NavBar = () => {
 						})}
 					</div>
 				</NavBarDropDown>
-				{/* <NavBarDropDown open={open} menu={menu} text={"connect"}>
-					<div className='flex flex-row w-full justify-center items-center bg-black border-white border-b-[1px] py-10 space-x-24'>
-						{connect.map((item, index) => {
+				<NavBarDropDown open={state.openSubMenu} menu={state.currentMenu} text={"safe-seal"}>
+					<div className='flex flex-row w-full justify-center items-center bg-black border-white border-b-[1px] py-4 space-x-18'>
+						{safeSealArray.map((item, index) => {
 							return (
 								<>
 									<a key={index} href={item.link}>
@@ -612,7 +638,7 @@ const NavBar = () => {
 							);
 						})}
 					</div>
-				</NavBarDropDown> */}
+				</NavBarDropDown>
 			</div>
 		</div>
 	);

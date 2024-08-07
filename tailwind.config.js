@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 
-import { visibility } from "html2canvas/dist/types/css/property-descriptors/visibility";
+import { CheckBadgeIcon } from "@heroicons/react/24/outline";
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -34,6 +34,9 @@ export default {
 			// => @media (max-width: 639px) { ... }
 		},
 		extend: {
+			listStyleImage: {
+				badge: "<CheckBadgeIcon className='w-10 h-10 inline-block stroke-gold-500' />",
+			},
 			fontFamily: {
 				montserrat: ["Montserrat"],
 				glacialBold: ["Glacial Indifference Bold"],
@@ -376,7 +379,7 @@ export default {
 
 	plugins: [
 		// require("tailwind-scrollbar-hide"),
-		require('tailwind-scrollbar'),
+		require("tailwind-scrollbar"),
 		require("@tailwindcss/typography"),
 		// require("@tailwindcss/aspect-ratio"),
 		// require("@tailwindcss/container-queries"),

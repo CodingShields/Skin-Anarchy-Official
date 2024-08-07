@@ -30,7 +30,7 @@ const TopPicks = () => {
 				<h1 className='text-white text-6xl sm:text-3xl text-center font-montserrat font-thin uppercase tracking-widest py-6'>
 					Skincare Anarchy Awards{" "}
 				</h1>
-				<h2 className='text-white lowercase text-center sm:text-3xl font-montserrat text-4xl font-thin'>#toppicks</h2>
+				<h2 className='text-white lowercase text-center sm:text-3xl font-montserrat text-4xl font-thin'>#TopPicksBeautyAwards</h2>
 			</div>
 			<div className='relative '>
 				<div
