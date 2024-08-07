@@ -1,12 +1,7 @@
-import safeSeal from "../../assets/images/safe-seal/safeSeal.svg";
-import safeSealTeen from "../../assets/images/safe-seal/safeSealTeen.svg";
-import maternity from "../../assets/images/safe-seal/maternity.webp";
-import logos from "../../assets/images/safe-seal/awards/safeSealAwardsArray";
+
 import { Button } from "../components/Components";
 import { buttonStyle } from "../../styles/responsiveStyling";
 import safeSealBG from "../../assets/images/safe-seal/safeSealBG.jpeg";
-import { BarsArrowDownIcon, CheckBadgeIcon } from "@heroicons/react/24/outline";
-import badge from "../../assets/images/safe-seal/badge.svg";
 import SafeSealTierCard from "./SafeSealTierCard";
 const SafeSealTiers = () => {
 	return (
@@ -21,7 +16,7 @@ const SafeSealTiers = () => {
 					<div className='grid grid-cols-1 w-fit gap-24'>
 						<SafeSealTierCard
 							tier='Tier 1'
-							option1='Review of up to 4 Product SKUs'
+							option1='Review of 4 Product SKUs'
 							option2='1 year licensing of the seal issued for display on packaging, social, and website'
 						/>
 						<SafeSealTierCard
