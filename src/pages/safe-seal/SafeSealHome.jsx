@@ -16,9 +16,7 @@ const SafeSealHome = () => {
 					<p className='py-12 text-4xl ml-2 indent-6 mt-2 text-justify leading-[60px] tracking-widest'>
 						Scientifically Approved Formula & Efficacy Seal
 					</p>
-					<p className='py-12 text-4xl ml-2 indent-6 mt-2  leading-[60px] tracking-widest text-center font-thin uppercase italic'>
-						Elevate Your Brand
-					</p>
+				
 				</div>
 				<div className='w-fit'>
 					<img src={safeSeal} alt='safe seal' className='w-[900px] h-auto' />

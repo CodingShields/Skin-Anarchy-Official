@@ -3,6 +3,7 @@ import { Button } from "../components/Components";
 import { buttonStyle } from "../../styles/responsiveStyling";
 import safeSealBG from "../../assets/images/safe-seal/safeSealBG.jpeg";
 import SafeSealTierCard from "./SafeSealTierCard";
+import SafeSealNav from "./SafeSealNav";
 const SafeSealTiers = () => {
 	return (
 		<div className='w-full min-h-screen  animate-fadeIn relative font-montserrat font-thin'>
@@ -11,8 +12,8 @@ const SafeSealTiers = () => {
 				<h1 className='text-5xl mb-8'>Product Review Tier Options</h1>
 				<h1 className='text-5xl mb-8'>Need exact images</h1>
 				<h1 className='text-5xl mb-8'>Maybe add more detail about the vetting process?</h1>
-
-				<div className='w-full flex flex-row justify-center items-start pt-24 space-x-8'>
+				<SafeSealNav />
+				<div className='w-full flex flex-row justify-center items-start pt-24 space-x-8'>	
 					<div className='grid grid-cols-1 w-fit gap-24'>
 						<SafeSealTierCard
 							tier='Tier 1'
