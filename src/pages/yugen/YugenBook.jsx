@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import HTMLFlipBook from "react-pageflip";
 import whiteLogo from "../../assets/images/logos/white-logo.png";
 import page1yugenvol2 from "../../assets/data/yugen/page1yugenvol2.jpg";
@@ -23,6 +23,7 @@ import page19yugenvol2 from "../../assets/data/yugen/page19yugenvol2.jpg";
 import page20yugenvol2 from "../../assets/data/yugen/page20yugenvol2.jpg";
 
 const pages = [
+	whiteLogo,
 	page1yugenvol2,
 	page2yugenvol2,
 	page3yugenvol2,
@@ -44,11 +45,8 @@ const pages = [
 	page19yugenvol2,
 	page20yugenvol2,
 ];
-const YugenBook = ({ toggleMag }) => {
-	console.log(toggleMag);
-	const [bookOpen, setBookOpen] = useState(false);
+const YugenBook = () => {
 	const [currentPage, setCurrentPage] = useState(0);
-	console.log(currentPage);
 	const bookRef = useRef();
 	const onFlip = (e) => {
 		setCurrentPage(e.data);

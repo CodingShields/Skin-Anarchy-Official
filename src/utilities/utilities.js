@@ -129,6 +129,13 @@ const handleSearch = (arr, searchItem) => {
 const timer = async (ms) => new Promise((res) => setTimeout(res, ms));
 
 
+const classNames = (...classes) => {
+	return classes.filter(Boolean).join(" ");
+};
+
+const resetForm = (setForm, initialState) => {
+	setForm({ ...initialState });
+};
 
 export {
 	handleSearch,
@@ -144,4 +151,6 @@ export {
 	findCurrentUser,
 	findCurrentUserName,
 	timer,
+	classNames,
+	resetForm,
 };

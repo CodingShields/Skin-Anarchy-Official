@@ -1,7 +1,8 @@
 import PropTypes from "prop-types";
 import workingCircle from "../../assets/iconsAnimated/workingCircle.svg";
 import errorIcon from "../../assets/iconsAnimated/errorIcon.svg";
-
+import submissionSuccess2 from "../../assets/iconsAnimated/submissionSuccess2.svg";
+import { classNames } from "../../utilities/utilities";
 const SelectComp = (props) => {
 	const { options, value, onChange, id, name, style, required } = props;
 	return (
@@ -89,7 +90,7 @@ const Button = (props) => {
 	const { children, onClick, style, image, text, imageStyle, icon } = props;
 	return (
 		<>
-			<button  className={style} onClick={onClick}>
+			<button className={style} onClick={onClick}>
 				{icon}
 				{image && <img src={image} alt='button' className={imageStyle} />}
 				{children && children}
@@ -109,7 +110,7 @@ Button.propTypes = {
 	imageStyle: PropTypes.string,
 };
 
-const FormComp = ({ children, style, open}) => {
+const FormComp = ({ children, style, open }) => {
 	if (!open) return null;
 	return <form className={style}>{children}</form>;
 };
@@ -188,18 +189,39 @@ PageWrapper.propTypes = {
 };
 
 const InputCheckBox = (props) => {
-	const { name, id, checked, onChange, value, placeholder, style } = props;
-	return (
-		<input
-			checked={checked}
-			value={value}
-			id={id}
-			type={"checkbox"}
-			placeholder={placeholder}
-			className={style}
-			onChange={onChange}
-		/>
-	)
-}
+	const {  id, checked, onChange, value, placeholder, style } = props;
+	return <input checked={checked} value={value} id={id} type={"checkbox"} placeholder={placeholder} className={style} onChange={onChange} />;
+};
 
-export { SelectComp, InputComp, TextAreaComp, Button, FormComp, WorkingModal, ErrorModal, Modal, PageWrapper, InputCheckBox };
+
+InputCheckBox.propTypes = {
+	id: PropTypes.string,
+	checked: PropTypes.bool,
+	onChange: PropTypes.func,
+	value: PropTypes.string,
+	placeholder: PropTypes.string,
+	style: PropTypes.string,
+};
+
+const SubmissionSuccessModal = ({ message, open }) => {
+	if (!open) return null;
+
+	return (
+		<div className={classNames(`absolute w-full h-full z-40 top-0 left-0  ${open ?'animate-fadeIn': 'animate-fadeOut'}`)}>
+			<div onClick={(e) => e.stopPropagation()} className='flex flex-col justify-center items-center place-content-center w-full h-full'>
+				<h1 className='w-full text-2xl font-bold animate-pulse text-black text-center '></h1>
+				{message}
+				<div className='w-fit h-fit border-2 border-white px-6 py-4 rounded-3xl bg-black shadow-2xl shadow-white/30'>
+					<img src={submissionSuccess2} className='w-[600px] mx-auto' />
+				</div>
+			</div>
+		</div>
+	);
+};
+
+SubmissionSuccessModal.propTypes = {
+	message: PropTypes.string,
+	open: PropTypes.bool,
+};
+
+export { SelectComp, InputComp, TextAreaComp, Button, FormComp, WorkingModal, ErrorModal, Modal, PageWrapper, InputCheckBox, SubmissionSuccessModal };

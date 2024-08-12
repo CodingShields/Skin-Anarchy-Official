@@ -155,7 +155,7 @@ const ContactForm = ({ close, open }) => {
 					</div>
 					<InputComp
 						type='tel'
-						style={`${inputStyle} ${form.phoneCountry && "text-black placeholder:indent-10"}`}
+						style={`${inputStyle} ${form.phoneCountry && "text-black placeholder:indent-[2.5rem] indent-[2.5rem]"}`}
 						onChange={(e) => setForm({ ...form, phone: e.target.value })}
 						placeholder='Phone Number'
 						name='phone-number'

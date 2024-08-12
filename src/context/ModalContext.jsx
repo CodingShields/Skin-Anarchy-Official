@@ -5,13 +5,48 @@ const ModalContext = createContext();
 export const ModalProvider = ({ children }) => {
 	const [error, setError] = useState(null);
 	const [isLoading, setIsLoading] = useState(false);
+	const [modalOpen, setOpenModal] = useState(false);
+	const [showSubmissionSuccess, setShowSubmissionSuccess] = useState(false);
 	const showError = (message) => setError(message);
 	const hideError = () => setError(null);
 
-	const showLoading = () => setIsLoading(true);
-	const hideLoading = () => setIsLoading(false);
+	const showModal = async () => setOpenModal(true);
+	const hideModal = async () => {
+		setOpenModal(false)
+		setError(null)
+		setShowSubmissionSuccess(false)
+		setIsLoading(false)
+	}
 
-	return <ModalContext.Provider value={{ error, isLoading, showError, hideError, showLoading, hideLoading }}>{children}</ModalContext.Provider>;
+	const showLoading = async () => {
+		setOpenModal(true)
+		setIsLoading(true)
+	};
+	const hideLoading = async () => setIsLoading(false);
+
+	const showSuccess = async () => setShowSubmissionSuccess(true);
+	const hideSuccess = async () => setShowSubmissionSuccess(false);
+
+	return (
+		<ModalContext.Provider
+			value={{
+				error,
+				isLoading,
+				showError,
+				hideError,
+				showLoading,
+				hideLoading,
+				showSuccess,
+				hideSuccess,
+				hideModal,
+				showModal,
+				modalOpen,
+				showSubmissionSuccess,
+			}}
+		>
+			{children}
+		</ModalContext.Provider>
+	);
 };
 
 ModalProvider.propTypes = {
