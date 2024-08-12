@@ -18,6 +18,7 @@ const formInterest = [
 	{ value: null, name: "Select an option" },
 	{ value: "sponsorship", name: "Sponsorship" },
 	{ value: "guestShow", name: "Being a guest on the show" },
+	{ value: "safeSeal", name: "S.A.F.E. Seal" },
 	{ value: "both", name: "Both" },
 	{ value: "other", name: "Other" },
 ];
@@ -153,14 +154,14 @@ const ContactForm = ({ close, open }) => {
 							onChange={(e) => setForm({ ...form, phoneCountry: e.target.value })}
 							id='country'
 							name='country'
-							style={`${smallSelectStyle} ${form.phoneCountry && "text-black"}`}
+							style={`${smallSelectStyle} ${form.phoneCountry && "text-black font-normal "}`}
 							required
 						/>
-						<img src={singleChevronDown} className='pointer-events-none absolute right-3 top-0 h-full w-5 text-black' aria-hidden='true' />
+						<img src={singleChevronDown} className='pointer-events-none absolute right-2 top-0 h-full w-5 text-black' aria-hidden='true' />
 					</div>
 					<InputComp
 						type='tel'
-						style={`${selectStyle} ${form.phoneCountry && "text-black"}`}
+						style={`${inputStyle} ${form.phoneCountry && "text-black placeholder:indent-10"}`}
 						onChange={(e) => setForm({ ...form, phone: e.target.value })}
 						placeholder='Phone Number'
 						name='phone-number'
@@ -174,7 +175,7 @@ const ContactForm = ({ close, open }) => {
 				</div>
 				<div>
 					<h1 className='block text-sm leading-6 text-white tracking-widest mb-2'>What are you interested in?</h1>
-					<SelectComp onChange={(e) => setForm({ ...form, interest: e.target.value })} style={`${selectStyle}`} options={formInterest} />
+					<SelectComp onChange={(e) => setForm({ ...form, interest: e.target.value })} style={`${selectStyle} font-normal`} options={formInterest} />
 				</div>
 				<TextAreaComp
 					onChange={(e) => setForm({ ...form, message: e.target.value })}
@@ -184,11 +185,11 @@ const ContactForm = ({ close, open }) => {
 					defaultValue=''
 					value={form.message}
 					placeholder='Message'
-					style={textAreaStyle}
+					style={`${textAreaStyle} font-normal`}
 				/>
 			</div>
 			<div className='pt-8 w-full inline-flex justify-center'>
-				<Button onClick={handleFormSubmit} type='submit' style={buttonStyle} text="Let's Talk" />
+				<Button onClick={handleFormSubmit} type='submit' style={buttonStyle} text="Submit" />
 			</div>
 		</FormComp>
 	);

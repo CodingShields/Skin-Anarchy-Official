@@ -16,8 +16,6 @@ const logos = [
 	{ name: "ME COSMETICS", logo: MeCosmetics },
 	{ name: "STAMINA", logo: Stamina },
 	{ name: "RETROUVE", logo: RetroUve },
-	{ name: "SKIN AT WORK", logo: skinAtWork },
-	{ name: "PEACE OUT", logo: peaceOut },
 ];
 
 export default logos

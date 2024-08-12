@@ -204,31 +204,31 @@ const episodes = [
 	},
 	{
 		name: "Top Makeup Artists",
-		link: "/members-area/podcast/top-make-up-artists-podcasts",
+		link: "/members-area/podcast/current-podcast-episode",
 	},
 	{
 		name: "Top Doctors",
-		link: "/members-area/podcast/top-doctors-podcasts",
+		link: "/members-area/podcast/current-podcast-episode",
 	},
 	{
 		name: "Brand Founders",
-		link: "/members-area/podcast/brand-founders-podcasts",
+		link: "/members-area/podcast/current-podcast-episode",
 	},
 	{
 		name: "Thought Leaders",
-		link: "/members-area/podcast/thought-leaders-podcasts",
+		link: "/members-area/podcast/current-podcast-episode",
 	},
 	{
 		name: "Editors And Journalists",
-		link: "/members-area/podcast/editors-and-journalists-podcasts",
+		link: "/members-area/podcast/current-podcast-episode",
 	},
 	{
 		name: "Celebrities",
-		link: "/members-area/podcast/celebrity-podcasts",
+		link: "/members-area/podcast/current-podcast-episode",
 	},
 	{
 		name: "Master Class",
-		link: "/members-area/podcast/master-class",
+		link: "/members-area/podcast/current-podcast-episode",
 	},
 ];
 
@@ -249,45 +249,19 @@ const blog = [
 	},
 	{
 		name: "Beauty Culture",
-		link: "/members-area/skin-anarchy-blog/beauty-culture",
+		link: "/members-area/skin-anarchy-blog",
 	},
 	{
 		name: "Fragrance",
-		link: "/members-area/skin-anarchy-blog/fragrance",
+		link: "/members-area/skin-anarchy-blog",
 	},
 	{
 		name: "Episode Summaries",
-		link: "/members-area/skin-anarchy-blog/podcast-summaries",
+		link: "/members-area/skin-anarchy-blog",
 	},
 	{
 		name: "Science of Skin",
-		link: "/members-area/skin-anarchy-blog/science-of-skin",
-	},
-];
-
-const connect = [
-	{
-		name: "Get Featured On Our Show",
-		link: "/members-area/connect/get-featured-on-our-show",
-	},
-	{
-		name: "Join Our Team",
-		link: "/members-area/connect/join-our-team",
-	},
-	{
-		name: "Become A Sponsor",
-		link: "/members-area/connect/become-a-sponsor",
-	},
-];
-
-const account = [
-	{
-		name: "My Account",
-		link: "/members-area/account",
-	},
-	{
-		name: "Logout",
-		link: "/logout",
+		link: "/members-area/skin-anarchy-blog",
 	},
 ];
 
@@ -350,6 +324,37 @@ const blogArray = [
 	fragrance,
 	scienceOfSkin,
 	// episodeSummaries,
+];
+
+const safeSealArray = [
+	{
+		name: "Home",
+		link: "/members-area/safe-seal/home",
+	},
+	{
+		name: "About",
+		link: "/members-area/safe-seal/about",
+	},
+	{
+		name: "Board of Advisors",
+		link: "/members-area/safe-seal/board-of-advisors",
+	},
+	{
+		name: "Review Committee",
+		link: "/members-area/safe-seal/review-committee",
+	},
+	{
+		name: "Tiers",
+		link: "/members-area/safe-seal/tiers",
+	},
+	{
+		name: "S.A.F.E. Brands",
+		link: "/members-area/safe-seal/safe-seal-brands",
+	},
+	{
+		name: "Contact",
+		link: "/members-area/safe-seal/Contact",
+	},
 ];
 const buttonStyle = "uppercase font-thin underlineAnimate subpixel-antialiased tracking-[6px] text-white sm:text-[8px] text-[16px]";
 const activeNavButton =
@@ -454,15 +459,14 @@ const NavBar = () => {
 					}}
 				/>
 				<Button
-					style={state.currentMenu === "safe seal" ? activeNavButton : buttonStyle}
-					text={"safe seal"}
+					style={state.currentMenu === "safe-seal" ? activeNavButton : buttonStyle}
+					text={"s.a.f.e. seal"}
 					onClick={() => {
 						setState({
 							...state,
-							currentMenu: "safe seal",
-							openSubMenu: false,
+							currentMenu: "safe-seal",
+							openSubMenu: true,
 						});
-						navigate("/members-area/safe-seal");
 					}}
 				/>
 				<div className={`${!isMobile && "inline-flex w-fit space-x-4"}`}>
@@ -602,7 +606,6 @@ const NavBar = () => {
 									return (
 										<div key={index} className='w-full h-full text-center animate-fadeIn transition-all delay-200 mx-auto'>
 											<img src={item.image} className='w-3/5 mx-auto rounded-md ' />
-											{/* <h1 className='w-3/5 mx-auto uppercase text-white text-xl font-montserrat font-thin  py-4'>{item.name}</h1> */}
 										</div>
 									);
 								})}
@@ -610,8 +613,6 @@ const NavBar = () => {
 						</HighlightMenu>
 					</div>
 				</NavBarDropDown>
-				{/* Sale Seal Drop Down */}
-				{/* <NavBarDropDown open={open} menu={menu} text={"safe seal"}></NavBarDropDown> */}
 				<NavBarDropDown open={state.openSubMenu} menu={state.currentMenu} text={"awards"}>
 					<div className='flex flex-row w-full justify-center items-center bg-black border-white border-b-[1px] py-4 space-x-12'>
 						{awards.map((item, index) => {
@@ -625,9 +626,9 @@ const NavBar = () => {
 						})}
 					</div>
 				</NavBarDropDown>
-				{/* <NavBarDropDown open={open} menu={menu} text={"connect"}>
-					<div className='flex flex-row w-full justify-center items-center bg-black border-white border-b-[1px] py-10 space-x-24'>
-						{connect.map((item, index) => {
+				<NavBarDropDown open={state.openSubMenu} menu={state.currentMenu} text={"safe-seal"}>
+					<div className='flex flex-row w-full justify-center items-center bg-black border-white border-b-[1px] py-4 space-x-18'>
+						{safeSealArray.map((item, index) => {
 							return (
 								<>
 									<a key={index} href={item.link}>
@@ -637,7 +638,7 @@ const NavBar = () => {
 							);
 						})}
 					</div>
-				</NavBarDropDown> */}
+				</NavBarDropDown>
 			</div>
 		</div>
 	);

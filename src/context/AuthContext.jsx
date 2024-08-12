@@ -18,6 +18,7 @@ export const AuthContextProvider = ({ children }) => {
 	const navigate = useNavigate();
 	const [user, setUser] = useState({});
 	const createUser = async ({ firstName, lastName, email, phone, password }) => {
+	
 		const authUser = await createUserWithEmailAndPassword(auth, email, password);
 		await updateProfile(authUser.user, {
 			displayName: `${firstName}`,
