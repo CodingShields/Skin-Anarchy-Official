@@ -8,14 +8,14 @@ import skinAtWork from "./skinAtWork.svg";
 import peaceOut from "./peaceOut.svg";
 
 const logos = [
-	{ name: "ONELOGY", logo:OneOlogy },
-	{ name: "TWIISH", logo: Twiish },
-	{ name: "AVESEENA", logo: AveSeena },
-	{ name: "CODEX", logo: Codex },
-	{ name: "ME COSMETICS", logo: MeCosmetics },
-	{ name: "STAMINA", logo: Stamina },
-	{ name: "SKIN AT WORK", logo: skinAtWork },
-	{ name: "PEACE OUT", logo: peaceOut },
+	{ name: "ONELOGY", logo: OneOlogy, teen: false },
+	{ name: "TWIISH", logo: Twiish, teen: true },
+	{ name: "AVESEENA", logo: AveSeena, teen: false },
+	{ name: "CODEX", logo: Codex, teen: false },
+	{ name: "ME COSMETICS", logo: MeCosmetics, teen: false },
+	{ name: "STAMINA", logo: Stamina, teen: false },
+	{ name: "SKIN AT WORK", logo: skinAtWork, teen: false },
+	{ name: "PEACE OUT", logo: peaceOut, teen: true },
 ];
 
 export default logos
