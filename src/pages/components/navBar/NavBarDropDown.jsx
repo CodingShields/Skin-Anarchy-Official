@@ -18,4 +18,5 @@ NavBarDropDown.propTypes = {
 	menu: PropTypes.string.isRequired,
 	open: PropTypes.bool.isRequired,
 	children: PropTypes.node.isRequired,
+	text: PropTypes.string.isRequired,
 };
