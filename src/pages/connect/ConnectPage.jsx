@@ -4,13 +4,10 @@ import ContactForm from "./ContactForm";
 import ReviewForm from "./ReviewForm";
 import socialNav from "../../assets/data/socialNav";
 import FormModal from "../components/FormModal";
-import {Button} from "../components/Components"
+import { Button } from "../components/Components"
 import { buttonStyle } from "../../styles/responsiveStyling";
 const ConnectPage = () => {
 	const [state, setState] = useState({
-		error: false,
-		errorMessage: "",
-		loading: false,
 		openFormModal: false,
 		openContactForm: false,
 		openReviewForm: false,

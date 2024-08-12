@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthContextProvider } from "./context/AuthContext";
-
+import { ModalProvider } from "./context/ModalContext.jsx";
+import GlobalModals from "./pages/components/GlobalModals.jsx";
 //About Pages
 import MissionStatementComp from "./pages/about/MissionStatementComp.jsx";
 import AboutUs from "./pages/about/AboutUs";
@@ -60,55 +61,58 @@ function App() {
 	return (
 		<BrowserRouter>
 			<AuthContextProvider>
-				<Routes>
-					<Route index element={<LoginPage />} />
-					<Route path='sign-up' element={<SignUpPage />} />
-					<Route path='disclaimer' element={<DisclaimerPage />} />
-					<Route path='privacy-policy' element={<PrivacyPolicyPage />} />
+				<ModalProvider>
+					<GlobalModals />
+					<Routes>
+						<Route index element={<LoginPage />} />
+						<Route path='sign-up' element={<SignUpPage />} />
+						<Route path='disclaimer' element={<DisclaimerPage />} />
+						<Route path='privacy-policy' element={<PrivacyPolicyPage />} />
 
-					<Route element={<ProtectedRoute />} />
-					<Route path='members-area' element={<HomeLayout />}>
-						<Route path='home' element={<HomePage />} />
-						{/* About Pages */}
-						<Route path='about/about-us' element={<AboutUs />} />
-						<Route path='about/mission-statement' element={<MissionStatementComp />} />
-						<Route path='about/featured-press' element={<FeaturedPress />} />
-						{/* PodCast Pages */}
-						<Route path='podcast/current-podcast-episode' element={<CurrentPodcastEpisode />} />
-						{/* Award Pages */}
-						<Route path='awards/top-picks' element={<TopPicksPage />} />
-						<Route path='awards/master-class' element={<MasterClassPage />} />
-						<Route path='awards/science-of-skin-awards' element={<ScienceOfSkinAwards />} />
-						{/* Yugen Pages	 */}
-						<Route path='yugen' element={<YugenPage />} />
-						{/* Blog Pages */}
-						<Route path='skin-anarchy-blog' element={<SkinAnarchyBlog />} />
-						<Route path='skin-anarchy-blog/beauty-culture' element={<BeautyCultureBlog />} />
-						<Route path='skin-anarchy-blog/podcast-summaries' element={<PodcastSummariesBlog />} />
-						<Route path='skin-anarchy-blog/science-of-skin' element={<ScienceOfSkinBlog />} />
-						<Route path='skin-anarchy-blog/fragrance' element={<FragranceBlog />} />
-						<Route path='past-blog' element={<PrevBlogs />} />
-						{/* Safe Seal Page */}
-						<Route path='safe-seal/home' element={<SafeSealHome />} />
-						<Route path='safe-seal/board-of-advisors' element={<SafeSealAdvisors />} />
-						<Route path='safe-seal/safe-seal-brands' element={<SafeSealBrands />} />
-						<Route path='safe-seal/tiers' element={<SafeSealTiers />} />
-						<Route path='safe-seal/review-committee' element={<SafeSealReviewCommittee />} />
-						<Route path='safe-seal/contact' element={<SafeSealContact />} />
-						<Route path='safe-seal/about' element={<SafeSealAbout />} />
-						
-						{/* Shop Page */}
-						<Route path='shop' element={<ShopMain />} />
-						<Route path='account' element={<AccountPage />} />
-						<Route path='log-out' element={<LogoutPage />} />
-						<Route path='connect' element={<ConnectPage />} />
-						{/* Support Page */}
-						<Route path='support' element={<SupportPage />} />
-						{/* Redirect Pages */}
-						<Route path='thank-you' element={<ThankYouPage />} />
-						<Route path='welcome' element={<WelcomePage />} />
-					</Route>
-				</Routes>
+						<Route element={<ProtectedRoute />} />
+						<Route path='members-area' element={<HomeLayout />}>
+							<Route path='home' element={<HomePage />} />
+							{/* About Pages */}
+							<Route path='about/about-us' element={<AboutUs />} />
+							<Route path='about/mission-statement' element={<MissionStatementComp />} />
+							<Route path='about/featured-press' element={<FeaturedPress />} />
+							{/* PodCast Pages */}
+							<Route path='podcast/current-podcast-episode' element={<CurrentPodcastEpisode />} />
+							{/* Award Pages */}
+							<Route path='awards/top-picks' element={<TopPicksPage />} />
+							<Route path='awards/master-class' element={<MasterClassPage />} />
+							<Route path='awards/science-of-skin-awards' element={<ScienceOfSkinAwards />} />
+							{/* Yugen Pages	 */}
+							<Route path='yugen' element={<YugenPage />} />
+							{/* Blog Pages */}
+							<Route path='skin-anarchy-blog' element={<SkinAnarchyBlog />} />
+							<Route path='skin-anarchy-blog/beauty-culture' element={<BeautyCultureBlog />} />
+							<Route path='skin-anarchy-blog/podcast-summaries' element={<PodcastSummariesBlog />} />
+							<Route path='skin-anarchy-blog/science-of-skin' element={<ScienceOfSkinBlog />} />
+							<Route path='skin-anarchy-blog/fragrance' element={<FragranceBlog />} />
+							<Route path='past-blog' element={<PrevBlogs />} />
+							{/* Safe Seal Page */}
+							<Route path='safe-seal/home' element={<SafeSealHome />} />
+							<Route path='safe-seal/board-of-advisors' element={<SafeSealAdvisors />} />
+							<Route path='safe-seal/safe-seal-brands' element={<SafeSealBrands />} />
+							<Route path='safe-seal/tiers' element={<SafeSealTiers />} />
+							<Route path='safe-seal/review-committee' element={<SafeSealReviewCommittee />} />
+							<Route path='safe-seal/contact' element={<SafeSealContact />} />
+							<Route path='safe-seal/about' element={<SafeSealAbout />} />
+
+							{/* Shop Page */}
+							<Route path='shop' element={<ShopMain />} />
+							<Route path='account' element={<AccountPage />} />
+							<Route path='log-out' element={<LogoutPage />} />
+							<Route path='connect' element={<ConnectPage />} />
+							{/* Support Page */}
+							<Route path='support' element={<SupportPage />} />
+							{/* Redirect Pages */}
+							<Route path='thank-you' element={<ThankYouPage />} />
+							<Route path='welcome' element={<WelcomePage />} />
+						</Route>
+					</Routes>
+				</ModalProvider>
 			</AuthContextProvider>
 		</BrowserRouter>
 	);

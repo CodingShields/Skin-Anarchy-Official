@@ -5,10 +5,11 @@ import { arrayUnion, setDoc, doc } from "firebase/firestore";
 import { nanoid } from "nanoid";
 import whiteLogo from "../../assets/images/logos/white-logo.png";
 import singleChevronDown from "../../assets/icons/singleChevronDown.svg";
-import { InputComp, SelectComp, TextAreaComp, Button, FormComp, ErrorModal, WorkingModal } from "../components/Components";
+import { InputComp, SelectComp, TextAreaComp, Button, FormComp} from "../components/Components";
 import { inputStyle, buttonStyle, formStyle, selectStyle, smallSelectStyle, textAreaStyle } from "../../styles/responsiveStyling";
-import { XCircleIcon, BuildingOfficeIcon, AtSymbolIcon, PhoneIcon, UserCircleIcon  } from "@heroicons/react/24/outline";
-
+import { XCircleIcon, BuildingOfficeIcon, AtSymbolIcon, UserCircleIcon } from "@heroicons/react/24/outline";
+import { useModal } from "../../context/ModalContext";
+import { timer } from "../../utilities/utilities";
 const country = [
 	{ value: "us", name: "US" },
 	{ value: "eu", name: "EU" },
@@ -24,12 +25,6 @@ const formInterest = [
 ];
 
 const ContactForm = ({ close, open }) => {
-	const [state, setState] = useState({
-		loading: false,
-		error: false,
-		message: "",
-	});
-
 	const [form, setForm] = useState({
 		firstName: "",
 		lastName: "",
@@ -40,13 +35,13 @@ const ContactForm = ({ close, open }) => {
 		interest: "",
 		message: "",
 	});
+	const { showError, showLoading, hideLoading, hideError } = useModal();
 
 	const currentDate = new Date();
 
 	const handleFormSubmit = async (e) => {
 		e.preventDefault();
-		setState({ ...state, loading: true });
-
+		showLoading();
 		try {
 			const docRef = doc(db, "forms", "contact");
 			await setDoc(
@@ -69,12 +64,13 @@ const ContactForm = ({ close, open }) => {
 				},
 				{ merge: true }
 			);
-
-			setState({ ...state, loading: false, error: false, message: "" });
+			await timer(2000);
+			hideLoading();
 			close(); // Close modal after successful form submission
-		} catch (e) {
-			setState({ ...state, loading: false, error: true, message: e.message });
-			console.error("Error adding document: ", e, e.message);
+		} catch (error) {
+			showError(error.message);
+			await timer(2000);
+			hideError();
 		}
 	};
 
@@ -88,8 +84,6 @@ const ContactForm = ({ close, open }) => {
 					icon={<XCircleIcon className='w-8 h-8 text-white/50 transition-all ease-in-out group-hover:text-white duration-300' />}
 				/>
 			</div>
-			<WorkingModal message={state.message} open={state.loading} />
-			<ErrorModal open={state.error} message={state.message} />
 			<div className='mx-auto w-full text-center pt-2 pb-8'>
 				<img src={whiteLogo} alt='white logo' className='mx-auto h-32' />
 			</div>
@@ -170,7 +164,6 @@ const ContactForm = ({ close, open }) => {
 						required
 						autoFocus
 						value={form.phone}
-						
 					/>
 				</div>
 				<div>
@@ -189,13 +182,14 @@ const ContactForm = ({ close, open }) => {
 				/>
 			</div>
 			<div className='pt-8 w-full inline-flex justify-center'>
-				<Button onClick={handleFormSubmit} type='submit' style={buttonStyle} text="Submit" />
+				<Button onClick={handleFormSubmit} type='submit' style={buttonStyle} text='Submit' />
 			</div>
 		</FormComp>
 	);
 };
 
 ContactForm.propTypes = {
+	open: PropTypes.bool.isRequired,
 	close: PropTypes.func.isRequired,
 };
 

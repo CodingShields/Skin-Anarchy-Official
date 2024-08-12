@@ -5,7 +5,7 @@ import { setDoc, doc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { useUserStoreActions } from "../stateStore/userStore";
 import { useUserStore } from "../stateStore/userStore";
-
+import PropTypes from "prop-types";
 const UserContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
@@ -18,7 +18,6 @@ export const AuthContextProvider = ({ children }) => {
 	const navigate = useNavigate();
 	const [user, setUser] = useState({});
 	const createUser = async ({ firstName, lastName, email, phone, password }) => {
-	
 		const authUser = await createUserWithEmailAndPassword(auth, email, password);
 		await updateProfile(authUser.user, {
 			displayName: `${firstName}`,
@@ -46,20 +45,20 @@ export const AuthContextProvider = ({ children }) => {
 		resetForm();
 	};
 
-	const authCurrentUser = () => {
-		return new Promise((resolve, reject) => {
-			const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-				if (currentUser) {
-					resolve(currentUser);
-					console.log("logged in");
-				} else {
-					reject("No user logged in");
-					console.log("no user logged in");
-				}
-				unsubscribe();
-			});
-		});
-	};
+	// const authCurrentUser = () => {
+	// 	return new Promise((resolve, reject) => {
+	// 		const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+	// 			if (currentUser) {
+	// 				resolve(currentUser);
+	// 				console.log("logged in");
+	// 			} else {
+	// 				reject("No user logged in");
+	// 				console.log("no user logged in");
+	// 			}
+	// 			unsubscribe();
+	// 		});
+	// 	});
+	// };
 
 	const signIn = (email, password) => {
 		return signInWithEmailAndPassword(auth, email, password);
@@ -91,6 +90,9 @@ export const AuthContextProvider = ({ children }) => {
 	}, []);
 
 	return <UserContext.Provider value={{ createUser, user, logout, signIn }}>{children}</UserContext.Provider>;
+};
+AuthContextProvider.propTypes = {
+	children: PropTypes.node.isRequired,
 };
 
 export const UserAuth = () => {

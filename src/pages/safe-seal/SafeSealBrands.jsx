@@ -1,10 +1,8 @@
-import { useState } from "react";
-
+import { useState } from "react"
 import safeSeal from "../../assets/images/safe-seal/safeSeal.svg";
 import safeSealTeen from "../../assets/images/safe-seal/safeSealTeen.svg";
 import logos from "../../assets/images/safe-seal/awards/safeSealAwardsArray";
 import { Button } from "../components/Components";
-import { buttonStyle } from "../../styles/responsiveStyling";
 import safeSealBG from "../../assets/images/safe-seal/safeSealBG.jpeg";
 
 const SafeSealBrands = () => {

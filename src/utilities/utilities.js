@@ -126,6 +126,8 @@ const handleSearch = (arr, searchItem) => {
 	}
 };
 
+const timer = async (ms) => new Promise((res) => setTimeout(res, ms));
+
 
 
 export {
@@ -141,4 +143,5 @@ export {
 	checkAdminAccess,
 	findCurrentUser,
 	findCurrentUserName,
+	timer,
 };

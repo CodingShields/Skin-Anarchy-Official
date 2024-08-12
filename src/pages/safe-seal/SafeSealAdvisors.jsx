@@ -1,10 +1,5 @@
-import safeSeal from "../../assets/images/safe-seal/safeSeal.svg";
-import safeSealTeen from "../../assets/images/safe-seal/safeSealTeen.svg";
-import logos from "../../assets/images/safe-seal/awards/safeSealAwardsArray";
-import { Button } from "../components/Components";
-import { buttonStyle } from "../../styles/responsiveStyling";
+/* eslint-disable react/no-unescaped-entities */
 import safeSealBG from "../../assets/images/safe-seal/safeSealBG.jpeg";
-import cewLogo from "../../assets/images/safe-seal/cewLogo.webp";
 import colellaPic from "../../assets/images/safe-seal/colellaPic.webp";
 import ektaPic from "../../assets/images/safe-seal/ektaPic.webp";
 import ebruPic from "../../assets/images/safe-seal/ebruPic.webp";
@@ -14,6 +9,8 @@ import zamaniPic from "../../assets/images/safe-seal/zamaniPic.webp";
 const SafeSealAdvisors = () => {
 	return (
 		<div className='w-full min-h-screen  animate-fadeIn relative font-montserrat font-thin'>
+			<img src={safeSealBG} className='w-full h-full object-cover opacity-30 absolute top-0' />
+
 			<div className='w-10/12 min-h-screen flex flex-col justify-center items-center mx-auto py-64'>
 				<h1 className='text-6xl text-white'>S.A.F.E. Seal Board of Advisors</h1>
 				<div className='flex flex-col w-full h-full space-y-24 pt-24'>
