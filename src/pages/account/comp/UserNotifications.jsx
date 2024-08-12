@@ -8,6 +8,7 @@ const UserNotifications = ({ notificationsData }) => {
 		loading: false,
 		success: false,
 		loadProfile: false,
+		notificationsOpen: false,
 	});
 	const [notifications, setNotifications] = useState(notificationsData);
 
@@ -20,12 +21,14 @@ const UserNotifications = ({ notificationsData }) => {
 	}, [notificationsData]);
 
 	return (
-		<>
+		<div
+			onMouseEnter={() => setState({ ...state, notificationsOpen: true })}
+			onMouseLeave={() => setState({ ...state, notificationsOpen: false })}>
 			{notifications?.map((item, index) => {
 				return (
 					<div
 						key={index}
-						className='bg-black text-white hover:text-black hover:bg-white transition-all ease-in-out duration-700 group flex flex-col w-[690px] justify-center items-center hover:h-[500px] h-32  overflow-hidden ring-1 ring-white rounded-lg px-12 font-montserrat py-4 mx-auto mb-4'
+						className={`bg-black text-white hover:text-black hover:bg-white relative transition-all ease-in-out duration-700 group flex flex-col w-[690px] justify-center items-center hover:h-[500px] ${state.notificationsOpen ? "h-[500px]" : "h-36"}  overflow-hidden ring-1 ring-white rounded-lg px-12 font-montserrat py-4 mx-auto mb-4`}
 					>
 						<h1 className='text-3xl font-thin uppercase group-hover:font-normal h-fit w-full group-hover:border-black border-b mb-8 pb-2 text-center'>
 							Notifications
@@ -104,7 +107,7 @@ const UserNotifications = ({ notificationsData }) => {
 					</div>
 				);
 			})}
-		</>
+		</div>
 	);
 };
 

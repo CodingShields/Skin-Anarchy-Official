@@ -27,12 +27,13 @@ SelectComp.propTypes = {
 };
 
 const InputComp = (props) => {
-	const { type, placeholder, style, onChange, required, id, autoComplete, value, icon } = props;
+	const { type, placeholder, style, onChange, required, id, autoComplete, value, icon, disabled } = props;
 
 	return (
 		<div className='w-full inline-flex relative items-center'>
 			<div className={`absolute "left-0 ml-2`}>{icon}</div>
 			<input
+				disabled={disabled ? disabled : false}
 				value={value}
 				autoComplete={autoComplete}
 				id={id}
