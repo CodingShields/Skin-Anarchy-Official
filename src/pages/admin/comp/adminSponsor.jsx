@@ -63,9 +63,9 @@ const AdminSponsor = () => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-start w-full h-full mt-20 pb-10">
-      <h1 className="text-4xl font-bold text-black">Admin Sponsor Tool</h1>
-      <div className="w-11/12  h-full  flex flex-row py-4 space-x-4">
+		<div className='flex flex-col items-center justify-start w-full h-full mt-20 pb-10'>
+			<h1 className='text-3xl font-bold text-red-500 mb-2 text-center py-2'>This Tool is not active</h1>
+			{/* <div className="w-11/12  h-full  flex flex-row py-4 space-x-4">
         <div className="w-full h-11/12 flex flex-col items-center justify-start bg-white shadow-black shadow-xl rounded-lg">
           <h1 className="text-2xl font-bold text-black w-11/12 border-b-2 border-black text-center mt-4 pb-2">
             Current Sponsors
@@ -233,9 +233,9 @@ const AdminSponsor = () => {
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  );
+      </div> */}
+		</div>
+	);
 };
 
 export default AdminSponsor;

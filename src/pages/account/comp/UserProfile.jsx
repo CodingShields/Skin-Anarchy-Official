@@ -101,11 +101,11 @@ const UserProfile = ({ profileData }) => {
 						</div>
 						<div className='inline-flex justify-center items-center w-fit'>
 							<p className='w-48 uppercase tracking-widest text-right px-4'>Last Login:</p>
-							<p className='w-fit text-center uppercase tracking-widest ml-2'> lastLogin</p>
+							<p className='w-fit text-center uppercase tracking-widest ml-2'> {formatTimeStamp(user?.lastLogin)}</p>
 						</div>
 						<div className='inline-flex justify-center items-center w-fit'>
 							<p className='w-48 uppercase tracking-widest text-right px-4'>Joined:</p>
-							<p className='w-fit text-center uppercase tracking-widest ml-2'> signUpDate</p>
+							<p className='w-fit text-center uppercase tracking-widest ml-2'> {formatTimeStamp(user?.signUpDate)}</p>
 						</div>
 					</div>
 				</div>

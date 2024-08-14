@@ -90,14 +90,12 @@ TextAreaComp.propTypes = {
 const Button = (props) => {
 	const { children, onClick, style, image, text, imageStyle, icon } = props;
 	return (
-		<>
-			<button className={style} onClick={onClick}>
-				{icon}
-				{image && <img src={image} alt='button' className={imageStyle} />}
-				{children && children}
-				{text && text}
-			</button>
-		</>
+		<button className={style} onClick={onClick}>
+			{icon}
+			{image && <img src={image} alt='button' className={imageStyle} />}
+			{children && children}
+			{text && text}
+		</button>
 	);
 };
 
@@ -190,10 +188,9 @@ PageWrapper.propTypes = {
 };
 
 const InputCheckBox = (props) => {
-	const {  id, checked, onChange, value, placeholder, style } = props;
+	const { id, checked, onChange, value, placeholder, style } = props;
 	return <input checked={checked} value={value} id={id} type={"checkbox"} placeholder={placeholder} className={style} onChange={onChange} />;
 };
-
 
 InputCheckBox.propTypes = {
 	id: PropTypes.string,
@@ -208,7 +205,7 @@ const SubmissionSuccessModal = ({ message, open }) => {
 	if (!open) return null;
 
 	return (
-		<div className={classNames(`absolute w-full h-full z-40 top-0 left-0  ${open ?'animate-fadeIn': 'animate-fadeOut'}`)}>
+		<div className={classNames(`absolute w-full h-full z-40 top-0 left-0  ${open ? "animate-fadeIn" : "animate-fadeOut"}`)}>
 			<div onClick={(e) => e.stopPropagation()} className='flex flex-col justify-center items-center place-content-center w-full h-full'>
 				<h1 className='w-full text-2xl font-bold animate-pulse text-black text-center '></h1>
 				{message}

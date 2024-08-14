@@ -1,7 +1,7 @@
 import { useState } from "react";
 import updateToolsNavBar from "../../../assets/data/admin/updateTools/updateToolsNavBar";
 
-const UpdateTools = () => {
+const UpdateTools = ({ open }) => {
 	const [state, setState] = useState({
 		error: "",
 		errorMessage: "",
@@ -23,9 +23,11 @@ const UpdateTools = () => {
 	function classNames(...classes) {
 		return classes.filter(Boolean).join(" ");
 	}
+	if (!open) return null;
 
 	return (
-		<div className='flex flex-col items-center justify-start w-full fixed'>
+		<div className='flex flex-col items-center justify-start w-full fixed min-h-screen bg-white'>
+			<h1 className="text-3xl uppercase font-montserrat pt-8">Update Tools</h1>
 			<div className='flex flex-row w-full justify-center items-center h-fit border-b-4 border-black py-4 bg-opacity-0'>
 				{state.adminNavBar.map((item, id) => {
 					return (
@@ -56,7 +58,7 @@ const UpdateTools = () => {
 					);
 				})}
 			</div>
-			<div className='w-full h-full'>{compState}</div>
+			<div className='w-full min-h-screen overflow-y-scroll'>{compState}</div>
 		</div>
 	);
 };

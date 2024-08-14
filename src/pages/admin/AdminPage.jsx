@@ -10,39 +10,25 @@ import UpdateTools from "./comp/updateTools.jsx";
 //Nav Icons
 
 const AdminPage = () => {
-	const [renderStep, setRenderStep] = useState("");
-
-	const navigate = useNavigate();
+	const [navSelected, setNavSelected] = useState("Dashboard");
 
 	const handleNavigation = (name) => {
 		const navTarget = name;
-		if (navTarget === "Website") {
-			navigate("/members-area/home");
-		} else if (navTarget === "Dashboard") {
-			setRenderStep(<AdminDashboard />);
-		} else if (navTarget === "News Letter") {
-			setRenderStep(<AdminNewsLetter />);
-		} else if (navTarget === "Members") {
-			setRenderStep(<AdminUserManagement />);
-		} else if (navTarget === "Tech Support") {
-			setRenderStep(<TechSupport />);
-		} else if (navTarget === "Update Tools") {
-			setRenderStep(<UpdateTools />);
-		} else {
-			return;
-		}
+		setNavSelected(navTarget);
 	};
-
-	useEffect(() => {
-		setRenderStep(<AdminDashboard />);
-	}, []);
-
+console.log(navSelected)
 	return (
 		<div className=' w-full h-full bg-white overscroll-y-none'>
-			<AdminNavBar onItemClicked={handleNavigation} />
-
-				{renderStep}
-
+			<div className='w-full overflow-x-clip'>
+				<AdminNavBar onItemClicked={handleNavigation} />
+			</div>
+			<div className='w-full h-full relative'>
+				<AdminDashboard open={navSelected === "Dashboard"} />
+				<AdminNewsLetter open={navSelected === "News Letter"} />
+				<AdminUserManagement open={navSelected === "Members"} />
+				<TechSupport open={navSelected === "Tech Support"} />
+				<UpdateTools open={navSelected === "Update Tools"} />
+			</div>
 		</div>
 	);
 };

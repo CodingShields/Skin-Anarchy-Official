@@ -4,11 +4,24 @@ import { UserAuth } from "../../../context/AuthContext";
 import StatsTab from "./user-management/StatsTab";
 import HamburgerUpBtn from "../../components/buttons/hamburgerUpBtn";
 import HamburgerDownBtn from "../../components/buttons/hamburgerDownBtn";
+import { formatTimeStamp, formatDate } from "../../../utilities/utilities";
+import { BellAlertIcon } from "@heroicons/react/24/outline";
+const adminTable = [
+	"Name",
+	"Email",
+	"Birthday",
+	"Member Since",
+	"Last Visit",
+	`Blog Noti`,
+	"Podcast Noti",
+	"News Letter",
+	"Upcoming Noti",
+	"Sub Member",
+	"Admin Access",
+	"Delete User",
+];
 
-const adminTable = ["Name", "Email", "Birthday", "Member Since", "Last Visit", "Blog Notification", "Podcast Notification", "News Letter", "Upcoming Notification", "Sub Member", "Delete User"];
-
-
-const AdminUserManagement = () => {
+const AdminUserManagement = ({ open }) => {
 	const [users, setUsers] = useState([]);
 	const [state, setState] = useState({
 		error: false,
@@ -38,25 +51,7 @@ const AdminUserManagement = () => {
 
 		fetchData();
 	}, []);
-	console.log(users);
 
-	const formatTimeStamp = (timestamp) => {
-		// Convert nanoseconds to seconds and add to the original seconds
-		const timestampInSeconds = timestamp.seconds + timestamp.nanoseconds / 1e9;
-
-		// Create a new Date object from the timestamp in milliseconds
-		const date = new Date(timestampInSeconds * 1000);
-
-		// Get the month, day, and year from the Date object
-		const month = date.toLocaleString("en-US", { month: "short" });
-		const day = date.getDate();
-		const year = date.getFullYear();
-
-		// Format the date in the desired format
-		const formattedDate = `${month}, ${day}, ${year}`;
-
-		return formattedDate;
-	};
 	const handleNotificationChange = async (e, userId) => {
 		e.preventDefault();
 		const notificationName = e.target.name;
@@ -105,20 +100,17 @@ const AdminUserManagement = () => {
 		}));
 	};
 
-	function classNames(...classes) {
-		return classes.filter(Boolean).join(" ");
-	}
-
 	const divClass = state.statBar
 		? "flex flex-row justify-evenly items-start w-fit h-fit mt-8 space-x-10 border-2 border-black px-8 py-4 bg-white shadow-lg shadow-black transition-all duration-500 ease-in"
 		: "flex flex-row h-14 w-fit  mt-4  transition-bg-opacity bg-opacity-0 duration-300 ease-out mb-4";
+	if (!open) return null;
 
 	return (
-		<div className='flex flex-col items-center justify-start w-full h-full mt-10 '>
+		<div className='flex flex-col items-center justify-start w-full min-h-screen'>
 			<div className='w-full border-b-4 border-black '>
 				<h1 className='text-4xl font-bold mb-2 w-full text-center'>Admin User Management</h1>
 			</div>
-			<div className={divClass}>
+			{/* <div className={divClass}>
 				<div className='flex flex-col justify-start items-center w-full h-full '>
 					{!state.statBar ? (
 						<div className='flex flex-row justify-center items-center w-fit h-fit group '>
@@ -137,11 +129,11 @@ const AdminUserManagement = () => {
 						</div>
 					)}
 				</div>
-			</div>
-			<div className='w-full h-fit flex flex-row justify-center items-end text-center mb-4 '>
-				<div className='flex flex-row justify-evenly items-center text-center text-lg space-x-4 text-sm'>
+			</div> */}
+			<div className='w-full h-fit flex flex-row justify-center items-end text-center my-4 '>
+				<div className='flex flex-row justify-evenly items-center text-center space-x-4 text-sm'>
 					<h1 className='font-bold '>View By:</h1>
-					<select className='w-fit '>
+					<select className='w-fit h-fit '>
 						<option>All Users</option>
 						<option>Active Subs </option>
 						<option>NonActive Subs </option>
@@ -163,87 +155,83 @@ const AdminUserManagement = () => {
 					<button className='bg-black hover:bg-gold-500 text-white font-bold py-2 px-4 rounded'>Export</button>
 				</div>
 			</div>
-			<div className='w-11/12 h-fit inline-flex justify-end items-end mx-auto'>
-				<table class='min-w-full border-collapse border border-gray-400 place-items-center place-content-center'>
+			<div className='w-fit h-fit inline-flex justify-end items-end '>
+				<table className='min-w-max border-collapse border border-gray-400 place-items-center place-content-center'>
 					<thead>
-						<tr className='bg-gray-50 border-b border-gray-200 text-sm'>
-							<th class='border-black border-2 bg-gray-200'>
-								<div className=' mx-auto flex flex-col h-fit w-fit justify-center items-center  text-center whitespace-nowrap'>
-									Select All <input className='h-4 w-4 my-2' type='checkbox' />
+						<tr className='bg-gray-50 border-b border-gray-200 text-[14px]'>
+							<th className='border-black border-2 bg-gray-200'>
+								<div className=' mx-auto flex flex-col h-fit w-fit justify-center items-center  text-center px-2'>
+									<input className='h-3 w-3 my-2' type='checkbox' />
 								</div>
 							</th>
 							{adminTable.map((item, index) => (
-								<th key={index} class='py-2 px-3 border border-black'>
+								<th key={index} className='border border-black w-fit px-2 uppercase'>
 									{item}
 								</th>
 							))}
 						</tr>
 					</thead>
-					<tbody className='text-center group group-hover:bg-blue-200 whitespace-nowrap text-sm'>
+					<tbody className='text-center group  whitespace-nowrap text-[12px] '>
 						{users.map((user, id) => (
-							<tr key={id}>
-								<td class='py-2 px-3 border border-gray-400'>
-									<input className='h-4 w-4' type='checkbox' />
+							<tr key={id} className='h-8 hover:bg-blue-200'>
+								<td className='px-3 border border-gray-400'>
+									<input className='h-3 w-3' type='checkbox' />
 								</td>
 
-								<td class='py-2 px-3 border border-gray-400 '>
+								<td className='px-3 border border-gray-400 '>
 									{user.profile.first} {user.profile.last}
 								</td>
-								<td class='py-2 px-3 border border-gray-400'>{user.profile.email}</td>
-								<td class='py-2 px-3 border border-gray-400'>{user.profile.birthday}</td>
-								<td class='py-2 px-3 border border-gray-400'>{formatTimeStamp(user.profile.signUpDate)}</td>
-								<td class='py-2 px-3 border border-gray-400'>{formatTimeStamp(user.profile.lastLogin)}</td>
-								<td class='py-2 px-3 border border-gray-400'>
-									<select
-										name={"blogNotification"}
-										onChange={(e) => handleNotificationChange(e, user.id)}
-										className='text-md '
-										value={user.profile.blogNotification ? true : false}
-									>
-										<option value={true}>Yes</option>
-										<option value={false}>No</option>
-									</select>
+								<td className='px-3 border border-gray-400'>{user.profile.email}</td>
+								<td className='px-3 border border-gray-400'>{user.profile.birthday}</td>
+								<td className='px-3 border border-gray-400'>{formatTimeStamp(user?.profile.signUpDate)}</td>
+								<td className='px-3 border border-gray-400'>{formatTimeStamp(user?.profile.lastLogin)}</td>
+								<td className=' border border-gray-400'>
+									{user.profile.blogNotification ? (
+										<p className='text-red-500 text-[12px] uppercase font-semibold'>Admin</p>
+									) : (
+										<p className='text-green-500 text-[12px] uppercase font-semibold'>Member</p>
+									)}
 								</td>
-								<td class='py-2 px-3 border border-gray-400'>
-									{" "}
-									<select
-										name={"podcastNotification"}
-										onChange={(e) => handleNotificationChange(e, user.id)}
-										className='text-md '
-										value={user.profile.podcastNotification ? true : false}
-									>
-										<option value={true}>Yes</option>
-										<option value={false}>No</option>
-									</select>
+								<td className='px-3 border border-gray-400'>
+									<p>
+										{user.profile.podcastNotification ? (
+											<p className='text-green-500 text-[12px] uppercase font-semibold'>True</p>
+										) : (
+											<p className='text-red-500 text-[12px] uppercase font-semibold'>False</p>
+										)}
+									</p>
 								</td>
-								<td class='py-2 px-3 border border-gray-400'>
+								<td className='px-3 border border-gray-400 hover:bg-black '>
 									{" "}
-									<select
-										name='newsLetterNotifications'
-										onChange={(e) => handleNotificationChange(e, user.id)}
-										className='text-md rounded-md hover:ring-2 hover:ring-blue-500 hover:ring-opacity-80'
-										value={user.profile.newsLetterNotifications ? true : false}
-									>
-										<option value={true}>Yes</option>
-										<option value={false}>No</option>
-									</select>
+									<p>
+										{user.profile.newsLetterNotifications ? (
+											<p className='text-green-500 text-[12px] uppercase font-semibold'>True</p>
+										) : (
+											<p className='text-red-500 text-[12px] uppercase font-semibold'>False</p>
+										)}
+									</p>
 								</td>
-								<td class='py-2 px-3 border border-gray-400 '>
-									{" "}
-									<select
-										name='upComingNotifications'
-										onChange={(e) => handleNotificationChange(e, user.id)}
-										className='text-md  '
-										value={user.profile.upComingNotifications ? true : false}
-									>
-										<option value={true}>Yes</option>
-										<option value={false}>No</option>
-									</select>
+								<td className='px-3 border border-gray-400 '>
+									<p>
+										{user.profile.upComingNotifications ? (
+											<p className='text-green-500 text-[12px] uppercase font-semibold'>True</p>
+										) : (
+											<p className='text-red-500 text-[12px] uppercase font-semibold'>False</p>
+										)}
+									</p>{" "}
 								</td>
-								<td class='py-2 px-3 border border-gray-400 '>True/False</td>
-								<td class='py-2 px-3 border border-gray-400'>
+								<td className='px-3 border border-gray-400 '>True/False</td>
+
+								<td className='px-3 border border-gray-400 '>
+									{user.profile.adminAccess ? (
+										<p className='text-red-500 text-[12px] uppercase font-semibold'>Admin</p>
+									) : (
+										<p className='text-green-500 text-[12px] uppercase font-semibold'>Member</p>
+									)}
+								</td>
+								<td className='px-3 border border-gray-400'>
 									{" "}
-									<button className=' bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded'>Delete</button>
+									<button className=' transition-all ease-in-out duration-500 hover:bg-red-500  text-black hover:text-white rounded-2xl font-bold py-1 px-2 rounded text-[12px]'>Delete</button>
 								</td>
 							</tr>
 						))}

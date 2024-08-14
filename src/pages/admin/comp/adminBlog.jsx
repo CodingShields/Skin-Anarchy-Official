@@ -10,7 +10,6 @@ import CheckIcon from "@heroicons/react/24/solid/CheckIcon";
 import XCirlceIcon from "@heroicons/react/24/solid/XCircleIcon";
 import WorkingModal from "../../components/WorkingModal";
 import BlogEditor from "./blog/BlogEditor";
-import { image } from "@cloudinary/url-gen/qualifiers/source";
 const AdminBlog = () => {
 	const [state, setState] = useState({
 		loading: false,
@@ -134,7 +133,9 @@ const AdminBlog = () => {
 
 	return (
 		<div className='w-fit h-fit mx-auto space-x-12'>
-			<WorkingModal open={state.loading} />
+			<h1 className='text-3xl font-bold text-red-500 mb-2 text-center py-2'>This Tool is not active</h1>
+
+			{/* <WorkingModal open={state.loading} />
 			<div className='w-full h-fit pb-2 inline-flex justify-center space-x-12 '>
 				<div className='w-full flex flex-col justify-start items-center'>
 					<p className='text-2xl font-bold text-black w-full  text-center py-2'>Admin Blog Upload and Update Tool</p>
@@ -313,7 +314,7 @@ const AdminBlog = () => {
 				<div className='w-fit h-full flex flex-col'>
 					<BlogEditor blogSubmission={handleBlogSubmission} />
 				</div>
-			</div>
+			</div> */}
 		</div>
 	);
 };

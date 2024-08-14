@@ -23,20 +23,28 @@ const HomeLayout = () => {
 	});
 	const [isAdmin, setIsAdmin] = useState(false);
 
-	useEffect(() => {
-		const fetchAdminAccess = async () => {
-			try {
-				const isAdmin = await checkAdminAccess();
-				console.log(isAdmin); // Await the promise
-				setIsAdmin(isAdmin); // Update state with the result
-			} catch (error) {
-				console.error("Error checking admin access:", error);
-				// Handle error if needed
-			}
-		};
+	const location = window.location.pathname;
 
-		fetchAdminAccess(); // Call the async function
-	}, []);
+	const admin = location === "/members-area/account";
+
+	console.log(admin);
+	console.log(isAdmin);
+	const fetchAdminAccess = async () => {
+		try {
+			const isAdmin = await checkAdminAccess();
+			console.log(isAdmin);
+			if (isAdmin === true && admin === true) {
+				setIsAdmin(isAdmin);
+			} else {
+				setIsAdmin(false);
+			}
+			// Update state with the result
+		} catch (error) {
+			console.error("Error checking admin access:", error);
+		}
+	};
+
+	fetchAdminAccess();
 
 	const handleModalClick = () => {
 		setState({ ...state, modalOpen: !state.modalOpen });
@@ -62,7 +70,7 @@ const HomeLayout = () => {
 			{!isAdmin && <ChatBot />}
 			{!isAdmin && <Radio />}
 			{!isAdmin && <Footer handleModal={handleModalClick} />}
-			{isAdmin && <PolicyBar />}
+			{!isAdmin && <PolicyBar />}
 		</>
 	);
 };

@@ -34,7 +34,6 @@ const yearList = () => {
 };
 
 const addHashtags = (inputText) => {
-	// Logic to split input text and return array of hashtags
 	const hashtags = inputText.match(/#\w+/g) || []; // Match hashtags (starting with # and followed by word characters)
 	return hashtags.map((tag) => tag.toLowerCase()); // Convert all hashtags to lowercase for consistency
 };
@@ -46,13 +45,11 @@ const StartPageLoadTop = () => {
 const checkAdminAccess = async () => {
 	const currentUser = UserAuth();
 	const userId = currentUser.user.uid;
-	console.log(userId);
 	try {
 		const docRef = doc(db, "users", `${userId}`);
 		const docSnap = await getDoc(docRef);
 		if (docSnap.exists()) {
 			const adminAccess = docSnap.data().profile.adminAccess;
-			console.log(adminAccess);
 			return adminAccess;
 		} else {
 			console.log("No such document!");
@@ -100,9 +97,13 @@ const findCurrentUserName = async () => {
 };
 
 const formatTimeStamp = (timestamp) => {
+	if (!timestamp || typeof timestamp.toDate !== "function") {
+		return "Invalid timestamp"; // or any default value you prefer
+	}
+
 	const date = timestamp.toDate();
 	const year = date.getFullYear();
-	const month = date.getMonth() + 1;
+	const month = date.getMonth() + 1; // Months are 0-based in JavaScript
 	const day = date.getDate();
 	return `${month}/${day}/${year}`;
 };
@@ -116,8 +117,6 @@ const formatDate = (date) => {
 };
 
 const handleSearch = (arr, searchItem) => {
-	console.log(arr);
-	console.log(searchItem);
 	const arrVal = arr.filter((arr) => arr.value === searchItem);
 	if (arrVal.length > 0) {
 		return arrVal;
@@ -127,7 +126,6 @@ const handleSearch = (arr, searchItem) => {
 };
 
 const timer = async (ms) => new Promise((res) => setTimeout(res, ms));
-
 
 const classNames = (...classes) => {
 	return classes.filter(Boolean).join(" ");

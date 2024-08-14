@@ -80,9 +80,11 @@ const AdminStats = () => {
   }, []);
 
   return (
-    <div className="w-full h-full ">
-      <div className="flex flex-col justify-start items-center w-full h-fit ">
-        <div>
+		<div className='w-full h-full '>
+			<div className='flex flex-col justify-start items-center w-full h-fit '>
+				<h1 className='text-3xl font-bold text-red-500 mb-2 text-center py-2'>This Tool is not active</h1>
+
+				{/* <div>
           <h1 className="text-4xl font-bold text-center text-gray-800 mt-20 mb-6">
             Podcast Stats Update Tool
           </h1>
@@ -161,10 +163,10 @@ const AdminStats = () => {
           >
             Update
           </button>
-        </div>
-      </div>
-    </div>
-  );
+        </div> */}
+			</div>
+		</div>
+	);
 };
 
 export default AdminStats;

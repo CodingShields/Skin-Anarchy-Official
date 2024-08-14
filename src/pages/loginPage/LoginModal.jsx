@@ -9,12 +9,11 @@ import { UserCircleIcon, LockClosedIcon } from "@heroicons/react/24/outline";
 import { InputComp, FormComp, Modal, Button } from "../components/Components";
 import { inputStyle, formStyle } from "../../styles/responsiveStyling.js";
 import { getAuth, signInWithPopup, GoogleAuthProvider, getAdditionalUserInfo } from "firebase/auth";
-import { auth } from "../../fireBase/firebaseConfig";
 import google from "../../assets/icons/google.png";
 import facebook from "../../assets/icons/socialMediaIcons/facebookIcon.svg";
 const LoginModal = ({ open, close }) => {
 	const navigate = useNavigate();
-	const { signIn } = UserAuth();
+	const { signIn, currentUser } = UserAuth();
 	const [state, setState] = useState({
 		loading: false,
 		error: false,
@@ -23,6 +22,7 @@ const LoginModal = ({ open, close }) => {
 		userEmail: "",
 		userPassword: "",
 	});
+
 
 	useEffect(() => {
 		if (open) {
@@ -41,7 +41,8 @@ const LoginModal = ({ open, close }) => {
 		});
 		try {
 			await signIn(state.userEmail, state.userPassword);
-			// if (state.currentUser) {
+			console.log(signIn)
+			// if (currentUser) {
 			// 	const userDocRef = doc(db, "users");
 			// 	await setDoc(
 			// 		userDocRef,

@@ -23,7 +23,6 @@ export const AuthContextProvider = ({ children }) => {
 			displayName: `${firstName}`,
 			phoneNumber: phone,
 		});
-
 		const userDocRef = doc(db, "users", authUser.user.uid);
 		await setDoc(userDocRef, {
 			profile: {
@@ -45,20 +44,20 @@ export const AuthContextProvider = ({ children }) => {
 		resetForm();
 	};
 
-	// const authCurrentUser = () => {
-	// 	return new Promise((resolve, reject) => {
-	// 		const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-	// 			if (currentUser) {
-	// 				resolve(currentUser);
-	// 				console.log("logged in");
-	// 			} else {
-	// 				reject("No user logged in");
-	// 				console.log("no user logged in");
-	// 			}
-	// 			unsubscribe();
-	// 		});
-	// 	});
-	// };
+	const authCurrentUser = () => {
+		return new Promise((resolve, reject) => {
+			const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+				if (currentUser) {
+					resolve(currentUser);
+					console.log("logged in");
+				} else {
+					reject("No user logged in");
+					console.log("no user logged in");
+				}
+				unsubscribe();
+			});
+		});
+	};
 
 	const signIn = (email, password) => {
 		return signInWithEmailAndPassword(auth, email, password);
@@ -89,7 +88,7 @@ export const AuthContextProvider = ({ children }) => {
 		};
 	}, []);
 
-	return <UserContext.Provider value={{ createUser, user, logout, signIn }}>{children}</UserContext.Provider>;
+	return <UserContext.Provider value={{ createUser, user, logout, signIn,  }}>{children}</UserContext.Provider>;
 };
 AuthContextProvider.propTypes = {
 	children: PropTypes.node.isRequired,

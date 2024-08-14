@@ -2,7 +2,7 @@ import { useState } from "react";
 // import emailjs from "emailjs-com";
 import ContactsTab from "./newsletter/ContactsTab";
 import EmailTab from "./newsletter/EmailTab";
-const AdminNewsLetter = () => {
+const AdminNewsLetter = ({ open }) => {
 	const [state, setState] = useState({
 		error: "",
 		errorMessage: "",
@@ -12,6 +12,7 @@ const AdminNewsLetter = () => {
 		contactsTab: false,
 		emailTab: false,
 	});
+	if (!open) return null;
 
 	function classNames(...classes) {
 		return classes.filter(Boolean).join(" ");
@@ -29,10 +30,10 @@ const AdminNewsLetter = () => {
 	};
 
 	return (
-		<div className='flex flex-col h-fit w-full justify-start items-center'>
-			<h1 className='text-5xl font-bold text-gray-700 mb-2 text-center py-2'>News Letter</h1>
+		<div className='flex flex-col min-h-screen w-full relative justify-start items-center'>
+			<h1 className='text-3xl font-bold text-red-500 mb-2 text-center py-2'>This Tool is not active</h1>
 
-			<div className='flex flex-row w-fit justify-center items-center h-fit my-2 mx-auto '>
+			{/* <div className='flex flex-row w-fit justify-center items-center h-fit my-2 mx-auto '>
 				<button
 					onClick={(e) => handleTabClick(e)}
 					value='contactsTab'
@@ -65,7 +66,7 @@ const AdminNewsLetter = () => {
 			>
 				{" "}
 				<EmailTab />
-			</div>
+			</div> */}
 		</div>
 	);
 };

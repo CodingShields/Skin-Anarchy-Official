@@ -17,30 +17,32 @@ const PodcastAnalyticsContainer = () => {
 				Podcast
 			</h3>
 			<div className='sm:border-t-[1px] sm:border-white  sm:w-3/4 hidden my-2'></div>
-			<div className='grid grid-cols-4 gap-8 sm:grid-cols-1'>
+			<div className='grid grid-cols-4 gap-8 sm:grid-cols-1 '>
 				<div className='space-y-4 tracking-widest mx-auto sm:pt-8'>
-					<h3 className='text-center text-2xl sm:text-lg font-montserrat font-thin text-white truncate uppercase'>Episodes Recorded</h3>
-					<h1 id='counter' className='text-3xl  sm:text-2xl font-montserrat text-white'>
+					<h3 className='text-center text-2xl sm:text-lg font-montserrat font-thin text-white truncate uppercase tracking-widest'>
+						Episodes Recorded
+					</h3>
+					<h1 id='counter' className='text-3xl  sm:text-2xl font-montserrat text-white py-2 tracking-widest'>
 						622+
 					</h1>
 				</div>
 				<div className='space-y-4 tracking-widest mx-auto sm:w-full'>
-					<h1 className='text-2xl font-montserrat sm:text-lg font-thin text-white uppercase'>Global Streaming </h1>
-					<h1 id='counter' className='text-3xl sm:text-2xl font-montserrat text-white whitespace-nowrap '>
+					<h1 className='text-2xl font-montserrat sm:text-lg font-thin text-white uppercase tracking-widest'>Global Streaming </h1>
+					<h1 id='counter' className='text-3xl sm:text-2xl font-montserrat text-white whitespace-nowrap py-2 tracking-widest'>
 						100+ Countries
 					</h1>
 				</div>
 				<div className='space-y-4 tracking-widest mx-auto'>
-					<h1 className='text-2xl font-montserrat font-thin sm:text-lg text-white truncate uppercase'>Total Downloads</h1>
-					<h1 id='counter' className='text-3xl sm:text-2xl font-montserrat text-white'>
+					<h1 className='text-2xl font-montserrat font-thin sm:text-lg text-white truncate uppercase tracking-widest'>Total Downloads</h1>
+					<h1 id='counter' className='text-3xl sm:text-2xl font-montserrat text-white py-2 tracking-widest'>
 						9 Million
 					</h1>
 				</div>
 
 				<div className='space-y-4 tracking-widest mx-auto'>
-					<h1 className='text-2xl font-montserrat font-thin text-white  uppercase'>Chart Position</h1>
+					<h1 className='text-2xl font-montserrat font-thin text-white  uppercase tracking-widest'>Chart Position</h1>
 
-					<h2 id='counter' className='text-3xl sm:text-2xl font-montserrat text-white tracking-widest'>
+					<h2 id='counter' className='text-3xl sm:text-2xl font-montserrat text-white tracking-widest py-2 '>
 						Top 50 Beauty Podcast
 					</h2>
 				</div>
