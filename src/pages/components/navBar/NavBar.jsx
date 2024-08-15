@@ -248,13 +248,14 @@ const blog = [
 		link: "/members-area/skin-anarchy-blog",
 	},
 	{
-		name: "Beauty Culture",
-		link: "/members-area/skin-anarchy-blog",
-	},
-	{
 		name: "Fragrance",
 		link: "/members-area/skin-anarchy-blog",
 	},
+	{
+		name: "Beauty Culture",
+		link: "/members-area/skin-anarchy-blog",
+	},
+
 	{
 		name: "Episode Summaries",
 		link: "/members-area/skin-anarchy-blog",
@@ -356,9 +357,10 @@ const safeSealArray = [
 		link: "/members-area/safe-seal/Contact",
 	},
 ];
-const buttonStyle = "uppercase font-thin underlineAnimate subpixel-antialiased tracking-[6px] text-white sm:text-[8px] text-[16px]";
+const buttonStyle =
+	"uppercase font-thin underlineAnimate subpixel-antialiased tracking-[6px] text-white sm:text-[8px] md:text-[10px] lg:text-[12px] 2xl:text-[14px]";
 const activeNavButton =
-	"uppercase font-semibold text-gold-500 subpixel-antialiased tracking-[6px] text-sm  underline underline-offset-8 decoration-1";
+	"uppercase font-semibold text-gold-500 subpixel-antialiased tracking-[6px]  underline underline-offset-8 decoration-1 sm:text-[12px] md:text-[14px] lg:text-[16px] 2xl:text-[18px]";
 const NavBar = () => {
 	const [state, setState] = useState({
 		loading: false,
@@ -369,7 +371,6 @@ const NavBar = () => {
 		subMenuIndex: 0,
 	});
 	const [open, setOpen] = useState(false);
-	const [subMenuIndex, setSubMenuIndex] = useState(0);
 	const [menu, setMenu] = useState("home");
 	const [isMobile, setIsMobile] = useState(false);
 	const menuRef = useRef(null);
@@ -383,7 +384,7 @@ const NavBar = () => {
 	}, []);
 
 	const handleSubMenuHover = (item, index) => {
-		setSubMenuIndex(index);
+		setState({ ...state, openSubMenu: true, subMenuIndex: index });
 	};
 
 	useEffect(() => {
@@ -411,16 +412,16 @@ const NavBar = () => {
 	}, []);
 
 	return (
-		<div ref={menuRef} id='menu' className='w-full sm:w-fit h-16 bg-black border-b border-white'>
-			<div className='w-full  flex flex-row  justify-center items-center sm:space-x-2 space-x-18 mx-auto mt-2'>
+		<div ref={menuRef} id='menu' className='w-full sm:w-fit h-fit bg-black border-b border-white pb-2'>
+			<div className='w-full  flex flex-row  justify-center items-center sm:space-x-2 md:space-x-4 lg:space-x-8 xl:space-x-10 2xl:space-x-16 mx-auto mt-2'>
 				<Button
-					style={state.currentMenu === "home" ? activeNavButton : buttonStyle + " sm:text-[6px] text-[16px]"}
+					style={state.currentMenu === "home" ? activeNavButton : buttonStyle}
 					text={"home"}
 					onClick={() => {
 						setState({
 							...state,
 							currentMenu: "home",
-							openSubMenu: false,
+							openSubMenu: !state.openSubMenu,
 						});
 						navigate("/members-area/home");
 					}}
@@ -432,7 +433,7 @@ const NavBar = () => {
 						setState({
 							...state,
 							currentMenu: "about",
-							openSubMenu: true,
+							openSubMenu: !state.openSubMenu,
 						});
 					}}
 				/>
@@ -443,7 +444,7 @@ const NavBar = () => {
 						setState({
 							...state,
 							currentMenu: "episodes",
-							openSubMenu: true,
+							openSubMenu: !state.openSubMenu,
 						});
 					}}
 				/>
@@ -454,7 +455,7 @@ const NavBar = () => {
 						setState({
 							...state,
 							currentMenu: "blog",
-							openSubMenu: true,
+							openSubMenu: !state.openSubMenu,
 						});
 					}}
 				/>
@@ -465,12 +466,12 @@ const NavBar = () => {
 						setState({
 							...state,
 							currentMenu: "safe-seal",
-							openSubMenu: true,
+							openSubMenu: !state.openSubMenu,
 						});
 					}}
 				/>
 				<div className={`${!isMobile && "inline-flex w-fit space-x-4"}`}>
-					<img src={goldLogo} alt='logo' className='w-10 h-10 ' />
+					<img src={goldLogo} alt='logo' className='2xl:w-8  ' />
 					<Bars3Icon className={`w-10 h-10 text-white ${!isMobile && "hidden"}`} />
 				</div>
 				<Button
@@ -516,7 +517,7 @@ const NavBar = () => {
 						setState({
 							...state,
 							currentMenu: "shop",
-							openSubMenu: false,
+							openSubMenu: !state.openSubMenu,
 						});
 						navigate("/members-area/shop");
 					}}
@@ -528,7 +529,7 @@ const NavBar = () => {
 						setState({
 							...state,
 							currentMenu: "account",
-							openSubMenu: false,
+							openSubMenu: !state.openSubMenu,
 						});
 						navigate("/members-area/account");
 					}}
@@ -536,12 +537,14 @@ const NavBar = () => {
 			</div>
 			<div ref={menuRef} className='w-full '>
 				<NavBarDropDown open={state.openSubMenu} menu={state.currentMenu} text={"about"}>
-					<div className='flex flex-row w-full justify-center items-center bg-black border-white border-b-[1px] py-10 space-x-24'>
+					<div className='flex flex-row w-full justify-center items-center bg-black  py-6 space-x-24'>
 						{about.map((item, index) => {
 							return (
 								<>
 									<a key={index} href={item.link}>
-										<h1 className='text-lg text-white font-montserrat font-thin uppercase underlineAnimate'>{item.name}</h1>
+										<h1 className='sm:text-[12px] md:text-[14px] lg:text-[16px] 2xl:text-[18px] text-white font-montserrat font-thin uppercase underlineAnimate'>
+											{item.name}
+										</h1>
 									</a>
 								</>
 							);
@@ -550,19 +553,20 @@ const NavBar = () => {
 				</NavBarDropDown>
 				{/* Episodes Drop Down */}
 				<NavBarDropDown open={state.openSubMenu} menu={state.currentMenu} text={"episodes"}>
-					<div className='flex flex-row w-full justify-start items-center bg-black border-white border-b-[1px]'>
-						<div className='w-[475px] h-fit flex flex-col space-y-12 py-12 px-12 whitespace-nowrap pb-8'>
-							<h1 className='uppercase  text-white underline text-2xl xl:text-lg font-montserrat font-thin underline-offset-8  decoration-1 '>
+					<div className='flex flex-row w-full justify-start items-center bg-black '>
+						<div className='w-[475px] h-fit flex flex-col space-y-4 py-12 px-12 whitespace-nowrap pb-8'>
+							<h1 className='uppercase  text-white underline sm:text-[12px] md:text-[14px] lg:text-[16px] 2xl:text-[18px] font-montserrat  underline-offset-8  decoration-1 tracking-widest'>
 								Categories
 							</h1>
 							{episodes.map((item, index) => {
 								return (
-									<div
-										onMouseEnter={() => handleSubMenuHover(item, index)}
-										key={index}
-										className='w-11/12 uppercase text-white text-lg font-montserrat font-thin ml-4 hover:underline underline-offset-8 decoration-1 transition-all duration-500 ease-in-out text-left '
-									>
-										<a href={item.link}>{item.name}</a>
+									<div onMouseEnter={() => handleSubMenuHover(item, index)} key={index} className='w-11/12   ml-4  '>
+										<a
+											href={item.link}
+											className='uppercase text-white sm:text-[12px] md:text-[14px] lg:text-[16px] 2xl:text-[18px]   underlineAnimate font-montserrat font-thin underline-offset-8 decoration-1 transition-all duration-500 ease-in-out text-left tracking-widest '
+										>
+											{item.name}
+										</a>
 									</div>
 								);
 							})}
@@ -572,9 +576,11 @@ const NavBar = () => {
 								{episodesArray[state.subMenuIndex]?.map((item, index) => {
 									return (
 										<div key={index} className='w-full xl:w-3/4 h-full ml-4 text-center animate-fadeIn transition-all delay-200 '>
-											<h1 className='uppercase text-white text-4xl font-montserrat font-thin py-6 whitespace-nowrap'>{item.playerTitle}</h1>
+											<h1 className='uppercase text-white sm:text-[16px] md:text-[22px] lg:text-[28px] 2xl:text-[32px] font-montserrat font-thin py-6 whitespace-nowrap'>
+												{item.playerTitle}
+											</h1>
 											{item.player}
-											<img src={item.image} className='w-3/4   mx-auto rounded-md ' />
+											<img src={item.image} className='sm:w-1/4 md:w-1/2 lg:w-3/4 xl  mx-auto rounded-md ' />
 											<h1 className='uppercase text-white xl:text-xl text-2xl font-montserrat font-thin whitespace-nowrap py-4'>{item.name}</h1>
 										</div>
 									);
@@ -585,8 +591,8 @@ const NavBar = () => {
 				</NavBarDropDown>
 				{/* Blog Drop Down */}
 				<NavBarDropDown open={state.openSubMenu} menu={state.currentMenu} text={"blog"}>
-					<div className='flex flex-row w-full justify-start items-center bg-black border-white border-b-[1px]'>
-						<div className='w-[475px] h-fit flex flex-col space-y-12 py-12 px-12 whitespace-nowrap  '>
+					<div className='flex flex-row w-full justify-start items-center bg-black '>
+						<div className='w-[475px] h-fit flex flex-col space-y-4 py-12 px-12 whitespace-nowrap  '>
 							<h1 className='uppercase  text-white underline text-2xl font-montserrat font-thin underline-offset-8 decoration-1'>Categories</h1>
 							{blog.map((item, index) => {
 								return (
@@ -595,7 +601,12 @@ const NavBar = () => {
 										key={index}
 										className='w-11/12 underline-offset-8 decoration-1 uppercase text-white text-xl font-montserrat font-thin ml-4 hover:underline transition-all duration-500 ease-in-out text-left '
 									>
-										<a href={item.link}>{item.name}</a>
+										<a
+											href={item.link}
+											className='uppercase text-white sm:text-[12px] md:text-[14px] lg:text-[16px] 2xl:text-[18px]   underlineAnimate font-montserrat font-thin underline-offset-8 decoration-1 transition-all duration-500 ease-in-out text-left tracking-widest '
+										>
+											{item.name}
+										</a>
 									</div>
 								);
 							})}
@@ -605,7 +616,10 @@ const NavBar = () => {
 								{blogArray[state.subMenuIndex]?.map((item, index) => {
 									return (
 										<div key={index} className='w-full h-full text-center animate-fadeIn transition-all delay-200 mx-auto'>
-											<img src={item.image} className='w-3/5 mx-auto rounded-md ' />
+											<img
+												src={item.image}
+												className='w-3/5 mx-auto rounded-md hover:shadow-xl hover:shadow-white/50 hover:scale-110 transition-all duration-500 ease-in-out'
+											/>
 										</div>
 									);
 								})}
@@ -619,7 +633,9 @@ const NavBar = () => {
 							return (
 								<>
 									<a key={index} href={item.link}>
-										<h1 className='text-xl text-white font-montserrat font-thin uppercase underlineAnimate'>{item.name}</h1>
+										<h1 className='sm:text-[12px] md:text-[14px] lg:text-[16px] 2xl:text-[18px] text-white font-montserrat font-thin uppercase underlineAnimate'>
+											{item.name}
+										</h1>
 									</a>
 								</>
 							);
@@ -627,12 +643,14 @@ const NavBar = () => {
 					</div>
 				</NavBarDropDown>
 				<NavBarDropDown open={state.openSubMenu} menu={state.currentMenu} text={"safe-seal"}>
-					<div className='flex flex-row w-full justify-center items-center bg-black border-white border-b-[1px] py-4 space-x-18'>
+					<div className='flex flex-row w-full justify-center items-center bg-black  py-4 space-x-18'>
 						{safeSealArray.map((item, index) => {
 							return (
 								<>
 									<a key={index} href={item.link}>
-										<h1 className='text-xl text-white font-montserrat font-thin uppercase underlineAnimate'>{item.name}</h1>
+										<h1 className='sm:text-[12px] md:text-[14px] lg:text-[16px] 2xl:text-[18px] text-white font-montserrat font-thin uppercase underlineAnimate tracking-widest'>
+											{item.name}
+										</h1>
 									</a>
 								</>
 							);

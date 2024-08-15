@@ -1,7 +1,4 @@
 /* eslint-disable no-undef */
-
-import { CheckBadgeIcon } from "@heroicons/react/24/outline";
-
 /** @type {import('tailwindcss').Config} */
 export default {
 	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
@@ -16,22 +13,6 @@ export default {
 			70: 70,
 			80: 80,
 			90: 90,
-		},
-		screens: {
-			xxl: { max: "1535px" },
-			// => @media (max-width: 1535px) { ... }
-
-			xl: { max: "1279px" },
-			// => @media (max-width: 1279px) { ... }
-
-			lg: { max: "1023px" },
-			// => @media (max-width: 1023px) { ... }
-
-			md: { max: "767px" },
-			// => @media (max-width: 767px) { ... }
-
-			sm: { max: "639px" },
-			// => @media (max-width: 639px) { ... }
 		},
 		extend: {
 			listStyleImage: {
@@ -238,67 +219,7 @@ export default {
 			char: {
 				900: "#252525",
 			},
-			blue: {
-				50: "#f0f9ff",
-				100: "#e0f2fe",
-				200: "#bae6fd",
-				300: "#7dd3fc",
-				400: "#38bdf8",
-				500: "#0ea5e9",
-				600: "#0284c7",
-				700: "#0369a1",
-				800: "#075985",
-				900: "#0c4a6e",
-			},
 
-			zinc: {
-				50: "#f7fafc",
-				100: "#edf2f7",
-				200: "#e2e8f0",
-				300: "#cbd5e0",
-				400: "#a0aec0",
-				500: "#718096",
-				600: "#4a5568",
-				700: "#2d3748",
-				800: "#1a202c",
-				900: "#171923",
-			},
-			red: {
-				50: "#fff5f5",
-				100: "#fed7d7",
-				200: "#feb2b2",
-				300: "#fc8181",
-				400: "#f56565",
-				500: "#e53e3e",
-				600: "#c53030",
-				700: "#9b2c2c",
-				800: "#822727",
-				900: "#63171b",
-			},
-			orange: {
-				50: "#fffaf0",
-				100: "#feebc8",
-				200: "#fbd38d",
-				300: "#f6ad55",
-				400: "#ed8936",
-				500: "#dd6b20",
-				600: "#c05621",
-				700: "#9c4221",
-				800: "#7b341e",
-				900: "#652b19",
-			},
-			yellow: {
-				50: "#fffff0",
-				100: "#fefcbf",
-				200: "#faf089",
-				300: "#f6e05e",
-				400: "#ecc94b",
-				500: "#d69e2e",
-				600: "#b7791f",
-				700: "#975a16",
-				800: "#744210",
-				900: "#5F370E",
-			},
 			gold: {
 				100: "#fff9d4",
 				200: "#ffedc2",
@@ -317,30 +238,6 @@ export default {
 				700: "#2d3748",
 				800: "#1a202c",
 				900: "#171923",
-			},
-			indigo: {
-				50: "#f0f5ff",
-				100: "#e5edff",
-				200: "#cddbfe",
-				300: "#b4c6fc",
-				400: "#8da2fb",
-				500: "#6875f5",
-				600: "#5850ec",
-				700: "#5145cd",
-				800: "#42389d",
-				900: "#362f78",
-			},
-			green: {
-				50: "#f0fdf4",
-				100: "#dcfce7",
-				200: "#bbf7d0",
-				300: "#86efac",
-				400: "#4ade80",
-				500: "#22c55e",
-				600: "#16a34a",
-				700: "#15803d",
-				800: "#166534",
-				900: "#14532d",
 			},
 		},
 
@@ -381,7 +278,7 @@ export default {
 		// require("tailwind-scrollbar-hide"),
 		require("tailwind-scrollbar"),
 		require("@tailwindcss/typography"),
-		// require("@tailwindcss/aspect-ratio"),
+		require("@tailwindcss/aspect-ratio"),
 		// require("@tailwindcss/container-queries"),
 		require("@tailwindcss/forms"),
 		"prettier-plugin-tailwindcss",
