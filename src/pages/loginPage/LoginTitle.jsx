@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import anime from "animejs/lib/anime.es.js";
-import FactsBar from "../homePage/comps/FactsBar";
+import FactsBar from "./FactsBar";
 const LoginTitle = ({ onComplete }) => {
 	const titleRef = useRef(null);
 	const subTitleRef = useRef(null);
@@ -38,24 +38,37 @@ const LoginTitle = ({ onComplete }) => {
 	}, [onComplete]);
 
 	return (
-		<div className='text-center login-title-wrapper mb-12 relative h-[800px]'>
-			<h1 className='titleText font-montserrat font-thin absolute' ref={titleRef}>
-				<span id='title' className='text-[200px]'>
-					<span className='title-letter text-gold-500'>S</span>
-					<span className='title-letter text-gold-500'>K</span>
-					<span className='title-letter text-gold-500'>I</span>
-					<span className='title-letter text-gold-500'>N</span>
-					<span className='title-letter text-gold-500'>&nbsp;</span>
-					<span className='title-letter text-gold-500'>A</span>
-					<span className='title-letter text-gold-500'>N</span>
-					<span className='title-letter text-gold-500'>A</span>
-					<span className='title-letter text-gold-500'>R</span>
-					<span className='title-letter text-gold-500'>C</span>
-					<span className='title-letter text-gold-500'>H</span>
-					<span className='title-letter text-gold-500'>Y</span>
+		<div className="text-center login-title-wrapper mt-36 relative h-[300px] lg:h-[900px]">
+			<h1
+				className="titleText font-montserrat font-thin absolute"
+				ref={titleRef}
+			>
+				<span
+					id="title"
+					className="text-[50px]"
+				>
+					{/* text-[200px] */}
+					<span className="title-letter text-gold-500 lg:text-[200px] ">S</span>
+					<span className="title-letter text-gold-500 lg:text-[200px] ">K</span>
+					<span className="title-letter text-gold-500 lg:text-[200px] ">I</span>
+					<span className="title-letter text-gold-500 lg:text-[200px] ">N</span>
+					<span className="title-letter text-gold-500 lg:text-[200px] ">
+						&nbsp;
+					</span>
+					<span className="title-letter text-gold-500 lg:text-[200px] ">A</span>
+					<span className="title-letter text-gold-500 lg:text-[200px] ">N</span>
+					<span className="title-letter text-gold-500 lg:text-[200px] ">A</span>
+					<span className="title-letter text-gold-500 lg:text-[200px] ">R</span>
+					<span className="title-letter text-gold-500 lg:text-[200px] ">C</span>
+					<span className="title-letter text-gold-500 lg:text-[200px] ">H</span>
+					<span className="title-letter text-gold-500 lg:text-[200px] ">Y</span>
 				</span>
 				<br />
-				<span id='sub-title' ref={subTitleRef} className='text-white tracking-widest text-3xl'>
+				<span
+					id="sub-title"
+					ref={subTitleRef}
+					className="text-white tracking-widest text-lg lg:text-3xl"
+				>
 					Worlds Fastest Growing Beauty Podcast
 				</span>
 			</h1>

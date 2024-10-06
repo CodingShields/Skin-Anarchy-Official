@@ -14,23 +14,29 @@ const SponsorBarContainer = () => {
 	}, []);
 
 	return (
-		<div className='relative overflow-hidden'>
+		<div className="relative overflow-hidden">
 			<div
-				className=' flex animate-scrollingSponsors'
+				className=" flex animate-scrollingSponsors"
 				style={{
 					animation: `scrollingSponsors  ${isMobile ? "35s" : "115s"} linear infinite`,
 				}}
 			>
 				{sponsorImages.map((sponsor, index) => {
 					return (
-						<div className='flex flex-grow-0 flex-shrink-0 w-64 sm:w-32' key={index}>
+						<div
+							className="flex flex-grow-0 flex-shrink-0 lg:w-64 w-32 px-4"
+							key={index}
+						>
 							<img src={sponsor} />
 						</div>
 					);
 				})}
 				{sponsorImages.map((sponsor, index) => {
 					return (
-						<div className='block w-full py-[20px] ' key={index}>
+						<div
+							className="block w-full py-[20px] "
+							key={index}
+						>
 							<img src={sponsor} />
 						</div>
 					);

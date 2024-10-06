@@ -5,6 +5,11 @@ body,
 	margin: 0;
 }
 
+html,
+body {
+	overscroll-behavior-x: none; /* Prevent scroll-bounce */
+}
+
 body {
 	-webkit-font-smoothing: antialiased;
 }
@@ -37,36 +42,35 @@ body {
 }
 
 //Sponsor Images Marquee
-// .sponsorBar {
-//   overflow: hidden;
-// }
+.sponsorBar {
+	overflow: hidden;
+}
 
 .sponsorBar-content {
 	display: flex;
-	animation: scrollingSponsors 115s linear infinite;
+	animation: scrollingSponsors 22s linear infinite;
 }
 
-// .sponsorBar-item {
-//   flex: 0 0 16vw;
-//   margin: 0 1vw;
+.sponsorBar-item {
+	flex: 0 0 16vw;
+	margin: 0 1vw;
+}
 
-// }
+.sponsorBar-item img {
+	display: block;
+	width: 100%;
+	padding: 0 20px;
+}
 
-// .sponsorBar-item img {
-//   display: block;
-//   width: 100%;
-//   padding: 0 20px;
-// }
+@keyframes scrollingSponsors {
+	0% {
+		transform: translateX(0);
+	}
 
-// @keyframes scrollingSponsors {
-//   0% {
-//     transform: translateX(0);
-//   }
-
-//   100% {
-//     transform: translateX(-1296vw);// multiply the number of images by 18
-//   }
-// }
+	100% {
+		transform: translateX(-1296vw); // multiply the number of images by 18
+	}
+}
 
 //Top Picks Marquee
 .topPicksBar {
@@ -89,7 +93,7 @@ body {
 
 .topPicksBar-item img {
 	display: block;
-	width: 100%;
+	width: 200%;
 	padding: 0 20px;
 }
 
@@ -99,7 +103,7 @@ body {
 	}
 
 	100% {
-		transform: translateX(-180vw); // multiply the number of images by 18
+		transform: translateX(-200%); // multiply the number of images by 18
 	}
 }
 
@@ -110,7 +114,11 @@ body {
 	width: 450px;
 	border: transparent;
 	border-radius: 50%;
-	background: radial-gradient(circle, rgba(175, 150, 105, 0.8) -1%, rgba(175, 150, 105, 0.2) 90%);
+	background: radial-gradient(
+		circle,
+		rgba(175, 150, 105, 0.8) -1%,
+		rgba(175, 150, 105, 0.2) 90%
+	);
 	box-shadow: 0px 0px 100px rgba(200, 170, 105, 8);
 	position: relative;
 	filter: blur(80px);
@@ -136,7 +144,7 @@ body {
 	content: "";
 	display: block;
 	height: 1px;
-	left: 50%;
+	left: 75%;
 	position: absolute;
 	background: #fff;
 	transition:
@@ -146,8 +154,8 @@ body {
 }
 
 .underlineAnimate:hover:after {
-	width: 100%;
-	left: 0;
+	width: 75%;
+	left: 12%;
 }
 
 @media screen and (max-height: 300px) {
@@ -248,7 +256,12 @@ body {
 	font-weight: 200;
 	/*background:#333 -webkit-linear-gradient(0deg,rgba(255,255,255,0),rgba(255,255,255,0.9),rgba(255,255,255,0)) no-repeat -50px 0;
   background: #222 -webkit-gradient(linear, left top, right top, from(#222), to(#222), color-stop(0.5, #fff)) 0 0 no-repeat; */
-	background: #333 -webkit-radial-gradient(circle, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)) no-repeat -280px -94px;
+	background: #333 -webkit-radial-gradient(
+			circle,
+			rgba(255, 255, 255, 1),
+			rgba(255, 255, 255, 0),
+			rgba(255, 255, 255, 0)
+		) no-repeat -280px -94px;
 	-webkit-background-clip: text;
 	-webkit-background-size: 388px;
 	color: rgba(255, 255, 255, 0.1);
@@ -273,7 +286,12 @@ body {
 	font-weight: 200;
 	/*background:#333 -webkit-linear-gradient(0deg,rgba(255,255,255,0),rgba(255,255,255,0.9),rgba(255,255,255,0)) no-repeat -50px 0;
   background: #222 -webkit-gradient(linear, left top, right top, from(#222), to(#222), color-stop(0.5, #fff)) 0 0 no-repeat; */
-	background: #333 -webkit-radial-gradient(circle, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)) no-repeat -280px -94px;
+	background: #333 -webkit-radial-gradient(
+			circle,
+			rgba(255, 255, 255, 1),
+			rgba(255, 255, 255, 0),
+			rgba(255, 255, 255, 0)
+		) no-repeat -280px -94px;
 	-webkit-background-clip: text;
 	-webkit-background-size: 388px;
 	color: rgba(255, 255, 255, 0.1);
@@ -372,13 +390,12 @@ body {
 /* Adjust FactsBar styling */
 .text1 {
 	color: white;
-	font-size: 40px;
 	font-weight: 600;
 	letter-spacing: 8px;
 	margin-bottom: 20px;
 	position: relative;
 	animation-name: text;
-	animation-duration: 3;
+	animation-duration: 8s;
 	animation-iteration-count: infinite;
 	font-family: "montserrat";
 }
@@ -391,19 +408,19 @@ body {
 		position: absolute;
 	}
 	30% {
-    font-weight: 300;
+		font-weight: 300;
 		letter-spacing: 25px;
 		margin-bottom: -40px;
 	}
 	85% {
-    		font-weight: 200;
+		font-weight: 200;
 
 		letter-spacing: 8px;
 		margin-bottom: -40px;
 	}
 	100% {
 		font-weight: 100;
-		margin-bottom: -1000px;
+		margin-bottom: -700px;
 		opacity: 1;
 		z-index: 10;
 	}
@@ -412,7 +429,7 @@ body {
 // border grow
 
 .borderGrow {
-	height: .5px;
+	height: 0.5px;
 	width: 0; /* Start with a width of 0 */
 	animation-name: loginBorder;
 	animation-duration: 2s;

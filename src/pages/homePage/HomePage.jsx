@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { StartPageLoadTop } from "../../utilities/utilities";
+import { StartPageLoadTop, userDeviceInfo } from "../../utilities/utilities";
 import HeadLine from "./comps/HeadLine";
 import SponsorBarContainer from "./comps/SponsorBarContainer";
 import PodcastAnalyticsContainer from "./comps/PodcastAnalyticsContainer";
@@ -43,12 +43,27 @@ const HomePage = () => {
 			document.removeEventListener("mousemove", handleMouseMove);
 		};
 	}, []);
+	const [isMobile, setIsMobile] = useState(false);
 
+	useEffect(() => {
+		if (userDeviceInfo()) {
+			setIsMobile(true);
+		} else {
+			setIsMobile(false);
+		}
+	}, []);
 	return (
-		<div className='w-full min-h-screen relative animate-fadeIn  sm:overscroll-x-none sm:overflow-hidden  '>
-			<div className='with-bg-size h-full sm:h-screen w-full  opacity-30 fixed top-0 left-0   sm:bg-no-repeat	sm:bg-contain sm:bg-center bg-center bg-cover overflow-x-hidden'></div>
+		<div className="w-full min-h-screen lg:relative animate-fadeIn  overscroll-x-none overflow-hidden  ">
+			{isMobile ? (
+				""
+			) : (
+				<div className="with-bg-size h-full w-screen  opacity-30 fixed top-0 left-0   bg-center bg-cover overflow-x-hidden overscroll-x-none"></div>
+			)}
 
-			<div id='cursor' className='fixed cursor'></div>
+			<div
+				id="cursor"
+				className="fixed cursor hidden lg:block"
+			></div>
 			<HeadLine />
 			<SponsorBarContainer />
 			<SignatureBar />
@@ -57,7 +72,7 @@ const HomePage = () => {
 			<PodcastPlatformBar />
 			<PodcastAnalyticsContainer />
 			<TopPicks />
-			<TestimonialsContainer /> 
+			<TestimonialsContainer />
 		</div>
 	);
 };

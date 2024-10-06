@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import codex from "../../../assets/images/topPicks/codex.svg";
 import elta from "../../../assets/images/topPicks/elta.svg";
 import epicutis from "../../../assets/images/topPicks/epicutis.svg";
@@ -9,97 +10,68 @@ import pcaSkin from "../../../assets/images/topPicks/pca-skin.svg";
 import revive from "../../../assets/images/topPicks/revive.svg";
 import victoriaBeckham from "../../../assets/images/topPicks/victoria-beckham.svg";
 import { userDeviceInfo } from "../../../utilities/utilities";
-import { useState, useEffect } from "react";
-const TopPicks = () => {
 
+const images = [
+	codex,
+	elta,
+	epicutis,
+	hairOil,
+	janMarini,
+	makeUpMario,
+	oneSkin,
+	pcaSkin,
+	revive,
+	victoriaBeckham,
+];
+
+const TopPicks = () => {
 	const [isMobile, setIsMobile] = useState(false);
 
-	console.log(userDeviceInfo());
 	useEffect(() => {
-		if (userDeviceInfo()) {
-			setIsMobile(true);
-		} else {
-			setIsMobile(false);
-		}
+		setIsMobile(userDeviceInfo());
 	}, []);
 
-
 	return (
-		<div className='w-full h-fit my-64 sm:my-32 relative'>
-			<div className=''>
-				<h1 className='text-white text-6xl sm:text-3xl text-center font-montserrat font-thin uppercase tracking-widest py-6'>
-					Skincare Anarchy Awards{" "}
-				</h1>
-				<h2 className='text-white lowercase text-center sm:text-3xl font-montserrat text-4xl font-thin'>#TopPicksBeautyAwards</h2>
-			</div>
-			<div className='relative '>
+		<div className="w-full h-fit lg:my-64 my-32 relative">
+			<h1 className="text-white lg:text-6xl text-3xl text-center font-montserrat font-thin uppercase tracking-widest py-6">
+				Skincare Anarchy Awards
+			</h1>
+			<h2 className="text-white lowercase text-center text-2xl font-montserrat lg:text-4xl font-thin tracking-widest">
+				#TopPicksBeautyAwards
+			</h2>
+			<div className="topPicksBar relative">
 				<div
-					className='topPicksBar-content py-12 mt-12 '
+					className="topPicksBar-content py-12 mt-12"
 					style={{
-						animation: `scrollingSponsors  ${isMobile ? "35s" : "115s"} linear infinite`,
+						animation: `scrollingTopPicksBar ${isMobile ? "35s" : "22s"} linear infinite`,
 					}}
 				>
-					<div className='flex flex-grow-0 flex-shrink-0 w-64 sm:w-32'>
-						<img onMouseEnter={() => console.log("test")} src={codex} />
-					</div>
-					<div className='flex flex-grow-0 flex-shrink-0 w-64 sm:w-32'>
-						<img src={elta} />
-					</div>
-					<div className='flex flex-grow-0 flex-shrink-0 w-64 sm:w-32'>
-						<img src={epicutis} />
-					</div>
-					<div className='flex flex-grow-0 flex-shrink-0 w-64 sm:w-32'>
-						<img src={hairOil} />
-					</div>
-					<div className='flex flex-grow-0 flex-shrink-0 w-64 sm:w-32'>
-						<img src={janMarini} />
-					</div>
-					<div className='flex flex-grow-0 flex-shrink-0 w-64 sm:w-32'>
-						<img src={makeUpMario} />
-					</div>
-					<div className='flex flex-grow-0 flex-shrink-0 w-64 sm:w-32'>
-						<img src={oneSkin} />
-					</div>
-					<div className='flex flex-grow-0 flex-shrink-0 w-64 sm:w-32'>
-						<img src={pcaSkin} />
-					</div>
-					<div className='flex flex-grow-0 flex-shrink-0 w-64 sm:w-32'>
-						<img src={revive} />
-					</div>
-					<div className='flex flex-grow-0 flex-shrink-0 w-64 sm:w-32'>
-						<img src={victoriaBeckham} />
-					</div>
-					{/* Marquee Split */}
-					<div className='flex flex-grow-0 flex-shrink-0 w-64 sm:w-32'>
-						<img src={codex} />
-					</div>
-					<div className='flex flex-grow-0 flex-shrink-0 w-64 sm:w-32'>
-						<img src={elta} />
-					</div>
-					<div className='flex flex-grow-0 flex-shrink-0 w-64 sm:w-32'>
-						<img src={epicutis} />
-					</div>
-					<div className='flex flex-grow-0 flex-shrink-0 w-64 sm:w-32'>
-						<img src={hairOil} />
-					</div>
-					<div className='flex flex-grow-0 flex-shrink-0 w-64 sm:w-32'>
-						<img src={janMarini} />
-					</div>
-					<div className='flex flex-grow-0 flex-shrink-0 w-64 sm:w-32'>
-						<img src={makeUpMario} />
-					</div>
-					<div className='flex flex-grow-0 flex-shrink-0 w-64 sm:w-32'>
-						<img src={oneSkin} />
-					</div>
-					<div className='flex flex-grow-0 flex-shrink-0 w-64 sm:w-32'>
-						<img src={pcaSkin} />
-					</div>
-					<div className='flex flex-grow-0 flex-shrink-0 w-64 sm:w-32'>
-						<img src={revive} />
-					</div>
-					<div className='flex flex-grow-0 flex-shrink-0 w-64 sm:w-32'>
-						<img src={victoriaBeckham} />
-					</div>
+					{/* Original Images */}
+					{images.map((image, index) => (
+						<div
+							className="topPicksBar-item"
+							key={index}
+						>
+							<img
+								className="w-64"
+								src={image}
+								alt={`Sponsor ${index}`}
+							/>
+						</div>
+					))}
+					{/* Duplicated Images for Seamless Effect */}
+					{images.map((image, index) => (
+						<div
+							className="topPicksBar-item"
+							key={`duplicate-${index}`}
+						>
+							<img
+								className="w-64"
+								src={image}
+								alt={`Sponsor ${index}`}
+							/>
+						</div>
+					))}
 				</div>
 			</div>
 		</div>

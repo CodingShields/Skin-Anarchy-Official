@@ -11,38 +11,56 @@ const PodcastAnalyticsContainer = () => {
 		}
 	}, []);
 	return (
-		<div className='flex flex-col justify-center items-center text-center h-screen sm:w-full  relative sm:h-auto'>
-			<h3 className='text-6xl sm:text-3xl    text-white uppercase font-montserrat pb-24 sm:pb-0 font-thin tracking-widest sm:mx-auto  sm:text-center'>
+		<div className="flex flex-col justify-center items-center text-center h-3/4 sm:w-full  relative py-36">
+			<h3 className="lg:text-6xl text-2xl    text-white uppercase font-montserrat lg:pb-24 pb-0 font-thin tracking-widest mx-auto  sm:text-center">
 				Award Winning {isMobile && <br />}
 				Podcast
 			</h3>
-			<div className='sm:border-t-[1px] sm:border-white  sm:w-3/4 hidden my-2'></div>
-			<div className='grid grid-cols-4 gap-8 sm:grid-cols-1 '>
-				<div className='space-y-4 tracking-widest mx-auto sm:pt-8'>
-					<h3 className='text-center text-2xl sm:text-lg font-montserrat font-thin text-white truncate uppercase tracking-widest'>
+			<div className="border-t-[1px] border-white  w-3/4 hidden my-2"></div>
+			<div className="grid lg:grid-cols-4 gap-24 lg:gap-12 grid-cols-1 ">
+				<div className="space-y-4 tracking-widest mx-auto pt-8 lg:pt-0 ">
+					<h3 className="text-center lg:text-2xl text-lg font-montserrat font-thin text-white truncate uppercase tracking-widest">
 						Episodes Recorded
 					</h3>
-					<h1 id='counter' className='text-3xl  sm:text-2xl font-montserrat text-white py-2 tracking-widest'>
+					<h1
+						id="counter"
+						className="lg:text-3xl text-2xl font-montserrat text-white tracking-widest py-2 "
+					>
 						622+
 					</h1>
 				</div>
-				<div className='space-y-4 tracking-widest mx-auto sm:w-full'>
-					<h1 className='text-2xl font-montserrat sm:text-lg font-thin text-white uppercase tracking-widest'>Global Streaming </h1>
-					<h1 id='counter' className='text-3xl sm:text-2xl font-montserrat text-white whitespace-nowrap py-2 tracking-widest'>
+				<div className="space-y-4 tracking-widest mx-auto sm:w-full">
+					<h3 className="text-center lg:text-2xl text-lg font-montserrat font-thin text-white truncate uppercase tracking-widest">
+						Global Streaming{" "}
+					</h3>
+					<h1
+						id="counter"
+						className="lg:text-3xl text-2xl font-montserrat text-white tracking-widest py-2 "
+					>
 						100+ Countries
 					</h1>
 				</div>
-				<div className='space-y-4 tracking-widest mx-auto'>
-					<h1 className='text-2xl font-montserrat font-thin sm:text-lg text-white truncate uppercase tracking-widest'>Total Downloads</h1>
-					<h1 id='counter' className='text-3xl sm:text-2xl font-montserrat text-white py-2 tracking-widest'>
+				<div className="space-y-4 tracking-widest mx-auto">
+					<h3 className="text-center lg:text-2xl text-lg font-montserrat font-thin text-white truncate uppercase tracking-widest">
+						Total Downloads
+					</h3>
+					<h1
+						id="counter"
+						className="lg:text-3xl text-2xl font-montserrat text-white tracking-widest py-2 "
+					>
 						9 Million
 					</h1>
 				</div>
 
-				<div className='space-y-4 tracking-widest mx-auto'>
-					<h1 className='text-2xl font-montserrat font-thin text-white  uppercase tracking-widest'>Chart Position</h1>
+				<div className="space-y-4 tracking-widest mx-auto">
+					<h3 className="text-center lg:text-2xl text-lg font-montserrat font-thin text-white truncate uppercase tracking-widest">
+						Chart Position
+					</h3>
 
-					<h2 id='counter' className='text-3xl sm:text-2xl font-montserrat text-white tracking-widest py-2 '>
+					<h2
+						id="counter"
+						className="lg:text-3xl text-2xl font-montserrat text-white tracking-widest py-2 "
+					>
 						Top 50 Beauty Podcast
 					</h2>
 				</div>

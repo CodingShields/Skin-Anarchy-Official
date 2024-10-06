@@ -51,7 +51,12 @@ const HomeLayout = () => {
 	};
 
 	const handleCloseModal = () => {
-		setState({ ...state, modalOpen: false, errorModalOpen: false, workingModal: false });
+		setState({
+			...state,
+			modalOpen: false,
+			errorModalOpen: false,
+			workingModal: false,
+		});
 	};
 
 	useEffect(() => {
@@ -62,15 +67,27 @@ const HomeLayout = () => {
 		<>
 			{!isAdmin && <Header />}
 			<Outlet />
-			<Modal open={state.modalOpen} handleClose={handleCloseModal}>
-				<ConnectForm open={state.modalOpen} close={() => setState({ ...state, modalOpen: false })} />
-				<ErrorModal open={state.errorModalOpen} close={() => setState({ ...state, errorModalOpen: false })} />
-				<WorkingModal open={state.workingModal} close={() => setState({ ...state, workingModal: false })} />
+			<Modal
+				open={state.modalOpen}
+				handleClose={handleCloseModal}
+			>
+				<ConnectForm
+					open={state.modalOpen}
+					close={() => setState({ ...state, modalOpen: false })}
+				/>
+				<ErrorModal
+					open={state.errorModalOpen}
+					close={() => setState({ ...state, errorModalOpen: false })}
+				/>
+				<WorkingModal
+					open={state.workingModal}
+					close={() => setState({ ...state, workingModal: false })}
+				/>
 			</Modal>
 			{!isAdmin && <ChatBot />}
 			{!isAdmin && <Radio />}
 			{!isAdmin && <Footer handleModal={handleModalClick} />}
-			{!isAdmin && <PolicyBar />}
+			{/* {!isAdmin && <PolicyBar />} */}
 		</>
 	);
 };

@@ -6,7 +6,7 @@ import NavBarDropDown from "./NavBarDropDown";
 import makeup from "../../../assets/images/interviewCategories/makeup.png";
 import celebs from "../../../assets/images/interviewCategories/celebs.png";
 import brandFounders from "../../../assets/images/interviewCategories/brandFounders.png";
-import { Button } from "../Components"
+import { Button } from "../Components";
 import mario from "../../../assets/images/navBar/episodes/mario.png";
 import danessa from "../../../assets/images/navBar/episodes/danessa.png";
 import sirJohn from "../../../assets/images/navBar/episodes/sirJohn.png";
@@ -58,11 +58,11 @@ const currentEpisode = [
 		link: "https://open.spotify.com/show/298oIu74qjd3pXaaBMDr19?si=7729b4ff4bbc4b2a",
 		player: (
 			<iframe
-				src='https://open.spotify.com/embed/show/298oIu74qjd3pXaaBMDr19?utm_source=generator&theme=0'
-				width='200%'
-				height='352'
-				allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'
-				loading='lazy'
+				src="https://open.spotify.com/embed/show/298oIu74qjd3pXaaBMDr19?utm_source=generator&theme=0"
+				width="200%"
+				height="352"
+				allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+				loading="lazy"
 			></iframe>
 		),
 	},
@@ -193,7 +193,16 @@ const Masterclass = [
 		link: "",
 	},
 ];
-const episodesArray = [currentEpisode, TopMakeupArtists, TopDoctors, BrandFounders, ThoughtLeaders, EditorsAndJournalists, Celebrities, Masterclass];
+const episodesArray = [
+	currentEpisode,
+	TopMakeupArtists,
+	TopDoctors,
+	BrandFounders,
+	ThoughtLeaders,
+	EditorsAndJournalists,
+	Celebrities,
+	Masterclass,
+];
 
 const episodes = [
 	{
@@ -349,17 +358,29 @@ const blogArray = [
 	scienceOfSkin,
 	// episodeSummaries,
 ];
-const mainNavBar = ["home", "about", "episodes", "blog", "awards", "yugen", "connect", "account"];
+const mainNavBar = [
+	"home",
+	"about",
+	"episodes",
+	"blog",
+	"awards",
+	"yugen",
+	"connect",
+	"account",
+];
 
-const buttonStyle = "sm:py-3 uppercase font-thin underlineAnimate  tracking-[6px] text-white sm:text-[16px]";
+const buttonStyle =
+	"sm:py-3 uppercase font-thin underlineAnimate  tracking-[6px] text-white sm:text-[16px]";
 const activeNavButton =
 	"uppercase font-semibold sm:py-3 text-gold-500 subpixel-antialiased tracking-[6px] text-sm  underline underline-offset-8 sm:text-[18px] decoration-1";
 const smallMenuclassName =
 	"uppercase py-4 animate-fadeIn w-fit px-24 translate-x-[-400px] bg-char-900 text-white font-montserrat w-fit gap-12 text-[22px] flex flex-col translate-y-[50px] absolute bg-black transition-all duration-500 ease-in-out rounded-b-xl";
 const largeMenuclassName =
 	"uppercase py-4 animate-fadeIn w-full px-24 translate-x-[-800px] bg-char-900 text-white font-montserrat w-fit gap-12 text-[22px] flex flex-row translate-y-[50px] absolute bg-black transition-all duration-500 ease-in-out rounded-b-xl";
-const navMenu = "text-white font-montserrat text-3xl uppercase tracking-[2px] flex flex-col gap-14 pb-12 w-[300px]";
-const highlightMenu = "text-white font-montserrat  uppercase tracking-[2px] flex flex-row justify-center items-center w-3/4 ";
+const navMenu =
+	"text-white font-montserrat text-3xl uppercase tracking-[2px] flex flex-col gap-14 pb-12 w-[300px]";
+const highlightMenu =
+	"text-white font-montserrat  uppercase tracking-[2px] flex flex-row justify-center items-center w-3/4 ";
 const MobileNavBar = () => {
 	const [state, setState] = useState({
 		loading: false,
@@ -379,17 +400,27 @@ const MobileNavBar = () => {
 	};
 
 	return (
-		<div ref={menuRef} id='menu' className='sm:w-full sm:h-full relative z-40'>
+		<div
+			ref={menuRef}
+			id="menu"
+			className="w-full h-12 relative z-40 bg-black border-b-[.05rem] border-white"
+		>
 			<div
 				onClick={handleMenuToggle}
-				className='sm:inline-flex sm:w-full sm:justify-center sm:h-fit sm:items-center  sm:space-x-4 sm:border-b sm:py-2 sm:z-30  sm:bg-black'
+				className="inline-flex w-full justify-start h-fit items-center  sm:space-x-4 sm:border-b sm:py-2 sm:z-30  sm:bg-black"
 			>
-				<Bars3Icon onClick={handleMenuToggle} className='sm:w-10 sm:h-10 text-white sm:ml-2 sm:mr-auto ' />
-				{/* <h1 onClick={handleMenuToggle} className='text-white font-montserrat  sm:w-full sm:text-xl uppercase'>
-					Skin Anarchy - <span className='sm:text-gold-500 animate-fadeIn'>{menu.menu}</span>
-				</h1> */}
-				<h1 onClick={handleMenuToggle} className='text-white font-montserrat  sm:w-full sm:text-xl uppercase'>
-					<span className='sm:text-gold-500 animate-fadeIn'>{menu.menu}</span>
+				<Bars3Icon
+					onClick={handleMenuToggle}
+					className="w-10 h-10 text-white "
+				/>
+				<h1
+					onClick={handleMenuToggle}
+					className="text-white font-montserrat  w-full text-lg uppercase ml-2"
+				>
+					Skin Anarchy -{" "}
+					<span className="text-gold-500 animate-fadeIn text-xl font-montserrat font-thin">
+						{menu.menu}
+					</span>
 				</h1>
 			</div>
 			<div
@@ -484,14 +515,26 @@ const MobileNavBar = () => {
 					to={"/members-area/account"}
 				/>
 			</div>
-			<div ref={menuRef} className='w-full hidden'>
-				<NavBarDropDown open={open} menu={menu} text={"about"}>
-					<div className='flex flex-row w-full justify-center items-center bg-black border-white border-b-[1px] py-10 space-x-24'>
+			<div
+				ref={menuRef}
+				className="w-full hidden"
+			>
+				<NavBarDropDown
+					open={open}
+					menu={menu}
+					text={"about"}
+				>
+					<div className="flex flex-row w-full justify-center items-center bg-black border-white border-b-[1px] py-10 space-x-24">
 						{about.map((item, index) => {
 							return (
 								<>
-									<a key={index} href={item.link}>
-										<h1 className='text-lg text-white font-montserrat font-thin uppercase underlineAnimate'>{item.name}</h1>
+									<a
+										key={index}
+										href={item.link}
+									>
+										<h1 className="text-lg text-white font-montserrat font-thin uppercase underlineAnimate">
+											{item.name}
+										</h1>
 									</a>
 								</>
 							);
@@ -499,10 +542,14 @@ const MobileNavBar = () => {
 					</div>
 				</NavBarDropDown>
 				{/* Episodes Drop Down */}
-				<NavBarDropDown open={menu.open} menu={menu.menu} text={"episodes"}>
-					<div className='flex flex-row w-full justify-start items-center bg-black border-white border-b-[1px]'>
-						<div className='w-[475px] h-fit flex flex-col space-y-12 py-12 px-12 whitespace-nowrap pb-8'>
-							<h1 className='uppercase  text-white underline text-2xl xl:text-lg font-montserrat font-thin underline-offset-8  decoration-1 '>
+				<NavBarDropDown
+					open={menu.open}
+					menu={menu.menu}
+					text={"episodes"}
+				>
+					<div className="flex flex-row w-full justify-start items-center bg-black border-white border-b-[1px]">
+						<div className="w-[475px] h-fit flex flex-col space-y-12 py-12 px-12 whitespace-nowrap pb-8">
+							<h1 className="uppercase  text-white underline text-2xl xl:text-lg font-montserrat font-thin underline-offset-8  decoration-1 ">
 								Categories
 							</h1>
 							{episodes.map((item, index) => {
@@ -510,7 +557,7 @@ const MobileNavBar = () => {
 									<div
 										// onMouseEnter={() => handleSubMenuHover(item, index)}
 										key={index}
-										className='w-11/12 uppercase text-white text-lg font-montserrat font-thin ml-4 hover:underline underline-offset-8 decoration-1 transition-all duration-500 ease-in-out text-left '
+										className="w-11/12 uppercase text-white text-lg font-montserrat font-thin ml-4 hover:underline underline-offset-8 decoration-1 transition-all duration-500 ease-in-out text-left "
 									>
 										<a href={item.link}>{item.name}</a>
 									</div>
@@ -518,14 +565,24 @@ const MobileNavBar = () => {
 							})}
 						</div>
 						<HighlightMenu key={subMenuIndex}>
-							<div className='w-full grid grid-cols-3 duration-500 ease-in-out transition-all animate-fadeIn '>
+							<div className="w-full grid grid-cols-3 duration-500 ease-in-out transition-all animate-fadeIn ">
 								{episodesArray[subMenuIndex]?.map((item, index) => {
 									return (
-										<div key={index} className='w-full xl:w-3/4 h-full ml-4 text-center animate-fadeIn transition-all delay-200 '>
-											<h1 className='uppercase text-white text-4xl font-montserrat font-thin py-6 whitespace-nowrap'>{item.playerTitle}</h1>
+										<div
+											key={index}
+											className="w-full xl:w-3/4 h-full ml-4 text-center animate-fadeIn transition-all delay-200 "
+										>
+											<h1 className="uppercase text-white text-4xl font-montserrat font-thin py-6 whitespace-nowrap">
+												{item.playerTitle}
+											</h1>
 											{item.player}
-											<img src={item.image} className='w-3/4   mx-auto rounded-md ' />
-											<h1 className='uppercase text-white xl:text-xl text-2xl font-montserrat font-thin whitespace-nowrap py-4'>{item.name}</h1>
+											<img
+												src={item.image}
+												className="w-3/4   mx-auto rounded-md "
+											/>
+											<h1 className="uppercase text-white xl:text-xl text-2xl font-montserrat font-thin whitespace-nowrap py-4">
+												{item.name}
+											</h1>
 										</div>
 									);
 								})}
@@ -534,16 +591,22 @@ const MobileNavBar = () => {
 					</div>
 				</NavBarDropDown>
 				{/* Blog Drop Down */}
-				<NavBarDropDown open={menu.open} menu={menu.menu} text={"blog"}>
-					<div className='flex flex-row w-full justify-start items-center bg-black border-white border-b-[1px]'>
-						<div className='w-[475px] h-fit flex flex-col space-y-12 py-12 px-12 whitespace-nowrap  '>
-							<h1 className='uppercase  text-white underline text-2xl font-montserrat font-thin underline-offset-8 decoration-1'>Categories</h1>
+				<NavBarDropDown
+					open={menu.open}
+					menu={menu.menu}
+					text={"blog"}
+				>
+					<div className="flex flex-row w-full justify-start items-center bg-black border-white border-b-[1px]">
+						<div className="w-[475px] h-fit flex flex-col space-y-12 py-12 px-12 whitespace-nowrap  ">
+							<h1 className="uppercase  text-white underline text-2xl font-montserrat font-thin underline-offset-8 decoration-1">
+								Categories
+							</h1>
 							{blog.map((item, index) => {
 								return (
 									<div
 										// onMouseEnter={() => handleSubMenuHover(item, index)}
 										key={index}
-										className='w-11/12 underline-offset-8 decoration-1 uppercase text-white text-xl font-montserrat font-thin ml-4 hover:underline transition-all duration-500 ease-in-out text-left '
+										className="w-11/12 underline-offset-8 decoration-1 uppercase text-white text-xl font-montserrat font-thin ml-4 hover:underline transition-all duration-500 ease-in-out text-left "
 									>
 										<a href={item.link}>{item.name}</a>
 									</div>
@@ -551,11 +614,17 @@ const MobileNavBar = () => {
 							})}
 						</div>
 						<HighlightMenu key={subMenuIndex}>
-							<div className='w-full grid grid-cols-3 duration-500 ease-in-out transition-all animate-fadeIn py-12 '>
+							<div className="w-full grid grid-cols-3 duration-500 ease-in-out transition-all animate-fadeIn py-12 ">
 								{blogArray[subMenuIndex]?.map((item, index) => {
 									return (
-										<div key={index} className='w-full h-full text-center animate-fadeIn transition-all delay-200 mx-auto'>
-											<img src={item.image} className='w-3/5 mx-auto rounded-md ' />
+										<div
+											key={index}
+											className="w-full h-full text-center animate-fadeIn transition-all delay-200 mx-auto"
+										>
+											<img
+												src={item.image}
+												className="w-3/5 mx-auto rounded-md "
+											/>
 											{/* <h1 className='w-3/5 mx-auto uppercase text-white text-xl font-montserrat font-thin  py-4'>{item.name}</h1> */}
 										</div>
 									);
@@ -565,27 +634,49 @@ const MobileNavBar = () => {
 					</div>
 				</NavBarDropDown>
 				{/* Sale Seal Drop Down */}
-				<NavBarDropDown open={menu.open} menu={menu.menu} text={"safe seal"}></NavBarDropDown>
-				<NavBarDropDown open={menu.open} menu={menu.menu} text={"awards"}>
-					<div className='flex flex-row w-full justify-center items-center bg-black border-white border-b-[1px] py-4 space-x-12'>
+				<NavBarDropDown
+					open={menu.open}
+					menu={menu.menu}
+					text={"safe seal"}
+				></NavBarDropDown>
+				<NavBarDropDown
+					open={menu.open}
+					menu={menu.menu}
+					text={"awards"}
+				>
+					<div className="flex flex-row w-full justify-center items-center bg-black border-white border-b-[1px] py-4 space-x-12">
 						{awards.map((item, index) => {
 							return (
 								<>
-									<a key={index} href={item.link}>
-										<h1 className='text-xl text-white font-montserrat font-thin uppercase underlineAnimate'>{item.name}</h1>
+									<a
+										key={index}
+										href={item.link}
+									>
+										<h1 className="text-xl text-white font-montserrat font-thin uppercase underlineAnimate">
+											{item.name}
+										</h1>
 									</a>
 								</>
 							);
 						})}
 					</div>
 				</NavBarDropDown>
-				<NavBarDropDown open={menu.open} menu={menu.menu} text={"connect"}>
-					<div className='flex flex-row w-full justify-center items-center bg-black border-white border-b-[1px] py-10 space-x-24'>
+				<NavBarDropDown
+					open={menu.open}
+					menu={menu.menu}
+					text={"connect"}
+				>
+					<div className="flex flex-row w-full justify-center items-center bg-black border-white border-b-[1px] py-10 space-x-24">
 						{connect.map((item, index) => {
 							return (
 								<>
-									<a key={index} href={item.link}>
-										<h1 className='text-xl text-white font-montserrat font-thin uppercase underlineAnimate'>{item.name}</h1>
+									<a
+										key={index}
+										href={item.link}
+									>
+										<h1 className="text-xl text-white font-montserrat font-thin uppercase underlineAnimate">
+											{item.name}
+										</h1>
 									</a>
 								</>
 							);

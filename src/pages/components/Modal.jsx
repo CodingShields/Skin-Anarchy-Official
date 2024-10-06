@@ -1,5 +1,12 @@
 import PropTypes from "prop-types";
-const Modal = ({ children, open, error, isLoading, hideError, hideLoading }) => {
+const Modal = ({
+	children,
+	open,
+	error,
+	isLoading,
+	hideError,
+	hideLoading,
+}) => {
 	if (!open) return null;
 	return (
 		<div
@@ -7,18 +14,20 @@ const Modal = ({ children, open, error, isLoading, hideError, hideLoading }) => 
 		${hideError || hideLoading ? "" : "animate-fadeIn bg-black/70 "}
 		 `}
 		>
-			<div className='w-full h-full flex justify-center items-center'>{children}</div>
+			<div className="w-full h-fit flex justify-center items-center">
+				{children}
+			</div>
 		</div>
 	);
 };
 
 Modal.propTypes = {
-    children: PropTypes.node.isRequired,
-    open: PropTypes.bool.isRequired,
-    error: PropTypes.bool.isRequired,
-    isLoading: PropTypes.bool.isRequired,
-    hideError: PropTypes.func.isRequired,
-    hideLoading: PropTypes.func.isRequired
-}
+	children: PropTypes.node.isRequired,
+	open: PropTypes.bool.isRequired,
+	error: PropTypes.bool.isRequired,
+	isLoading: PropTypes.bool.isRequired,
+	hideError: PropTypes.func.isRequired,
+	hideLoading: PropTypes.func.isRequired,
+};
 
 export default Modal;
