@@ -1,9 +1,13 @@
 import PropTypes from "prop-types";
 
-const Button = ({ text, onClick }) => {
+const Button = ({ text, onClick, image }) => {
 	return (
-		<button onClick={onClick} name={text}>
+		<button
+			onClick={onClick}
+			name={text}
+		>
 			{text}
+			{image}
 		</button>
 	);
 };

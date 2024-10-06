@@ -247,7 +247,7 @@ const Footer = ({ handleModal }) => {
 			</div>
 			<div className="lg:hidden h-fit w-full relative">
 				<div className="w-screen lg:hidden">
-					<h1 className="text-xl tracking-widest font-montserrat py-2 whitespace-nowrap font-light uppercase text-center text-white">
+					<h1 className="text-2xl tracking-widest font-montserrat py-2 whitespace-nowrap font-light uppercase text-center text-gold-500">
 						Skin Anarchy
 					</h1>
 					<p className="font-montserrat  text-sm text-wrap lg:text-lg sm:text-sm text-center  py-2 whitespace-nowrap text-white/50">

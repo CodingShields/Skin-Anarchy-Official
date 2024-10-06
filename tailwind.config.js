@@ -16,7 +16,8 @@ export default {
 		},
 		extend: {
 			listStyleImage: {
-				badge: "<CheckBadgeIcon className='w-10 h-10 inline-block stroke-gold-500' />",
+				badge:
+					"<CheckBadgeIcon className='w-10 h-10 inline-block stroke-gold-500' />",
 			},
 			fontFamily: {
 				montserrat: ["Montserrat"],
@@ -52,8 +53,8 @@ export default {
 				fadeIn: "fadeIn 1s ease-in forwards",
 				fadeOut: "fadeOut 1s ease-out forwards",
 				fadeInSlow: "fadeIn 4.5s ease-in forwards",
-				navBarOpen: "navBarOpen 1s ease-in-out forwards",
-				navBarClose: "navBarClose .75s ease-in-out forwards",
+				navBarOpen: "navBarOpen .5s ease-in-out forwards",
+				navBarClose: "navBarClose .5s ease-in-out forwards",
 				chatBotSlideIn: "chatBotSlideIn 1.5s ease-in-out forwards",
 				chatBotSlideOut: "chatBotSlideOut 1.5s ease-in-out forwards",
 				scrollingSponsors: "scrollingSponsors 115s linear infinite",
@@ -90,24 +91,24 @@ export default {
 				navBarOpen: {
 					"0%": {
 						height: "100vh",
-						transform: "translateY(-100%)",
+						transform: "translateX(-100%)",
 						opacity: 0,
 					},
 					"100%": {
 						height: "100vh",
-						transform: "translateY(0)",
+						transform: "translateX(0)",
 						opacity: 1,
 					},
 				},
 				navBarClose: {
 					"0%": {
 						height: "100vh",
-						transform: "translateY(0)",
+						transform: "translateX(0)",
 						opacity: 1,
 					},
 					"100%": {
 						height: "100vh",
-						transform: "translateY(-100%)",
+						transform: "translateX(-100%)",
 						opacity: 0,
 					},
 				},

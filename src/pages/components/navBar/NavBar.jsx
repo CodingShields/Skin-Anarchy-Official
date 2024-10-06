@@ -60,11 +60,11 @@ const currentEpisode = [
 		link: "https://open.spotify.com/show/298oIu74qjd3pXaaBMDr19?si=7729b4ff4bbc4b2a",
 		player: (
 			<iframe
-				src='https://open.spotify.com/embed/show/298oIu74qjd3pXaaBMDr19?utm_source=generator&theme=0'
-				width='200%'
-				height='352'
-				allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'
-				loading='lazy'
+				src="https://open.spotify.com/embed/show/298oIu74qjd3pXaaBMDr19?utm_source=generator&theme=0"
+				width="200%"
+				height="352"
+				allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+				loading="lazy"
 			></iframe>
 		),
 	},
@@ -195,7 +195,16 @@ const Masterclass = [
 		link: "",
 	},
 ];
-const episodesArray = [currentEpisode, TopMakeupArtists, TopDoctors, BrandFounders, ThoughtLeaders, EditorsAndJournalists, Celebrities, Masterclass];
+const episodesArray = [
+	currentEpisode,
+	TopMakeupArtists,
+	TopDoctors,
+	BrandFounders,
+	ThoughtLeaders,
+	EditorsAndJournalists,
+	Celebrities,
+	Masterclass,
+];
 
 const episodes = [
 	{
@@ -256,10 +265,10 @@ const blog = [
 		link: "/members-area/skin-anarchy-blog",
 	},
 
-	{
-		name: "Episode Summaries",
-		link: "/members-area/skin-anarchy-blog",
-	},
+	// {
+	// 	name: "Episode Summaries",
+	// 	link: "/members-area/skin-anarchy-blog",
+	// },
 	{
 		name: "Science of Skin",
 		link: "/members-area/skin-anarchy-blog",
@@ -358,9 +367,9 @@ const safeSealArray = [
 	},
 ];
 const buttonStyle =
-	"uppercase font-thin underlineAnimate subpixel-antialiased tracking-[6px] text-white sm:text-[8px] md:text-[10px] lg:text-[12px] 2xl:text-[14px]";
+	"uppercase font-thin underlineAnimate font-thin font-montserrat tracking-widest text-white md:text-[10px] lg:text-2xl text-white/50";
 const activeNavButton =
-	"uppercase font-semibold text-gold-500 subpixel-antialiased tracking-[6px]  underline underline-offset-8 decoration-1 sm:text-[12px] md:text-[14px] lg:text-[16px] 2xl:text-[18px]";
+	"uppercase font-semibold text-gold-500 subpixel-antialiased tracking-[6px]  underline underline-offset-8 decoration-1 lg:text-4xl font-thin font-montserrat tracking-widest";
 const NavBar = () => {
 	const [state, setState] = useState({
 		loading: false,
@@ -375,13 +384,6 @@ const NavBar = () => {
 	const [isMobile, setIsMobile] = useState(false);
 	const menuRef = useRef(null);
 	const navigate = useNavigate();
-	useEffect(() => {
-		if (userDeviceInfo()) {
-			setIsMobile(true);
-		} else {
-			setIsMobile(false);
-		}
-	}, []);
 
 	const handleSubMenuHover = (item, index) => {
 		setState({ ...state, openSubMenu: true, subMenuIndex: index });
@@ -410,10 +412,14 @@ const NavBar = () => {
 			document.removeEventListener("mouseout", handleMouseOutside);
 		};
 	}, []);
-
+	console.log(state.subMenuIndex);
 	return (
-		<div ref={menuRef} id='menu' className='w-full sm:w-fit h-fit bg-black border-b border-white pb-2'>
-			<div className='w-full  flex flex-row  justify-center items-center sm:space-x-2 md:space-x-4 lg:space-x-8 xl:space-x-10 2xl:space-x-16 mx-auto mt-2'>
+		<div
+			ref={menuRef}
+			id="menu"
+			className="w-full sm:w-fit h-fit bg-black border-b border-white pb-2"
+		>
+			<div className="w-11/12  flex flex-row  justify-evenly items-center mx-auto mt-2 h-16">
 				<Button
 					style={state.currentMenu === "home" ? activeNavButton : buttonStyle}
 					text={"home"}
@@ -438,7 +444,9 @@ const NavBar = () => {
 					}}
 				/>
 				<Button
-					style={state.currentMenu === "episodes" ? activeNavButton : buttonStyle}
+					style={
+						state.currentMenu === "episodes" ? activeNavButton : buttonStyle
+					}
 					text={"episodes"}
 					onClick={() => {
 						setState({
@@ -460,7 +468,9 @@ const NavBar = () => {
 					}}
 				/>
 				<Button
-					style={state.currentMenu === "safe-seal" ? activeNavButton : buttonStyle}
+					style={
+						state.currentMenu === "safe-seal" ? activeNavButton : buttonStyle
+					}
 					text={"s.a.f.e. seal"}
 					onClick={() => {
 						setState({
@@ -471,8 +481,11 @@ const NavBar = () => {
 					}}
 				/>
 				<div className={`${!isMobile && "inline-flex w-fit space-x-4"}`}>
-					<img src={goldLogo} alt='logo' className='2xl:w-8  ' />
-					<Bars3Icon className={`w-10 h-10 text-white ${!isMobile && "hidden"}`} />
+					<img
+						src={goldLogo}
+						alt="logo"
+						className="w-12 "
+					/>
 				</div>
 				<Button
 					style={state.currentMenu === "awards" ? activeNavButton : buttonStyle}
@@ -499,7 +512,9 @@ const NavBar = () => {
 					}}
 				/>
 				<Button
-					style={state.currentMenu === "connect" ? activeNavButton : buttonStyle}
+					style={
+						state.currentMenu === "connect" ? activeNavButton : buttonStyle
+					}
 					text={"connect"}
 					onClick={() => {
 						setState({
@@ -523,7 +538,9 @@ const NavBar = () => {
 					}}
 				/>
 				<Button
-					style={state.currentMenu === "account" ? activeNavButton : buttonStyle}
+					style={
+						state.currentMenu === "account" ? activeNavButton : buttonStyle
+					}
 					text={"account"}
 					onClick={() => {
 						setState({
@@ -535,14 +552,24 @@ const NavBar = () => {
 					}}
 				/>
 			</div>
-			<div ref={menuRef} className='w-full '>
-				<NavBarDropDown open={state.openSubMenu} menu={state.currentMenu} text={"about"}>
-					<div className='flex flex-row w-full justify-center items-center bg-black  py-6 space-x-24'>
+			<div
+				ref={menuRef}
+				className="w-full "
+			>
+				<NavBarDropDown
+					open={state.openSubMenu}
+					menu={state.currentMenu}
+					text={"about"}
+				>
+					<div className="flex flex-row w-full justify-center items-center bg-black border-white border-b-[1px] py-4 space-x-12">
 						{about.map((item, index) => {
 							return (
 								<>
-									<a key={index} href={item.link}>
-										<h1 className='sm:text-[12px] md:text-[14px] lg:text-[16px] 2xl:text-[18px] text-white font-montserrat font-thin uppercase underlineAnimate'>
+									<a
+										key={index}
+										href={item.link}
+									>
+										<h1 className="sm:text-[12px] md:text-[14px] lg:text-[16px] 2xl:text-[18px] text-white font-montserrat font-thin uppercase underlineAnimate">
 											{item.name}
 										</h1>
 									</a>
@@ -552,18 +579,26 @@ const NavBar = () => {
 					</div>
 				</NavBarDropDown>
 				{/* Episodes Drop Down */}
-				<NavBarDropDown open={state.openSubMenu} menu={state.currentMenu} text={"episodes"}>
-					<div className='flex flex-row w-full justify-start items-center bg-black '>
-						<div className='w-[475px] h-fit flex flex-col space-y-4 py-12 px-12 whitespace-nowrap pb-8'>
-							<h1 className='uppercase  text-white underline sm:text-[12px] md:text-[14px] lg:text-[16px] 2xl:text-[18px] font-montserrat  underline-offset-8  decoration-1 tracking-widest'>
+				<NavBarDropDown
+					open={state.openSubMenu}
+					menu={state.currentMenu}
+					text={"episodes"}
+				>
+					<div className="flex flex-row w-full justify-start items-center bg-black ">
+						<div className="w-[500px] h-[900px] flex flex-col space-y-4 py-12 pl-6 pr-8 whitespace-nowrap pb-8">
+							<h1 className="uppercase  text-white underline text-3xl font-montserrat  underline-offset-8 pb-4 decoration-1 tracking-widest">
 								Categories
 							</h1>
 							{episodes.map((item, index) => {
 								return (
-									<div onMouseEnter={() => handleSubMenuHover(item, index)} key={index} className='w-11/12   ml-4  '>
+									<div
+										onMouseEnter={() => handleSubMenuHover(item, index)}
+										key={index}
+										className="w-11/12 ml-4  h-full"
+									>
 										<a
 											href={item.link}
-											className='uppercase text-white sm:text-[12px] md:text-[14px] lg:text-[16px] 2xl:text-[18px]   underlineAnimate font-montserrat font-thin underline-offset-8 decoration-1 transition-all duration-500 ease-in-out text-left tracking-widest '
+											className="uppercase text-white text-2xl  py-4 hover:text-3xl hover:font-medium hover:relative font-montserrat font-thin transition-all duration-500 ease-in-out text-left tracking-widest hover:text-gold-500 "
 										>
 											{item.name}
 										</a>
@@ -572,16 +607,30 @@ const NavBar = () => {
 							})}
 						</div>
 						<HighlightMenu key={state.subMenuIndex}>
-							<div className='w-full grid grid-cols-3 duration-500 ease-in-out transition-all animate-fadeIn '>
+							<div
+								className={`w-3/4  duration-500 ease-in-out transition-all animate-fadeIn ${
+									state.subMenuIndex === 1
+										? "flex justify-center items-center"
+										: "grid grid-cols-3"
+								}`}
+							>
 								{episodesArray[state.subMenuIndex]?.map((item, index) => {
 									return (
-										<div key={index} className='w-full xl:w-3/4 h-full ml-4 text-center animate-fadeIn transition-all delay-200 '>
-											<h1 className='uppercase text-white sm:text-[16px] md:text-[22px] lg:text-[28px] 2xl:text-[32px] font-montserrat font-thin py-6 whitespace-nowrap'>
+										<div
+											key={index}
+											className="w-3/4 h-full ml-auto text-center animate-fadeIn transition-all delay-200 "
+										>
+											<h1 className="uppercase text-white sm:text-[16px] md:text-[22px] lg:text-[28px] 2xl:text-[32px] font-montserrat font-thin py-6 whitespace-nowrap">
 												{item.playerTitle}
 											</h1>
 											{item.player}
-											<img src={item.image} className='sm:w-1/4 md:w-1/2 lg:w-3/4 xl  mx-auto rounded-md ' />
-											<h1 className='uppercase text-white xl:text-xl text-2xl font-montserrat font-thin whitespace-nowrap py-4'>{item.name}</h1>
+											<img
+												src={item.image}
+												className="w-3/4 mx-auto rounded-md "
+											/>
+											<h1 className="uppercase text-white text-2xl tracking-widest font-montserrat font-thin whitespace-nowrap py-4">
+												{item.name}
+											</h1>
 										</div>
 									);
 								})}
@@ -590,20 +639,26 @@ const NavBar = () => {
 					</div>
 				</NavBarDropDown>
 				{/* Blog Drop Down */}
-				<NavBarDropDown open={state.openSubMenu} menu={state.currentMenu} text={"blog"}>
-					<div className='flex flex-row w-full justify-start items-center bg-black '>
-						<div className='w-[475px] h-fit flex flex-col space-y-4 py-12 px-12 whitespace-nowrap  '>
-							<h1 className='uppercase  text-white underline text-2xl font-montserrat font-thin underline-offset-8 decoration-1'>Categories</h1>
+				<NavBarDropDown
+					open={state.openSubMenu}
+					menu={state.currentMenu}
+					text={"blog"}
+				>
+					<div className="flex flex-row w-full justify-start items-center bg-black ">
+						<div className="w-[500px] h-[900px] flex flex-col space-y-4 py-12 pl-6 pr-8 whitespace-nowrap pb-8">
+							<h1 className="uppercase  text-white underline text-3xl font-montserrat  underline-offset-8 pb-4 decoration-1 tracking-widest">
+								Categories
+							</h1>
 							{blog.map((item, index) => {
 								return (
 									<div
 										onMouseEnter={() => handleSubMenuHover(item, index)}
 										key={index}
-										className='w-11/12 underline-offset-8 decoration-1 uppercase text-white text-xl font-montserrat font-thin ml-4 hover:underline transition-all duration-500 ease-in-out text-left '
+										className="w-11/12 ml-4  h-full"
 									>
 										<a
 											href={item.link}
-											className='uppercase text-white sm:text-[12px] md:text-[14px] lg:text-[16px] 2xl:text-[18px]   underlineAnimate font-montserrat font-thin underline-offset-8 decoration-1 transition-all duration-500 ease-in-out text-left tracking-widest '
+											className="uppercase text-white text-2xl  py-4 hover:text-3xl hover:font-medium hover:relative font-montserrat font-thin transition-all duration-500 ease-in-out text-left tracking-widest hover:text-gold-500 "
 										>
 											{item.name}
 										</a>
@@ -612,13 +667,16 @@ const NavBar = () => {
 							})}
 						</div>
 						<HighlightMenu key={state.subMenuIndex}>
-							<div className='w-full grid grid-cols-3 duration-500 ease-in-out transition-all animate-fadeIn py-12 '>
+							<div className="w-full grid grid-cols-3 duration-500 ease-in-out transition-all animate-fadeIn py-12 ">
 								{blogArray[state.subMenuIndex]?.map((item, index) => {
 									return (
-										<div key={index} className='w-full h-full text-center animate-fadeIn transition-all delay-200 mx-auto'>
+										<div
+											key={index}
+											className="w-full h-full text-center animate-fadeIn transition-all delay-200 mx-auto"
+										>
 											<img
 												src={item.image}
-												className='w-3/5 mx-auto rounded-md hover:shadow-xl hover:shadow-white/50 hover:scale-110 transition-all duration-500 ease-in-out'
+												className="w-3/5 mx-auto rounded-md hover:shadow-xl hover:shadow-white/50 hover:scale-110 transition-all duration-500 ease-in-out"
 											/>
 										</div>
 									);
@@ -627,13 +685,20 @@ const NavBar = () => {
 						</HighlightMenu>
 					</div>
 				</NavBarDropDown>
-				<NavBarDropDown open={state.openSubMenu} menu={state.currentMenu} text={"awards"}>
-					<div className='flex flex-row w-full justify-center items-center bg-black border-white border-b-[1px] py-4 space-x-12'>
+				<NavBarDropDown
+					open={state.openSubMenu}
+					menu={state.currentMenu}
+					text={"awards"}
+				>
+					<div className="flex flex-row w-full justify-center items-center bg-black border-white border-b-[1px] py-4 space-x-12">
 						{awards.map((item, index) => {
 							return (
 								<>
-									<a key={index} href={item.link}>
-										<h1 className='sm:text-[12px] md:text-[14px] lg:text-[16px] 2xl:text-[18px] text-white font-montserrat font-thin uppercase underlineAnimate'>
+									<a
+										key={index}
+										href={item.link}
+									>
+										<h1 className="sm:text-[12px] md:text-[14px] lg:text-[16px] 2xl:text-[18px] text-white font-montserrat font-thin uppercase underlineAnimate">
 											{item.name}
 										</h1>
 									</a>
@@ -642,13 +707,20 @@ const NavBar = () => {
 						})}
 					</div>
 				</NavBarDropDown>
-				<NavBarDropDown open={state.openSubMenu} menu={state.currentMenu} text={"safe-seal"}>
-					<div className='flex flex-row w-full justify-center items-center bg-black  py-4 space-x-18'>
+				<NavBarDropDown
+					open={state.openSubMenu}
+					menu={state.currentMenu}
+					text={"safe-seal"}
+				>
+					<div className="flex flex-row w-full justify-center items-center bg-black  py-4 space-x-18 h-24">
 						{safeSealArray.map((item, index) => {
 							return (
 								<>
-									<a key={index} href={item.link}>
-										<h1 className='sm:text-[12px] md:text-[14px] lg:text-[16px] 2xl:text-[18px] text-white font-montserrat font-thin uppercase underlineAnimate tracking-widest'>
+									<a
+										key={index}
+										href={item.link}
+									>
+										<h1 className="text-2xl text-white font-montserrat font-thin uppercase underlineAnimate tracking-widest">
 											{item.name}
 										</h1>
 									</a>

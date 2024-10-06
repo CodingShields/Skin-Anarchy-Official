@@ -54,20 +54,30 @@ const YugenBook = () => {
 	};
 
 	return (
-		<HTMLFlipBook
-			onFlip={onFlip}
-			ref={bookRef}
-			className={`hover:cursor-grab active:cursor-grabbing ${currentPage !== 0 ? "shadow-2xl shadow-gold-500/30" : ""} `}
-			maxShadowOpacity={0}
-			drawShadow={true}
-			width={900}
-			height={1000}
-			// usePortrait={true}
-		>
-			{pages.map((page, index) => (
-				<img key={index} src={page} alt={`page ${index + 1}`} />
-			))}
-		</HTMLFlipBook>
+		<div className="w-full h-full flex flex-col justify-center items-center">
+			<h1 className="text-5xl text-white absolute top-32 z-30">
+				Different cover image? and some text for mobile link because book is not
+				for mobile devices
+			</h1>
+			<HTMLFlipBook
+				onFlip={onFlip}
+				ref={bookRef}
+				className={`hover:cursor-grab active:cursor-grabbing ${currentPage !== 0 ? "shadow-2xl shadow-gold-500/30" : ""} `}
+				maxShadowOpacity={0}
+				drawShadow={true}
+				width={900}
+				height={1000}
+				// usePortrait={true}
+			>
+				{pages.map((page, index) => (
+					<img
+						key={index}
+						src={page}
+						alt={`page ${index + 1}`}
+					/>
+				))}
+			</HTMLFlipBook>
+		</div>
 	);
 };
 
