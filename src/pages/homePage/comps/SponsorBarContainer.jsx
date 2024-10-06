@@ -24,7 +24,7 @@ const SponsorBarContainer = () => {
 				{sponsorImages.map((sponsor, index) => {
 					return (
 						<div
-							className="flex flex-grow-0 flex-shrink-0 lg:w-64 w-32 px-4"
+							className="flex flex-grow-0 flex-shrink-0 lg:w-64 w-48 px-2"
 							key={index}
 						>
 							<img src={sponsor} />
@@ -34,7 +34,7 @@ const SponsorBarContainer = () => {
 				{sponsorImages.map((sponsor, index) => {
 					return (
 						<div
-							className="block w-full py-[20px] "
+							className="flex flex-grow-0 flex-shrink-0 lg:w-64 w-48 px-2"
 							key={index}
 						>
 							<img src={sponsor} />

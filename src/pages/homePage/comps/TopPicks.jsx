@@ -32,7 +32,7 @@ const TopPicks = () => {
 	}, []);
 
 	return (
-		<div className="w-full h-fit lg:my-64 my-32 relative">
+		<div className="w-full h-fit lg:my-64 my-12 relative">
 			<h1 className="text-white lg:text-6xl text-3xl text-center font-montserrat font-thin uppercase tracking-widest py-6">
 				Skincare Anarchy Awards
 			</h1>
@@ -41,15 +41,15 @@ const TopPicks = () => {
 			</h2>
 			<div className="topPicksBar relative">
 				<div
-					className="topPicksBar-content py-12 mt-12"
+					className="topPicksBar-content lg:py-48 lg:mt-12 py-8"
 					style={{
-						animation: `scrollingTopPicksBar ${isMobile ? "35s" : "22s"} linear infinite`,
+						animation: `scrollingTopPicksBar ${isMobile ? "35s" : "85s"} linear infinite`,
 					}}
 				>
 					{/* Original Images */}
 					{images.map((image, index) => (
 						<div
-							className="topPicksBar-item"
+							className="flex flex-grow-0 flex-shrink-0 lg:w-64 w-48 px-12"
 							key={index}
 						>
 							<img
@@ -62,7 +62,31 @@ const TopPicks = () => {
 					{/* Duplicated Images for Seamless Effect */}
 					{images.map((image, index) => (
 						<div
-							className="topPicksBar-item"
+							className="flex flex-grow-0 flex-shrink-0 lg:w-64 w-48 px-12"
+							key={`duplicate-${index}`}
+						>
+							<img
+								className="w-64"
+								src={image}
+								alt={`Sponsor ${index}`}
+							/>
+						</div>
+					))}
+					{images.map((image, index) => (
+						<div
+							className="flex flex-grow-0 flex-shrink-0 lg:w-64 w-48 px-12"
+							key={`duplicate-${index}`}
+						>
+							<img
+								className="w-64"
+								src={image}
+								alt={`Sponsor ${index}`}
+							/>
+						</div>
+					))}
+					{images.map((image, index) => (
+						<div
+							className="flex flex-grow-0 flex-shrink-0 lg:w-64 w-48 px-12"
 							key={`duplicate-${index}`}
 						>
 							<img

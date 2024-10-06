@@ -58,7 +58,7 @@ body {
 
 .sponsorBar-item img {
 	display: block;
-	width: 100%;
+	width: 200%;
 	padding: 0 20px;
 }
 
@@ -88,12 +88,11 @@ body {
 
 .topPicksBar-item {
 	flex: 0 0 16vw;
-	margin: 0 1vw;
+	margin: 0 10vw;
 }
 
 .topPicksBar-item img {
 	display: block;
-	width: 200%;
 	padding: 0 20px;
 }
 
@@ -103,7 +102,7 @@ body {
 	}
 
 	100% {
-		transform: translateX(-200%); // multiply the number of images by 18
+		transform: translateX(-524vw); // multiply the number of images by 18
 	}
 }
 
