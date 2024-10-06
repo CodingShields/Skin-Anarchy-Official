@@ -19,8 +19,8 @@ const SafeSealTiers = () => {
 				src={safeSealBG}
 				className="w-full h-full object-cover opacity-30 absolute top-0"
 			/>
-			<div className="flex flex-col justify-center items-center text-white min-h-screen py-48">
-				<h1 className="text-2xl lg:text-5xl mb-8">
+			<div className="flex flex-col justify-center items-center text-white min-h-screen py-24 lg:py-48">
+				<h1 className="text-3xl text-center lg:text-5xl mb-8">
 					Product Review Tier Options
 				</h1>
 				<SafeSealNav activeNav={handleNavSelect} />

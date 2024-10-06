@@ -49,9 +49,9 @@ const SafeSealTierCard = (props) => {
 				/>
 				<img
 					src={safeSealTeen}
-					className="w-64 h-64 overflow-hidden absolute top-0 left-0 hidden lg:block"
+					className="w-64 h-64 overflow-hidden absolute -top-4 left-0 hidden lg:block"
 				/>
-				<div className=" flex flex-col justify-start lg:justify-center items-start h-full">
+				<div className=" flex flex-col justify-start lg:justify-center items-start h-full lg:w-3/4 lg:ml-auto">
 					<div className="inline-flex justify-start items-center py-2">
 						<CheckBadgeIcon className="w-10 h-10 lg:w-16 lg:h-16 inline-block stroke-gold-500 stroke-[.03rem] " />
 						<p className=" text-xl text-wrap lg:whitespace-wrap block w-72 lg:w-fit mx-2 ">
@@ -82,9 +82,9 @@ const SafeSealTierCard = (props) => {
 				/>
 				<img
 					src={maternity}
-					className="w-64 h-64 overflow-hidden absolute top-0 left-0 hidden lg:block"
+					className="w-44 h-44 overflow-hidden absolute top-4 left-6 hidden lg:block"
 				/>
-				<div className=" flex flex-col justify-start lg:justify-center items-start h-full">
+				<div className=" flex flex-col justify-start lg:justify-center items-start h-full lg:w-3/4 lg:ml-auto">
 					<div className="inline-flex justify-start items-center py-2">
 						<CheckBadgeIcon className="w-10 h-10 lg:w-16 lg:h-16 inline-block stroke-gold-500 stroke-[.03rem] " />
 						<p className=" text-xl whitespace-wrap block w-fit mx-2">
