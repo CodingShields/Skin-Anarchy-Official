@@ -67,7 +67,7 @@ const SafeSealTiers = () => {
 						<div
 							className={`w-full lg:w-[1600px] border px-4 py-8 rounded-bl-xl rounded-tr-xl rounded-br-xl bg-black relative animate-fadeIn h-fit flex flex-col lg:flex-row shadow-2xl shadow-white/20`}
 						>
-							<div className="flex flex-col justify-center items-start h-full w-1/2">
+							<div className="flex flex-col justify-center items-start h-full w-full lg:w-1/2">
 								<p className="text-2xl pb-2  bg-white text-black w-fit font-normal px-4 py-2 absolute -top-12 -left-[.05rem] rounded-tl-xl rounded-tr-xl uppercase">
 									Evaluation Criteria{" "}
 								</p>
@@ -119,61 +119,61 @@ const SafeSealTiers = () => {
 								</div>
 								<div className="inline-flex justify-start items-center relative">
 									<CheckBadgeIcon className="w-16 h-16 inline-block stroke-gold-500 stroke-[.03rem] " />
-									<p className=" text-2xl tracking-widest uppercasewhitespace-wrap block w-fit mx-2">
+									<p className=" text-lg lg:text-2xl tracking-widest uppercase whitespace-nowrap block  w-11/12 text-wrap lg:w-fit mx-2">
 										Ingredient Safety
 									</p>
 								</div>
 								<div className="inline-flex justify-start items-center relative">
 									<CheckBadgeIcon className="w-16 h-16 inline-block stroke-gold-500 stroke-[.03rem] " />
-									<p className=" text-2xl tracking-widest uppercase whitespace-wrap block w-fit mx-2">
+									<p className=" text-lg lg:text-2xl tracking-widest uppercase whitespace-nowrap block  w-11/12 text-wrap lg:w-fit mx-2">
 										Efficacy Data
 									</p>
 								</div>
 								<div className="inline-flex justify-start items-center relative">
 									<CheckBadgeIcon className="w-16 h-16 inline-block stroke-gold-500 stroke-[.03rem] " />
-									<p className=" text-2xl tracking-widest uppercase whitespace-wrap block w-fit mx-2">
+									<p className=" text-lg lg:text-2xl tracking-widest uppercase whitespace-nowrap block  w-11/12 text-wrap lg:w-fit mx-2">
 										Result Time Frame
 									</p>
 								</div>
 								<div className="inline-flex justify-start items-center relative">
 									<CheckBadgeIcon className="w-16 h-16 inline-block stroke-gold-500 stroke-[.03rem] " />
-									<p className=" text-2xl tracking-widest uppercase whitespace-wrap block w-fit mx-2">
+									<p className=" text-lg lg:text-2xl tracking-widest uppercase whitespace-nowrap block  w-11/12 text-wrap lg:w-fit mx-2">
 										Side Effects
 									</p>
 								</div>
 								<div className="inline-flex justify-start items-center relative">
 									<CheckBadgeIcon className="w-16 h-16 inline-block stroke-gold-500 stroke-[.03rem] " />
-									<p className=" text-2xl tracking-widest uppercase whitespace-wrap block w-fit mx-2">
+									<p className=" text-lg lg:text-2xl tracking-widest uppercase whitespace-nowrap block  w-11/12 text-wrap lg:w-fit mx-2">
 										Data Analysis
 									</p>
 								</div>
 								<div className="inline-flex justify-start items-center relative">
 									<CheckBadgeIcon className="w-16 h-16 inline-block stroke-gold-500 stroke-[.03rem] " />
-									<p className=" text-2xl tracking-widest uppercasewhitespace-wrap block w-fit mx-2">
+									<p className=" text-lg lg:text-2xl tracking-widest uppercase whitespace-nowrap block  w-11/12 text-wrap lg:w-fit mx-2">
 										Laboratory Standards
 									</p>
 								</div>
 								<div className="inline-flex justify-start items-center relative">
 									<CheckBadgeIcon className="w-16 h-16 inline-block stroke-gold-500 stroke-[.03rem] " />
-									<p className=" text-2xl tracking-widest uppercase whitespace-wrap block w-fit mx-2">
+									<p className=" text-lg lg:text-2xl tracking-widest uppercase whitespace-nowrap block  w-11/12 text-wrap lg:w-fit mx-2">
 										Packaging Integrity
 									</p>
 								</div>
 								<div className="inline-flex justify-start items-center relative">
 									<CheckBadgeIcon className="w-16 h-16 inline-block stroke-gold-500 stroke-[.03rem] " />
-									<p className=" text-2xl tracking-widest uppercase whitespace-wrap block w-fit mx-2">
+									<p className=" text-lg lg:text-2xl tracking-widest uppercase whitespace-nowrap block  w-11/12 text-wrap lg:w-fit mx-2">
 										Clinical Reviews
 									</p>
 								</div>
 								<div className="inline-flex justify-start items-center relative">
 									<CheckBadgeIcon className="w-16 h-16 inline-block stroke-gold-500 stroke-[.03rem] " />
-									<p className=" text-2xl tracking-widest uppercase whitespace-wrap block w-fit mx-2">
+									<p className=" text-lg lg:text-2xl tracking-widest uppercase whitespace-nowrap block  w-11/12 text-wrap lg:w-fit mx-2">
 										Patch Resting
 									</p>
 								</div>
 								<div className="inline-flex justify-start items-center relative">
 									<CheckBadgeIcon className="w-16 h-16 inline-block stroke-gold-500 stroke-[.03rem] " />
-									<p className=" text-3xl tracking-widest uppercase whitespace-wrap block w-fit mx-2">
+									<p className=" text-lg lg:text-2xl tracking-widest uppercase whitespace-nowrap block  w-11/12 text-wrap lg:w-fit mx-2">
 										Testing Timeline
 									</p>
 								</div>
