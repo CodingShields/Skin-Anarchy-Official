@@ -62,7 +62,6 @@ const LoginPage = () => {
 					<>
 						<div className="borderGrow bg-white/50" />
 						<LoginPageNavBar onClick={() => setLoginModal(!loginModal)} />
-
 						<FactsBar />
 						<PolicyBar />
 					</>
