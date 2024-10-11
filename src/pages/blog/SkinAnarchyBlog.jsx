@@ -11,10 +11,6 @@ import {
 	ArrowsPointingOutIcon,
 } from "@heroicons/react/24/outline";
 
-const buttonStyle =
-	"uppercase font-thin  tracking-widest text-white  animate-fadeIn translate-x-6 transition-all ease-in-out duration-500 min-h-6 w-fit text-lg text-white/50";
-const activeButtonStyle =
-	"uppercase text-gold-500 tracking-widest  animate-fadeIn indent-4 translate-x-16 transition-all ease-in-out duration-500 min-h-6 text-lg font-thinner w-full ";
 const SkinAnarchyBlog = () => {
 	const [state, setState] = useState({
 		loading: false,
@@ -28,7 +24,8 @@ const SkinAnarchyBlog = () => {
 		blogCatClosed: false,
 		blogFullScreenMode: false,
 	});
-
+	const buttonStyle = `uppercase font-thin  tracking-widest text-white  animate-fadeIn translate-x-6 transition-all ease-in-out duration-500 min-h-6 w-fit text-lg text-white/50 ${state.blogCatClosed ? "hidden" : ""}`;
+	const activeButtonStyle = `uppercase text-gold-500 tracking-widest  animate-fadeIn indent-4 translate-x-16 transition-all ease-in-out duration-500 min-h-6 text-lg font-thinner w-full  ${state.blogCatClosed ? "hidden" : ""}`;
 	// useEffect(() => {
 	// 	const iframe = document.getElementById("mediumImport");
 
@@ -114,10 +111,10 @@ const SkinAnarchyBlog = () => {
 	// };
 
 	return (
-		<div className="w-full h-full animate-fadeIn bg-white relative">
+		<div className="w-full min-h-screen animate-fadeIn bg-white relative">
 			<div className="w-full h-fit border-b-2 border-black pt-6 block">
 				<div
-					className={`w-full flex flex-col z-10 items-center justify-center mt-8 ${state.blogFullScreenMode ? "h-0" : "h-36"}`}
+					className={`w-full flex flex-col z-10 items-center justify-center mt-8 ${state.blogFullScreenMode ? "h-0 " : "h-36 animate-fadeIn"}`}
 				>
 					<h1
 						style={{
@@ -134,12 +131,38 @@ const SkinAnarchyBlog = () => {
 				</div>
 
 				<div
-					className={`flex flex-col  lg:flex-row lg:justify-center lg:items-center items-start justify-start  w-full space-y-4 lg:space-x-12 relative bg-black py-4 ${state.blogFullScreenMode ? "h-0" : "h-[280px]"} ${state.blogCatClosed ? "h-8" : "h-[280px]"}`}
+					className={`flex flex-col  lg:flex-row lg:justify-center lg:items-center items-start justify-start  w-full space-y-4 lg:space-x-12 relative bg-black transition-all ease-in-out duration-500 animate-fadeIn ${state.blogCatClosed ? "h-16 overflow-hidden" : "h-[280px] py-4"} ${state.blogFullScreenMode ? "h-0 " : "h-36 animate-fadeIn"}`}
 				>
-					<h1 className="font-montserrat font-thin uppercase text-2xl tracking-widest text-white indent-6">
-						Categories
+					<h1
+						className={`font-montserrat font-thin uppercase tracking-widest text-white indent-6 text-2xl animate-fadeIn ${state.blogCatClosed ? "hidden h-0" : "block"} `}
+					>
+						Categories{" "}
 					</h1>
-					<div className="flex flex-col space-y-4">
+					<div
+						className={`flex flex-row justify-evenly items-center space-x-4 w-full bg-black transition-all ease-in-out animate-fadeIn duration-500 px-2 ${state.blogCatClosed ? "" : "hidden"}`}
+					>
+						<h1
+							className={`font-montserrat font-thin uppercase tracking-widest text-white text-xl`}
+						>
+							Categories{" "}
+						</h1>
+						<div className="w-6 h-6">
+							<ChevronDoubleDownIcon
+								onClick={() =>
+									setState({ ...state, blogCatClosed: !state.blogCatClosed })
+								}
+								className={` w-full h-full text-white ${state.blogCatClosed ? "rotate-180" : "hidden"}`}
+							/>
+						</div>
+
+						<h1 className="uppercase text-gold-500 tracking-widest  animate-fadeIn transition-all ease-in-out duration-500 min-h-6 text-lg font-thinner w-fit">
+							{state.activeMenu}
+						</h1>
+					</div>
+
+					<div
+						className={` ${state.blogCatClosed ? "h-6 " : " flex flex-col space-y-4"} `}
+					>
 						<Button
 							text="Beauty Culture"
 							style={`${state.activeMenu === "beautyCulture" ? activeButtonStyle : buttonStyle}`}
@@ -171,7 +194,7 @@ const SkinAnarchyBlog = () => {
 								onClick={() =>
 									setState({ ...state, blogCatClosed: !state.blogCatClosed })
 								}
-								className={` w-6 h-6 text-white ml-auto ${state.blogCatClosed ? "rotate-180" : "rotate-0"}`}
+								className={` w-6 h-6 text-white ml-auto ${!state.blogCatClosed ? "rotate-180" : "hidden"}`}
 							/>
 						</div>
 					</div>
@@ -201,24 +224,30 @@ const SkinAnarchyBlog = () => {
 						: "flex flex-row justify-between"
 				}
 			> */}
-			<div className=" pt-4 w-full h-screen  bg-white overflow-y-scroll flex flex-col justify-center items-center">
+			<div className=" pt-4 w-full h-full bg-white overflow-y-scroll flex flex-col justify-center items-center ">
 				<h1
 					onSelect={handleOnSelect}
 					className="text-3xl font-montserrat py-4 text-center"
 				>
 					How Art Eras Influence Perfumery
 				</h1>
-				<div>
-					<h1 className="text-lg text-center text-black/50 font-montserrat tracking-widest">
-						Author:{" "}
-						<span className="text-xl text-black tracking-wide">
-							Dr Ekta Yadav
-						</span>
-					</h1>
+				<div className="w-10/12 flex flex-col justify-start items-start">
+					<div className="w-full flex flex-row justify-start items-center">
+						<h1 className="text-md text-left text-black/50 font-montserrat tracking-widest w-24">
+							Author:{" "}
+						</h1>
+						<h1 className="text-lg text-black tracking-wide"> Dr Ekta Yadav</h1>
+					</div>
+					<div className="w-full flex flex-row justify-start items-center">
+						<h1 className="text-md text-left text-black/50 font-montserrat tracking-widest w-24">
+							Category:
+						</h1>
+						<h1 className="text-lg text-black tracking-wide"> Fragrance</h1>
+					</div>
 				</div>
 				<BlogUserResponse handleFullScreenMode={handleFullScreenMode} />
-				<div className="w-full py-8">
-					<p className="text-lg w-10/12 mx-auto py-4 text-left font-montserrat">
+				<div className="w-full py-8 space-y-2 flex flex-col ">
+					<p className="text-lg w-10/12 mx-auto py-4 text-left font-montserrat leading-10 ">
 						“Purple the sails, and so perfumed, that the winds were love-sick
 						with them,” Shakespeare wrote. After killing Julius Caesar,
 						Cleopatra is claimed to have welcomed Marc Antony in a ship with
@@ -233,7 +262,7 @@ const SkinAnarchyBlog = () => {
 						alt=""
 						className="w-1/2 mx-auto"
 					/>
-					<p className="text-2xl w-3/4 mx-auto py-4 text-left">
+					<p className="text-lg w-11/12 mx-auto py-4 text-left font-montserrat leading-10 pl-2">
 						The Latin words “per” (meaning “thorough”) and “fumus” (meaning
 						“smoke”) are where the English word “perfume” originates. The scents
 						created by burning incense were eventually given the word “parfum”
@@ -246,7 +275,7 @@ const SkinAnarchyBlog = () => {
 						became accessible to all Egyptians. The populace enjoyed lavish
 						baths and fragrant oil soaks for their complexion.
 					</p>
-					<p className="text-2xl w-3/4 mx-auto py-4 text-left">
+					<p className="text-lg w-11/12 mx-auto py-4 text-left font-montserrat leading-10 pl-2">
 						The first aqueous perfume was created by the ancient Greeks.
 						However, the Arabs’ invention of distillation was what enabled the
 						production of perfume commercially possible. The 17th century saw
@@ -256,7 +285,7 @@ const SkinAnarchyBlog = () => {
 						frequent use of scents in England. During Elizabeth’s reign, every
 						public space was scented since she could not stand offensive odors.
 					</p>
-					<p className="text-2xl w-3/4 mx-auto py-4 text-left">
+					<p className="text-lg w-11/12 mx-auto py-4 text-left font-montserrat leading-10 pl-2">
 						In the 19th century, scent underwent a significant transformation,
 						just like industry and art. The modern fragrance was built on the
 						grounds of evolving tastes and chemistry. At the beginning of the
@@ -268,7 +297,7 @@ const SkinAnarchyBlog = () => {
 						chemical concepts in its creation.
 					</p>
 
-					<p className="text-2xl w-3/4 mx-auto py-4 text-left">
+					<p className="text-lg w-11/12 mx-auto py-4 text-left font-montserrat leading-10 pl-2">
 						In the early 18th century in the city of Köln, an Italian barber
 						created eau de cologne, which is typically worn by men. As a result,
 						the city’s French name is “Cologne.” This mixture was first marketed
@@ -278,14 +307,14 @@ const SkinAnarchyBlog = () => {
 						which was also the location of Koln’s first eau de cologne store. It
 						is still the oldest scent that has been made continually.
 					</p>
-					<p className="text-2xl w-3/4 mx-auto py-4 text-left">
+					<p className="text-lg w-11/12 mx-auto py-4 text-left font-montserrat leading-10 pl-2">
 						A memory, an emotion, a piece of architecture, or a trip can all
 						serve as the inspiration for a perfume. The Art Deco collection
 						transports you to the Roaring Twenties, just as “The Collector” — a
 						travel-inspired perfume collection, can send you on a journey around
 						the world with distinctive country-specific aromas.
 					</p>
-					<p className="text-2xl w-3/4 mx-auto py-4 text-left">
+					<p className="text-lg w-11/12 mx-auto py-4 text-left font-montserrat leading-10 pl-2">
 						The beauty of art is that the viewer is allowed to interpret it in
 						whatever they see fit. When the perfume is finished, the idea behind
 						it will come to an end. However, how each person reacts to the
@@ -303,9 +332,9 @@ const SkinAnarchyBlog = () => {
 				</div>
 			</div>
 
-			<div className="w-1/2 h-full font-montserrat bg-white overflow-y-scroll ">
+			{/* <div className="w-1/2 h-full font-montserrat bg-white overflow-y-scroll ">
 				<PrevBlogs />
-			</div>
+			</div> */}
 			{/* </div> */}
 		</div>
 	);
