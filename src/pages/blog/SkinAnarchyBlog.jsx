@@ -65,6 +65,7 @@ const SkinAnarchyBlog = () => {
 			</div>
 			<div>
 				<CurrentBlog open={state.currentBlog} />
+				<BeautyCultureBlog open={state.beautyCultureBlog} />
 			</div>
 		</div>
 	);
