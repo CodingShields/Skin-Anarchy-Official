@@ -80,27 +80,27 @@ const SafeSealTiers = () => {
 										, we meticulously evaluate skin care products through a
 										rigorous set of criteria to ensure excellence and safety.{" "}
 									</p>
-									<p className="indent-8 w-11/12 lg:w-full lg:leading-8 mx-auto">
+									<p className="indent-8 w-11/12 lg:w-full leading-10 mx-auto">
 										Our comprehensive literature review delves into existing
 										research and scientific studies, ensuring that every
 										ingredient used is thoroughly vetted for safety and
 										efficacy.
 									</p>
-									<p className="indent-8 w-11/12 lg:w-full lg:leading-8 mx-auto">
+									<p className="indent-8 w-11/12 lg:w-full leading-10 mx-auto">
 										We assess the efficacy data to determine how well the
 										product performs its intended function, and evaluate the
 										result time frame to set realistic expectations for users.
 										Our analysis also includes a close examination of potential
 										side effects, ensuring transparency and safety.{" "}
 									</p>
-									<p className="indent-8 w-11/12 lg:w-full lg:leading-8 mx-auto">
+									<p className="indent-8 w-11/12 lg:w-full leading-10 mx-auto">
 										Data analysis is conducted to interpret results accurately,
 										adhering to stringent laboratory standards for reliability.
 										We scrutinize packaging integrity to confirm that products
 										are delivered in optimal condition, and consider clinical
 										reviews to understand real-world effectiveness.{" "}
 									</p>
-									<p className="indent-8 w-11/12 lg:w-full lg:leading-8 mx-auto">
+									<p className="indent-8 w-11/12 lg:w-full leading-10 mx-auto">
 										Additionally, we perform patch testing to gauge individual
 										reactions and carefully manage the testing timeline to
 										ensure thorough and reliable outcomes. This comprehensive
@@ -168,7 +168,7 @@ const SafeSealTiers = () => {
 								<div className="inline-flex justify-start items-center relative">
 									<CheckBadgeIcon className="w-16 h-16 inline-block stroke-gold-500 stroke-[.03rem] " />
 									<p className=" text-lg lg:text-2xl tracking-widest uppercase whitespace-nowrap block  w-11/12 text-wrap lg:w-fit mx-2">
-										Patch Resting
+										Patch Testing
 									</p>
 								</div>
 								<div className="inline-flex justify-start items-center relative">

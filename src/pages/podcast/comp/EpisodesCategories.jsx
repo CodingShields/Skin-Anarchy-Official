@@ -1,4 +1,4 @@
-import {useState} from "react";
+import { useState } from "react";
 import { Button } from "../../components/Components";
 
 const categoryNav = [
@@ -49,12 +49,17 @@ const buttonStyle =
 const EpisodesCategories = () => {
 	const [isSelected, setIsSelected] = useState("all-episodes");
 	return (
-		<div className='flex flex-row w-full h-fit px-64 text-white text-[16px] font-montserrat uppercase justify-center items-center'>
+		<div className="flex flex-row w-full h-fit px-64 text-white text-[16px] font-montserrat uppercase justify-center items-center">
 			{categoryNav.map((item, index) => (
-				<div key={index} className="m-4">
+				<div
+					key={index}
+					className="m-4"
+				>
 					<Button
 						onClick={() => setIsSelected(item.value)}
-						text={item.name} style={` ${buttonStyle} ${isSelected === item.value ? "bg-white text-black font-semibold" : ""}`} />
+						text={item.name}
+						style={` ${buttonStyle} ${isSelected === item.value ? "bg-white text-black font-semibold" : ""}`}
+					/>
 				</div>
 			))}
 		</div>

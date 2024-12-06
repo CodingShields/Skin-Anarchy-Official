@@ -75,9 +75,9 @@ const BlogNav = ({ blogCat }) => {
 					onClick={() => handleSelection("scienceOfSkin")}
 				/>
 				<Button
-					text="Previous Blogs"
-					style={`${state.activeMenu === "previousBlogs" ? activeButtonStyle : buttonStyle}`}
-					onClick={() => handleSelection("previousBlogs")}
+					text="Episode Summaries"
+					style={`${state.activeMenu === "episodeSummaries" ? activeButtonStyle : buttonStyle}`}
+					onClick={() => handleSelection("episodeSummaries")}
 				/>
 				<div className="w-full block">
 					<ChevronDoubleDownIcon
