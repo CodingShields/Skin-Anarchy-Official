@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-import { createElement } from "react";
 const HighlightMenu = ({ children }) => {
 	return <>{children}</>;
 };

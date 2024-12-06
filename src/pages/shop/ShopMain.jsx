@@ -1,6 +1,6 @@
 const ShopMain = () => {
 	return (
-		<div className="flex flex-col items-center justify-center h-3/4 lg:h-screen w-full shopMain animate-fadeIn relative overscroll-x-none">
+		<div className="flex flex-col items-center justify-center min-h-screen lg:h-screen w-full shopMain animate-fadeIn relative overscroll-x-none">
 			<h1 className="font-montserrat font-thin uppercase shopText text-3xl lg:text-9xl">
 				Skin Anarchy Shop
 			</h1>

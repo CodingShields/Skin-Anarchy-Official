@@ -45,20 +45,20 @@ const categoryNav = [
 	},
 ];
 const buttonStyle =
-	"border-white text-[16px] rounded-full px-4 py-2 border w-48 hover:bg-white hover:text-black hover:font-semibold transition-all duration-500 ease-in-out";
+	"border-white text-sm lg:text-[16px] rounded-none h-16 lg:rounded-full px-4 py-2 border w-full lg:w-48 hover:bg-white hover:text-black hover:font-semibold transition-all duration-500 ease-in-out";
 const EpisodesCategories = () => {
 	const [isSelected, setIsSelected] = useState("all-episodes");
 	return (
-		<div className="flex flex-row w-full h-fit px-64 text-white text-[16px] font-montserrat uppercase justify-center items-center">
+		<div className=" grid grid-cols-2  py-2 lg:flex flex-row w-full h-fit px-2 lg:px-64 text-white text-sm lg:text-[16px] font-montserrat uppercase justify-center items-center">
 			{categoryNav.map((item, index) => (
 				<div
 					key={index}
-					className="m-4"
+					className="m-1 lg:m-4"
 				>
 					<Button
 						onClick={() => setIsSelected(item.value)}
 						text={item.name}
-						style={` ${buttonStyle} ${isSelected === item.value ? "bg-white text-black font-semibold" : ""}`}
+						style={` ${buttonStyle} ${isSelected === item.value ? "bg-white text-black " : ""} transition-all duration-500 ease-in-out`}
 					/>
 				</div>
 			))}

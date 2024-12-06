@@ -205,23 +205,32 @@ body {
 .with-bg-size {
 	background-image: url("../assets/images/headLineBg.png");
 	background-size: cover; /* Adjust as needed */
-	height: "screenHeight";
+	height: 100vh; /* Full screen height */
 
 	/* Animation properties */
-	-webkit-animation: back 10s infinite;
-	-moz-animation: back 10s infinite;
-	-o-animation: back 10s infinite;
-	animation: back 10s infinite;
+	-webkit-animation: back 20s infinite;
+	-moz-animation: back 20s infinite;
+	-o-animation: back 20s infinite;
+	animation: back 20s infinite;
 }
 
 @keyframes back {
-	25% {
+	0% {
+		background-image: url("../assets/images/headLineBg.png");
+	}
+	20% {
 		background-image: url("../assets/images/headlineBg2.png");
 	}
-	50% {
+	40% {
 		background-image: url("../assets/images/headlineBg3.png");
 	}
-	75% {
+	60% {
+		background-image: url("../assets/images/headlineBg4.png");
+	}
+	80% {
+		background-image: url("../assets/images/headlineBg5.png");
+	}
+	100% {
 		background-image: url("../assets/images/headLineBg.png");
 	}
 }

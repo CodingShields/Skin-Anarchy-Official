@@ -70,7 +70,9 @@ import sweetSpotLabs from "../../../assets/images/sponsor-images/sweetSpotLabs.s
 import thyrst from "../../../assets/images/sponsor-images/thyrst.svg";
 import veytsman from "../../../assets/images/sponsor-images/veytsman.svg";
 import Womaness from "../../../assets/images/sponsor-images/Womaness.svg";
-
+import everSkinCare from "../../../assets/images/sponsor-images/everSkinCare.svg";
+import pennock from "../../../assets/images/sponsor-images/pennock.svg";
+import Therabody from "../../../assets/images/sponsor-images/Therabody.svg";
 const sponsorImages = [
 	beauty107,
 	algenist,
@@ -144,6 +146,9 @@ const sponsorImages = [
 	thyrst,
 	veytsman,
 	Womaness,
+	everSkinCare,
+	pennock,
+	Therabody,
 ];
 
 export default sponsorImages;
