@@ -22,7 +22,7 @@ const BlogNav = ({ blogCat }) => {
 
 	return (
 		<div
-			className={`flex flex-col  lg:flex-row lg:justify-center lg:items-center items-start justify-start  w-full space-y-4 lg:space-x-12 relative bg-black transition-all ease-in-out duration-500 animate-fadeIn ${state.blogCatClosed ? "h-10 overflow-hidden" : "h-[300px] py-4"} ${state.blogFullScreenMode ? "h-0 " : "h-36 animate-fadeIn"}`}
+			className={`flex flex-col  lg:flex-row lg:justify-center lg:items-center items-start justify-start  w-full space-y-4 lg:space-x-12 relative bg-black transition-all ease-in-out duration-500 animate-fadeIn ${state.blogCatClosed ? "h-fit overflow-hidden" : "h-[300px] py-4"} ${state.blogFullScreenMode ? "h-0 " : "h-36 animate-fadeIn"}`}
 		>
 			<h1
 				className={`font-montserrat font-thin uppercase tracking-widest text-white indent-6 text-2xl animate-fadeIn ${state.blogCatClosed ? "hidden h-0" : "block"} `}
