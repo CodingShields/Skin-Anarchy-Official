@@ -66,7 +66,10 @@ const ScienceOfSkinAwards = () => {
 			<h1 className="text-white text-2xl lg:text-6xl font-thin tracking-widest uppercase mt-36 text-center font-montserrat w-3/4 mx-auto">
 				Science of Skin Awards
 			</h1>
-			<div className="my-12">
+			<div className="my-8 lg:my-12">
+				<p className="text-white/50 text-center text-xl lg:text-3xl font-thin tracking-widest uppercase pb-2">
+					Current Years
+				</p>
 				<ScienceOfSkinYearsTabs
 					handleNavSelect={handleNavSelect}
 					active={navBarSelection.year}
@@ -89,7 +92,7 @@ const ScienceOfSkinAwards = () => {
 							key={index}
 							src={image.image}
 							alt={`award ${index}`}
-							className="min-w-32  lg:w-[300px] h-fit mx-auto my-auto p-8 cursor-pointer lg:hover:scale-150 ease-in-out duration-300 transition-all"
+							className="w-48 lg:w-[300px] h-48 p-4 lg:p-8 cursor-pointer lg:hover:scale-150 ease-in-out duration-300 transition-all"
 						/>
 					))}
 				</ScienceAwards>

@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const ScienceOfSkinYearsTabs = ({ handleNavSelect, active }) => {
 	console.log(active);
 	return (
@@ -30,6 +32,11 @@ const ScienceOfSkinYearsTabs = ({ handleNavSelect, active }) => {
 			</div>
 		</div>
 	);
+};
+
+ScienceOfSkinYearsTabs.propTypes = {
+	handleNavSelect: PropTypes.func,
+	active: PropTypes.string,
 };
 
 export default ScienceOfSkinYearsTabs;

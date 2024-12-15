@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Button } from "../../components/Components";
 import {
-	MagnifyingGlassIcon,
+	// MagnifyingGlassIcon,
 	ChevronDoubleDownIcon,
-	ArrowsPointingOutIcon,
+	// ArrowsPointingOutIcon,
 } from "@heroicons/react/24/outline";
 import PropTypes from "prop-types";
 const BlogNav = ({ blogCat }) => {
@@ -90,6 +90,10 @@ const BlogNav = ({ blogCat }) => {
 			</div>
 		</div>
 	);
+};
+
+BlogNav.propTypes = {
+	blogCat: PropTypes.func,
 };
 
 export default BlogNav;

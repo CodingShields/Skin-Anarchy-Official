@@ -4,7 +4,7 @@ import { checkAdminAccess } from "../../utilities/utilities.js";
 import Header from "../components/header/Header.jsx";
 import Footer from "../components/footer/Footer.jsx";
 import ChatBot from "../components/chat-bot/ChatBot.jsx";
-import PolicyBar from "../disclaimer-privacy-policy/PolicyBar.jsx";
+// import PolicyBar from "../disclaimer-privacy-policy/PolicyBar.jsx";
 import Radio from "../components/radio/Radio.jsx";
 import { Modal } from "../components/Components.jsx";
 import ConnectForm from "../connect/ContactForm.jsx";

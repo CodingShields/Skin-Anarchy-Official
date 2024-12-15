@@ -1,13 +1,13 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { userDeviceInfo } from "../../../utilities/utilities";
-import { Bars3Icon } from "@heroicons/react/24/solid";
+// import { userDeviceInfo } from "../../../utilities/utilities";
+// import { Bars3Icon } from "@heroicons/react/24/solid";
 import HighlightMenu from "./HighlightMenu";
 import goldLogo from "../../../assets/images/logos/goldLogo.png";
 import NavBarDropDown from "./NavBarDropDown";
-import makeup from "../../../assets/images/interviewCategories/makeup.png";
-import celebs from "../../../assets/images/interviewCategories/celebs.png";
-import brandFounders from "../../../assets/images/interviewCategories/brandFounders.png";
+// import makeup from "../../../assets/images/interviewCategories/makeup.png";
+// import celebs from "../../../assets/images/interviewCategories/celebs.png";
+// import brandFounders from "../../../assets/images/interviewCategories/brandFounders.png";
 import { Button } from "../Components";
 import mario from "../../../assets/images/navBar/episodes/mario.png";
 import danessa from "../../../assets/images/navBar/episodes/danessa.png";
@@ -379,9 +379,6 @@ const NavBar = () => {
 		currentMenu: "home",
 		subMenuIndex: 0,
 	});
-	const [open, setOpen] = useState(false);
-	const [menu, setMenu] = useState("home");
-	const [isMobile, setIsMobile] = useState(false);
 	const menuRef = useRef(null);
 	const navigate = useNavigate();
 
@@ -392,27 +389,26 @@ const NavBar = () => {
 	useEffect(() => {
 		const handleClickOutside = (event) => {
 			if (menuRef.current && !menuRef.current.contains(event.target)) {
-				setOpen(false);
+				setState({ ...state, openSubMenu: false });
 			}
 		};
 		document.addEventListener("mousedown", handleClickOutside);
 		return () => {
 			document.removeEventListener("mousedown", handleClickOutside);
 		};
-	}, []);
+	});
 
 	useEffect(() => {
 		const handleMouseOutside = (event) => {
 			if (menuRef.current && !menuRef.current.contains(event.target)) {
-				setOpen(false);
+				setState({ ...state, openSubMenu: false });
 			}
 		};
 		document.addEventListener("mouseout", handleMouseOutside);
 		return () => {
 			document.removeEventListener("mouseout", handleMouseOutside);
 		};
-	}, []);
-	console.log(state.subMenuIndex);
+	});
 	return (
 		<div
 			ref={menuRef}
@@ -480,7 +476,7 @@ const NavBar = () => {
 						});
 					}}
 				/>
-				<div className={`${!isMobile && "inline-flex w-fit space-x-4"}`}>
+				<div className="inline-flex w-fit space-x-4">
 					<img
 						src={goldLogo}
 						alt="logo"
