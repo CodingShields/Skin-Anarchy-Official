@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import { Bars3Icon, ChevronDownIcon } from "@heroicons/react/24/solid";
 import NavBarDropDown from "./NavBarDropDown";
 // import HighlightMenu from "./HighlightMenu";
@@ -484,13 +484,13 @@ const MobileNavBar = () => {
 						{about.map((item, index) => {
 							return (
 								<>
-									<a
+									<NavLink
 										key={index}
-										href={item.link}
+										to={item.link}
 										className="text-lg text-white font-montserrat font-thin uppercase text-left w-full indent-4"
 									>
 										{item.name}
-									</a>
+									</NavLink>
 								</>
 							);
 						})}
