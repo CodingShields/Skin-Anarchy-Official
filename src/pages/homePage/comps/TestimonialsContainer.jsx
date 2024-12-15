@@ -79,14 +79,14 @@ const TestimonialsContainer = () => {
 	return (
 		<div className="w-full lg:h-[1500px] h-fit relative  z-10">
 			<div className="flex flex-col items-center px-6 mx-auto ">
-				<h1 className="lg:text-[120px] text-2xl font-thin tracking-widest uppercase text-center text-white py-36 sm:py-16 font-montserrat  whitespace-nowrap">
-					THE Skin Authority
+				<h1 className="lg:text-[120px] text-2xl font-thin tracking-widest uppercase text-center text-wrap lg:text-nowrap text-white py-36 sm:py-16 font-montserrat  whitespace-nowrap">
+					THE Skin Authority or Testimonials?
 				</h1>
 			</div>
-			<div className="w-full h-fit flex flex-row">
+			<div className="w-full h-fit flex flex-row pb-24">
 				<div className="lg:w-3/4 w-full line mx-auto lg:pb-12">
 					<blockquote className="  text-white  ">
-						<figure className="relative pt-6 isolate lg:pt-12 opacity-20  ml-12">
+						<figure className="relative  isolate lg:pt-12 opacity-20  ml-12">
 							<svg
 								viewBox="0 0 162 128"
 								fill="none"
@@ -103,12 +103,12 @@ const TestimonialsContainer = () => {
 								/>
 							</svg>
 						</figure>
-						<p className=" text-[20px] lg:text-5xl font-montserrat uppercase sm:indent-0 indent-8 text-center">
+						<p className=" text-[20px] lg:text-5xl font-montserrat uppercase indent-0 lg:indent-8 text-center">
 							{testimonials[testimonialIndex].lineOne}
 						</p>
 					</blockquote>
-					<figcaption className="lg:mt-8 mt-4">
-						<div className=" lg:w-3/4 w-10/12 text-center mx-auto text-wrap font-thin text-white text-[18px] lg:text-2xl font-montserrat leading-[40px] lg:leading-[60px] lg:py-16 py-2">
+					<figcaption className="lg:mt-8 mt-4 hidden lg:block">
+						<div className=" lg:w-3/4 w-10/12 text-center mx-auto text-wrap font-thin text-white text-[18px] lg:text-2xl font-montserrat leading-[32px] lg:leading-[60px] lg:py-16 py-2">
 							{'"' + testimonials[testimonialIndex].lineTwo + '"'}
 						</div>
 						<div className="mt-1 font-light  text-white py-4 lg:text-lg font-montserrat indent-14 text-sm">
