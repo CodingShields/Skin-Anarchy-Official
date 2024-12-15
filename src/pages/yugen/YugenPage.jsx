@@ -1,8 +1,8 @@
 import YugenBook from "./YugenBook";
 const YugenPage = () => {
 	return (
-		<div className='w-full h-screen animate-fadeIn'>
-			<div className='w-full h-full flex justify-center items-center space-x-2'>
+		<div className="w-full h-screen animate-fadeIn">
+			<div className="fixed top-0 left-0 w-full h-full">
 				<YugenBook />
 			</div>
 		</div>

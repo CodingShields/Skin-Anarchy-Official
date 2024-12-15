@@ -27,27 +27,29 @@ const SafeSealAbout = () => {
 						<span className="tracking-widest mr-2 font-normal">S.A.F.E</span>{" "}
 						Seal
 					</h1>
-					<p className="py-4 text-lg w-full lg:text-2xl ml-2 indent-6 mt-2 px-4 lg:px-0 text-justify leading-8 lg:leading-[60px] tracking-wider">
+					<p className="py-2 lg:py-4 text-lg w-11/12 lg:text-2xl ml-2 indent-6 mt-4 mx-auto text-justify break-all leading-8 lg:leading-[60px] tracking-wider">
 						Introducing the S.A.F.E Seal, an exclusive initiative by Skincare
 						Anarchy that sets a new standard for scientific transparency and
 						integrity in the beauty, health, and wellness industries.
 					</p>
-					<p className="py-4 text-lg w-full lg:text-2xl ml-2 indent-6 mt-2 px-4 lg:px-0 text-justify leading-8 lg:leading-[60px] tracking-wider">
+					<p className="py-2 lg:py-4 text-lg w-11/12 lg:text-2xl ml-2 indent-6 mt-4 mx-auto text-justify break-all leading-8 lg:leading-[60px] tracking-wider">
 						This prestigious seal serves as a symbol of scientific excellence,
 						offering global consumers assurance that the products they choose
 						are founded on rigorous scientific principles.
 					</p>
-					<p className="py-4 text-lg w-full lg:text-2xl ml-2 indent-6 mt-2 px-4 lg:px-0 text-justify leading-8 lg:leading-[60px] tracking-wider">
+					<p className="py-2 lg:py-4 text-lg w-11/12 lg:text-2xl ml-2 indent-6 mt-4 mx-auto text-justify break-all leading-8 lg:leading-[60px] tracking-wider">
 						As the first initiative of its kind, the S.A.F.E Seal transcends
 						conventional ingredient checks, delving into the intricate details
 						essential for product formulation and efficacy claims. Elevate your
 						brand with the mark of scientific distinction.
 					</p>
-					<img
-						src={safeSeal}
-						alt="safe seal"
-						className="w-[900px] h-auto mb-36 lg:hidden"
-					/>
+					<div>
+						<img
+							src={safeSeal}
+							alt="safe seal"
+							className="w-[900px] h-auto  lg:hidden"
+						/>
+					</div>
 				</div>
 				<div className="w-fit">
 					<img
@@ -59,13 +61,13 @@ const SafeSealAbout = () => {
 			</div>
 			<div className="w-full flex flex-col lg:flex-row justify-evenly items-center h-fit ">
 				<div className=" w-10/12 lg:w-1/2 flex flex-col justify-center items-center h-[400px] lg:h-[800px]">
-					<h1 className="text-white text-4xl lg:text-6xl font-montserrat font-thin tracking-widest">
+					<h1 className="text-white text-3xl lg:text-6xl font-montserrat font-thin tracking-widest uppercase">
 						{" "}
 						Featured Press
 					</h1>
-					<p className="text-white text-xl text-center leading-10font-montserrat font-thin tracking-widest py-4 leading-10">
-						<span className="text-white uppercase font-regular text-2xl">
-							Podcast Host:{" "}
+					<p className="text-white text-xl text-center font-montserrat font-thin tracking-widest py-4 leading-10">
+						<span className="text-white uppercase font-regular lg:text-2xl">
+							Podcast Host<span className="hidden lg:visible">:</span>
 						</span>{" "}
 						<span className="text-gold-500 uppercase font-medium text-2xl lg:text-3xl my-4">
 							{isMobile && <br />} Ekta Yadav
@@ -95,20 +97,23 @@ const SafeSealAbout = () => {
 						<img
 							src={cewLogo}
 							alt="safe seal"
-							className="w-54 lg:w-[400px] h-auto "
+							className="w-48 lg:w-[400px] h-auto "
 						/>
 					</a>
 
-					<p className="text-white text-xl font-montserrat font-thin tracking-widest w-11/12 lg:w-3/4 leading-10 text-balance">
+					<p className="text-white text-lg font-montserrat text-justify break-all lg:font-thin tracking-widest w-10/12 lg:w-3/4 leading-10 text-balance py-2">
 						Thank you CEW for highlighting the S.A.F.E. Seal and S.A.F.E. Seal
 						Teens! The S.A.F.E. Seal adds an extra layer of evaluation, ensuring
 						teens can identify and use products that are safe and effective for
 						their skin.
 					</p>
-					<p className="text-white text-xl font-montserrat font-thin tracking-widest w-11/12 lg:w-3/4 leading-10">
-						"I realized that there was no full-blown review process that a brand
-						had to go through when it came to analyzing what they were
-						creating." - Dr. Ekta Yadav via CEW
+					<p className="text-white text-lg font-montserrat text-justify break-all lg:font-thin tracking-widest w-10/12 lg:w-3/4 leading-10 text-balance py-4">
+						&quot;I realized that there was no full-blown review process that a
+						brand had to go through when it came to analyzing what they were
+						creating.
+					</p>
+					<p className="text-white text-lg font-montserrat text-justify break-all lg:font-thin tracking-widest w-10/12 lg:w-3/4 leading-10 text-balance py-4">
+						&quot; - Dr. Ekta Yadav via CEW
 					</p>
 				</div>
 			</div>

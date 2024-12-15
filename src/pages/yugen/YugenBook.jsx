@@ -1,6 +1,7 @@
-import { useState, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
+import { userDeviceInfo } from "../../utilities/utilities";
 import HTMLFlipBook from "react-pageflip";
-import whiteLogo from "../../assets/images/logos/white-logo.png";
+import yugenCoverPage from "../../assets/data/yugen/yugenCoverPage.png";
 import page1yugenvol2 from "../../assets/data/yugen/page1yugenvol2.jpg";
 import page2yugenvol2 from "../../assets/data/yugen/page2yugenvol2.jpg";
 import page3yugenvol2 from "../../assets/data/yugen/page3yugenvol2.jpg";
@@ -23,7 +24,7 @@ import page19yugenvol2 from "../../assets/data/yugen/page19yugenvol2.jpg";
 import page20yugenvol2 from "../../assets/data/yugen/page20yugenvol2.jpg";
 
 const pages = [
-	whiteLogo,
+	yugenCoverPage,
 	page1yugenvol2,
 	page2yugenvol2,
 	page3yugenvol2,
@@ -45,29 +46,45 @@ const pages = [
 	page19yugenvol2,
 	page20yugenvol2,
 ];
+const screenWidth = window.screen.width;
+const screenHeight = window.screen.height;
 const YugenBook = () => {
 	const [currentPage, setCurrentPage] = useState(0);
+	const [width, setWidth] = useState(null);
+	const [height, setHeight] = useState(null);
 	const bookRef = useRef();
 	const onFlip = (e) => {
 		setCurrentPage(e.data);
 		console.log("Current page: " + e.data);
 	};
+	const isMobile = userDeviceInfo();
+
+	useEffect(() => {
+		if (isMobile) {
+			setWidth(screenWidth - 800);
+			setHeight(screenHeight - 50);
+		} else {
+			setWidth(screenWidth - 1600);
+			setHeight(screenHeight - 50);
+		}
+	}, [isMobile]);
+
+	console.log(width, height);
+	console.log(width, height);
+	console.log(`Screen width: ${screenWidth}px`);
+	console.log(`Screen height: ${screenHeight}px`);
 
 	return (
 		<div className="w-full h-full flex flex-col justify-center items-center">
-			<h1 className="text-5xl text-white absolute top-32 z-30">
-				Different cover image? and some text for mobile link because book is not
-				for mobile devices
-			</h1>
 			<HTMLFlipBook
 				onFlip={onFlip}
 				ref={bookRef}
 				className={`hover:cursor-grab active:cursor-grabbing ${currentPage !== 0 ? "shadow-2xl shadow-gold-500/30" : ""} `}
 				maxShadowOpacity={0}
 				drawShadow={true}
-				width={900}
-				height={1000}
-				// usePortrait={true}
+				width={width}
+				height={height}
+				usePortrait={true}
 			>
 				{pages.map((page, index) => (
 					<img
