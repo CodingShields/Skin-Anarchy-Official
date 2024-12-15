@@ -65,5 +65,5 @@ const EpisodesCategories = () => {
 		</div>
 	);
 };
-
+// add rounded look to button 
 export default EpisodesCategories;
