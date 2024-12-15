@@ -21,7 +21,7 @@ const EpisodesList = () => {
 	}, []);
 
 	return (
-		<div className="w-full min-h-screen overscroll-y-auto overflow-hidden">
+		<div className="w-full min-h-screen overscroll-y-auto overflow-hidden overscroll-x-none ">
 			<EpisodesCategories />
 			<div className="w-full inline-flex h-full select-none">
 				<video

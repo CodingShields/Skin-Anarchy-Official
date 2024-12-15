@@ -62,15 +62,23 @@ const ScienceOfSkinAwards = () => {
 	}, []);
 
 	return (
-		<div className='h-fit w-full bg-black '>
-			<h1 className='text-white text-6xl font-thin tracking-widest uppercase mt-36 text-center font-montserrat'>Science of Skin Awards</h1>
-			<div className='my-12'>
-				<ScienceOfSkinYearsTabs handleNavSelect={handleNavSelect} active={navBarSelection.year} />
+		<div className="h-fit w-full bg-black ">
+			<h1 className="text-white text-2xl lg:text-6xl font-thin tracking-widest uppercase mt-36 text-center font-montserrat w-3/4 mx-auto">
+				Science of Skin Awards
+			</h1>
+			<div className="my-12">
+				<ScienceOfSkinYearsTabs
+					handleNavSelect={handleNavSelect}
+					active={navBarSelection.year}
+				/>
 			</div>
 			<ScienceAwardCard key={navBarSelection.year}>
 				<ScienceSealCard>
-					<img src={navBarSelection.seal ? navBarSelection.seal : ""} className='w-[400px] h-auto mx-auto' />
-					<h1 className='text-3xl text-white text-center font-montserrat uppercase font-thin py-4'>
+					<img
+						src={navBarSelection.seal ? navBarSelection.seal : ""}
+						className="w-48 lg:w-[400px] h-auto mx-auto"
+					/>
+					<h1 className="text-lg lg:text-3xl text-white text-center font-montserrat uppercase font-thin py-4">
 						Congratulations to our {navBarSelection.year} winners!
 					</h1>
 				</ScienceSealCard>
@@ -81,7 +89,7 @@ const ScienceOfSkinAwards = () => {
 							key={index}
 							src={image.image}
 							alt={`award ${index}`}
-							className='w-[300px] h-fit mx-auto my-auto p-8 cursor-pointer hover:scale-150 ease-in-out duration-300 transition-all'
+							className="min-w-32  lg:w-[300px] h-fit mx-auto my-auto p-8 cursor-pointer lg:hover:scale-150 ease-in-out duration-300 transition-all"
 						/>
 					))}
 				</ScienceAwards>

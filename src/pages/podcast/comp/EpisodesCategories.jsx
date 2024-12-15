@@ -45,7 +45,7 @@ const categoryNav = [
 	},
 ];
 const buttonStyle =
-	"border-white text-sm lg:text-[16px] rounded-none h-16 lg:rounded-full px-4 py-2 border w-full lg:w-48 hover:bg-white hover:text-black hover:font-semibold transition-all duration-500 ease-in-out";
+	"border-white text-sm lg:text-[16px] rounded-lg h-16 lg:rounded-full px-4 py-2 border w-full lg:w-48 lg:hover:bg-white lg:hover:text-black lg:hover:font-semibold transition-all duration-500 ease-in-out";
 const EpisodesCategories = () => {
 	const [isSelected, setIsSelected] = useState("all-episodes");
 	return (
@@ -65,5 +65,5 @@ const EpisodesCategories = () => {
 		</div>
 	);
 };
-// add rounded look to button 
+// add rounded look to button
 export default EpisodesCategories;

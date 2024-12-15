@@ -32,34 +32,34 @@ const CurrentBlog = ({ open }) => {
 			<div className=" pt-4 w-full h-full bg-white overflow-y-scroll flex flex-col justify-center items-center ">
 				<h1
 					onSelect={handleOnSelect}
-					className="text-3xl font-montserrat py-4 text-center"
+					className="text-xl lg:text-3xl font-montserrat py-4 text-center"
 				>
 					How Art Eras Influence Perfumery
 				</h1>
-				<div className="w-10/12 flex flex-col justify-start items-start">
+				<div className="w-10/12 flex flex-col justify-start items-start pb-3">
 					<div className="w-full flex flex-row justify-start items-center">
-						<h1 className="text-md text-left text-black/50 font-montserrat tracking-widest w-24">
+						<h1 className="text-sm lg:text-md text-left text-black/50 font-montserrat tracking-widest w-24">
 							Author:{" "}
 						</h1>
-						<h1 className="text-lg text-black/80 tracking-wide font-thin">
+						<h1 className="text-sm	lg:text-lg text-black/80 tracking-wide font-thin">
 							{" "}
 							Dr Ekta Yadav
 						</h1>
 					</div>
 					<div className="w-full flex flex-row justify-start items-center">
-						<h1 className="text-md text-left text-black/50 font-montserrat tracking-widest w-24">
+						<h1 className="text-sm lg:text-md text-left text-black/50 font-montserrat tracking-widest w-24">
 							Category:
 						</h1>
-						<h1 className="text-lg text-black/80 tracking-wide font-thin">
+						<h1 className="text-sm lg:text-lg text-black/80 tracking-wide font-thin">
 							{" "}
 							Fragrance
 						</h1>
 					</div>
 					<div className="w-full flex flex-row justify-start items-center">
-						<h1 className="text-md text-left text-black/50 font-montserrat tracking-widest w-24">
+						<h1 className="text-sm lg:text-md text-left text-black/50 font-montserrat tracking-widest w-24">
 							Date:
 						</h1>
-						<h1 className="text-lg text-black/80 tracking-wide font-thin">
+						<h1 className="text-sm  lg:text-lg text-black/80 tracking-wide font-thin">
 							{" "}
 							11/11/1988
 						</h1>
@@ -72,7 +72,7 @@ const CurrentBlog = ({ open }) => {
 						alt=""
 						className="w-1/2 mx-auto"
 					/>
-					<p className="text-[15px] w-11/12 mx-auto py-4 text-left font-montserrat leading-10 pl-2">
+					<p className="text-[15px] w-10/12 mx-auto py-4  font-montserrat leading-8 break-all text-justify lg:leading-10 ">
 						The rise in skin cancer cases has led to an increased emphasis on
 						sun protection. Sunscreen, hailed as the savior against sunburn and
 						skin cancer, has become a staple in skincare routines worldwide.
@@ -82,10 +82,10 @@ const CurrentBlog = ({ open }) => {
 						the benefits truly worth it?
 					</p>
 
-					<h4 className="text-xl w-11/12 mx-auto py-4 text-left font-montserrat leading-10 pl-2">
+					<h4 className="text-xl w-11/12 mx-auto py-2 text-left font-montserrat leading-10 pl-2 border-b-[1px] border-black/30">
 						The Sunscreen Boom
 					</h4>
-					<p className="text-[15px] w-11/12 mx-auto py-4 text-left font-montserrat leading-10 pl-2">
+					<p className="text-[15px] w-10/12 mx-auto py-4  font-montserrat leading-8 break-all text-justify lg:leading-10 ">
 						The popularity of sunscreen skyrocketed after the connection between
 						sun exposure and skin cancer was established. This led to a
 						multibillion-dollar industry, with companies marketing their
@@ -97,27 +97,27 @@ const CurrentBlog = ({ open }) => {
 						523 billion in 1965, with 42% of the U.S. adult population smoking,
 						despite emerging health concerns.
 					</p>
-					<h4 className="text-xl w-11/12 mx-auto py-4 text-left font-montserrat leading-10 pl-2">
+					<h4 className="text-xl w-11/12 mx-auto py-2 text-left font-montserrat leading-10 pl-2 border-b-[1px] border-black/30">
 						Questionable Ingredients and Side Effects
 					</h4>
-					<p className="text-[15px] w-11/12 mx-auto py-4 text-left font-montserrat leading-10 pl-2">
+					<p className="text-[15px] w-10/12 mx-auto py-4  font-montserrat leading-8 break-all text-justify lg:leading-10 ">
 						The issue with sunscreen goes beyond aggressive marketing tactics.
 						Some studies have raised concerns about the ingredients used in many
 						sunscreens, particularly chemical-based formulas. Chemical filters
 						like oxybenzone and octinoxate are common ingredients that have been
 						linked to hormone disruption and environmental damage.
 					</p>
-					<p className="text-[15px] w-11/12 mx-auto py-4 text-left font-montserrat leading-10 pl-2">
+					<p className="text-[15px] w-10/12 mx-auto py-4  font-montserrat leading-8 break-all text-justify lg:leading-10 ">
 						While mineral-based sunscreens, containing zinc oxide and titanium
 						dioxide, are considered safer alternatives, they are not without
 						their drawbacks. The nano-sized particles used in these formulations
 						have been shown to cause inflammation and oxidative stress,
 						potentially leading to cellular damage.
 					</p>
-					<h4 className="text-xl w-11/12 mx-auto py-4 text-left font-montserrat leading-10 pl-2">
+					<h4 className="text-xl w-11/12 mx-auto py-2 text-left font-montserrat leading-10 pl-2 border-b-[1px] border-black/30">
 						Overuse and Misuse of Sunscreen
 					</h4>
-					<p className="text-[15px] w-11/12 mx-auto py-4 text-left font-montserrat leading-10 pl-2">
+					<p className="text-[15px] w-10/12 mx-auto py-4  font-montserrat leading-8 break-all text-justify lg:leading-10 ">
 						The belief that sunscreen is a foolproof way to prevent skin cancer
 						has led to a culture of over-reliance and misuse. Many people apply
 						large quantities of sunscreen without considering the potential side
@@ -125,10 +125,10 @@ const CurrentBlog = ({ open }) => {
 						sunscreen should be used in conjunction with shade, protective
 						clothing, and sunglasses for comprehensive sun protection.
 					</p>
-					<h4 className="text-xl w-11/12 mx-auto py-4 text-left font-montserrat leading-10 pl-2">
+					<h4 className="text-xl w-11/12 mx-auto py-2 text-left font-montserrat leading-10 pl-2 border-b-[1px] border-black/30">
 						The Benefits vs. The Risks
 					</h4>
-					<p className="text-[15px] w-11/12 mx-auto py-4 text-left font-montserrat leading-10 pl-2">
+					<p className="text-[15px] w-10/12 mx-auto py-4  font-montserrat leading-8 break-all text-justify lg:leading-10 ">
 						It is important to acknowledge that sunscreen can be an effective
 						tool in preventing sunburn and reducing the risk of skin cancer.
 						However, the risks and side effects associated with the overuse and
@@ -137,10 +137,10 @@ const CurrentBlog = ({ open }) => {
 						reminding us to critically evaluate the products we use and the
 						claims made by manufacturers.
 					</p>
-					<h4 className="text-xl w-11/12 mx-auto py-4 text-left font-montserrat leading-10 pl-2">
+					<h4 className="text-xl w-11/12 mx-auto py-2 text-left font-montserrat leading-10 pl-2 border-b-[1px] border-black/30">
 						Agricultural Societies and Skin Cancer Rates
 					</h4>
-					<p className="text-[15px] w-11/12 mx-auto py-4 text-left font-montserrat leading-10 pl-2">
+					<p className="text-[15px] w-10/12 mx-auto py-4  font-montserrat leading-8 break-all text-justify lg:leading-10 ">
 						When examining the sunscreen debate, it’s crucial to consider the
 						data collected from agricultural societies. Despite spending hours
 						under the sun, the incidence of skin cancer in these populations
@@ -156,10 +156,10 @@ const CurrentBlog = ({ open }) => {
 						day. Many of them are now in their 70s-80s and cancer-free after
 						spending day in and day out in the sun.”
 					</p>
-					<h4 className="text-xl w-11/12 mx-auto py-4 text-left font-montserrat leading-10 pl-2">
+					<h4 className="text-xl w-11/12 mx-auto py-2 text-left font-montserrat leading-10 pl-2 border-b-[1px] border-black/30">
 						Natural Sun Protection and Adaptation
 					</h4>
-					<p className="text-[15px] w-11/12 mx-auto py-4 text-left font-montserrat leading-10 pl-2">
+					<p className="text-[15px] w-10/12 mx-auto py-4  font-montserrat leading-8 break-all text-justify lg:leading-10 ">
 						One explanation for the lower skin cancer rates in agricultural
 						societies could be the natural sun protection and adaptation
 						mechanisms that these populations develop. Working outdoors for
@@ -171,20 +171,20 @@ const CurrentBlog = ({ open }) => {
 						using protective clothing. These practices reduce the overall impact
 						of the sun on the skin without relying on sunscreen.
 					</p>
-					<h4 className="text-xl w-11/12 mx-auto py-4 text-left font-montserrat leading-10 pl-2">
+					<h4 className="text-xl w-11/12 mx-auto py-2 text-left font-montserrat leading-10 pl-2 border-b-[1px] border-black/30">
 						Reassessing the Role of Sunscreen
 					</h4>
-					<p className="text-[15px] w-11/12 mx-auto py-4 text-left font-montserrat leading-10 pl-2">
+					<p className="text-[15px] w-10/12 mx-auto py-4  font-montserrat leading-8 break-all text-justify lg:leading-10 ">
 						The experiences of those in agricultural societies, who maintain a
 						relatively low incidence of skin cancer without consistent sunscreen
 						use, offer a different perspective on the sunscreen debate. While
 						sunscreen can play a role in sun protection, it should not be viewed
 						as the only solution.
 					</p>
-					<h4 className="text-xl w-11/12 mx-auto py-4 text-left font-montserrat leading-10 pl-2">
+					<h4 className="text-xl w-11/12 mx-auto py-2 text-left font-montserrat leading-10 pl-2 border-b-[1px] border-black/30">
 						Conclusion
 					</h4>
-					<p className="text-[15px] w-11/12 mx-auto py-4 text-left font-montserrat leading-10 pl-2">
+					<p className="text-[15px] w-10/12 mx-auto py-4  font-montserrat leading-8 break-all text-justify lg:leading-10 ">
 						As with the big tobacco movement of the 1960s, the aggressive
 						marketing and promotion of sunscreen may be misleading consumers
 						about its true necessity. The experiences of agricultural societies
