@@ -402,9 +402,9 @@ const blog = [
 // ];
 
 const buttonStyle =
-	"uppercase font-montserrat font-thin tracking-widest text-white text-xl text-left";
+	"uppercase font-montserrat font-thin tracking-widest text-white text-xl text-left h-9";
 const activeNavButton =
-	"uppercase font-semibold sm:py-3 text-gold-500 subpixel-antialiased font-montserrat py-2 font-thin tracking-widest text-2xl  underline underline-offset-8 sm:text-[18px] decoration-1 w-48 text-left";
+	"uppercase font-semibold sm:py-3 text-gold-500 subpixel-antialiased font-montserrat py-2 font-thin tracking-widest text-2xl  underline underline-offset-8 sm:text-[18px] decoration-1 w-48 text-left h-9";
 
 const MobileNavBar = () => {
 	const [state, setState] = useState({
