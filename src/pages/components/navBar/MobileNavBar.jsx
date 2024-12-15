@@ -485,6 +485,14 @@ const MobileNavBar = () => {
 							return (
 								<>
 									<NavLink
+										onClick={() => {
+											setState({
+												...state,
+												currentMenu: "about",
+												openSubMenu: false,
+												openMenu: false,
+											});
+										}}
 										key={index}
 										to={item.link}
 										className="text-lg text-white font-montserrat font-thin uppercase text-left w-full indent-4"
@@ -532,12 +540,20 @@ const MobileNavBar = () => {
 										key={index}
 										className="flex flex-col w-full justify-start items-center bg-black space-y-4 "
 									>
-										<a
-											href={item.link}
+										<NavLink
+											onClick={() => {
+												setState({
+													...state,
+													currentMenu: "episodes",
+													openSubMenu: false,
+													openMenu: false,
+												});
+											}}
+											to={item.link}
 											className="text-lg text-white font-montserrat font-thin uppercase text-left w-full indent-4"
 										>
 											{item.name}
-										</a>
+										</NavLink>
 									</div>
 								);
 							})}
@@ -578,12 +594,20 @@ const MobileNavBar = () => {
 										key={index}
 										className="flex flex-col w-full justify-start items-center bg-black space-y-4 "
 									>
-										<a
-											href={item.link}
+										<NavLink
+											onClick={() => {
+												setState({
+													...state,
+													currentMenu: "blog",
+													openSubMenu: false,
+													openMenu: false,
+												});
+											}}
+											to={item.link}
 											className="text-lg text-white font-montserrat font-thin uppercase text-left w-full indent-4"
 										>
 											{item.name}
-										</a>
+										</NavLink>
 									</div>
 								);
 							})}
@@ -619,13 +643,21 @@ const MobileNavBar = () => {
 						{awards.map((item, index) => {
 							return (
 								<>
-									<a
+									<NavLink
+										onClick={() => {
+											setState({
+												...state,
+												currentMenu: "awards",
+												openSubMenu: false,
+												openMenu: false,
+											});
+										}}
 										className="text-lg text-white font-montserrat font-thin uppercase text-left w-full indent-4"
 										key={index}
-										href={item.link}
+										to={item.link}
 									>
 										{item.name}
-									</a>
+									</NavLink>
 								</>
 							);
 						})}
@@ -660,13 +692,21 @@ const MobileNavBar = () => {
 						{safeSealArray.map((item, index) => {
 							return (
 								<>
-									<a
+									<NavLink
+										onClick={() => {
+											setState({
+												...state,
+												currentMenu: "safe-seal",
+												openSubMenu: false,
+												openMenu: false,
+											});
+										}}
 										className="text-lg text-white font-montserrat font-thin uppercase text-left w-full indent-4"
 										key={index}
-										href={item.link}
+										to={item.link}
 									>
 										{item.name}
-									</a>
+									</NavLink>
 								</>
 							);
 						})}
