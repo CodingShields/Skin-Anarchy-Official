@@ -29,7 +29,7 @@ const EpisodesList = () => {
 					muted
 					loop
 					ref={videoRef}
-					className="object-contain w-full h-fit  absolute opacity-[.1] grayscale"
+					className="object-contain w-full h-fit  absolute opacity-[.1] grayscale select-none -z-10"
 				>
 					<source
 						src={gold}

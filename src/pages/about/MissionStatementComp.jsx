@@ -7,12 +7,12 @@ const MissionStatementComp = () => {
 	}, []);
 
 	return (
-		<div className="w-full flex flex-col h-fit justify-start items-center mx-auto pb-24 animate-fadeIn">
-			<div className="w-10/12">
+		<div className="w-full flex flex-col h-fit justify-start items-center mx-auto pb-24 lg:pb-48 animate-fadeIn">
+			<div className="w-10/12 lg:w-3/4">
 				<h2 className="text-3xl lg:text-7xl text-white font-montserrat mt-24 lg:mt-48 tracking-widest font-thin pb-4 mb-6 lg:pb-14 text-center border-b-[1px] border-white/30  lg:border-none">
 					The Skin Anarchy Mission
 				</h2>
-				<div className="w-11/12 lg:w-3/4 mx-auto block text-lg lg:text-3xl font-montserrat text-white font-thin indent-0 lg:indent-10 tracking-widest space-y-6 lg:space-y-12 ">
+				<div className="w-11/12 lg:w-1/2 mx-auto block text-lg lg:text-xl font-montserrat text-white font-thin indent-0 lg:indent-10 tracking-widest space-y-6 lg:space-y-12 ">
 					<p className="leading-8 lg:leading-[60px] text-justify break-all	">
 						At Skincare Anarchy, our mission is to peel back the layers of the
 						beauty industry and provide our listeners with an insider’s

@@ -12,22 +12,22 @@ const EpisodeDetailsCard = (props) => {
 		>
 			{" "}
 			<div className="w-full h-full flex flex-col">
-				<div className="flex flex-row justify-center items-center h-32">
+				<div className="flex flex-row justify-center items-center ">
 					<div>
 						<img
 							src={jenSincero}
-							className={`transition-all duration-700 ease-in-out object-cover h-32 min-w-32  object-center`}
+							className={`transition-all duration-700 ease-in-out object-cover h-32 lg:h-64 lg:min-w-64 min-w-32  object-center`}
 						/>
 					</div>
 
 					<div className="w-full h-full bg-white flex flex-col items-center justify-center">
 						<p
-							className={`text-[14px] h-3/4 text-wrap text-center text-black  transition-all duration-700 ease-in-out font-montserrat px-2 pt-3`}
+							className={`text-[14px] lg:text-2xl h-3/4 lg:h-1/4 text-wrap text-center text-black  transition-all duration-700 ease-in-out font-montserrat px-2 pt-3`}
 						>
 							Building A Mindset For Success with YOU ARE A BADASS
 						</p>
 						<p
-							className={`text-[14px] h-fit text-wrap text-center text-black  transition-all duration-700 ease-in-out font-montserrat px-2`}
+							className={`text-[14px] lg:text-lg h-fit text-wrap text-center text-black  transition-all duration-700 ease-in-out font-montserrat px-2`}
 						>
 							Author: Jen Sincero
 						</p>
@@ -44,7 +44,7 @@ const EpisodeDetailsCard = (props) => {
 				</div>
 				<div className={`py-4 block line-clap-2`}>
 					<p
-						className={` px-8 text-balance transition-all font-montserrat duration-700 ease-in-out text-left leading-8 ${!openTab ? "text-left  w-full h-auto line-clamp-2 text-sm" : " text-white w-full  h-fit text-[16px]"} `}
+						className={` px-8 text-balance transition-all font-montserrat duration-700 ease-in-out text-left leading-8  text-[16px] lg:w-3/4 lg:mx-auto lg:text-xl lg:leading-10 ${!openTab ? "text-left  w-full h-auto line-clamp-2 " : " text-white w-full  h-fit  "} `}
 					>
 						{" "}
 						When financial turmoil met Jen Sincero, she didn&apos;t just face
@@ -61,7 +61,7 @@ const EpisodeDetailsCard = (props) => {
 					</p>
 					<div className="w-full py-2">
 						<ChevronDownIcon
-							className="min-w-8 min-h-8 stroke-white stroke-1 mx-auto"
+							className="w-8 h-8 stroke-white stroke-1 mx-auto"
 							onClick={() => setOpenTab(!openTab)}
 						/>
 					</div>

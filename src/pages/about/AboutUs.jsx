@@ -8,15 +8,15 @@ const AboutUs = () => {
 
 	return (
 		<div className="w-full mx-auto h-fit text-white flex flex-col justify-between items-center mt-8 lg:mt-36 pb-64 space-x-0 lg:space-x-4 animate-fadeIn overscroll-x-none overflow-hidden">
-			<div className="w-full  h-full flex flex-col lg:flex-row justify-evenly ">
+			<div className="w-full lg:w-3/4  h-full flex flex-col lg:flex-row justify-evenly ">
 				<div className="font-thin text-[15px] lg:text-xl leading-6 lg:leading-[80px] font-montserrat tracking-widest pl-8 space-y-2 lg:space-y-6 w-full  block lg:flex flex-col h-full justify-center items-center mt-16">
-					<h1 className="font-montserrat font-thin uppercase text-2xl lg:text-3xl tracking-widest  whitespace-nowrap mb-2  text-left w-full  text-white/50">
+					<h1 className="font-montserrat font-thin uppercase text-2xl lg:text-3xl tracking-widest  whitespace-nowrap mb-2  text-left w-full lg:text-center text-white/50">
 						About
 					</h1>
 					<h1 className="font-montserrat font-thin uppercase text-2xl lg:text-5xl tracking-widest  whitespace-nowrap mb-10  text-left underline underline-offset-8 decoration-1 pt-2">
 						Skincare Anarchy
 					</h1>
-					<div className="w-10/12 lg:w-full">
+					<div className="w-10/12 lg:w-3/4">
 						<p className=" indent-0 lg:indent-8 py-4 leading-8">
 							Skincare Anarchy is an award-winning and industry acclaimed
 							podcast, recognized for its unique approach to skincare and
@@ -40,7 +40,7 @@ const AboutUs = () => {
 						</p>
 					</div>
 				</div>
-				<div className="  h-full flex flex-col justify-center mt-16 lg:mt-24  w-fit p-4 ">
+				<div className="  h-full flex flex-col justify-center mt-16 lg:mt-24  w-fit lg:w-3/4 p-4 ">
 					<h1 className="text-3xl text-white font-montserrat uppercase tracking-widest whitespace-nowrap font-thin text-center">
 						Meet The Team
 					</h1>

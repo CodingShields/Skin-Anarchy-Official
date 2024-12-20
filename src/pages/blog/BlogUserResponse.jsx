@@ -19,7 +19,7 @@ const BlogUserResponse = ({ handleFullScreenMode }) => {
 	};
 
 	return (
-		<div className="w-full h-fit border-y ">
+		<div className="w-full h-fit border-y lg:w-1/2">
 			<div className="w-10/12 h-full flex flex-row justify-between items-center text-black/50 py-3 mx-auto">
 				<div className="inline-flex justify-center items-center space-x-4">
 					<HeartIcon className="w-6 stroke-black/50 lg:hover:animate-pulse cursor-pointer lg:hover:fill-red-300 lg:hover:stroke-red-500 ease-in-out transition-all duration-300" />

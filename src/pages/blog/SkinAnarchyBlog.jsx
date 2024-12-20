@@ -46,7 +46,7 @@ const SkinAnarchyBlog = () => {
 		<div className="w-full min-h-screen animate-fadeIn bg-white relative overscroll-x-none overflow-hidden">
 			<div className="w-full h-fit border-b-2 border-black pt-6 block">
 				<div
-					className={`w-full flex flex-col z-10 items-center justify-center mt-8 ${state.blogFullScreenMode ? "h-0 " : "h-36 animate-fadeIn"}`}
+					className={`w-full flex flex-col z-10 items-center justify-center mt-8 ${state.blogFullScreenMode ? "h-0 " : "h-36 lg:h-96 animate-fadeIn"}`}
 				>
 					<h1
 						style={{

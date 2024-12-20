@@ -557,7 +557,7 @@ const NavBar = () => {
 					menu={state.currentMenu}
 					text={"about"}
 				>
-					<div className="flex flex-row w-full justify-center items-center bg-black border-white border-b-[1px] py-4 space-x-12">
+					<div className="flex flex-row w-full justify-center items-center bg-black  py-4 space-x-12">
 						{about.map((item, index) => {
 							return (
 								<>
@@ -565,7 +565,7 @@ const NavBar = () => {
 										key={index}
 										href={item.link}
 									>
-										<h1 className="sm:text-[12px] md:text-[14px] lg:text-[16px] 2xl:text-[18px] text-white font-montserrat font-thin uppercase underlineAnimate">
+										<h1 className="text-2xl text-white font-montserrat font-thin uppercase underlineAnimate">
 											{item.name}
 										</h1>
 									</a>
@@ -686,19 +686,17 @@ const NavBar = () => {
 					menu={state.currentMenu}
 					text={"awards"}
 				>
-					<div className="flex flex-row w-full justify-center items-center bg-black border-white border-b-[1px] py-4 space-x-12">
+					<div className="flex flex-row w-full justify-center items-center bg-black  py-4 space-x-12">
 						{awards.map((item, index) => {
 							return (
-								<>
-									<a
-										key={index}
-										href={item.link}
-									>
-										<h1 className="sm:text-[12px] md:text-[14px] lg:text-[16px] 2xl:text-[18px] text-white font-montserrat font-thin uppercase underlineAnimate">
-											{item.name}
-										</h1>
-									</a>
-								</>
+								<a
+									key={index}
+									href={item.link}
+								>
+									<h1 className="text-2xl text-white font-montserrat font-thin uppercase underlineAnimate">
+										{item.name}
+									</h1>
+								</a>
 							);
 						})}
 					</div>

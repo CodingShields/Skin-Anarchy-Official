@@ -22,7 +22,7 @@ const BlogNav = ({ blogCat }) => {
 
 	return (
 		<div
-			className={`flex flex-col  lg:flex-row lg:justify-center lg:items-center items-start justify-start  w-full space-y-4 lg:space-x-12 relative bg-black transition-all ease-in-out duration-500 animate-fadeIn ${state.blogCatClosed ? "h-fit overflow-hidden" : "h-[300px] py-4"} ${state.blogFullScreenMode ? "h-0 " : "h-36 animate-fadeIn"}`}
+			className={`flex flex-col  lg:flex-row lg:justify-center lg:items-center items-start justify-start  w-full space-y-4 lg:space-x-12 relative bg-black transition-all ease-in-out duration-500 animate-fadeIn ${state.blogCatClosed ? "h-fit overflow-hidden" : "h-[300px] lg:h-fit py-4"} ${state.blogFullScreenMode ? "h-0 " : "h-36 lg:h-fit animate-fadeIn"}`}
 		>
 			<h1
 				className={`font-montserrat font-thin uppercase tracking-widest text-white indent-6 text-lg lg:text-2xl animate-fadeIn ${state.blogCatClosed ? "hidden h-0" : "block"} `}
@@ -30,7 +30,7 @@ const BlogNav = ({ blogCat }) => {
 				Categories{" "}
 			</h1>
 			<div
-				className={`flex flex-row justify-evenly items-center space-x-4 w-full bg-black transition-all ease-in-out animate-fadeIn duration-500 px-2 ${state.blogCatClosed ? "" : "hidden"}`}
+				className={`flex flex-row justify-evenly items-center space-x-4 w-full bg-black transition-all lg:w-fit lg:py-4 ease-in-out animate-fadeIn duration-500 px-2 ${state.blogCatClosed ? "" : "hidden"}`}
 			>
 				<h1
 					className={`font-montserrat lg:font-light uppercase tracking-widest text-white text-md lg:text-xl`}
@@ -52,7 +52,7 @@ const BlogNav = ({ blogCat }) => {
 			</div>
 
 			<div
-				className={` ${state.blogCatClosed ? "h-0 overflow-hidden" : " flex flex-col space-y-4 h-12 "} `}
+				className={` ${state.blogCatClosed ? "h-0 overflow-hidden" : " flex flex-col space-y-4 h-12 lg:h-fit"} `}
 			>
 				<Button
 					text="Current Blog Post"
@@ -80,12 +80,19 @@ const BlogNav = ({ blogCat }) => {
 					onClick={() => handleSelection("episodeSummaries")}
 				/>
 				<div className="w-full block">
-					<ChevronDoubleDownIcon
+					{/* <ChevronDoubleDownIcon
+						onClick={() =>
+							setState({ ...state, blogCatClosed: !state.blogCatClosed })
+						} */}
+					<h1
 						onClick={() =>
 							setState({ ...state, blogCatClosed: !state.blogCatClosed })
 						}
-						className={` w-6 h-6 text-white ml-auto mb-6 ${!state.blogCatClosed ? "rotate-180" : "hidden"}`}
-					/>
+						className={` w-6 h-6 text-white/50 underline underline-offset-4 ml-auto mb-6 uppercase animate-fadeIn ${!state.blogCatClosed ? "" : "hidden"}`}
+					>
+						close
+					</h1>
+					{/* /> */}
 				</div>
 			</div>
 		</div>

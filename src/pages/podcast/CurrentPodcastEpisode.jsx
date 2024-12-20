@@ -8,7 +8,7 @@ const CurrentPodcastEpisode = () => {
 						Current Episode
 					</h1>
 					<iframe
-						className="w-fit h-[352px] mx-auto select-none hidden lg:block"
+						className="w-fit h-[352px] lg:h-72 lg:w-full mx-auto select-none hidden lg:block"
 						src="https://open.spotify.com/embed/show/298oIu74qjd3pXaaBMDr19?utm_source=generator&theme=0"
 						allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
 						loading="lazy"
