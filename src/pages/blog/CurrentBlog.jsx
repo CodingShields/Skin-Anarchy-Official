@@ -100,7 +100,7 @@ const CurrentBlog = ({ open }) => {
 					<h4 className="text-xl lg:text-2xl w-11/12 lg:w-3/4 mx-auto py-2 text-left font-montserrat leading-10 pl-2 border-b-[1px] border-black/30">
 						Questionable Ingredients and Side Effects
 					</h4>
-					<p className="text-[15px] w-10/12 mx-auto py-4 lg:w-3/4  font-montserrat leading-8 break-all text-justify lg:leading-10 lg:text-lg">
+					<p className="text-[15px] w-10/12 mx-auto py-4 lg:w-3/4  font-montserrat leading-8 text-justify lg:leading-10 lg:text-lg break-keep	">
 						The issue with sunscreen goes beyond aggressive marketing tactics.
 						Some studies have raised concerns about the ingredients used in many
 						sunscreens, particularly chemical-based formulas. Chemical filters

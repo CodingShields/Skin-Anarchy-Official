@@ -172,12 +172,12 @@ const TopPicksPage = () => {
 				)}
 			</TopPicksNavBar>
 
-			<div className="w-10/12 h-fit lg:py-36 grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mx-auto lg:my-24 my-16">
+			<div className="w-10/12 h-fit lg:py-36 grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-24 mx-auto lg:my-24 my-16">
 				{subMenuData?.data?.map((item, index) => (
 					<a
 						key={index}
-						onMouseOver={() => handleSubMenuClick(item)}
-						className="h-auto max-w-28 lg:max-w-36 mx-auto group lg:hover:bg-white ease-in-out duration-300 transition-all flex flex-col justify-center 	items-center"
+						// onMouseOver={() => handleSubMenuClick(item)}
+						className="h-auto max-w-28 lg:max-w-36 lg:max-h-36 mx-auto group lg:hover:bg-white hover:scale-125 ease-in-out duration-300 transition-all flex flex-col justify-center 	items-center rounded-xl hover:p-1"
 						href={shopMyLink}
 						target="_blank"
 						rel="noreferrer"

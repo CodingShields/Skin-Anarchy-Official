@@ -18,7 +18,7 @@ const HeadLine = () => {
 				<h1 className="w-full lg:w-fit text-center text-6xl lg:text-[300px]">
 					SKIN
 				</h1>
-				<h1 className="w-full lg:w-fit text-center text-4xl lg:text-[225px] sm:mt-4 px-8">
+				<h1 className="w-full lg:w-fit text-center text-4xl lg:text-[300px] sm:mt-4 px-8 lg:pb-10">
 					ANARCHY
 				</h1>
 				{isMobile && (

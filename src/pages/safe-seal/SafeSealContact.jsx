@@ -88,16 +88,16 @@ const SafeSealContact = () => {
 			/>
 			<div className="w-full h-fit flex lg:flex-row justify-evenly items-center flex-col ">
 				<div className="w-10/12 lg:w-1/2 h-fit flex flex-col justify-center items-center  text-wrap space-y-4 mt-24">
-					<h1 className="text-3xl lg:text-6xl uppercase text-left py-6 whitespace-nowrap lg:w-3/4 brightness-100 lg:brightness-75">
+					<h1 className="text-3xl lg:text-6xl uppercase text-left py-6 whitespace-nowrap lg:w-2/3 brightness-100 lg:brightness-75">
 						Contact Us
 					</h1>
-					<p className="text-xl w-full lg:w-2/3 py-4 brightness-100 lg:brightness-75 text-justify break-all">
+					<p className="text-xl w-full lg:w-2/3 py-1 brightness-100 lg:brightness-75 text-justify break-all">
 						Are you interested in the S.A.F.E. Seal for your company?
 					</p>
-					<p className="text-xl w-full lg:w-2/3 py-4 brightness-100 lg:brightness-75 text-justify break-all">
+					<p className="text-xl w-full lg:w-2/3 py-1 brightness-100 lg:brightness-75 text-justify break-all">
 						Message us to book a call with Dr. Ekta and learn more.
 					</p>
-					<p className="text-lg w-full lg:w-2/3 lg:whitespace-nowrap py-4 brightness-100 lg:brightness-75 text-justify break-all">
+					<p className="text-lg w-full lg:w-2/3 lg:whitespace-nowrap py-1 brightness-100 lg:brightness-75 text-justify break-all">
 						For any inquiries, please reach out to us via this form, or email us
 						at{" "}
 					</p>

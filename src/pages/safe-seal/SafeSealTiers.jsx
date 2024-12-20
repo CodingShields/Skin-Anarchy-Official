@@ -71,8 +71,8 @@ const SafeSealTiers = () => {
 								<p className="text-2xl pb-2  bg-white text-black w-fit font-normal px-4 py-2 absolute -top-12 -left-[.05rem] rounded-tl-xl rounded-tr-xl uppercase">
 									Evaluation Criteria{" "}
 								</p>
-								<div className="text-lg lg:text-xl leading-10 w-full lg:w-10/12 space-y-4 pl-2 py-2 text-justify">
-									<p className="indent-8 w-11/12 lg:w-full lg:leading-8 lg:mx-auto">
+								<div className="text-lg lg:text-xl leading-10 w-full lg:w-10/12 space-y-8 pl-2 py-2 text-justify lg:mt-12">
+									<p className="w-11/12 lg:w-full lg:leading-8 lg:mx-auto">
 										At{" "}
 										<span className="text-2xl uppercase font-normal ml-2">
 											Skin Anarchy
@@ -80,27 +80,27 @@ const SafeSealTiers = () => {
 										, we meticulously evaluate skin care products through a
 										rigorous set of criteria to ensure excellence and safety.{" "}
 									</p>
-									<p className="indent-8 w-11/12 lg:w-full leading-10 mx-auto">
+									<p className=" w-11/12 lg:w-full leading-8 mx-auto">
 										Our comprehensive literature review delves into existing
 										research and scientific studies, ensuring that every
 										ingredient used is thoroughly vetted for safety and
 										efficacy.
 									</p>
-									<p className="indent-8 w-11/12 lg:w-full leading-10 mx-auto">
+									<p className=" w-11/12 lg:w-full leading-8 mx-auto">
 										We assess the efficacy data to determine how well the
 										product performs its intended function, and evaluate the
 										result time frame to set realistic expectations for users.
 										Our analysis also includes a close examination of potential
 										side effects, ensuring transparency and safety.{" "}
 									</p>
-									<p className="indent-8 w-11/12 lg:w-full leading-10 mx-auto">
+									<p className=" w-11/12 lg:w-full leading-8 mx-auto">
 										Data analysis is conducted to interpret results accurately,
 										adhering to stringent laboratory standards for reliability.
 										We scrutinize packaging integrity to confirm that products
 										are delivered in optimal condition, and consider clinical
 										reviews to understand real-world effectiveness.{" "}
 									</p>
-									<p className="indent-8 w-11/12 lg:w-full leading-10 mx-auto">
+									<p className=" w-11/12 lg:w-full leading-8 mx-auto">
 										Additionally, we perform patch testing to gauge individual
 										reactions and carefully manage the testing timeline to
 										ensure thorough and reliable outcomes. This comprehensive

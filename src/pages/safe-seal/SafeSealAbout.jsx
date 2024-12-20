@@ -27,17 +27,17 @@ const SafeSealAbout = () => {
 						<span className="tracking-widest mr-2 font-normal">S.A.F.E</span>{" "}
 						Seal
 					</h1>
-					<p className="py-2 lg:py-4 text-lg w-11/12 lg:text-2xl ml-2 indent-6 mt-4 mx-auto text-justify break-all leading-8 lg:leading-[60px] tracking-wider">
+					<p className="py-2 lg:py-4 text-lg w-11/12 lg:text-2xl ml-2  mt-4 mx-auto text-justify break-all leading-8 lg:leading-[60px] tracking-wider">
 						Introducing the S.A.F.E Seal, an exclusive initiative by Skincare
 						Anarchy that sets a new standard for scientific transparency and
 						integrity in the beauty, health, and wellness industries.
 					</p>
-					<p className="py-2 lg:py-4 text-lg w-11/12 lg:text-2xl ml-2 indent-6 mt-4 mx-auto text-justify break-all leading-8 lg:leading-[60px] tracking-wider">
+					<p className="py-2 lg:py-4 text-lg w-11/12 lg:text-2xl ml-2 mt-4 mx-auto text-justify break-all leading-8 lg:leading-[60px] tracking-wider">
 						This prestigious seal serves as a symbol of scientific excellence,
 						offering global consumers assurance that the products they choose
 						are founded on rigorous scientific principles.
 					</p>
-					<p className="py-2 lg:py-4 text-lg w-11/12 lg:text-2xl ml-2 indent-6 mt-4 mx-auto text-justify break-all leading-8 lg:leading-[60px] tracking-wider">
+					<p className="py-2 lg:py-4 text-lg w-11/12 lg:text-2xl ml-2  mt-4 mx-auto text-justify break-all leading-8 lg:leading-[60px] tracking-wider">
 						As the first initiative of its kind, the S.A.F.E Seal transcends
 						conventional ingredient checks, delving into the intricate details
 						essential for product formulation and efficacy claims. Elevate your
@@ -101,18 +101,18 @@ const SafeSealAbout = () => {
 						/>
 					</a>
 
-					<p className="text-white text-lg font-montserrat text-justify break-all lg:font-thin tracking-widest w-10/12 lg:w-3/4 leading-10 text-balance py-2">
+					<p className="text-white text-[15px] lg:text-lg font-montserrat  break-all lg:font-thin tracking-widest w-10/12 lg:w-3/4 leading-6 lg:leading-10 text-justify py-2">
 						Thank you CEW for highlighting the S.A.F.E. Seal and S.A.F.E. Seal
 						Teens! The S.A.F.E. Seal adds an extra layer of evaluation, ensuring
 						teens can identify and use products that are safe and effective for
 						their skin.
 					</p>
-					<p className="text-white text-lg font-montserrat text-justify break-all lg:font-thin tracking-widest w-10/12 lg:w-3/4 leading-10 text-balance py-4">
+					<p className="text-white text-[15px] lg:text-lg font-montserrat  break-all lg:font-thin tracking-widest w-10/12 lg:w-3/4 leading-6 lg:leading-10 text-justify py-2">
 						&quot;I realized that there was no full-blown review process that a
 						brand had to go through when it came to analyzing what they were
 						creating.
 					</p>
-					<p className="text-white text-lg font-montserrat text-justify break-all lg:font-thin tracking-widest w-10/12 lg:w-3/4 leading-10 text-balance py-4">
+					<p className="text-white text-[15px] lg:text-lg font-montserrat  break-all lg:font-thin tracking-widest w-10/12 lg:w-3/4 leading-6 lg:leading-10 text-justify py-2">
 						&quot; - Dr. Ekta Yadav via CEW
 					</p>
 				</div>

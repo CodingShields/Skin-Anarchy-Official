@@ -100,7 +100,7 @@ const TopDoctors = [
 		link: "",
 	},
 	{
-		name: "Dr Yannis",
+		name: "Dr. Yannis Alexandrides",
 		image: yannis,
 		link: "",
 	},
@@ -172,7 +172,7 @@ const Celebrities = [
 		link: "",
 	},
 	{
-		name: "Demi Tebow ",
+		name: "Demi-Leigh Tebow ",
 		image: tebow,
 		link: "",
 	},
@@ -180,17 +180,17 @@ const Celebrities = [
 
 const Masterclass = [
 	{
-		name: "Torrey DeVitto",
+		name: "Dr Janet Allenby",
 		image: allenby,
 		link: "",
 	},
 	{
-		name: "Tia Mowry",
+		name: "Dr Barbara Paldus",
 		image: codex,
 		link: "",
 	},
 	{
-		name: "Demi Tebow ",
+		name: "Dr Victoria Rose Veytsman",
 		image: veytsman,
 		link: "",
 	},

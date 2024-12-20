@@ -92,7 +92,7 @@ const ScienceOfSkinAwards = () => {
 							key={index}
 							src={image.image}
 							alt={`award ${index}`}
-							className="w-48 lg:w-[300px] h-48 p-4 lg:p-8 cursor-pointer lg:hover:scale-150 ease-in-out duration-300 transition-all"
+							className="w-48 lg:w-[300px] h-48 p-4 lg:p-8 mx-auto cursor-pointer lg:hover:scale-150 ease-in-out duration-300 transition-all"
 						/>
 					))}
 				</ScienceAwards>

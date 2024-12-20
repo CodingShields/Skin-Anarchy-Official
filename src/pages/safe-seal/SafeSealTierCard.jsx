@@ -13,7 +13,7 @@ const SafeSealTierCard = (props) => {
 			<div
 				className={`w-11/12 lg:w-[1200px] border px-4 py-8 rounded-bl-xl rounded-tr-xl shadow-2xl shadow-white/20 rounded-br-xl bg-black relative animate-fadeIn h-fit ${tier5 ? "hidden" : "true"} `}
 			>
-				<p className="text-2xl pb-2  bg-white text-black w-fit font-normal px-4 py-2 absolute -top-12 -left-[.05rem] rounded-tl-xl rounded-tr-xl uppercase">
+				<p className="text-2xl pb-2  bg-gold-500 text-white w-fit font-normal px-4 py-2 absolute -top-12 -left-[.05rem] rounded-tl-xl rounded-tr-xl uppercase">
 					{tier}
 				</p>
 				<img

@@ -17,13 +17,13 @@ const AboutUs = () => {
 						Skincare Anarchy
 					</h1>
 					<div className="w-10/12 lg:w-3/4">
-						<p className=" indent-0 lg:indent-8 py-4 leading-8">
+						<p className=" indent-0 lg:indent-8 py-4 leading-6 lg:leading-8">
 							Skincare Anarchy is an award-winning and industry acclaimed
 							podcast, recognized for its unique approach to skincare and
 							beauty. SA consistently ranks in the top 25-50 for Beauty in the
 							United States and has a global presence.
 						</p>
-						<p className=" indent-0 lg:indent-8 py-4 leading-8">
+						<p className=" indent-0 lg:indent-8 py-4 leading-6 lg:leading-8">
 							Hosted by Dr. Ekta Yadav (MD, MBA, MS), our podcast is a unique
 							blend of science and beauty, driven by curiosity and passion. We
 							aim to provide our listeners with an insider’s look into the
@@ -31,7 +31,7 @@ const AboutUs = () => {
 							industry professionals and leaders.
 						</p>
 
-						<p className=" indent-0 lg:indent-8 py-4 leading-8">
+						<p className=" indent-0 lg:indent-8 py-4 leading-6 lg:leading-8">
 							Join us for our weekly series, including Makeup Monday, Mindset
 							Monday, Wisdom of Women Wednesday, Fashion Friday, and Fragrance
 							Friday, and more, as we explore the multifaceted world of beauty
@@ -56,17 +56,7 @@ const AboutUs = () => {
 								image here
 							</div>
 						</div>
-						<div className="py-4 grid grid-cols-2 w-full border-r border-b rounded-br-lg my-0 lg:my-8">
-							<div className="block font-montserrat uppercase text-center mx-auto">
-								<h1 className="text-lg uppercase">Robert</h1>
-								<p className="text-lg italic">CFO</p>
 
-								<h1> short bio</h1>
-							</div>
-							<div className="w-32 lg:w-96 h-32 lg:h-96 bg-char-900 ml-auto mr-2">
-								image here
-							</div>
-						</div>
 						<div className="py-4 grid grid-cols-2 w-full border-r border-b rounded-br-lg my-0 lg:my-8">
 							<div className="block font-montserrat uppercase text-center mx-auto">
 								<h1 className=" text-lg uppercase">Flora</h1>

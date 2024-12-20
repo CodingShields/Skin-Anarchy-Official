@@ -44,7 +44,7 @@ const EpisodeDetailsCard = (props) => {
 				</div>
 				<div className={`py-4 block line-clap-2`}>
 					<p
-						className={` px-8 text-balance transition-all font-montserrat duration-700 ease-in-out text-left leading-8  text-[16px] lg:w-3/4 lg:mx-auto lg:text-xl lg:leading-10 ${!openTab ? "text-left  w-full h-auto line-clamp-2 " : " text-white w-full  h-fit  "} `}
+						className={` px-8 text-balance transition-all font-montserrat duration-700 ease-in-out text-left leading-6  text-[12px] lg:text-[16px] lg:w-3/4 lg:mx-auto lg:text-xl lg:leading-10 ${!openTab ? "text-left  w-full h-auto line-clamp-2 " : " text-white w-full  h-fit  "} `}
 					>
 						{" "}
 						When financial turmoil met Jen Sincero, she didn&apos;t just face
